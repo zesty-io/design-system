@@ -1,20 +1,23 @@
 'use strict'
 
 const webpack = require('webpack')
+const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractLess = new ExtractTextPlugin({
-  filename: '../../build/bundle.core.css',
-  disable: process.env.NODE_ENV === 'development'
+  filename: 'bundle.css'
 })
 
 module.exports = {
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080
+  },
   entry: './index.js',
   devtool: 'cheap-module-source-map',
-  externals: {
-    'react': 'React'
-  },
   output: {
-    filename: '../../build/bundle.core.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   plugins: [extractLess],
   module: {
@@ -22,16 +25,18 @@ module.exports = {
       {
         test: /\.less$/,
         use: extractLess.extract({
-          use: [{
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[local]--[hash:base64:5]'
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[local]--[hash:base64:5]'
+              }
+            },
+            {
+              loader: 'less-loader'
             }
-          }, {
-            loader: 'less-loader'
-          }],
-          fallback: 'style-loader'
+          ]
         })
       },
       {
