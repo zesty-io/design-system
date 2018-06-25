@@ -1,0 +1,23 @@
+{
+  "name": "design-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zesty-io/design-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zesty-io/design-system/issues"
+  },
+  "homepage": "https://github.com/zesty-io/design-system#readme",
+  "dependencies": {
+    "docz": "^0.2.4"
+  }
+}

@@ -1,0 +1,11 @@
+# File Extensions
+*.sublime-*
+*.log
+*.css.json
+.env
+
+/build
+*node_modules
+
+.DS_Store
+.vscode
