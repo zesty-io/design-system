@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import Router from 'react-router'
+import { Route } from 'react-router-dom'
+
+import Menu from './components/menu'
+import Showcase from './components/showcase'
 
 import Button from '../../core/Button'
 import ButtonGroup from '../../core/ButtonGroup'
@@ -14,9 +19,24 @@ import Input from '../../core/Input'
 import Toggle from '../../core/Toggle'
 import Infotip from '../../core/Infotip'
 
+import styles from './styles.less'
 class App extends Component {
   render() {
-    return <Button text="ready for hot reloads"/>
+    return (
+      <main className={styles.main}>
+        <section className={styles.menu}>
+          <Menu
+            components={[
+              { name: 'component', url: '/componentName' },
+              { name: 'anotherComponent', url: '/moreComponents' }
+            ]}
+          />
+        </section>
+        <section className={styles.showcase}>
+          <Showcase />
+        </section>
+      </main>
+    )
   }
 }
 

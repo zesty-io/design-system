@@ -1,3 +1,6 @@
+.list--1S2wt {
+  list-style-type: none;
+}
 .button--lGkpI {
   background: #5b667d;
   border: none;
@@ -495,6 +498,19 @@ input:checked + .slider--1wRk5:before {
   border-radius: 4px;
   left: -7px;
   z-index: 10;
+}
+.main--1RkF3 {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.main--1RkF3 .menu--AMmTc {
+  margin: 0;
+  flex: 1;
+  background-color: aquamarine;
+}
+.main--1RkF3 .showcase--3l79V {
+  flex: 5;
 }
 
 /*# sourceMappingURL=bundle.css.map*/
