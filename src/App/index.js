@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 
 import Menu from './components/menu'
 import Showcase from './components/showcase'
+import Options from './components/options'
 
 import Button from '../../core/Button'
 import ButtonGroup from '../../core/ButtonGroup'
@@ -24,11 +25,25 @@ class App extends Component {
   render() {
     return (
       <main className={styles.main}>
+        <section className={styles.options}>
+          <Options />
+        </section>
         <section className={styles.menu}>
           <Menu
             components={[
-              { name: 'component', url: '/componentName' },
-              { name: 'anotherComponent', url: '/moreComponents' }
+              { name: 'Button', url: '/componentName' },
+              { name: 'ButtonGroup', url: '/componentName' },
+              { name: 'Card', url: '/componentName' },
+              { name: 'Divider', url: '/componentName' },
+              { name: 'Url', url: '/componentName' },
+              { name: 'AppLink', url: '/componentName' },
+              { name: 'Loader', url: '/componentName' },
+              { name: 'WithLoader', url: '/componentName' },
+              { name: 'Search', url: '/componentName' },
+              { name: 'Select', url: '/componentName' },
+              { name: 'Input', url: '/componentName' },
+              { name: 'Toggle', url: '/componentName' },
+              { name: 'Infotip', url: '/moreComponents' }
             ]}
           />
         </section>

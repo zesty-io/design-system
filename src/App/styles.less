@@ -1,11 +1,18 @@
+@import '../../core/colors.less';
+
 .main {
-  margin: 0;
-  padding: 0;
   display: flex;
+  flex-wrap: wrap;
+  .options {
+    width: 100vw;
+    height: 5vh;
+    background-color: @zesty-gray;
+  }
   .menu {
     margin: 0;
     flex: 1;
-    background-color: aquamarine;
+    background-color: @zesty-light-blue;
+    height: 95vh;
   }
   .showcase {
     flex: 5;

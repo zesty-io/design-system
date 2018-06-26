@@ -1,5 +1,27 @@
 .list--1S2wt {
   list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.list--1S2wt a {
+  text-decoration: none;
+}
+.list--1S2wt li {
+  align-content: center;
+  margin: .5rem;
+  color: #4c5568;
+  padding: .5rem .3rem;
+}
+.list--1S2wt li:hover,
+.list--1S2wt li:focus {
+  background: #497edf;
+  color: black;
+}
+.list--1S2wt li:active {
+  background: #000;
+  top: 1px;
+  outline: none;
 }
 .button--lGkpI {
   background: #5b667d;
@@ -500,14 +522,19 @@ input:checked + .slider--1wRk5:before {
   z-index: 10;
 }
 .main--1RkF3 {
-  margin: 0;
-  padding: 0;
   display: flex;
+  flex-wrap: wrap;
+}
+.main--1RkF3 .options--1K0Dr {
+  width: 100vw;
+  height: 5vh;
+  background-color: #5b667d;
 }
 .main--1RkF3 .menu--AMmTc {
   margin: 0;
   flex: 1;
-  background-color: aquamarine;
+  background-color: #c3cddf;
+  height: 95vh;
 }
 .main--1RkF3 .showcase--3l79V {
   flex: 5;

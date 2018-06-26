@@ -25852,6 +25852,61 @@ module.exports = {"list":"list--1S2wt"};
 
 /***/ }),
 
+/***/ "./src/App/components/options/index.js":
+/*!*********************************************!*\
+  !*** ./src/App/components/options/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Options = function (_Component) {
+  _inherits(Options, _Component);
+
+  function Options() {
+    _classCallCheck(this, Options);
+
+    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+  }
+
+  _createClass(Options, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'h1',
+        null,
+        'top options and information'
+      );
+    }
+  }]);
+
+  return Options;
+}(_react.Component);
+
+exports.default = Options;
+
+/***/ }),
+
 /***/ "./src/App/components/showcase/index.js":
 /*!**********************************************!*\
   !*** ./src/App/components/showcase/index.js ***!
@@ -25901,7 +25956,7 @@ var Showcase = function (_Component) {
       return _react2.default.createElement(
         'h1',
         null,
-        'hi'
+        'hi, I will be the component in the route'
       );
     }
   }]);
@@ -25946,6 +26001,10 @@ var _menu2 = _interopRequireDefault(_menu);
 var _showcase = __webpack_require__(/*! ./components/showcase */ "./src/App/components/showcase/index.js");
 
 var _showcase2 = _interopRequireDefault(_showcase);
+
+var _options = __webpack_require__(/*! ./components/options */ "./src/App/components/options/index.js");
+
+var _options2 = _interopRequireDefault(_options);
 
 var _Button = __webpack_require__(/*! ../../core/Button */ "./core/Button/index.js");
 
@@ -26024,9 +26083,14 @@ var App = function (_Component) {
         { className: _styles2.default.main },
         _react2.default.createElement(
           'section',
+          { className: _styles2.default.options },
+          _react2.default.createElement(_options2.default, null)
+        ),
+        _react2.default.createElement(
+          'section',
           { className: _styles2.default.menu },
           _react2.default.createElement(_menu2.default, {
-            components: [{ name: 'component', url: '/componentName' }, { name: 'anotherComponent', url: '/moreComponents' }]
+            components: [{ name: 'Button', url: '/componentName' }, { name: 'ButtonGroup', url: '/componentName' }, { name: 'Card', url: '/componentName' }, { name: 'Divider', url: '/componentName' }, { name: 'Url', url: '/componentName' }, { name: 'AppLink', url: '/componentName' }, { name: 'Loader', url: '/componentName' }, { name: 'WithLoader', url: '/componentName' }, { name: 'Search', url: '/componentName' }, { name: 'Select', url: '/componentName' }, { name: 'Input', url: '/componentName' }, { name: 'Toggle', url: '/componentName' }, { name: 'Infotip', url: '/moreComponents' }]
           })
         ),
         _react2.default.createElement(
@@ -26053,7 +26117,7 @@ exports.default = App;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"main":"main--1RkF3","menu":"menu--AMmTc","showcase":"showcase--3l79V"};
+module.exports = {"main":"main--1RkF3","options":"options--1K0Dr","menu":"menu--AMmTc","showcase":"showcase--3l79V"};
 
 /***/ })
 
