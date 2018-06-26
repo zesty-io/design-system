@@ -29,11 +29,16 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  margin: 1rem;
   align-items: center;
   justify-items: center;
 }
 .showcase--2Rm8X .description--FnGew {
   margin: 2rem;
+}
+.showcase--2Rm8X .usage--vgYxU {
+  display: grid;
+  grid-gap: 1rem;
 }
 .showcase--2Rm8X .code--2bhD0 {
   margin: 2rem;
@@ -51,6 +56,8 @@
 }
 .options--3xPnU h1 {
   flex: 1;
+  font-size: 1.8rem;
+  justify-self: flex-start;
 }
 .main--1RkF3 {
   display: flex;
@@ -207,6 +214,12 @@
 .CardFooter--3rOFY {
   border-top: 1px solid #dee6ff;
   padding-top: 0.5rem;
+}
+.restricted--1xMBC {
+  max-width: 20rem;
+}
+.group--meoAF {
+  display: flex;
 }
 .Divider--1JyHY {
   border-top: 0;

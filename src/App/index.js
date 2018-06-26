@@ -6,29 +6,38 @@ import Options from './components/options'
 
 import styles from './styles.less'
 
-import Button from '../../core/Button'
-import ButtonGroup from '../../core/ButtonGroup'
+import ButtonGuide from '../../core/Button/guide'
 
-import { Card, CardHeader, CardContent, CardFooter } from '../../core/Card'
+import ButtonGroupGuide from '../../core/ButtonGroup/guide'
+
+import CardGuide from '../../core/Card/guide'
+
 import Divider from '../../core/Divider'
 import Url from '../../core/Url'
 import AppLink from '../../core/AppLink'
 import Loader from '../../core/Loader'
 import WithLoader from '../../core/WithLoader'
 import Search from '../../core/Search'
-import Select from '../../core/Select'
+import { Select } from '../../core/Select'
 import Input from '../../core/Input'
 import Toggle from '../../core/Toggle'
 import Infotip from '../../core/Infotip'
 
 const components = {
   Button: {
-    component: Button,
+    component: ButtonGuide,
     description:
       'A flexible button component with styles including warn, cancel, and save'
   },
-  ButtonGroup: { component: ButtonGroup , description: 'A group of Buttons'},
-  Card: { component: Card },
+  ButtonGroup: {
+    component: ButtonGroupGuide,
+    description: 'A wrapper to group buttons'
+  },
+  Card: {
+    component: CardGuide,
+    description:
+      'Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn.'
+  },
   Divider: { component: Divider },
   Url: { component: Url },
   // AppLink: { component: AppLink },
@@ -45,7 +54,6 @@ class App extends Component {
     selected: ''
   }
   render() {
-    console.log(Search)
     const SelectedComponent =
       this.state.selected && components[this.state.selected].component
     return (

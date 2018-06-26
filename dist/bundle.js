@@ -237,6 +237,69 @@ module.exports = {"button":"button--lGkpI","save":"save--2664L","cancel":"cancel
 
 /***/ }),
 
+/***/ "./core/Button/guide.js":
+/*!******************************!*\
+  !*** ./core/Button/guide.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = __webpack_require__(/*! ./Button */ "./core/Button/Button.js");
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ButtonGuide = function (_Component) {
+  _inherits(ButtonGuide, _Component);
+
+  function ButtonGuide() {
+    _classCallCheck(this, ButtonGuide);
+
+    return _possibleConstructorReturn(this, (ButtonGuide.__proto__ || Object.getPrototypeOf(ButtonGuide)).apply(this, arguments));
+  }
+
+  _createClass(ButtonGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(_Button2.default, { type: '', text: 'Button' }),
+        _react2.default.createElement(_Button2.default, { type: 'save', text: 'Save' }),
+        _react2.default.createElement(_Button2.default, { type: 'cancel', text: 'Cancel' }),
+        _react2.default.createElement(_Button2.default, { type: 'warn', text: 'Warn' }),
+        _react2.default.createElement(_Button2.default, { type: 'alt', text: 'Alt' })
+      );
+    }
+  }]);
+
+  return ButtonGuide;
+}(_react.Component);
+
+exports.default = ButtonGuide;
+
+/***/ }),
+
 /***/ "./core/Button/index.js":
 /*!******************************!*\
   !*** ./core/Button/index.js ***!
@@ -321,9 +384,9 @@ module.exports = {"ButtonGroup":"ButtonGroup--t4NKM","child":"child--19tXD"};
 
 /***/ }),
 
-/***/ "./core/ButtonGroup/index.js":
+/***/ "./core/ButtonGroup/guide.js":
 /*!***********************************!*\
-  !*** ./core/ButtonGroup/index.js ***!
+  !*** ./core/ButtonGroup/guide.js ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -335,13 +398,73 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Button = __webpack_require__(/*! ../Button */ "./core/Button/index.js");
+
+var _Button2 = _interopRequireDefault(_Button);
+
 var _ButtonGroup = __webpack_require__(/*! ./ButtonGroup */ "./core/ButtonGroup/ButtonGroup.js");
 
 var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _ButtonGroup2.default;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ButtonGroupGuide = function (_Component) {
+  _inherits(ButtonGroupGuide, _Component);
+
+  function ButtonGroupGuide() {
+    _classCallCheck(this, ButtonGroupGuide);
+
+    return _possibleConstructorReturn(this, (ButtonGroupGuide.__proto__ || Object.getPrototypeOf(ButtonGroupGuide)).apply(this, arguments));
+  }
+
+  _createClass(ButtonGroupGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          _ButtonGroup2.default,
+          null,
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button1' }),
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button2' }),
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button3' })
+        ),
+        _react2.default.createElement(
+          _ButtonGroup2.default,
+          null,
+          _react2.default.createElement(_Button2.default, { type: 'cancel', text: 'Cancel' }),
+          _react2.default.createElement(_Button2.default, { type: 'save', text: 'Save' })
+        ),
+        _react2.default.createElement(
+          _ButtonGroup2.default,
+          null,
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button1' }),
+          _react2.default.createElement(_Button2.default, { type: 'warn', text: 'Button2' }),
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button3' }),
+          _react2.default.createElement(_Button2.default, { type: 'alt', text: 'Button4' }),
+          _react2.default.createElement(_Button2.default, { type: '', text: 'Button5' })
+        )
+      );
+    }
+  }]);
+
+  return ButtonGroupGuide;
+}(_react.Component);
+
+exports.default = ButtonGroupGuide;
 
 /***/ }),
 
@@ -426,9 +549,9 @@ module.exports = {"Card":"Card--1QHwq","CardHeader":"CardHeader--nK6k_","CardCon
 
 /***/ }),
 
-/***/ "./core/Card/index.js":
+/***/ "./core/Card/guide.js":
 /*!****************************!*\
-  !*** ./core/Card/index.js ***!
+  !*** ./core/Card/guide.js ***!
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -439,14 +562,236 @@ module.exports = {"Card":"Card--1QHwq","CardHeader":"CardHeader--nK6k_","CardCon
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CardFooter = exports.CardContent = exports.CardHeader = exports.Card = undefined;
 
-var _Card = __webpack_require__(/*! ./Card.js */ "./core/Card/Card.js");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.Card = _Card.Card;
-exports.CardHeader = _Card.CardHeader;
-exports.CardContent = _Card.CardContent;
-exports.CardFooter = _Card.CardFooter;
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Card = __webpack_require__(/*! ./Card */ "./core/Card/Card.js");
+
+var _Button = __webpack_require__(/*! ../Button */ "./core/Button/index.js");
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _guide = __webpack_require__(/*! ./guide.less */ "./core/Card/guide.less");
+
+var _guide2 = _interopRequireDefault(_guide);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CardGuide = function (_Component) {
+  _inherits(CardGuide, _Component);
+
+  function CardGuide() {
+    _classCallCheck(this, CardGuide);
+
+    return _possibleConstructorReturn(this, (CardGuide.__proto__ || Object.getPrototypeOf(CardGuide)).apply(this, arguments));
+  }
+
+  _createClass(CardGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          _Card.Card,
+          null,
+          _react2.default.createElement(
+            _Card.CardHeader,
+            null,
+            'This is the card Header'
+          ),
+          _react2.default.createElement(
+            _Card.CardContent,
+            null,
+            'this is the card content'
+          ),
+          _react2.default.createElement(
+            _Card.CardFooter,
+            null,
+            'this is the card footer'
+          )
+        ),
+        _react2.default.createElement(
+          _Card.Card,
+          null,
+          _react2.default.createElement(
+            _Card.CardHeader,
+            null,
+            _react2.default.createElement(
+              'h1',
+              null,
+              'A Large Card Title'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.CardContent,
+            null,
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          ),
+          _react2.default.createElement(
+            _Card.CardFooter,
+            null,
+            _react2.default.createElement(_Button2.default, { type: 'save', text: 'save' }),
+            _react2.default.createElement(_Button2.default, { type: 'cancel', text: 'cancel' })
+          )
+        ),
+        _react2.default.createElement(
+          _Card.Card,
+          { className: _guide2.default.restricted },
+          _react2.default.createElement(
+            _Card.CardHeader,
+            null,
+            _react2.default.createElement(
+              'h1',
+              null,
+              'A Restricted Card'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.CardContent,
+            null,
+            'Some size restriction goes a long way with cards, they are flex based so the can grow and shrink according to their use'
+          ),
+          _react2.default.createElement(
+            _Card.CardFooter,
+            null,
+            'footer'
+          )
+        ),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'These cards are in a flex container'
+        ),
+        _react2.default.createElement(
+          'section',
+          { className: _guide2.default.group },
+          _react2.default.createElement(
+            _Card.Card,
+            null,
+            _react2.default.createElement(
+              _Card.CardHeader,
+              null,
+              'This is the card Header'
+            ),
+            _react2.default.createElement(
+              _Card.CardContent,
+              null,
+              'this is the card content'
+            ),
+            _react2.default.createElement(
+              _Card.CardFooter,
+              null,
+              'this is the card footer'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.Card,
+            null,
+            _react2.default.createElement(
+              _Card.CardHeader,
+              null,
+              'This is the card Header'
+            ),
+            _react2.default.createElement(
+              _Card.CardContent,
+              null,
+              'this is the card content'
+            ),
+            _react2.default.createElement(
+              _Card.CardFooter,
+              null,
+              'this is the card footer'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.Card,
+            null,
+            _react2.default.createElement(
+              _Card.CardHeader,
+              null,
+              'This is the card Header'
+            ),
+            _react2.default.createElement(
+              _Card.CardContent,
+              null,
+              'this is the card content'
+            ),
+            _react2.default.createElement(
+              _Card.CardFooter,
+              null,
+              'this is the card footer'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.Card,
+            null,
+            _react2.default.createElement(
+              _Card.CardHeader,
+              null,
+              'This is the card Header'
+            ),
+            _react2.default.createElement(
+              _Card.CardContent,
+              null,
+              'this is the card content'
+            ),
+            _react2.default.createElement(
+              _Card.CardFooter,
+              null,
+              'this is the card footer'
+            )
+          ),
+          _react2.default.createElement(
+            _Card.Card,
+            null,
+            _react2.default.createElement(
+              _Card.CardHeader,
+              null,
+              'This is the card Header'
+            ),
+            _react2.default.createElement(
+              _Card.CardContent,
+              null,
+              'this is the card content'
+            ),
+            _react2.default.createElement(
+              _Card.CardFooter,
+              null,
+              'this is the card footer'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return CardGuide;
+}(_react.Component);
+
+exports.default = CardGuide;
+
+/***/ }),
+
+/***/ "./core/Card/guide.less":
+/*!******************************!*\
+  !*** ./core/Card/guide.less ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"restricted":"restricted--1xMBC","group":"group--meoAF"};
 
 /***/ }),
 
@@ -25933,7 +26278,7 @@ exports.default = Showcase;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"showcase":"showcase--2Rm8X","description":"description--FnGew","code":"code--2bhD0"};
+module.exports = {"showcase":"showcase--2Rm8X","description":"description--FnGew","usage":"usage--vgYxU","code":"code--2bhD0"};
 
 /***/ }),
 
@@ -25973,15 +26318,17 @@ var _styles = __webpack_require__(/*! ./styles.less */ "./src/App/styles.less");
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _Button = __webpack_require__(/*! ../../core/Button */ "./core/Button/index.js");
+var _guide = __webpack_require__(/*! ../../core/Button/guide */ "./core/Button/guide.js");
 
-var _Button2 = _interopRequireDefault(_Button);
+var _guide2 = _interopRequireDefault(_guide);
 
-var _ButtonGroup = __webpack_require__(/*! ../../core/ButtonGroup */ "./core/ButtonGroup/index.js");
+var _guide3 = __webpack_require__(/*! ../../core/ButtonGroup/guide */ "./core/ButtonGroup/guide.js");
 
-var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+var _guide4 = _interopRequireDefault(_guide3);
 
-var _Card = __webpack_require__(/*! ../../core/Card */ "./core/Card/index.js");
+var _guide5 = __webpack_require__(/*! ../../core/Card/guide */ "./core/Card/guide.js");
+
+var _guide6 = _interopRequireDefault(_guide5);
 
 var _Divider = __webpack_require__(/*! ../../core/Divider */ "./core/Divider/index.js");
 
@@ -26009,8 +26356,6 @@ var _Search2 = _interopRequireDefault(_Search);
 
 var _Select = __webpack_require__(/*! ../../core/Select */ "./core/Select/index.js");
 
-var _Select2 = _interopRequireDefault(_Select);
-
 var _Input = __webpack_require__(/*! ../../core/Input */ "./core/Input/index.js");
 
 var _Input2 = _interopRequireDefault(_Input);
@@ -26033,18 +26378,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var components = {
   Button: {
-    component: _Button2.default,
+    component: _guide2.default,
     description: 'A flexible button component with styles including warn, cancel, and save'
   },
-  ButtonGroup: { component: _ButtonGroup2.default, description: 'A group of Buttons' },
-  Card: { component: _Card.Card },
+  ButtonGroup: {
+    component: _guide4.default,
+    description: 'A wrapper to group buttons'
+  },
+  Card: {
+    component: _guide6.default,
+    description: 'Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn.'
+  },
   Divider: { component: _Divider2.default },
   Url: { component: _Url2.default },
   // AppLink: { component: AppLink },
   Loader: { component: _Loader2.default },
   // WithLoader: { component: WithLoader },
   Search: { component: _Search2.default },
-  Select: { component: _Select2.default },
+  Select: { component: _Select.Select },
   Input: { component: _Input2.default },
   Toggle: { component: _Toggle2.default },
   Infotip: { component: _Infotip2.default }
@@ -26076,7 +26427,6 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      console.log(_Search2.default);
       var SelectedComponent = this.state.selected && components[this.state.selected].component;
       return _react2.default.createElement(
         'main',
