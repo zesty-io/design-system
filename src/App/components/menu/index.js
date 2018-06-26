@@ -7,7 +7,9 @@ class Menu extends Component {
       <ul className={styles.list}>
         {Object.keys(this.props.components).map((comp, i) => {
           return (
-            <a onClick={() => this.props.onSelect(comp)} key={i}>
+            <a onClick={() => {
+              this.props.history.push(`/${comp}`)
+              }} key={i}>
               <li>{comp}</li>
             </a>
           )

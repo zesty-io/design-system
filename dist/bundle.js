@@ -26439,7 +26439,8 @@ var GithubEmbed = function (_Component) {
 
       // when we have public gists of each component
       // we will fetch them here
-
+      // the gist must have html pre-formatted 
+      // we need the 'raw' link from the gist
       fetch('https://gist.githubusercontent.com/grantglidewell/20012eb14f0120ab2dad886e4923c191/raw/419fbf77ac2cf3385834540592ba96c7d2e67045/parseURL.js').then(function (res) {
         return res.text();
       }).then(function (code) {
@@ -26545,7 +26546,7 @@ var components = {
     component: _guide8.default,
     description: 'A styled horizontal divider'
   },
-  Loader: { component: _Loader2.default, description: 'A general loading indicator' },
+  Loader: { component: _Loader2.default, description: 'A general loading indicator for inline use' },
   Search: {
     component: _guide10.default,
     description: 'A search component that takes onKeyup and onClick props'
@@ -26648,7 +26649,6 @@ var Guide = function (_Component) {
   _createClass(Guide, [{
     key: 'render',
     value: function render() {
-      console.log(this.props);
       var SelectedComponent = this.state.selected && _components2.default[this.state.selected].component;
       return _react2.default.createElement(
         'main',
@@ -26664,19 +26664,31 @@ var Guide = function (_Component) {
         _react2.default.createElement(
           'section',
           { className: _styles2.default.menu },
-          _react2.default.createElement(_menu2.default, { components: _components2.default, onSelect: this.onSelect })
+          _react2.default.createElement(_menu2.default, {
+            history: this.props.history,
+            components: _components2.default,
+            onSelect: this.onSelect
+          })
         ),
         _react2.default.createElement(
           'section',
           { className: _styles2.default.showcase },
           _react2.default.createElement(
             _showcase2.default,
-            {
-              selected: _components2.default[this.state.selected] || null },
+            { selected: _components2.default[this.state.selected] || null },
             SelectedComponent && _react2.default.createElement(SelectedComponent, null)
           )
         )
       );
+    }
+  }], [{
+    key: 'getDerivedStateFromProps',
+    value: function getDerivedStateFromProps(props, state) {
+      console.log('props', props.match.params.component, 'state', state.selected);
+      if (props.match.params.component !== state.selected) {
+        return { selected: props.match.params.component };
+      }
+      return null;
     }
   }]);
 
@@ -26752,7 +26764,7 @@ var Menu = function (_Component) {
           return _react2.default.createElement(
             'a',
             { onClick: function onClick() {
-                return _this2.props.onSelect(comp);
+                _this2.props.history.push('/' + comp);
               }, key: i },
             _react2.default.createElement(
               'li',
@@ -26962,7 +26974,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/', render: function render(routeProps) {
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/:component?', render: function render(routeProps) {
             return _react2.default.createElement(_guide2.default, routeProps);
           } })
       );

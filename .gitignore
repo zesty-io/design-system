@@ -4,8 +4,7 @@
 *.css.json
 .env
 
-/build
-/dist
+dist/
 *node_modules
 
 .DS_Store

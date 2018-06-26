@@ -13,9 +13,15 @@ class Guide extends Component {
   state = {
     selected: ''
   }
+  static getDerivedStateFromProps(props, state) {
+    console.log('props', props.match.params.component, 'state', state.selected)
+    if (props.match.params.component !== state.selected) {
+      return { selected: props.match.params.component }
+    }
+    return null
+  }
   render() {
-    console.log(this.props)
-  const SelectedComponent =
+    const SelectedComponent =
       this.state.selected && components[this.state.selected].component
     return (
       <main className={styles.main}>
@@ -26,11 +32,14 @@ class Guide extends Component {
           />
         </section>
         <section className={styles.menu}>
-          <Menu components={components} onSelect={this.onSelect} />
+          <Menu
+            history={this.props.history}
+            components={components}
+            onSelect={this.onSelect}
+          />
         </section>
         <section className={styles.showcase}>
-          <Showcase
-            selected={components[this.state.selected] || null}>
+          <Showcase selected={components[this.state.selected] || null}>
             {SelectedComponent && <SelectedComponent />}
           </Showcase>
         </section>
