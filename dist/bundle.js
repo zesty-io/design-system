@@ -26435,22 +26435,21 @@ var GithubEmbed = function (_Component) {
   _createClass(GithubEmbed, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       // when we have public gists of each component
       // we will fetch them here
 
-      // fetch('https://gist.githubusercontent.com/grantglidewell/20012eb14f0120ab2dad886e4923c191/raw/04d3b408cc3156f4c99a358acf61daf94b585d08/parseURL.js')
-      //   .then(res => res.text()).then(code => {
-      //     this.setState({code})
-      //   })
+      fetch('https://gist.githubusercontent.com/grantglidewell/20012eb14f0120ab2dad886e4923c191/raw/419fbf77ac2cf3385834540592ba96c7d2e67045/parseURL.js').then(function (res) {
+        return res.text();
+      }).then(function (code) {
+        _this2.setState({ code: code });
+      });
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'code',
-        null,
-        this.state.code
-      );
+      return _react2.default.createElement('code', { dangerouslySetInnerHTML: { __html: this.state.code } });
     }
   }]);
 
