@@ -5,10 +5,10 @@ class Menu extends Component {
   render() {
     return (
       <ul className={styles.list}>
-        {this.props.components.map((comp, i) => {
+        {Object.keys(this.props.components).map((comp, i) => {
           return (
-            <a href={comp.url} key={i}>
-              <li>{comp.name}</li>
+            <a onClick={() => this.props.onSelect(comp)} key={i}>
+              <li>{comp}</li>
             </a>
           )
         })}
