@@ -11,6 +11,7 @@
   align-content: center;
   margin: .5rem;
   color: #4c5568;
+  cursor: pointer;
   padding: .5rem .3rem;
 }
 .list--1S2wt li:hover,
@@ -34,8 +35,22 @@
 .showcase--2Rm8X .description--FnGew {
   margin: 2rem;
 }
+.showcase--2Rm8X .code--2bhD0 {
+  margin: 2rem;
+}
 .options--3xPnU {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.options--3xPnU .clear--2Ojx7 {
+  flex: 2;
+}
+.options--3xPnU h3 {
+  max-width: 2rem;
+  cursor: pointer;
+}
+.options--3xPnU h1 {
+  flex: 1;
 }
 .main--1RkF3 {
   display: flex;

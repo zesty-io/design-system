@@ -22,8 +22,12 @@ import Toggle from '../../core/Toggle'
 import Infotip from '../../core/Infotip'
 
 const components = {
-  Button: { component: Button },
-  ButtonGroup: { component: ButtonGroup },
+  Button: {
+    component: Button,
+    description:
+      'A flexible button component with styles including warn, cancel, and save'
+  },
+  ButtonGroup: { component: ButtonGroup , description: 'A group of Buttons'},
   Card: { component: Card },
   Divider: { component: Divider },
   Url: { component: Url },
@@ -41,35 +45,33 @@ class App extends Component {
     selected: ''
   }
   render() {
-    const SelectedComponent = this.state.selected && components[this.state.selected].component
+    console.log(Search)
+    const SelectedComponent =
+      this.state.selected && components[this.state.selected].component
     return (
       <main className={styles.main}>
         <section className={styles.options}>
-          <Options selected={this.state.selected} />
+          <Options
+            selected={this.state.selected}
+            clearSelected={this.clearSelected}
+          />
         </section>
         <section className={styles.menu}>
           <Menu components={components} onSelect={this.onSelect} />
         </section>
-        <section className={styles.showcase} >
-          <Showcase selected={this.state.selected}>
-            {SelectedComponent ? (
-              <SelectedComponent />
-            ) : (null
-              // This is currently broken because many components 
-              // cannot mount without router and/or props
-              // Object.keys(components)(comp => {
-              //   let DynComponent = components[comp].component
-              //   return <DynComponent />
-              // })
-            )}
+        <section className={styles.showcase}>
+          <Showcase selected={components[this.state.selected] || null}>
+            {SelectedComponent ? <SelectedComponent /> : 'Select A Component'}
           </Showcase>
         </section>
       </main>
     )
   }
   onSelect = selected => {
-    console.log(selected)
     this.setState({ selected })
+  }
+  clearSelected = () => {
+    this.setState({ selected: '' })
   }
 }
 
