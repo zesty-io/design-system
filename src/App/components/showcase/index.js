@@ -1,5 +1,5 @@
 import React from 'react'
-
+import GithubEmbed from '../githubembed'
 import styles from './showcase.less'
 
 const Showcase = props => {
@@ -10,7 +10,7 @@ const Showcase = props => {
       </section>
       <section className={styles.usage}>{props.children}</section>
       <section className={styles.code}>
-            embed Github code
+        <GithubEmbed url={props.url} />
       </section>
     </div>
   )
