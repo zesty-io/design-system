@@ -26558,6 +26558,7 @@ var _showcase2 = _interopRequireDefault(_showcase);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Showcase = function Showcase(props) {
+  console.log(props);
   return _react2.default.createElement(
     'div',
     { className: _showcase2.default.showcase },
@@ -26614,11 +26615,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 var _menu = __webpack_require__(/*! ./components/menu */ "./src/App/components/menu/index.js");
 
@@ -26720,12 +26725,17 @@ var components = {
   },
   Select: {
     component: _guide12.default,
-    code: JSON.stringify(_guide12.default),
     description: 'The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop.'
   },
   Input: { component: _guide14.default, description: 'A general use text input' },
-  Toggle: { component: _guide16.default, description: 'A toggle component that works as a checkbox' },
-  Infotip: { component: _guide18.default, description: 'Mouseover for more information' }
+  Toggle: {
+    component: _guide16.default,
+    description: 'A toggle component that works as a checkbox'
+  },
+  Infotip: {
+    component: _guide18.default,
+    description: 'Mouseover for more information'
+  }
 };
 
 var App = function (_Component) {
@@ -26754,6 +26764,8 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var SelectedComponent = this.state.selected && components[this.state.selected].component;
       return _react2.default.createElement(
         'main',
@@ -26775,9 +26787,18 @@ var App = function (_Component) {
           'section',
           { className: _styles2.default.showcase },
           _react2.default.createElement(
-            _showcase2.default,
-            { selected: components[this.state.selected] || null },
-            SelectedComponent ? _react2.default.createElement(SelectedComponent, null) : 'Select A Component'
+            _reactRouterDom.BrowserRouter,
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, {
+              path: components[this.state.selected],
+              render: function render(routeProps) {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  _extends({}, routeProps, { selected: components[_this2.state.selected] || null }),
+                  SelectedComponent ? _react2.default.createElement(SelectedComponent, null) : 'Select A Component'
+                );
+              }
+            })
           )
         )
       );

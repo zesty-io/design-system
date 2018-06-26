@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 import Menu from './components/menu'
 import Showcase from './components/showcase'
@@ -50,13 +51,18 @@ const components = {
   },
   Select: {
     component: SelectGuide,
-    code: JSON.stringify(SelectGuide),
     description:
       'The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop.'
   },
   Input: { component: InputGuide, description: 'A general use text input' },
-  Toggle: { component: ToggleGuide, description: 'A toggle component that works as a checkbox' },
-  Infotip: { component: InfotipGuide, description: 'Mouseover for more information' }
+  Toggle: {
+    component: ToggleGuide,
+    description: 'A toggle component that works as a checkbox'
+  },
+  Infotip: {
+    component: InfotipGuide,
+    description: 'Mouseover for more information'
+  }
 }
 class App extends Component {
   state = {
@@ -77,9 +83,20 @@ class App extends Component {
           <Menu components={components} onSelect={this.onSelect} />
         </section>
         <section className={styles.showcase}>
-          <Showcase selected={components[this.state.selected] || null}>
-            {SelectedComponent ? <SelectedComponent /> : 'Select A Component'}
-          </Showcase>
+          <BrowserRouter>
+            <Route
+              path={components[this.state.selected]}
+              render={routeProps => {
+                return <Showcase {...routeProps} selected={components[this.state.selected] || null}>
+                  {SelectedComponent ? (
+                    <SelectedComponent />
+                  ) : (
+                    'Select A Component'
+                  )}
+                </Showcase>
+              }}
+            />
+          </BrowserRouter>
         </section>
       </main>
     )

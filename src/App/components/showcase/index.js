@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './showcase.less'
 
 const Showcase = props => {
+  console.log(props)
   return (
     <div className={styles.showcase}>
       <section className={styles.description}>
