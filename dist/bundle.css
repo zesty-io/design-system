@@ -27,9 +27,8 @@
 .showcase--2Rm8X {
   background-color: #eff5ff;
   display: flex;
+  min-height: 100%;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
   margin: 0;
   align-items: center;
   justify-items: center;
@@ -42,9 +41,6 @@
   display: grid;
   grid-gap: 1rem;
   min-width: 10rem;
-}
-.showcase--2Rm8X .code--2bhD0 {
-  margin: 2rem;
 }
 .options--3xPnU {
   display: flex;
@@ -62,24 +58,25 @@
   font-size: 1.8rem;
   justify-self: flex-start;
 }
-.main--1RkF3 {
+.main--1ROUF {
   display: flex;
   flex-wrap: wrap;
 }
-.main--1RkF3 .options--1K0Dr {
+.main--1ROUF .options--iBnis {
   padding-left: 1rem;
   padding-bottom: 1rem;
   width: 100vw;
   height: 5vh;
   background-color: #5b667d;
 }
-.main--1RkF3 .menu--AMmTc {
+.main--1ROUF .menu--K2SwA {
   margin: 0;
   flex: 1;
   background-color: #c3cddf;
-  height: 95vh;
+  min-height: 100%;
 }
-.main--1RkF3 .showcase--3l79V {
+.main--1ROUF .showcase--3eTf8 {
+  min-height: 100%;
   flex: 5;
 }
 .button--lGkpI {
@@ -240,62 +237,6 @@
   background: #c3cddf;
   width: 20rem;
 }
-.link--2GovJ {
-  color: #497edf;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1em;
-  font-weight: 900;
-  line-height: 1.6em;
-  margin: 0 0.5rem;
-  padding: 0;
-  text-decoration: none;
-  text-shadow: 1px 1px 0 #fff;
-  transition-duration: 0.3s;
-  transition-property: color, background-color;
-}
-.link--2GovJ:hover,
-.link--2GovJ:focus {
-  color: #1d4da5;
-}
-.link--2GovJ:active {
-  color: #1d4da5;
-  outline: none;
-}
-.link--2GovJ .icon--2jMVu {
-  color: #697a91;
-  width: 15px;
-}
-.AppLink--2ftTB {
-  color: #497edf;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1em;
-  font-weight: 900;
-  line-height: 1.6em;
-  padding: 0;
-  text-decoration: none;
-  text-shadow: 1px 1px 0 #fff;
-  transition-duration: 0.3s;
-  transition-property: color, background-color;
-}
-.AppLink--2ftTB:hover,
-.AppLink--2ftTB:focus {
-  color: #1d4da5;
-}
-.AppLink--2ftTB:active {
-  color: #1d4da5;
-  outline: none;
-}
-.AppLink--2ftTB .icon--3X2m7 {
-  color: #697a91;
-  width: 15px;
-}
-.AppLink--2ftTB.cancel--1tK_I {
-  color: #5b667d;
-}
 .loader--1JmUS {
   display: flex;
   height: 2rem;
@@ -331,14 +272,6 @@
   40% {
     opacity: 0.3;
   }
-}
-.Loading--3SKVs {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
 }
 .search--KJT-u {
   display: flex;
@@ -595,6 +528,70 @@ input:checked + .slider--1wRk5:before {
   border-radius: 4px;
   left: -7px;
   z-index: 10;
+}
+.link--2GovJ {
+  color: #497edf;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1em;
+  font-weight: 900;
+  line-height: 1.6em;
+  margin: 0 0.5rem;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #fff;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+}
+.link--2GovJ:hover,
+.link--2GovJ:focus {
+  color: #1d4da5;
+}
+.link--2GovJ:active {
+  color: #1d4da5;
+  outline: none;
+}
+.link--2GovJ .icon--2jMVu {
+  color: #697a91;
+  width: 15px;
+}
+.AppLink--2ftTB {
+  color: #497edf;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1em;
+  font-weight: 900;
+  line-height: 1.6em;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #fff;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+}
+.AppLink--2ftTB:hover,
+.AppLink--2ftTB:focus {
+  color: #1d4da5;
+}
+.AppLink--2ftTB:active {
+  color: #1d4da5;
+  outline: none;
+}
+.AppLink--2ftTB .icon--3X2m7 {
+  color: #697a91;
+  width: 15px;
+}
+.AppLink--2ftTB.cancel--1tK_I {
+  color: #5b667d;
+}
+.Loading--3SKVs {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 /*# sourceMappingURL=bundle.css.map*/
