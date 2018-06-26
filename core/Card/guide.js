@@ -27,7 +27,7 @@ export default class CardGuide extends Component {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </CardContent>
-          <CardFooter>
+          <CardFooter className={styles.Footer}>
             <Button type="save" text="save" />
             <Button type="cancel" text="cancel" />
           </CardFooter>
@@ -46,27 +46,41 @@ export default class CardGuide extends Component {
         <section className={styles.group}>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
-            <CardContent>this is the card content</CardContent>
+            <CardContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </CardContent>
             <CardFooter>this is the card footer</CardFooter>
           </Card>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
-            <CardContent>this is the card content</CardContent>
+            <CardContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </CardContent>
             <CardFooter>this is the card footer</CardFooter>
           </Card>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
-            <CardContent>this is the card content</CardContent>
-            <CardFooter>this is the card footer</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>This is the card Header</CardHeader>
-            <CardContent>this is the card content</CardContent>
-            <CardFooter>this is the card footer</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>This is the card Header</CardHeader>
-            <CardContent>this is the card content</CardContent>
+            <CardContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </CardContent>
             <CardFooter>this is the card footer</CardFooter>
           </Card>
         </section>

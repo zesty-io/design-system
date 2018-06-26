@@ -640,7 +640,7 @@ var CardGuide = function (_Component) {
           ),
           _react2.default.createElement(
             _Card.CardFooter,
-            null,
+            { className: _guide2.default.Footer },
             _react2.default.createElement(_Button2.default, { type: 'save', text: 'save' }),
             _react2.default.createElement(_Button2.default, { type: 'cancel', text: 'cancel' })
           )
@@ -687,7 +687,7 @@ var CardGuide = function (_Component) {
             _react2.default.createElement(
               _Card.CardContent,
               null,
-              'this is the card content'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             ),
             _react2.default.createElement(
               _Card.CardFooter,
@@ -706,7 +706,7 @@ var CardGuide = function (_Component) {
             _react2.default.createElement(
               _Card.CardContent,
               null,
-              'this is the card content'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             ),
             _react2.default.createElement(
               _Card.CardFooter,
@@ -725,45 +725,7 @@ var CardGuide = function (_Component) {
             _react2.default.createElement(
               _Card.CardContent,
               null,
-              'this is the card content'
-            ),
-            _react2.default.createElement(
-              _Card.CardFooter,
-              null,
-              'this is the card footer'
-            )
-          ),
-          _react2.default.createElement(
-            _Card.Card,
-            null,
-            _react2.default.createElement(
-              _Card.CardHeader,
-              null,
-              'This is the card Header'
-            ),
-            _react2.default.createElement(
-              _Card.CardContent,
-              null,
-              'this is the card content'
-            ),
-            _react2.default.createElement(
-              _Card.CardFooter,
-              null,
-              'this is the card footer'
-            )
-          ),
-          _react2.default.createElement(
-            _Card.Card,
-            null,
-            _react2.default.createElement(
-              _Card.CardHeader,
-              null,
-              'This is the card Header'
-            ),
-            _react2.default.createElement(
-              _Card.CardContent,
-              null,
-              'this is the card content'
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             ),
             _react2.default.createElement(
               _Card.CardFooter,
@@ -791,7 +753,7 @@ exports.default = CardGuide;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"restricted":"restricted--1xMBC","group":"group--meoAF"};
+module.exports = {"restricted":"restricted--1xMBC","group":"group--meoAF","Footer":"Footer--2JxuL"};
 
 /***/ }),
 
@@ -841,9 +803,9 @@ module.exports = {"Divider":"Divider--1JyHY"};
 
 /***/ }),
 
-/***/ "./core/Divider/index.js":
+/***/ "./core/Divider/guide.js":
 /*!*******************************!*\
-  !*** ./core/Divider/index.js ***!
+  !*** ./core/Divider/guide.js ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -855,13 +817,67 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _Divider = __webpack_require__(/*! ./Divider */ "./core/Divider/Divider.js");
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
+var _guide = __webpack_require__(/*! ./guide.less */ "./core/Divider/guide.less");
+
+var _guide2 = _interopRequireDefault(_guide);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _Divider2.default;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DividerGuide = function (_Component) {
+  _inherits(DividerGuide, _Component);
+
+  function DividerGuide() {
+    _classCallCheck(this, DividerGuide);
+
+    return _possibleConstructorReturn(this, (DividerGuide.__proto__ || Object.getPrototypeOf(DividerGuide)).apply(this, arguments));
+  }
+
+  _createClass(DividerGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: _guide2.default.divider },
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(_Divider2.default, null)
+      );
+    }
+  }]);
+
+  return DividerGuide;
+}(_react.Component);
+
+exports.default = DividerGuide;
+
+/***/ }),
+
+/***/ "./core/Divider/guide.less":
+/*!*********************************!*\
+  !*** ./core/Divider/guide.less ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"divider":"divider--3CG2i"};
 
 /***/ }),
 
@@ -925,6 +941,65 @@ module.exports = {"tip":"tip--22Mxx","tipIcon":"tipIcon--3xPQr","tipText":"tipTe
 
 /***/ }),
 
+/***/ "./core/Infotip/guide.js":
+/*!*******************************!*\
+  !*** ./core/Infotip/guide.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Infotip = __webpack_require__(/*! ../Infotip */ "./core/Infotip/index.js");
+
+var _Infotip2 = _interopRequireDefault(_Infotip);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InfotipGuide = function (_Component) {
+  _inherits(InfotipGuide, _Component);
+
+  function InfotipGuide() {
+    _classCallCheck(this, InfotipGuide);
+
+    return _possibleConstructorReturn(this, (InfotipGuide.__proto__ || Object.getPrototypeOf(InfotipGuide)).apply(this, arguments));
+  }
+
+  _createClass(InfotipGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(_Infotip2.default, { title: 'This is the Infotip title' })
+      );
+    }
+  }]);
+
+  return InfotipGuide;
+}(_react.Component);
+
+exports.default = InfotipGuide;
+
+/***/ }),
+
 /***/ "./core/Infotip/index.js":
 /*!*******************************!*\
   !*** ./core/Infotip/index.js ***!
@@ -946,83 +1021,6 @@ var _Infotip2 = _interopRequireDefault(_Infotip);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Infotip2.default;
-
-/***/ }),
-
-/***/ "./core/Input/Input.js":
-/*!*****************************!*\
-  !*** ./core/Input/Input.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.default = Input;
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Input = __webpack_require__(/*! ./Input.less */ "./core/Input/Input.less");
-
-var _Input2 = _interopRequireDefault(_Input);
-
-var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Input(props) {
-  if (props.disabled) {
-    props['disabled'] = 'disabled';
-  }
-  return _react2.default.createElement('input', _extends({}, props, { className: (0, _classnames2.default)(_Input2.default.Input, props.className) }));
-}
-
-/***/ }),
-
-/***/ "./core/Input/Input.less":
-/*!*******************************!*\
-  !*** ./core/Input/Input.less ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"Input":"Input--1oXjg"};
-
-/***/ }),
-
-/***/ "./core/Input/index.js":
-/*!*****************************!*\
-  !*** ./core/Input/index.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Input = __webpack_require__(/*! ./Input */ "./core/Input/Input.js");
-
-var _Input2 = _interopRequireDefault(_Input);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Input2.default;
 
 /***/ }),
 
@@ -1206,6 +1204,65 @@ exports.default = Search;
 
 // removed by extract-text-webpack-plugin
 module.exports = {"search":"search--KJT-u","searchBtn":"searchBtn--21MAQ","searchIcon":"searchIcon--pgG88","searchField":"searchField--ANbYu"};
+
+/***/ }),
+
+/***/ "./core/Search/guide.js":
+/*!******************************!*\
+  !*** ./core/Search/guide.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Search = __webpack_require__(/*! ../Search */ "./core/Search/index.js");
+
+var _Search2 = _interopRequireDefault(_Search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchGuide = function (_Component) {
+  _inherits(SearchGuide, _Component);
+
+  function SearchGuide() {
+    _classCallCheck(this, SearchGuide);
+
+    return _possibleConstructorReturn(this, (SearchGuide.__proto__ || Object.getPrototypeOf(SearchGuide)).apply(this, arguments));
+  }
+
+  _createClass(SearchGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(_Search2.default, { placeholder: 'Search for something' })
+      );
+    }
+  }]);
+
+  return SearchGuide;
+}(_react.Component);
+
+exports.default = SearchGuide;
 
 /***/ }),
 
@@ -1507,6 +1564,73 @@ module.exports = {"selector":"selector--14UMj","show":"show--3Y1Bm","selection":
 
 /***/ }),
 
+/***/ "./core/Select/guide.js":
+/*!******************************!*\
+  !*** ./core/Select/guide.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Select = __webpack_require__(/*! ../Select */ "./core/Select/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SelectGuide = function (_Component) {
+  _inherits(SelectGuide, _Component);
+
+  function SelectGuide() {
+    _classCallCheck(this, SelectGuide);
+
+    return _possibleConstructorReturn(this, (SelectGuide.__proto__ || Object.getPrototypeOf(SelectGuide)).apply(this, arguments));
+  }
+
+  _createClass(SelectGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          _Select.Select,
+          {
+            selection: { value: 'Value1', text: 'Initial' },
+            onSelect: function onSelect() {
+              return console.log('onSelect');
+            } },
+          _react2.default.createElement(_Select.Option, { key: '1', value: '1', text: 'Selection 1' }),
+          _react2.default.createElement(_Select.Option, { key: '2', value: '2', text: 'Selection 2' }),
+          _react2.default.createElement(_Select.Option, { key: '3', value: '3', text: 'Selection 3' })
+        )
+      );
+    }
+  }]);
+
+  return SelectGuide;
+}(_react.Component);
+
+exports.default = SelectGuide;
+
+/***/ }),
+
 /***/ "./core/Select/index.js":
 /*!******************************!*\
   !*** ./core/Select/index.js ***!
@@ -1577,6 +1701,78 @@ exports.default = Toggle;
 
 // removed by extract-text-webpack-plugin
 module.exports = {"switch":"switch--WIAH9","slider":"slider--1wRk5"};
+
+/***/ }),
+
+/***/ "./core/Toggle/guide.js":
+/*!******************************!*\
+  !*** ./core/Toggle/guide.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Toggle = __webpack_require__(/*! ../Toggle */ "./core/Toggle/index.js");
+
+var _Toggle2 = _interopRequireDefault(_Toggle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ToggleGuide = function (_Component) {
+  _inherits(ToggleGuide, _Component);
+
+  function ToggleGuide() {
+    _classCallCheck(this, ToggleGuide);
+
+    return _possibleConstructorReturn(this, (ToggleGuide.__proto__ || Object.getPrototypeOf(ToggleGuide)).apply(this, arguments));
+  }
+
+  _createClass(ToggleGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          'p',
+          null,
+          'normal'
+        ),
+        _react2.default.createElement(_Toggle2.default, { onChange: function onChange() {
+            return console.log('changed');
+          } }),
+        _react2.default.createElement(
+          'p',
+          null,
+          'default checked'
+        ),
+        _react2.default.createElement(_Toggle2.default, { defaultChecked: true })
+      );
+    }
+  }]);
+
+  return ToggleGuide;
+}(_react.Component);
+
+exports.default = ToggleGuide;
 
 /***/ }),
 
@@ -1765,6 +1961,122 @@ var _WithLoader2 = _interopRequireDefault(_WithLoader);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _WithLoader2.default;
+
+/***/ }),
+
+/***/ "./core/input/Input.js":
+/*!*****************************!*\
+  !*** ./core/input/Input.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = Input;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Input = __webpack_require__(/*! ./Input.less */ "./core/input/Input.less");
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Input(props) {
+  if (props.disabled) {
+    props['disabled'] = 'disabled';
+  }
+  return _react2.default.createElement('input', _extends({}, props, { className: (0, _classnames2.default)(_Input2.default.Input, props.className) }));
+}
+
+/***/ }),
+
+/***/ "./core/input/Input.less":
+/*!*******************************!*\
+  !*** ./core/input/Input.less ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"Input":"Input--2-m8l"};
+
+/***/ }),
+
+/***/ "./core/input/guide.js":
+/*!*****************************!*\
+  !*** ./core/input/guide.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Input = __webpack_require__(/*! ./Input */ "./core/input/Input.js");
+
+var _Input2 = _interopRequireDefault(_Input);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InputGuide = function (_Component) {
+  _inherits(InputGuide, _Component);
+
+  function InputGuide() {
+    _classCallCheck(this, InputGuide);
+
+    return _possibleConstructorReturn(this, (InputGuide.__proto__ || Object.getPrototypeOf(InputGuide)).apply(this, arguments));
+  }
+
+  _createClass(InputGuide, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(_Input2.default, { name: 'name', placeholder: 'Name' }),
+        _react2.default.createElement(_Input2.default, { name: 'name', autoComplete: 'off', placeholder: 'Name (autocomplete disabled)' }),
+        _react2.default.createElement(_Input2.default, { required: true, placeholder: 'required' }),
+        _react2.default.createElement(_Input2.default, { placeholder: 'placeholder' }),
+        _react2.default.createElement(_Input2.default, null)
+      );
+    }
+  }]);
+
+  return InputGuide;
+}(_react.Component);
+
+exports.default = InputGuide;
 
 /***/ }),
 
@@ -26189,7 +26501,9 @@ var Options = function Options(props) {
       _react2.default.createElement(
         'h3',
         { onClick: props.clearSelected },
-        ' X '
+        ' ',
+        _react2.default.createElement('i', { className: 'fa fa-times' }),
+        ' '
       )
     ),
     _react2.default.createElement(
@@ -26260,7 +26574,8 @@ var Showcase = function Showcase(props) {
       props.children && _react2.default.createElement(
         'code',
         null,
-        'write a utility to copy the raw components as stringify is getting circular refs'
+        'write a utility to copy the raw components as stringify is getting circular refs',
+        props.selected && props.selected.code
       )
     )
   );
@@ -26330,9 +26645,9 @@ var _guide5 = __webpack_require__(/*! ../../core/Card/guide */ "./core/Card/guid
 
 var _guide6 = _interopRequireDefault(_guide5);
 
-var _Divider = __webpack_require__(/*! ../../core/Divider */ "./core/Divider/index.js");
+var _guide7 = __webpack_require__(/*! ../../core/Divider/guide */ "./core/Divider/guide.js");
 
-var _Divider2 = _interopRequireDefault(_Divider);
+var _guide8 = _interopRequireDefault(_guide7);
 
 var _Url = __webpack_require__(/*! ../../core/Url */ "./core/Url/index.js");
 
@@ -26350,23 +26665,25 @@ var _WithLoader = __webpack_require__(/*! ../../core/WithLoader */ "./core/WithL
 
 var _WithLoader2 = _interopRequireDefault(_WithLoader);
 
-var _Search = __webpack_require__(/*! ../../core/Search */ "./core/Search/index.js");
+var _guide9 = __webpack_require__(/*! ../../core/Search/guide */ "./core/Search/guide.js");
 
-var _Search2 = _interopRequireDefault(_Search);
+var _guide10 = _interopRequireDefault(_guide9);
 
-var _Select = __webpack_require__(/*! ../../core/Select */ "./core/Select/index.js");
+var _guide11 = __webpack_require__(/*! ../../core/Select/guide */ "./core/Select/guide.js");
 
-var _Input = __webpack_require__(/*! ../../core/Input */ "./core/Input/index.js");
+var _guide12 = _interopRequireDefault(_guide11);
 
-var _Input2 = _interopRequireDefault(_Input);
+var _guide13 = __webpack_require__(/*! ../../core/input/guide */ "./core/input/guide.js");
 
-var _Toggle = __webpack_require__(/*! ../../core/Toggle */ "./core/Toggle/index.js");
+var _guide14 = _interopRequireDefault(_guide13);
 
-var _Toggle2 = _interopRequireDefault(_Toggle);
+var _guide15 = __webpack_require__(/*! ../../core/Toggle/guide */ "./core/Toggle/guide.js");
 
-var _Infotip = __webpack_require__(/*! ../../core/Infotip */ "./core/Infotip/index.js");
+var _guide16 = _interopRequireDefault(_guide15);
 
-var _Infotip2 = _interopRequireDefault(_Infotip);
+var _guide17 = __webpack_require__(/*! ../../core/Infotip/guide */ "./core/Infotip/guide.js");
+
+var _guide18 = _interopRequireDefault(_guide17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26389,16 +26706,23 @@ var components = {
     component: _guide6.default,
     description: 'Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn.'
   },
-  Divider: { component: _Divider2.default },
-  Url: { component: _Url2.default },
-  // AppLink: { component: AppLink },
-  Loader: { component: _Loader2.default },
-  // WithLoader: { component: WithLoader },
-  Search: { component: _Search2.default },
-  Select: { component: _Select.Select },
-  Input: { component: _Input2.default },
-  Toggle: { component: _Toggle2.default },
-  Infotip: { component: _Infotip2.default }
+  Divider: {
+    component: _guide8.default,
+    description: 'A styled horizontal divider'
+  },
+  Loader: { component: _Loader2.default, description: 'A general loading indicator' },
+  Search: {
+    component: _guide10.default,
+    description: 'A search component that takes onKeyup and onClick props'
+  },
+  Select: {
+    component: _guide12.default,
+    code: JSON.stringify(_guide12.default),
+    description: 'The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop.'
+  },
+  Input: { component: _guide14.default, description: 'A general use text input' },
+  Toggle: { component: _guide16.default, description: 'A toggle component that works as a checkbox' },
+  Infotip: { component: _guide18.default, description: 'Mouseover for more information' }
 };
 
 var App = function (_Component) {

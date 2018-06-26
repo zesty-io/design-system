@@ -14,6 +14,7 @@ const Showcase = props => {
           <code>
             write a utility to copy the raw components as stringify is getting
             circular refs
+            {props.selected && props.selected.code}
           </code>
         )}
       </section>

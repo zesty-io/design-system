@@ -1,17 +1,22 @@
+@import url('../../../../core/colors.less');
+
 .showcase {
+  background-color: @zesty-white;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  margin: 1rem;
+  margin: 0;
   align-items: center;
   justify-items: center;
   .description {
     margin: 2rem;
   }
   .usage {
+    margin: 2rem;
     display: grid;
     grid-gap: 1rem;
+    min-width: 10rem;
   }
   .code {
     margin: 2rem;
