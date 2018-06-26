@@ -855,8 +855,11 @@ var DividerGuide = function (_Component) {
         'div',
         { className: _guide2.default.divider },
         _react2.default.createElement(_Divider2.default, null),
+        'vulputate eu scelerisque felis imperdiet',
         _react2.default.createElement(_Divider2.default, null),
+        'pretium nibh ipsum consequat nisl',
         _react2.default.createElement(_Divider2.default, null),
+        'egestas sed sed risus pretium',
         _react2.default.createElement(_Divider2.default, null)
       );
     }
