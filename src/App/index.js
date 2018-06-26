@@ -27,9 +27,9 @@ const components = {
   Card: { component: Card },
   Divider: { component: Divider },
   Url: { component: Url },
-  AppLink: { component: AppLink },
+  // AppLink: { component: AppLink },
   Loader: { component: Loader },
-  WithLoader: { component: WithLoader },
+  // WithLoader: { component: WithLoader },
   Search: { component: Search },
   Select: { component: Select },
   Input: { component: Input },
@@ -50,13 +50,13 @@ class App extends Component {
         <section className={styles.menu}>
           <Menu components={components} onSelect={this.onSelect} />
         </section>
-        <section className={styles.showcase}>
-          <Showcase>
+        <section className={styles.showcase} >
+          <Showcase selected={this.state.selected}>
             {SelectedComponent ? (
               <SelectedComponent />
             ) : (null
               // This is currently broken because many components 
-              // cannot mount in their current form
+              // cannot mount without router and/or props
               // Object.keys(components)(comp => {
               //   let DynComponent = components[comp].component
               //   return <DynComponent />

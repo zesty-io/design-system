@@ -366,6 +366,10 @@ exports.CardHeader = CardHeader;
 exports.CardContent = CardContent;
 exports.CardFooter = CardFooter;
 
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -377,7 +381,7 @@ var _Card2 = _interopRequireDefault(_Card);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Card(props) {
-  return React.createElement(
+  return _react2.default.createElement(
     'article',
     _extends({}, props, { className: (0, _classnames2.default)(_Card2.default.Card, props.className) }),
     props.children
@@ -385,7 +389,7 @@ function Card(props) {
 }
 
 function CardHeader(props) {
-  return React.createElement(
+  return _react2.default.createElement(
     'header',
     { className: (0, _classnames2.default)(_Card2.default.CardHeader, props.className) },
     props.children
@@ -393,7 +397,7 @@ function CardHeader(props) {
 }
 
 function CardContent(props) {
-  return React.createElement(
+  return _react2.default.createElement(
     'main',
     _extends({}, props, { className: (0, _classnames2.default)(_Card2.default.CardContent, props.className) }),
     props.children
@@ -401,7 +405,7 @@ function CardContent(props) {
 }
 
 function CardFooter(props) {
-  return React.createElement(
+  return _react2.default.createElement(
     'footer',
     { className: (0, _classnames2.default)(_Card2.default.CardFooter, props.className) },
     props.children
@@ -460,6 +464,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -471,7 +479,7 @@ var _Divider2 = _interopRequireDefault(_Divider);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
-  return React.createElement('hr', { className: (0, _classnames2.default)(_Divider2.default.Divider, props.className) });
+  return _react2.default.createElement('hr', { className: (0, _classnames2.default)(_Divider2.default.Divider, props.className) });
 };
 
 /***/ }),
@@ -767,6 +775,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Button = __webpack_require__(/*! ../Button */ "./core/Button/index.js");
+
+var _Button2 = _interopRequireDefault(_Button);
+
 var _Search = __webpack_require__(/*! ./Search.less */ "./core/Search/Search.less");
 
 var _Search2 = _interopRequireDefault(_Search);
@@ -815,7 +827,7 @@ var Search = function (_React$Component) {
         'div',
         { className: (0, _classnames2.default)(_Search2.default.search, this.props.className) },
         _react2.default.createElement(
-          Button,
+          _Button2.default,
           { className: _Search2.default.searchBtn, onClick: this.handleFilter },
           _react2.default.createElement('i', {
             className: (0, _classnames2.default)(_Search2.default.searchIcon, 'fa fa-search'),
@@ -900,6 +912,10 @@ exports.Option = Option;
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Button = __webpack_require__(/*! ../Button */ "./core/Button/index.js");
+
+var _Button2 = _interopRequireDefault(_Button);
 
 var _Select = __webpack_require__(/*! ./Select.less */ "./core/Select/Select.less");
 
@@ -25906,7 +25922,16 @@ var Showcase = function Showcase(props) {
   return _react2.default.createElement(
     'div',
     { className: _showcase2.default.showcase },
-    props.children
+    _react2.default.createElement(
+      'section',
+      { className: _showcase2.default.description },
+      props.selected
+    ),
+    _react2.default.createElement(
+      'section',
+      { className: _showcase2.default.usage },
+      props.children
+    )
   );
 };
 
@@ -25922,7 +25947,7 @@ exports.default = Showcase;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"showcase":"showcase--2Rm8X"};
+module.exports = {"showcase":"showcase--2Rm8X","description":"description--FnGew"};
 
 /***/ }),
 
@@ -26026,9 +26051,9 @@ var components = {
   Card: { component: _Card.Card },
   Divider: { component: _Divider2.default },
   Url: { component: _Url2.default },
-  AppLink: { component: _AppLink2.default },
+  // AppLink: { component: AppLink },
   Loader: { component: _Loader2.default },
-  WithLoader: { component: _WithLoader2.default },
+  // WithLoader: { component: WithLoader },
   Search: { component: _Search2.default },
   Select: { component: _Select2.default },
   Input: { component: _Input2.default },
@@ -26080,10 +26105,10 @@ var App = function (_Component) {
           { className: _styles2.default.showcase },
           _react2.default.createElement(
             _showcase2.default,
-            null,
+            { selected: this.state.selected },
             SelectedComponent ? _react2.default.createElement(SelectedComponent, null) : null
             // This is currently broken because many components 
-            // cannot mount in their current form
+            // cannot mount without router and/or props
             // Object.keys(components)(comp => {
             //   let DynComponent = components[comp].component
             //   return <DynComponent />

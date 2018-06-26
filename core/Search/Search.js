@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from '../Button'
+
 import styles from './Search.less'
 import cx from 'classnames'
 

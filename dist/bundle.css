@@ -25,10 +25,14 @@
 }
 .showcase--2Rm8X {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   align-items: center;
   justify-items: center;
+}
+.showcase--2Rm8X .description--FnGew {
+  margin: 2rem;
 }
 .options--3xPnU {
   text-align: center;
