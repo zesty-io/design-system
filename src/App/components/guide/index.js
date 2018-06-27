@@ -54,7 +54,6 @@ class Guide extends Component {
     }
   }
   static getDerivedStateFromProps(props, state) {
-    console.log('props', props, 'state', state.selected)
     if (props.match.params.component !== state.selected) {
       return { selected: props.match.params.component }
     }
@@ -88,7 +87,7 @@ class Guide extends Component {
               path="/ButtonGroup"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <ButtonGroupGuide />
                   </Showcase>
                 )
@@ -99,7 +98,7 @@ class Guide extends Component {
               path="/Button"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <ButtonGuide />
                   </Showcase>
                 )
@@ -111,7 +110,7 @@ class Guide extends Component {
               path="/Card"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <CardGuide />
                   </Showcase>
                 )
@@ -122,7 +121,7 @@ class Guide extends Component {
               path="/Divider"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <DividerGuide />
                   </Showcase>
                 )
@@ -133,7 +132,7 @@ class Guide extends Component {
               path="/Loader"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <Loader />
                   </Showcase>
                 )
@@ -144,7 +143,7 @@ class Guide extends Component {
               path="/Search"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <SearchGuide />
                   </Showcase>
                 )
@@ -155,7 +154,7 @@ class Guide extends Component {
               path="/Select"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <SelectGuide />
                   </Showcase>
                 )
@@ -166,7 +165,7 @@ class Guide extends Component {
               path="/Input"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <InputGuide />
                   </Showcase>
                 )
@@ -177,7 +176,7 @@ class Guide extends Component {
               path="/Toggle"
               render={() => {
                 return (
-                  <Showcase selected={components[this.state.selected] || null}>
+                  <Showcase selected={this.state.Button}>
                     <ToggleGuide />
                   </Showcase>
                 )
