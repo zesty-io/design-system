@@ -1,24 +1,23 @@
-'use strict'
+"use strict";
 
-const webpack = require('webpack')
-const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require("webpack");
+const path = require("path");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractLess = new ExtractTextPlugin({
-  filename: 'bundle.css'
-})
+  filename: "bundle.css"
+});
 
 module.exports = {
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     compress: true,
     port: 8080
   },
-  entry: './index.js',
-  devtool: 'cheap-module-source-map',
+  entry: "./src/index.js",
+  devtool: "cheap-module-source-map",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js"
   },
   plugins: [extractLess],
   module: {
@@ -28,14 +27,14 @@ module.exports = {
         use: extractLess.extract({
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: true,
-                localIdentName: '[local]--[hash:base64:5]'
+                localIdentName: "[local]--[hash:base64:5]"
               }
             },
             {
-              loader: 'less-loader'
+              loader: "less-loader"
             }
           ]
         })
@@ -44,12 +43,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['react', 'es2015', 'stage-2', 'node']
+            presets: ["react", "es2015", "stage-2", "node"]
           }
         }
       }
     ]
   }
-}
+};
