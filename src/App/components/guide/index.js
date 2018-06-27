@@ -63,7 +63,7 @@ class Guide extends Component {
       <main className={styles.main}>
         <section className={styles.options}>
           <Options
-            selected={this.props.location.pathname.substr(1)  || ''}
+            selected={this.props.location.pathname.substr(1) || ''}
             clearSelected={this.clearSelected}
           />
         </section>
@@ -84,7 +84,10 @@ class Guide extends Component {
               path="/ButtonGroup"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <ButtonGroupGuide />
                   </Showcase>
                 )
@@ -95,7 +98,10 @@ class Guide extends Component {
               path="/Button"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <ButtonGuide />
                   </Showcase>
                 )
@@ -107,7 +113,10 @@ class Guide extends Component {
               path="/Card"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <CardGuide />
                   </Showcase>
                 )
@@ -118,7 +127,10 @@ class Guide extends Component {
               path="/Divider"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <DividerGuide />
                   </Showcase>
                 )
@@ -129,7 +141,10 @@ class Guide extends Component {
               path="/Loader"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <Loader />
                   </Showcase>
                 )
@@ -140,7 +155,10 @@ class Guide extends Component {
               path="/Search"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <SearchGuide />
                   </Showcase>
                 )
@@ -151,7 +169,10 @@ class Guide extends Component {
               path="/Select"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <SelectGuide />
                   </Showcase>
                 )
@@ -162,7 +183,10 @@ class Guide extends Component {
               path="/Input"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <InputGuide />
                   </Showcase>
                 )
@@ -173,7 +197,10 @@ class Guide extends Component {
               path="/Toggle"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <ToggleGuide />
                   </Showcase>
                 )
@@ -183,7 +210,10 @@ class Guide extends Component {
               path="/Infotip"
               render={() => {
                 return (
-                  <Showcase selected={this.state[this.props.location.pathname.substr(1)]}>
+                  <Showcase
+                    selected={
+                      this.state[this.props.location.pathname.substr(1)]
+                    }>
                     <InfotipGuide />
                   </Showcase>
                 )
@@ -192,7 +222,11 @@ class Guide extends Component {
             <Route
               path="/"
               render={() => {
-                return <h1>Select a component</h1>
+                return (
+                  <Showcase selected="">
+                    <h1>Select a component</h1>
+                  </Showcase>
+                )
               }}
             />
             {/* // <Route

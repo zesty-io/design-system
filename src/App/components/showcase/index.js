@@ -10,7 +10,7 @@ const Showcase = props => {
       </section>
       <section className={styles.usage}>{props.children}</section>
       <section className={styles.code}>
-        <GithubEmbed url={props.url} />
+        {props.selected && <GithubEmbed url={props.url} />}
       </section>
     </div>
   )
