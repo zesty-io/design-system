@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 import styles from './menu.less'
 class Menu extends Component {
@@ -7,11 +8,9 @@ class Menu extends Component {
       <ul className={styles.list}>
         {Object.keys(this.props.components).map((comp, i) => {
           return (
-            <a onClick={() => {
-              this.props.history.push(`/${comp}`)
-              }} key={i}>
+            <Link to={`/${comp}`} key={i}> 
               <li>{comp}</li>
-            </a>
+            </Link>
           )
         })}
       </ul>

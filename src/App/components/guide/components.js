@@ -15,6 +15,7 @@ import AppLink from '../../../../core/AppLink'
 // may take some fancy timeout magic to show this off
 import WithLoader from '../../../../core/WithLoader'
 
+// need GIST urls
 const components = {
   Button: {
     component: ButtonGuide,

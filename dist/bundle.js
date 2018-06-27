@@ -24521,6 +24521,68 @@ var generatePath = function generatePath() {
 
 /***/ }),
 
+/***/ "./node_modules/react-router/es/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/react-router/es/index.js ***!
+  \***********************************************/
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemoryRouter */ "./node_modules/react-router/es/MemoryRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _Prompt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prompt */ "./node_modules/react-router/es/Prompt.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return _Prompt__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _Redirect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Redirect */ "./node_modules/react-router/es/Redirect.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return _Redirect__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Route */ "./node_modules/react-router/es/Route.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return _Route__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Router */ "./node_modules/react-router/es/Router.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return _Router__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _StaticRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StaticRouter */ "./node_modules/react-router/es/StaticRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return _StaticRouter__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _Switch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Switch */ "./node_modules/react-router/es/Switch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return _Switch__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _generatePath__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./generatePath */ "./node_modules/react-router/es/generatePath.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "generatePath", function() { return _generatePath__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _matchPath__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./matchPath */ "./node_modules/react-router/es/matchPath.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return _matchPath__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _withRouter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./withRouter */ "./node_modules/react-router/es/withRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return _withRouter__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/react-router/es/matchPath.js":
 /*!***************************************************!*\
   !*** ./node_modules/react-router/es/matchPath.js ***!
@@ -26529,6 +26591,7 @@ var _WithLoader2 = _interopRequireDefault(_WithLoader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// need GIST urls
 var components = {
   Button: {
     component: _guide2.default,
@@ -26595,6 +26658,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+
 var _menu = __webpack_require__(/*! ../menu */ "./src/App/components/menu/index.js");
 
 var _menu2 = _interopRequireDefault(_menu);
@@ -26614,6 +26679,46 @@ var _styles2 = _interopRequireDefault(_styles);
 var _components = __webpack_require__(/*! ./components */ "./src/App/components/guide/components.js");
 
 var _components2 = _interopRequireDefault(_components);
+
+var _guide = __webpack_require__(/*! ../../../../core/Button/guide */ "./core/Button/guide.js");
+
+var _guide2 = _interopRequireDefault(_guide);
+
+var _guide3 = __webpack_require__(/*! ../../../../core/ButtonGroup/guide */ "./core/ButtonGroup/guide.js");
+
+var _guide4 = _interopRequireDefault(_guide3);
+
+var _guide5 = __webpack_require__(/*! ../../../../core/Card/guide */ "./core/Card/guide.js");
+
+var _guide6 = _interopRequireDefault(_guide5);
+
+var _guide7 = __webpack_require__(/*! ../../../../core/Divider/guide */ "./core/Divider/guide.js");
+
+var _guide8 = _interopRequireDefault(_guide7);
+
+var _Loader = __webpack_require__(/*! ../../../../core/Loader */ "./core/Loader/index.js");
+
+var _Loader2 = _interopRequireDefault(_Loader);
+
+var _guide9 = __webpack_require__(/*! ../../../../core/Search/guide */ "./core/Search/guide.js");
+
+var _guide10 = _interopRequireDefault(_guide9);
+
+var _guide11 = __webpack_require__(/*! ../../../../core/Select/guide */ "./core/Select/guide.js");
+
+var _guide12 = _interopRequireDefault(_guide11);
+
+var _guide13 = __webpack_require__(/*! ../../../../core/input/guide */ "./core/input/guide.js");
+
+var _guide14 = _interopRequireDefault(_guide13);
+
+var _guide15 = __webpack_require__(/*! ../../../../core/Toggle/guide */ "./core/Toggle/guide.js");
+
+var _guide16 = _interopRequireDefault(_guide15);
+
+var _guide17 = __webpack_require__(/*! ../../../../core/Infotip/guide */ "./core/Infotip/guide.js");
+
+var _guide18 = _interopRequireDefault(_guide17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26638,7 +26743,32 @@ var Guide = function (_Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Guide.__proto__ || Object.getPrototypeOf(Guide)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      selected: ''
+      Button: {
+        description: 'A flexible button component with styles including warn, cancel, and save'
+      },
+      ButtonGroup: {
+        description: 'A wrapper to group buttons'
+      },
+      Card: {
+        description: 'Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn.'
+      },
+      Divider: {
+        description: 'A styled horizontal divider'
+      },
+      Loader: { description: 'A loading indicator for inline use' },
+      Search: {
+        description: 'A search component that takes onKeyup and onClick props'
+      },
+      Select: {
+        description: 'The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop.'
+      },
+      Input: { description: 'Input component with zesty styling' },
+      Toggle: {
+        description: 'A toggle component that works as a checkbox'
+      },
+      Infotip: {
+        description: 'Mouseover for more information'
+      }
     }, _this.onSelect = function (selected) {
       _this.setState({ selected: selected });
     }, _this.clearSelected = function () {
@@ -26649,6 +26779,8 @@ var Guide = function (_Component) {
   _createClass(Guide, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var SelectedComponent = this.state.selected && _components2.default[this.state.selected].component;
       return _react2.default.createElement(
         'main',
@@ -26674,9 +26806,127 @@ var Guide = function (_Component) {
           'section',
           { className: _styles2.default.showcase },
           _react2.default.createElement(
-            _showcase2.default,
-            { selected: _components2.default[this.state.selected] || null },
-            SelectedComponent && _react2.default.createElement(SelectedComponent, null)
+            _reactRouterDom.Switch,
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/ButtonGroup',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide4.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Button',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide2.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Card',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide6.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Divider',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide8.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Loader',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_Loader2.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Search',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide10.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Select',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide12.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Input',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide14.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              exact: true,
+              path: '/Toggle',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide16.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              path: '/Infotip',
+              render: function render() {
+                return _react2.default.createElement(
+                  _showcase2.default,
+                  { selected: _components2.default[_this2.state.selected] || null },
+                  _react2.default.createElement(_guide18.default, null)
+                );
+              }
+            }),
+            _react2.default.createElement(_reactRouterDom.Route, {
+              path: '/',
+              render: function render() {
+                return _react2.default.createElement(
+                  'h1',
+                  null,
+                  'Select a component'
+                );
+              }
+            })
           )
         )
       );
@@ -26684,7 +26934,7 @@ var Guide = function (_Component) {
   }], [{
     key: 'getDerivedStateFromProps',
     value: function getDerivedStateFromProps(props, state) {
-      console.log('props', props.match.params.component, 'state', state.selected);
+      console.log('props', props, 'state', state.selected);
       if (props.match.params.component !== state.selected) {
         return { selected: props.match.params.component };
       }
@@ -26695,7 +26945,7 @@ var Guide = function (_Component) {
   return Guide;
 }(_react.Component);
 
-exports.default = Guide;
+exports.default = (0, _reactRouter.withRouter)(Guide);
 
 /***/ }),
 
@@ -26731,6 +26981,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 var _menu = __webpack_require__(/*! ./menu.less */ "./src/App/components/menu/menu.less");
 
 var _menu2 = _interopRequireDefault(_menu);
@@ -26755,17 +27007,13 @@ var Menu = function (_Component) {
   _createClass(Menu, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return _react2.default.createElement(
         'ul',
         { className: _menu2.default.list },
         Object.keys(this.props.components).map(function (comp, i) {
           return _react2.default.createElement(
-            'a',
-            { onClick: function onClick() {
-                _this2.props.history.push('/' + comp);
-              }, key: i },
+            _reactRouterDom.Link,
+            { to: '/' + comp, key: i },
             _react2.default.createElement(
               'li',
               null,
@@ -26894,7 +27142,7 @@ var Showcase = function Showcase(props) {
     _react2.default.createElement(
       'section',
       { className: _showcase2.default.description },
-      props.selected && props.selected.description
+      props.description
     ),
     _react2.default.createElement(
       'section',
@@ -26974,9 +27222,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/:component?', render: function render(routeProps) {
-            return _react2.default.createElement(_guide2.default, routeProps);
-          } })
+        _react2.default.createElement(_guide2.default, null)
       );
     }
   }]);
