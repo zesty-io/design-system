@@ -1,23 +1,47 @@
 {
-  "name": "design-system",
+  "name": "zesty-components",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
-    "dev": "docz dev",
-    "build": "docz build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zesty-io/design-system.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zesty-io/design-system/issues"
-  },
-  "homepage": "https://github.com/zesty-io/design-system#readme",
   "dependencies": {
-    "docz": "^0.2.4"
+    "babel-preset-node": "^5.1.1",
+    "brace": "^0.11.1",
+    "browserify-fs": "^1.0.0",
+    "classnames": "^2.2.6",
+    "react": "^16.4.1",
+    "react-ace": "^6.1.2",
+    "react-dom": "^16.4.1",
+    "react-monaco-editor": "^0.17.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ]
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }

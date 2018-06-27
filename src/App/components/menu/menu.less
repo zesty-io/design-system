@@ -1,0 +1,28 @@
+@import url('../../../../core/colors.less');
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+  }
+  li {
+    align-content: center;
+    margin: .5rem;
+    color: @zesty-tab-color;
+    cursor: pointer;
+    padding: .5rem .3rem;
+    &:hover,
+    &:focus {
+      background: @zesty-blue;
+      color: black;
+    }
+    &:active {
+      background: @zesty-black;
+      top: 1px;
+      outline: none;
+    }
+  }
+}
