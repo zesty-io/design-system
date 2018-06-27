@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import Button from '../Button'
-import ButtonGroup from './ButtonGroup'
+import React, { Component } from "react";
+
+import Button from "@zesty-io/core/Button";
+import ButtonGroup from "@zesty-io/core/ButtonGroup";
 
 export default class ButtonGroupGuide extends Component {
   render() {
@@ -23,6 +24,6 @@ export default class ButtonGroupGuide extends Component {
           <Button type="" text="Button5" />
         </ButtonGroup>
       </React.Fragment>
-    )
+    );
   }
 }

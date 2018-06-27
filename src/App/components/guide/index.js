@@ -6,23 +6,20 @@ import Menu from "../menu";
 import Showcase from "../showcase";
 import Options from "../options";
 
-import ButtonGuide from "../../../../core/Button/guide";
-import ButtonGroupGuide from "../../../../core/ButtonGroup/guide";
-import CardGuide from "../../../../core/Card/guide";
-import DividerGuide from "../../../../core/Divider/guide";
-// import Loader from '../../../../core/Loader/'
-import SearchGuide from "../../../../core/Search/guide";
-import SelectGuide from "../../../../core/Select/guide";
-import InputGuide from "../../../../core/input/guide";
-import ToggleGuide from "../../../../core/Toggle/guide";
-import InfotipGuide from "../../../../core/Infotip/guide";
+import ButtonGuide from "../../guides/ButtonGuide";
+import ButtonGroupGuide from "../../guides/ButtonGroupGuide";
+import CardGuide from "../../guides/CardGuide";
+import DividerGuide from "../../guides/DividerGuide";
+// import Loader from '../../guides/LoaderGuide'
+import SearchGuide from "../../guides/SearchGuide";
+import SelectGuide from "../../guides/SelectGuide";
+import InputGuide from "../../guides/inputGuide";
+import ToggleGuide from "../../guides/ToggleGuide";
+import InfotipGuide from "../../guides/InfotipGuide";
 
 export default class Guide extends Component {
   constructor(props) {
     super(props);
-
-    console.log(props.components);
-
     this.state = {
       selected: props.components["Button"]
     };

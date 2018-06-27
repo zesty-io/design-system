@@ -1,14 +1,22 @@
 {
-  "name": "core",
-  "version": "1.0.0",
-  "description": "This is a collection of core UI components for the Zesty.io platform. Using React as our view library.",
-  "main": "webpack.config.js",
+  "name": "@zesty-io/core",
+  "version": "0.0.1",
+  "description": "This is a collection of React core UI components for the Zesty.io platform.",
+  "author": "Zesty.io <developers@zesty.io>",
+  "license": "UNLICENSED",
+  "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=\"development\" && ../../node_modules/.bin/webpack --watch",
-    "build-development": "export NODE_ENV=\"development\" && ../../node_modules/.bin/webpack --progress",
-    "build-stage": "export NODE_ENV=\"stage\" && ../../node_modules/.bin/webpack --progress -p",
-    "build-production": "export NODE_ENV=\"production\" && ../../node_modules/.bin/webpack -p --verbose=false --colors=true --display=normal --progress"
+    "precommit": "pretty-quick --staged",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Zesty.io<developers@zesty.io>",
-  "license": "All Rights Reserved"
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "prettier": "^1.13.6",
+    "pretty-quick": "^1.6.0"
+  }
 }

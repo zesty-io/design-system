@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Infotip from '../Infotip'
+import React, { Component } from "react";
+import Infotip from "@zesty-io/core/Infotip";
 
 export default class InfotipGuide extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class InfotipGuide extends Component {
       <React.Fragment>
         <Infotip title="This is the Infotip title" />
       </React.Fragment>
-    )
+    );
   }
 }

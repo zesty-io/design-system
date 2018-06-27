@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Divider from './Divider'
+import Divider from "@zesty-io/core/Divider";
+import styles from "./DividerGuide.less";
 
-import styles from './guide.less'
 export default class DividerGuide extends Component {
   render() {
     return (
@@ -15,6 +15,6 @@ export default class DividerGuide extends Component {
         egestas sed sed risus pretium
         <Divider />
       </div>
-    )
+    );
   }
 }

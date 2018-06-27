@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { Card, CardHeader, CardContent, CardFooter } from './Card'
-import Button from '../Button'
+import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
+import Button from "@zesty-io/core/Button";
 
-import styles from './guide.less'
+import styles from "./CardGuide.less";
 
 export default class CardGuide extends Component {
   render() {
@@ -85,6 +85,6 @@ export default class CardGuide extends Component {
           </Card>
         </section>
       </React.Fragment>
-    )
+    );
   }
 }

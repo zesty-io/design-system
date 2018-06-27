@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Button from './Button'
+import Button from "@zesty-io/core/Button";
 
 export default class ButtonGuide extends Component {
   render() {
@@ -12,7 +12,6 @@ export default class ButtonGuide extends Component {
         <Button type="warn" text="Warn" />
         <Button type="alt" text="Alt" />
       </React.Fragment>
-    )
+    );
   }
 }
-
