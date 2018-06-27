@@ -54461,8 +54461,6 @@ var GithubEmbed = function (_Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = GithubEmbed.__proto__ || Object.getPrototypeOf(GithubEmbed)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       code: 'github code'
-    }, _this.onChange = function (evt) {
-      console.log(evt);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -54473,7 +54471,6 @@ var GithubEmbed = function (_Component) {
 
       // when we have public gists of each component
       // we will fetch them here
-      // the gist must have html pre-formatted
       // we need the 'raw' link from the gist
       fetch('https://gist.githubusercontent.com/grantglidewell/d1f6376d8831703482320c9356086398/raw/d3632fc67b805a9870bb965061dc71dfcda6250d/confirmComponent.js').then(function (res) {
         return res.text();
@@ -54495,7 +54492,6 @@ var GithubEmbed = function (_Component) {
         showPrintMargin: false,
         editorProps: { $blockScrolling: true }
       });
-      // return <code dangerouslySetInnerHTML={{ __html: this.state.code }} />
     }
   }]);
 
@@ -54764,7 +54760,6 @@ var Guide = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var SelectedComponent = this.state.selected && _components2.default[this.state.selected].component;
       return _react2.default.createElement(
         'main',
         { className: _styles2.default.main },
@@ -54797,7 +54792,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide4.default, null)
                 );
               }
@@ -54808,7 +54803,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide2.default, null)
                 );
               }
@@ -54819,7 +54814,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide6.default, null)
                 );
               }
@@ -54830,7 +54825,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide8.default, null)
                 );
               }
@@ -54841,7 +54836,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_Loader2.default, null)
                 );
               }
@@ -54852,7 +54847,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide10.default, null)
                 );
               }
@@ -54863,7 +54858,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide12.default, null)
                 );
               }
@@ -54874,7 +54869,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide14.default, null)
                 );
               }
@@ -54885,7 +54880,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _this2.state.Button },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide16.default, null)
                 );
               }
@@ -54895,7 +54890,7 @@ var Guide = function (_Component) {
               render: function render() {
                 return _react2.default.createElement(
                   _showcase2.default,
-                  { selected: _components2.default[_this2.state.selected] || null },
+                  { selected: _this2.state[_this2.props.location.pathname.substr(1)] },
                   _react2.default.createElement(_guide18.default, null)
                 );
               }
@@ -54913,14 +54908,6 @@ var Guide = function (_Component) {
           )
         )
       );
-    }
-  }], [{
-    key: 'getDerivedStateFromProps',
-    value: function getDerivedStateFromProps(props, state) {
-      if (props.match.params.component !== state.selected) {
-        return { selected: props.match.params.component };
-      }
-      return null;
     }
   }]);
 
@@ -55124,7 +55111,7 @@ var Showcase = function Showcase(props) {
     _react2.default.createElement(
       'section',
       { className: _showcase2.default.description },
-      props.description
+      props.selected.description
     ),
     _react2.default.createElement(
       'section',
