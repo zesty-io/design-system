@@ -18,6 +18,15 @@ import ToggleGuide from "../../../../core/Toggle/guide";
 import InfotipGuide from "../../../../core/Infotip/guide";
 
 export default class Guide extends Component {
+  constructor(props) {
+    super(props);
+
+    console.log(props.components);
+
+    this.state = {
+      selected: props.components["Button"]
+    };
+  }
   render() {
     return (
       <main className={styles.main}>
@@ -35,21 +44,17 @@ export default class Guide extends Component {
           />
         </section>
         <section className={styles.showcase}>
-          <Showcase
-            selected={
-              this.props.components[this.props.location.pathname.substr(1)]
-            }
-          >
+          <Showcase selected={this.state.selected}>
             <Switch>
-              <Route path="/Button" component={ButtonGuide} />
-              <Route path="/ButtonGroup" component={ButtonGroupGuide} />
-              <Route path="/Card" component={CardGuide} />
-              <Route path="/Divider" component={DividerGuide} />
-              <Route path="/Search" component={SearchGuide} />
-              <Route path="/Select" component={SelectGuide} />
-              <Route path="/Input" component={InputGuide} />
-              <Route path="/Toggle" component={ToggleGuide} />
-              <Route path="/Infotip" component={InfotipGuide} />
+              <Route path="/button" component={ButtonGuide} />
+              <Route path="/buttongroup" component={ButtonGroupGuide} />
+              <Route path="/card" component={CardGuide} />
+              <Route path="/divider" component={DividerGuide} />
+              <Route path="/search" component={SearchGuide} />
+              <Route path="/select" component={SelectGuide} />
+              <Route path="/input" component={InputGuide} />
+              <Route path="/toggle" component={ToggleGuide} />
+              <Route path="/infotip" component={InfotipGuide} />
             </Switch>
           </Showcase>
         </section>
@@ -57,6 +62,7 @@ export default class Guide extends Component {
     );
   }
   onSelect = selected => {
+    console.log(selected);
     this.setState({ selected });
   };
   clearSelected = () => {
