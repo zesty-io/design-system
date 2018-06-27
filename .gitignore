@@ -4,8 +4,11 @@
 *.css.json
 .env
 
-dist/
-*node_modules
-
+# IDE
 .DS_Store
 .vscode
+
+# Distributions & Deps
+*node_modules
+dist/
+core/dist

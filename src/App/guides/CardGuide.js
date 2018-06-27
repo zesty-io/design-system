@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
-import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
-import Button from "@zesty-io/core/Button";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter
+} from "@zesty-io/core/dist/Card";
+import Button from "@zesty-io/core/dist/Button";
 
 import styles from "./CardGuide.less";
 

@@ -1,13 +1,13 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
   "main": "index.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "rm -rf ./dist && babel -d dist src && npm publish --access public"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -15,6 +15,7 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "husky": "^0.14.3",
     "prettier": "^1.13.6",
     "pretty-quick": "^1.6.0"

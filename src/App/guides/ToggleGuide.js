@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Toggle from "@zesty-io/core/Toggle";
+import Toggle from "@zesty-io/core/dist/Toggle";
 
 export default class ToggleGuide extends Component {
   render() {

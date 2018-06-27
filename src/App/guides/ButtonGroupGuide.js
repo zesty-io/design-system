@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Button from "@zesty-io/core/Button";
-import ButtonGroup from "@zesty-io/core/ButtonGroup";
+import Button from "@zesty-io/core/dist/Button";
+import ButtonGroup from "@zesty-io/core/dist/ButtonGroup";
 
 export default class ButtonGroupGuide extends Component {
   render() {
