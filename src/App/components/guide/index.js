@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
+import styles from "./styles.less";
 import Menu from "../menu";
 import Showcase from "../showcase";
 import Options from "../options";
-
-import styles from "./styles.less";
 
 import ButtonGuide from "../../../../core/Button/guide";
 import ButtonGroupGuide from "../../../../core/ButtonGroup/guide";
@@ -18,45 +17,7 @@ import InputGuide from "../../../../core/input/guide";
 import ToggleGuide from "../../../../core/Toggle/guide";
 import InfotipGuide from "../../../../core/Infotip/guide";
 
-// these require router to function properly
-import Url from "../../../../core/Url";
-import AppLink from "../../../../core/AppLink";
-// may take some fancy timeout magic to show this off
-import WithLoader from "../../../../core/WithLoader";
-
 export default class Guide extends Component {
-  // TODO: add URLs to gists
-  state = {
-    Button: {
-      description:
-        "A flexible button component with styles including warn, cancel, and save"
-    },
-    ButtonGroup: {
-      description: "A wrapper to group buttons"
-    },
-    Card: {
-      description:
-        "Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn."
-    },
-    Divider: {
-      description: "A styled horizontal divider"
-    },
-    Loader: { description: "A loading indicator for inline use" },
-    Search: {
-      description: "A search component that takes onKeyup and onClick props"
-    },
-    Select: {
-      description:
-        "The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop."
-    },
-    Input: { description: "Input component with zesty styling" },
-    Toggle: {
-      description: "A toggle component that works as a checkbox"
-    },
-    Infotip: {
-      description: "Mouseover for more information"
-    }
-  };
   render() {
     return (
       <main className={styles.main}>
@@ -69,13 +30,15 @@ export default class Guide extends Component {
         <section className={styles.menu}>
           <Menu
             history={this.props.history}
-            components={this.state}
+            components={this.props.components}
             onSelect={this.onSelect}
           />
         </section>
         <section className={styles.showcase}>
           <Showcase
-            selected={this.state[this.props.location.pathname.substr(1)]}
+            selected={
+              this.props.components[this.props.location.pathname.substr(1)]
+            }
           >
             <Switch>
               <Route path="/Button" component={ButtonGuide} />
