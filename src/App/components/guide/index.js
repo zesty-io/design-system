@@ -8,8 +8,6 @@ import Options from '../options'
 
 import styles from './styles.less'
 
-import components from './components'
-
 import ButtonGuide from '../../../../core/Button/guide'
 import ButtonGroupGuide from '../../../../core/ButtonGroup/guide'
 import CardGuide from '../../../../core/Card/guide'
@@ -21,7 +19,14 @@ import InputGuide from '../../../../core/input/guide'
 import ToggleGuide from '../../../../core/Toggle/guide'
 import InfotipGuide from '../../../../core/Infotip/guide'
 
+// these require router to function properly
+import Url from '../../../../core/Url'
+import AppLink from '../../../../core/AppLink'
+// may take some fancy timeout magic to show this off
+import WithLoader from '../../../../core/WithLoader'
+
 class Guide extends Component {
+  // TODO: add URLs to gists
   state = {
     Button: {
       description:
@@ -58,14 +63,14 @@ class Guide extends Component {
       <main className={styles.main}>
         <section className={styles.options}>
           <Options
-            selected={this.state.selected}
+            selected={this.props.location.pathname.substr(1)  || ''}
             clearSelected={this.clearSelected}
           />
         </section>
         <section className={styles.menu}>
           <Menu
             history={this.props.history}
-            components={components}
+            components={this.state}
             onSelect={this.onSelect}
           />
         </section>

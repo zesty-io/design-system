@@ -13,8 +13,8 @@ export default class GithubEmbed extends Component {
     // when we have public gists of each component
     // we will fetch them here
     // we need the 'raw' link from the gist
-    fetch(
-      'https://gist.githubusercontent.com/grantglidewell/d1f6376d8831703482320c9356086398/raw/d3632fc67b805a9870bb965061dc71dfcda6250d/confirmComponent.js'
+    fetch( this.props.url ||
+      'https://gist.githubusercontent.com/grantglidewell/d1f6376d8831703482320c9356086398/raw/d713eb856495a308160589c8ce9a29876198b70f/confirmComponent.js'
     )
       .then(res => res.text())
       .then(code => {

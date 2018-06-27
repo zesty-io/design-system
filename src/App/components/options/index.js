@@ -1,12 +1,15 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import styles from './options.less'
 
 const Options = props => {
   return (
     <article className={styles.options}>
       <div className={styles.clear}>
-        <h3 onClick={props.clearSelected}> <i className="fa fa-home"></i> </h3>
+        <Link to="/">
+          {' '}
+          <i className={`fa fa-home ${styles.link}`} />{' '}
+        </Link>
       </div>
       <h1>{props.selected || 'Zesty Component Library'}</h1>
     </article>

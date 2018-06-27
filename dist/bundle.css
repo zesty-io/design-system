@@ -44,19 +44,23 @@
 }
 .options--3xPnU {
   display: flex;
+  color: white;
   flex-direction: row;
+  align-items: baseline;
 }
 .options--3xPnU .clear--2Ojx7 {
   flex: 2;
 }
-.options--3xPnU h3 {
+.options--3xPnU .clear--2Ojx7 .link--3UwrG {
+  margin-top: 1rem;
+  text-decoration: none;
+  color: white;
   max-width: 2rem;
-  cursor: pointer;
+  font-size: 2rem;
 }
 .options--3xPnU h1 {
-  flex: 1;
-  font-size: 1.8rem;
-  justify-self: flex-start;
+  flex: 2;
+  font-size: 1.6rem;
 }
 .main--1ROUF {
   display: flex;

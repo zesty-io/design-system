@@ -54472,7 +54472,7 @@ var GithubEmbed = function (_Component) {
       // when we have public gists of each component
       // we will fetch them here
       // we need the 'raw' link from the gist
-      fetch('https://gist.githubusercontent.com/grantglidewell/d1f6376d8831703482320c9356086398/raw/d3632fc67b805a9870bb965061dc71dfcda6250d/confirmComponent.js').then(function (res) {
+      fetch(this.props.url || 'https://gist.githubusercontent.com/grantglidewell/d1f6376d8831703482320c9356086398/raw/d713eb856495a308160589c8ce9a29876198b70f/confirmComponent.js').then(function (res) {
         return res.text();
       }).then(function (code) {
         _this2.setState({ code: code });
@@ -54502,10 +54502,10 @@ exports.default = GithubEmbed;
 
 /***/ }),
 
-/***/ "./src/App/components/guide/components.js":
-/*!************************************************!*\
-  !*** ./src/App/components/guide/components.js ***!
-  \************************************************/
+/***/ "./src/App/components/guide/index.js":
+/*!*******************************************!*\
+  !*** ./src/App/components/guide/index.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -54515,6 +54515,32 @@ exports.default = GithubEmbed;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+
+var _menu = __webpack_require__(/*! ../menu */ "./src/App/components/menu/index.js");
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _showcase = __webpack_require__(/*! ../showcase */ "./src/App/components/showcase/index.js");
+
+var _showcase2 = _interopRequireDefault(_showcase);
+
+var _options = __webpack_require__(/*! ../options */ "./src/App/components/options/index.js");
+
+var _options2 = _interopRequireDefault(_options);
+
+var _styles = __webpack_require__(/*! ./styles.less */ "./src/App/components/guide/styles.less");
+
+var _styles2 = _interopRequireDefault(_styles);
 
 var _guide = __webpack_require__(/*! ../../../../core/Button/guide */ "./core/Button/guide.js");
 
@@ -54570,142 +54596,16 @@ var _WithLoader2 = _interopRequireDefault(_WithLoader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// need GIST urls
-var components = {
-  Button: {
-    component: _guide2.default,
-    description: 'A flexible button component with styles including warn, cancel, and save'
-  },
-  ButtonGroup: {
-    component: _guide4.default,
-    description: 'A wrapper to group buttons'
-  },
-  Card: {
-    component: _guide6.default,
-    description: 'Cards are universal use display components, they respond well to grid and flex systems that have their boundaries clearly drawn.'
-  },
-  Divider: {
-    component: _guide8.default,
-    description: 'A styled horizontal divider'
-  },
-  Loader: { component: _Loader2.default, description: 'A general loading indicator for inline use' },
-  Search: {
-    component: _guide10.default,
-    description: 'A search component that takes onKeyup and onClick props'
-  },
-  Select: {
-    component: _guide12.default,
-    description: 'The Select component requires that you also import the Option component to nest inside of it for each option. It takes an onSelect prop.'
-  },
-  Input: { component: _guide14.default, description: 'A general use text input' },
-  Toggle: {
-    component: _guide16.default,
-    description: 'A toggle component that works as a checkbox'
-  },
-  Infotip: {
-    component: _guide18.default,
-    description: 'Mouseover for more information'
-  }
-};
-// may take some fancy timeout magic to show this off
-
-
-// these require router to function properly
-exports.default = components;
-
-/***/ }),
-
-/***/ "./src/App/components/guide/index.js":
-/*!*******************************************!*\
-  !*** ./src/App/components/guide/index.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
-
-var _menu = __webpack_require__(/*! ../menu */ "./src/App/components/menu/index.js");
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _showcase = __webpack_require__(/*! ../showcase */ "./src/App/components/showcase/index.js");
-
-var _showcase2 = _interopRequireDefault(_showcase);
-
-var _options = __webpack_require__(/*! ../options */ "./src/App/components/options/index.js");
-
-var _options2 = _interopRequireDefault(_options);
-
-var _styles = __webpack_require__(/*! ./styles.less */ "./src/App/components/guide/styles.less");
-
-var _styles2 = _interopRequireDefault(_styles);
-
-var _components = __webpack_require__(/*! ./components */ "./src/App/components/guide/components.js");
-
-var _components2 = _interopRequireDefault(_components);
-
-var _guide = __webpack_require__(/*! ../../../../core/Button/guide */ "./core/Button/guide.js");
-
-var _guide2 = _interopRequireDefault(_guide);
-
-var _guide3 = __webpack_require__(/*! ../../../../core/ButtonGroup/guide */ "./core/ButtonGroup/guide.js");
-
-var _guide4 = _interopRequireDefault(_guide3);
-
-var _guide5 = __webpack_require__(/*! ../../../../core/Card/guide */ "./core/Card/guide.js");
-
-var _guide6 = _interopRequireDefault(_guide5);
-
-var _guide7 = __webpack_require__(/*! ../../../../core/Divider/guide */ "./core/Divider/guide.js");
-
-var _guide8 = _interopRequireDefault(_guide7);
-
-var _Loader = __webpack_require__(/*! ../../../../core/Loader */ "./core/Loader/index.js");
-
-var _Loader2 = _interopRequireDefault(_Loader);
-
-var _guide9 = __webpack_require__(/*! ../../../../core/Search/guide */ "./core/Search/guide.js");
-
-var _guide10 = _interopRequireDefault(_guide9);
-
-var _guide11 = __webpack_require__(/*! ../../../../core/Select/guide */ "./core/Select/guide.js");
-
-var _guide12 = _interopRequireDefault(_guide11);
-
-var _guide13 = __webpack_require__(/*! ../../../../core/input/guide */ "./core/input/guide.js");
-
-var _guide14 = _interopRequireDefault(_guide13);
-
-var _guide15 = __webpack_require__(/*! ../../../../core/Toggle/guide */ "./core/Toggle/guide.js");
-
-var _guide16 = _interopRequireDefault(_guide15);
-
-var _guide17 = __webpack_require__(/*! ../../../../core/Infotip/guide */ "./core/Infotip/guide.js");
-
-var _guide18 = _interopRequireDefault(_guide17);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// these require router to function properly
+
+// may take some fancy timeout magic to show this off
+
 
 var Guide = function (_Component) {
   _inherits(Guide, _Component);
@@ -54754,6 +54654,8 @@ var Guide = function (_Component) {
       _this.setState({ selected: '' });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+  // TODO: add URLs to gists
+
 
   _createClass(Guide, [{
     key: 'render',
@@ -54767,7 +54669,7 @@ var Guide = function (_Component) {
           'section',
           { className: _styles2.default.options },
           _react2.default.createElement(_options2.default, {
-            selected: this.state.selected,
+            selected: this.props.location.pathname.substr(1) || '',
             clearSelected: this.clearSelected
           })
         ),
@@ -54776,7 +54678,7 @@ var Guide = function (_Component) {
           { className: _styles2.default.menu },
           _react2.default.createElement(_menu2.default, {
             history: this.props.history,
-            components: _components2.default,
+            components: this.state,
             onSelect: this.onSelect
           })
         ),
@@ -55031,6 +54933,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 var _options = __webpack_require__(/*! ./options.less */ "./src/App/components/options/options.less");
 
 var _options2 = _interopRequireDefault(_options);
@@ -55045,10 +54949,10 @@ var Options = function Options(props) {
       'div',
       { className: _options2.default.clear },
       _react2.default.createElement(
-        'h3',
-        { onClick: props.clearSelected },
+        _reactRouterDom.Link,
+        { to: '/' },
         ' ',
-        _react2.default.createElement('i', { className: 'fa fa-home' }),
+        _react2.default.createElement('i', { className: 'fa fa-home ' + _options2.default.link }),
         ' '
       )
     ),
@@ -55072,7 +54976,7 @@ exports.default = Options;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"options":"options--3xPnU","clear":"clear--2Ojx7"};
+module.exports = {"options":"options--3xPnU","clear":"clear--2Ojx7","link":"link--3UwrG"};
 
 /***/ }),
 
