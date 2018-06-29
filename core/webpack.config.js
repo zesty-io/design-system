@@ -1,52 +1,48 @@
-"use strict";
+'use strict'
 
-const fs = require("fs");
-const path = require("path");
-const webpack = require("webpack");
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
 
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// const extractLess = new ExtractTextPlugin({
-//   filename: `core.css`
-// })
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: () => {
-    return fs.readdirSync("src/").reduce((acc, dir) => {
-      acc[dir] = path.resolve(__dirname, `src/${dir}`);
-      return acc;
-    }, {});
+    return fs.readdirSync('src/').reduce((acc, dir) => {
+      acc[dir] = path.resolve(__dirname, `src/${dir}`)
+      return acc
+    }, {})
   },
-  mode: "development",
+  mode: 'development',
   externals: {
     // Don't bundle react or react-dom
     react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React'
     },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM'
     }
   },
   output: {
+    path: path.resolve(__dirname, 'dist'),
     filename: `[name].js`,
-    path: path.resolve(__dirname, "dist"),
-    library: `@zesty-io/core`,
-    libraryTarget: "umd"
+    library: ['core', '[name]'],
+    libraryTarget: 'umd'
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         styles: {
-          name: "core",
+          name: 'core',
           test: /\.less$/,
-          chunks: "all",
+          chunks: 'all',
           enforce: true
         }
       }
@@ -54,37 +50,33 @@ module.exports = {
   },
   resolve: {
     // modules: ['node_modules', 'src'],
-    extensions: [".js"]
+    extensions: ['.js']
   },
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: "src/**/*.less",
+        from: 'src/**/*.less',
         flatten: true
       }
     ]),
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: '[name].css'
     })
   ],
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: [MiniCssExtractPlugin.loader, 'css-loader']
-      // },
       {
         test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "less-loader"]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
-          presets: ["react", "es2015", "stage-2"]
+          presets: ['react', 'es2015', 'stage-2']
         }
       }
     ]
   }
-};
+}
