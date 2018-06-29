@@ -1,23 +1,45 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
   "main": "index.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
-    "release": "rm -rf ./dist && babel -d dist src && npm publish --access public"
+    "prerelease": "rimraf dist",
+    "release": "webpack --config webpack.config.js && cp package.json dist/package.json && npm publish dist",
+    "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./build --ignore *.test.js",
+    "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel ./src/index.js --out-file ./build/index.es.js",
+    "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./build/es --ignore *.test.js",
+    "build:umd": "cross-env BABEL_ENV=production-umd rollup -c scripts/rollup.config.js",
+    "build:copy-files": "babel-node ./scripts/copy-files.js",
+    "build": "yarn build:es2015 && yarn build:es2015modules && yarn build:es && yarn build:umd && yarn build:copy-files"
   },
-  "dependencies": {
+  "peerDependencies": {
     "classnames": "^2.2.6",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "classnames": "^2.2.6",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "extract-loader": "^2.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
     "husky": "^0.14.3",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "prettier": "^1.13.6",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^1.6.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.13.0"
   }
 }

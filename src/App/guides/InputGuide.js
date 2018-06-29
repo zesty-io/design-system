@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Input from "@zesty-io/core/dist/Input";
+import Input from "@zesty-io/core/Input";
 
 export default class InputGuide extends Component {
   render() {

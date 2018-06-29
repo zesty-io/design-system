@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Select, Option } from "@zesty-io/core/dist/Select";
+import { Select, Option } from "@zesty-io/core/Select";
 
 export default class SelectGuide extends Component {
   render() {
