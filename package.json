@@ -4,13 +4,13 @@
   "description": "",
   "main": "./index.js",
   "scripts": {
-    "precommit": "pretty-quick --staged",
+    "precommit": "./node_modules/.bin/pretty-quick --staged",
     "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development"
   },
   "author": "Zesty.io<developers@zesty.io>",
   "license": "All Rights Reserved",
   "dependencies": {
-    "@zesty-io/core": "0.0.6",
+    "@zesty-io/core": "0.0.13",
     "babel-preset-node": "^5.1.1",
     "brace": "^0.11.1",
     "browserify-fs": "^1.0.0",
@@ -37,6 +37,7 @@
     "less-loader": "^4.1.0",
     "prettier": "^1.13.6",
     "pretty-quick": "^1.6.0",
+    "style-loader": "^0.21.0",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"

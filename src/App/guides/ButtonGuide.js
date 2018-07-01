@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import Button from "@zesty-io/core/Button";
+import "@zesty-io/core/Button.css";
+import { Button } from "@zesty-io/core/Button";
+console.log(Button);
 
 export default class ButtonGuide extends Component {
   render() {

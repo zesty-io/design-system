@@ -1,12 +1,13 @@
-import {renderToString} from 'react-dom/server';
+import React from "react";
+import { renderToString } from "react-dom/server";
 
-import core from '../dist/main'
+import { Button } from "../dist/Button";
 
-test('Button renders', () => {
-  console.log('Core: ', core)
+test("Button renders", () => {
+  const el = React.createElement(Button);
+  const str = renderToString(el);
 
-  const str = renderToString(Core.Button)
-  console.log('Rendered El: ', str)
+  console.log("Button: ", str);
 
-  expect(str).toBe('test')
+  expect(str).toBe('<button class="button--qXZ5J" data-reactroot=""></button>');
 });

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Url.less";
 import cx from "classnames";
 
-export default function Url(props) {
+export function Url(props) {
   let opts = {
     ...props,
     className: cx(styles.link, props.className),

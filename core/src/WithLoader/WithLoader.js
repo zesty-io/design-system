@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./WithLoader.less";
 
-export default function WithLoader(props) {
+export function WithLoader(props) {
   return props.condition ? (
     props.children
   ) : (

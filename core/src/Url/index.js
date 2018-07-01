@@ -1,2 +1,1 @@
-import Url from "./Url";
-export default Url;
+export { Url } from "./Url";

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import Divider from "@zesty-io/core/Divider";
+import "@zesty-io/core/Divider.css";
+import { Divider } from "@zesty-io/core/Divider";
+
 import styles from "./DividerGuide.less";
 
 export default class DividerGuide extends Component {

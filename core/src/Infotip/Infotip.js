@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Infotip.less";
 import cx from "classnames";
 
-export default function Infotip(props) {
+export function Infotip(props) {
   return (
     <div className={styles.tip}>
       <i

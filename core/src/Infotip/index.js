@@ -1,2 +1,1 @@
-import Infotip from "./Infotip";
-export default Infotip;
+export { Infotip } from "./Infotip";

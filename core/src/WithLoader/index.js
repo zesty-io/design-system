@@ -1,2 +1,1 @@
-import WithLoader from "./WithLoader";
-export default WithLoader;
+export { WithLoader } from "./WithLoader";

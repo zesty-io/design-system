@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import "@zesty-io/core/Select.css";
 import { Select, Option } from "@zesty-io/core/Select";
 
 export default class SelectGuide extends Component {

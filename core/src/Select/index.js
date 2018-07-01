@@ -1,2 +1,1 @@
-import { Select, Option } from "./Select";
-export { Select, Option };
+export { Select, Option } from "./Select";
