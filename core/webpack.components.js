@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractLess = new ExtractTextPlugin({
   filename: `[name].css`
@@ -45,7 +46,21 @@ module.exports = {
   resolve: {
     extensions: [".js"]
   },
-  plugins: [extractLess],
+  plugins: [
+    extractLess,
+    new CopyWebpackPlugin([
+      {
+        from: "src/**/*.less",
+        flatten: true
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: "src/colors.less",
+        flatten: true
+      }
+    ])
+  ],
   module: {
     rules: [
       {
