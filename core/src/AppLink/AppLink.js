@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./AppLink.less";
 import cx from "classnames";
 
-export default function AppLink(props) {
+export function AppLink(props) {
   return (
     <Link
       {...props}

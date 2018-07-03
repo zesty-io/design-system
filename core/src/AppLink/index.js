@@ -1,2 +1,1 @@
-import AppLink from "./AppLink";
-export default AppLink;
+export { AppLink } from "./AppLink";
