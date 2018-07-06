@@ -5,8 +5,6 @@ import { Button } from "../../dist/Button";
 
 test("Button renders", () => {
   const el = React.createElement(Button);
-  console.log(el);
-
   const str = renderToString(el);
   expect(str).toBe('<button class="button--qXZ5J" data-reactroot=""></button>');
 });

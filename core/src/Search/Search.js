@@ -1,40 +1,55 @@
 import React, { Component } from "react";
-import Button from "../Button";
+
+// FIX this reference doesn't work
+// import Button from '../Button'
 
 import styles from "./Search.less";
 import cx from "classnames";
 
 export class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bounce: false
-    };
+  state = {
+    searchTerm: ""
+  };
+  componentDidMount() {
+    // lets the user override the initial value in the search box
+    if (this.props.override) {
+      this.setState({ searchTerm: this.props.override });
+    }
   }
   render() {
     return (
-      <div className={cx(styles.search, this.props.className)}>
-        <Button className={styles.searchBtn} onClick={this.handleFilter}>
+      <form
+        className={cx(styles.search, this.props.className)}
+        onSubmit={this.handleSubmit}
+      >
+        {/* <Button className={styles.searchBtn} type="submit">
           <i
-            className={cx(styles.searchIcon, "fa fa-search")}
+            className={cx(styles.searchIcon, 'fa fa-search')}
             aria-hidden="true"
           />
-        </Button>
+        </Button> */}
         <input
           type="text"
+          name="term"
+          autoComplete="off"
+          value={this.state.searchTerm}
           className={styles.searchField}
           placeholder={this.props.placeholder}
           onFocus={this.props.onFocus}
-          onKeyUp={this.props.onKeyUp}
+          onChange={this.handleKeyUp}
         />
-      </div>
+      </form>
     );
   }
-  handleFilter = evt => {
-    // Prevent button click from triggering
-    // a form submission if this exists inside
-    // of a form element parent
+  handleSubmit = evt => {
     evt.preventDefault();
-    this.props.onClick(evt);
+    this.props.onSubmit(this.state.searchTerm);
+  };
+  handleKeyUp = evt => {
+    evt.preventDefault();
+    // return the target value of the input
+    this.setState({ searchTerm: evt.target.value }, () =>
+      this.props.onKeyUp(this.state.searchTerm)
+    );
   };
 }
