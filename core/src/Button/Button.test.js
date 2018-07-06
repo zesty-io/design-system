@@ -1,13 +1,12 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 
-import { Button } from "../dist/Button";
+import { Button } from "../../dist/Button";
 
 test("Button renders", () => {
   const el = React.createElement(Button);
+  console.log(el);
+
   const str = renderToString(el);
-
-  console.log("Button: ", str);
-
   expect(str).toBe('<button class="button--qXZ5J" data-reactroot=""></button>');
 });

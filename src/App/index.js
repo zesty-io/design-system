@@ -31,7 +31,9 @@ const components = {
   Divider: {
     description: "A styled horizontal divider"
   },
-  Loader: { description: "A loading indicator for inline use" },
+  Loader: {
+    description: "A loading indicator for inline use"
+  },
   Search: {
     description: "A search component that takes onKeyup and onClick props"
   },

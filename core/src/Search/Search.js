@@ -1,13 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import Button from "../Button";
 
 import styles from "./Search.less";
 import cx from "classnames";
 
-export class Search extends React.Component {
-  state = {
-    bounce: false
-  };
+export class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bounce: false
+    };
+  }
   render() {
     return (
       <div className={cx(styles.search, this.props.className)}>
