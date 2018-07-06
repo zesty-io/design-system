@@ -10,7 +10,7 @@ import ButtonGuide from "../../guides/ButtonGuide";
 import ButtonGroupGuide from "../../guides/ButtonGroupGuide";
 import CardGuide from "../../guides/CardGuide";
 import DividerGuide from "../../guides/DividerGuide";
-// import Loader from '../../guides/LoaderGuide'
+import LoaderGuide from "../../guides/LoaderGuide";
 import SearchGuide from "../../guides/SearchGuide";
 import SelectGuide from "../../guides/SelectGuide";
 import InputGuide from "../../guides/inputGuide";
@@ -49,6 +49,7 @@ export default class Guide extends Component {
               <Route path="/divider" component={DividerGuide} />
               <Route path="/search" component={SearchGuide} />
               <Route path="/select" component={SelectGuide} />
+              <Route path="/loader" component={LoaderGuide} />
               <Route path="/input" component={InputGuide} />
               <Route path="/toggle" component={ToggleGuide} />
               <Route path="/infotip" component={InfotipGuide} />
