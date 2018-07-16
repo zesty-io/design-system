@@ -6,10 +6,12 @@ import "@zesty-io/core/ButtonGroup.css";
 import { Button } from "@zesty-io/core/Button";
 import { ButtonGroup } from "@zesty-io/core/ButtonGroup";
 
-export default class ButtonGroupGuide extends Component {
+export class ButtonGroupGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>A wrapper to group buttons</p>
+
         <ButtonGroup>
           <Button type="" text="Button1" />
           <Button type="" text="Button2" />

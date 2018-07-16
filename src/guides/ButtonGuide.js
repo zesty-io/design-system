@@ -3,10 +3,14 @@ import React, { Component } from "react";
 import "@zesty-io/core/Button.css";
 import { Button } from "@zesty-io/core/Button";
 
-export default class ButtonGuide extends Component {
+export class ButtonGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>
+          A flexible button component with styles including warn, cancel, and
+          save
+        </p>
         <Button type="" text="Button" />
         <Button type="save" text="Save" />
         <Button type="cancel" text="Cancel" />

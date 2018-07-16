@@ -1,0 +1,102 @@
+@import "~@zesty-io/core/colors.less";
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: @zesty-white;
+  color: #5b667d;
+
+  font-family: "GibsonRegular", Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+
+  .options {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    width: 100vw;
+    height: 5vh;
+    background-color: @zesty-gray;
+
+    .options {
+      display: flex;
+      color: white;
+      flex-direction: row;
+      align-items: baseline;
+      .clear {
+        flex: 2;
+        .link {
+          margin-top: 1rem;
+          text-decoration: none;
+          color: white;
+          max-width: 2rem;
+          font-size: 2rem;
+        }
+      }
+
+      h1 {
+        flex: 2;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .menu {
+    margin: 0;
+    flex: 1;
+    background-color: @zesty-light-blue;
+    min-height: 100%;
+    .list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      a {
+        text-decoration: none;
+      }
+      li {
+        align-content: center;
+        margin: 0.5rem;
+        color: @zesty-tab-color;
+        cursor: pointer;
+        padding: 0.5rem 0.3rem;
+        &:hover,
+        &:focus {
+          background: @zesty-blue;
+          color: black;
+        }
+        &:active {
+          background: @zesty-black;
+          top: 1px;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  // .showcase {
+  //   min-height: 100%;
+  //   flex: 5;
+  //   background-color: @zesty-background-blue;
+  // }
+  .showcase {
+    background-color: @zesty-white;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    flex: 5;
+    margin: 0;
+    padding: 2rem;
+    // align-items: center;
+    // justify-items: center;
+
+    .description {
+      margin: 2rem;
+    }
+    .usage {
+      margin: 2rem;
+      display: grid;
+      grid-gap: 1rem;
+      min-width: 10rem;
+    }
+  }
+}

@@ -3,10 +3,11 @@ import React, { Component } from "react";
 import "@zesty-io/core/Input.css";
 import { Input } from "@zesty-io/core/Input";
 
-export default class InputGuide extends Component {
+export class InputGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>Input component with zesty styling</p>
         <Input name="name" placeholder="Name" />
         <Input
           name="name"

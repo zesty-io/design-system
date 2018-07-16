@@ -6,12 +6,14 @@ import "@zesty-io/core/Card.css";
 import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
 import { Button } from "@zesty-io/core/Button";
 
-import styles from "./CardGuide.less";
-
-export default class CardGuide extends Component {
+export class CardGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>
+          Cards are universal use display components, they respond well to grid
+          and flex systems that have their boundaries clearly drawn.
+        </p>
         <Card>
           <CardHeader>This is the card Header</CardHeader>
           <CardContent>this is the card content</CardContent>
@@ -30,12 +32,19 @@ export default class CardGuide extends Component {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </CardContent>
-          <CardFooter className={styles.Footer}>
+          <CardFooter
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              marginRight: "1rem"
+            }}
+          >
             <Button type="save" text="save" />
             <Button type="cancel" text="cancel" />
           </CardFooter>
         </Card>
-        <Card className={styles.restricted}>
+        <Card style={{ maxWidth: "20rem" }}>
           <CardHeader>
             <h1>A Restricted Card</h1>
           </CardHeader>
@@ -46,7 +55,7 @@ export default class CardGuide extends Component {
           <CardFooter>footer</CardFooter>
         </Card>
         <h1>These cards are in a flex container</h1>
-        <section className={styles.group}>
+        <section style={{ display: "flex" }}>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
             <CardContent>

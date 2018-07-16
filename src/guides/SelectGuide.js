@@ -3,10 +3,15 @@ import React, { Component } from "react";
 import "@zesty-io/core/Select.css";
 import { Select, Option } from "@zesty-io/core/Select";
 
-export default class SelectGuide extends Component {
+export class SelectGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>
+          The Select component requires that you also import the Option
+          component to nest inside of it for each option. It takes an onSelect
+          prop.
+        </p>
         <Select
           selection={{ value: "Value1", text: "Initial" }}
           onSelect={() => console.log("onSelect")}
