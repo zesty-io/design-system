@@ -1,9 +1,6 @@
 @import "~@zesty-io/core/colors.less";
 
 .App {
-  display: flex;
-  flex-wrap: wrap;
-
   background-color: @zesty-white;
   color: #5b667d;
 
@@ -11,54 +8,55 @@
   font-size: 1em;
   font-weight: 500;
 
-  .options {
-    padding-left: 1rem;
-    padding-bottom: 1rem;
-    width: 100vw;
-    height: 5vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  .AppHeader {
     background-color: @zesty-gray;
+    height: 5vh;
+    width: 100vw;
 
-    .options {
-      display: flex;
-      color: white;
-      flex-direction: row;
-      align-items: baseline;
-      .clear {
-        flex: 2;
-        .link {
-          margin-top: 1rem;
-          text-decoration: none;
-          color: white;
-          max-width: 2rem;
-          font-size: 2rem;
-        }
-      }
+    display: flex;
+    align-items: center;
+    color: white;
 
-      h1 {
-        flex: 2;
-        font-size: 1.6rem;
-      }
+    .Home {
+      flex: 1;
+      color: @zesty-white;
+      font-size: 2rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      flex: 5;
     }
   }
-  .menu {
-    margin: 0;
-    flex: 1;
-    background-color: @zesty-light-blue;
-    min-height: 100%;
-    .list {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
+
+  .AppWrap {
+    display: flex;
+    flex-wrap: wrap;
+    height: 95vh;
+
+    .AppMenu {
+      flex: 1 0 0%;
+      background-color: @zesty-light-blue;
+
+      height: 95vh;
+      overflow-y: scroll;
+
       a {
+        display: block;
+        color: @zesty-white;
         text-decoration: none;
-      }
-      li {
-        align-content: center;
-        margin: 0.5rem;
-        color: @zesty-tab-color;
-        cursor: pointer;
+        background: @zesty-tab-color;
         padding: 0.5rem 0.3rem;
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0 0.5rem 0.5rem;
+
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+
         &:hover,
         &:focus {
           background: @zesty-blue;
@@ -66,37 +64,28 @@
         }
         &:active {
           background: @zesty-black;
-          top: 1px;
-          outline: none;
         }
       }
     }
-  }
 
-  // .showcase {
-  //   min-height: 100%;
-  //   flex: 5;
-  //   background-color: @zesty-background-blue;
-  // }
-  .showcase {
-    background-color: @zesty-white;
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-    flex: 5;
-    margin: 0;
-    padding: 2rem;
-    // align-items: center;
-    // justify-items: center;
+    .AppShowcase {
+      background-color: @zesty-white;
+      display: flex;
+      flex-direction: column;
+      flex: 5;
+      padding: 2rem;
+      height: 95vh;
+      overflow-y: scroll;
 
-    .description {
-      margin: 2rem;
-    }
-    .usage {
-      margin: 2rem;
-      display: grid;
-      grid-gap: 1rem;
-      min-width: 10rem;
+      .description {
+        margin: 2rem;
+      }
+      .usage {
+        margin: 2rem;
+        display: grid;
+        grid-gap: 1rem;
+        min-width: 10rem;
+      }
     }
   }
 }
