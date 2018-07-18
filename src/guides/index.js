@@ -9,4 +9,5 @@ export { LoaderGuide } from "./LoaderGuide";
 export { SearchGuide } from "./SearchGuide";
 export { SelectGuide } from "./SelectGuide";
 export { ToggleGuide } from "./ToggleGuide";
+export { TextFieldTypeGuide } from "./TextFieldTypeGuide";
 // export { Url } from './Url'

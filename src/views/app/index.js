@@ -48,6 +48,10 @@ export default class App extends Component {
                       <Route path="/toggle" component={Guides.ToggleGuide} />
                       <Route path="/infotip" component={Guides.InfotipGuide} />
                       <Route
+                        path="/textfieldtype"
+                        component={Guides.TextFieldTypeGuide}
+                      />
+                      <Route
                         path="/"
                         render={props => {
                           return <div>Homepage</div>;
