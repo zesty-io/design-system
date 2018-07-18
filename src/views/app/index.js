@@ -37,7 +37,7 @@ export default class App extends Component {
                       },
                       {
                         title: "Molecules",
-                        icon: "cube",
+                        icon: "gears",
                         children: []
                       }
                     ]}
