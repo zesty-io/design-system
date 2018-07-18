@@ -11,3 +11,4 @@ export { Select, Option } from "./Select";
 export { Toggle } from "./Toggle";
 export { Url } from "./Url";
 export { WithLoader } from "./WithLoader";
+export { Nav } from "./Nav";
