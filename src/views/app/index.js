@@ -26,18 +26,18 @@ export default class App extends Component {
                     content={[
                       {
                         title: "Atoms",
-                        icon: "box-o",
+                        icon: "cube",
                         children: this.props.components.map(el => {
                           return {
                             name: el,
                             ZUID: el.toLowerCase().replace(" ", "-"),
-                            icon: "box-o"
+                            icon: "cube"
                           };
                         })
                       },
                       {
                         title: "Molecules",
-                        icon: "box-o",
+                        icon: "cube",
                         children: []
                       }
                     ]}

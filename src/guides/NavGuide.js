@@ -28,36 +28,36 @@ const content = [
     children: [
       {
         name: "Simple Page",
-        ZUID: "as4da-asdads-ds4a",
+        ZUID: "nav/as4da-asdads-ds4a",
         icon: "bars"
       },
       {
         name: "Homepage",
-        ZUID: "asda-asda4ds-dsa",
+        ZUID: "nav/asda-asda4ds-dsa",
         icon: "bars",
         children: [
-          { name: "child", ZUID: "252n0-23n452", icon: "cube" },
+          { name: "child", ZUID: "nav/252n0-23n452", icon: "cube" },
           {
             name: "homepages",
-            ZUID: "4898-44646-12341234",
+            ZUID: "nav/4898-44646-12341234",
             icon: "cube",
             children: [
               {
                 name: "child",
-                ZUID: "8238-235325ads-ewew",
+                ZUID: "nav/8238-235325ads-ewew",
                 icon: "cube"
               },
               {
                 name: "child",
-                ZUID: "8238-235325ads-ewew",
+                ZUID: "nav/8238-235asd25ads-ewew",
                 icon: "cube",
                 children: [
-                  { name: "burried", ZUID: "89234djns23u80", icon: "cube" }
+                  { name: "burried", ZUID: "nav/89234djns23u80", icon: "cube" }
                 ]
               },
               {
                 name: "node",
-                ZUID: "238-4562346",
+                ZUID: "nav/238-4562346",
                 icon: "cube"
               }
             ]
@@ -77,11 +77,15 @@ const content = [
     children: [
       {
         name: "Clippings",
-        ZUID: "asda-asd5ads-dsa",
+        ZUID: "nav/asda-asd5ads-dsa",
         icon: "bars"
       },
-      { name: "Dashboard Widgets", ZUID: "asda-aesdads-dsa", icon: "bars" },
-      { name: "Sidebar Contact Form", ZUID: "asda-asdsdads-dsa", icon: "bars" }
+      { name: "Dashboard Widgets", ZUID: "nav/asda-aesdads-dsa", icon: "bars" },
+      {
+        name: "Sidebar Contact Form",
+        ZUID: "nav/asda-asdsdads-dsa",
+        icon: "bars"
+      }
     ]
   }
 ];
