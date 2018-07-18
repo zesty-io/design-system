@@ -5,7 +5,6 @@ import { Parent } from "../Parent";
 import styles from "./Nav.less";
 export class Nav extends Component {
   render() {
-    console.log("Nav", this.props);
     return (
       <nav className={styles.Nav}>
         {this.props.content.map(item => {
