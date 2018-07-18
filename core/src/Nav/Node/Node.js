@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import styles from "./Node.less";
 export function Node(props) {
@@ -18,10 +18,10 @@ export function Node(props) {
       } ${isParentOfSelected} ${isSelected} ${isClosed}`}
       key={props.path}
     >
-      <Link to={`/${props.path}`}>
+      <a href={`/${props.path}`}>
         <i className={`fa fa-${props.icon}`} />
         <span>{props.name}</span>
-      </Link>
+      </a>
       {props.children && (
         <i
           className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
