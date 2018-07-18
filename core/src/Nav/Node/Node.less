@@ -10,9 +10,7 @@
     //   padding: 1rem;
     // }
   }
-  .selected {
-    color: @zesty-orange;
-  }
+
   a {
     padding: 0.5rem;
     text-decoration: none;
@@ -23,10 +21,18 @@
     // }
   }
 }
+
 .active {
   background-color: lighten(@nav-border-color, 6%);
   transition: all 0.2s ease;
   i {
     color: @zesty-light-gray;
+  }
+}
+
+.selected {
+  background-color: lighten(@nav-border-color, 12%);
+  i {
+    color: @zesty-orange;
   }
 }

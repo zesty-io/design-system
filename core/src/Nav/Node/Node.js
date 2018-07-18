@@ -7,14 +7,12 @@ export function Node(props) {
   // maybe need to check the nav bar to see if this is active?
   return (
     <li
-      className={`${styles.item} ${props.active && styles.active}`}
+      className={`${styles.item} ${props.active &&
+        styles.active}  ${props.selected === props.ZUID && styles.selected}`}
       key={props.ZUID}
     >
       <Link to={`/${props.ZUID}`}>
-        <i
-          className={`fa fa-${props.icon} ${props.selected === props.ZUID &&
-            styles.selected}`}
-        />
+        <i className={`fa fa-${props.icon}`} />
         <span>{props.name}</span>
       </Link>
       {props.children && (

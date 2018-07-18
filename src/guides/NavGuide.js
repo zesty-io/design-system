@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-// import '../../core/src/Nav/Nav.less'
 import { Nav } from "../../core/src/Nav";
 
 export class NavGuide extends Component {
@@ -9,8 +8,15 @@ export class NavGuide extends Component {
   };
   componentDidMount() {
     this.setState({
-      selected: window.location.href.split("/").pop()
+      selected: `nav/${this.props.location.pathname.split("/").pop()}`
     });
+  }
+  static getDerivedStateFromProps(props, state) {
+    if (props.location.pathname.split("/").pop() !== state.selected) {
+      return { selected: `nav/${props.location.pathname.split("/").pop()}` };
+    } else {
+      return null;
+    }
   }
   render() {
     return (
