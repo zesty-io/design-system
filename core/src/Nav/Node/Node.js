@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Node.less";
 export function Node(props) {
@@ -9,13 +10,13 @@ export function Node(props) {
       className={`${styles.item} ${props.active && styles.active}`}
       key={props.ZUID}
     >
-      <a href={`/${props.ZUID}`}>
+      <Link to={`/${props.ZUID}`}>
         <i
           className={`fa fa-${props.icon} ${props.selected === props.ZUID &&
             styles.selected}`}
         />
         <span>{props.name}</span>
-      </a>
+      </Link>
       {props.children && (
         <i
           className={props.closed ? "fa fa-chevron-left" : "fa fa-chevron-down"}
