@@ -41,6 +41,7 @@ export default class App extends Component {
                         children: []
                       }
                     ]}
+                    selected={props.location.pathname.split("/")[1]}
                   />
 
                   {/* <menu className={styles.AppMenu}>
