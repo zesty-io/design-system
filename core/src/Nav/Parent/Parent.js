@@ -40,6 +40,7 @@ export class Parent extends Component {
                     closed={this.state.closed.includes(child.ZUID)}
                     handleOpen={this.handleOpen}
                   />
+                  {/* allow for a closed item not to render it's children */}
                   {!this.state.closed.includes(child.ZUID) && (
                     <Parent
                       {...child}
