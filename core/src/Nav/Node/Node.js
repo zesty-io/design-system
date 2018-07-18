@@ -17,7 +17,7 @@ export function Node(props) {
       </Link>
       {props.children && (
         <i
-          className={props.closed ? "fa fa-chevron-left" : "fa fa-chevron-down"}
+          className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
           onClick={() => props.handleOpen(props.ZUID)}
         />
       )}
