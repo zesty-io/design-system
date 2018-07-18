@@ -1,0 +1,32 @@
+@import "../../colors.less";
+
+.item {
+  display: flex;
+  align-items: baseline;
+  i {
+    color: @zesty-gray;
+    margin-right: 0.5rem;
+    // &:last-child {
+    //   padding: 1rem;
+    // }
+  }
+  .selected {
+    color: @zesty-orange;
+  }
+  a {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: @zesty-light-blue;
+    flex: 1;
+    // span {
+    //   padding-left: 0.5rem;
+    // }
+  }
+}
+.active {
+  background-color: lighten(@nav-border-color, 6%);
+  transition: all 0.2s ease;
+  i {
+    color: @zesty-light-gray;
+  }
+}

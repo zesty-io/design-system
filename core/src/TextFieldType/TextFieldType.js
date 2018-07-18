@@ -8,7 +8,6 @@ export class TextFieldType extends Component {
     super(props);
     this.state = {
       textInput: ""
-      // lengthError: false
     };
   }
   render() {
@@ -32,7 +31,6 @@ export class TextFieldType extends Component {
   onChange = evt => {
     this.setState({
       textInput: evt.target.value
-      // lengthError: evt.target.value.length > this.props.charCount
     });
   };
 }

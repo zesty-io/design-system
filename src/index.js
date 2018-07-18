@@ -15,7 +15,8 @@ ReactDOM.render(
       "Input",
       "Toggle",
       "Infotip",
-      "TextFieldType"
+      "TextFieldType",
+      "Nav"
     ]}
   />,
   document.getElementById("root")

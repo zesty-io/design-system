@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
 import * as Guides from "../../guides";
 
+import { Nav } from "../../../core/src/Nav";
+
 import styles from "./app.less";
 export default class App extends Component {
   render() {
@@ -20,18 +22,39 @@ export default class App extends Component {
                   <h1>Zesty.io Component Library</h1>
                 </header>
                 <section className={styles.AppWrap}>
-                  <menu className={styles.AppMenu}>
+                  <Nav
+                    content={[
+                      {
+                        title: "Atoms",
+                        icon: "box-o",
+                        children: this.props.components.map(el => {
+                          return {
+                            name: el,
+                            ZUID: el.toLowerCase().replace(" ", "-"),
+                            icon: "box-o"
+                          };
+                        })
+                      },
+                      {
+                        title: "Molecules",
+                        icon: "box-o",
+                        children: []
+                      }
+                    ]}
+                  />
+
+                  {/* <menu className={styles.AppMenu}>
                     {this.props.components.map((comp, i) => {
                       return (
                         <Link
-                          to={`/${comp.toLowerCase().replace(" ", "-")}`}
+                          to={`/${comp.toLowerCase().replace(' ', '-')}`}
                           key={i}
                         >
                           {comp}
                         </Link>
-                      );
+                      )
                     })}
-                  </menu>
+                  </menu> */}
                   <main className={styles.AppShowcase}>
                     <Switch>
                       <Route path="/button" component={Guides.ButtonGuide} />
@@ -51,6 +74,7 @@ export default class App extends Component {
                         path="/textfieldtype"
                         component={Guides.TextFieldTypeGuide}
                       />
+                      <Route path="/nav" component={Guides.NavGuide} />
                       <Route
                         path="/"
                         render={props => {
