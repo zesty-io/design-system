@@ -6,16 +6,16 @@ export function Node(props) {
   // style if a node is active
   const isActive = (props.active && styles.active) || "";
   // style is a node is selected
-  const isSelected = props.selected === props.path && styles.selected;
+  const isSelected = (props.selected === props.path && styles.selected) || "";
   // style if a node is parent of selected
   const isParentOfSelected =
-    props.selected.includes(props.path) && styles.parentOfSelected;
-
+    (props.selected.includes(props.path) && styles.parentOfSelected) || "";
+  const isClosed = props.closed && styles.closed;
   return (
     <li
       className={`${styles.item} ${isActive} ${
         styles[`depth${props.depth}`]
-      } ${isParentOfSelected} ${isSelected} `}
+      } ${isParentOfSelected} ${isSelected} ${isClosed}`}
       key={props.path}
     >
       <Link to={`/${props.path}`}>

@@ -74,19 +74,17 @@ export class Parent extends Component {
                 {...child}
                 selected={item.selected}
                 active={this.state.active}
-                closed={this.state.closed.includes(child.path)}
+                closed={item.closed}
                 depth={recursionDepth}
                 handleOpen={this.handleOpen}
               />
-              {/* allow for a closed item not to render it's children */}
-              {!this.state.closed.includes(child.path) && (
-                <Parent
-                  {...child}
-                  depth={recursionDepth}
-                  selected={item.selected}
-                  active={this.state.active}
-                />
-              )}
+              <Parent
+                {...child}
+                depth={recursionDepth}
+                selected={item.selected}
+                active={this.state.active}
+                closed={this.state.closed.includes(child.path) || item.closed}
+              />
             </React.Fragment>
           ) : (
             <Node
@@ -94,7 +92,7 @@ export class Parent extends Component {
               selected={item.selected}
               depth={recursionDepth}
               active={this.state.active}
-              closed={this.state.closed.includes(child.path)}
+              closed={item.closed}
               handleOpen={this.handleOpen}
               key={child.path}
             />
