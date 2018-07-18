@@ -20,6 +20,9 @@
     //   padding-left: 0.5rem;
     // }
   }
+  &:hover {
+    background-color: lighten(@nav-border-color, 6%);
+  }
 }
 
 .active {
@@ -43,6 +46,10 @@
   background-color: darken(@nav-border-color, 12%);
 }
 
+.hover {
+  background-color: lighten(@nav-border-color, 6%);
+}
+
 .selected {
   // background-color: lighten(@nav-border-color, 12%);
   i {
@@ -50,4 +57,8 @@
       color: @zesty-orange;
     }
   }
+}
+
+.closed {
+  display: none;
 }

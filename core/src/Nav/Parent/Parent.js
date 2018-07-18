@@ -17,11 +17,13 @@ export class Parent extends Component {
         onMouseLeave={() => {
           this.setState({ active: false });
         }}
-        className={`${styles.Parent} ${this.state.active && styles.active}`}
+        className={styles.Parent}
       >
         {/* if the item has a title, render it out */}
         {this.props.title && (
-          <span className={styles.title}>
+          <span
+            className={`${styles.title} ${this.state.active && styles.active}`}
+          >
             <h2>
               <i className={`fa fa-${this.props.icon} ${styles.titleIcon}`} />{" "}
               {this.props.title}
@@ -72,19 +74,17 @@ export class Parent extends Component {
                 {...child}
                 selected={item.selected}
                 active={this.state.active}
-                closed={this.state.closed.includes(child.path)}
+                closed={item.closed}
                 depth={recursionDepth}
                 handleOpen={this.handleOpen}
               />
-              {/* allow for a closed item not to render it's children */}
-              {!this.state.closed.includes(child.path) && (
-                <Parent
-                  {...child}
-                  depth={recursionDepth}
-                  selected={item.selected}
-                  active={this.state.active}
-                />
-              )}
+              <Parent
+                {...child}
+                depth={recursionDepth}
+                selected={item.selected}
+                active={this.state.active}
+                closed={this.state.closed.includes(child.path) || item.closed}
+              />
             </React.Fragment>
           ) : (
             <Node
@@ -92,7 +92,7 @@ export class Parent extends Component {
               selected={item.selected}
               depth={recursionDepth}
               active={this.state.active}
-              closed={this.state.closed.includes(child.path)}
+              closed={item.closed}
               handleOpen={this.handleOpen}
               key={child.path}
             />
