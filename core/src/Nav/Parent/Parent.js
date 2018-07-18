@@ -21,45 +21,58 @@ export class Parent extends Component {
       >
         {/* if the item has a title, render it out */}
         {this.props.title && (
-          <h2 className={styles.title}>
-            <i className={`fa fa-${this.props.icon} ${styles.titleIcon}`} />{" "}
-            {this.props.title}
-          </h2>
+          <span className={styles.title}>
+            <h2>
+              <i className={`fa fa-${this.props.icon} ${styles.titleIcon}`} />{" "}
+              {this.props.title}
+            </h2>
+            {Boolean(this.props.children.length) && (
+              <i
+                className={
+                  this.state.closed.includes(this.props.title)
+                    ? "fa fa-caret-left"
+                    : "fa fa-caret-down"
+                }
+                onClick={() => this.handleOpen(this.props.title)}
+              />
+            )}
+          </span>
         )}
         <ul>
-          {this.props.children.map(
-            child =>
-              child.children ? (
-                // if the child has children
-                // render the child and then it's children
-                <React.Fragment key={child.ZUID}>
+          {!this.state.closed.includes(this.props.title) &&
+            this.props.children.map(
+              child =>
+                child.children ? (
+                  // if the child has children
+                  // render the child and then it's children
+                  <React.Fragment key={child.ZUID}>
+                    <Node
+                      {...child}
+                      selected={this.props.selected}
+                      active={this.state.active}
+                      closed={this.state.closed.includes(child.ZUID)}
+                      handleOpen={this.handleOpen}
+                    />
+                    {/* allow for a closed item not to render it's children */}
+                    {!this.state.closed.includes(child.ZUID) && (
+                      <Parent
+                        {...child}
+                        selected={this.props.selected}
+                        active={this.state.active}
+                      />
+                    )}
+                  </React.Fragment>
+                ) : (
                   <Node
                     {...child}
                     selected={this.props.selected}
                     active={this.state.active}
                     closed={this.state.closed.includes(child.ZUID)}
                     handleOpen={this.handleOpen}
+                    key={child.ZUID}
                   />
-                  {/* allow for a closed item not to render it's children */}
-                  {!this.state.closed.includes(child.ZUID) && (
-                    <Parent
-                      {...child}
-                      selected={this.props.selected}
-                      active={this.state.active}
-                    />
-                  )}
-                </React.Fragment>
-              ) : (
-                <Node
-                  {...child}
-                  selected={this.props.selected}
-                  active={this.state.active}
-                  closed={this.state.closed.includes(child.ZUID)}
-                  handleOpen={this.handleOpen}
-                  key={child.ZUID}
-                />
-              )
-          )}
+                )
+            )}
         </ul>
       </article>
     );
