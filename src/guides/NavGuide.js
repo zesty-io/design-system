@@ -15,6 +15,10 @@ export class NavGuide extends Component {
   render() {
     return (
       <React.Fragment>
+        <p>
+          This is our generic navigation component. It is used within the
+          manager application in multiple views.
+        </p>
         <Nav content={content} selected={this.state.selected} />
       </React.Fragment>
     );
