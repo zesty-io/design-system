@@ -45,16 +45,16 @@ export class Parent extends Component {
                 child.children ? (
                   // if the child has children
                   // render the child and then it's children
-                  <React.Fragment key={child.ZUID}>
+                  <React.Fragment key={child.path}>
                     <Node
                       {...child}
                       selected={this.props.selected}
                       active={this.state.active}
-                      closed={this.state.closed.includes(child.ZUID)}
+                      closed={this.state.closed.includes(child.path)}
                       handleOpen={this.handleOpen}
                     />
                     {/* allow for a closed item not to render it's children */}
-                    {!this.state.closed.includes(child.ZUID) && (
+                    {!this.state.closed.includes(child.path) && (
                       <Parent
                         {...child}
                         selected={this.props.selected}
@@ -67,9 +67,9 @@ export class Parent extends Component {
                     {...child}
                     selected={this.props.selected}
                     active={this.state.active}
-                    closed={this.state.closed.includes(child.ZUID)}
+                    closed={this.state.closed.includes(child.path)}
                     handleOpen={this.handleOpen}
-                    key={child.ZUID}
+                    key={child.path}
                   />
                 )
             )}
@@ -77,18 +77,18 @@ export class Parent extends Component {
       </article>
     );
   }
-  handleOpen = ZUID => {
-    // add or remove ZUID from closed state array
+  handleOpen = path => {
+    // add or remove path from closed state array
     let replaceClosed = [...this.state.closed];
-    if (this.state.closed.includes(ZUID)) {
+    if (this.state.closed.includes(path)) {
       replaceClosed = this.state.closed.reduce((acc, e) => {
-        if (e !== ZUID) {
+        if (e !== path) {
           acc.push(e);
         }
         return acc;
       }, []);
     } else {
-      replaceClosed.push(ZUID);
+      replaceClosed.push(path);
     }
     return this.setState({ closed: replaceClosed });
   };

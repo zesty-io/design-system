@@ -30,7 +30,7 @@ export default class App extends Component {
                         children: this.props.components.map(el => {
                           return {
                             name: el,
-                            ZUID: el.toLowerCase().replace(" ", "-"),
+                            path: el.toLowerCase().replace(" ", "-"),
                             icon: "cube"
                           };
                         })
