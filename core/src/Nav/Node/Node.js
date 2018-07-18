@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./Node.less";
 export function Node(props) {
   // style if a node is active
-  const isActive = props.active && styles.active;
+  const isActive = (props.active && styles.active) || "";
   // style is a node is selected
   const isSelected = props.selected === props.path && styles.selected;
   // style if a node is parent of selected
@@ -13,9 +13,9 @@ export function Node(props) {
 
   return (
     <li
-      className={`${
-        styles.item
-      } ${isActive} ${isParentOfSelected} ${isSelected}`}
+      className={`${styles.item} ${isActive} ${
+        styles[`depth${props.depth}`]
+      } ${isParentOfSelected} ${isSelected} `}
       key={props.path}
     >
       <Link to={`/${props.path}`}>

@@ -38,42 +38,7 @@ export class Parent extends Component {
             )}
           </span>
         )}
-        <ul>
-          {!this.state.closed.includes(this.props.title) &&
-            this.props.children.map(
-              child =>
-                child.children ? (
-                  // if the child has children
-                  // render the child and then it's children
-                  <React.Fragment key={child.path}>
-                    <Node
-                      {...child}
-                      selected={this.props.selected}
-                      active={this.state.active}
-                      closed={this.state.closed.includes(child.path)}
-                      handleOpen={this.handleOpen}
-                    />
-                    {/* allow for a closed item not to render it's children */}
-                    {!this.state.closed.includes(child.path) && (
-                      <Parent
-                        {...child}
-                        selected={this.props.selected}
-                        active={this.state.active}
-                      />
-                    )}
-                  </React.Fragment>
-                ) : (
-                  <Node
-                    {...child}
-                    selected={this.props.selected}
-                    active={this.state.active}
-                    closed={this.state.closed.includes(child.path)}
-                    handleOpen={this.handleOpen}
-                    key={child.path}
-                  />
-                )
-            )}
-        </ul>
+        <ul>{this.renderMenuItem(this.props)}</ul>
       </article>
     );
   }
@@ -91,5 +56,48 @@ export class Parent extends Component {
       replaceClosed.push(path);
     }
     return this.setState({ closed: replaceClosed });
+  };
+  renderMenuItem = item => {
+    // track recursion depth and pass it as a prop to the node component
+    const recursionDepth = item.depth + 1 || 1;
+    return (
+      !this.state.closed.includes(item.title) &&
+      item.children.map(
+        child =>
+          child.children ? (
+            // if the child has children
+            // render the child and then it's children
+            <React.Fragment key={child.path}>
+              <Node
+                {...child}
+                selected={item.selected}
+                active={this.state.active}
+                closed={this.state.closed.includes(child.path)}
+                depth={recursionDepth}
+                handleOpen={this.handleOpen}
+              />
+              {/* allow for a closed item not to render it's children */}
+              {!this.state.closed.includes(child.path) && (
+                <Parent
+                  {...child}
+                  depth={recursionDepth}
+                  selected={item.selected}
+                  active={this.state.active}
+                />
+              )}
+            </React.Fragment>
+          ) : (
+            <Node
+              {...child}
+              selected={item.selected}
+              depth={recursionDepth}
+              active={this.state.active}
+              closed={this.state.closed.includes(child.path)}
+              handleOpen={this.handleOpen}
+              key={child.path}
+            />
+          )
+      )
+    );
   };
 }
