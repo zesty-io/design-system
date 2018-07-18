@@ -11,6 +11,12 @@ export function Node(props) {
   const isParentOfSelected =
     (props.selected.includes(props.path) && styles.parentOfSelected) || "";
   const isClosed = props.closed && styles.closed;
+  let isCollapsed =
+    props.collapsed &&
+    props.collapsed.reduce((acc, collapsed) => {
+      if (collapsed === props.path) acc.push(collapsed);
+      return acc;
+    }, []).length;
   return (
     <li
       className={`${styles.item} ${isActive} ${
@@ -24,7 +30,7 @@ export function Node(props) {
       </Link>
       {props.children && (
         <i
-          className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
+          className={isCollapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
           onClick={() => props.handleOpen(props.path)}
         />
       )}

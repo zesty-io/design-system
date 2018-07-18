@@ -75,6 +75,7 @@ export class Parent extends Component {
                 selected={item.selected}
                 active={this.state.active}
                 closed={item.closed}
+                collapsed={this.state.closed}
                 depth={recursionDepth}
                 handleOpen={this.handleOpen}
               />
@@ -90,6 +91,7 @@ export class Parent extends Component {
             <Node
               {...child}
               selected={item.selected}
+              s
               depth={recursionDepth}
               active={this.state.active}
               closed={item.closed}
