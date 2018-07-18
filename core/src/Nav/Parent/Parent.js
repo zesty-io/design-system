@@ -17,11 +17,13 @@ export class Parent extends Component {
         onMouseLeave={() => {
           this.setState({ active: false });
         }}
-        className={`${styles.Parent} ${this.state.active && styles.active}`}
+        className={styles.Parent}
       >
         {/* if the item has a title, render it out */}
         {this.props.title && (
-          <span className={styles.title}>
+          <span
+            className={`${styles.title} ${this.state.active && styles.active}`}
+          >
             <h2>
               <i className={`fa fa-${this.props.icon} ${styles.titleIcon}`} />{" "}
               {this.props.title}
