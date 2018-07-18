@@ -1,4 +1,6 @@
-webpack.config.js
+webpack.*.js
 .eslintrc
 .gitignore
+
 src/
+node_modules/

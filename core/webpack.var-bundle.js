@@ -29,9 +29,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "core.js",
+    filename: "core.var.js",
     library: "core",
-    libraryTarget: "umd"
+    libraryTarget: "var"
   },
   resolve: {
     extensions: [".js"]
