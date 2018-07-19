@@ -3,6 +3,8 @@
 .item {
   display: flex;
   align-items: baseline;
+  max-height: 40px;
+  transition: max-height 0.2s ease;
   i {
     color: @zesty-gray;
     margin-right: 0.5rem;
@@ -53,5 +55,5 @@
 
 .closed {
   visibility: hidden;
-  height: 0;
+  max-height: 0;
 }
