@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Button.css";
-import { Button } from "@zesty-io/core/Button";
+import "../../core/src/Button/Button.less";
+import { Button } from "../../core/src/Button";
 
 export class ButtonGuide extends Component {
   render() {

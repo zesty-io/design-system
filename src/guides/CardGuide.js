@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Button.css";
-import "@zesty-io/core/Card.css";
+import "../../core/src/Button/Button.less";
+import "../../core/src/Card/Card.less";
 
-import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
-import { Button } from "@zesty-io/core/Button";
+import { Card, CardHeader, CardContent, CardFooter } from "../../core/src/Card";
+import { Button } from "../../core/src/Button";
 
 export class CardGuide extends Component {
   render() {

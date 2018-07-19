@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Loader.css";
-import { Loader } from "@zesty-io/core/Loader";
+import "../../core/src/Loader/Loader.less";
+import { Loader } from "../../core/src/Loader";
 
 export class LoaderGuide extends Component {
   render() {

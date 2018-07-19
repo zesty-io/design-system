@@ -10,7 +10,6 @@
   "author": "Zesty.io<developers@zesty.io>",
   "license": "All Rights Reserved",
   "dependencies": {
-    "@zesty-io/core": "0.0.16",
     "babel-preset-node": "^5.1.1",
     "brace": "^0.11.1",
     "browserify-fs": "^1.0.0",

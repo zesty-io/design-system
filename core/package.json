@@ -1,17 +1,19 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.0.16",
+  "version": "0.0.19",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
-  "main": "dist/zesty-core.js",
+  "main": "dist/core.umd.js",
   "module": "src/index.js",
   "scripts": {
     "test": "npm run build && jest",
     "precommit": "pretty-quick --staged",
     "prerelease": "npm run build && npm test",
     "release": "cp package.json dist/package.json && npm publish dist",
-    "build:bundle": "webpack --config webpack.bundle.js",
+    "build:bundle": "npm run build:bundle:var && npm run build:bundle:umd",
+    "build:bundle:var": "webpack --config webpack.var-bundle.js",
+    "build:bundle:umd": "webpack --config webpack.umd-bundle.js",
     "build:components": "webpack --config webpack.components.js",
     "build": "rimraf dist && npm run build:components && npm run build:bundle"
   },

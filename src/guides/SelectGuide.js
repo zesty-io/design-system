@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Select.css";
-import { Select, Option } from "@zesty-io/core/Select";
+import "../../core/src/Select/Select.less";
+import { Select, Option } from "../../core/src/Select";
 
 export class SelectGuide extends Component {
   render() {

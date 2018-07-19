@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Input.css";
-import { Input } from "@zesty-io/core/Input";
+import "../../core/src/Input/Input.less";
+import { Input } from "../../core/src/Input";
 
 export class InputGuide extends Component {
   render() {

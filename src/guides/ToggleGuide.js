@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Toggle.css";
-import { Toggle } from "@zesty-io/core/Toggle";
+import "../../core/src/Toggle/Toggle.less";
+import { Toggle } from "../../core/src/Toggle";
 
 export class ToggleGuide extends Component {
   render() {
