@@ -6,9 +6,6 @@
   i {
     color: @zesty-gray;
     margin-right: 0.5rem;
-    // &:last-child {
-    //   padding: 1rem;
-    // }
   }
 
   a {
@@ -16,9 +13,6 @@
     text-decoration: none;
     color: @zesty-light-blue;
     flex: 1;
-    // span {
-    //   padding-left: 0.5rem;
-    // }
   }
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
@@ -26,7 +20,6 @@
 }
 
 .active {
-  // background-color: lighten(@nav-border-color, 6%);
   transition: all 0.2s ease;
   i {
     color: @zesty-light-gray;
@@ -51,7 +44,6 @@
 }
 
 .selected {
-  // background-color: lighten(@nav-border-color, 12%);
   i {
     &:first-child {
       color: @zesty-orange;
@@ -60,5 +52,6 @@
 }
 
 .closed {
-  display: none;
+  visibility: hidden;
+  height: 0;
 }

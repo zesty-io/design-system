@@ -7,9 +7,7 @@ export function Node(props) {
   const isActive = (props.active && styles.active) || "";
   // style is a node is selected
   const isSelected = (props.selected === props.path && styles.selected) || "";
-  // style if a node is parent of selected
-  const isParentOfSelected =
-    (props.selected.includes(props.path) && styles.parentOfSelected) || "";
+  // check if a parent node is collapsed
   const isClosed = props.closed && styles.closed;
   let isCollapsed =
     props.collapsed &&
@@ -21,7 +19,7 @@ export function Node(props) {
     <li
       className={`${styles.item} ${isActive} ${
         styles[`depth${props.depth}`]
-      } ${isParentOfSelected} ${isSelected} ${isClosed}`}
+      } ${isSelected} ${isClosed}`}
       key={props.path}
     >
       <Link to={`/${props.path}`}>
