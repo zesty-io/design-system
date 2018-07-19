@@ -23,6 +23,7 @@ export default class App extends Component {
                 </header>
                 <section className={styles.AppWrap}>
                   <Nav
+                    className={styles.AppMenu}
                     content={[
                       {
                         title: "Atoms",

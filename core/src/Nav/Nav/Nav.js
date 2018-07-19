@@ -6,7 +6,7 @@ import styles from "./Nav.less";
 export class Nav extends Component {
   render() {
     return (
-      <nav className={styles.Nav}>
+      <nav className={`${styles.Nav} ${this.props.className}`}>
         {this.props.content.map(item => {
           // create a Parent for each object in the array
           // parents render children if present
