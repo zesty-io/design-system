@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import "@zesty-io/core/Search.css";
-import { Search } from "@zesty-io/core/Search";
+import "../../core/src/Search/Search.less";
+import { Search } from "../../core/src/Search";
 
 export class SearchGuide extends Component {
   render() {
