@@ -11,5 +11,6 @@ export { SelectGuide } from "./SelectGuide";
 export { ToggleGuide } from "./ToggleGuide";
 export { TextFieldTypeGuide } from "./TextFieldTypeGuide";
 export { NumberFieldTypeGuide } from "./NumberFieldTypeGuide";
+export { ColorFieldTypeGuide } from "./ColorFieldTypeGuide";
 export { NavGuide } from "./NavGuide";
 // export { Url } from './Url'

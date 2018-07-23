@@ -17,6 +17,7 @@ ReactDOM.render(
       "Infotip",
       "TextFieldType",
       "NumberFieldType",
+      "ColorFieldType",
       "Nav"
     ]}
   />,
