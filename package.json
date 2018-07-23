@@ -47,5 +47,11 @@
       "react",
       "stage-2"
     ]
+  },
+  "prettier": {
+    "jsxBracketSameLine": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "semi": false
   }
 }
