@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
-import * as Guides from "../../guides";
+import * as Guides from '../../guides'
 
-import { Nav } from "../../../core/src/Nav";
+import { Nav } from '../../../core/src/Nav'
 
-import styles from "./app.less";
+import styles from './app.less'
 export default class App extends Component {
   render() {
     return (
@@ -17,7 +17,7 @@ export default class App extends Component {
               <section className={styles.App}>
                 <header className={styles.AppHeader}>
                   <Link className={styles.Home} to="/">
-                    <i className={`fa fa-home ${styles.link}`} />{" "}
+                    <i className={`fa fa-home ${styles.link}`} />{' '}
                   </Link>
                   <h1>Zesty.io Component Library</h1>
                 </header>
@@ -26,23 +26,23 @@ export default class App extends Component {
                     className={styles.AppMenu}
                     content={[
                       {
-                        title: "Atoms",
-                        icon: "cube",
+                        title: 'Atoms',
+                        icon: 'cube',
                         children: this.props.components.map(el => {
                           return {
                             name: el,
-                            path: el.toLowerCase().replace(" ", "-"),
-                            icon: "cube"
-                          };
+                            path: el.toLowerCase().replace(' ', '-'),
+                            icon: 'cube'
+                          }
                         })
                       },
                       {
-                        title: "Molecules",
-                        icon: "gears",
+                        title: 'Molecules',
+                        icon: 'gears',
                         children: []
                       }
                     ]}
-                    selected={props.location.pathname.split("/")[1]}
+                    selected={props.location.pathname.split('/')[1]}
                   />
 
                   {/* <menu className={styles.AppMenu}>
@@ -69,6 +69,10 @@ export default class App extends Component {
                       <Route path="/search" component={Guides.SearchGuide} />
                       <Route path="/select" component={Guides.SelectGuide} />
                       <Route path="/loader" component={Guides.LoaderGuide} />
+                      <Route
+                        path="/withloader"
+                        component={Guides.WithLoaderGuide}
+                      />
                       <Route path="/input" component={Guides.InputGuide} />
                       <Route path="/toggle" component={Guides.ToggleGuide} />
                       <Route path="/infotip" component={Guides.InfotipGuide} />
@@ -88,17 +92,17 @@ export default class App extends Component {
                       <Route
                         path="/"
                         render={props => {
-                          return <div>Homepage</div>;
+                          return <div>Homepage</div>
                         }}
                       />
                     </Switch>
                   </main>
                 </section>
               </section>
-            );
+            )
           }}
         />
       </BrowserRouter>
-    );
+    )
   }
 }
