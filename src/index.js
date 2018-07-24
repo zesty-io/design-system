@@ -19,6 +19,7 @@ ReactDOM.render(
       'TextFieldType',
       'NumberFieldType',
       'ColorFieldType',
+      'CurrencyFieldType',
       'Nav'
     ]}
   />,

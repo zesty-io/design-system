@@ -88,6 +88,10 @@ export default class App extends Component {
                         path="/colorfieldtype"
                         component={Guides.ColorFieldTypeGuide}
                       />
+                      <Route
+                        path="/currencyfieldtype"
+                        component={Guides.CurrencyFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route
                         path="/"
