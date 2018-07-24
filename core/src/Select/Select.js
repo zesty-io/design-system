@@ -179,7 +179,6 @@ export class Select extends React.Component {
   }
 
   handleFilterKeyUp = evt => {
-    console.log(evt)
     this.setState({
       filter: evt.trim().toLowerCase()
     })

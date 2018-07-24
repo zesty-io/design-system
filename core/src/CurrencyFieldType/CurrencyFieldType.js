@@ -17,9 +17,18 @@ export class CurrencyFieldType extends Component {
         code: 'USD',
         name_plural: 'US dollars'
       },
+      // amount is the string we want this to return
       amount: '$0.00',
       inputAmount: ''
     }
+  }
+  componentDidMount() {
+    if (this.props.default) {
+      // select the default currency
+      // map currencies and find the object for the default
+      // this.setState({ selectedCurrency })
+    }
+    //this is where we would fetch the currencies object
   }
   render() {
     const { amount, inputAmount } = this.state
@@ -29,17 +38,26 @@ export class CurrencyFieldType extends Component {
           <label>{this.props.label}</label>
         </div>
 
-        <Input type="number" onChange={this.onChange} value={inputAmount} />
-        <span className={styles.Amount}>{amount}</span>
+        <Input
+          className={styles.CurrencyInput}
+          type="number"
+          onChange={this.onChange}
+          value={inputAmount}
+        />
+        {/* <span className={styles.Amount}>{amount}</span> */}
         <Select
           onSelect={this.selectCurrency}
+          selection={{
+            value: this.state.selectCurrency,
+            text: this.state.selectedCurrency.symbol
+          }}
           className={styles.SelectCurrency}>
           {Object.keys(currencies).map((curr, i) => {
             return (
               <Option
                 key={i}
                 value={JSON.stringify(currencies[curr])}
-                text={currencies[curr].name}
+                text={`${currencies[curr].symbol} | ${currencies[curr].name}`}
               />
             )
           })}
@@ -89,9 +107,10 @@ export class CurrencyFieldType extends Component {
   }
 }
 
+// temporary data to display currencies
 const currencies = {
   USD: {
-    symbol: '$',
+    symbol: ' $ ',
     name: 'US Dollar',
     symbol_native: '$',
     decimal_digits: 2,
@@ -100,7 +119,7 @@ const currencies = {
     name_plural: 'US dollars'
   },
   CAD: {
-    symbol: 'CA$',
+    symbol: 'CA$ ',
     name: 'Canadian Dollar',
     symbol_native: '$',
     decimal_digits: 2,
@@ -109,7 +128,7 @@ const currencies = {
     name_plural: 'Canadian dollars'
   },
   EUR: {
-    symbol: '€',
+    symbol: ' € ',
     name: 'Euro',
     symbol_native: '€',
     decimal_digits: 2,
@@ -127,7 +146,7 @@ const currencies = {
     name_plural: 'UAE dirhams'
   },
   AFN: {
-    symbol: 'Af',
+    symbol: 'Af ',
     name: 'Afghan Afghani',
     symbol_native: '؋',
     decimal_digits: 0,
