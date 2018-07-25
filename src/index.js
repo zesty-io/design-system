@@ -19,6 +19,7 @@ ReactDOM.render(
       'NumberFieldType',
       'UrlFieldType',
       'BinaryFieldType',
+      'DateFieldType',
       'Nav'
     ]}
     molecules={['Search', 'ColorFieldType', 'CurrencyFieldType']}
