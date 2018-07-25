@@ -20,6 +20,7 @@ ReactDOM.render(
       'NumberFieldType',
       'ColorFieldType',
       'CurrencyFieldType',
+      'BinaryFieldType',
       'Nav'
     ]}
   />,

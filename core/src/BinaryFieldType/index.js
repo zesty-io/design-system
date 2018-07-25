@@ -1,1 +1,1 @@
-export { NumberFieldType } from './NumberFieldType'
+export { BinaryFieldType } from './BinaryFieldType'

@@ -1,35 +1,41 @@
 import React, { Component } from 'react'
 
-import { Input } from '../Input'
+import { Toggle } from '../Toggle'
 
 import styles from './BinaryFieldType.less'
 export class BinaryFieldType extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      BinaryInput: ''
+      binaryInput: ''
     }
   }
+  // should take default to yes or no
+  // should have custom binary response
+  // ie- yes/no true/false etc
   render() {
-    const { BinaryInput } = this.state
+    const { binaryInput } = this.state
     return (
       <article
         className={`${styles.BinaryFieldType} ${
-          BinaryInput.length > this.props.charCount ? styles.Error : ''
+          binaryInput.length > this.props.charCount ? styles.Error : ''
         }`}>
         <div className={styles.BinaryFieldTypeLabel}>
           <label>{this.props.label}</label>
-          <span>
-            {BinaryInput.length}/{this.props.charCount}
-          </span>
         </div>
-        <Input type="Binary" onChange={this.onChange} value={BinaryInput} />
+        <span className={styles.Values}>{this.props.falseValue || 'No'}</span>
+        <Toggle
+          defaultChecked={this.props.defaultChecked}
+          onChange={this.onChange}
+          value={binaryInput}
+        />
+        <span className={styles.Values}>{this.props.trueValue || 'Yes'}</span>
       </article>
     )
   }
   onChange = evt => {
     this.setState({
-      BinaryInput: evt.target.value
+      binaryInput: evt.target.checked
     })
   }
 }

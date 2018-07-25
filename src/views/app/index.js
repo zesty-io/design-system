@@ -92,6 +92,10 @@ export default class App extends Component {
                         path="/currencyfieldtype"
                         component={Guides.CurrencyFieldTypeGuide}
                       />
+                      <Route
+                        path="/binaryfieldtype"
+                        component={Guides.BinaryFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route
                         path="/"
