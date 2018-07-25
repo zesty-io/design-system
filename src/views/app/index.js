@@ -121,6 +121,10 @@ export default class App extends Component {
                         path="/datefieldtype"
                         component={Guides.DateFieldTypeGuide}
                       />
+                      <Route
+                        path="/datetimefieldtype"
+                        component={Guides.DateTimeFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route
                         path="/"
