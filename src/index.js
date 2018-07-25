@@ -11,7 +11,6 @@ ReactDOM.render(
       'Divider',
       'Loader',
       'WithLoader',
-      'Search',
       'Select',
       'Input',
       'Toggle',
@@ -22,7 +21,7 @@ ReactDOM.render(
       'BinaryFieldType',
       'Nav'
     ]}
-    molecules={['ColorFieldType', 'CurrencyFieldType']}
+    molecules={['Search', 'ColorFieldType', 'CurrencyFieldType']}
     organisms={[]}
   />,
   document.getElementById('root')
