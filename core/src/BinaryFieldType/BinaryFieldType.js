@@ -10,9 +10,6 @@ export class BinaryFieldType extends Component {
       binaryInput: ''
     }
   }
-  // should take default to yes or no
-  // should have custom binary response
-  // ie- yes/no true/false etc
   render() {
     const { binaryInput } = this.state
     return (
