@@ -15,17 +15,14 @@ ReactDOM.render(
       'Select',
       'Input',
       'Toggle',
-      'Infotip'
-    ]}
-    molecules={[
+      'Infotip',
       'TextFieldType',
       'NumberFieldType',
       'UrlFieldType',
-      'ColorFieldType',
-      'CurrencyFieldType',
       'BinaryFieldType',
       'Nav'
     ]}
+    molecules={['ColorFieldType', 'CurrencyFieldType']}
     organisms={[]}
   />,
   document.getElementById('root')
