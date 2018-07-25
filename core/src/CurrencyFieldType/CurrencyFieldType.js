@@ -6,13 +6,11 @@ import { currencies } from './currencies'
 
 import styles from './CurrencyFieldType.less'
 
-//TODO: take default currency
 export class CurrencyFieldType extends Component {
   constructor(props) {
     super(props)
     this.state = {
       selectedCurrency: null,
-      // amount is the string we want this to return
       amount: '$0.00',
       inputAmount: ''
     }
@@ -43,7 +41,6 @@ export class CurrencyFieldType extends Component {
         }
       })
     }
-    //this is where we would fetch the currencies object
   }
   render() {
     const { amount, inputAmount } = this.state
@@ -82,6 +79,7 @@ export class CurrencyFieldType extends Component {
       </article>
     )
   }
+
   onChange = evt => {
     // handle NaN result for empty amount
     if (!evt.target.value) {
@@ -92,6 +90,7 @@ export class CurrencyFieldType extends Component {
     let withDot = evt.target.value.match(/(\.)/g)
       ? evt.target.value
       : evt.target.value + '.'
+
     // remove currency symbols
     withDot = withDot.match(/[-+]?[0-9]*\.?[0-9]*/g).join('')
 
@@ -105,6 +104,7 @@ export class CurrencyFieldType extends Component {
       inputAmount: evt.target.value
     })
   }
+
   selectCurrency = evt => {
     this.setState(
       {
@@ -123,5 +123,3 @@ export class CurrencyFieldType extends Component {
     )
   }
 }
-
-// temporary data to display currencies
