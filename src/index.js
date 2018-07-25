@@ -20,6 +20,7 @@ ReactDOM.render(
     molecules={[
       'TextFieldType',
       'NumberFieldType',
+      'UrlFieldType',
       'ColorFieldType',
       'CurrencyFieldType',
       'BinaryFieldType',

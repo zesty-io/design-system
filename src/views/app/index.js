@@ -112,6 +112,10 @@ export default class App extends Component {
                       <Route
                         path="/binaryfieldtype"
                         component={Guides.BinaryFieldTypeGuide}
+                      />{' '}
+                      <Route
+                        path="/urlfieldtype"
+                        component={Guides.UrlFieldTypeGuide}
                       />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route
