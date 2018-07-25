@@ -7,7 +7,7 @@ export class CurrencyFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <CurrencyFieldType label="Title Field" />
+        <CurrencyFieldType label="Title Field" default="CAD" />
       </React.Fragment>
     )
   }
