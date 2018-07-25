@@ -4,7 +4,7 @@ import App from './views/app'
 
 ReactDOM.render(
   <App
-    components={[
+    atoms={[
       'Button',
       'Button Group',
       'Card',
@@ -15,7 +15,9 @@ ReactDOM.render(
       'Select',
       'Input',
       'Toggle',
-      'Infotip',
+      'Infotip'
+    ]}
+    molecules={[
       'TextFieldType',
       'NumberFieldType',
       'ColorFieldType',
@@ -23,6 +25,7 @@ ReactDOM.render(
       'BinaryFieldType',
       'Nav'
     ]}
+    organisms={[]}
   />,
   document.getElementById('root')
 )

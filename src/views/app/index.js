@@ -28,7 +28,7 @@ export default class App extends Component {
                       {
                         title: 'Atoms',
                         icon: 'cube',
-                        children: this.props.components.map(el => {
+                        children: this.props.atoms.map(el => {
                           return {
                             name: el,
                             path: el.toLowerCase().replace(' ', '-'),
@@ -39,7 +39,24 @@ export default class App extends Component {
                       {
                         title: 'Molecules',
                         icon: 'gears',
-                        children: []
+                        children: this.props.molecules.map(el => {
+                          return {
+                            name: el,
+                            path: el.toLowerCase().replace(' ', '-'),
+                            icon: 'gears'
+                          }
+                        })
+                      },
+                      {
+                        title: 'Organisms',
+                        icon: 'sitemap',
+                        children: this.props.organisms.map(el => {
+                          return {
+                            name: el,
+                            path: el.toLowerCase().replace(' ', '-'),
+                            icon: 'sitemap'
+                          }
+                        })
                       }
                     ]}
                     selected={props.location.pathname.split('/')[1]}
