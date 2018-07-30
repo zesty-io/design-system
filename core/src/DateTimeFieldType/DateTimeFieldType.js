@@ -26,7 +26,7 @@ export class DateTimeFieldType extends Component {
           showTimeSelect
           timeFormat="HH:mm"
           timeIntervals={15}
-          dateFormat="LLL"
+          dateFormat={this.props.format || 'LLL'}
           timeCaption="time"
         />
       </article>

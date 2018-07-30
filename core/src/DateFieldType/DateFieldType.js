@@ -23,7 +23,7 @@ export class DateFieldType extends Component {
           onChange={this.onChange}
           selected={this.state.date}
           placeholderText="Click to select a date"
-          dateFormat="LL"
+          dateFormat={this.props.format || 'LL'}
         />
       </article>
     )

@@ -8,6 +8,7 @@ export class DateTimeFieldTypeGuide extends Component {
     return (
       <React.Fragment>
         <DateTimeFieldType label="Title Field" />
+        <DateTimeFieldType label="Title Field" format="LLL" />
       </React.Fragment>
     )
   }
