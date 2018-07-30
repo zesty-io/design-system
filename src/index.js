@@ -16,6 +16,7 @@ ReactDOM.render(
       'Toggle',
       'Infotip',
       'TextFieldType',
+      'TextAreaFieldType',
       'NumberFieldType',
       'UrlFieldType',
       'BinaryFieldType',
