@@ -23,6 +23,10 @@ export class DateTimeFieldType extends Component {
           {...this.props}
           onChange={this.onChange}
           selected={this.state.date}
+          showTimeSelect
+          dateFormat={this.props.dateFormat || 'LLL'}
+          timeFormat={this.props.timeFormat || 'HH:mm'}
+          timeIntervals={this.props.timeIntervals || 15}
         />
       </article>
     )
