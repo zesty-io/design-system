@@ -20,10 +20,10 @@ export class DateFieldType extends Component {
           <label>{this.props.label}</label>
         </div>
         <DatePicker
+          {...this.props}
           onChange={this.onChange}
           selected={this.state.date}
           placeholderText="Click to select a date"
-          dateFormat={this.props.format || 'LL'}
         />
       </article>
     )

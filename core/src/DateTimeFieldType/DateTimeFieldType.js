@@ -20,12 +20,13 @@ export class DateTimeFieldType extends Component {
           <label>{this.props.label}</label>
         </div>
         <DatePicker
+          {...this.props}
           onChange={this.onChange}
           selected={this.state.date}
           placeholderText="Click to select a date and time"
           showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
+          timeFormat={this.props.timeFormat || 'HH:mm'}
+          timeIntervals={this.props.timeIntervals || 15}
           dateFormat={this.props.format || 'LLL'}
           timeCaption="time"
         />
