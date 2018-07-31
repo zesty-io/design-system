@@ -3,7 +3,7 @@ import brace from 'brace'
 import AceEditor from 'react-ace'
 
 import 'brace/mode/javascript'
-import 'brace/theme/tomorrow_night'
+import 'brace/theme/idle_fingers'
 
 export default class GithubEmbed extends Component {
   state = {
@@ -21,7 +21,7 @@ export default class GithubEmbed extends Component {
     return (
       <AceEditor
         mode="javascript"
-        theme="tomorrow_night"
+        theme="idle_fingers"
         height="600px"
         width="800px"
         value={this.state.code}
