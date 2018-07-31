@@ -15,11 +15,6 @@
 @width: @height * 6.5;
 @togglerWidth: @width / 1.7;
 
-.app {
-  display: inline-grid;
-  grid-template-columns: auto auto;
-}
-
 input[type='checkbox'] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -37,7 +32,7 @@ input[type='checkbox'] {
   &::after {
     content: '';
     display: inline-block;
-    border-radius: @height / 2;
+    border-radius: @height / 6;
   }
 
   &::before {

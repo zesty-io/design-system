@@ -17,7 +17,7 @@ export class BinaryFieldType extends Component {
   }
   render() {
     const { binaryInput } = this.state
-    const { charCount, falseValue, trueValue, label } = this.props
+    const { charCount, falseValue, trueValue, label, disabled } = this.props
     return (
       <article
         className={`${styles.BinaryFieldType} ${
@@ -29,6 +29,7 @@ export class BinaryFieldType extends Component {
         <label className={styles.switch}>
           <input
             checked={binaryInput}
+            disabled={disabled}
             onChange={this.onChange}
             type="checkbox"
             data-text-on={trueValue}

@@ -22,6 +22,13 @@ export class BinaryFieldTypeGuide extends Component {
           trueValue="Fast"
           falseValue="Slow"
         />
+        <br />
+        <BinaryFieldType
+          disabled
+          label="Disabled"
+          trueValue="Fast"
+          falseValue="Slow"
+        />
       </React.Fragment>
     )
   }
