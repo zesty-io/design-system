@@ -17,12 +17,9 @@ export class BinaryFieldType extends Component {
   }
   render() {
     const { binaryInput } = this.state
-    const { charCount, falseValue, trueValue, label, disabled } = this.props
+    const { falseValue, trueValue, label, disabled } = this.props
     return (
-      <article
-        className={`${styles.BinaryFieldType} ${
-          binaryInput.length > charCount ? styles.Error : ''
-        }`}>
+      <article>
         <div className={styles.BinaryFieldTypeLabel}>
           <label>{label}</label>
         </div>
