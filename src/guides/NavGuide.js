@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import { Nav } from "../../core/src/Nav";
+import { Nav } from '../../core/src/Nav'
+import GithubEmbed from '../components/githubembed'
 
 export class NavGuide extends Component {
   state = {
-    selected: ""
-  };
+    selected: ''
+  }
   componentDidMount() {
     this.setState({
-      selected: `nav/${this.props.location.pathname.split("/").pop()}`
-    });
+      selected: `nav/${this.props.location.pathname.split('/').pop()}`
+    })
   }
   static getDerivedStateFromProps(props, state) {
-    if (props.location.pathname.split("/").pop() !== state.selected) {
-      return { selected: `nav/${props.location.pathname.split("/").pop()}` };
+    if (props.location.pathname.split('/').pop() !== state.selected) {
+      return { selected: `nav/${props.location.pathname.split('/').pop()}` }
     } else {
-      return null;
+      return null
     }
   }
   render() {
@@ -25,50 +26,58 @@ export class NavGuide extends Component {
           This is our generic navigation component. It is used within the
           manager application in multiple views.
         </p>
+        <p>
+          <strong>Props:</strong> content (an object containing menu content),
+          selected (a string matching the path of the selected item)
+        </p>
+        <br />
         <Nav content={content} selected={this.state.selected} />
+        <br />
+        <br />
+        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/bf5518a64322afd96b165a41ba3799b5/raw/147405ce86e3b3f50f0f69bd3da4b3b4f33f704c/Nav.js" />
       </React.Fragment>
-    );
+    )
   }
 }
 
 const content = [
   {
-    title: "PAGES",
-    icon: "file-o",
+    title: 'PAGES',
+    icon: 'file-o',
     children: [
       {
-        name: "Simple Page",
-        path: "nav/as4da-asdads-ds4a",
-        icon: "bars"
+        name: 'Simple Page',
+        path: 'nav/as4da-asdads-ds4a',
+        icon: 'bars'
       },
       {
-        name: "Homepage",
-        path: "nav/asda-asda4ds-dsa",
-        icon: "bars",
+        name: 'Homepage',
+        path: 'nav/asda-asda4ds-dsa',
+        icon: 'bars',
         children: [
-          { name: "child", path: "nav/252n0-23n452", icon: "cube" },
+          { name: 'child', path: 'nav/252n0-23n452', icon: 'cube' },
           {
-            name: "homepages",
-            path: "nav/4898-44646-12341234",
-            icon: "cube",
+            name: 'homepages',
+            path: 'nav/4898-44646-12341234',
+            icon: 'cube',
             children: [
               {
-                name: "child",
-                path: "nav/8238-235325ads-ewew",
-                icon: "cube"
+                name: 'child',
+                path: 'nav/8238-235325ads-ewew',
+                icon: 'cube'
               },
               {
-                name: "child",
-                path: "nav/8238-235asd25ads-ewew",
-                icon: "cube",
+                name: 'child',
+                path: 'nav/8238-235asd25ads-ewew',
+                icon: 'cube',
                 children: [
-                  { name: "buried", path: "nav/89234djns23u80", icon: "cube" }
+                  { name: 'buried', path: 'nav/89234djns23u80', icon: 'cube' }
                 ]
               },
               {
-                name: "node",
-                path: "nav/238-4562346",
-                icon: "cube"
+                name: 'node',
+                path: 'nav/238-4562346',
+                icon: 'cube'
               }
             ]
           }
@@ -77,86 +86,25 @@ const content = [
     ]
   },
   {
-    title: "PAGE GROUPS",
-    icon: "files-o",
+    title: 'PAGE GROUPS',
+    icon: 'files-o',
     children: []
   },
   {
-    title: "DATA SETS",
-    icon: "database",
+    title: 'DATA SETS',
+    icon: 'database',
     children: [
       {
-        name: "Clippings",
-        path: "nav/asda-asd5ads-dsa",
-        icon: "bars"
+        name: 'Clippings',
+        path: 'nav/asda-asd5ads-dsa',
+        icon: 'bars'
       },
-      { name: "Dashboard Widgets", path: "nav/asda-aesdads-dsa", icon: "bars" },
+      { name: 'Dashboard Widgets', path: 'nav/asda-aesdads-dsa', icon: 'bars' },
       {
-        name: "Sidebar Contact Form",
-        path: "nav/asda-asdsdads-dsa",
-        icon: "bars"
-      }
-    ]
-  },
-  {
-    title: "MORE PAGES",
-    icon: "file-o",
-    children: [
-      {
-        name: "Simple Page",
-        path: "nav/as4da-asda3ds-ds4a",
-        icon: "bars"
-      },
-      {
-        name: "Homepage",
-        path: "nav/asda-asd3a4ds-dsa",
-        icon: "bars",
-        children: [
-          { name: "child", path: "nav/2523n0-23n452", icon: "cube" },
-          {
-            name: "homepages",
-            path: "nav/4898-443646-12341234",
-            icon: "list",
-            children: [
-              {
-                name: "child",
-                path: "nav/8238-2353325ads-ewew",
-                icon: "list"
-              },
-              {
-                name: "child",
-                path: "nav/8238-2353asd25ads-ewew",
-                icon: "list",
-                children: [
-                  { name: "buried", path: "nav/892334djns23u80", icon: "list" }
-                ]
-              },
-              {
-                name: "child",
-                path: "nav/8238-235213325ads-ewew",
-                icon: "list"
-              },
-              {
-                name: "child",
-                path: "nav/8238-221353asd25ads-ewew",
-                icon: "cube",
-                children: [
-                  {
-                    name: "buried",
-                    path: "nav/892334d12jns23u80",
-                    icon: "cube"
-                  }
-                ]
-              },
-              {
-                name: "node",
-                path: "nav/238-45632346",
-                icon: "cube"
-              }
-            ]
-          }
-        ]
+        name: 'Sidebar Contact Form',
+        path: 'nav/asda-asdsdads-dsa',
+        icon: 'bars'
       }
     ]
   }
-];
+]
