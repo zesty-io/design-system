@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './views/app'
+import { DropDownFieldType } from '../core/src/DropDownFieldType'
 
 ReactDOM.render(
   <App
@@ -24,7 +25,12 @@ ReactDOM.render(
       'DateTimeFieldType',
       'Nav'
     ]}
-    molecules={['Search', 'ColorFieldType', 'CurrencyFieldType']}
+    molecules={[
+      'Search',
+      'ColorFieldType',
+      'CurrencyFieldType',
+      'DropDownFieldType'
+    ]}
     organisms={[]}
   />,
   document.getElementById('root')

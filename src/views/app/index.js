@@ -129,6 +129,10 @@ export default class App extends Component {
                         path="/textareafieldtype"
                         component={Guides.TextareaFieldTypeGuide}
                       />
+                      <Route
+                        path="/dropdownfieldtype"
+                        component={Guides.DropDownFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route
                         path="/"
