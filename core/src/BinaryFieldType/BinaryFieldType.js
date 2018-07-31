@@ -1,38 +1,48 @@
 import React, { Component } from 'react'
 
-import { Toggle } from '../Toggle'
-
 import styles from './BinaryFieldType.less'
 export class BinaryFieldType extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      binaryInput: ''
-    }
+  static defaultProps = {
+    trueValue: 'true',
+    falseValue: 'false'
+  }
+  state = {
+    binaryInput: false,
+    value: this.props.falseValue
+  }
+
+  componentDidMount() {
+    this.props.defaultChecked &&
+      this.setState({ binaryInput: true, value: this.props.trueValue })
   }
   render() {
     const { binaryInput } = this.state
+    const { charCount, falseValue, trueValue, label } = this.props
     return (
       <article
         className={`${styles.BinaryFieldType} ${
-          binaryInput.length > this.props.charCount ? styles.Error : ''
+          binaryInput.length > charCount ? styles.Error : ''
         }`}>
         <div className={styles.BinaryFieldTypeLabel}>
-          <label>{this.props.label}</label>
+          <label>{label}</label>
         </div>
-        <span className={styles.Values}>{this.props.falseValue || 'No'}</span>
-        <Toggle
-          defaultChecked={this.props.defaultChecked}
-          onChange={this.onChange}
-          value={binaryInput}
-        />
-        <span className={styles.Values}>{this.props.trueValue || 'Yes'}</span>
+        <label className={styles.switch}>
+          <input
+            checked={binaryInput}
+            onChange={this.onChange}
+            type="checkbox"
+            data-text-on={trueValue}
+            data-text-off={falseValue}
+          />
+          <span className={styles.slider} />
+        </label>
       </article>
     )
   }
   onChange = evt => {
     this.setState({
-      binaryInput: evt.target.checked
+      binaryInput: evt.target.checked,
+      value: evt.target.checked ? this.props.trueValue : this.props.falseValue
     })
   }
 }
