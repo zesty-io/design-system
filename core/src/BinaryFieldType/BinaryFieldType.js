@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import styles from './BinaryFieldType.less'
 export class BinaryFieldType extends Component {
   static defaultProps = {
-    trueValue: 'true',
-    falseValue: 'false'
+    trueValue: 'True',
+    falseValue: 'False'
   }
   state = {
     binaryInput: false,
