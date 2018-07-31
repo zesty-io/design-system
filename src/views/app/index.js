@@ -28,7 +28,7 @@ export default class App extends Component {
                       {
                         title: 'Atoms',
                         icon: 'cube',
-                        children: this.props.components.map(el => {
+                        children: this.props.atoms.map(el => {
                           return {
                             name: el,
                             path: el.toLowerCase().replace(' ', '-'),
@@ -39,7 +39,24 @@ export default class App extends Component {
                       {
                         title: 'Molecules',
                         icon: 'gears',
-                        children: []
+                        children: this.props.molecules.map(el => {
+                          return {
+                            name: el,
+                            path: el.toLowerCase().replace(' ', '-'),
+                            icon: 'gears'
+                          }
+                        })
+                      },
+                      {
+                        title: 'Organisms',
+                        icon: 'sitemap',
+                        children: this.props.organisms.map(el => {
+                          return {
+                            name: el,
+                            path: el.toLowerCase().replace(' ', '-'),
+                            icon: 'sitemap'
+                          }
+                        })
                       }
                     ]}
                     selected={props.location.pathname.split('/')[1]}
@@ -87,6 +104,34 @@ export default class App extends Component {
                       <Route
                         path="/colorfieldtype"
                         component={Guides.ColorFieldTypeGuide}
+                      />
+                      <Route
+                        path="/currencyfieldtype"
+                        component={Guides.CurrencyFieldTypeGuide}
+                      />
+                      <Route
+                        path="/binaryfieldtype"
+                        component={Guides.BinaryFieldTypeGuide}
+                      />{' '}
+                      <Route
+                        path="/urlfieldtype"
+                        component={Guides.UrlFieldTypeGuide}
+                      />
+                      <Route
+                        path="/datefieldtype"
+                        component={Guides.DateFieldTypeGuide}
+                      />
+                      <Route
+                        path="/datetimefieldtype"
+                        component={Guides.DateTimeFieldTypeGuide}
+                      />
+                      <Route
+                        path="/textareafieldtype"
+                        component={Guides.TextareaFieldTypeGuide}
+                      />
+                      <Route
+                        path="/dropdownfieldtype"
+                        component={Guides.DropDownFieldTypeGuide}
                       />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route

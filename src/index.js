@@ -1,26 +1,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './views/app'
+import { DropDownFieldType } from '../core/src/DropDownFieldType'
 
 ReactDOM.render(
   <App
-    components={[
+    atoms={[
       'Button',
       'Button Group',
       'Card',
       'Divider',
       'Loader',
       'WithLoader',
-      'Search',
       'Select',
       'Input',
       'Toggle',
       'Infotip',
       'TextFieldType',
+      'TextAreaFieldType',
       'NumberFieldType',
-      'ColorFieldType',
+      'UrlFieldType',
+      'BinaryFieldType',
+      'DateFieldType',
+      'DateTimeFieldType',
       'Nav'
     ]}
+    molecules={[
+      'Search',
+      'ColorFieldType',
+      'CurrencyFieldType',
+      'DropDownFieldType'
+    ]}
+    organisms={[]}
   />,
   document.getElementById('root')
 )
