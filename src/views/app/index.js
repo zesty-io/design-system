@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
+import { Contribute } from './Contribute'
 import * as Guides from '../../guides'
 
 import { Nav } from '../../../core/src/Nav'
@@ -134,12 +135,7 @@ export default class App extends Component {
                         component={Guides.DropDownFieldTypeGuide}
                       />
                       <Route path="/nav" component={Guides.NavGuide} />
-                      <Route
-                        path="/"
-                        render={props => {
-                          return <div>Homepage</div>
-                        }}
-                      />
+                      <Route path="/" component={Contribute} />
                     </Switch>
                   </main>
                 </section>
