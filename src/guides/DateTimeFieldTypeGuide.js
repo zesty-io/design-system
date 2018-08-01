@@ -17,7 +17,7 @@ export class DateTimeFieldTypeGuide extends Component {
         <br />
         <br />
         <DateTimeFieldType label="Title Field" />
-        <DateTimeFieldType label="Title Field" timeFormat="LL" />
+        <DateTimeFieldType label="Title Field" timeFormat="HH:mm:ss" />
         <br />
         <br />
         <CollapsibleCard header="Usage">
@@ -25,7 +25,7 @@ export class DateTimeFieldTypeGuide extends Component {
             height="150px"
             code={`
 <DateTimeFieldType label="Title Field" />
-<DateTimeFieldType label="Title Field" timeFormat="LL" />`}
+<DateTimeFieldType label="Title Field" timeFormat="HH:mm:ss" />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
