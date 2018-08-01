@@ -15,6 +15,13 @@ ReactDOM.render(
       'Input',
       'Toggle',
       'Infotip',
+      'Nav'
+    ]}
+    molecules={[
+      'Search',
+      'CollapsibleCard',
+      'ColorFieldType',
+      'CurrencyFieldType',
       'TextFieldType',
       'TextAreaFieldType',
       'NumberFieldType',
@@ -22,12 +29,6 @@ ReactDOM.render(
       'BinaryFieldType',
       'DateFieldType',
       'DateTimeFieldType',
-      'Nav'
-    ]}
-    molecules={[
-      'Search',
-      'ColorFieldType',
-      'CurrencyFieldType',
       'DropDownFieldType'
     ]}
     organisms={[]}

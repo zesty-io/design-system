@@ -10,12 +10,12 @@ export class Contribute extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Contributing and Additions</h2>
+        <h2>Additions and Changes</h2>
         <Card style={{ maxWidth: '30rem', padding: '1rem', margin: '1rem' }}>
           <CardHeader>
             <h2>Changes:</h2>
           </CardHeader>
-          <CardContent>
+          <CardContent style={{ padding: '1rem' }}>
             Make a branch and submit a PR with details on what changes need to
             be made
           </CardContent>

@@ -22,7 +22,7 @@ export default class GithubEmbed extends Component {
       <AceEditor
         mode="javascript"
         theme="idle_fingers"
-        height="600px"
+        height={this.props.height || '600px'}
         width="800px"
         fontSize="14px"
         value={this.state.code}

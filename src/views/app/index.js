@@ -134,6 +134,10 @@ export default class App extends Component {
                         path="/dropdownfieldtype"
                         component={Guides.DropDownFieldTypeGuide}
                       />
+                      <Route
+                        path="/collapsiblecard"
+                        component={Guides.CollapsibleCardGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
                     </Switch>
