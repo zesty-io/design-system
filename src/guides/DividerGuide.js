@@ -20,7 +20,10 @@ export class DividerGuide extends Component {
           <Divider />
         </div>
         <br />
-        <CollapsibleCard header="Usage and Code">
+        <CollapsibleCard header="Usage">
+          <GithubEmbed height="50px" code="<Divider />" />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="Code">
           <GithubEmbed
             height="150px"
             url="https://gist.githubusercontent.com/grantglidewell/4cac32a12982d2534be86173cd5f38c9/raw/79851b035f7bef42d8701e1b644e7239aa908a4d/Divider.js"

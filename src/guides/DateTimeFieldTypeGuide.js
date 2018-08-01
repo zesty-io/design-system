@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import '../../core/src/DateTimeFieldType/DateTimeFieldType.less'
 import { DateTimeFieldType } from '../../core/src/DateTimeFieldType'
 import GithubEmbed from '../components/githubembed'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 
 export class DateTimeFieldTypeGuide extends Component {
   render() {
@@ -19,7 +20,17 @@ export class DateTimeFieldTypeGuide extends Component {
         <DateTimeFieldType label="Title Field" timeFormat="LL" />
         <br />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/8dfe4f38dbaba5cedf418054c49a5fe1/raw/fe43a1487fad46de11bf8f2d93fe5a198453836f/DateTimeFieldType.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="150px"
+            code={`
+<DateTimeFieldType label="Title Field" />
+<DateTimeFieldType label="Title Field" timeFormat="LL" />`}
+          />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="Code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/8dfe4f38dbaba5cedf418054c49a5fe1/raw/fa2d95806cce31072ef96116af6922cc66e559fd/DateTimeFieldType.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }
