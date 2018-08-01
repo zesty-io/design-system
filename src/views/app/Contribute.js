@@ -16,10 +16,15 @@ export class Contribute extends Component {
             <h2>Changes:</h2>
           </CardHeader>
           <CardContent style={{ padding: '1rem' }}>
-            Make a branch and submit a PR with details on what changes need to
-            be made
+            Submit an issue with details on what changes need to be made, and on
+            a branch referencing the issue number make a PR with the needed
+            changes.
           </CardContent>
-          <CardFooter>link to github repo</CardFooter>
+          <CardFooter>
+            <a href="https://github.com/zesty-io/design-system/issues">
+              Zesty.io Design System Issues
+            </a>
+          </CardFooter>
         </Card>
         <Card style={{ maxWidth: '30rem', padding: '1rem', margin: '1rem' }}>
           <CardHeader>
@@ -36,7 +41,11 @@ export class Contribute extends Component {
               </li>
             </ul>
           </CardContent>
-          <CardFooter>link to github repo</CardFooter>
+          <CardFooter>
+            <a href="https://github.com/zesty-io/design-system">
+              Zesty.io Design System
+            </a>
+          </CardFooter>
         </Card>
       </React.Fragment>
     )
