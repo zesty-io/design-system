@@ -142,6 +142,10 @@ export default class App extends Component {
                         path="/wysiwygfieldtype"
                         component={Guides.WYSIWYGFieldTypeGuide}
                       />
+                      <Route
+                        path="/draftfieldtype"
+                        component={Guides.DraftFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
                     </Switch>

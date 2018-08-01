@@ -30,7 +30,8 @@ ReactDOM.render(
       'DateFieldType',
       'DateTimeFieldType',
       'DropDownFieldType',
-      'WYSIWYGFieldType'
+      'WYSIWYGFieldType',
+      'DraftFieldType'
     ]}
     organisms={[]}
   />,

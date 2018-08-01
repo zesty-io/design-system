@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Editor } from '@tinymce/tinymce-react'
-
 export class WYSIWYGFieldType extends React.Component {
   handleEditorChange = e => {
     console.log('Content was updated:', e.target.getContent())
