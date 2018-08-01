@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import "../../core/src/Select/Select.less";
-import { Select, Option } from "../../core/src/Select";
+import '../../core/src/Select/Select.less'
+import { Select, Option } from '../../core/src/Select'
+import GithubEmbed from '../components/githubembed'
 
 export class SelectGuide extends Component {
+  state = {
+    value: 'Initial message',
+    text: 'Initial'
+  }
   render() {
     return (
       <React.Fragment>
@@ -13,14 +18,24 @@ export class SelectGuide extends Component {
           prop.
         </p>
         <Select
-          selection={{ value: "Value1", text: "Initial" }}
-          onSelect={() => console.log("onSelect")}
-        >
+          selection={{ value: this.state.value, text: this.state.text }}
+          onSelect={this.handleSelect}>
           <Option key="1" value="1" text="Selection 1" />
           <Option key="2" value="2" text="Selection 2" />
           <Option key="3" value="3" text="Selection 3" />
         </Select>
+        <br />
+        <p>Usage</p>
+        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/40660e7462eaa0bc3a697a44d7e8c98e/raw/680b9ad84879be931ba83107cd43760ee0231448/SelectGuide.js" />
+        <p>Code</p>
+        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/79dee4371e549ae899cdae4d52af7682/raw/2f6484863850ef68e7fb1d64904d25c52daecee7/Select.js" />
       </React.Fragment>
-    );
+    )
+  }
+  handleSelect = evt => {
+    this.setState({
+      value: evt.target.dataset.value,
+      text: evt.target.dataset.text
+    })
   }
 }

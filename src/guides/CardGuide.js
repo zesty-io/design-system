@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import "../../core/src/Button/Button.less";
-import "../../core/src/Card/Card.less";
+import '../../core/src/Button/Button.less'
+import '../../core/src/Card/Card.less'
 
-import { Card, CardHeader, CardContent, CardFooter } from "../../core/src/Card";
-import { Button } from "../../core/src/Button";
+import { Card, CardHeader, CardContent, CardFooter } from '../../core/src/Card'
+import { Button } from '../../core/src/Button'
+import GithubEmbed from '../components/githubembed'
 
 export class CardGuide extends Component {
   render() {
@@ -34,17 +35,16 @@ export class CardGuide extends Component {
           </CardContent>
           <CardFooter
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              marginRight: "1rem"
-            }}
-          >
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              marginRight: '1rem'
+            }}>
             <Button type="save" text="save" />
             <Button type="cancel" text="cancel" />
           </CardFooter>
         </Card>
-        <Card style={{ maxWidth: "20rem" }}>
+        <Card style={{ maxWidth: '20rem' }}>
           <CardHeader>
             <h1>A Restricted Card</h1>
           </CardHeader>
@@ -55,7 +55,7 @@ export class CardGuide extends Component {
           <CardFooter>footer</CardFooter>
         </Card>
         <h1>These cards are in a flex container</h1>
-        <section style={{ display: "flex" }}>
+        <section style={{ display: 'flex' }}>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
             <CardContent>
@@ -96,7 +96,12 @@ export class CardGuide extends Component {
             <CardFooter>this is the card footer</CardFooter>
           </Card>
         </section>
+        <br />
+        <p>Usage</p>
+        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/00ccd5777a49f7536abc2e051a608846/raw/98fbcc28d6c459c04cea14c4f26f10c211655389/CardUsage.js" />
+        <p>Code</p>
+        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/23644d42f165474ff8ebd5333b30247a/raw/7569b8b0aa2b7ee997ecacd6df89123cf4391f63/Card.js" />
       </React.Fragment>
-    );
+    )
   }
 }
