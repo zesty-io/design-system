@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import '../../core/src/Button/Button.less'
 import { Button } from '../../core/src/Button'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class ButtonGuide extends Component {
@@ -14,22 +15,25 @@ export class ButtonGuide extends Component {
         </p>
         <p>Button takes a type and text attribute</p>
         <br />
-        <p>type = '', text='button'</p>
         <Button type="" text="Button" />
         <br />
-        <p>type = 'save', text='Save'</p>
         <Button type="save" text="Save" />
         <br />
-        <p>type = 'cancel', text='Cancel'</p>
         <Button type="cancel" text="Cancel" />
         <br />
-        <p>type = 'warn', text='Warn'</p>
         <Button type="warn" text="Warn" />
         <br />
-        <p>type = 'alt', text='Alt'</p>
         <Button type="alt" text="Alt" />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/fbf64f9eafed4dcedd16a0b0adbc3efe/raw/2e6466ac44df42fdf73e3e14a2ea87fbf1a71e10/Button.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="250px"
+            url="https://gist.githubusercontent.com/grantglidewell/f37c2bc1f6835705a34c8063b9b62374/raw/3621e09110a652def2348452a56c91cdc4765891/ButtonUsage.js"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="Code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/fbf64f9eafed4dcedd16a0b0adbc3efe/raw/2e6466ac44df42fdf73e3e14a2ea87fbf1a71e10/Button.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }

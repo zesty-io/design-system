@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import { Input } from '../Input'
-
 import styles from './CollapsibleCard.less'
 import { Card, CardHeader, CardContent, CardFooter } from '../Card'
 
@@ -17,7 +15,7 @@ export class CollapsibleCard extends Component {
 
   componentDidMount() {
     if (this.props.collapsed) {
-      this.setState({ isCollapsed: this.props.collapsed })
+      this.setState({ isCollapsed: true })
     }
   }
 
