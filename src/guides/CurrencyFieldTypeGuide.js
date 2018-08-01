@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import '../../core/src/CurrencyFieldType/CurrencyFieldType.less'
 import { CurrencyFieldType } from '../../core/src/CurrencyFieldType'
 import GithubEmbed from '../components/githubembed'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 
 export class CurrencyFieldTypeGuide extends Component {
   render() {
@@ -14,7 +15,15 @@ export class CurrencyFieldTypeGuide extends Component {
         <CurrencyFieldType label="Title Field" default="CAD" />
         <br />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/f3f51ba99632d7f583f0a615e3a59500/raw/a8d6b2dcc962912f53b4b06e3a61d0243c0aca60/CurrencyFieldType.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="50px"
+            code="<CurrencyFieldType label=&quot;Title Field&quot; default=&quot;CAD&quot; />"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard header="Code" collapsed>
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/f3f51ba99632d7f583f0a615e3a59500/raw/5812e40da4556ad254bd2ce17857121a769dd08a/CurrencyFieldType.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }

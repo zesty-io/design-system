@@ -11,11 +11,15 @@ export default class GithubEmbed extends Component {
   }
   componentDidMount() {
     // RAW link from public gist
-    fetch(this.props.url)
-      .then(res => res.text())
-      .then(code => {
-        this.setState({ code })
-      })
+    if (this.props.url) {
+      fetch(this.props.url)
+        .then(res => res.text())
+        .then(code => {
+          this.setState({ code })
+        })
+    } else if (this.props.code) {
+      this.setState({ code: this.props.code })
+    }
   }
   render() {
     return (

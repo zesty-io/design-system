@@ -25,7 +25,10 @@ export class InputGuide extends Component {
         <br />
         <br />
         <CollapsibleCard header="Usage and Code">
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/6f18bcb18ef81edaa179f0ad4bfbff9e/raw/6e838538910a4e100a7cef0b8114c8f547397d38/Input.js" />
+          <GithubEmbed
+            height="400px"
+            url="https://gist.githubusercontent.com/grantglidewell/6f18bcb18ef81edaa179f0ad4bfbff9e/raw/6e838538910a4e100a7cef0b8114c8f547397d38/Input.js"
+          />
         </CollapsibleCard>
       </React.Fragment>
     )

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import '../../core/src/ColorFieldType/ColorFieldType.less'
 import { ColorFieldType } from '../../core/src/ColorFieldType'
 import GithubEmbed from '../components/githubembed'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 
 export class ColorFieldTypeGuide extends Component {
   render() {
@@ -16,7 +17,15 @@ export class ColorFieldTypeGuide extends Component {
         <ColorFieldType label="Default to Orange Field" default="#ff9920" />
         <br />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/e5acf4d520bf43d3ff2e9ae851da5e78/raw/ec970b8026cc9d760e9a1396aab5d51e12af2526/ColorFieldType.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="100px"
+            url="https://gist.githubusercontent.com/grantglidewell/0d0a3d5ec21edd595d1a781158312f80/raw/0c3e816beea8eb37ee884a94ef5ece176bce019d/ColorFieldTypeUsage.js"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard header="Code" collapsed>
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/e5acf4d520bf43d3ff2e9ae851da5e78/raw/91884aa7a26cb1570f5ab837839480d6d01382dd/ColorFieldType.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }
