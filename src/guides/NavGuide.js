@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { Nav } from '../../core/src/Nav'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class NavGuide extends Component {
@@ -34,7 +35,15 @@ export class NavGuide extends Component {
         <Nav content={content} selected={this.state.selected} />
         <br />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/bf5518a64322afd96b165a41ba3799b5/raw/147405ce86e3b3f50f0f69bd3da4b3b4f33f704c/Nav.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="75px"
+            url="https://gist.githubusercontent.com/grantglidewell/c70e005dc9d6ddb26da43d9e5fd27303/raw/9dea76a96d5f00560ea325ec9d1b69b8ad4b739d/NavUsage.js"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/bf5518a64322afd96b165a41ba3799b5/raw/9ee2a4f7b918acdc4c4570b0920be4c71964f926/Nav.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }

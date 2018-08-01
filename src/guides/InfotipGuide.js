@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import '../../core/src/Infotip/Infotip.less'
 import { Infotip } from '../../core/src/Infotip'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class InfotipGuide extends Component {
@@ -13,8 +14,9 @@ export class InfotipGuide extends Component {
         <Infotip title="This is the Infotip title" />
         <br />
         <br />
-
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/bbb2144f9f11204dc7ee4f9ee39b94b0/raw/87242583267c8d5d8d63c5ff4db504f6eaa723c8/Infotip.js" />
+        <CollapsibleCard header="Usage and Code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/bbb2144f9f11204dc7ee4f9ee39b94b0/raw/87242583267c8d5d8d63c5ff4db504f6eaa723c8/Infotip.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }

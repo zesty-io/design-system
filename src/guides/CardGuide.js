@@ -5,6 +5,7 @@ import '../../core/src/Card/Card.less'
 
 import { Card, CardHeader, CardContent, CardFooter } from '../../core/src/Card'
 import { Button } from '../../core/src/Button'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class CardGuide extends Component {
@@ -97,10 +98,15 @@ export class CardGuide extends Component {
           </Card>
         </section>
         <br />
-        <p>Usage</p>
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/00ccd5777a49f7536abc2e051a608846/raw/98fbcc28d6c459c04cea14c4f26f10c211655389/CardUsage.js" />
-        <p>Code</p>
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/23644d42f165474ff8ebd5333b30247a/raw/7569b8b0aa2b7ee997ecacd6df89123cf4391f63/Card.js" />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed
+            height="300px"
+            url="https://gist.githubusercontent.com/grantglidewell/00ccd5777a49f7536abc2e051a608846/raw/98fbcc28d6c459c04cea14c4f26f10c211655389/CardUsage.js"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="Code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/23644d42f165474ff8ebd5333b30247a/raw/7569b8b0aa2b7ee997ecacd6df89123cf4391f63/Card.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }
