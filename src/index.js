@@ -29,7 +29,8 @@ ReactDOM.render(
       'BinaryFieldType',
       'DateFieldType',
       'DateTimeFieldType',
-      'DropDownFieldType'
+      'DropDownFieldType',
+      'WYSIWYGFieldType'
     ]}
     organisms={[]}
   />,

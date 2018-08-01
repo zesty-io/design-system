@@ -137,6 +137,10 @@ export default class App extends Component {
                       <Route
                         path="/collapsiblecard"
                         component={Guides.CollapsibleCardGuide}
+                      />{' '}
+                      <Route
+                        path="/wysiwygfieldtype"
+                        component={Guides.WYSIWYGFieldTypeGuide}
                       />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
