@@ -14,15 +14,33 @@ export class WYSIWYGFieldTypeGuide extends Component {
         <WYSIWYGFieldType />
         <br />
         <br />
-        {/* <CollapsibleCard header="Usage">
-          <GithubEmbed
-            height="50px"
-            code="<Toggle onChange={() => console.log('changed')} defaultChecked={true} />"
-          />
+        <CollapsibleCard header="Usage">
+          <GithubEmbed height="50px" code="<WYSIWYGFieldType />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/35d6d51fa2e534cddeef16175abbc879/raw/61ddd04835ffca64cf93034925fac50006b8b5c9/Toggle.js" />
-        </CollapsibleCard> */}
+          <GithubEmbed
+            code={`
+export class WYSIWYGFieldType extends React.Component {
+  handleEditorChange = e => {
+    console.log('Content was updated:', e.target.getContent())
+  }
+
+  render() {
+    return (
+      <Editor
+        initialValue="<p>This is the initial content of the editor</p>"
+        init={{
+          plugins: 'link image code',
+          toolbar:
+            'undo redo | bold italic | alignleft aligncenter alignright | code'
+        }}
+        onChange={this.handleEditorChange}
+      />
+    )
+  }
+}`}
+          />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }
