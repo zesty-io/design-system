@@ -24,6 +24,7 @@ export default class GithubEmbed extends Component {
         theme="idle_fingers"
         height="600px"
         width="800px"
+        fontSize="14px"
         value={this.state.code}
         readOnly={true}
         showGutter={false}
