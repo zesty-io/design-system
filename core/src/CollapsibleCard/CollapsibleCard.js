@@ -5,17 +5,17 @@ import { Card, CardHeader, CardContent, CardFooter } from '../Card'
 
 export class CollapsibleCard extends Component {
   static defaultProps = {
-    isCollapsed: false,
+    isCollapsed: true,
     header: 'Header Required',
     footer: ''
   }
   state = {
-    isCollapsed: false
+    isCollapsed: true
   }
 
   componentDidMount() {
-    if (this.props.collapsed) {
-      this.setState({ isCollapsed: true })
+    if (this.props.open) {
+      this.setState({ isCollapsed: false })
     }
   }
 

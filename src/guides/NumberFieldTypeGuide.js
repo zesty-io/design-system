@@ -13,7 +13,7 @@ export class NumberFieldTypeGuide extends Component {
         <br />
         <NumberFieldType label="Title Field" charCount="350" />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<NumberFieldType label=&quot;Title Field&quot; charCount=&quot;350&quot; />"

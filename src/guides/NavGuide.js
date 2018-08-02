@@ -35,7 +35,7 @@ export class NavGuide extends Component {
         <Nav content={content} selected={this.state.selected} />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="75px"
             url="https://gist.githubusercontent.com/grantglidewell/c70e005dc9d6ddb26da43d9e5fd27303/raw/9dea76a96d5f00560ea325ec9d1b69b8ad4b739d/NavUsage.js"

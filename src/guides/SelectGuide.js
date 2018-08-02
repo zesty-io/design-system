@@ -27,7 +27,7 @@ export class SelectGuide extends Component {
           <Option key="3" value="3" text="Selection 3" />
         </Select>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/40660e7462eaa0bc3a697a44d7e8c98e/raw/680b9ad84879be931ba83107cd43760ee0231448/SelectGuide.js" />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>

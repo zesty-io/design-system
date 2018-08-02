@@ -16,7 +16,7 @@ export class WithLoaderGuide extends Component {
         </p>
         <WithLoader height="200px" />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="100px"
             url="https://gist.githubusercontent.com/grantglidewell/9c32e983a1fdd9377adfcb60bde363c3/raw/4f0038b096a8bf7bcd129e1e7ad452a4a6396d78/WithLoaderUsage.js"

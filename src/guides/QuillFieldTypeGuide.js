@@ -17,7 +17,7 @@ export class QuillFieldTypeGuide extends Component {
         <QuillFieldType />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed height="50px" code="<QuillFieldType />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

@@ -13,7 +13,7 @@ export class SearchGuide extends Component {
         <Search placeholder="Search for something" />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
             code={` <Search

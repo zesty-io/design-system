@@ -33,7 +33,7 @@ export class ButtonGroupGuide extends Component {
           <Button type="" text="Button5" />
         </ButtonGroup>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="350px"
             url="https://gist.githubusercontent.com/grantglidewell/54c76b82060c2622f5fa2e3c470168db/raw/a5b4ae276b4dd6b908f2074c699d1552b2a54195/ButtonGroupUsage.js"

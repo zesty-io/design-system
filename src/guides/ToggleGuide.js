@@ -17,7 +17,7 @@ export class ToggleGuide extends Component {
         <Toggle defaultChecked={true} />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<Toggle onChange={() => console.log('changed')} defaultChecked={true} />"

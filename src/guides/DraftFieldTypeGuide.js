@@ -19,7 +19,7 @@ export class DraftFieldTypeGuide extends Component {
         <DraftFieldType />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed height="50px" code="<DraftFieldType />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

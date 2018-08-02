@@ -14,7 +14,7 @@ export class UrlFieldTypeGuide extends Component {
         <br />
         <UrlFieldType label="Title Field" charCount="150" />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<UrlFieldType label=&quot;Title Field&quot; charCount=&quot;150&quot; />"

@@ -14,7 +14,7 @@ export class InfotipGuide extends Component {
         <Infotip title="This is the Infotip title" />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<Infotip title=&quot;This is the Infotip title&quot; />"

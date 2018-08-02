@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import brace from 'brace'
 import AceEditor from 'react-ace'
 
 import 'brace/mode/javascript'
 import 'brace/theme/idle_fingers'
 
-export default class GithubEmbed extends Component {
+export default class GithubEmbed extends PureComponent {
   state = {
     code: 'github code'
   }

@@ -15,7 +15,7 @@ export class CurrencyFieldTypeGuide extends Component {
         <CurrencyFieldType label="Title Field" default="CAD" />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<CurrencyFieldType label=&quot;Title Field&quot; default=&quot;CAD&quot; />"

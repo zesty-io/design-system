@@ -24,7 +24,7 @@ export class InputGuide extends Component {
         </div>
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<Input

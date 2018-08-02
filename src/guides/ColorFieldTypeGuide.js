@@ -17,7 +17,7 @@ export class ColorFieldTypeGuide extends Component {
         <ColorFieldType label="Default to Orange Field" default="#ff9920" />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="100px"
             url="https://gist.githubusercontent.com/grantglidewell/0d0a3d5ec21edd595d1a781158312f80/raw/0c3e816beea8eb37ee884a94ef5ece176bce019d/ColorFieldTypeUsage.js"

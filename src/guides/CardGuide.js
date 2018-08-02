@@ -98,7 +98,7 @@ export class CardGuide extends Component {
           </Card>
         </section>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="300px"
             url="https://gist.githubusercontent.com/grantglidewell/00ccd5777a49f7536abc2e051a608846/raw/98fbcc28d6c459c04cea14c4f26f10c211655389/CardUsage.js"

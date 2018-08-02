@@ -20,7 +20,7 @@ export class DateFieldTypeGuide extends Component {
         <DateFieldType label="Format to LL" dateFormat="LL" />
         <DateFieldType label="Title Field" />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
             code={`

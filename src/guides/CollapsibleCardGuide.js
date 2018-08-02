@@ -10,26 +10,76 @@ export class CollapsibleCardGuide extends Component {
       <React.Fragment>
         <p>Collapsible Card</p>
         <p>
-          Props: header (string), collapsed (boolean), CHILDREN (rendered as
-          body), footer (string optional)
+          Props: header (string), open (boolean), CHILDREN (rendered as body),
+          footer (string optional)
         </p>
         <br />
-        <CollapsibleCard header="Collapse Me" footer="this is a footer">
+        <CollapsibleCard header="Open Me" footer="this is a footer">
           <p>This is the body</p>
         </CollapsibleCard>
-        <CollapsibleCard header="Default Collapsed" collapsed>
+        <CollapsibleCard header="Default Open" open>
           <h3>Pass JSX or a component!</h3>
         </CollapsibleCard>
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="200px"
-            url="https://gist.githubusercontent.com/grantglidewell/c76897c3d3b3077ef8871dc17bff8c52/raw/bd1df9690953c3d638cb44a5bdcf68303cf90a7f/CollapsibleCardUse.js"
+            height="150px"
+            code={`<CollapsibleCard header="Open Me" footer="this is a footer">
+  <p>This is the body</p>
+</CollapsibleCard>
+<CollapsibleCard header="Default Open" open>
+  <h3>Pass JSX or a component!</h3>
+</CollapsibleCard>`}
           />
         </CollapsibleCard>
-        <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/829489093e0abf71f5b3a77d96332158/raw/30b0310cea64fda2b736c9c862a72a9fdc85f586/CollapsibleCard.js" />
+        <CollapsibleCard header="Code">
+          <GithubEmbed
+            code={`export class CollapsibleCard extends Component {
+  static defaultProps = {
+    isCollapsed: true,
+    header: 'Header Required',
+    footer: ''
+  }
+  state = {
+    isCollapsed: true
+  }
+
+  componentDidMount() {
+    if (this.props.open) {
+      this.setState({ isCollapsed: false })
+    }
+  }
+
+  render() {
+    const { isCollapsed } = this.state
+    const { header, footer } = this.props
+    return (
+      <Card className={styles.Card}>
+        <CardHeader className={styles.CardHeader}>
+          <i
+            className={isCollapsed ? 'fa fa-caret-left' : 'fa fa-caret-down'}
+            onClick={this.onCollapse}
+          />
+          <h2>{header}</h2>
+        </CardHeader>
+        {/* render or dont render, later I want to do animation with css on close */}
+        {isCollapsed ? null : (
+          <React.Fragment>
+            <CardContent>{this.props.children}</CardContent>
+            <CardFooter>{footer}</CardFooter>
+          </React.Fragment>
+        )}
+      </Card>
+    )
+  }
+  onCollapse = () => {
+    this.setState({
+      isCollapsed: !this.state.isCollapsed
+    })
+  }
+}`}
+          />
         </CollapsibleCard>
       </React.Fragment>
     )

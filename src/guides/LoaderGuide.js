@@ -12,7 +12,7 @@ export class LoaderGuide extends Component {
         <p>A loading indicator for inline use</p>
         <Loader />
         <br />
-        <CollapsibleCard header="Usage and Code">
+        <CollapsibleCard header="Usage and Code" open>
           <GithubEmbed height="50px" code="<Loader />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

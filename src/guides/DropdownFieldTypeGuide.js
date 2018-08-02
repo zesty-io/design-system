@@ -25,7 +25,7 @@ export class DropDownFieldTypeGuide extends Component {
           ]}
         />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="300px"
             code={`

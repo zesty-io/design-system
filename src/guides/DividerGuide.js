@@ -20,7 +20,7 @@ export class DividerGuide extends Component {
           <Divider />
         </div>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed height="50px" code="<Divider />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

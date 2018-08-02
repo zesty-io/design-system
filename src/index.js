@@ -20,8 +20,8 @@ ReactDOM.render(
       'WithLoader'
     ].sort()}
     molecules={[
-      'Search',
       'CollapsibleCard',
+      'Search',
       'ColorFieldType',
       'CurrencyFieldType',
       'TextFieldType',

@@ -36,7 +36,7 @@ export class BinaryFieldTypeGuide extends Component {
         />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="450px"
             code={`

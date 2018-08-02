@@ -20,7 +20,7 @@ export class DateTimeFieldTypeGuide extends Component {
         <DateTimeFieldType label="Title Field" timeFormat="HH:mm:ss" />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
             code={`

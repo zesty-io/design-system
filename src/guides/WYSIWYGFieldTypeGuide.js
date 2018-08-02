@@ -14,7 +14,7 @@ export class WYSIWYGFieldTypeGuide extends Component {
         <WYSIWYGFieldType />
         <br />
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed height="50px" code="<WYSIWYGFieldType />" />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

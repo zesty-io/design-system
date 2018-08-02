@@ -19,7 +19,7 @@ export class UrlGuide extends Component {
           Text only child
         </Url>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="200px"
             code={`

@@ -14,7 +14,7 @@ export class AppLinkGuide extends Component {
           Text
         </AppLink>
         <br />
-        <CollapsibleCard header="Usage">
+        <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="100px"
             code={`
