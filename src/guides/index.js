@@ -1,5 +1,5 @@
 export { ButtonGuide } from './ButtonGuide'
-// export { AppLink } from "./AppLink";
+export { AppLinkGuide } from './AppLinkGuide'
 export { ButtonGroupGuide } from './ButtonGroupGuide'
 export { CardGuide } from './CardGuide'
 export { DividerGuide } from './DividerGuide'
@@ -25,4 +25,4 @@ export { WYSIWYGFieldTypeGuide } from './WYSIWYGFieldTypeGuide'
 export { DraftFieldTypeGuide } from './DraftFieldTypeGuide'
 export { QuillFieldTypeGuide } from './QuillFieldTypeGuide'
 export { NavGuide } from './NavGuide'
-// export { Url } from './Url'
+export { UrlGuide } from './UrlGuide'

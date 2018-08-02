@@ -84,6 +84,8 @@ export default class App extends Component {
                       />
                       <Route path="/card" component={Guides.CardGuide} />
                       <Route path="/divider" component={Guides.DividerGuide} />
+                      <Route path="/applink" component={Guides.AppLinkGuide} />
+                      <Route path="/url" component={Guides.UrlGuide} />
                       <Route path="/search" component={Guides.SearchGuide} />
                       <Route path="/select" component={Guides.SelectGuide} />
                       <Route path="/loader" component={Guides.LoaderGuide} />

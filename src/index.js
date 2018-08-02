@@ -7,6 +7,8 @@ ReactDOM.render(
     atoms={[
       'Button',
       'Button Group',
+      'AppLink',
+      'Url',
       'Card',
       'Divider',
       'Loader',
