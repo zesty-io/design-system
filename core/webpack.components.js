@@ -1,62 +1,68 @@
-"use strict";
+'use strict'
 
-const fs = require("fs");
-const path = require("path");
-const webpack = require("webpack");
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
 
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractLess = new ExtractTextPlugin({
   filename: `[name].css`
-});
+})
 
 module.exports = {
   entry: () => {
-    return fs.readdirSync("src/").reduce((acc, dir) => {
+    return fs.readdirSync('src/').reduce((acc, dir) => {
       // Exclude files. We only build components
       // in a directory structure.
-      if (!dir.split(".")[1]) {
-        acc[dir] = path.resolve(__dirname, `src/${dir}`);
+      if (!dir.split('.')[1]) {
+        acc[dir] = path.resolve(__dirname, `src/${dir}`)
       }
-      return acc;
-    }, {});
+      return acc
+    }, {})
   },
-  mode: "development",
+  mode: 'development',
   externals: {
     // Don't bundle react or react-dom
     react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React'
     },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM'
+    },
+    'react-router-dom': {
+      commonjs: 'react-router-dom',
+      commonjs2: 'react-router-dom',
+      amd: 'ReactRouterDOM',
+      root: 'ReactRouterDOM'
     }
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, 'dist'),
     filename: `[name].js`,
-    library: "core",
-    libraryTarget: "umd"
+    library: 'core',
+    libraryTarget: 'umd'
   },
   resolve: {
-    extensions: [".js"]
+    extensions: ['.js']
   },
   plugins: [
     extractLess,
     new CopyWebpackPlugin([
       {
-        from: "src/**/*.less",
+        from: 'src/**/*.less',
         flatten: true
       }
     ]),
     new CopyWebpackPlugin([
       {
-        from: "src/colors.less",
+        from: 'src/colors.less',
         flatten: true
       }
     ])
@@ -68,14 +74,14 @@ module.exports = {
         use: extractLess.extract({
           use: [
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 modules: true,
-                localIdentName: "[local]--[hash:base64:5]"
+                localIdentName: '[local]--[hash:base64:5]'
               }
             },
             {
-              loader: "less-loader"
+              loader: 'less-loader'
             }
           ]
         })
@@ -83,14 +89,14 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
-          presets: ["react", "es2015", "stage-2"]
+          presets: ['react', 'es2015', 'stage-2']
         }
       }
     ]
   }
-};
+}
 
 // 'use strict'
 
