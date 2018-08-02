@@ -152,6 +152,10 @@ export default class App extends Component {
                         path="/quillfieldtype"
                         component={Guides.QuillFieldTypeGuide}
                       />
+                      <Route
+                        path="/onetoonefieldtype"
+                        component={Guides.OneToOneFieldTypeGuide}
+                      />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
                     </Switch>

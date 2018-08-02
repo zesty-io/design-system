@@ -34,7 +34,8 @@ ReactDOM.render(
       'DropDownFieldType',
       'WYSIWYGFieldType',
       'DraftFieldType',
-      'QuillFieldType'
+      'QuillFieldType',
+      'OneToOneFieldType'
     ].sort()}
     organisms={[]}
   />,
