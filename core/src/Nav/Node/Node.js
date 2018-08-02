@@ -30,17 +30,10 @@ export class Node extends PureComponent {
           styles[`depth${depth}`]
         } ${isSelected} ${isClosed}`}
         key={path}>
-        {Link ? (
-          <Link to={`/${path}`}>
-            <i className={`fa fa-${icon}`} />
-            <span>{name}</span>
-          </Link>
-        ) : (
-          <a href={`/${path}`}>
-            <i className={`fa fa-${icon}`} />
-            <span>{name}</span>
-          </a>
-        )}
+        <Link to={`/${path}`}>
+          <i className={`fa fa-${icon}`} />
+          <span>{name}</span>
+        </Link>
         {children && (
           <i
             className={isCollapsed ? 'fa fa-caret-left' : 'fa fa-caret-down'}
