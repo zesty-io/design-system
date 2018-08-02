@@ -8,7 +8,7 @@ export class UrlGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>A styled wrapper for the react-router Link component</p>
+        <p>A styled wrapper for HTML a tag</p>
         <Url onClick={() => console.log('clicked Url')}>
           <i className="fa fa-trash-o" />
         </Url>
