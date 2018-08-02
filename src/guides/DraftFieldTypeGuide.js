@@ -8,7 +8,13 @@ export class DraftFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>A WYSIWYG (Draft.js) component</p>
+        <p>
+          A WYSIWYG{' '}
+          <a href="https://jpuri.github.io/react-draft-wysiwyg/#/">
+            (Draft.js)
+          </a>{' '}
+          component
+        </p>
         <br />
         <DraftFieldType />
         <br />

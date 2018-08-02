@@ -21,7 +21,11 @@ export class QuillFieldType extends React.Component {
   render() {
     const { text } = this.state
     return (
-      <ReactQuill value={text} onEditorStateChange={this.onEditorStateChange} />
+      <ReactQuill
+        value={text}
+        theme="snow"
+        onChange={this.onEditorStateChange}
+      />
     )
   }
 }

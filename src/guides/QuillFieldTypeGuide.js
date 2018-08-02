@@ -8,7 +8,11 @@ export class QuillFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>A WYSIWYG (Quill.js) component</p>
+        <p>
+          A WYSIWYG{' '}
+          <a href="https://www.npmjs.com/package/react-quill">(Quill.js)</a>{' '}
+          component
+        </p>
         <br />
         <QuillFieldType />
         <br />
