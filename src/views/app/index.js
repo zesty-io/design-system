@@ -84,6 +84,8 @@ export default class App extends Component {
                       />
                       <Route path="/card" component={Guides.CardGuide} />
                       <Route path="/divider" component={Guides.DividerGuide} />
+                      <Route path="/applink" component={Guides.AppLinkGuide} />
+                      <Route path="/url" component={Guides.UrlGuide} />
                       <Route path="/search" component={Guides.SearchGuide} />
                       <Route path="/select" component={Guides.SelectGuide} />
                       <Route path="/loader" component={Guides.LoaderGuide} />
@@ -134,6 +136,27 @@ export default class App extends Component {
                         path="/dropdownfieldtype"
                         component={Guides.DropDownFieldTypeGuide}
                       />
+                      <Route
+                        path="/collapsiblecard"
+                        component={Guides.CollapsibleCardGuide}
+                      />{' '}
+                      <Route
+                        path="/wysiwygfieldtype"
+                        component={Guides.WYSIWYGFieldTypeGuide}
+                      />
+                      <Route
+                        path="/draftfieldtype"
+                        component={Guides.DraftFieldTypeGuide}
+                      />
+                      <Route
+                        path="/quillfieldtype"
+                        component={Guides.QuillFieldTypeGuide}
+                      />
+                      <Route
+                        path="/onetoonefieldtype"
+                        component={Guides.OneToOneFieldTypeGuide}
+                      />
+                      <Route path="/tag" component={Guides.TagGuide} />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
                     </Switch>

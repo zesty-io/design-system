@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Node.less'
 
 export class Node extends PureComponent {
@@ -29,10 +30,10 @@ export class Node extends PureComponent {
           styles[`depth${depth}`]
         } ${isSelected} ${isClosed}`}
         key={path}>
-        <a href={`/${path}`}>
+        <Link to={`/${path}`}>
           <i className={`fa fa-${icon}`} />
           <span>{name}</span>
-        </a>
+        </Link>
         {children && (
           <i
             className={isCollapsed ? 'fa fa-caret-left' : 'fa fa-caret-down'}

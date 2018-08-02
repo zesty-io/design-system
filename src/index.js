@@ -5,16 +5,26 @@ import App from './views/app'
 ReactDOM.render(
   <App
     atoms={[
+      'AppLink',
       'Button',
       'Button Group',
       'Card',
       'Divider',
-      'Loader',
-      'WithLoader',
-      'Select',
-      'Input',
-      'Toggle',
       'Infotip',
+      'Input',
+      'Loader',
+      'Nav',
+      'Select',
+      'Toggle',
+      'Url',
+      'Tag',
+      'WithLoader'
+    ].sort()}
+    molecules={[
+      'CollapsibleCard',
+      'Search',
+      'ColorFieldType',
+      'CurrencyFieldType',
       'TextFieldType',
       'TextAreaFieldType',
       'NumberFieldType',
@@ -22,14 +32,12 @@ ReactDOM.render(
       'BinaryFieldType',
       'DateFieldType',
       'DateTimeFieldType',
-      'Nav'
-    ]}
-    molecules={[
-      'Search',
-      'ColorFieldType',
-      'CurrencyFieldType',
-      'DropDownFieldType'
-    ]}
+      'DropDownFieldType',
+      'WYSIWYGFieldType',
+      'DraftFieldType',
+      'QuillFieldType',
+      'OneToOneFieldType'
+    ].sort()}
     organisms={[]}
   />,
   document.getElementById('root')

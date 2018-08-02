@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import '../../core/src/Toggle/Toggle.less'
 import { Toggle } from '../../core/src/Toggle'
+import { CollapsibleCard } from '../../core/src/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class ToggleGuide extends Component {
@@ -16,7 +17,15 @@ export class ToggleGuide extends Component {
         <Toggle defaultChecked={true} />
         <br />
         <br />
-        <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/35d6d51fa2e534cddeef16175abbc879/raw/5cad4b5ba4d73ea1c93b2d0414d2f830ebe2e433/Toggle.js" />
+        <CollapsibleCard header="Usage" open>
+          <GithubEmbed
+            height="50px"
+            code="<Toggle onChange={() => console.log('changed')} defaultChecked={true} />"
+          />
+        </CollapsibleCard>
+        <CollapsibleCard collapsed header="Code">
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/35d6d51fa2e534cddeef16175abbc879/raw/61ddd04835ffca64cf93034925fac50006b8b5c9/Toggle.js" />
+        </CollapsibleCard>
       </React.Fragment>
     )
   }

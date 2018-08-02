@@ -1,40 +1,46 @@
-"use strict";
+'use strict'
 
-const fs = require("fs");
-const path = require("path");
-const webpack = require("webpack");
+const fs = require('fs')
+const path = require('path')
+const webpack = require('webpack')
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractLess = new ExtractTextPlugin({
   filename: `core.css`
-});
+})
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: './src/index.js',
+  mode: 'development',
   externals: {
     // Don't bundle react or react-dom
     react: {
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "React",
-      root: "React"
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React'
     },
-    "react-dom": {
-      commonjs: "react-dom",
-      commonjs2: "react-dom",
-      amd: "ReactDOM",
-      root: "ReactDOM"
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM'
+    },
+    'react-router-dom': {
+      commonjs: 'react-router-dom',
+      commonjs2: 'react-router-dom',
+      amd: 'ReactRouterDOM',
+      root: 'ReactRouterDOM'
     }
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "core.umd.js",
-    library: "core",
-    libraryTarget: "umd"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'core.umd.js',
+    library: 'core',
+    libraryTarget: 'umd'
   },
   resolve: {
-    extensions: [".js"]
+    extensions: ['.js']
   },
   plugins: [extractLess],
   module: {
@@ -44,14 +50,14 @@ module.exports = {
         use: extractLess.extract({
           use: [
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 modules: true,
-                localIdentName: "[local]--[hash:base64:5]"
+                localIdentName: '[local]--[hash:base64:5]'
               }
             },
             {
-              loader: "less-loader"
+              loader: 'less-loader'
             }
           ]
         })
@@ -59,14 +65,14 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
-          presets: ["react", "es2015", "stage-2"]
+          presets: ['react', 'es2015', 'stage-2']
         }
       }
     ]
   }
-};
+}
 
 // 'use strict'
 

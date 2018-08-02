@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import { Select, Option } from '../Select'
 
-import styles from './DropDownFieldType.less'
-
 export class DropDownFieldType extends Component {
   state = {
     selectedOption: this.props.options[0],
@@ -12,8 +10,8 @@ export class DropDownFieldType extends Component {
   render() {
     const { selectedOption } = this.state
     return (
-      <article className={styles.CurrencyFieldType}>
-        <div className={styles.CurrencyFieldTypeLabel}>
+      <article>
+        <div>
           <label>{this.props.label}</label>
         </div>
         <Select
