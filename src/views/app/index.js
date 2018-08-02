@@ -156,6 +156,7 @@ export default class App extends Component {
                         path="/onetoonefieldtype"
                         component={Guides.OneToOneFieldTypeGuide}
                       />
+                      <Route path="/tag" component={Guides.TagGuide} />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
                     </Switch>

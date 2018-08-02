@@ -1,0 +1,27 @@
+@import '../colors.less';
+
+.Tag {
+  background-color: @zesty-blue;
+  color: @white;
+  border-radius: 3px;
+  padding: 0.5rem 0.25rem;
+  margin: 0.25rem;
+  i {
+    margin: 2px;
+    font-size: 1.1rem;
+    color: @zesty-light-gray;
+    transition: all 0.2s;
+    &:hover {
+      color: @white;
+    }
+  }
+  a {
+    margin: 2px;
+    font-size: 1.2em;
+    color: @white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

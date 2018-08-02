@@ -17,6 +17,7 @@ ReactDOM.render(
       'Select',
       'Toggle',
       'Url',
+      'Tag',
       'WithLoader'
     ].sort()}
     molecules={[
