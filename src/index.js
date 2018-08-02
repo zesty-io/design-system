@@ -5,20 +5,20 @@ import App from './views/app'
 ReactDOM.render(
   <App
     atoms={[
+      'AppLink',
       'Button',
       'Button Group',
-      'AppLink',
-      'Url',
       'Card',
       'Divider',
-      'Loader',
-      'WithLoader',
-      'Select',
-      'Input',
-      'Toggle',
       'Infotip',
-      'Nav'
-    ]}
+      'Input',
+      'Loader',
+      'Nav',
+      'Select',
+      'Toggle',
+      'Url',
+      'WithLoader'
+    ].sort()}
     molecules={[
       'Search',
       'CollapsibleCard',
@@ -35,7 +35,7 @@ ReactDOM.render(
       'WYSIWYGFieldType',
       'DraftFieldType',
       'QuillFieldType'
-    ]}
+    ].sort()}
     organisms={[]}
   />,
   document.getElementById('root')
