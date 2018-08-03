@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 
-import { Select, Option } from '../Select'
+import { SearchableList, Option } from '../SearchableList'
+import { Tag } from '../Tag'
+
+import styles from './OneToManyFieldType.less'
 
 export class OneToManyFieldType extends Component {
   state = {
     selectedOption: this.props.options[0],
-    options: this.props.options
+    options: this.props.options,
+    tags: []
+  }
+  componentDidMount() {
+    // fetch existing tags from API
   }
   render() {
     const { selectedOption } = this.state
@@ -26,6 +33,9 @@ export class OneToManyFieldType extends Component {
             )
           })}
         </Select>
+        {this.state.tags.map(tag => (
+          <Tag tagName={tag.name} tagZUID={tag.ZUID} />
+        ))}
       </article>
     )
   }
