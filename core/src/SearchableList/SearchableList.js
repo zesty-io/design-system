@@ -1,6 +1,6 @@
 import React from 'react'
 import { Search } from '../Search'
-import styles from './Select.less'
+import styles from './SearchableList.less'
 import cx from 'classnames'
 
 export class SearchableList extends React.Component {
@@ -8,14 +8,9 @@ export class SearchableList extends React.Component {
     super(props)
     this.state = {
       dropdownOpen: false,
-      selection: props.selection
-        ? props.selection
-        : Array.isArray(props.children) && props.children.length
-          ? props.children[0].props
-            ? props.children[0].props
-            : {}
-          : {},
-      filter: ''
+      filter: '',
+      searchTerm: '',
+      hasMatch: false
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -40,7 +35,9 @@ export class SearchableList extends React.Component {
       className: cx(
         'selector',
         styles.selector,
-        this.state.dropdownOpen ? styles.show : styles.hidden,
+        this.state.dropdownOpen && this.state.hasMatch
+          ? styles.show
+          : styles.hidden,
         this.props.className
       ),
       onClick: this.toggleDropdown
@@ -48,15 +45,14 @@ export class SearchableList extends React.Component {
     return (
       <div {...opts} ref={div => (this.selector = div)}>
         <input
-          type="hidden"
-          name={this.props.name}
-          value={this.state.selection.value}
-        />
-        <Search
-          className="filter"
-          placeholder="Enter a term to filter this list"
-          onKeyUp={this.handleFilterKeyUp}
-          noButton
+          type="text"
+          name="term"
+          autoComplete="off"
+          value={this.state.searchTerm}
+          className={styles.searchField}
+          placeholder={this.props.placeholder}
+          onFocus={this.props.onFocus}
+          onChange={this.handleFilterKeyUp}
         />
         <ul className={cx('selections', styles.selections)}>
           <div className={cx('options', styles.options)}>
@@ -64,14 +60,10 @@ export class SearchableList extends React.Component {
               .filter(child => {
                 if (this.state.filter) {
                   return (
-                    (child.props.html &&
-                      child.props.html
-                        .toLowerCase()
-                        .indexOf(this.state.filter) !== -1) ||
-                    (child.props.text &&
-                      child.props.text
-                        .toLowerCase()
-                        .indexOf(this.state.filter) !== -1)
+                    child.props.text &&
+                    child.props.text
+                      .toLowerCase()
+                      .indexOf(this.state.filter) !== -1
                   )
                 } else {
                   return true
@@ -129,10 +121,28 @@ export class SearchableList extends React.Component {
         filter.querySelector('input').focus()
       }
     }
+    const hasMatch = this.hasMatch()
+    if (hasMatch) {
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen,
+        hasMatch
+      })
+    } else {
+    }
+  }
 
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    })
+  hasMatch = () => {
+    const { filter } = this.state
+    console.log(
+      React.Children.toArray(this.props.children).filter(
+        child => child.props.text
+      )
+    )
+    return Boolean(
+      React.Children.toArray(this.props.children).filter(child => {
+        return child.props.text.toLowerCase().indexOf(this.state.filter) !== -1
+      }).length
+    )
   }
 
   setSelection = evt => {
@@ -157,7 +167,8 @@ export class SearchableList extends React.Component {
       })
     }
     this.setState({
-      filter: evt.trim().toLowerCase()
+      filter: evt.target.value.trim().toLowerCase(),
+      searchTerm: evt.target.value
     })
   }
 

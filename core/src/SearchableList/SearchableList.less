@@ -1,3 +1,5 @@
+@import '../colors.less';
+
 .selector {
   cursor: pointer;
   flex: 1;
@@ -16,6 +18,27 @@
     }
     .selections {
       display: block;
+    }
+  }
+  .searchField {
+    background: #eaecf1;
+    border: 1px solid #6f819a;
+    border-bottom: 3px solid #6f819a;
+    border-radius: 3px;
+    color: rgb(91, 102, 125);
+    flex: 1;
+    font-size: 1.3rem;
+    padding: 0 0 0 0.5em;
+    line-height: 2rem;
+    &:hover,
+    &:active,
+    &:focus {
+      background: @white;
+      outline: none;
+    }
+    &:placeholder-shown {
+      color: lighten(@zesty-light-grey, 10%);
+      font-weight: 100;
     }
   }
 
