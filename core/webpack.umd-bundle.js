@@ -56,6 +56,24 @@ module.exports = {
       amd: 'ReactDraftWYSIWYG',
       root: 'ReactDraftWYSIWYG'
     },
+    'react-draft-wysiwyg/dist/react-draft-wysiwyg.css': {
+      commonjs: 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css',
+      commonjs2: 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css',
+      amd: 'ReactDraftWYSIWYGcss',
+      root: 'ReactDraftWYSIWYGcss'
+    },
+    'react-datepicker/dist/react-datepicker-cssmodules.css': {
+      commonjs: 'react-datepicker/dist/react-datepicker-cssmodules.css',
+      commonjs2: 'react-datepicker/dist/react-datepicker-cssmodules.css',
+      amd: 'ReactDDatepickercss',
+      root: 'ReactDDatepickercss'
+    },
+    'react-quill/dist/quill.snow.css': {
+      commonjs: 'react-quill/dist/quill.snow.css',
+      commonjs2: 'react-quill/dist/quill.snow.css',
+      amd: 'ReactQuillcss',
+      root: 'ReactQuillcss'
+    },
     'react-quill': {
       commonjs: 'react-quill',
       commonjs2: 'react-quill',

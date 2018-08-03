@@ -78,17 +78,17 @@ module.exports = {
       amd: 'ReactDDatepickercss',
       root: 'ReactDDatepickercss'
     },
-    'react-quill': {
-      commonjs: 'react-quill',
-      commonjs2: 'react-quill',
-      amd: 'ReactQuill',
-      root: 'ReactQuill'
-    },
     'react-quill/dist/quill.snow.css': {
       commonjs: 'react-quill/dist/quill.snow.css',
       commonjs2: 'react-quill/dist/quill.snow.css',
       amd: 'ReactQuillcss',
       root: 'ReactQuillcss'
+    },
+    'react-quill': {
+      commonjs: 'react-quill',
+      commonjs2: 'react-quill',
+      amd: 'ReactQuill',
+      root: 'ReactQuill'
     },
     'draft-js': {
       commonjs: 'draft-js',
