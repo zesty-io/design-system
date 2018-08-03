@@ -48,8 +48,8 @@ export class CurrencyFieldType extends Component {
       <article className={styles.CurrencyFieldType}>
         <div className={styles.CurrencyFieldTypeLabel}>
           <label>{this.props.label}</label>
+          <label>{this.state.amount}</label>
         </div>
-
         <Input
           className={styles.CurrencyInput}
           type="number"

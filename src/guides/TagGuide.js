@@ -9,7 +9,7 @@ export class TagGuide extends Component {
     return (
       <React.Fragment>
         <p>Tag component</p>
-        <p>Props: tagName</p>
+        <p>Props: tagName, tagZUID</p>
         <br />
         <br />
         <Tag tagName="tag" tagZUID="/tag/zuidHere" />
