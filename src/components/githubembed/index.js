@@ -34,6 +34,7 @@ export default class GithubEmbed extends PureComponent {
         showGutter={false}
         showPrintMargin={false}
         editorProps={{ $blockScrolling: true }}
+        style={{ margin: '1rem auto' }}
       />
     )
   }
