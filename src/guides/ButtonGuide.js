@@ -27,7 +27,7 @@ export class ButtonGuide extends Component {
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="250px"
+            height="100px"
             url="https://gist.githubusercontent.com/grantglidewell/f37c2bc1f6835705a34c8063b9b62374/raw/3621e09110a652def2348452a56c91cdc4765891/ButtonUsage.js"
           />
         </CollapsibleCard>

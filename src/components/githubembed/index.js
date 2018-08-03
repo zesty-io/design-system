@@ -23,19 +23,21 @@ export default class GithubEmbed extends PureComponent {
   }
   render() {
     return (
-      <AceEditor
-        mode="javascript"
-        theme="idle_fingers"
-        height={this.props.height || '600px'}
-        width="800px"
-        fontSize="14px"
-        value={this.state.code}
-        readOnly={true}
-        showGutter={false}
-        showPrintMargin={false}
-        editorProps={{ $blockScrolling: true }}
-        style={{ margin: '1rem auto' }}
-      />
+      <div style={{ backgroundColor: '#323232', padding: '1rem 0' }}>
+        <AceEditor
+          mode="javascript"
+          theme="idle_fingers"
+          height={this.props.height || '600px'}
+          width="800px"
+          fontSize="14px"
+          value={this.state.code}
+          readOnly={true}
+          showGutter={false}
+          showPrintMargin={false}
+          editorProps={{ $blockScrolling: true }}
+          style={{ margin: '1rem auto' }}
+        />
+      </div>
     )
   }
 }
