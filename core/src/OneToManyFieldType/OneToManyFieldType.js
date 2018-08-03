@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Select, Option } from '../Select'
 
-export class OneToOneFieldType extends Component {
+export class OneToManyFieldType extends Component {
   state = {
     selectedOption: this.props.options[0],
     options: this.props.options

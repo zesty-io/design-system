@@ -1,1 +1,1 @@
-export { OneToOneFieldType } from './OneToOneFieldType'
+export { OneToManyFieldType } from './OneToManyFieldType'
