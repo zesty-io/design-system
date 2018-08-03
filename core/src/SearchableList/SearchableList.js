@@ -7,7 +7,7 @@ export class SearchableList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dropdownOpen: false,
+      dropdownOpen: true,
       selection: props.selection
         ? props.selection
         : Array.isArray(props.children) && props.children.length
@@ -52,7 +52,7 @@ export class SearchableList extends React.Component {
           name={this.props.name}
           value={this.state.selection.value}
         />
-        <span className={styles.selection}>
+        {/* <span className={styles.selection}>
           <i
             className={cx(
               'fa fa-chevron-right',
@@ -67,26 +67,15 @@ export class SearchableList extends React.Component {
               styles['icon-chevron-down']
             )}
           />
-          {this.state.selection.html ? (
-            <span
-              className={styles.content}
-              dangerouslySetInnerHTML={{
-                __html: this.state.selection.html
-              }}
-            />
-          ) : (
-            <span className={styles.content}>{this.state.selection.text}</span>
-          )}
-        </span>
+          <span className={styles.content}>{this.state.selection.text}</span>
+        </span> */}
         <ul className={cx('selections', styles.selections)}>
-          {this.props.children &&
-          React.Children.toArray(this.props.children).length > 50 ? (
-            <Search
-              className="filter"
-              placeholder="Enter a term to filter this list"
-              onKeyUp={this.handleFilterKeyUp}
-            />
-          ) : null}
+          <Search
+            className="filter"
+            placeholder="Enter a term to filter this list"
+            onKeyUp={this.handleFilterKeyUp}
+            noButton
+          />
           <div className={cx('options', styles.options)}>
             {React.Children.toArray(this.props.children)
               .filter(child => {

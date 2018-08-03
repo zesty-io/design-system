@@ -20,12 +20,14 @@ export class Search extends Component {
       <form
         className={cx(styles.search, this.props.className)}
         onSubmit={this.handleSubmit}>
-        <Button className={styles.searchBtn} type="submit">
-          <i
-            className={cx(styles.searchIcon, 'fa fa-search')}
-            aria-hidden="true"
-          />
-        </Button>
+        {this.props.noButton ? null : (
+          <Button className={styles.searchBtn} type="submit">
+            <i
+              className={cx(styles.searchIcon, 'fa fa-search')}
+              aria-hidden="true"
+            />
+          </Button>
+        )}
         <input
           type="text"
           name="term"
