@@ -41,6 +41,72 @@ module.exports = {
       commonjs2: 'react-router-dom',
       amd: 'ReactRouterDOM',
       root: 'ReactRouterDOM'
+    },
+    quill: {
+      commonjs: 'quill',
+      commonjs2: 'quill',
+      amd: 'Quill',
+      root: 'Quill'
+    },
+    'react-ace': {
+      commonjs: 'react-ace',
+      commonjs2: 'react-ace',
+      amd: 'ReactAce',
+      root: 'ReactAce'
+    },
+    'react-datepicker': {
+      commonjs: 'react-datepicker',
+      commonjs2: 'react-datepicker',
+      amd: 'ReactDatepicker',
+      root: 'ReactDatepicker'
+    },
+    'react-draft-wysiwyg': {
+      commonjs: 'react-draft-wysiwyg',
+      commonjs2: 'react-draft-wysiwyg',
+      amd: 'ReactDraftWYSIWYG',
+      root: 'ReactDraftWYSIWYG'
+    },
+    'react-draft-wysiwyg/dist/react-draft-wysiwyg.css': {
+      commonjs: 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css',
+      commonjs2: 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css',
+      amd: 'ReactDraftWYSIWYGcss',
+      root: 'ReactDraftWYSIWYGcss'
+    },
+    'react-datepicker/dist/react-datepicker-cssmodules.css': {
+      commonjs: 'react-datepicker/dist/react-datepicker-cssmodules.css',
+      commonjs2: 'react-datepicker/dist/react-datepicker-cssmodules.css',
+      amd: 'ReactDDatepickercss',
+      root: 'ReactDDatepickercss'
+    },
+    'react-quill': {
+      commonjs: 'react-quill',
+      commonjs2: 'react-quill',
+      amd: 'ReactQuill',
+      root: 'ReactQuill'
+    },
+    'react-quill/dist/quill.snow.css': {
+      commonjs: 'react-quill/dist/quill.snow.css',
+      commonjs2: 'react-quill/dist/quill.snow.css',
+      amd: 'ReactQuillcss',
+      root: 'ReactQuillcss'
+    },
+    'draft-js': {
+      commonjs: 'draft-js',
+      commonjs2: 'draft-js',
+      amd: 'DraftJS',
+      root: 'DraftJS'
+    },
+    moment: {
+      commonjs: 'moment',
+      commonjs2: 'moment',
+      amd: 'Moment',
+      root: 'Moment'
+    },
+    '@tinymce/tinymce-react': {
+      commonjs: '@tinymce/tinymce-react',
+      commonjs2: '@tinymce/tinymce-react',
+      amd: '@TinyMCE/TinyMCEReact',
+      root: '@TinyMCE/TinyMCEReact'
     }
   },
   output: {

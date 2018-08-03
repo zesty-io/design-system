@@ -31,6 +31,54 @@ module.exports = {
       commonjs2: 'react-router-dom',
       amd: 'ReactRouterDOM',
       root: 'ReactRouterDOM'
+    },
+    quill: {
+      commonjs: 'quill',
+      commonjs2: 'quill',
+      amd: 'Quill',
+      root: 'Quill'
+    },
+    'react-ace': {
+      commonjs: 'react-ace',
+      commonjs2: 'react-ace',
+      amd: 'ReactAce',
+      root: 'ReactAce'
+    },
+    'react-datepicker': {
+      commonjs: 'react-datepicker',
+      commonjs2: 'react-datepicker',
+      amd: 'ReactDatepicker',
+      root: 'ReactDatepicker'
+    },
+    'react-draft-wysiwyg': {
+      commonjs: 'react-draft-wysiwyg',
+      commonjs2: 'react-draft-wysiwyg',
+      amd: 'ReactDraftWYSIWYG',
+      root: 'ReactDraftWYSIWYG'
+    },
+    'react-quill': {
+      commonjs: 'react-quill',
+      commonjs2: 'react-quill',
+      amd: 'ReactQuill',
+      root: 'ReactQuill'
+    },
+    'draft-js': {
+      commonjs: 'draft-js',
+      commonjs2: 'draft-js',
+      amd: 'DraftJS',
+      root: 'DraftJS'
+    },
+    moment: {
+      commonjs: 'moment',
+      commonjs2: 'moment',
+      amd: 'Moment',
+      root: 'Moment'
+    },
+    '@tinymce/tinymce-react': {
+      commonjs: '@tinymce/tinymce-react',
+      commonjs2: '@tinymce/tinymce-react',
+      amd: '@TinyMCE/TinyMCEReact',
+      root: '@TinyMCE/TinyMCEReact'
     }
   },
   output: {
