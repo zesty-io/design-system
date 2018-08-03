@@ -18,6 +18,9 @@ export class Select extends React.Component {
       filter: ''
     }
   }
+  static defaultProps = {
+    searchLength: 50
+  }
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selection) {
       if (nextProps.selection.value !== prevState.selection.value) {
@@ -80,7 +83,8 @@ export class Select extends React.Component {
         </span>
         <ul className={cx('selections', styles.selections)}>
           {this.props.children &&
-          React.Children.toArray(this.props.children).length > 50 ? (
+          React.Children.toArray(this.props.children).length >
+            this.props.searchLength ? (
             <Search
               className="filter"
               placeholder="Enter a term to filter this list"

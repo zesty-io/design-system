@@ -21,18 +21,13 @@ export class OneToManyFieldType extends Component {
         <div>
           <label>{this.props.label}</label>
         </div>
-        <Select
-          onSelect={this.selectOption}
-          selection={{
-            value: JSON.stringify(selectedOption),
-            text: selectedOption.text
-          }}>
+        <SearchableList onSelect={this.selectOption}>
           {this.state.options.map((opt, i) => {
             return (
               <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
             )
           })}
-        </Select>
+        </SearchableList>
         {this.state.tags.map(tag => (
           <Tag tagName={tag.name} tagZUID={tag.ZUID} />
         ))}

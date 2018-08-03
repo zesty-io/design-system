@@ -7,7 +7,7 @@ export class SearchableList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dropdownOpen: true,
+      dropdownOpen: false,
       selection: props.selection
         ? props.selection
         : Array.isArray(props.children) && props.children.length
@@ -52,30 +52,13 @@ export class SearchableList extends React.Component {
           name={this.props.name}
           value={this.state.selection.value}
         />
-        {/* <span className={styles.selection}>
-          <i
-            className={cx(
-              'fa fa-chevron-right',
-              styles.chevron,
-              styles['icon-chevron-right']
-            )}
-          />
-          <i
-            className={cx(
-              'fa fa-chevron-down',
-              styles.chevron,
-              styles['icon-chevron-down']
-            )}
-          />
-          <span className={styles.content}>{this.state.selection.text}</span>
-        </span> */}
+        <Search
+          className="filter"
+          placeholder="Enter a term to filter this list"
+          onKeyUp={this.handleFilterKeyUp}
+          noButton
+        />
         <ul className={cx('selections', styles.selections)}>
-          <Search
-            className="filter"
-            placeholder="Enter a term to filter this list"
-            onKeyUp={this.handleFilterKeyUp}
-            noButton
-          />
           <div className={cx('options', styles.options)}>
             {React.Children.toArray(this.props.children)
               .filter(child => {
@@ -168,6 +151,11 @@ export class SearchableList extends React.Component {
   }
 
   handleFilterKeyUp = evt => {
+    if (!this.state.dropdownOpen) {
+      this.setState({
+        dropdownOpen: true
+      })
+    }
     this.setState({
       filter: evt.trim().toLowerCase()
     })

@@ -18,6 +18,10 @@ export class SelectGuide extends Component {
           component to nest inside of it for each option. It takes an onSelect
           prop.
         </p>
+        <p>
+          Props: selection (Obj with keys: value, text), onSelect (function),
+          searchLength (Number, default is 50)
+        </p>
         <br />
         <Select
           selection={{ value: this.state.value, text: this.state.text }}
