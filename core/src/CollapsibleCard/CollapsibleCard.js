@@ -25,11 +25,12 @@ export class CollapsibleCard extends Component {
     return (
       <Card className={styles.Card}>
         <CardHeader className={styles.CardHeader}>
-          <i
-            className={isCollapsed ? 'fa fa-caret-left' : 'fa fa-caret-down'}
-            onClick={this.onCollapse}
-          />
-          <h2>{header}</h2>
+          <h2 onClick={this.onCollapse}>
+            <i
+              className={isCollapsed ? 'fa fa-caret-right' : 'fa fa-caret-down'}
+            />
+            {header}
+          </h2>
         </CardHeader>
         {/* render or dont render, later I want to do animation with css on close */}
         {isCollapsed ? null : (
@@ -42,6 +43,7 @@ export class CollapsibleCard extends Component {
     )
   }
   onCollapse = () => {
+    console.log('onCollapse')
     this.setState({
       isCollapsed: !this.state.isCollapsed
     })
