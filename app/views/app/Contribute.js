@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardContent,
   CardFooter
-} from '../../../core/src/Card'
+} from '../../../core/dist/Card'
 
 export class Contribute extends Component {
   render() {

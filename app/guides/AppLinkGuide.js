@@ -9,8 +9,8 @@ export class AppLinkGuide extends Component {
       <React.Fragment>
         <p>A styled wrapper for the react-router Link component</p>
         <AppLink to={`/applink`}>
-          <i className="fa fa-pencil-square-o" aria-hidden="true" />&nbsp;Link
-          Text
+          <i className="fa fa-pencil-square-o" aria-hidden="true" />
+          &nbsp;Link Text
         </AppLink>
 
         <CodeCard header="Usage" height={100} open>

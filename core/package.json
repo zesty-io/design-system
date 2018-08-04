@@ -4,18 +4,19 @@
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
-  "main": "dist/core.umd.js",
-  "module": "src/index.js",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
   "scripts": {
     "test": "npm run build && jest",
     "precommit": "pretty-quick --staged",
     "prerelease": "npm run build && npm test",
     "release": "cp package.json dist/package.json && npm publish dist",
     "build:bundle": "npm run build:bundle:var && npm run build:bundle:umd",
-    "build:bundle:var": "webpack --config webpack.var-bundle.js",
-    "build:bundle:umd": "webpack --config webpack.umd-bundle.js",
-    "build:components": "webpack --config webpack.components.js",
-    "build": "rimraf dist && npm run build:components && npm run build:bundle"
+    "build:bundle:var": "npx wp --config webpack.var-bundle.js",
+    "build:bundle:umd": "npx wp --config webpack.umd-bundle.js",
+    "build:components": "npx wp --config webpack.components.js",
+    "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./dist --ignore *.test.js",
+    "prepare": "npx rimraf dist && npm run build:es2015"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
@@ -32,25 +33,17 @@
     "@tinymce/tinymce-react": "^2.2.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "classnames": "^2.2.6",
-    "copy-webpack-plugin": "^4.5.2",
+    "@babel/cli": "7.0.0-beta.52",
+    "@babel/core": "7.0.0-beta.52",
+    "@babel/preset-env": "7.0.0-beta.52",
+    "@babel/preset-react": "7.0.0-beta.52",
+    "@babel/preset-stage-3": "7.0.0-beta.52",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
-    "extract-loader": "^2.0.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
     "husky": "^0.14.3",
     "jest": "^23.2.0",
     "less": "^3.0.4",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.4.0",
     "prettier": "^1.13.6",
     "pretty-quick": "^1.6.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "rimraf": "^2.6.2",
-    "webpack": "^4.13.0"
+    "rimraf": "^2.6.2"
   }
 }

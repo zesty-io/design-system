@@ -1,23 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import styles from './BinaryFieldType.less'
+import styles from "./BinaryFieldType.less";
 export class BinaryFieldType extends Component {
-  static defaultProps = {
-    trueValue: 'True',
-    falseValue: 'False'
+  constructor(props) {
+    super(props);
+    this.state = {
+      binaryInput: false,
+      value: props.falseValue
+    };
   }
-  state = {
-    binaryInput: false,
-    value: this.props.falseValue
-  }
-
   componentDidMount() {
     this.props.defaultChecked &&
-      this.setState({ binaryInput: true, value: this.props.trueValue })
+      this.setState({ binaryInput: true, value: this.props.trueValue });
   }
   render() {
-    const { binaryInput } = this.state
-    const { falseValue, trueValue, label, disabled } = this.props
+    const { binaryInput } = this.state;
+    const { falseValue, trueValue, label, disabled } = this.props;
     return (
       <article>
         <div className={styles.BinaryFieldTypeLabel}>
@@ -35,12 +33,12 @@ export class BinaryFieldType extends Component {
           <span className={styles.slider} />
         </label>
       </article>
-    )
+    );
   }
-  onChange = evt => {
+  onChange(evt) {
     this.setState({
       binaryInput: evt.target.checked,
       value: evt.target.checked ? this.props.trueValue : this.props.falseValue
-    })
+    });
   }
 }
