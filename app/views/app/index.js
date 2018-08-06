@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import { Contribute } from './Contribute'
 // import * as Guides from '../../guides'
 
-import { Nav } from '../../../core/dist/Nav'
+import { Nav } from '@zesty-io/core/dist/bundle'
 
 import styles from './app.less'
 export default class App extends Component {

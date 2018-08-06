@@ -4,8 +4,8 @@
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
-  "main": "dist/index.js",
-  "browser": "dist/index.js",
+  "main": "dist/bundle.js",
+  "browser": "dist/bundle.js",
   "scripts": {
     "test": "npm run build && jest",
     "precommit": "pretty-quick --staged",
@@ -16,7 +16,8 @@
     "build:bundle:umd": "npx wp --config webpack.umd-bundle.js",
     "build:components": "npx wp --config webpack.components.js",
     "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./dist --ignore *.test.js",
-    "prepare": "npx rimraf dist && npm run build:es2015"
+    "bundle": "cross-env NODE_ENV=production npx rollup -c rollup.config.js",
+    "prepare": "npx rimraf dist && npm run bundle"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
@@ -33,17 +34,23 @@
     "@tinymce/tinymce-react": "^2.2.5"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.52",
-    "@babel/core": "7.0.0-beta.52",
-    "@babel/preset-env": "7.0.0-beta.52",
-    "@babel/preset-react": "7.0.0-beta.52",
-    "@babel/preset-stage-3": "7.0.0-beta.52",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.2.0",
     "husky": "^0.14.3",
     "jest": "^23.2.0",
     "less": "^3.0.4",
     "prettier": "^1.13.6",
     "pretty-quick": "^1.6.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "rollup": "^0.63.5",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^9.1.4",
+    "rollup-plugin-less": "^0.1.4",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-replace": "^2.0.0"
   }
 }

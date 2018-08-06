@@ -1,31 +1,30 @@
-import React from 'react'
+import React from "react";
+import ReactQuill from "react-quill";
 
-import ReactQuill from '../../../node_modules/react-quill'
-
-import 'react-quill/dist/quill.snow.css'
+import "react-quill/dist/quill.snow.css";
 
 export class QuillFieldType extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      text: ''
-    }
+      text: ""
+    };
   }
 
   onEditorStateChange = text => {
     this.setState({
       text
-    })
-  }
+    });
+  };
 
   render() {
-    const { text } = this.state
+    const { text } = this.state;
     return (
       <ReactQuill
         value={text}
         theme="snow"
         onChange={this.onEditorStateChange}
       />
-    )
+    );
   }
 }

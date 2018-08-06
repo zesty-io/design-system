@@ -20,6 +20,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [extractLess],
+  resolve: {
+    symlinks: false
+  },
   module: {
     rules: [
       {
