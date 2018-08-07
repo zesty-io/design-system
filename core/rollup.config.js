@@ -48,7 +48,7 @@ export default {
       // getExport (id) {
       //   return cssExportMap[id];
       // },
-      modules: true,
+      // modules: true,
       extract: "dist/bundle.css"
     }),
     babel({
