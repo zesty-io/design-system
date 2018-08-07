@@ -53,17 +53,8 @@ export default {
     }),
     babel({
       exclude: "node_modules/**", // only transpile our source code
-      // babelrc: false,
-      runtimeHelpers: true,
-      plugins: ["transform-runtime"]
-      // externalHelpers: true,
-      // "presets": [
-      //   ["env", {
-      //     "modules": false
-      //   }],
-      //   "react",
-      //   "stage-2"
-      // ]
+      runtimeHelpers: true
+      // plugins: ["transform-runtime"]
     }),
     cjs(),
     replace({
