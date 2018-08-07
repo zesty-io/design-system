@@ -9,13 +9,12 @@
   "scripts": {
     "test": "npx jest",
     "precommit": "pretty-quick --staged",
-    "prerelease": "npm run build && npm test",
-    "release": "cp package.json dist/package.json && npm publish dist",
+    "prepare": "npm run clean && npm run build && cp package.json dist/package.json",
+    "publish": "npm publish dist",
     "build": "npm run build:es2015 && npm run build:bundle",
     "build:es2015": "cross-env NODE_ENV=production npx babel ./src --out-dir ./dist --ignore *.test.js",
     "build:bundle": "cross-env NODE_ENV=production npx rollup -c rollup.config.js",
-    "clean": "npx rimraf dist",
-    "prepare": "npm run clean && npm run build"
+    "clean": "npx rimraf dist"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
