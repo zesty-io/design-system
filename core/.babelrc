@@ -6,7 +6,7 @@
     "react",
     "stage-2"
   ],
-  "plugins": ["external-helpers"]
+  "plugins": ["transform-runtime"]
 }
 
 

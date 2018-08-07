@@ -4,20 +4,18 @@
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
-  "main": "dist/bundle.js",
-  "browser": "dist/bundle.js",
+  "main": "dist/",
+  "browser": "dist/umd.bundle.js",
   "scripts": {
-    "test": "npm run build && jest",
+    "test": "npx jest",
     "precommit": "pretty-quick --staged",
     "prerelease": "npm run build && npm test",
     "release": "cp package.json dist/package.json && npm publish dist",
-    "build:bundle": "npm run build:bundle:var && npm run build:bundle:umd",
-    "build:bundle:var": "npx wp --config webpack.var-bundle.js",
-    "build:bundle:umd": "npx wp --config webpack.umd-bundle.js",
-    "build:components": "npx wp --config webpack.components.js",
-    "build:es2015": "cross-env NODE_ENV=production babel ./src --out-dir ./dist --ignore *.test.js",
-    "bundle": "cross-env NODE_ENV=production npx rollup -c rollup.config.js",
-    "prepare": "npx rimraf dist && npm run bundle"
+    "build": "npm run build:es2015 && npm run build:bundle",
+    "build:es2015": "cross-env NODE_ENV=production npx babel ./src --out-dir ./dist --ignore *.test.js",
+    "build:bundle": "cross-env NODE_ENV=production npx rollup -c rollup.config.js",
+    "clean": "npx rimraf dist",
+    "prepare": "npm run clean && npm run build"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
@@ -34,23 +32,32 @@
     "@tinymce/tinymce-react": "^2.2.5"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.2.0",
     "husky": "^0.14.3",
     "jest": "^23.2.0",
-    "less": "^3.0.4",
+    "less": "^3.8.0",
+    "postcss-modules": "^1.3.2",
     "prettier": "^1.13.6",
     "pretty-quick": "^1.6.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.4",
-    "rollup-plugin-less": "^0.1.4",
+    "rollup-plugin-copy-glob": "^0.2.2",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-replace": "^2.0.0"
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-postcss-modules": "^1.0.8",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-size-snapshot": "^0.6.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0"
   }
 }

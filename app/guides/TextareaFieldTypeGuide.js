@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/TextareaFieldType/TextareaFieldType.less'
-import { TextareaFieldType } from '../../core/src/TextareaFieldType'
+import '@zesty-io/core/dist/TextareaFieldType/TextareaFieldType.less'
+import { TextareaFieldType } from '@zesty-io/core/dist/TextareaFieldType'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class TextareaFieldTypeGuide extends Component {
   render() {

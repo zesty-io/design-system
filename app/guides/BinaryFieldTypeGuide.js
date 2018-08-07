@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
 
-import { BinaryFieldType } from '../../core/src/BinaryFieldType'
-import '../../core/src/BinaryFieldType/BinaryFieldType.less'
+import { BinaryFieldType } from '@zesty-io/core/dist/BinaryFieldType'
+import '@zesty-io/core/dist/BinaryFieldType/BinaryFieldType.less'
 
 export class BinaryFieldTypeGuide extends Component {
   render() {

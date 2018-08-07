@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { QuillFieldType } from '../../core/src/QuillFieldType'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { QuillFieldType } from '@zesty-io/core/dist/QuillFieldType'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class QuillFieldTypeGuide extends Component {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/CurrencyFieldType/CurrencyFieldType.less'
-import { CurrencyFieldType } from '../../core/src/CurrencyFieldType'
+import '@zesty-io/core/dist/CurrencyFieldType/CurrencyFieldType.less'
+import { CurrencyFieldType } from '@zesty-io/core/dist/CurrencyFieldType'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class CurrencyFieldTypeGuide extends Component {
   render() {

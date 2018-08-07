@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Input/Input.less'
-import { Input } from '../../core/src/Input'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import '@zesty-io/core/dist/Input/Input.less'
+import { Input } from '@zesty-io/core/dist/Input'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class InputGuide extends Component {

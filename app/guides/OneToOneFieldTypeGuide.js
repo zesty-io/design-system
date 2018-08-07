@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Select/Select.less'
-import { OneToOneFieldType } from '../../core/src/OneToOneFieldType'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import '@zesty-io/core/dist/Select/Select.less'
+import { OneToOneFieldType } from '@zesty-io/core/dist/OneToOneFieldType'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class OneToOneFieldTypeGuide extends Component {

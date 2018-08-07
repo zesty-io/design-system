@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { DraftFieldType } from '../../core/src/DraftFieldType'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { DraftFieldType } from '@zesty-io/core/dist/DraftFieldType'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class DraftFieldTypeGuide extends Component {

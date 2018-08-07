@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 import { Contribute } from './Contribute'
-// import * as Guides from '../../guides'
+import * as Guides from '../../guides'
 
-import { Nav } from '@zesty-io/core/dist/bundle'
+import { Nav } from '@zesty-io/core/dist/Nav'
 
 import styles from './app.less'
 export default class App extends Component {
@@ -77,7 +77,7 @@ export default class App extends Component {
                   </menu> */}
                   <main className={styles.AppShowcase}>
                     <Switch>
-                      {/*<Route path="/button" component={Guides.ButtonGuide} />
+                      <Route path="/button" component={Guides.ButtonGuide} />
                       <Route
                         path="/button-group"
                         component={Guides.ButtonGroupGuide}
@@ -162,7 +162,7 @@ export default class App extends Component {
                       />
                       <Route path="/tag" component={Guides.TagGuide} />
                       <Route path="/nav" component={Guides.NavGuide} />
-                      <Route path="/" component={Contribute} />*/}
+                      <Route path="/" component={Contribute} />
                     </Switch>
                   </main>
                 </section>

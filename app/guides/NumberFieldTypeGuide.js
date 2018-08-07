@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/NumberFieldType/NumberFieldType.less'
-import { NumberFieldType } from '../../core/src/NumberFieldType'
+import '@zesty-io/core/dist/NumberFieldType/NumberFieldType.less'
+import { NumberFieldType } from '@zesty-io/core/dist/NumberFieldType'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 export class NumberFieldTypeGuide extends Component {
   render() {
     return (

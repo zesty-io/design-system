@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Loader/Loader.less'
-import { Loader } from '../../core/src/Loader'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import '@zesty-io/core/dist/Loader/Loader.less'
+import { Loader } from '@zesty-io/core/dist/Loader'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class LoaderGuide extends Component {

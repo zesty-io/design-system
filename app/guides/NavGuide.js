@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Nav } from '../../core/src/Nav'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { Nav } from '@zesty-io/core/dist/Nav'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class NavGuide extends Component {

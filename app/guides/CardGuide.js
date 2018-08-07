@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Button/Button.less'
-import '../../core/src/Card/Card.less'
+import '@zesty-io/core/dist/Button/Button.less'
+import '@zesty-io/core/dist/Card/Card.less'
 
-import { Card, CardHeader, CardContent, CardFooter } from '../../core/src/Card'
-import { Button } from '../../core/src/Button'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter
+} from '@zesty-io/core/dist/Card'
+import { Button } from '@zesty-io/core/dist/Button'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class CardGuide extends Component {

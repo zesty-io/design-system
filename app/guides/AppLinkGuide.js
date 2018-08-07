@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { AppLink } from '../../core/src/AppLink'
+import { AppLink } from '@zesty-io/core/dist/AppLink'
 
 export class AppLinkGuide extends Component {
   render() {

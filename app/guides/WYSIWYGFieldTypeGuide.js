@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { WYSIWYGFieldType } from '../../core/src/WYSIWYGFieldType'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { WYSIWYGFieldType } from '@zesty-io/core/dist/WYSIWYGFieldType'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class WYSIWYGFieldTypeGuide extends Component {

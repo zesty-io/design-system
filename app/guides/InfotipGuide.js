@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Infotip/Infotip.less'
-import { Infotip } from '../../core/src/Infotip'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import '@zesty-io/core/dist/Infotip/Infotip.less'
+import { Infotip } from '@zesty-io/core/dist/Infotip'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class InfotipGuide extends Component {

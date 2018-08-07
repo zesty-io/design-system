@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Url } from '../../core/src/Url'
+import { Url } from '@zesty-io/core/dist/Url'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class UrlGuide extends Component {
   render() {

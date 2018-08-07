@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Search/Search.less'
-import { Search } from '../../core/src/Search'
+import '@zesty-io/core/dist/Search/Search.less'
+import { Search } from '@zesty-io/core/dist/Search'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class SearchGuide extends Component {
   render() {

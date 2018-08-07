@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Button/Button.less'
-import '../../core/src/ButtonGroup/ButtonGroup.less'
+import '@zesty-io/core/dist/Button/Button.less'
+import '@zesty-io/core/dist/ButtonGroup/ButtonGroup.less'
 
-import { Button } from '../../core/src/Button'
-import { ButtonGroup } from '../../core/src/ButtonGroup'
+import { Button } from '@zesty-io/core/dist/Button'
+import { ButtonGroup } from '@zesty-io/core/dist/ButtonGroup'
 
 import { CodeCard } from '../components/CodeCard'
-// import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+// import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 // import GithubEmbed from '../components/githubembed'
 
 export class ButtonGroupGuide extends Component {

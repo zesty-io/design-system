@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Button/Button.less'
-import { Button } from '../../core/src/Button'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import '@zesty-io/core/dist/Button/Button.less'
+import { Button } from '@zesty-io/core/dist/Button'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class ButtonGuide extends Component {

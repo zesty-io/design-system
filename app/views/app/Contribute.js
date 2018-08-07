@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardContent,
   CardFooter
-} from '@zesty-io/core/dist/bundle'
+} from '@zesty-io/core/dist/Card'
 
 export class Contribute extends Component {
   render() {

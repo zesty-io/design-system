@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/Divider/Divider.less'
-import { Divider } from '../../core/src/Divider'
+import '@zesty-io/core/dist/Divider/Divider.less'
+import { Divider } from '@zesty-io/core/dist/Divider'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class DividerGuide extends Component {
   render() {

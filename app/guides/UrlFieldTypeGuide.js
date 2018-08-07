@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import '../../core/src/UrlFieldType/UrlFieldType.less'
-import { UrlFieldType } from '../../core/src/UrlFieldType'
+import '@zesty-io/core/dist/UrlFieldType/UrlFieldType.less'
+import { UrlFieldType } from '@zesty-io/core/dist/UrlFieldType'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '../../core/src/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class UrlFieldTypeGuide extends Component {
   render() {
