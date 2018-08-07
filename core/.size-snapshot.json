@@ -1,9 +1,4 @@
 {
-  "dist/bundle.js": {
-    "bundled": 80297,
-    "minified": 42062,
-    "gzipped": 10470
-  },
   "dist/umd.bundle.js": {
     "bundled": 120784,
     "minified": 58274,

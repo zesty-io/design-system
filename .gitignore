@@ -3,12 +3,13 @@
 *.log
 *.css.json
 .env
+.size-snapshot.json
 
 # IDE
 .DS_Store
 .vscode
 
 # Distributions & Deps
-*node_modules
-dist/
+node_modules/
+app/dist/
 core/dist
