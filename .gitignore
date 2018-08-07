@@ -3,7 +3,6 @@
 *.log
 *.css.json
 .env
-.size-snapshot.json
 
 # IDE
 .DS_Store
@@ -13,3 +12,5 @@
 node_modules/
 app/dist/
 core/dist
+
+core/.size-snapshot.json
