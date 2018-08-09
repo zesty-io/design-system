@@ -12,5 +12,6 @@
 node_modules/
 app/dist/
 core/dist
+__snapshots__
 
 core/.size-snapshot.json
