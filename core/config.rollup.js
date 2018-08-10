@@ -1,5 +1,4 @@
 import fs from "fs";
-import resolve from "rollup-plugin-node-resolve";
 import cjs from "rollup-plugin-commonjs";
 import babel from "rollup-plugin-babel";
 import replace from "rollup-plugin-replace";
@@ -20,35 +19,43 @@ export default {
     file: "dist/umd.bundle.js",
     format: "umd",
     name: "zesty",
-    globals: [
-      "react",
-      "react-dom",
-      "react-router-dom",
-      "react-quill",
-      "react-ace",
-      "react-datepicker",
-      "react-draft-wysiwyg",
-      "draft-js",
-      "@tinymce/tinymc-react",
-      "moment"
-    ]
+    globals: {
+      classnames: "cx",
+      react: "react",
+      "react-dom": "reactDom",
+      "react-router-dom": "reactRouterDom",
+      "react-quill": "reactQuill",
+      "react-ace": "reactAce",
+      "react-datepicker": "DatePicker",
+      "react-draft-wysiwyg": "reactDraftWysiwyg",
+      "draft-js": "draftJs",
+      "@tinymce/tinymce-react": "tinymceReact",
+      moment: "moment"
+    }
   },
+  external: [
+    "react",
+    "react-dom",
+    "react-router-dom",
+    "react-quill",
+    "react-ace",
+    "react-datepicker",
+    "react-draft-wysiwyg",
+    "babel-runtime/helpers/extends",
+    "babel-runtime/core-js/object/get-prototype-of",
+    "babel-runtime/helpers/classCallCheck",
+    "babel-runtime/helpers/createClass",
+    "babel-runtime/helpers/possibleConstructorReturn",
+    "babel-runtime/helpers/inherits",
+    "babel-runtime/core-js/object/keys",
+    "babel-runtime/helpers/toConsumableArray",
+    "classnames",
+    "draft-js",
+    "@tinymce/tinymce-react",
+    "moment"
+  ],
   plugins: [
-    resolve(),
     postcss({
-      // plugins: [
-      //   modules({
-      //     generateScopedName: '[local]__[hash:base64:5]',
-      //     // getJSON (id, exportTokens) {
-      //     //   cssExportMap[id] = exportTokens;
-      //     // }
-      //   })
-      // ],
-      // getExportNamed: false,
-      // getExport (id) {
-      //   return cssExportMap[id];
-      // },
-      // modules: true,
       extract: "dist/bundle.css"
     }),
     babel({
@@ -56,7 +63,18 @@ export default {
       runtimeHelpers: true
       // plugins: ["transform-runtime"]
     }),
-    cjs(),
+    cjs({
+      include: "node_modules/**",
+      namedExports: {
+        "node_modules/react/index.js": [
+          "Component",
+          "PureComponent",
+          "Fragment",
+          "Children",
+          "createElement"
+        ]
+      }
+    }),
     replace({
       "process.env.NODE_ENV": JSON.stringify(
         process.env.NODE_ENV || "production"
