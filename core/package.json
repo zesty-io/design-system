@@ -9,7 +9,7 @@
   "scripts": {
     "test": "npx jest ./src/**/*test.js --config config.jest.js",
     "precommit": "pretty-quick --staged",
-    "prepare": "npm run clean && npm run build && cp package.json dist/package.json",
+    "prepublishOnly": "npm run clean && npm run build && cp package.json dist/package.json",
     "publish": "npm publish dist",
     "build": "npm run build:es2015 && npm run build:bundle",
     "build:es2015": "cross-env NODE_ENV=production npx babel ./src --out-dir ./dist --ignore *.test.js",

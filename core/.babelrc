@@ -1,8 +1,12 @@
+/*  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-stage-3"] */
 {
   "presets": [
-    ["env", {
-      "modules": false
-    }],
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
     "react",
     "stage-2"
   ],
@@ -13,10 +17,3 @@
     }
   }
 }
-
-
-/*
-{
-  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-stage-3"]
-}
-*/
