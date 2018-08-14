@@ -38,6 +38,7 @@ export class Parent extends Component {
         {item.children.map(child => (
           <Parent
             {...child}
+            key={child.path}
             depth={recursionDepth}
             selected={item.selected}
             active={this.state.active}

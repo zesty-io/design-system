@@ -27,7 +27,7 @@ export class Nav extends PureComponent {
           return (
             <Parent
               {...item}
-              key={item.title}
+              key={item.path}
               closed={!this.state.open}
               selected={this.props.selected}
             />
