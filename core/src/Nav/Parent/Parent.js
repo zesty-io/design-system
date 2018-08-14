@@ -11,7 +11,6 @@ export class Parent extends Component {
   };
   handleOpen = path => {
     // add or remove path from closed state array
-    console.log(path);
     let replaceClosed = [...this.state.closed];
     if (this.state.closed.includes(path)) {
       replaceClosed = this.state.closed.filter(e => e !== path);
