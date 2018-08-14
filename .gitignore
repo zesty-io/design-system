@@ -9,6 +9,9 @@
 .vscode
 
 # Distributions & Deps
-*node_modules
-dist/
+node_modules/
+app/dist/
 core/dist
+__snapshots__
+
+core/.size-snapshot.json

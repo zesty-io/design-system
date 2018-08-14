@@ -1,7 +1,14 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
+import renderer from "react-test-renderer";
 
 import { Button } from "../../dist/Button";
+
+test("Button snapshot", () => {
+  const component = renderer.create(<Button />);
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
 test("Button renders", () => {
   const el = React.createElement(Button);
