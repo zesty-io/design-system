@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import { Contribute } from './Contribute'
 import * as Guides from '../../guides'
 
-import { Nav } from '@zesty-io/core/dist/Nav'
+import { Nav } from '../../../core/src/Nav'
 
 import styles from './app.less'
 export default class App extends Component {
@@ -23,58 +23,41 @@ export default class App extends Component {
                   <h1>Zesty.io Component Library</h1>
                 </header>
                 <section className={styles.AppWrap}>
-                  <Nav
-                    className={styles.AppMenu}
-                    content={[
-                      {
-                        title: 'Atoms',
-                        icon: 'cube',
-                        children: this.props.atoms.map(el => {
-                          return {
-                            name: el,
-                            path: el.toLowerCase().replace(' ', '-'),
-                            icon: 'cube'
-                          }
-                        })
-                      },
-                      {
-                        title: 'Molecules',
-                        icon: 'gears',
-                        children: this.props.molecules.map(el => {
-                          return {
-                            name: el,
-                            path: el.toLowerCase().replace(' ', '-'),
-                            icon: 'gears'
-                          }
-                        })
-                      },
-                      {
-                        title: 'Organisms',
-                        icon: 'sitemap',
-                        children: this.props.organisms.map(el => {
-                          return {
-                            name: el,
-                            path: el.toLowerCase().replace(' ', '-'),
-                            icon: 'sitemap'
-                          }
-                        })
-                      }
-                    ]}
-                    selected={props.location.pathname.split('/')[1]}
-                  />
-
-                  {/* <menu className={styles.AppMenu}>
-                    {this.props.components.map((comp, i) => {
-                      return (
-                        <Link
-                          to={`/${comp.toLowerCase().replace(' ', '-')}`}
-                          key={i}
-                        >
-                          {comp}
-                        </Link>
-                      )
-                    })}
-                  </menu> */}
+                  <nav className={styles.AppMenu}>
+                    <Nav
+                      title="atoms"
+                      selected={props.location.pathname.split('/')[1]}
+                      content={this.props.atoms.map(el => {
+                        return {
+                          name: el,
+                          path: el.toLowerCase().replace(' ', '-'),
+                          icon: 'cube'
+                        }
+                      })}
+                    />
+                    <Nav
+                      title="molecules"
+                      selected={props.location.pathname.split('/')[1]}
+                      content={this.props.molecules.map(el => {
+                        return {
+                          name: el,
+                          path: el.toLowerCase().replace(' ', '-'),
+                          icon: 'cube'
+                        }
+                      })}
+                    />
+                    <Nav
+                      title="organisms"
+                      selected={props.location.pathname.split('/')[1]}
+                      content={this.props.organisms.map(el => {
+                        return {
+                          name: el,
+                          path: el.toLowerCase().replace(' ', '-'),
+                          icon: 'cube'
+                        }
+                      })}
+                    />
+                  </nav>
                   <main className={styles.AppShowcase}>
                     <Switch>
                       <Route path="/button" component={Guides.ButtonGuide} />

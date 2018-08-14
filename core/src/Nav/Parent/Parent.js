@@ -40,7 +40,7 @@ export class Parent extends Component {
           <Parent
             {...child}
             depth={recursionDepth}
-            selected={child.selected}
+            selected={item.selected}
             active={this.state.active}
             closed={this.state.closed.includes(item.path) || item.closed}
           />

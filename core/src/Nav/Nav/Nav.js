@@ -19,6 +19,7 @@ export class Nav extends PureComponent {
           title={this.props.title}
           open={this.state.open}
           handleOpen={this.handleOpen}
+          hasContent={Boolean(this.props.content.length)}
         />
         {this.props.content.map(item => {
           // create a Parent for each object in the array
