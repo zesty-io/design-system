@@ -26,33 +26,33 @@ export default class App extends Component {
                   <nav className={styles.AppMenu}>
                     <div className={styles.Title}>ATOMS</div>
                     <Nav
-                      selected={props.location.pathname.split('/')[1]}
+                      selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.atoms.map(el => {
                         return {
                           name: el,
-                          path: el.toLowerCase().replace(' ', '-'),
+                          path: '/' + el.toLowerCase().replace(' ', '-'),
                           icon: 'cube'
                         }
                       })}
                     />
                     <div className={styles.Title}>MOLECULES</div>
                     <Nav
-                      selected={props.location.pathname.split('/')[1]}
+                      selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.molecules.map(el => {
                         return {
                           name: el,
-                          path: el.toLowerCase().replace(' ', '-'),
+                          path: '/' + el.toLowerCase().replace(' ', '-'),
                           icon: 'cube'
                         }
                       })}
                     />
                     <div className={styles.Title}>ORGANISMS</div>
                     <Nav
-                      selected={props.location.pathname.split('/')[1]}
+                      selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.organisms.map(el => {
                         return {
                           name: el,
-                          path: el.toLowerCase().replace(' ', '-'),
+                          path: '/' + el.toLowerCase().replace(' ', '-'),
                           icon: 'cube'
                         }
                       })}
