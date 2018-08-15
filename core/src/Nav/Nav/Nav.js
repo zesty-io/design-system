@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import cx from "classnames";
 
 import { Parent } from "../Parent";
-import { Header } from "../Header";
 
 import styles from "./Nav.less";
 export class Nav extends PureComponent {
@@ -15,12 +14,6 @@ export class Nav extends PureComponent {
   render() {
     return (
       <nav className={cx(styles.Nav, this.props.className)}>
-        <Header
-          title={this.props.title}
-          open={this.state.open}
-          handleOpen={this.handleOpen}
-          hasContent={Boolean(this.props.content.length)}
-        />
         {this.props.content.map(item => {
           // create a Parent for each object in the array
           // parents render children if present

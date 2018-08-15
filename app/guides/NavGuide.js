@@ -33,17 +33,13 @@ export class NavGuide extends Component {
           matching the path of the selected item)
         </p>
         <br />
-        <Nav
-          title="Test Title"
-          content={navData}
-          selected={this.state.selected}
-        />
+        <Nav content={navData} selected={this.state.selected} />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="55px"
-            code={`<Nav content={content} title="Test Title" selected={selection.identifier} />`}
+            code={`<Nav content={content} selected={selection.identifier} />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="code">
