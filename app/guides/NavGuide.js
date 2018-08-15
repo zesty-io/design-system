@@ -10,12 +10,12 @@ export class NavGuide extends Component {
   }
   componentDidMount() {
     this.setState({
-      selected: `nav/${this.props.location.pathname.split('/').pop()}`
+      selected: `/nav/${this.props.location.pathname.split('/').pop()}`
     })
   }
   static getDerivedStateFromProps(props, state) {
     if (props.location.pathname.split('/').pop() !== state.selected) {
-      return { selected: `nav/${props.location.pathname.split('/').pop()}` }
+      return { selected: `/nav/${props.location.pathname.split('/').pop()}` }
     } else {
       return null
     }
@@ -52,13 +52,13 @@ export class NavGuide extends Component {
 const navData = [
   {
     name: 'Clippings',
-    path: 'nav/asda-asd5ads-dsa',
+    path: '/nav/asda-asd5ads-dsa',
     icon: 'bars'
   },
-  { name: 'Dashboard Widgets', path: 'nav/asda-aesdads-dsa', icon: 'bars' },
+  { name: 'Dashboard Widgets', path: '/nav/asda-aesdads-dsa', icon: 'bars' },
   {
     name: 'Sidebar Contact Form',
-    path: 'nav/asda-asdsdads-dsa',
+    path: '/nav/asda-asdsdads-dsa',
     icon: 'bars'
   },
   {
