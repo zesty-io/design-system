@@ -22,7 +22,7 @@ export class Parent extends Component {
   renderMenuItem = item => {
     // track recursion depth and pass it as a prop to the node component
     const recursionDepth = item.depth + 1 || 1;
-    return item.children ? (
+    return item.children && Boolean(item.children.length) ? (
       // if the item has children
       // render the item and then it's children
       <React.Fragment key={item.path}>
