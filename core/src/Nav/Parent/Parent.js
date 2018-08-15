@@ -23,8 +23,8 @@ export class Parent extends Component {
     // track recursion depth and pass it as a prop to the node component
     const recursionDepth = item.depth + 1 || 1;
     return item.children ? (
-      // if the child has children
-      // render the child and then it's children
+      // if the item has children
+      // render the item and then it's children
       <React.Fragment key={item.path}>
         <Node
           {...item}
