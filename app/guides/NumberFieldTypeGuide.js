@@ -11,12 +11,23 @@ export class NumberFieldTypeGuide extends Component {
         <p>Number field for manager app that allows custom character limit</p>
         <p>Props: label, charCount</p>
         <br />
-        <NumberFieldType label="Title Field" charCount="350" />
+        <NumberFieldType
+          label="Title Field"
+          charCount="350"
+          default="4"
+          callback={value => console.log(value)}
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="50px"
-            code="<NumberFieldType label=&quot;Title Field&quot; charCount=&quot;350&quot; />"
+            height="150px"
+            code={`
+<NumberFieldType
+  label="Title Field"
+  charCount="350"
+  default="4"
+  callback={value => console.log(value)}
+/>`}
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>

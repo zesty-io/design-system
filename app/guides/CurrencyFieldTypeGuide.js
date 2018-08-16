@@ -12,13 +12,17 @@ export class CurrencyFieldTypeGuide extends Component {
         <p>Currency Field Type</p>
         <p>Props: label, default</p>
         <br />
-        <CurrencyFieldType label="Title Field" default="CAD" />
+        <CurrencyFieldType
+          label="Title Field"
+          callback={value => console.log(value)}
+          default="CAD"
+        />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code="<CurrencyFieldType label=&quot;Title Field&quot; default=&quot;CAD&quot; />"
+            code="<CurrencyFieldType label=&quot;Title Field&quot; callback={value => console.log(value)} default=&quot;CAD&quot; />"
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
