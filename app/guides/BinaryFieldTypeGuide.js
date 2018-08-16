@@ -18,11 +18,13 @@ export class BinaryFieldTypeGuide extends Component {
           label="Custom Values"
           trueValue="Affirmative"
           falseValue="Negative"
+          callback={value => console.log(value)}
         />
         <br />
         <BinaryFieldType
           label="Default to true"
           defaultChecked={true}
+          callback={value => console.log(value)}
           trueValue="Fast"
           falseValue="Slow"
         />
@@ -42,11 +44,13 @@ export class BinaryFieldTypeGuide extends Component {
   label="Custom Values"
   trueValue="Affirmative"
   falseValue="Negative"
+  callback={value => console.log(value)}
 />
 
 <BinaryFieldType
   label="Default to true"
   defaultChecked={true}
+  callback={value => console.log(value)}
   trueValue="Fast"
   falseValue="Slow"
 />
