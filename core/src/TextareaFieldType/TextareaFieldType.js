@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { Input } from '../Input'
+import { Input } from "../Input";
 
-import styles from './TextareaFieldType.less'
+import styles from "./TextareaFieldType.less";
 export class TextareaFieldType extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      textInput: ''
-    }
+      textInput: props.default || ""
+    };
   }
   render() {
-    const { textInput } = this.state
+    const { textInput } = this.state;
     return (
       <article
         className={`${styles.TextareaFieldType} ${
-          textInput.length > this.props.charCount ? styles.Error : ''
-        }`}>
+          textInput.length > this.props.charCount ? styles.Error : ""
+        }`}
+      >
         <div className={styles.TextareaFieldTypeLabel}>
           <label>{this.props.label}</label>
           <span>
@@ -29,11 +30,14 @@ export class TextareaFieldType extends Component {
           value={textInput}
         />
       </article>
-    )
+    );
   }
   onChange = evt => {
     this.setState({
       textInput: evt.target.value
-    })
-  }
+    });
+    if (this.props.callback) {
+      this.props.callback(evt.target.value);
+    }
+  };
 }

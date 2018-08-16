@@ -12,12 +12,22 @@ export class TextareaFieldTypeGuide extends Component {
         <p>Textarea field for manager app that allows custom character limit</p>
         <p>Props: label, charCount</p>
         <br />
-        <TextareaFieldType label="Title Field" charCount="350" />
+        <TextareaFieldType
+          default="testing default"
+          callback={console.log}
+          label="Title Field"
+          charCount="350"
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="50px"
-            code="<TextareaFieldType label=&quot;Title Field&quot; charCount=&quot;350&quot; />"
+            height="150px"
+            code={`<TextareaFieldType 
+  default="testing default"
+  callback={console.log}
+  label="Title Field"
+  charCount="350" 
+/>`}
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
