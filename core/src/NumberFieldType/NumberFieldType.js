@@ -7,7 +7,7 @@ export class NumberFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberInput: ""
+      numberInput: props.default || ""
     };
   }
   render() {
@@ -29,6 +29,9 @@ export class NumberFieldType extends Component {
     );
   }
   onChange = evt => {
+    if (this.props.callback) {
+      this.props.callback(evt.target.value);
+    }
     this.setState({
       numberInput: evt.target.value
     });

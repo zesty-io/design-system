@@ -1,20 +1,28 @@
-.CurrencyFieldType {
+.CurrencyFieldTypeLabel {
+  display: flex;
   max-width: 20.5rem;
-  .CurrencyFieldTypeLabel {
-    display: flex;
-    justify-content: space-between;
-  }
-  .SelectCurrency {
+  justify-content: space-between;
+}
+.CurrencyFieldType {
+  .Overlap {
+    display: grid;
+    grid-template-columns: 1fr;
     max-width: 20.5rem;
-  }
-  .CurrencyInput {
-    position: absolute;
-    margin-left: 5.5rem;
-    width: 15rem;
-    z-index: 1;
-    height: 34px;
-    border-left: none;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    .SelectCurrency {
+      grid-row-start: 1;
+      grid-column-start: 1;
+      max-width: 20.5rem;
+    }
+    .CurrencyInput {
+      margin-left: 5.5rem;
+      grid-row-start: 1;
+      grid-column-start: 1;
+      z-index: 1;
+      width: 15rem;
+      height: 34px;
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }

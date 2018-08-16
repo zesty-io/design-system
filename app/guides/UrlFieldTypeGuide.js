@@ -12,12 +12,22 @@ export class UrlFieldTypeGuide extends Component {
         <p>URL field type, validates external urls (checks for http/https)</p>
         <p>Props: label, charCount</p>
         <br />
-        <UrlFieldType label="Title Field" charCount="150" />
+        <UrlFieldType
+          default="https://www.defaultURL.com"
+          callback={console.log}
+          label="Title Field"
+          charCount="150"
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="50px"
-            code="<UrlFieldType label=&quot;Title Field&quot; charCount=&quot;150&quot; />"
+            height="150px"
+            code={`<UrlFieldType 
+  default="https://www.defaultURL.com" 
+  callback={console.log} 
+  label="Title Field" 
+  charCount="150" 
+/>`}
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>

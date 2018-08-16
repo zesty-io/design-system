@@ -1,29 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { Button } from '../Button'
+import { Button } from "../Button";
 
-import styles from './Search.less'
-import cx from 'classnames'
+import styles from "./Search.less";
+import cx from "classnames";
 
 export class Search extends Component {
   state = {
-    searchTerm: ''
-  }
+    searchTerm: ""
+  };
   componentDidMount() {
     // lets the user override the initial value in the search box
     if (this.props.override) {
-      this.setState({ searchTerm: this.props.override })
+      this.setState({ searchTerm: this.props.override });
     }
   }
   render() {
     return (
-      <form
-        className={cx(styles.search, this.props.className)}
-        onSubmit={this.handleSubmit}>
+      <div className={cx(styles.search, this.props.className)}>
         {this.props.noButton ? null : (
-          <Button className={styles.searchBtn} type="submit">
+          <Button className={styles.searchBtn} onClick={this.handleSubmit}>
             <i
-              className={cx(styles.searchIcon, 'fa fa-search')}
+              className={cx(styles.searchIcon, "fa fa-search")}
               aria-hidden="true"
             />
           </Button>
@@ -38,18 +36,18 @@ export class Search extends Component {
           onFocus={this.props.onFocus}
           onChange={this.handleKeyUp}
         />
-      </form>
-    )
+      </div>
+    );
   }
   handleSubmit = evt => {
-    evt.preventDefault()
-    this.props.onSubmit(this.state.searchTerm)
-  }
+    evt.preventDefault();
+    this.props.onSubmit(this.state.searchTerm);
+  };
   handleKeyUp = evt => {
-    evt.preventDefault()
+    evt.preventDefault();
     // return the target value of the input
     this.setState({ searchTerm: evt.target.value }, () =>
       this.props.onKeyUp(this.state.searchTerm)
-    )
-  }
+    );
+  };
 }

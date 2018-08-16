@@ -11,7 +11,11 @@ export class SearchGuide extends Component {
       <React.Fragment>
         <p>A search component that takes onKeyup and onClick props</p>
         <p>Props: onClick, onKeyup, override, noButton</p>
-        <Search placeholder="Search for something" />
+        <Search
+          placeholder="Search for something"
+          onSubmit={console.log}
+          onKeyUp={console.log}
+        />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
