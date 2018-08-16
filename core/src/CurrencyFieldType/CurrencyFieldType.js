@@ -110,6 +110,10 @@ export class CurrencyFieldType extends Component {
       amount: converted,
       inputAmount: evt.target.value
     });
+
+    if (this.props.callback) {
+      this.props.callback(converted);
+    }
   };
 
   selectCurrency = evt => {
@@ -126,6 +130,9 @@ export class CurrencyFieldType extends Component {
           }
         );
         this.setState({ amount: converted });
+        if (this.props.callback) {
+          this.props.callback(converted);
+        }
       }
     );
   };
