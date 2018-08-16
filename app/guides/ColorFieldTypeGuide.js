@@ -12,7 +12,10 @@ export class ColorFieldTypeGuide extends Component {
         <p>Color Field Type</p>
         <p>Props: label, default</p>
         <br />
-        <ColorFieldType label="Title Field" />
+        <ColorFieldType
+          label="Title Field"
+          callback={value => console.log(value)}
+        />
         <br />
         <ColorFieldType label="Default to Orange Field" default="#ff9920" />
         <br />
