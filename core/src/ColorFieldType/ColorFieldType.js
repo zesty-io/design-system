@@ -7,7 +7,8 @@ export class ColorFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      colorInput: "#ffffff"
+      colorInput: "#ffffff",
+      required: props.required
     };
   }
   componentDidMount() {
