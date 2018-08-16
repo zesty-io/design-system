@@ -1,33 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import styles from './CollapsibleCard.less'
-import { Card, CardHeader, CardContent, CardFooter } from '../Card'
+import styles from "./CollapsibleCard.less";
+import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 
 export class CollapsibleCard extends Component {
   static defaultProps = {
     isCollapsed: true,
-    header: 'Header Required',
-    footer: ''
-  }
+    header: "Header Required",
+    footer: ""
+  };
   state = {
     isCollapsed: true
-  }
+  };
 
   componentDidMount() {
     if (this.props.open) {
-      this.setState({ isCollapsed: false })
+      this.setState({ isCollapsed: false });
     }
   }
 
   render() {
-    const { isCollapsed } = this.state
-    const { header, footer } = this.props
+    const { isCollapsed } = this.state;
+    const { header, footer } = this.props;
     return (
       <Card className={styles.Card}>
         <CardHeader className={styles.CardHeader}>
           <h2 onClick={this.onCollapse}>
             <i
-              className={isCollapsed ? 'fa fa-caret-right' : 'fa fa-caret-down'}
+              className={isCollapsed ? "fa fa-caret-right" : "fa fa-caret-down"}
             />
             {header}
           </h2>
@@ -40,12 +40,11 @@ export class CollapsibleCard extends Component {
           </React.Fragment>
         )}
       </Card>
-    )
+    );
   }
   onCollapse = () => {
-    console.log('onCollapse')
     this.setState({
       isCollapsed: !this.state.isCollapsed
-    })
-  }
+    });
+  };
 }
