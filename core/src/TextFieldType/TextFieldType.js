@@ -7,7 +7,7 @@ export class TextFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      textInput: ""
+      textInput: this.props.default || ""
     };
   }
   render() {
@@ -32,5 +32,8 @@ export class TextFieldType extends Component {
     this.setState({
       textInput: evt.target.value
     });
+    if (this.props.callback) {
+      this.props.callback(evt.target.value);
+    }
   };
 }

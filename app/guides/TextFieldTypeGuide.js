@@ -12,7 +12,12 @@ export class TextFieldTypeGuide extends Component {
         <p>Text field for manager app that allows custom character limit</p>
         <p>Props: label, charCount</p>
         <br />
-        <TextFieldType label="Title Field" charCount="150" />
+        <TextFieldType
+          default="default text"
+          callback={console.log}
+          label="Title Field"
+          charCount="150"
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
