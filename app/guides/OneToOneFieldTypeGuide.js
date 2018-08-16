@@ -14,6 +14,7 @@ export class OneToOneFieldTypeGuide extends Component {
         <br />
         <OneToOneFieldType
           label="Label Field"
+          callback={value => console.log(value)}
           options={[
             { value: 'a value that can be used in some way', text: 'hi' },
             { value: 'a value that can be used in some way', text: 'hello' },
