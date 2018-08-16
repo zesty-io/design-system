@@ -2,13 +2,11 @@ import React, { Component } from "react";
 
 import styles from "./BinaryFieldType.less";
 export class BinaryFieldType extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      binaryInput: false,
-      value: props.falseValue
-    };
-  }
+  state = {
+    binaryInput: false,
+    value: this.props.falseValue,
+    required: this.props.required
+  };
   componentDidMount() {
     this.props.defaultChecked &&
       this.setState({ binaryInput: true, value: this.props.trueValue });
@@ -17,7 +15,7 @@ export class BinaryFieldType extends Component {
     const { binaryInput } = this.state;
     const { falseValue, trueValue, label, disabled } = this.props;
     return (
-      <article>
+      <article className={styles.BinaryFieldType}>
         <div className={styles.BinaryFieldTypeLabel}>
           <label>{label}</label>
         </div>
@@ -25,7 +23,7 @@ export class BinaryFieldType extends Component {
           <input
             checked={binaryInput}
             disabled={disabled}
-            onChange={this.onChange}
+            onChange={evt => this.onChange(evt)}
             type="checkbox"
             data-text-on={trueValue}
             data-text-off={falseValue}
