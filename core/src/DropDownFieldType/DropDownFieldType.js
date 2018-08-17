@@ -33,7 +33,7 @@ export class DropDownFieldType extends Component {
 
   selectOption = evt => {
     if (this.props.callback) {
-      this.props.callback(evt.currentTarget.dataset.value);
+      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
     }
     this.setState({
       selectedOption: JSON.parse(evt.currentTarget.dataset.value)
