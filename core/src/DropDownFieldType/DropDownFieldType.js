@@ -7,6 +7,23 @@ export class DropDownFieldType extends Component {
     selectedOption: this.props.options[0],
     options: this.props.options
   };
+  static defaultProps = {
+    options: [
+      {
+        text: "there were no options passed to <Select>",
+        value: "no options passed to select"
+      }
+    ],
+    searchLength: 50
+  };
+  selectOption = evt => {
+    if (this.props.callback) {
+      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
+    }
+    this.setState({
+      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
+    });
+  };
   render() {
     const { selectedOption } = this.state;
     return (
@@ -30,13 +47,4 @@ export class DropDownFieldType extends Component {
       </article>
     );
   }
-
-  selectOption = evt => {
-    if (this.props.callback) {
-      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
-    }
-    this.setState({
-      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
-    });
-  };
 }
