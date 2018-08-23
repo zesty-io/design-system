@@ -15,13 +15,17 @@ export class NumberFieldType extends Component {
     return (
       <article
         className={`${styles.NumberFieldType} ${
-          numberInput.length > this.props.charCount ? styles.Error : ""
+          numberInput.length >
+          (this.props.charCount ? this.props.charCount : 150)
+            ? styles.Error
+            : ""
         }`}
       >
         <div className={styles.NumberFieldTypeLabel}>
           <label>{this.props.label}</label>
           <span>
-            {numberInput.length}/{this.props.charCount}
+            {numberInput.length}/
+            {this.props.charCount ? this.props.charCount : 150}
           </span>
         </div>
         <Input type="number" onChange={this.onChange} value={numberInput} />
