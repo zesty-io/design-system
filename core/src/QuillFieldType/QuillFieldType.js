@@ -12,6 +12,9 @@ export class QuillFieldType extends React.Component {
   }
 
   onEditorStateChange = text => {
+    if (this.props.callback) {
+      this.props.callback(text);
+    }
     this.setState({
       text
     });
