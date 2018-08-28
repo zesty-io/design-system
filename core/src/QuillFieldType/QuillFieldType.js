@@ -23,11 +23,16 @@ export class QuillFieldType extends React.Component {
   render() {
     const { text } = this.state;
     return (
-      <ReactQuill
-        value={text}
-        theme="snow"
-        onChange={this.onEditorStateChange}
-      />
+      <React.Fragment>
+        <div>
+          <label>{this.props.label}</label>
+        </div>
+        <ReactQuill
+          value={text}
+          theme="snow"
+          onChange={this.onEditorStateChange}
+        />
+      </React.Fragment>
     );
   }
 }
