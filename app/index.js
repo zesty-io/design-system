@@ -28,6 +28,7 @@ ReactDOM.render(
       'CurrencyFieldType',
       'TextFieldType',
       'TextAreaFieldType',
+      'SortFieldType',
       'NumberFieldType',
       'UrlFieldType',
       'BinaryFieldType',

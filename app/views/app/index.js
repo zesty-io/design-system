@@ -143,6 +143,10 @@ export default class App extends Component {
                         path="/searchablelist"
                         component={Guides.SearchableListGuide}
                       />
+                      <Route
+                        path="/sortfieldtype"
+                        component={Guides.SortFieldTypeGuide}
+                      />
                       <Route path="/tag" component={Guides.TagGuide} />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />

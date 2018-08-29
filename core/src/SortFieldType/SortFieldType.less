@@ -1,0 +1,53 @@
+@import "../colors.less";
+
+.SortFieldType {
+  display: flex;
+  flex-direction: column;
+  .SortFieldTypeLabel {
+    display: flex;
+  }
+  .Sort {
+    display: flex;
+    .IncrementL {
+      justify-items: center;
+      padding: 0.5rem;
+      height: 3rem;
+      font-size: 3rem;
+      background-color: @nav-border-color;
+      color: @zesty-light-blue;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      cursor: pointer;
+      height: 3rem;
+      user-select: none;
+      &:hover {
+        background-color: darken(@nav-border-color, 55%);
+      }
+    }
+    .IncrementR {
+      justify-items: center;
+      padding: 0.5rem;
+      height: 3rem;
+      font-size: 3rem;
+      background-color: @nav-border-color;
+      color: @zesty-light-blue;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      cursor: pointer;
+      height: 3rem;
+      user-select: none;
+      &:hover {
+        background-color: darken(@nav-border-color, 55%);
+      }
+    }
+    .SortNumber {
+      background: @nav-border-color;
+      color: @zesty-light-blue;
+      text-align: center;
+      border-radius: 0 0 0 0;
+      border: none;
+      align-items: center;
+      width: 5rem;
+    }
+  }
+}
