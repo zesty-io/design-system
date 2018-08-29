@@ -34,10 +34,9 @@ export class BinaryFieldType extends Component {
     );
   }
   onChange(evt) {
+    // currently need to return a 1 or 0
     if (this.props.callback) {
-      this.props.callback(
-        evt.target.checked ? this.props.trueValue : this.props.falseValue
-      );
+      this.props.callback(evt.target.checked ? 1 : 0);
     }
     this.setState({
       binaryInput: evt.target.checked,
