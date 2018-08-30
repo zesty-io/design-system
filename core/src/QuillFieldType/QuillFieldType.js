@@ -1,13 +1,11 @@
 import React from "react";
 import ReactQuill from "react-quill";
 
-import "react-quill/dist/quill.snow.css";
-
 export class QuillFieldType extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: props.default
+      text: props.default || ""
     };
   }
 
@@ -27,11 +25,7 @@ export class QuillFieldType extends React.Component {
         <div>
           <label>{this.props.label}</label>
         </div>
-        <ReactQuill
-          value={text}
-          theme="snow"
-          onChange={this.onEditorStateChange}
-        />
+        <ReactQuill value={text} onChange={this.onEditorStateChange} />
       </React.Fragment>
     );
   }

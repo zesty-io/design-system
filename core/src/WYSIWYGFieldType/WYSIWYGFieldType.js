@@ -15,11 +15,12 @@ export class WYSIWYGFieldType extends React.Component {
       <React.Fragment>
         <label>{this.props.label}</label>
         <Editor
-          initialValue={this.props.default}
+          initialValue={this.props.default || ""}
           init={{
             plugins: "link image code",
-            toolbar:
-              "undo redo | bold italic | alignleft aligncenter alignright | code"
+            toolbar: this.props.datatype.contains("advanced")
+              ? "undo redo | bold italic | link image | alignleft aligncenter alignright | code | styleselect"
+              : "undo redo | bold italic | alignleft aligncenter alignright | code"
           }}
           onChange={this.handleEditorChange}
         />
