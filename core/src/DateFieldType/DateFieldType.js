@@ -34,6 +34,9 @@ export class DateFieldType extends Component {
   }
 
   onChange = date => {
+    if (this.props.callback) {
+      this.props.callback(moment.format(date));
+    }
     this.setState({
       date: date
     });
