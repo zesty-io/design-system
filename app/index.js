@@ -35,6 +35,7 @@ ReactDOM.render(
       'DateFieldType',
       'DateTimeFieldType',
       'DropDownFieldType',
+      'ImageFieldType',
       'WYSIWYGFieldType',
       'DraftFieldType',
       'QuillFieldType',

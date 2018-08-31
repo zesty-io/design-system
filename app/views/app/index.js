@@ -147,6 +147,10 @@ export default class App extends Component {
                         path="/sortfieldtype"
                         component={Guides.SortFieldTypeGuide}
                       />
+                      <Route
+                        path="/imagefieldtype"
+                        component={Guides.ImageFieldTypeGuide}
+                      />
                       <Route path="/tag" component={Guides.TagGuide} />
                       <Route path="/nav" component={Guides.NavGuide} />
                       <Route path="/" component={Contribute} />
