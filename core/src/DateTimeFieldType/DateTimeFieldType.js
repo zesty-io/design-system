@@ -12,6 +12,11 @@ export class DateTimeFieldType extends Component {
       date: moment()
     };
   }
+  componentDidMount() {
+    if (this.props.default) {
+      this.setState({ date: moment(this.props.default) });
+    }
+  }
   render() {
     return (
       <article className={styles.DateFieldType}>
