@@ -16,25 +16,18 @@ export class BinaryFieldTypeGuide extends Component {
         <br />
         <BinaryFieldType
           label="Custom Values"
-          trueValue="Affirmative"
-          falseValue="Negative"
           callback={value => console.log(value)}
+          default={1}
+          binaryOptions={{ No: 0, Yes: 1 }}
         />
         <br />
         <BinaryFieldType
           label="Default to true"
-          defaultChecked={true}
           callback={value => console.log(value)}
-          trueValue="Fast"
-          falseValue="Slow"
+          default={1}
+          binaryOptions={{ Yes: 0, No: 1 }}
         />
         <br />
-        <BinaryFieldType
-          disabled
-          label="Disabled"
-          trueValue="Fast"
-          falseValue="Slow"
-        />
 
         <CodeCard header="Usage" height="440" open>
           {`
