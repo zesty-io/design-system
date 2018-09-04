@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, CardHeader, CardContent } from "../Card";
 import { Button } from "../Button";
+import { ButtonGroup } from "../ButtonGroup";
 const marked = require("marked");
 
 marked.setOptions({
@@ -33,25 +34,27 @@ export class MarkdownFieldType extends Component {
   render() {
     return (
       <Card className={styles.MarkdownFieldType}>
-        <CardHeader className={styles.Tabs}>
-          <Button
-            onClick={this.changeTab}
-            type={this.state.view !== "editor" ? "cancel" : ""}
-            name="editor"
-            text="Editor"
-          />
-          <Button
-            onClick={this.changeTab}
-            type={this.state.view !== "output" ? "cancel" : ""}
-            name="output"
-            text="View Output"
-          />
-          <Button
-            onClick={this.changeTab}
-            type={this.state.view !== "help" ? "cancel" : ""}
-            name="help"
-            text="Help"
-          />
+        <CardHeader>
+          <ButtonGroup className={styles.Tabs}>
+            <Button
+              onClick={this.changeTab}
+              type={this.state.view !== "editor" ? "cancel" : ""}
+              name="editor"
+              text="Editor"
+            />
+            <Button
+              onClick={this.changeTab}
+              type={this.state.view !== "output" ? "cancel" : ""}
+              name="output"
+              text="View Output"
+            />
+            <Button
+              onClick={this.changeTab}
+              type={this.state.view !== "help" ? "cancel" : ""}
+              name="help"
+              text="Help"
+            />
+          </ButtonGroup>
         </CardHeader>
         <CardContent className={styles.Content}>
           {this.state.view === "editor" ? (
