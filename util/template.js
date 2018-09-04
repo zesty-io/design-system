@@ -1,6 +1,6 @@
 module.exports = template = {
   react: name => {
-    return `import React from "react";
+    return `import React, { Component } from "react";
 import styles from "./${name}.less";
 
 export class ${name} extends Component {
@@ -26,7 +26,7 @@ export class ${name}Guide extends Component {
     return (
       <React.Fragment>
         <p>description</p>
-        //render exampled of the component
+        <${name} />
 
         <CodeCard header="Usage" height={250} open>
           // usage guide here

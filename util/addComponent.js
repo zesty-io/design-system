@@ -4,8 +4,6 @@ const path = require("path");
 const fs = require("fs");
 const template = require("./template");
 
-const items = require("../app/items.json");
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -17,6 +15,8 @@ rl.question(
     console.log(
       chalk.green(`Creating files for your component: ${componentName}`)
     );
+
+    // write the component into core
     const componentPath = path.resolve(`../core/src/${componentName}`);
     fs.mkdirSync(componentPath);
     fs.writeFileSync(
@@ -24,8 +24,12 @@ rl.question(
       template.react(componentName)
     );
     fs.writeFileSync(
-      `${componentPath}/${componentName}.css`,
+      `${componentPath}/${componentName}.less`,
       template.css(componentName)
+    );
+    fs.writeFileSync(
+      `${componentPath}/index.js`,
+      `export { ${componentName} } from './${componentName}'`
     );
 
     // add to the core src index
@@ -34,6 +38,8 @@ rl.question(
       `
 export { ${componentName} } from './${componentName}'`
     );
+
+    // create the guide for the component
     const guidePath = path.resolve(`../app/guides`);
     fs.writeFileSync(
       `${guidePath}/${componentName}Guide.js`,

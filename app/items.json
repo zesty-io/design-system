@@ -34,7 +34,8 @@
     "WYSIWYGFieldType",
     "DraftFieldType",
     "QuillFieldType",
-    "OneToOneFieldType"
+    "OneToOneFieldType",
+    "MarkdownFieldType"
   ],
   "organisms": []
 }

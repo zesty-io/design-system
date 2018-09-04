@@ -32,13 +32,10 @@ export class Contribute extends Component {
           </CardHeader>
           <CardContent>
             <ul style={{ padding: '1rem' }}>
-              <li>Create your component in core/src</li>
-              <li>Create your Guide in src/guides</li>
-              <li>Add your Guide to index.js in src/guides</li>
+              <li>CD into the /util directory</li>
+              <li>Run `node addComponent.js`</li>
+              <li>Follow the prompst</li>
               <li>Add a route in src/views/index</li>
-              <li>
-                Add your component in the appropriate array in src/index.js
-              </li>
             </ul>
           </CardContent>
           <CardFooter>
