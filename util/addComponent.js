@@ -27,21 +27,30 @@ rl.question(
       `${componentPath}/${componentName}.css`,
       template.css(componentName)
     );
+
+    // add to the core src index
+    fs.appendFileSync(
+      "../core/src/index.js",
+      `
+export { ${componentName} } from './${componentName}'`
+    );
     const guidePath = path.resolve(`../app/guides`);
     fs.writeFileSync(
       `${guidePath}/${componentName}Guide.js`,
       template.guide(componentName)
     );
     console.log(
-      chalk.green(`Completed writing component shell for ${componentName}`)
+      chalk.green(`Completed writing component shell for ${componentName}Guide`)
     );
 
+    // add to the guide index
     fs.appendFileSync(
       `${guidePath}/index.js`,
-      `export ${componentName} from './${componentName}'`
+      `
+export { ${componentName}Guide } from './${componentName}Guide'`
     );
 
-    //add the item to the navigation
+    // add the item to the navigation
     rl.question(
       `Will this component be an atom, molecule, or organism? `,
       type => {
@@ -63,8 +72,14 @@ rl.question(
         );
         // add route reminder
         console.log(
+          chalk.bgMagenta(
+            "Until you run a build in core your component will not load into the library"
+          )
+        );
+        console.log("Go make something useful!");
+        console.log(
           chalk.bgRed(
-            `Dont forget add a route for { ${componentName} } in app/views/index.js`
+            `Dont forget add a route for ${componentName} in app/views/index.js`
           )
         );
         rl.close();

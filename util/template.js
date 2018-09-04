@@ -21,7 +21,7 @@ export class ${name} extends Component {
 import { CodeCard } from '../components/CodeCard'
 import { ${name} } from '@zesty-io/core/dist/${name}'
 
-export class ${name} extends Component {
+export class ${name}Guide extends Component {
   render() {
     return (
       <React.Fragment>
