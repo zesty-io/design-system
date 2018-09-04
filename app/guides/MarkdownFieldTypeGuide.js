@@ -7,8 +7,7 @@ export class MarkdownFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>description</p>
-        //render example of the component
+        <MarkdownFieldType />
         <CodeCard header="Usage" height={250} open>
           // usage guide here
         </CodeCard>
