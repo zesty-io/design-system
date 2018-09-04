@@ -1,3 +1,29 @@
 .MarkdownFieldType {
-  display: flex;
+  .Tabs {
+    display: flex;
+  }
+  .Content {
+    display: flex;
+    padding: 0.5rem;
+    .TextInput {
+      border: none;
+      outline: none;
+      width: 100%;
+      min-height: 10rem;
+      &:selected {
+        outline: none;
+      }
+    }
+    .Help {
+      margin: initial;
+      padding: initial;
+      .HelpOutput {
+        all: revert;
+        all: initial;
+      }
+      display: flex;
+    }
+    .Output {
+    }
+  }
 }
