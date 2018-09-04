@@ -10,7 +10,6 @@ marked.setOptions({
   tables: true,
   breaks: false,
   pedantic: false,
-  sanitize: true,
   smartLists: true,
   smartypants: true
 });
@@ -79,7 +78,6 @@ export class MarkdownFieldType extends Component {
               </article>
             </section>
           ) : (
-            // this is bad and needs to be sanitized before running
             <article className={styles.Output}>
               <div
                 dangerouslySetInnerHTML={{
