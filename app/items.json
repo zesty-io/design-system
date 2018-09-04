@@ -35,7 +35,8 @@
     "DraftFieldType",
     "QuillFieldType",
     "OneToOneFieldType",
-    "MarkdownFieldType"
+    "MarkdownFieldType",
+    "InternalLinkFieldType"
   ],
   "organisms": []
 }

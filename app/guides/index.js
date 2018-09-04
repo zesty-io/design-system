@@ -32,3 +32,5 @@ export { NavGuide } from './NavGuide'
 export { UrlGuide } from './UrlGuide'
 export { TagGuide } from './TagGuide'
 export { MarkdownFieldTypeGuide } from './MarkdownFieldTypeGuide'
+
+export { InternalLinkFieldTypeGuide } from './InternalLinkFieldTypeGuide'

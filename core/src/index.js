@@ -29,3 +29,5 @@ export { CollapsibleCard } from "./CollapsibleCard";
 export { BinaryFieldType } from "./BinaryFieldType";
 export { ImageFieldType } from "./ImageFieldType";
 export { MarkdownFieldType } from "./MarkdownFieldType";
+
+export { InternalLinkFieldType } from "./InternalLinkFieldType";
