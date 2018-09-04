@@ -7,7 +7,11 @@ export class MarkdownFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <MarkdownFieldType default="#### this is default" />
+        <MarkdownFieldType
+          default={`# Level 1 Header (H1)
+## Level 2 Header (H2)
+##### Level 5 Header (H5)`}
+        />
         <CodeCard header="Usage" height={250} open>
           // usage guide here
         </CodeCard>

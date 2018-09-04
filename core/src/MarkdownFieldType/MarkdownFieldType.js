@@ -144,10 +144,5 @@ Automatic Links
 Code Blocks
 Indent with 4 spaces
 
-Tables
-| First Header | Second Header |
-| ------------ | ------------- |
-| Row1 Cell1   | Row1 Cell2    |
-
 Image Call
 ![Alt text](/files/example.jpg "Image call example")`;
