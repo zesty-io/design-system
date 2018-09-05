@@ -30,7 +30,8 @@ export default class App extends Component {
                       content={this.props.atoms.map(el => {
                         return {
                           name: el,
-                          path: '/' + el.toLowerCase().replace(' ', '-'),
+                          path:
+                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cube'
                         }
                       })}
@@ -41,7 +42,8 @@ export default class App extends Component {
                       content={this.props.molecules.map(el => {
                         return {
                           name: el,
-                          path: '/' + el.toLowerCase().replace(' ', '-'),
+                          path:
+                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cube'
                         }
                       })}
@@ -52,7 +54,8 @@ export default class App extends Component {
                       content={this.props.organisms.map(el => {
                         return {
                           name: el,
-                          path: '/' + el.toLowerCase().replace(' ', '-'),
+                          path:
+                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cube'
                         }
                       })}
