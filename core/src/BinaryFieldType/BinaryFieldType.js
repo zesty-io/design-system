@@ -16,17 +16,22 @@ export class BinaryFieldType extends Component {
     };
     this.setState({
       trueLabel: binaryOptions[1].split(":")[0],
-      falseLabel: binaryOptions[0].split(":")[0]
+      falseLabel: binaryOptions[0].split(":")[0],
+      checked: this.props.default === 1
     });
   }
   onChange(evt) {
     // currently need to return a 1 or 0
-    if (this.props.callback) {
-      this.props.callback(evt.target.checked ? 1 : 0);
-    }
-    this.setState({
-      checked: evt.target.checked
-    });
+    this.setState(
+      {
+        checked: evt.target.checked
+      },
+      () => {
+        if (this.props.callback) {
+          this.props.callback(this.state.checked ? 1 : 0);
+        }
+      }
+    );
   }
   render() {
     const { falseLabel, trueLabel, checked } = this.state;
