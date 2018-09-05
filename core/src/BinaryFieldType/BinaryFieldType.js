@@ -8,7 +8,6 @@ export class BinaryFieldType extends Component {
     falseLabel: "No"
   };
   componentDidMount() {
-    console.log(this.props.options);
     // determine labels
     // label 1 and 0 properly
     const binaryOptions = {
