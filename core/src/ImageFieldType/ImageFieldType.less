@@ -1,0 +1,33 @@
+@import "../colors.less";
+
+.ImageFieldType {
+  .ImageFieldTypeHeader {
+    display: flex;
+    align-items: center;
+    h3 {
+      padding: 1rem;
+    }
+    .DropZone {
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+  }
+  .ImageFieldTypeContent {
+    display: flex;
+    .ImageItem {
+      display: flex;
+      flex-direction: column;
+      background-color: @zesty-tab-blue;
+      max-width: 300px;
+      margin: 0.5rem;
+      .ImageName {
+        display: flex;
+        padding-left: 0.2rem;
+        background-color: @zesty-field-blue;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
