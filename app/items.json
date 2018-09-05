@@ -35,6 +35,7 @@
     "DraftFieldType",
     "QuillFieldType",
     "OneToOneFieldType",
+    "OneToManyFieldType",
     "MarkdownFieldType",
     "InternalLinkFieldType"
   ],
