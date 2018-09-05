@@ -2,38 +2,36 @@ import React, { Component } from "react";
 
 import styles from "./BinaryFieldType.less";
 export class BinaryFieldType extends Component {
-  static defaultProps = {
-    binaryOptions: { No: 0, Yes: 1 },
-    trueLabel: "Yes",
-    falseLabel: "No",
-    default: 1
-  };
   state = {
-    checked: false
+    checked: this.props.default === 1,
+    trueLabel: "Yes",
+    falseLabel: "No"
   };
   componentDidMount() {
+    console.log(this.props.options);
+    // determine labels
+    // label 1 and 0 properly
+    const binaryOptions = {
+      0: this.props.options.split(";").find(el => el.includes("0")),
+      1: this.props.options.split(";").find(el => el.includes("1"))
+    };
     this.setState({
-      checked:
-        this.props.default === this.props.binaryOptions[this.props.trueLabel]
+      trueLabel: binaryOptions[1].split(":")[0],
+      falseLabel: binaryOptions[0].split(":")[0]
     });
   }
   onChange(evt) {
     // currently need to return a 1 or 0
-    // 1 or 0 could be yes
     if (this.props.callback) {
-      this.props.callback(
-        evt.target.checked
-          ? this.props.binaryOptions[this.props.trueLabel]
-          : this.props.binaryOptions[this.props.falseLabel]
-      );
+      this.props.callback(evt.target.checked ? 1 : 0);
     }
     this.setState({
       checked: evt.target.checked
     });
   }
   render() {
-    const { checked } = this.state;
-    const { falseLabel, trueLabel, label, disabled } = this.props;
+    const { falseLabel, trueLabel, checked } = this.state;
+    const { label, disabled } = this.props;
     return (
       <article className={styles.BinaryFieldType}>
         <div className={styles.BinaryFieldTypeLabel}>

@@ -12,55 +12,105 @@ export class BinaryFieldTypeGuide extends Component {
         <p>Binary Field Type for manager app</p>
         <p>Props: label, trueValue, falseValue, defaultChecked, disabled</p>
         <br />
-        <BinaryFieldType label="Default Values" />
+        <BinaryFieldType label="Default Values" options={'No: 0; Yes: 1'} />
         <br />
         <BinaryFieldType
           label="Custom Values"
           callback={value => console.log(value)}
-          default={1}
-          binaryOptions={{ No: 0, Yes: 1 }}
+          options={'No: 0; Yes: 1'}
         />
         <br />
         <BinaryFieldType
-          label="Default to true"
+          label="No: 1; Yes: 0"
           callback={value => console.log(value)}
           default={1}
-          binaryOptions={{ Yes: 0, No: 1 }}
+          options={'No: 1; Yes: 0'}
         />
         <br />
-
+        <BinaryFieldType
+          label="something and something else"
+          callback={value => console.log(value)}
+          default={0}
+          options={'Something: 1; Something Else: 0'}
+        />
         <CodeCard header="Usage" height="440" open>
           {`
-<BinaryFieldType label="Default Values" />
-
+<BinaryFieldType label="Default Values" options={'No: 0; Yes: 1'} />
+<br />
 <BinaryFieldType
   label="Custom Values"
-  trueValue="Affirmative"
-  falseValue="Negative"
   callback={value => console.log(value)}
+  options={'No: 0; Yes: 1'}
 />
-
+<br />
 <BinaryFieldType
-  label="Default to true"
-  defaultChecked={true}
+  label="No: 1; Yes: 0"
   callback={value => console.log(value)}
-  trueValue="Fast"
-  falseValue="Slow"
+  default={1}
+  options={'No: 1; Yes: 0'}
 />
-
+<br />
 <BinaryFieldType
-  disabled
-  label="Disabled"
-  trueValue="Fast"
-  falseValue="Slow"
-/>
-`}
+  label="something and something else"
+  callback={value => console.log(value)}
+  default={0}
+  options={'Something: 1; Something Else: 0'}
+/>`}
         </CodeCard>
 
-        <CodeCard
-          header="Code"
-          url="https://gist.githubusercontent.com/grantglidewell/aea22e948944049f09a91844e8e7644e/raw/df0336d1ac249f27da496d96395d0fb54c565ea1/BinaryFieldType.js"
-        />
+        <CodeCard header="Code" height="440">
+          {`export class BinaryFieldType extends Component {
+  state = {
+    checked: this.props.default === 1,
+    trueLabel: 'Yes',
+    falseLabel: 'No'
+  }
+  componentDidMount() {
+    console.log(this.props.options)
+    // determine labels
+    // label 1 and 0 properly
+    const binaryOptions = {
+      0: this.props.options.split(';').find(el => el.includes('0')),
+      1: this.props.options.split(';').find(el => el.includes('1'))
+    }
+    this.setState({
+      trueLabel: binaryOptions[1].split(':')[0],
+      falseLabel: binaryOptions[0].split(':')[0]
+    })
+  }
+  onChange(evt) {
+    // currently need to return a 1 or 0
+    if (this.props.callback) {
+      this.props.callback(evt.target.checked ? 1 : 0)
+    }
+    this.setState({
+      checked: evt.target.checked
+    })
+  }
+  render() {
+    const { falseLabel, trueLabel, checked } = this.state
+    const { label, disabled } = this.props
+    return (
+      <article className={styles.BinaryFieldType}>
+        <div className={styles.BinaryFieldTypeLabel}>
+          <label>{label}</label>
+        </div>
+        <label className={styles.switch}>
+          <input
+            checked={checked}
+            disabled={disabled}
+            onChange={evt => this.onChange(evt)}
+            type="checkbox"
+            data-text-on={trueLabel}
+            data-text-off={falseLabel}
+          />
+          <span className={styles.slider} />
+        </label>
+      </article>
+    )
+  }
+}`}
+        </CodeCard>
       </React.Fragment>
     )
   }
