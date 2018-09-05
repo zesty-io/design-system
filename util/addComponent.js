@@ -82,12 +82,7 @@ export { ${componentName}Guide } from './${componentName}Guide'`
             "Until you run a build in core your component will not load into the library"
           )
         );
-        console.log("Go make something useful!");
-        console.log(
-          chalk.bgRed(
-            `Dont forget add a route for ${componentName} in app/views/index.js`
-          )
-        );
+        console.log(chalk.green("Go make something useful!"));
         rl.close();
       }
     );

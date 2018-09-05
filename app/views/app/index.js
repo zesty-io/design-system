@@ -60,107 +60,14 @@ export default class App extends Component {
                   </nav>
                   <main className={styles.AppShowcase}>
                     <Switch>
-                      <Route path="/button" component={Guides.ButtonGuide} />
-                      <Route
-                        path="/button-group"
-                        component={Guides.ButtonGroupGuide}
-                      />
-                      <Route path="/card" component={Guides.CardGuide} />
-                      <Route path="/divider" component={Guides.DividerGuide} />
-                      <Route path="/applink" component={Guides.AppLinkGuide} />
-                      <Route path="/url" component={Guides.UrlGuide} />
-                      <Route path="/search" component={Guides.SearchGuide} />
-                      <Route path="/select" component={Guides.SelectGuide} />
-                      <Route path="/loader" component={Guides.LoaderGuide} />
-                      <Route
-                        path="/withloader"
-                        component={Guides.WithLoaderGuide}
-                      />
-                      <Route path="/input" component={Guides.InputGuide} />
-                      <Route path="/toggle" component={Guides.ToggleGuide} />
-                      <Route path="/infotip" component={Guides.InfotipGuide} />
-                      <Route
-                        path="/textfieldtype"
-                        component={Guides.TextFieldTypeGuide}
-                      />
-                      <Route
-                        path="/numberfieldtype"
-                        component={Guides.NumberFieldTypeGuide}
-                      />
-                      <Route
-                        path="/colorfieldtype"
-                        component={Guides.ColorFieldTypeGuide}
-                      />
-                      <Route
-                        path="/currencyfieldtype"
-                        component={Guides.CurrencyFieldTypeGuide}
-                      />
-                      <Route
-                        path="/binaryfieldtype"
-                        component={Guides.BinaryFieldTypeGuide}
-                      />{' '}
-                      <Route
-                        path="/urlfieldtype"
-                        component={Guides.UrlFieldTypeGuide}
-                      />
-                      <Route
-                        path="/datefieldtype"
-                        component={Guides.DateFieldTypeGuide}
-                      />
-                      <Route
-                        path="/datetimefieldtype"
-                        component={Guides.DateTimeFieldTypeGuide}
-                      />
-                      <Route
-                        path="/textareafieldtype"
-                        component={Guides.TextareaFieldTypeGuide}
-                      />
-                      <Route
-                        path="/dropdownfieldtype"
-                        component={Guides.DropDownFieldTypeGuide}
-                      />
-                      <Route
-                        path="/collapsiblecard"
-                        component={Guides.CollapsibleCardGuide}
-                      />{' '}
-                      <Route
-                        path="/wysiwygfieldtype"
-                        component={Guides.WYSIWYGFieldTypeGuide}
-                      />
-                      <Route
-                        path="/draftfieldtype"
-                        component={Guides.DraftFieldTypeGuide}
-                      />
-                      <Route
-                        path="/quillfieldtype"
-                        component={Guides.QuillFieldTypeGuide}
-                      />
-                      <Route
-                        path="/onetoonefieldtype"
-                        component={Guides.OneToOneFieldTypeGuide}
-                      />
-                      <Route
-                        path="/searchablelist"
-                        component={Guides.SearchableListGuide}
-                      />
-                      <Route
-                        path="/sortfieldtype"
-                        component={Guides.SortFieldTypeGuide}
-                      />
-                      <Route
-                        path="/imagefieldtype"
-                        component={Guides.ImageFieldTypeGuide}
-                      />
-                      <Route
-                        path="/markdownfieldtype"
-                        component={Guides.MarkdownFieldTypeGuide}
-                      />
-                      <Route
-                        path="/internallinkfieldtype"
-                        component={Guides.InternalLinkFieldTypeGuide}
-                      />
-                      <Route path="/tag" component={Guides.TagGuide} />
-                      <Route path="/nav" component={Guides.NavGuide} />
+                      {/* Render routes for each component */}
+                      {Object.keys(Guides).map(routeItem => (
+                        <Route
+                          key={routeItem}
+                          path={`/${routeItem.toLowerCase()}`}
+                          component={Guides[routeItem]}
+                        />
+                      ))}
                       <Route path="/" component={Contribute} />
                     </Switch>
                   </main>

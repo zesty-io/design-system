@@ -34,8 +34,7 @@ export class Contribute extends Component {
             <ul style={{ padding: '1rem' }}>
               <li>CD into the /util directory</li>
               <li>Run `node addComponent.js`</li>
-              <li>Follow the prompst</li>
-              <li>Add a route in src/views/index</li>
+              <li>Follow the prompts</li>
             </ul>
           </CardContent>
           <CardFooter>
