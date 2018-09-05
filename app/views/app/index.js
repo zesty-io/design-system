@@ -44,7 +44,7 @@ export default class App extends Component {
                           name: el,
                           path:
                             '/' + el.toLowerCase().replace(' ', '-') + 'guide',
-                          icon: 'cube'
+                          icon: 'cogs'
                         }
                       })}
                     />
@@ -56,7 +56,7 @@ export default class App extends Component {
                           name: el,
                           path:
                             '/' + el.toLowerCase().replace(' ', '-') + 'guide',
-                          icon: 'cube'
+                          icon: 'fa-snowflake-o'
                         }
                       })}
                     />
