@@ -18,6 +18,7 @@
     "browserify-fs": "^1.0.0",
     "classnames": "^2.2.6",
     "draft-js": "^0.10.5",
+    "marked": "^0.5.0",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "quill": "^1.3.6",
