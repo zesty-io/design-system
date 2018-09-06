@@ -12,30 +12,30 @@ export class BinaryFieldTypeGuide extends Component {
         <p>Binary Field Type for manager app</p>
         <p>Props: label, trueValue, falseValue, defaultChecked, disabled</p>
         <br />
-        <BinaryFieldType label="Default Values" options={'No: 0; Yes: 1'} />
+        <BinaryFieldType label="Default Values" options={'1:Yes;0:No'} />
         <br />
         <BinaryFieldType
           label="Custom Values"
           callback={value => console.log(value)}
-          options={'No: 0; Yes: 1'}
+          options={'1:Yes;0:No'}
         />
         <br />
         <BinaryFieldType
-          label="No: 1; Yes: 0"
+          label="1:No;0:Yes"
           callback={value => console.log(value)}
           default={1}
-          options={'No: 1; Yes: 0'}
+          options={'1:No;0:Yes'}
         />
         <br />
         <BinaryFieldType
           label="something and something else"
           callback={value => console.log(value)}
           default={0}
-          options={'Something: 1; Something Else: 0'}
+          options={'1:Something; 0:Something Else'}
         />
         <CodeCard header="Usage" height="440" open>
           {`
-<BinaryFieldType label="Default Values" options={'No: 0; Yes: 1'} />
+<BinaryFieldType label="Default Values" options={'1:Yes;0:No'} />
 <br />
 <BinaryFieldType
   label="Custom Values"

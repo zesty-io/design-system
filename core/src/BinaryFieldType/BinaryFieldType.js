@@ -15,8 +15,8 @@ export class BinaryFieldType extends Component {
       1: this.props.options.split(";").find(el => el.includes("1"))
     };
     this.setState({
-      trueLabel: binaryOptions[1].split(":")[0],
-      falseLabel: binaryOptions[0].split(":")[0],
+      trueLabel: binaryOptions[1].split(":")[1],
+      falseLabel: binaryOptions[0].split(":")[1],
       checked: this.props.default === 1
     });
   }
