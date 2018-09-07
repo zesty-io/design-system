@@ -2,7 +2,7 @@
   "atoms": [
     "AppLink",
     "Button",
-    "Button Group",
+    "ButtonGroup",
     "Card",
     "Divider",
     "Infotip",
