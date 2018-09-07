@@ -31,6 +31,5 @@ npm link @zesty-io/core
 ```
 cd app
 npm i 
-npm link @zesty-io/core
 npm start
 ```
