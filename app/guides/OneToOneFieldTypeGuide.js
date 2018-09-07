@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/Select/Select.less'
 import { OneToOneFieldType } from '@zesty-io/core/dist/OneToOneFieldType'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/Button/Button.less'
 import { Button } from '@zesty-io/core/dist/Button'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'

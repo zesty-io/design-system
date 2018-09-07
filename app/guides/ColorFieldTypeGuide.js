@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/ColorFieldType/ColorFieldType.less'
 import { ColorFieldType } from '@zesty-io/core/dist/ColorFieldType'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'

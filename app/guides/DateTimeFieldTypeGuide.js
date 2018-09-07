@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/DateTimeFieldType/DateTimeFieldType.less'
 import { DateTimeFieldType } from '@zesty-io/core/dist/DateTimeFieldType'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'

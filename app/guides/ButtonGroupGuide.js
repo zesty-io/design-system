@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/Button/Button.less'
-import '@zesty-io/core/dist/ButtonGroup/ButtonGroup.less'
-
 import { Button } from '@zesty-io/core/dist/Button'
 import { ButtonGroup } from '@zesty-io/core/dist/ButtonGroup'
 

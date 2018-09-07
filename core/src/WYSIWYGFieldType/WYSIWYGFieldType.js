@@ -18,7 +18,7 @@ export class WYSIWYGFieldType extends React.Component {
           initialValue={this.props.default || ""}
           init={{
             plugins: "link image code",
-            toolbar: this.props.datatype.contains("advanced")
+            toolbar: this.props.datatype.includes("advanced")
               ? "undo redo | bold italic | link image | alignleft aligncenter alignright | code | styleselect"
               : "undo redo | bold italic | alignleft aligncenter alignright | code"
           }}

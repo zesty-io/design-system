@@ -4,7 +4,6 @@ import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 import { SortFieldType } from '@zesty-io/core/dist/SortFieldType'
-import '@zesty-io/core/dist/SortFieldType/SortFieldType.less'
 
 export class SortFieldTypeGuide extends Component {
   render() {

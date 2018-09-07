@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/Button/Button.less'
-import '@zesty-io/core/dist/Card/Card.less'
-
 import {
   Card,
   CardHeader,

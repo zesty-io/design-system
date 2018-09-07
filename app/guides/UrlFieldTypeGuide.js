@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import '@zesty-io/core/dist/UrlFieldType/UrlFieldType.less'
 import { UrlFieldType } from '@zesty-io/core/dist/UrlFieldType'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'

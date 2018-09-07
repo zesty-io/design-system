@@ -10,7 +10,16 @@ export class WYSIWYGFieldTypeGuide extends Component {
       <React.Fragment>
         <p>A WYSIWYG (Tiny MCE) component</p>
         <br />
-        <WYSIWYGFieldType label="Label" callback={console.log} />
+        <WYSIWYGFieldType
+          label="Advanced"
+          callback={console.log}
+          datatype={'wysiwyg_advanced'}
+        />
+        <WYSIWYGFieldType
+          label="Basic"
+          callback={console.log}
+          datatype={'wysiwyg_basic'}
+        />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
