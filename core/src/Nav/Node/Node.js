@@ -35,12 +35,13 @@ export class Node extends PureComponent {
           <i className={`fa fa-${icon}`} />
           <span>{name}</span>
         </a>
-        {children && (
-          <i
-            className={isCollapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
-            onClick={() => handleOpen(path)}
-          />
-        )}
+        {children &&
+          Boolean(children.length) && (
+            <i
+              className={isCollapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
+              onClick={() => handleOpen(path)}
+            />
+          )}
       </li>
     );
   }
