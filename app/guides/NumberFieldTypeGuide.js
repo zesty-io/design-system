@@ -17,6 +17,12 @@ export class NumberFieldTypeGuide extends Component {
           callback={value => console.log(value)}
         />
         <br />
+        <NumberFieldType
+          label="No CharCount"
+          default="4"
+          callback={value => console.log(value)}
+        />
+        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
