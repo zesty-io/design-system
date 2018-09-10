@@ -18,6 +18,12 @@ export class UrlFieldTypeGuide extends Component {
           charCount="150"
         />
         <br />
+        <UrlFieldType
+          default="https://www.defaultURL.com"
+          callback={console.log}
+          label="No Charcount"
+        />
+        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
