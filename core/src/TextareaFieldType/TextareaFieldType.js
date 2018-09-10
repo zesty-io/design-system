@@ -24,8 +24,7 @@ export class TextareaFieldType extends Component {
           <label>{this.props.label}</label>
           {this.props.charCount && (
             <span>
-              {textInput.length}/
-              {this.props.charCount ? this.props.charCount : 450}
+              {textInput.length}/{this.props.charCount}
             </span>
           )}
         </div>

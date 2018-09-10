@@ -18,6 +18,12 @@ export class TextFieldTypeGuide extends Component {
           charCount="150"
         />
         <br />
+        <TextFieldType
+          default="default text"
+          callback={console.log}
+          label="No Charcount"
+        />
+        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
