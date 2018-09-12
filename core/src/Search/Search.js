@@ -15,6 +15,16 @@ export class Search extends Component {
       this.setState({ searchTerm: this.props.override });
     }
   }
+  handleSubmit = evt => {
+    evt.preventDefault();
+    this.props.onSubmit(this.state.searchTerm);
+  };
+  handleKeyUp = evt => {
+    // return the target value of the input
+    this.setState({ searchTerm: evt.target.value }, () =>
+      this.props.onKeyUp(this.state.searchTerm)
+    );
+  };
   render() {
     return (
       <div className={cx(styles.search, this.props.className)}>
@@ -36,18 +46,17 @@ export class Search extends Component {
           onFocus={this.props.onFocus}
           onChange={this.handleKeyUp}
         />
+        {this.state.searchTerm && (
+          <i
+            className={`${styles.clearBtn} fa fa-times`}
+            onClick={() =>
+              this.handleKeyUp({
+                target: { value: "" }
+              })
+            }
+          />
+        )}
       </div>
     );
   }
-  handleSubmit = evt => {
-    evt.preventDefault();
-    this.props.onSubmit(this.state.searchTerm);
-  };
-  handleKeyUp = evt => {
-    evt.preventDefault();
-    // return the target value of the input
-    this.setState({ searchTerm: evt.target.value }, () =>
-      this.props.onKeyUp(this.state.searchTerm)
-    );
-  };
 }
