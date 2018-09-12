@@ -15,17 +15,18 @@ export class UrlFieldType extends Component {
     return (
       <article
         className={`${styles.UrlFieldType} ${
-          textInput.length > (this.props.charCount ? this.props.charCount : 150)
+          this.props.charCount && textInput.length > this.props.charCount
             ? styles.Error
             : ""
         }`}
       >
         <div className={styles.UrlFieldTypeLabel}>
           <label>{this.props.label}</label>
-          <span>
-            {textInput.length}/
-            {this.props.charCount ? this.props.charCount : 150}
-          </span>
+          {this.props.charCount && (
+            <span>
+              {textInput.length}/{this.props.charCount}
+            </span>
+          )}
         </div>
         <Input type="url" onChange={this.onChange} value={textInput} />
       </article>

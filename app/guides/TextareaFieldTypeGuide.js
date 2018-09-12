@@ -18,6 +18,12 @@ export class TextareaFieldTypeGuide extends Component {
           charCount="350"
         />
         <br />
+        <TextareaFieldType
+          default="testing default"
+          callback={console.log}
+          label="No CharCount prop"
+        />
+        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"

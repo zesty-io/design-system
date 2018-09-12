@@ -15,17 +15,18 @@ export class TextareaFieldType extends Component {
     return (
       <article
         className={`${styles.TextareaFieldType} ${
-          textInput.length > (this.props.charCount ? this.props.charCount : 450)
+          this.props.charCount && textInput.length > this.props.charCount
             ? styles.Error
             : ""
         }`}
       >
         <div className={styles.TextareaFieldTypeLabel}>
           <label>{this.props.label}</label>
-          <span>
-            {textInput.length}/
-            {this.props.charCount ? this.props.charCount : 450}
-          </span>
+          {this.props.charCount && (
+            <span>
+              {textInput.length}/{this.props.charCount}
+            </span>
+          )}
         </div>
         <textarea
           className={styles.TextArea}

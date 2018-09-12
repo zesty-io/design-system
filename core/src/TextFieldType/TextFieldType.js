@@ -15,16 +15,13 @@ export class TextFieldType extends Component {
     return (
       <article
         className={`${styles.TextFieldType} ${
-          textInput.length > (this.props.charCount ? this.props.charCount : 150)
-            ? styles.Error
-            : ""
+          textInput.length > (this.props.charCount || 150) ? styles.Error : ""
         }`}
       >
         <div className={styles.TextFieldTypeLabel}>
           <label>{this.props.label}</label>
           <span>
-            {textInput.length}/
-            {this.props.charCount ? this.props.charCount : 150}
+            {textInput.length}/{this.props.charCount || 150}
           </span>
         </div>
         <Input type="text" onChange={this.onChange} value={textInput} />
