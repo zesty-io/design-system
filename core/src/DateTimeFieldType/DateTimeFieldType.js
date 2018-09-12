@@ -17,6 +17,14 @@ export class DateTimeFieldType extends Component {
       this.setState({ date: moment(this.props.default) });
     }
   }
+  onChange = date => {
+    if (this.props.callback) {
+      this.props.callback(moment(date).format());
+    }
+    this.setState({
+      date: date
+    });
+  };
   render() {
     return (
       <article className={styles.DateFieldType}>
@@ -35,13 +43,4 @@ export class DateTimeFieldType extends Component {
       </article>
     );
   }
-
-  onChange = date => {
-    if (this.props.callback) {
-      this.props.callback(moment.format(date));
-    }
-    this.setState({
-      date: date
-    });
-  };
 }
