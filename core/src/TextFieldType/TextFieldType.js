@@ -1,39 +1,56 @@
 import React, { Component } from "react";
-
 import { Input } from "../Input";
-
 import styles from "./TextFieldType.less";
+
 export class TextFieldType extends Component {
   constructor(props) {
     super(props);
+
+    if (!props.name) {
+      throw new Error(
+        'Missing required attribute "name". See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes'
+      );
+    }
+
     this.state = {
-      textInput: this.props.default || ""
+      value: props.value || ""
     };
   }
   render() {
-    const { textInput } = this.state;
     return (
       <article
         className={`${styles.TextFieldType} ${
-          textInput.length > (this.props.charCount || 150) ? styles.Error : ""
+          this.state.value.length > (this.props.maxLength || 150)
+            ? styles.Error
+            : ""
         }`}
       >
-        <div className={styles.TextFieldTypeLabel}>
-          <label>{this.props.label}</label>
-          <span>
-            {textInput.length}/{this.props.charCount || 150}
-          </span>
-        </div>
-        <Input type="text" onChange={this.onChange} value={textInput} />
+        <label>
+          <div className={styles.TextFieldTypeLabel}>
+            <span>{this.props.label}</span>
+            <span>
+              {this.state.value.length}/{this.props.maxLength || 150}
+            </span>
+          </div>
+          <Input
+            {...this.props}
+            type="text"
+            onChange={this.onChange}
+            value={this.state.value}
+          />
+        </label>
       </article>
     );
   }
   onChange = evt => {
-    this.setState({
-      textInput: evt.target.value
+    const value = evt.target.value;
+    const name = evt.target.name;
+    this.setState({ value }, () => {
+      // If provided an onChange handler
+      // we need to ensure we broadcast the change
+      if (this.props.onChange) {
+        this.props.onChange(name, value);
+      }
     });
-    if (this.props.callback) {
-      this.props.callback(evt.target.value);
-    }
   };
 }
