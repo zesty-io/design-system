@@ -6,8 +6,7 @@ export function Button(props) {
   return (
     <button
       {...props}
-      className={cx(styles.button, props.className, styles[props.type])}
-      // className={cx('core-btn', props.type ? `core-btn-${props.type}` : null, props.className,)}
+      className={cx(styles.Button, styles[props.kind], props.className)}
     >
       {props.text}
       {React.Children.map(
