@@ -8,27 +8,35 @@ export class InputGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <p>Input component with zesty styling</p>
-          <p>Props: name, required, autoComplete, placeholder</p>
-          <Input name="name" placeholder="Name" />
+        <div>
+          <h1>Input</h1>
+
+          <h2>Props</h2>
+          <p>name, required, autoComplete, placeholder</p>
+
+          <h2>Examples</h2>
+
+          <h3>Default</h3>
+          <Input name="example1" />
+
+          <h3>autocomplete</h3>
           <Input
-            name="name"
-            autoComplete="off"
-            placeholder="Name (autocomplete disabled)"
+            name="example2"
+            type="email"
+            placeholder="autocomplete disabled"
+            autocomplete="off"
           />
-          <Input required placeholder="required" />
-          <Input placeholder="placeholder" />
-          <Input />
+
+          <h3>required</h3>
+          <Input name="example3" placeholder="required" required />
         </div>
-        <br />
-        <br />
+
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
             code="<Input
               name=&quot;name&quot;
-              autoComplete=&quot;off&quot;
+              autocomplete=&quot;off&quot;
               placeholder=&quot;Name (autocomplete disabled)&quot;
             />"
           />
