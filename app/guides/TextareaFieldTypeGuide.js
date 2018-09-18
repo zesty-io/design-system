@@ -8,30 +8,35 @@ export class TextareaFieldTypeGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>Textarea field for manager app that allows custom character limit</p>
-        <p>Props: label, charCount</p>
+        <h1>Textarea Fieldtype</h1>
+
+        <h2>Props</h2>
+        <p>label, charCount, onChange</p>
+
         <br />
         <TextareaFieldType
-          default="testing default"
-          callback={console.log}
+          name="example1"
+          value="testing default"
+          onChange={console.log}
           label="Title Field"
           charCount="350"
         />
         <br />
         <TextareaFieldType
-          default="testing default"
-          callback={console.log}
+          name="example2"
+          value="testing default"
+          onChange={console.log}
           label="No CharCount prop"
         />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
-            code={`<TextareaFieldType 
+            code={`<TextareaFieldType
   default="testing default"
-  callback={console.log}
+  onChange={console.log}
   label="Title Field"
-  charCount="350" 
+  charCount="350"
 />`}
           />
         </CollapsibleCard>

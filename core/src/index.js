@@ -1,3 +1,4 @@
+// Atoms
 export { Button } from "./Button";
 export { AppLink } from "./AppLink";
 export { ButtonGroup } from "./ButtonGroup";
@@ -9,8 +10,11 @@ export { Loader } from "./Loader";
 export { Search } from "./Search";
 export { Select, Option } from "./Select";
 export { Toggle } from "./Toggle";
+export { Textarea } from "./Textarea";
 export { Url } from "./Url";
 export { WithLoader } from "./WithLoader";
+
+// Molecules
 export { Nav } from "./Nav";
 export { WYSIWYGFieldType } from "./WYSIWYGFieldType";
 export { UrlFieldType } from "./UrlFieldType";

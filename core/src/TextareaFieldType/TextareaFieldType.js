@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-
-import { Input } from "../Input";
-
+import { Textarea } from "../Textarea";
 import styles from "./TextareaFieldType.less";
+
+/**
+ * Controlled component
+ */
 export class TextareaFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      textInput: props.default || ""
+      value: props.value || ""
     };
   }
   render() {
-    const { textInput } = this.state;
     return (
       <article
         className={`${styles.TextareaFieldType} ${
-          this.props.charCount && textInput.length > this.props.charCount
+          this.props.charCount && this.state.value.length > this.props.charCount
             ? styles.Error
             : ""
         }`}
@@ -24,24 +25,25 @@ export class TextareaFieldType extends Component {
           <label>{this.props.label}</label>
           {this.props.charCount && (
             <span>
-              {textInput.length}/{this.props.charCount}
+              {this.state.value.length}/{this.props.charCount}
             </span>
           )}
         </div>
-        <textarea
+        <Textarea
+          {...this.props}
           className={styles.TextArea}
-          onChange={this.onChange}
-          value={textInput}
+          value={this.state.value}
         />
       </article>
     );
   }
   onChange = evt => {
-    this.setState({
-      textInput: evt.target.value
+    const value = evt.target.value;
+    const name = evt.target.name;
+    this.setState({ value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(name, value);
+      }
     });
-    if (this.props.callback) {
-      this.props.callback(evt.target.value);
-    }
   };
 }
