@@ -1,12 +1,13 @@
 import React from "react";
-
 import { Editor } from "@tinymce/tinymce-react";
+import styles from "./WYSIWYGFieldType.less";
+
 export class WYSIWYGFieldType extends React.Component {
   handleEditorChange = evt => {
-    if (this.props.callback) {
+    if (this.props.onChange) {
       // getContent() appears to do some event
       // batching and may cause problems
-      this.props.callback(evt.target.getContent());
+      this.props.onChange(evt.target.getContent());
     }
   };
 
@@ -15,7 +16,8 @@ export class WYSIWYGFieldType extends React.Component {
       <React.Fragment>
         <label>{this.props.label}</label>
         <Editor
-          initialValue={this.props.default || ""}
+          className={styles.WYSIWYGFieldType}
+          initialValue={this.props.value || ""}
           init={{
             plugins: "link image code",
             toolbar: this.props.datatype.includes("advanced")

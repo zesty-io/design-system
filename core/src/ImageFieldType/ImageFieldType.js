@@ -1,63 +1,110 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
+import cx from "classnames";
 import { Card, CardHeader, CardContent } from "../Card";
 import { Button } from "../Button";
 import styles from "./ImageFieldType.less";
 
 export class ImageFieldType extends Component {
   static defaultProps = {
-    imageSelection: [],
+    images: [], // Array of image ZUIDs
     limit: 1,
     label: ""
   };
-  mountModal = () => {
-    riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
-      callback: this.handleImageSelectionChange
-    });
-  };
-  handleImageSelectionChange = selection => {
-    if (this.props.callback) {
-      this.props.callback(selection);
+
+  addImage = images => {
+    const imageZUIDs = images.map(image => image.id);
+
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        [...this.props.images, ...imageZUIDs].join(",")
+      );
+    } else {
+      throw new Error("missing remove image action");
     }
   };
-  handleRemoveImage = id => {
-    // remove the image from the image array
-    const removed = this.props.imageSelection.filter(img => img.id !== id);
-    return this.handleImageSelectionChange(removed);
+
+  removeImage = ZUID => {
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        this.props.images.filter(image => image !== ZUID).join(",")
+      );
+    } else {
+      throw new Error("missing remove image action");
+    }
   };
+
   render() {
-    const { imageSelection, limit, label } = this.props;
     return (
       <React.Fragment>
-        <label>{label}</label>
+        <label>{this.props.label}</label>
         <Card className={styles.ImageFieldType}>
           <CardHeader className={styles.ImageFieldTypeHeader}>
-            <Button
-              onClick={this.mountModal}
-              text={`${imageSelection.length ? "Update" : "Add"} Images ${
-                imageSelection.length
-              }/${limit}`}
+            <Actions
+              addImage={this.addImage}
+              imageCount={this.props.images.length}
+              limit={this.props.limit}
             />
-            {/* <h3>Drop images here to upload them to your media</h3>
-            <input type="file" className={styles.DropZone} /> */}
           </CardHeader>
           <CardContent className={styles.ImageFieldTypeContent}>
-            {imageSelection &&
-              imageSelection.map(img => {
-                return (
-                  <article key={img.id} className={styles.ImageItem}>
-                    <img src={img.url} alt={img.title} />
-                    <span className={styles.ImageName}>
-                      {img.title}
-                      <Button onClick={() => this.handleRemoveImage(img.id)}>
-                        <i className="fa fa-times" />
-                      </Button>
-                    </span>
-                  </article>
-                );
-              })}
+            {/*
+              <h3>Drop images here to upload them to your media</h3>
+              <input type="file" className={styles.DropZone} />
+            */}
+            {this.props.images.map(ZUID => {
+              return (
+                <Image
+                  imageZUID={ZUID}
+                  width="200"
+                  height="200"
+                  removeImage={this.removeImage}
+                />
+              );
+            })}
+            {!this.props.images.length && (
+              <h1 className={styles.NoImages}>No images have been selected</h1>
+            )}
           </CardContent>
         </Card>
       </React.Fragment>
+    );
+  }
+}
+
+class Actions extends PureComponent {
+  render() {
+    return (
+      <Button
+        kind={this.props.imageCount > this.props.limit ? "warn" : ""}
+        onClick={() => {
+          riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
+            callback: this.props.addImage
+          });
+        }}
+        text={`Select Images (${this.props.imageCount}/${this.props.limit})`}
+      />
+    );
+  }
+}
+
+class Image extends Component {
+  render() {
+    return (
+      <figure className={styles.file}>
+        <img
+          className={styles.image}
+          src={`${CONFIG.service.media_resolver}/resolve/${
+            this.props.imageZUID
+          }/getimage/?w=${this.props.width}&h=${this.props.height}&type=fit`}
+        />
+        <Button
+          className={styles.remove}
+          onClick={() => this.props.removeImage(this.props.imageZUID)}
+        >
+          <i className={cx(styles.icon, "fa fa-times")} />
+        </Button>
+      </figure>
     );
   }
 }

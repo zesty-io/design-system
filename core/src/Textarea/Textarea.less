@@ -6,8 +6,9 @@
   border-radius: 3px;
   color: @zesty-grey;
   font-family: "Montserrat", "Gibson Light", Arial, sans-serif;
+  font-size: 16px;
   padding: 0.5em;
-  line-height: 1.2rem;
+  line-height: 20px;
   min-height: 100px;
   min-width: 30rem;
 
@@ -21,16 +22,13 @@
   &:focus {
     background: @white;
     outline: none;
-    // -webkit-box-shadow: none;
     box-shadow: none;
-    // font-weight: 500;
   }
   &:placeholder-shown {
     // color: lighten(@zesty-light-grey, 20%);
     font-weight: 100;
   }
   &:focus:required:invalid {
-    // -webkit-box-shadow: 0 0 5px 1px @zesty-red;
     box-shadow: 0 0 5px 1px @zesty-red;
   }
 }
