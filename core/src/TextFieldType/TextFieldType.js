@@ -18,28 +18,26 @@ export class TextFieldType extends Component {
   }
   render() {
     return (
-      <article
+      <label
         className={`${styles.TextFieldType} ${
           this.state.value.length > (this.props.maxLength || 150)
             ? styles.Error
             : ""
         }`}
       >
-        <label>
-          <div className={styles.TextFieldTypeLabel}>
-            <span>{this.props.label}</span>
-            <span>
-              {this.state.value.length}/{this.props.maxLength || 150}
-            </span>
-          </div>
-          <Input
-            {...this.props}
-            type="text"
-            onChange={this.onChange}
-            value={this.state.value}
-          />
-        </label>
-      </article>
+        <div className={styles.TextFieldTypeLabel}>
+          <span>{this.props.label}</span>
+          <span>
+            {this.state.value.length}/{this.props.maxLength || 150}
+          </span>
+        </div>
+        <Input
+          {...this.props}
+          type="text"
+          onChange={this.onChange}
+          value={this.state.value}
+        />
+      </label>
     );
   }
   onChange = evt => {
