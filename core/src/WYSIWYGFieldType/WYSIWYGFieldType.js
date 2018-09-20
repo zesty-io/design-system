@@ -7,7 +7,7 @@ export class WYSIWYGFieldType extends React.Component {
     if (this.props.onChange) {
       // getContent() appears to do some event
       // batching and may cause problems
-      this.props.onChange(evt.target.getContent());
+      this.props.onChange(this.props.name, evt.target.getContent());
     }
   };
 

@@ -2,8 +2,16 @@
 
 .ImageFieldType {
   background: #eaecf1;
-  border: 1px solid #9dabc5;
+  border: 1px solid #eaecf1;
   margin-top: 3px;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: #fff;
+    border: 1px solid #9dabc5;
+  }
+
   .ImageFieldTypeHeader {
     display: flex;
     align-items: center;
