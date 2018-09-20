@@ -1,8 +1,9 @@
 .selector {
   cursor: pointer;
-  flex: 1;
   position: relative;
-  line-height: 2rem;
+  line-height: 40px;
+  min-width: 100px;
+  display: flex;
 
   &.show {
     .selection {
@@ -20,28 +21,33 @@
   }
 
   .selection {
-    align-items: center;
-    background-color: #eaecf1;
+    // align-items: center;
+    border: none;
     color: #5b667d;
-    border: solid 1px #9dabc5;
     display: flex;
+    flex: 1;
     overflow: hidden;
     padding: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: 4px;
 
     &:active,
     &:hover,
     &:focus {
-      background-color: #fff;
+      .content {
+        background-color: #fff;
+        border: 1px solid #9dabc5;
+      }
     }
 
     .chevron {
       background-color: #5b667d;
+      border: 1px solid #5b667d;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
       color: #e3ebf9;
       line-height: inherit;
-      border-right: 1px solid #9dabc5;
+
       font-size: 14px;
       flex-basis: 32px;
       justify-content: center;
@@ -53,15 +59,18 @@
     }
 
     .content {
+      align-items: center;
+      display: flex;
+
+      background-color: #eaecf1;
+      border: 1px solid #eaecf1;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
       flex: 1;
       padding: 0 1rem;
       overflow: hidden;
       text-overflow: ellipsis;
-      strong {
-        font-weight: 900;
-        font-size: 1.2rem;
-        margin-right: 1.2rem;
-      }
+      font-size: 16px;
     }
   }
 

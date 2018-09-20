@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Search } from "../Search";
 import styles from "./Select.less";
 import cx from "classnames";
 
-export class Select extends React.Component {
+export class Select extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +18,7 @@ export class Select extends React.Component {
       filter: ""
     };
   }
+
   static defaultProps = {
     options: [
       {
@@ -27,6 +28,7 @@ export class Select extends React.Component {
     ],
     searchLength: 50
   };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selection) {
       if (nextProps.selection.value !== prevState.selection.value) {
@@ -35,32 +37,34 @@ export class Select extends React.Component {
     }
     return null;
   }
+
   componentDidMount() {
     document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
   }
+
   componentWillUnmount() {
     document.removeEventListener("click", this.onClose);
     document.removeEventListener("keyup", this.onEsc);
   }
 
   render() {
-    let opts = {
-      className: cx(
-        "selector",
-        styles.selector,
-        this.state.dropdownOpen ? styles.show : styles.hidden,
-        this.props.className
-      ),
-      onClick: this.toggleDropdown
-    };
     return (
-      <div {...opts} ref={div => (this.selector = div)}>
-        <input
+      <div
+        className={cx(
+          "Select",
+          styles.selector,
+          this.state.dropdownOpen ? styles.show : styles.hidden,
+          this.props.className
+        )}
+        onClick={this.toggleDropdown}
+        ref={div => (this.selector = div)}
+      >
+        {/*<input
           type="hidden"
           name={this.props.name}
           value={this.state.selection.value}
-        />
+        />*/}
         <span className={styles.selection}>
           <i
             className={cx(
@@ -137,8 +141,8 @@ export class Select extends React.Component {
       return false;
     }
 
-    const body = document.querySelector(".AppMain");
-    const content = document.querySelector(".AppMain");
+    const body = document.querySelector("body");
+    const content = document.querySelector("body");
 
     if (body && content) {
       const contentHeight = content.scrollHeight;
@@ -204,12 +208,14 @@ export class Select extends React.Component {
   };
 
   onClose = evt => {
-    const parent = evt.target.closest(".selector");
+    const parent = evt.target.closest(".Select");
 
     // Close this select if the click occured
     // outside a ZestySelect or this instance
     if (!parent || parent !== this.selector) {
-      this.setState({ dropdownOpen: false });
+      this.setState({
+        dropdownOpen: false
+      });
     }
   };
 }
