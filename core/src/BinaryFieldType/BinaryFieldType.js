@@ -8,19 +8,20 @@ export class BinaryFieldType extends Component {
       checked: Boolean(props.checked)
     };
   }
-  onChange(evt) {
-    // currently need to return a 1 or 0
-    this.setState(
-      {
-        checked: evt.target.checked
-      },
-      () => {
-        if (this.props.callback) {
-          this.props.callback(this.state.checked ? 1 : 0);
-        }
-      }
-    );
-  }
+  onChange = evt => {
+    console.log("BinaryFieldType:onChange", evt, evt.target.checked);
+
+    this.setState({
+      checked: evt.target.checked
+    });
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        this.state.checked ? 1 : 0, // currently need to return a 1 or 0
+        this.props.datatype
+      );
+    }
+  };
   render() {
     return (
       <article className={styles.BinaryFieldType}>
@@ -30,6 +31,7 @@ export class BinaryFieldType extends Component {
         <label className={styles.switch}>
           <input
             type="checkbox"
+            name={this.props.name}
             checked={this.state.checked}
             disabled={this.props.disabled}
             onChange={evt => this.onChange(evt)}

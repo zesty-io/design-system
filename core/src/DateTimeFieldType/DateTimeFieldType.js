@@ -13,13 +13,19 @@ export class DateTimeFieldType extends Component {
     };
   }
   componentDidMount() {
-    if (this.props.default) {
-      this.setState({ date: moment(this.props.default) });
+    if (this.props.value) {
+      this.setState({
+        date: moment(this.props.value)
+      });
     }
   }
   onChange = date => {
-    if (this.props.callback) {
-      this.props.callback(moment(date).format());
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        moment(date).format(),
+        this.props.datatype
+      );
     }
     this.setState({
       date: date

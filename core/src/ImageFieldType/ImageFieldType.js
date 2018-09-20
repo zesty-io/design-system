@@ -17,7 +17,8 @@ export class ImageFieldType extends Component {
     if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
-        [...this.props.images, ...imageZUIDs].join(",")
+        [...this.props.images, ...imageZUIDs].join(","),
+        this.props.datatype
       );
     } else {
       throw new Error("missing remove image action");
@@ -28,7 +29,8 @@ export class ImageFieldType extends Component {
     if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
-        this.props.images.filter(image => image !== ZUID).join(",")
+        this.props.images.filter(image => image !== ZUID).join(","),
+        this.props.datatype
       );
     } else {
       throw new Error("missing remove image action");

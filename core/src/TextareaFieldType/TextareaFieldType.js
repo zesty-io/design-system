@@ -51,7 +51,7 @@ export class TextareaFieldType extends Component {
     const name = evt.target.name;
     this.setState({ value }, () => {
       if (this.props.onChange) {
-        this.props.onChange(name, value);
+        this.props.onChange(name, value, this.props.datatype);
       }
     });
   };

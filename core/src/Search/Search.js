@@ -21,8 +21,16 @@ export class Search extends Component {
   };
   handleKeyUp = evt => {
     // return the target value of the input
-    this.setState({ searchTerm: evt.target.value }, () =>
-      this.props.onKeyUp(this.state.searchTerm)
+    this.setState(
+      {
+        searchTerm: evt.target.value
+      },
+      () =>
+        this.props.onKeyUp(
+          this.props.name,
+          this.state.searchTerm,
+          this.props.datatype
+        )
     );
   };
   render() {

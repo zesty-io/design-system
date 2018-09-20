@@ -21,8 +21,12 @@ export class SortFieldType extends Component {
   };
   onChange = evt => {
     // handles a manual number entry
-    if (this.props.callback) {
-      this.props.callback(Number(evt.target.value));
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        Number(evt.target.value),
+        this.props.datatype
+      );
     }
     this.setState({
       sortValue: Number(evt.target.value)

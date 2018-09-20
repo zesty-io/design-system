@@ -47,7 +47,7 @@ export class TextFieldType extends Component {
       // If provided an onChange handler
       // we need to ensure we broadcast the change
       if (this.props.onChange) {
-        this.props.onChange(name, value);
+        this.props.onChange(name, value, this.props.datatype);
       }
     });
   };

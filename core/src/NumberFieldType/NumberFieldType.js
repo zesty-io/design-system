@@ -33,8 +33,12 @@ export class NumberFieldType extends Component {
     );
   }
   onChange = evt => {
-    if (this.props.callback) {
-      this.props.callback(evt.target.value);
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        evt.target.value,
+        this.props.datatype
+      );
     }
     this.setState({
       numberInput: evt.target.value

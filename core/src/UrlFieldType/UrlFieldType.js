@@ -36,8 +36,12 @@ export class UrlFieldType extends Component {
     this.setState({
       textInput: evt.target.value
     });
-    if (this.props.callback) {
-      this.props.callback(evt.target.value);
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        evt.target.value,
+        this.props.datatype
+      );
     }
   };
 }
