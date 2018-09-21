@@ -5,8 +5,9 @@ import moment from "moment";
 import cx from "classnames";
 
 import styles from "./DateFieldType.less";
-// import "react-datepicker/dist/react-datepicker-cssmodules.css";
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import "react-datepicker/dist/react-datepicker.css";
+
 export class DateFieldType extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,6 @@ export class DateFieldType extends Component {
     };
   }
   onChange = m => {
-    console.log("DateFieldType:onChange", m);
     if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
