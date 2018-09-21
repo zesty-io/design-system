@@ -9,15 +9,14 @@ export class BinaryFieldType extends Component {
     };
   }
   onChange = evt => {
-    console.log("BinaryFieldType:onChange", evt, evt.target.checked);
-
+    const checked = evt.target.checked;
     this.setState({
-      checked: evt.target.checked
+      checked
     });
     if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
-        this.state.checked ? 1 : 0, // currently need to return a 1 or 0
+        checked ? 1 : 0, // currently need to return a 1 or 0
         this.props.datatype
       );
     }
