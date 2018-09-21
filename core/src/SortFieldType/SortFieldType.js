@@ -5,35 +5,23 @@ import { Input } from "../Input";
 import styles from "./SortFieldType.less";
 export class SortFieldType extends Component {
   state = {
-    sortValue: Number(this.props.default) || 0,
+    sortValue: Number(this.props.value) || 0,
     required: this.props.required
   };
-  handleIncrement = up => {
-    if (up) {
-      this.setState({ sortValue: Number(this.state.sortValue) + 1 }, () => {
-        this.props.callback && this.props.callback(this.state.sortValue);
-      });
-    } else {
-      this.setState({ sortValue: Number(this.state.sortValue) - 1 }, () => {
-        this.props.callback && this.props.callback(this.state.sortValue);
-      });
-    }
-  };
-  onChange = evt => {
-    // handles a manual number entry
+  handleClick = increment => {
+    let value = increment
+      ? Number(this.state.sortValue) + 1
+      : Number(this.state.sortValue) - 1;
+
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        Number(evt.target.value),
-        this.props.datatype
-      );
+      this.props.onChange(this.props.name, value, this.props.datatype);
     }
+
     this.setState({
-      sortValue: Number(evt.target.value)
+      sortValue: value
     });
   };
   render() {
-    const { sortValue } = this.state;
     return (
       <article className={styles.SortFieldType}>
         <section className={styles.SortFieldTypeLabel}>
@@ -42,21 +30,20 @@ export class SortFieldType extends Component {
         <section className={styles.Sort}>
           <span
             className={styles.IncrementL}
-            onClick={() => this.handleIncrement(true)}
+            onClick={() => this.handleClick(true)}
           >
-            +
+            <i className="fa fa-plus" />
           </span>
           <Input
             className={styles.SortNumber}
             type="number"
-            onChange={this.onChange}
-            value={sortValue}
+            value={this.state.sortValue}
           />
           <span
             className={styles.IncrementR}
-            onClick={() => this.handleIncrement()}
+            onClick={() => this.handleClick()}
           >
-            -
+            <i className="fa fa-minus" />
           </span>
         </section>
       </article>
