@@ -17,10 +17,11 @@ export class WYSIWYGFieldType extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <label>{this.props.label}</label>
+      <article className={styles.WYSIWYGFieldType}>
+        <label className={styles.WYSIWYGFieldTypeLabel}>
+          {this.props.label}
+        </label>
         <Editor
-          className={styles.WYSIWYGFieldType}
           initialValue={this.props.value || ""}
           init={{
             plugins: "link image code",
@@ -30,7 +31,7 @@ export class WYSIWYGFieldType extends React.Component {
           }}
           onChange={this.handleEditorChange}
         />
-      </React.Fragment>
+      </article>
     );
   }
 }
