@@ -220,10 +220,11 @@ export class Select extends Component {
   };
 }
 
-export function Option({ value, html, text, onClick }) {
+export function Option({ value, html, text, onClick, className }) {
   if (html) {
     return (
       <li
+        className={className}
         data-value={value}
         onClick={onClick}
         dangerouslySetInnerHTML={{ __html: html }}
@@ -231,7 +232,7 @@ export function Option({ value, html, text, onClick }) {
     );
   } else {
     return (
-      <li data-value={value} onClick={onClick}>
+      <li className={className} data-value={value} onClick={onClick}>
         {text}
       </li>
     );

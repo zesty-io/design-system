@@ -47,6 +47,7 @@ export class DropDownFieldType extends Component {
                 key={i}
                 value={JSON.stringify(opt.value)}
                 text={opt.text}
+                className={opt.className}
               />
             );
           })}
