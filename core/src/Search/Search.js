@@ -17,7 +17,9 @@ export class Search extends Component {
   }
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.onSubmit(this.state.searchTerm);
+    if (this.props.onSubmit) {
+      this.props.onSubmit(this.state.searchTerm);
+    }
   };
   handleKeyUp = evt => {
     // return the target value of the input
