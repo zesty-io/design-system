@@ -16,10 +16,9 @@ export class UUIDFieldType extends PureComponent {
             aria-hidden="true"
           />
           <Input
-            // {...this.props}
             type="text"
             readOnly={true}
-            defaultValue={this.props.value || "test"}
+            defaultValue={this.props.value || ""}
           />
         </div>
       </label>
