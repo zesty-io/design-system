@@ -20,6 +20,7 @@ export { WYSIWYGFieldType } from "./WYSIWYGFieldType";
 export { UrlFieldType } from "./UrlFieldType";
 export { TextFieldType } from "./TextFieldType";
 export { TextareaFieldType } from "./TextareaFieldType";
+export { UUIDFieldType } from "./UUIDFieldType";
 // export { QuillFieldType } from "./QuillFieldType";
 export { OneToOneFieldType } from "./OneToOneFieldType";
 export { NumberFieldType } from "./NumberFieldType";
