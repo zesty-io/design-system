@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Input } from "../Input";
+import { Infotip } from "../Infotip";
 import { Select, Option } from "../Select";
 import { currencies } from "./currencies";
 
@@ -10,130 +11,85 @@ export class CurrencyFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCurrency: null,
-      amount: "$0.00",
-      inputAmount: ""
+      value: props.value || "0",
+      currency: currencies[props.code || "USD"]
     };
   }
-  componentDidMount() {
-    if (this.props.default) {
-      // select the default currency
-      // map currencies and find the object for the default
-      this.setState({
-        selectedCurrency:
-          currencies[
-            Object.keys(currencies).filter(
-              e => currencies[e].code === this.props.default
-            )[0]
-          ]
-      });
-    } else {
-      // fallback default to USD
-      this.setState({
-        selectCurrency: {
-          symbol: "$",
-          name: "US Dollar",
-          symbol_native: "$",
-          decimal_digits: 2,
-          rounding: 0,
-          code: "USD",
-          name_plural: "US dollars"
-        }
-      });
-    }
-  }
   render() {
-    const { amount, inputAmount } = this.state;
     return (
-      <React.Fragment>
+      <label className={styles.CurrencyFieldType}>
         <div className={styles.CurrencyFieldTypeLabel}>
-          <label>{this.props.label}</label>
-          <label>{this.state.amount}</label>
+          <span>
+            <Infotip
+              title={`View this value in different currencies based upon your locale "${
+                window.navigator.language
+              }"`}
+            />
+            {this.props.label}
+          </span>
+          <span>
+            {Number(this.state.value).toLocaleString(
+              window.navigator.language,
+              {
+                style: "currency",
+                currency: this.state.currency.code
+              }
+            )}
+          </span>
         </div>
-        <article className={styles.CurrencyFieldType}>
-          {/* <span className={styles.Amount}>{amount}</span> */}
-          {this.state.selectedCurrency && (
-            <div className={styles.Overlap}>
-              <Input
-                className={styles.CurrencyInput}
-                type="number"
-                onChange={this.onChange}
-                value={inputAmount}
-              />
-              <Select
-                onSelect={this.selectCurrency}
-                selection={{
-                  value: JSON.stringify(this.state.selectCurrency),
-                  text: this.state.selectedCurrency.symbol
-                }}
-                className={styles.SelectCurrency}
-              >
-                {Object.keys(currencies).map((curr, i) => {
-                  return (
-                    <Option
-                      key={i}
-                      value={JSON.stringify(currencies[curr])}
-                      text={`${currencies[curr].symbol} | ${
-                        currencies[curr].name
-                      }`}
-                    />
-                  );
-                })}
-              </Select>
-            </div>
-          )}
-        </article>
-      </React.Fragment>
+        <div className={styles.CurrencyFields}>
+          <Select
+            className={styles.SelectCurrency}
+            onSelect={this.selectCurrency}
+            selection={{
+              value: this.state.currency.code,
+              text: this.state.currency.symbol
+            }}
+          >
+            {Object.keys(currencies).map((code, i) => {
+              const currency = currencies[code];
+              return (
+                <Option
+                  key={i}
+                  value={currency.code}
+                  text={`${currency.symbol}`}
+                />
+              );
+            })}
+          </Select>
+
+          <Input
+            className={styles.CurrencyInput}
+            type="text"
+            onChange={this.onChange}
+            value={this.state.value}
+          />
+        </div>
+      </label>
     );
   }
 
   onChange = evt => {
-    // handle NaN result for empty amount
-    if (!evt.target.value) {
-      return this.setState({ amount: "$0.00", inputAmount: "" });
+    const value = evt.target.value;
+
+    if (!Number(value)) {
+      console.log("Invalid value, not a number");
+      // TODO broadcast error
     }
 
-    // make sure there is a dot in the number
-    let withDot = evt.target.value.match(/(\.)/g)
-      ? evt.target.value
-      : evt.target.value + ".";
+    if (this.props.onChange) {
+      this.props.onChange(this.props.name, value, this.props.datatype);
+    }
 
-    // remove currency symbols
-    withDot = withDot.match(/[-+]?[0-9]*\.?[0-9]*/g).join("");
-
-    // use toLocaleString to format currency
-    const converted = Number(withDot).toLocaleString("us-EN", {
-      style: "currency",
-      currency: this.state.selectedCurrency.code
-    });
     this.setState({
-      amount: converted,
-      inputAmount: evt.target.value
+      value: value
     });
-
-    if (this.props.callback) {
-      this.props.callback(converted);
-    }
   };
 
   selectCurrency = evt => {
-    this.setState(
-      {
-        selectedCurrency: JSON.parse(evt.currentTarget.dataset.value)
-      },
-      () => {
-        const converted = Number(this.state.inputAmount).toLocaleString(
-          "us-EN",
-          {
-            style: "currency",
-            currency: this.state.selectedCurrency.code
-          }
-        );
-        this.setState({ amount: converted });
-        if (this.props.callback) {
-          this.props.callback(converted);
-        }
-      }
-    );
+    const code = evt.currentTarget.dataset.value;
+    const currency = currencies[code];
+
+    this.setState({ currency });
   };
 }
