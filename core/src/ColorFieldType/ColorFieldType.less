@@ -1,15 +1,36 @@
 .ColorFieldType {
+  max-width: 200px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   .ColorFieldTypeLabel {
     display: flex;
     justify-content: space-between;
     margin-bottom: 3px;
   }
-  input {
-    display: block;
-    width: 8rem;
-    padding: 0;
-    &:nth-child(3) {
-      height: 4rem;
+  .ColorFieldTypeInput {
+    display: flex;
+    .Icon {
+      background-color: #5b667d;
+      border: 1px solid #5b667d;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      color: #e3ebf9;
+      line-height: inherit;
+
+      font-size: 14px;
+      flex-basis: 32px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    input {
+      height: 40px;
+      width: 130px;
+      padding: 0 5px;
+
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }
