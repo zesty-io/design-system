@@ -1,0 +1,41 @@
+.UUIDFieldType {
+  display: flex;
+  flex-direction: column;
+  .UUIDFieldTypeLabel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+  }
+
+  .DateFieldTypeInput {
+    display: flex;
+    .Icon {
+      background-color: #5b667d;
+      border: 1px solid #5b667d;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      color: #e3ebf9;
+      line-height: inherit;
+
+      font-size: 14px;
+      flex-basis: 32px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    input {
+      flex: 1;
+    }
+  }
+}
+
+.UUIDFieldType.Error {
+  span {
+    color: red;
+  }
+  input {
+    background: red;
+  }
+}
