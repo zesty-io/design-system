@@ -141,6 +141,10 @@ export class Select extends Component {
       return false;
     }
 
+    if (this.props.onClick) {
+      this.props.onClick(evt);
+    }
+
     const body = document.querySelector("body");
     const content = document.querySelector("body");
 
