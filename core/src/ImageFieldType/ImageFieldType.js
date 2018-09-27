@@ -65,7 +65,7 @@ export class ImageFieldType extends Component {
               );
             })}
             {!this.props.images.length && (
-              <h1 className={styles.NoImages}>No images have been selected</h1>
+              <h1 className={styles.NoImages}>No media has been selected</h1>
             )}
           </CardContent>
         </Card>
@@ -84,7 +84,7 @@ class Actions extends PureComponent {
             callback: this.props.addImage
           });
         }}
-        text={`Select Images (${this.props.imageCount}/${this.props.limit})`}
+        text={`Select Media (${this.props.imageCount}/${this.props.limit})`}
       />
     );
   }

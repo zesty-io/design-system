@@ -38,7 +38,8 @@
     "OneToOneFieldType",
     "OneToManyFieldType",
     "MarkdownFieldType",
-    "InternalLinkFieldType"
+    "InternalLinkFieldType",
+    "EditorFieldType"
   ],
   "organisms": []
 }
