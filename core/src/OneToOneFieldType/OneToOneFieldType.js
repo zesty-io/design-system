@@ -1,51 +1,73 @@
 import React, { Component } from "react";
-
 import { Select, Option } from "../Select";
 
 export class OneToOneFieldType extends Component {
-  state = {
-    selectedOption: this.props.options[0],
-    options: this.props.options
-  };
   static defaultProps = {
     options: [
       {
-        text: "there were no options passed to <Select>",
-        value: "no options passed to select"
+        text: "This field is misconfigured",
+        value: ""
       }
-    ],
-    searchLength: 50
+    ]
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      loading: false,
+      selected: this.props.selected || this.props.options[0]
+    };
+  }
+
   render() {
-    const { selectedOption } = this.state;
     return (
       <article>
         <div>
           <label>{this.props.label}</label>
         </div>
         <Select
-          onSelect={this.selectOption}
-          selection={{
-            value: JSON.stringify(selectedOption),
-            text: selectedOption.text
-          }}
+          onClick={this.onClick}
+          onSelect={this.onSelect}
+          selection={this.state.selected}
         >
-          {this.state.options.map((opt, i) => {
-            return (
-              <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
-            );
+          {this.state.loading && <Loader />}
+          {this.props.options.map((opt, i) => {
+            return <Option key={i} value={opt.value} text={opt.text} />;
           })}
         </Select>
       </article>
     );
   }
 
-  selectOption = evt => {
-    if (this.props.callback) {
-      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
+  onClick = () => {
+    console.log("OneToOneFieldType:onClick", this.state, this.props);
+    // Only load data once
+    if (!this.state.loaded && this.props.onOpen) {
+      this.setState({
+        loading: true
+      });
+
+      this.props.onOpen().then(() => {
+        this.setState({
+          loaded: true,
+          loading: false
+        });
+      });
     }
-    this.setState({
-      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
-    });
+  };
+
+  onSelect = evt => {
+    const value = evt.currentTarget.dataset.value;
+    this.setState(
+      {
+        selected: this.props.options.find(opt => opt.value === value)
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(this.props.name, value, this.props.datatype);
+        }
+      }
+    );
   };
 }
