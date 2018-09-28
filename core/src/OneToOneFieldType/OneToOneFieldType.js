@@ -2,21 +2,11 @@ import React, { Component } from "react";
 import { Select, Option } from "../Select";
 
 export class OneToOneFieldType extends Component {
-  static defaultProps = {
-    options: [
-      {
-        text: "This field is misconfigured",
-        value: ""
-      }
-    ]
-  };
-
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
-      loading: false,
-      selected: this.props.selected || this.props.options[0]
+      loading: false
     };
   }
 
@@ -29,11 +19,12 @@ export class OneToOneFieldType extends Component {
         <Select
           onClick={this.onClick}
           onSelect={this.onSelect}
-          selection={this.state.selected}
+          selection={this.props.selection}
+          default={this.props.default}
         >
           {this.state.loading && <Loader />}
           {this.props.options.map((opt, i) => {
-            return <Option key={i} value={opt.value} text={opt.text} />;
+            return <Option key={i} {...opt} />;
           })}
         </Select>
       </article>
@@ -41,33 +32,27 @@ export class OneToOneFieldType extends Component {
   }
 
   onClick = () => {
-    console.log("OneToOneFieldType:onClick", this.state, this.props);
-    // Only load data once
     if (!this.state.loaded && this.props.onOpen) {
-      this.setState({
-        loading: true
-      });
-
       this.props.onOpen().then(() => {
         this.setState({
-          loaded: true,
           loading: false
         });
+      });
+
+      this.setState({
+        loaded: true, // Only load data once
+        loading: true
       });
     }
   };
 
   onSelect = evt => {
-    const value = evt.currentTarget.dataset.value;
-    this.setState(
-      {
-        selected: this.props.options.find(opt => opt.value === value)
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(this.props.name, value, this.props.datatype);
-        }
-      }
-    );
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        evt.currentTarget.dataset.value,
+        this.props.datatype
+      );
+    }
   };
 }

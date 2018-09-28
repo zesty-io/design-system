@@ -4,30 +4,29 @@ import styles from "./Select.less";
 import cx from "classnames";
 
 export class Select extends Component {
+  static defaultProps = {
+    options: [
+      {
+        text: "This field is misconfigured",
+        value: ""
+      }
+    ],
+    default: {
+      className: styles.DefaultOpt,
+      text: "— None —",
+      value: ""
+    },
+    searchLength: 50
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       dropdownOpen: false,
-      selection: props.selection
-        ? props.selection
-        : Array.isArray(props.children) && props.children.length
-          ? props.children[0].props
-            ? props.children[0].props
-            : {}
-          : {},
+      selection: props.selection ? props.selection : props.default,
       filter: ""
     };
   }
-
-  static defaultProps = {
-    options: [
-      {
-        text: "there were no options passed to <Select>",
-        value: "no options passed to select"
-      }
-    ],
-    searchLength: 50
-  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selection) {
@@ -102,6 +101,15 @@ export class Select extends Component {
             />
           ) : null}
           <div className={cx("options", styles.options)}>
+            {/* Default Option*/}
+            <Option
+              className={cx(styles.DefaultOpt, this.props.default.className)}
+              text={this.props.default.text}
+              value={this.props.default.value}
+              // {...this.props.default}
+              onClick={this.setSelection}
+            />
+
             {React.Children.toArray(this.props.children)
               .filter(child => {
                 if (this.state.filter) {
@@ -183,18 +191,17 @@ export class Select extends Component {
   };
 
   setSelection = evt => {
+    const child = React.Children.toArray(this.props.children).find(child => {
+      return child.props.value == evt.currentTarget.dataset.value;
+    });
+    const selection = child ? child.props : this.props.default;
+
+    this.setState({ selection });
+
     // Top level Select event listener
     if (this.props.onSelect) {
       this.props.onSelect(evt);
     }
-
-    const selected = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == evt.currentTarget.dataset.value;
-    });
-
-    this.setState({
-      selection: selected.props
-    });
   };
 
   handleFilterKeyUp = evt => {

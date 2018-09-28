@@ -64,8 +64,7 @@
 
       background-color: #eaecf1;
       border: 1px solid #eaecf1;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
+      border-radius: 0 3px 3px 0;
       flex: 1;
       padding: 0 1rem;
       overflow: hidden;
@@ -77,9 +76,9 @@
   .selections {
     display: none;
     box-shadow: 0px 4px 10px #616c80;
-    background: #b5becc;
+    background: #fff;
     border-top: 1px solid #9dabc5;
-    border-radius: 0 4px 4px 4px;
+    border-radius: 0 0 3px 3px;
     margin: -1px 0 0 1px;
     min-width: 100%;
     min-height: 2.6rem;
@@ -103,6 +102,11 @@
       width: 100%;
       margin: 0;
       border-top: 2px solid #c7d4ea;
+    }
+
+    .DefaultOpt {
+      background: #b5becc;
+      color: #585f6c;
     }
 
     li {

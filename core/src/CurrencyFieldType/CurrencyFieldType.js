@@ -90,6 +90,8 @@ export class CurrencyFieldType extends Component {
     const code = evt.currentTarget.dataset.value;
     const currency = currencies[code];
 
-    this.setState({ currency });
+    if (currency) {
+      this.setState({ currency });
+    }
   };
 }
