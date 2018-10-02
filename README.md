@@ -1,35 +1,28 @@
-# Design System
+# ⚠️ Work In Progress
 
-## Setup
+**This design system is a work in progress and is constantly changing interfaces. We do no recommend implementing these components are following the patterns until it hits `1.0.0`**
+
+---
+
+# Zesty.io Design System
+
+> A system for building consistent products
+
+## Core Package Setup
+
+Link the core to the global node_modules and build the package
 
 ```
-// top level app dep installation
-npm i
-
-// core package dep installation
 cd core
-npm i 
+npm link
 npm run build
 ```
 
-```
-// link our component package build to global node_modules
-cd core
-npm link
-```
-
-```
-cd core/src
-npm link @zesty-io/core
-```
-
-## Running
-
-
-### Local
+## Running Locally
 
 ```
 cd app
-npm i 
+npm i
+npm link @zesty-io/core
 npm start
 ```
