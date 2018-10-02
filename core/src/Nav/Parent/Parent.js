@@ -1,25 +1,16 @@
 import React, { Component } from "react";
-
+import NavContext from "../Nav";
 import { Node } from "../Node";
 
 import styles from "./Parent.less";
 
 export class Parent extends Component {
   state = {
-    active: false,
-    closed: []
-  };
-  handleOpen = path => {
-    // add or remove path from closed state array
-    let replaceClosed = [...this.state.closed];
-    if (this.state.closed.includes(path)) {
-      replaceClosed = this.state.closed.filter(e => e !== path);
-    } else {
-      replaceClosed.push(path);
-    }
-    return this.setState({ closed: replaceClosed });
+    active: false
   };
   renderMenuItem = item => {
+    const { active } = this.state;
+    const { context, handleOpen } = this.props;
     // track recursion depth and pass it as a prop to the node component
     const recursionDepth = item.depth + 1 || 1;
     return item.children ? (
@@ -29,11 +20,11 @@ export class Parent extends Component {
         <Node
           {...item}
           selected={item.selected}
-          active={this.state.active}
+          active={active}
           closed={item.closed}
-          collapsed={this.state.closed}
+          collapsed={Array.isArray(context) && context.includes(item.path)}
           depth={recursionDepth}
-          handleOpen={this.handleOpen}
+          handleOpen={handleOpen}
         />
         {item.children.map(child => (
           <Parent
@@ -41,8 +32,13 @@ export class Parent extends Component {
             key={child.path}
             depth={recursionDepth}
             selected={item.selected}
-            active={this.state.active}
-            closed={this.state.closed.includes(item.path) || item.closed}
+            active={active}
+            closed={
+              (Array.isArray(context) && context.includes(item.path)) ||
+              item.closed
+            }
+            handleOpen={handleOpen}
+            context={context}
           />
         ))}
       </React.Fragment>
@@ -51,9 +47,9 @@ export class Parent extends Component {
         {...item}
         selected={item.selected}
         depth={recursionDepth}
-        active={this.state.active}
+        active={active}
         closed={item.closed}
-        handleOpen={this.handleOpen}
+        handleOpen={handleOpen}
         key={item.path}
       />
     );

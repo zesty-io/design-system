@@ -22,8 +22,6 @@ export class Node extends PureComponent {
     const isSelected = (selected.includes(path) && styles.selected) || "";
     // check if a parent node is collapsed
     const isClosed = closed && styles.closed;
-    const isCollapsed =
-      collapsed && collapsed.filter(collapsed => collapsed === path).length;
     return (
       <li
         className={`${styles.item} ${isActive} ${
@@ -38,7 +36,7 @@ export class Node extends PureComponent {
         {children &&
           Boolean(children.length) && (
             <i
-              className={isCollapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
+              className={collapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
               onClick={() => handleOpen(path)}
             />
           )}
