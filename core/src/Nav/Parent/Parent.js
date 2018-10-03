@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavContext from "../Nav";
 import { Node } from "../Node";
 
 import styles from "./Parent.less";
