@@ -52,47 +52,47 @@ export class NavGuide extends Component {
 const navData = [
   {
     name: 'Clippings',
-    path: '/nav/asda-asd5ads-dsa',
+    path: '/nav/as1da-asd5ads-dsa',
     icon: 'bars'
   },
   { name: 'Dashboard Widgets', path: '/nav/asda-aesdads-dsa', icon: 'bars' },
   {
     name: 'Sidebar Contact Form',
-    path: '/nav/asda-asdsdads-dsa',
+    path: '/nav/as1da-a1sdsdads-dsa',
     icon: 'bars'
   },
   {
     name: 'Simple Page',
-    path: '/nav/as4da-asdads-ds4a',
+    path: '/nav/as4da-asda1ds-ds4a',
     icon: 'bars'
   },
   {
     name: 'Homepage',
-    path: '/nav/asda-asda4ds-dsa',
+    path: '/nav/asd1a-asda4ds-dsa',
     icon: 'bars',
     children: [
-      { name: 'child', path: '/nav/252n0-23n452', icon: 'cube' },
+      { name: 'child', path: '/nav/252fn0-23n452', icon: 'cube' },
       {
         name: 'homepages',
-        path: '/nav/4898-44646-12341234',
+        path: '/nav/48198-446f46-12341234',
         icon: 'cube',
         children: [
           {
             name: 'child',
-            path: '/nav/8238-235325ads-ewew',
+            path: '/nav/8238-12353f25ads-ewew',
             icon: 'cube'
           },
           {
             name: 'child',
-            path: '/nav/8238-235asd25ads-ewew',
+            path: '/nav/823f8-235asd225ads-ewew',
             icon: 'cube',
             children: [
-              { name: 'buried', path: '/nav/89234djns23u80', icon: 'cube' }
+              { name: 'buried', path: '/nav/89234dj3ns23u80', icon: 'cube' }
             ]
           },
           {
             name: 'node',
-            path: '/nav/238-4562346',
+            path: '/nav/238-45622346',
             icon: 'cube'
           }
         ]

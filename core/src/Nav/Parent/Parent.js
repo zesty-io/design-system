@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Node } from "../Node";
 
 import styles from "./Parent.less";
@@ -15,7 +15,7 @@ export class Parent extends Component {
     return item.children ? (
       // if the item has children
       // render the item and then it's children
-      <React.Fragment key={item.path}>
+      <Fragment key={item.path}>
         <Node
           {...item}
           selected={item.selected}
@@ -40,7 +40,7 @@ export class Parent extends Component {
             context={context}
           />
         ))}
-      </React.Fragment>
+      </Fragment>
     ) : (
       <Node
         {...item}

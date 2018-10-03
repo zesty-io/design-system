@@ -16,7 +16,7 @@ export class ColorFieldTypeGuide extends Component {
           callback={value => console.log(value)}
         />
         <br />
-        <ColorFieldType label="Default to Orange Field" default="#ff9920" />
+        <ColorFieldType label="Default to Orange Field" value="#ff9920" />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
