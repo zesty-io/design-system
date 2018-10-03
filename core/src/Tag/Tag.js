@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import styles from './tags.less'
+import styles from "./tags.less";
 
 export class Tag extends Component {
   render() {
     return (
       <span className={styles.Tag}>
         <i className="fa fa-times" onClick={this.removeTag} />
-        <a href={this.props.tagZUID}>{this.props.tagName}</a>
+        <a href={this.props.ZUID}>{this.props.name}</a>
       </span>
-    )
+    );
   }
   removeTag = () => {
     if (this.props.onRemove) {
-      this.props.onRemove(this.props.tagZUID)
+      this.props.onRemove(this.props.ZUID);
     }
-  }
+  };
 }
