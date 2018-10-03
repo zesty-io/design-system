@@ -26,7 +26,7 @@ export { OneToOneFieldType } from "./OneToOneFieldType";
 export { NumberFieldType } from "./NumberFieldType";
 export { DropDownFieldType } from "./DropDownFieldType";
 // export { DraftFieldType } from "./DraftFieldType";
-export { DateTimeFieldType } from "./DateTimeFieldType";
+// export { DateTimeFieldType } from "./DateTimeFieldType";
 export { DateFieldType } from "./DateFieldType";
 export { CurrencyFieldType } from "./CurrencyFieldType";
 export { ColorFieldType } from "./ColorFieldType";
