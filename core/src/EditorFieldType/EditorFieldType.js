@@ -1,65 +1,115 @@
-import React from "react";
-import { HtmlEditor, MenuBar } from "@aeaton/react-prosemirror";
-import { options, menu } from "@aeaton/react-prosemirror-config-default";
+import React, { Component } from "react";
 import cx from "classnames";
+import debounce from "lodash/debounce";
+
+import { BasicEditor } from "./Editors/Basic.js";
+import { AdvancedEditor } from "./Editors/Advanced.js";
+import { InlineEditor } from "./Editors/Inline.js";
+import { MarkdownEditor } from "./Editors/Markdown.js";
+
+import { Button } from "../Button";
+import { ButtonGroup } from "../ButtonGroup";
 
 import styles from "./EditorFieldType.less";
 
-export function EditorFieldType(props) {
-  return (
-    <div className={cx(styles.EditorFieldType, props.className)}>
-      <label className={styles.EditorFieldTypeLabel}>{props.label}</label>
-      <div className={styles.EditorFieldTypePM}>
-        <HtmlEditor
-          options={{ ...options, floatingMenu: false }}
-          value={props.value}
-          onChange={props.onChange}
-          render={({ editor, state, dispatch }) => (
-            <div>
-              <MenuBar menu={menu} state={state} dispatch={dispatch} />
-              {editor}
-            </div>
-          )}
-        />
-      </div>
-    </div>
-  );
-}
+export class EditorFieldType extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editor: this.props.type || "basic",
+      value: this.props.value
+    };
 
-// import React from "react";
-// import { Editor } from "@tinymce/tinymce-react";
-// import styles from "./EditorFieldType.less";
-//
-// export class EditorFieldType extends React.Component {
-//   handleEditorChange = evt => {
-//     if (this.props.onChange) {
-//       // getContent() appears to do some event
-//       // batching and may cause problems
-//       this.props.onChange(
-//         this.props.name,
-//         evt.target.getContent(),
-//         this.props.name
-//       );
-//     }
-//   };
-//
-//   render() {
-//     return (
-//       <article className={styles.EditorFieldType}>
-//         <label className={styles.EditorFieldTypeLabel}>
-//           {this.props.label}
-//         </label>
-//         <Editor
-//           initialValue={this.props.value || ""}
-//           init={{
-//             plugins: "link image code",
-//             toolbar: this.props.datatype.includes("advanced")
-//               ? "undo redo | bold italic | link image | alignleft aligncenter alignright | code | styleselect"
-//               : "undo redo | bold italic | alignleft aligncenter alignright | code"
-//           }}
-//           onChange={this.handleEditorChange}
-//         />
-//       </article>
-//     );
-//   }
-// }
+    // this.onChange = debounce(
+    //   evt => {
+    //     console.log("Editor:onChange", evt);
+    //     const value = evt.target.value;
+    //
+    //     if (this.props.onChange) {
+    //       this.props.onChange(this.props.name, value, this.props.datatype);
+    //     }
+    //     this.setState({ value });
+    //   },
+    //   1000,
+    //   { maxWait: 5000 }
+    // );
+  }
+
+  onChange = value => {
+    console.log("Editor:onChange", value);
+    if (this.props.onChange) {
+      this.props.onChange(this.props.name, value, this.props.datatype);
+      // if (this.state.type === "markdown") {
+      //   this.props.onChange(
+      //     this.props.name,
+      //     defaultMarkdownSerializer.serliaze(value),
+      //     this.props.datatype
+      //   );
+      // } else {
+      //   this.props.onChange(this.props.name, value, this.props.datatype);
+      // }
+    }
+    this.setState({ value });
+  };
+
+  selectEditor = evt => {
+    this.setState({
+      editor: evt.currentTarget.dataset.value
+    });
+  };
+
+  renderEditor = () => {
+    console.log("Editor: ", this.state.editor);
+    switch (this.state.editor) {
+      case "basic":
+        return (
+          <BasicEditor value={this.state.value} onChange={this.onChange} />
+        );
+        break;
+      case "advanced":
+        return (
+          <AdvancedEditor value={this.state.value} onChange={this.onChange} />
+        );
+        break;
+      case "markdown":
+        return (
+          <MarkdownEditor value={this.state.value} onChange={this.onChange} />
+        );
+        break;
+      case "article_writer":
+        return (
+          <InlineEditor value={this.state.value} onChange={this.onChange} />
+        );
+        break;
+      default:
+        return <div>Invalid Editor</div>;
+    }
+  };
+
+  render() {
+    return (
+      <div className={cx(styles.EditorFieldType, this.props.className)}>
+        <label className={styles.EditorFieldTypeLabel}>
+          {this.props.label}
+        </label>
+        <div className={styles.EditorFieldTypePM}>
+          <menu className={styles.EditorSelection}>
+            <Button onClick={this.selectEditor} data-value="basic">
+              WYSIWYG
+            </Button>
+            <Button onClick={this.selectEditor} data-value="advanced">
+              Advanced
+            </Button>
+            <Button onClick={this.selectEditor} data-value="article_writer">
+              Inline (<small>Article Writer</small>)
+            </Button>
+            <Button onClick={this.selectEditor} data-value="markdown">
+              Markdown
+            </Button>
+          </menu>
+          {this.renderEditor()}
+        </div>
+      </div>
+    );
+  }
+}
