@@ -1,51 +1,105 @@
 import React, { Component } from "react";
 
-import { SearchableList, Option } from "../SearchableList";
 import { Tag } from "../Tag";
-
+import { Loader } from "../Loader";
 import styles from "./OneToManyFieldType.less";
 
+import { Select, Option } from "../Select";
+
 export class OneToManyFieldType extends Component {
-  static defaultProps = {
-    options: [
-      {
-        text: "there were no options passed to <Select>",
-        value: "no options passed to select"
-      }
-    ]
-  };
-  state = {
-    selectedOption: this.props.options[0],
-    options: this.props.options,
-    tags: []
-  };
-  componentDidMount() {
-    // fetch existing tags from API
-  }
-  render() {
-    const { selectedOption } = this.state;
-    return (
-      <article>
-        <div>
-          <label>{this.props.label}</label>
-        </div>
-        <SearchableList onSelect={this.selectOption}>
-          {this.state.options.map((opt, i) => {
-            return (
-              <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
-            );
-          })}
-        </SearchableList>
-        {this.state.tags.map(tag => (
-          <Tag tagName={tag.name} tagZUID={tag.ZUID} />
-        ))}
-      </article>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false,
+      loading: false,
+      tags: []
+    };
   }
 
-  selectOption = evt => {
-    this.setState({
-      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
-    });
+  onClick = () => {
+    if (!this.state.loaded && this.props.onOpen) {
+      this.props.onOpen().then(() => {
+        this.setState({
+          loading: false
+        });
+      });
+
+      this.setState({
+        loaded: true, // Only load data once
+        loading: true
+      });
+    }
   };
+
+  onRemove = tagZUID => {
+    // remove the tag ZUID from teh tags array
+    // add it back into the options array
+    const tags = this.state.tags.filter(tag => tag.ZUID !== tagZUID);
+    this.setState({ tags });
+  };
+
+  onSelect = evt => {
+    // we need to alter the options array
+    // and then add the tag in the state
+    // how will this behave with loading?
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        evt.currentTarget.dataset.value,
+        this.props.datatype
+      );
+    }
+    const tags = [
+      ...this.state.tags,
+      JSON.parse(evt.currentTarget.dataset.value)
+    ];
+    this.setState({ tags });
+  };
+
+  render() {
+    const { tags, loading } = this.state;
+    const { label, selection, options } = this.props;
+    return (
+      <section className={styles.OneToMany}>
+        <div>
+          <label>{label}</label>
+        </div>
+        <Select
+          className={styles.Select}
+          onClick={this.onClick}
+          onSelect={this.onSelect}
+          selection={selection}
+          default={this.props.default}
+        >
+          {loading && <Loader />}
+          {options
+            .filter(
+              option =>
+                !tags
+                  .reduce((acc, item) => {
+                    acc.push(item.ZUID);
+                    return acc;
+                  }, [])
+                  .includes(option.ZUID)
+            )
+            .map((opt, i) => {
+              return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
+            })}
+        </Select>
+        <article className={styles.Tags}>
+          {tags.length ? (
+            tags.map(tag => (
+              <Tag
+                tagName={tag.name}
+                tagZUID={tag.ZUID}
+                onRemove={this.onRemove}
+              />
+            ))
+          ) : (
+            <p>Select tags to associate them with your item.</p>
+          )}
+        </article>
+      </section>
+    );
+  }
 }

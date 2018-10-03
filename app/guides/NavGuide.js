@@ -32,7 +32,7 @@ export class NavGuide extends Component {
           selected (a string matching the path of the selected item)
         </p>
         <br />
-        <Nav content={navData} selected={this.state.selected} />
+        <Nav content={navData} name="NavGuide" selected={this.state.selected} />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
