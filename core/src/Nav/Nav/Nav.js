@@ -10,11 +10,14 @@ export class Nav extends Component {
     closed: []
   };
   componentDidMount() {
-    if (localStorage.getItem(location.hostname)) {
+    if (localStorage.getItem(this.uniqueName())) {
       this.setState({
-        closed: JSON.parse(localStorage.getItem(location.hostname))
+        closed: JSON.parse(localStorage.getItem(this.uniqueName()))
       });
     }
+  }
+  uniqueName() {
+    return this.props.name ? `zesty-io:nav:${this.props.name}` : "zesty-io:nav";
   }
   handleOpen = path => {
     // add or remove path from closed state array
@@ -24,7 +27,7 @@ export class Nav extends Component {
       : [...closedItems, path];
 
     return this.setState({ closed: replaceClosed }, () => {
-      localStorage.setItem(location.hostname, JSON.stringify(replaceClosed));
+      localStorage.setItem(this.uniqueName(), JSON.stringify(replaceClosed));
     });
   };
   render() {
