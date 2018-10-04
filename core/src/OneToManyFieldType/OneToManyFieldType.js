@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
@@ -60,46 +60,44 @@ export class OneToManyFieldType extends Component {
     const { tags, loading } = this.state;
     const { label, selection, options } = this.props;
     return (
-      <section className={styles.OneToMany}>
+      <Fragment>
         <div>
           <label>{label}</label>
         </div>
-        <Select
-          className={styles.Select}
-          onClick={this.onClick}
-          onSelect={this.onSelect}
-          selection={selection}
-          default={this.props.default}
-        >
-          {loading && <Loader />}
-          {options
-            .filter(
-              option =>
-                !tags
-                  .reduce((acc, item) => {
-                    acc.push(item.ZUID);
-                    return acc;
-                  }, [])
-                  .includes(option.ZUID)
-            )
-            .map((opt, i) => {
-              return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
-            })}
-        </Select>
-        <article className={styles.Tags}>
-          {tags.length ? (
-            tags.map(tag => (
-              <Tag
-                tagName={tag.name}
-                tagZUID={tag.ZUID}
-                onRemove={this.onRemove}
-              />
-            ))
-          ) : (
-            <p>Select tags to associate them with your item.</p>
-          )}
-        </article>
-      </section>
+        <section className={styles.OneToMany}>
+          <Select
+            className={styles.Select}
+            onClick={this.onClick}
+            onSelect={this.onSelect}
+            selection={selection}
+            default={this.props.default}
+          >
+            {loading && <Loader />}
+            {options
+              .filter(
+                option =>
+                  !tags
+                    .reduce((acc, item) => {
+                      acc.push(item.ZUID);
+                      return acc;
+                    }, [])
+                    .includes(option.ZUID)
+              )
+              .map((opt, i) => {
+                return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
+              })}
+          </Select>
+          <article className={styles.Tags}>
+            {tags.length ? (
+              tags.map(tag => (
+                <Tag name={tag.text} ZUID={tag.ZUID} onRemove={this.onRemove} />
+              ))
+            ) : (
+              <p>Select tags to associate them with your item.</p>
+            )}
+          </article>
+        </section>
+      </Fragment>
     );
   }
 }

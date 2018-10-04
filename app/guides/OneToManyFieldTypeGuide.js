@@ -12,6 +12,7 @@ export class OneToManyFieldTypeGuide extends Component {
         <p>Props: options(array of objects), label</p>
         <br />
         <OneToManyFieldType
+          label="label"
           options={[
             {
               value: 'tagname1',
