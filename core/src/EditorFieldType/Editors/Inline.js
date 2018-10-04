@@ -1,6 +1,6 @@
 import React from "react";
 import { HtmlEditor } from "./react-prosemirror";
-import { CustomMenuBar } from "./react-prosemirror/CustomMenuBar";
+import CustomMenuBar from "./react-prosemirror/CustomMenuBar";
 import { options, inlineMenu } from "./react-prosemirror-config";
 
 import styles from "./Inline.less";

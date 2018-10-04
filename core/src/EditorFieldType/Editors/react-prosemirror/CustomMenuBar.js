@@ -22,7 +22,14 @@ const Button = (state, dispatch) => (item, key) => (
   </button>
 );
 
-const MenuBar = ({ menu, children, state, dispatch, className, style }) => (
+const CustomMenuBar = ({
+  menu,
+  children,
+  state,
+  dispatch,
+  className,
+  style
+}) => (
   <div className={classnames(classes.bar, className)} style={style}>
     {children && <span className={classes.group}>{children}</span>}
 
@@ -34,4 +41,4 @@ const MenuBar = ({ menu, children, state, dispatch, className, style }) => (
   </div>
 );
 
-export default MenuBar;
+export default CustomMenuBar;
