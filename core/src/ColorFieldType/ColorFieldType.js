@@ -16,7 +16,7 @@ export class ColorFieldType extends Component {
         <span className={styles.ColorFieldTypeLabel}>{this.props.label}</span>
         <div className={styles.ColorFieldTypeInput}>
           <i className={cx(styles.Icon, "fa fa-paint-brush")} />
-          <Input
+          <input
             type="color"
             onChange={this.onChange}
             value={this.state.value}
