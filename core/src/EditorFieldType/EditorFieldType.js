@@ -3,7 +3,7 @@ import cx from "classnames";
 import debounce from "lodash/debounce";
 
 import { BasicEditor } from "./Editors/Basic.js";
-import { AdvancedEditor } from "./Editors/Advanced.js";
+// import { AdvancedEditor } from "./Editors/Advanced.js";
 import { InlineEditor } from "./Editors/Inline.js";
 import { MarkdownEditor } from "./Editors/Markdown.js";
 import { HtmlEditor } from "./Editors/Html.js";
@@ -35,7 +35,7 @@ export class EditorFieldType extends Component {
   }
 
   onChange = value => {
-    console.log("Editor:onChange", value);
+    // console.log("Editor:onChange", value);
     if (this.props.onChange) {
       this.props.onChange(this.props.name, value, this.props.datatype);
     }
@@ -49,18 +49,18 @@ export class EditorFieldType extends Component {
   };
 
   renderEditor = () => {
-    console.log("Editor: ", this.state.editor);
+    // console.log("Editor: ", this.state.editor);
     switch (this.state.editor) {
       case "basic":
         return (
           <BasicEditor value={this.state.value} onChange={this.onChange} />
         );
         break;
-      case "advanced":
-        return (
-          <AdvancedEditor value={this.state.value} onChange={this.onChange} />
-        );
-        break;
+      // case "advanced":
+      //   return (
+      //     <AdvancedEditor value={this.state.value} onChange={this.onChange} />
+      //   );
+      //   break;
       case "markdown":
         return (
           <MarkdownEditor value={this.state.value} onChange={this.onChange} />
