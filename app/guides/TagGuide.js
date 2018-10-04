@@ -9,27 +9,29 @@ export class TagGuide extends Component {
     return (
       <React.Fragment>
         <p>Tag component</p>
-        <p>Props: tagName, tagZUID</p>
+        <p>Props: name, ZUID</p>
         <br />
         <br />
-        <Tag tagName="tag" tagZUID="/tag/zuidHere" />
-        <Tag tagName="Another Tag" tagZUID="/tag/zuidHere" />
-        <Tag tagName="html" tagZUID="/tag/zuidHere" />
-        <Tag
-          tagName="JS"
-          tagZUID="/tag/zuidHere"
-          onRemove={ZUID => console.log(ZUID)}
-        />
+        <div style={{ display: 'flex' }}>
+          <Tag name="tag" ZUID="/tag/zuidHere" />
+          <Tag name="Another Tag" ZUID="/tag/zuidHere" />
+          <Tag name="html" ZUID="/tag/zuidHere" />
+          <Tag
+            name="JS"
+            ZUID="/tag/zuidHere"
+            onRemove={ZUID => console.log(ZUID)}
+          />
+        </div>
         <br />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
             code={`
-<Tag tagName="tag" tagZUID="zuidHere" />
-<Tag tagName="Another Tag" tagZUID="zuidHere" />
-<Tag tagName="html" tagZUID="zuidHere" />
-<Tag tagName="JS" tagZUID="/tag/zuidHere" onRemove={ZUID => console.log(ZUID)} />`}
+<Tag name="tag" ZUID="zuidHere" />
+<Tag name="Another Tag" ZUID="zuidHere" />
+<Tag name="html" ZUID="zuidHere" />
+<Tag name="JS" ZUID="/tag/zuidHere" onRemove={ZUID => console.log(ZUID)} />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
@@ -39,13 +41,13 @@ export class TagGuide extends Component {
     return (
       <span className={styles.Tag}>
         <i className="fa fa-times" onClick={this.removeTag} />
-        <a href={this.props.tagZUID}>{this.props.tagName}</a>
+        <a href={this.props.ZUID}>{this.props.name}</a>
       </span>
     )
   }
   removeTag = () => {
     if (this.props.onRemove) {
-      this.props.onRemove(this.props.tagZUID)
+      this.props.onRemove(this.props.ZUID)
     }
   }
 }`}
