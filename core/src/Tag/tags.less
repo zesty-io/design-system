@@ -6,7 +6,9 @@
   border-radius: 3px;
   padding: 0.5rem 0.25rem;
   margin: 0.25rem;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  align-items: center;
   i {
     margin: 2px;
     font-size: 1.1rem;
@@ -21,6 +23,7 @@
     font-size: 1.2em;
     color: @white;
     text-decoration: none;
+    padding-right: 0.5rem;
     &:hover {
       text-decoration: underline;
     }
