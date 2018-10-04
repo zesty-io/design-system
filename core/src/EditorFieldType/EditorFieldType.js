@@ -6,12 +6,11 @@ import { BasicEditor } from "./Editors/Basic.js";
 import { AdvancedEditor } from "./Editors/Advanced.js";
 import { InlineEditor } from "./Editors/Inline.js";
 import { MarkdownEditor } from "./Editors/Markdown.js";
+import { HtmlEditor } from "./Editors/Html.js";
 
-import { Button } from "../Button";
-import { ButtonGroup } from "../ButtonGroup";
+import { Select, Option } from "../Select";
 
 import styles from "./EditorFieldType.less";
-
 export class EditorFieldType extends Component {
   constructor(props) {
     super(props);
@@ -39,15 +38,6 @@ export class EditorFieldType extends Component {
     console.log("Editor:onChange", value);
     if (this.props.onChange) {
       this.props.onChange(this.props.name, value, this.props.datatype);
-      // if (this.state.type === "markdown") {
-      //   this.props.onChange(
-      //     this.props.name,
-      //     defaultMarkdownSerializer.serliaze(value),
-      //     this.props.datatype
-      //   );
-      // } else {
-      //   this.props.onChange(this.props.name, value, this.props.datatype);
-      // }
     }
     this.setState({ value });
   };
@@ -81,8 +71,15 @@ export class EditorFieldType extends Component {
           <InlineEditor value={this.state.value} onChange={this.onChange} />
         );
         break;
+      case "html":
+        return <HtmlEditor value={this.state.value} onChange={this.onChange} />;
+        break;
       default:
-        return <div>Invalid Editor</div>;
+        return (
+          <div>
+            <h1>Invalid Editor</h1>
+          </div>
+        );
     }
   };
 
@@ -90,25 +87,23 @@ export class EditorFieldType extends Component {
     return (
       <div className={cx(styles.EditorFieldType, this.props.className)}>
         <label className={styles.EditorFieldTypeLabel}>
-          {this.props.label}
+          <span>{this.props.label}</span>
+          <span>0/65,000</span>
+          <Select
+            className={styles.EditorSelection}
+            onSelect={this.selectEditor}
+            default={{
+              value: "basic",
+              text: "WYSIWYG"
+            }}
+          >
+            <Option value="basic" text="WYSIWYG" />
+            <Option value="markdown" text="Markdown" />
+            <Option value="article_writer" text="Inline" />
+            <Option value="html" text="HTML" />
+          </Select>
         </label>
-        <div className={styles.EditorFieldTypePM}>
-          <menu className={styles.EditorSelection}>
-            <Button onClick={this.selectEditor} data-value="basic">
-              WYSIWYG
-            </Button>
-            <Button onClick={this.selectEditor} data-value="advanced">
-              Advanced
-            </Button>
-            <Button onClick={this.selectEditor} data-value="article_writer">
-              Inline (<small>Article Writer</small>)
-            </Button>
-            <Button onClick={this.selectEditor} data-value="markdown">
-              Markdown
-            </Button>
-          </menu>
-          {this.renderEditor()}
-        </div>
+        <div className={styles.EditorFieldTypePM}>{this.renderEditor()}</div>
       </div>
     );
   }
