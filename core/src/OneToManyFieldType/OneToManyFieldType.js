@@ -16,6 +16,32 @@ export class OneToManyFieldType extends Component {
     };
   }
 
+  componentDidMount() {
+    // if values are provided
+    // load data and display proper tags
+    if (this.props.value) {
+      const tagsToBeAdded = this.props.value.split(":")[0].split(",");
+      this.props
+        .onOpen()
+        .then(() => {
+          this.setState({
+            loading: false
+          });
+        })
+        .then(() => {
+          const tags = this.props.options.filter(option =>
+            tagsToBeAdded.includes(option.value)
+          );
+          this.setState({ tags });
+        });
+
+      this.setState({
+        loaded: true, // Only load data once
+        loading: true
+      });
+    }
+  }
+
   onClick = () => {
     if (!this.state.loaded && this.props.onOpen) {
       this.props.onOpen().then(() => {
@@ -34,7 +60,7 @@ export class OneToManyFieldType extends Component {
   onRemove = tagZUID => {
     // remove the tag ZUID from teh tags array
     // add it back into the options array
-    const tags = this.state.tags.filter(tag => tag.ZUID !== tagZUID);
+    const tags = this.state.tags.filter(tag => tag.value !== tagZUID);
     this.setState({ tags });
   };
 
@@ -78,10 +104,10 @@ export class OneToManyFieldType extends Component {
                 option =>
                   !tags
                     .reduce((acc, item) => {
-                      acc.push(item.ZUID);
+                      acc.push(item.value);
                       return acc;
                     }, [])
-                    .includes(option.ZUID)
+                    .includes(option.value)
               )
               .map((opt, i) => {
                 return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
@@ -90,7 +116,11 @@ export class OneToManyFieldType extends Component {
           <article className={styles.Tags}>
             {tags.length ? (
               tags.map(tag => (
-                <Tag name={tag.text} ZUID={tag.ZUID} onRemove={this.onRemove} />
+                <Tag
+                  name={tag.text}
+                  ZUID={tag.value}
+                  onRemove={this.onRemove}
+                />
               ))
             ) : (
               <p>Select tags to associate them with your item.</p>
