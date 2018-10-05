@@ -1,7 +1,7 @@
 import React from "react";
 import map from "lodash/map";
 import classnames from "classnames";
-import classes from "./MenuBar.module.less";
+import classes from "./MenuBar.module.css";
 
 const Button = (state, dispatch) => (item, key) => (
   <button
@@ -22,23 +22,19 @@ const Button = (state, dispatch) => (item, key) => (
   </button>
 );
 
-const CustomMenuBar = ({
-  menu,
-  children,
-  state,
-  dispatch,
-  className,
-  style
-}) => (
-  <div className={classnames(classes.bar, className)} style={style}>
-    {children && <span className={classes.group}>{children}</span>}
+const MenuBar = ({ menu, children, state, dispatch, editor }) => {
+  console.log("MenuBar", editor);
+  return (
+    <div className={classes.bar}>
+      {children && <span className={classes.group}>{children}</span>}
 
-    {map(menu, (item, key) => (
-      <span key={key} className={classes.group}>
-        {map(item, Button(state, dispatch))}
-      </span>
-    ))}
-  </div>
-);
+      {map(menu, (item, key) => (
+        <span key={key} className={classes.group}>
+          {map(item, Button(state, dispatch))}
+        </span>
+      ))}
+    </div>
+  );
+};
 
-export default CustomMenuBar;
+export default MenuBar;
