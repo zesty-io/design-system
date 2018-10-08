@@ -16,12 +16,10 @@ export { WithLoader } from "./WithLoader";
 
 // Molecules
 export { Nav } from "./Nav";
-export { WYSIWYGFieldType } from "./WYSIWYGFieldType";
 export { UrlFieldType } from "./UrlFieldType";
 export { TextFieldType } from "./TextFieldType";
 export { TextareaFieldType } from "./TextareaFieldType";
 export { UUIDFieldType } from "./UUIDFieldType";
-// export { QuillFieldType } from "./QuillFieldType";
 export { OneToOneFieldType } from "./OneToOneFieldType";
 export { NumberFieldType } from "./NumberFieldType";
 export { DropDownFieldType } from "./DropDownFieldType";
@@ -33,6 +31,5 @@ export { ColorFieldType } from "./ColorFieldType";
 export { CollapsibleCard } from "./CollapsibleCard";
 export { BinaryFieldType } from "./BinaryFieldType";
 export { ImageFieldType } from "./ImageFieldType";
-export { MarkdownFieldType } from "./MarkdownFieldType";
 
 export { InternalLinkFieldType } from "./InternalLinkFieldType";

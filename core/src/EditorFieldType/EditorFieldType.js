@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import cx from "classnames";
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 
 // Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
 import { BasicEditor } from "./Editors/Basic.js";
@@ -35,7 +35,6 @@ export class EditorFieldType extends Component {
   }
 
   onChange = value => {
-    // console.log("Editor:onChange", value);
     if (this.props.onChange) {
       this.props.onChange(this.props.name, value, this.props.datatype);
     }
@@ -49,7 +48,6 @@ export class EditorFieldType extends Component {
   };
 
   renderEditor = () => {
-    // console.log("Editor: ", this.state.editor);
     switch (this.state.editor) {
       case "basic":
         return (
