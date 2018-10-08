@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 import debounce from "lodash/debounce";
 
+// Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
 import { BasicEditor } from "./Editors/Basic.js";
-// import { AdvancedEditor } from "./Editors/Advanced.js";
 import { InlineEditor } from "./Editors/Inline.js";
 import { MarkdownEditor } from "./Editors/Markdown.js";
 import { HtmlEditor } from "./Editors/Html.js";
@@ -56,11 +56,6 @@ export class EditorFieldType extends Component {
           <BasicEditor value={this.state.value} onChange={this.onChange} />
         );
         break;
-      // case "advanced":
-      //   return (
-      //     <AdvancedEditor value={this.state.value} onChange={this.onChange} />
-      //   );
-      //   break;
       case "markdown":
         return (
           <MarkdownEditor value={this.state.value} onChange={this.onChange} />

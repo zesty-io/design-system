@@ -1,0 +1,12 @@
+@import "../node_modules/codemirror/lib/codemirror.css";
+@import "../node_modules/codemirror/theme/material.css";
+
+.CodeMirror {
+  min-height: 700px;
+  font-size: 16px;
+  line-height: 24px;
+  top: 0;
+}
+.CodeMirror-scroll {
+  margin-right: 0;
+}
