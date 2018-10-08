@@ -32,12 +32,8 @@
     "DateTimeFieldType",
     "DropDownFieldType",
     "ImageFieldType",
-    "WYSIWYGFieldType",
-    "DraftFieldType",
-    "QuillFieldType",
     "OneToOneFieldType",
     "OneToManyFieldType",
-    "MarkdownFieldType",
     "InternalLinkFieldType",
     "EditorFieldType"
   ],

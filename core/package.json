@@ -20,7 +20,6 @@
     "react": "16.4.1",
     "react-router-dom": "4.3.1",
     "react-dom": "16.4.1",
-    "react-ace": "6.1.2",
     "react-datepicker": "1.6.0",
     "moment": "2.22.2",
     "@aeaton/react-prosemirror": "^0.11.0",
