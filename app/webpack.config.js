@@ -3,7 +3,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const extractLess = new ExtractTextPlugin({
+const extractCSS = new ExtractTextPlugin({
   filename: 'bundle.css'
 })
 
@@ -19,7 +19,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  plugins: [extractLess],
+  plugins: [extractCSS],
   resolve: {
     symlinks: false
   },
@@ -27,11 +27,17 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['css-loader']
+        use: extractCSS.extract({
+          use: [
+            {
+              loader: 'css-loader'
+            }
+          ]
+        })
       },
       {
         test: /\.less$/,
-        use: extractLess.extract({
+        use: extractCSS.extract({
           use: [
             {
               loader: 'css-loader',
