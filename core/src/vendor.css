@@ -10,3 +10,8 @@
 .CodeMirror-scroll {
   margin-right: 0;
 }
+
+.ProseMirror {
+  max-height: 1000px;
+  overflow-y: scroll;
+}
