@@ -54,9 +54,10 @@ export class ImageFieldType extends Component {
               <h3>Drop images here to upload them to your media</h3>
               <input type="file" className={styles.DropZone} />
             */}
-            {this.props.images.map(ZUID => {
+            {this.props.images.map((ZUID, i) => {
               return (
                 <Image
+                  key={i}
                   imageZUID={ZUID}
                   width="200"
                   height="200"
