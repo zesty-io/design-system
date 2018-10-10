@@ -15,7 +15,7 @@ export class EditorFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editor: this.props.type || "basic",
+      editor: this.props.type || "wysiwyg_basic",
       value: this.props.value
     };
 
@@ -49,7 +49,8 @@ export class EditorFieldType extends Component {
 
   renderEditor = () => {
     switch (this.state.editor) {
-      case "basic":
+      case "wysiwyg_basic":
+      case "wysiwyg_advanced":
         return (
           <BasicEditor value={this.state.value} onChange={this.onChange} />
         );
@@ -86,11 +87,11 @@ export class EditorFieldType extends Component {
             className={styles.EditorSelection}
             onSelect={this.selectEditor}
             default={{
-              value: "basic",
+              value: "wysiwyg_basic",
               text: "WYSIWYG"
             }}
           >
-            <Option value="basic" text="WYSIWYG" />
+            <Option value="wysiwyg_basic" text="WYSIWYG" />
             <Option value="markdown" text="Markdown" />
             <Option value="article_writer" text="Inline" />
             <Option value="html" text="HTML" />
