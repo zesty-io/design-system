@@ -115,8 +115,9 @@ export class OneToManyFieldType extends Component {
           </Select>
           <article className={styles.Tags}>
             {tags.length ? (
-              tags.map(tag => (
+              tags.map((tag, i) => (
                 <Tag
+                  key={i}
                   name={tag.text}
                   ZUID={tag.value}
                   onRemove={this.onRemove}
