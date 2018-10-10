@@ -9,6 +9,7 @@ export { Input } from "./Input";
 export { Loader } from "./Loader";
 export { Search } from "./Search";
 export { Select, Option } from "./Select";
+export { Tag } from "./Tag";
 export { Toggle } from "./Toggle";
 export { Textarea } from "./Textarea";
 export { Url } from "./Url";
