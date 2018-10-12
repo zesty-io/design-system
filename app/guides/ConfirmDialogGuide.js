@@ -53,7 +53,8 @@ export class ConfirmDialogGuide extends Component {
           header="Usage"
           height={250}
           open
-          children={`<ConfirmDialog
+          children={`// standard yes/no response
+<ConfirmDialog
   isOpen={this.state.isOpen}
   prompt="Is it safe to go alone?"
   callback={response => {
@@ -61,6 +62,7 @@ export class ConfirmDialogGuide extends Component {
     console.log(response)
   }}
 />
+// custom button group
 <ConfirmDialog
   isOpen={this.state.customIsOpen}
   prompt="Custom button group">
