@@ -36,3 +36,5 @@ export { MarkdownFieldTypeGuide } from './MarkdownFieldTypeGuide'
 export { OneToManyFieldTypeGuide } from './OneToManyFieldTypeGuide'
 export { InternalLinkFieldTypeGuide } from './InternalLinkFieldTypeGuide'
 export { EditorFieldTypeGuide } from './EditorFieldTypeGuide'
+
+export { ConfirmDialogGuide } from './ConfirmDialogGuide'

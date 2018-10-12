@@ -34,3 +34,5 @@ export { BinaryFieldType } from "./BinaryFieldType";
 export { ImageFieldType } from "./ImageFieldType";
 
 export { InternalLinkFieldType } from "./InternalLinkFieldType";
+
+export { ConfirmDialog } from "./ConfirmDialog";

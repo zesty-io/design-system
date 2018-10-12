@@ -35,7 +35,8 @@
     "OneToOneFieldType",
     "OneToManyFieldType",
     "InternalLinkFieldType",
-    "EditorFieldType"
+    "EditorFieldType",
+    "ConfirmDialog"
   ],
   "organisms": []
 }
