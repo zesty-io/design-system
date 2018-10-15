@@ -3,9 +3,6 @@ import styles from "./Input.less";
 import cx from "classnames";
 
 export function Input(props) {
-  // if (props.disabled) {
-  //   props.disabled = "disabled";
-  // }
   return (
     <React.Fragment>
       <input

@@ -6,6 +6,7 @@ export { Card, CardHeader, CardContent, CardFooter } from "./Card";
 export { Divider } from "./Divider";
 export { Infotip } from "./Infotip";
 export { Input } from "./Input";
+export { InputIcon } from "./InputIcon";
 export { Loader } from "./Loader";
 export { Search } from "./Search";
 export { Select, Option } from "./Select";

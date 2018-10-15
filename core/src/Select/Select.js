@@ -65,20 +65,6 @@ export class Select extends Component {
           value={this.state.selection.value}
         />*/}
         <span className={styles.selection}>
-          <i
-            className={cx(
-              "fa fa-chevron-right",
-              styles.chevron,
-              styles["icon-chevron-right"]
-            )}
-          />
-          <i
-            className={cx(
-              "fa fa-chevron-down",
-              styles.chevron,
-              styles["icon-chevron-down"]
-            )}
-          />
           {this.state.selection.html ? (
             <span
               className={styles.content}
@@ -89,6 +75,21 @@ export class Select extends Component {
           ) : (
             <span className={styles.content}>{this.state.selection.text}</span>
           )}
+
+          <i
+            className={cx(
+              "fa fa-chevron-left",
+              styles.chevron,
+              styles["icon-chevron-left"]
+            )}
+          />
+          <i
+            className={cx(
+              "fa fa-chevron-down",
+              styles.chevron,
+              styles["icon-chevron-down"]
+            )}
+          />
         </span>
         <ul className={cx("selections", styles.selections)}>
           {this.props.children &&

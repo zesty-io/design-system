@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import styles from "./tags.less";
+import styles from "./Tag.less";
 
 export class Tag extends Component {
   render() {
