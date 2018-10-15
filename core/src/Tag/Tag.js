@@ -6,7 +6,7 @@ export class Tag extends Component {
   render() {
     return (
       <span className={styles.Tag}>
-        <i className="fa fa-times" onClick={this.removeTag} />
+        <i className="fa fa-times-circle" onClick={this.removeTag} />
         <a href={this.props.ZUID}>{this.props.name}</a>
       </span>
     );

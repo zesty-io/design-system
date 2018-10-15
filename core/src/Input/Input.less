@@ -1,40 +1,46 @@
 @import "../colors.less";
 .Input {
-  background: #eaecf1;
-  // border: 1px solid #9dabc5;
-  border: 1px solid #eaecf1;
+  background-color: @white;
   border-radius: 3px;
-  box-shadow: none;
-  color: @zesty-grey;
+  border: solid 1px rgba(0, 0, 0, 0.12);
+  color: #1a202c;
+  display: block;
   font-family: "Montserrat", "Gibson Light", Arial, sans-serif;
-  // font-size: 1rem;
   font-weight: 500;
   font-size: 16px;
-  line-height: 40px;
-  padding: 0 0 0 0.5em;
+  line-height: 24px;
+  padding: 8px 12px;
+  margin: 8px 0 4px 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: #1a202c;
+    border: solid 1px #4f596d;
+  }
+
+  &:placeholder-shown {
+    color: #1a202c;
+  }
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.06);
+    opacity: 0.4;
+  }
 
   &:required {
     box-shadow: none;
   }
-  &:hover,
-  &:active,
-  &:focus {
-    background: @white;
-    border: 1px solid #9dabc5;
-    outline: none;
-    // -webkit-box-shadow: none;
-    box-shadow: none;
-    font-weight: 500;
-  }
-  &:placeholder-shown {
-    // color: lighten(@zesty-light-grey, 20%);
-    font-weight: 100;
-  }
-  &:focus:required:invalid {
-    // -webkit-box-shadow: 0 0 5px 1px @zesty-red;
-    box-shadow: 0 0 5px 1px @zesty-red;
+
+  &:focus:required:invalid,
+  &.error {
+    border: solid 1px #d81f0f;
   }
 }
-input:required {
-  box-shadow: none;
+.ErrorMsg {
+  font-size: 12px;
 }
+
+// input:required {
+//   box-shadow: none;
+// }

@@ -16,19 +16,26 @@ export class InputGuide extends Component {
 
           <h2>Examples</h2>
 
-          <h3>Default</h3>
-          <Input name="example1" />
+          <h3>Placeholder</h3>
+          <Input name="example1" placeholder="Input with placeholder text" />
 
-          <h3>autocomplete</h3>
+          <h3>Preset Value</h3>
           <Input
             name="example2"
             type="email"
-            placeholder="autocomplete disabled"
-            autocomplete="off"
+            autoComplete="off"
+            value="developers@zesty.io"
           />
 
-          <h3>required</h3>
-          <Input name="example3" placeholder="required" required />
+          <h3>Disabled</h3>
+          <Input name="example3" value="Disabled field" disabled />
+
+          <h3>Error</h3>
+          <Input
+            name="example3"
+            value="Input error"
+            error="Description of error"
+          />
         </div>
 
         <CollapsibleCard header="Usage" open>
