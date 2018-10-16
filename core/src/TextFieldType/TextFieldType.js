@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import debounce from "lodash.debounce";
+
 import { Input } from "../Input";
 import styles from "./TextFieldType.less";
 
@@ -12,10 +14,25 @@ export class TextFieldType extends Component {
       );
     }
 
+    // If provided an onChange handler
+    // we need to ensure we broadcast the change
+    if (this.props.onChange) {
+      this.notifyStore = debounce(this.props.onChange, 1000);
+    }
+
     this.state = {
       value: props.value || ""
     };
   }
+  onChange = evt => {
+    const value = evt.target.value;
+    const name = evt.target.name;
+    this.setState({ value }, () => {
+      if (this.notifyStore) {
+        this.notifyStore(name, value, this.props.datatype);
+      }
+    });
+  };
   render() {
     return (
       <label
@@ -40,15 +57,4 @@ export class TextFieldType extends Component {
       </label>
     );
   }
-  onChange = evt => {
-    const value = evt.target.value;
-    const name = evt.target.name;
-    this.setState({ value }, () => {
-      // If provided an onChange handler
-      // we need to ensure we broadcast the change
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-    });
-  };
 }
