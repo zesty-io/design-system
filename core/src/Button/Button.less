@@ -8,21 +8,36 @@
 
 .Button {
   align-items: center;
-  background: @btnDefault;
-  border: none;
-  border-radius: 3px 3px 0px 3px;
-  border-bottom: 3px solid darken(@btnDefault, 6%);
-  border-right: 2px solid lighten(@btnDefault, 6%);
-  color: @btnDefaultText;
+  // background: @btnDefault;
+  // border: none;
+  // border-radius: 3px 3px 0px 3px;
+  // border-bottom: 3px solid darken(@btnDefault, 6%);
+  // border-right: 2px solid lighten(@btnDefault, 6%);
+
+  border-radius: 8px;
+  background-color: #336edb;
+
+  // color: @btnDefaultText;
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  font-size: 1em;
-  font-family: verdana, system-ui;
+  // font-size: 1em;
+  // font-family: verdana, system-ui;
+
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+
   justify-content: flex-start;
   letter-spacing: 0.4px;
-  padding: 0.5rem 0.8rem;
-  text-shadow: 1px 1px 1px darken(@btnDefault, 15%);
+  // padding: 0.5rem 0.8rem;
+  // text-shadow: 1px 1px 1px darken(@btnDefault, 15%);
+
+  padding: 8px 16px;
 
   align-items: center;
   display: flex;
@@ -30,6 +45,9 @@
   justify-content: flex-start;
 
   transition: all 0.4s;
+
+  border: 0;
+  text-transform: uppercase;
 
   &:hover,
   &:focus {
@@ -45,10 +63,12 @@
   }
 
   &.save {
-    background: @btnSave;
-    text-shadow: 1px 1px 1px darken(@btnSave, 15%);
-    border-bottom: 3px solid darken(@btnSave, 6%);
-    border-right: 2px solid darken(@btnSave, 6%);
+    // background: @btnSave;
+    background-color: #63a41e;
+
+    // text-shadow: 1px 1px 1px darken(@btnSave, 15%);
+    // border-bottom: 3px solid darken(@btnSave, 6%);
+    // border-right: 2px solid darken(@btnSave, 6%);
     &:hover {
       background: lighten(@btnSave, 5%);
     }
@@ -63,9 +83,11 @@
     // border-bottom: 3px solid darken(@btnCancel, 6%);
     // border-right: 2px solid darken(@btnCancel, 6%);
 
-    background: lighten(@btnCancel, 13%);
-    border: none;
-    text-shadow: none;
+    // background: lighten(@btnCancel, 13%);
+    // border: none;
+    // text-shadow: none;
+    background-color: #1a202c;
+    opacity: 0.6;
 
     &:hover {
       background: lighten(@btnCancel, 15%);
@@ -84,10 +106,12 @@
   }
 
   &.warn {
-    background: lighten(@btnWarn, 10%);
-    text-shadow: 1px 1px 1px darken(@btnWarn, 15%);
-    border-bottom: 3px solid darken(@btnWarn, 6%);
-    border-right: 2px solid darken(@btnWarn, 6%);
+    background-color: #9a2803;
+
+    // background: lighten(@btnWarn, 10%);
+    // text-shadow: 1px 1px 1px darken(@btnWarn, 15%);
+    // border-bottom: 3px solid darken(@btnWarn, 6%);
+    // border-right: 2px solid darken(@btnWarn, 6%);
     &:hover {
       background: lighten(@btnWarn, 13%);
     }
