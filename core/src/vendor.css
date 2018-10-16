@@ -19,14 +19,17 @@
   font-weight: 500;
   line-height: 20px;
 
-  padding: 8px 12px;
+  padding: 8px 12px !important;
   border: 4px solid #eaecf1;
   flex: 1;
 }
 .ProseMirror img {
   max-width: 100%;
 }
-
+.ProseMirror p {
+  margin: 1rem 0;
+  padding: 0;
+}
 .ProseMirror h1,
 .ProseMirror h2,
 .ProseMirror h3,
@@ -35,8 +38,35 @@
 .ProseMirror h6 {
   margin: 0 0 1rem;
   padding: 0;
+
+  font-family: Verdana, Arial;
+  font-size: 32px;
+  font-weight: regular;
+  line-height: 48px;
+  letter-spacing: 0.32;
+  color: rgba(0, 0, 0 1);
 }
-.ProseMirror p {
-  margin: 1rem 0;
-  padding: 0;
+.ProseMirror h2 {
+  font-size: 28px;
+  line-height: 42px;
 }
+.ProseMirror h3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.16;
+}
+.ProseMirror h4 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.8;
+}
+/* .ProseMirror h5 {
+  font-size: 32px;
+  line-height: 48px;
+}
+.ProseMirror h6 {
+  font-size: 32px;
+  line-height: 48px;
+} */

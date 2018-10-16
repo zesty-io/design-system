@@ -16,7 +16,7 @@ export class EditorFieldType extends Component {
     super(props);
     this.state = {
       editor: this.props.type || "wysiwyg_basic",
-      value: this.props.value
+      value: this.props.value || ""
     };
 
     if (this.props.onChange) {
