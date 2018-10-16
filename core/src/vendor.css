@@ -12,9 +12,31 @@
 }
 
 .ProseMirror {
+  min-height: 500px;
   max-height: 800px;
   overflow-y: scroll;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+
+  padding: 8px 12px;
+  border: 4px solid #eaecf1;
+  flex: 1;
 }
 .ProseMirror img {
   max-width: 100%;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.ProseMirror p {
+  margin: 1rem 0;
+  padding: 0;
 }

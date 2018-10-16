@@ -1,15 +1,14 @@
 @import "../colors.less";
 
 .ImageFieldType {
-  background: #eaecf1;
-  border: 1px solid #eaecf1;
-  margin-top: 3px;
+  background-color: @white;
+  border: solid 1px rgba(26, 32, 44, 0.12);
+  margin: 0;
 
   &:active,
   &:focus,
   &:hover {
-    background-color: #fff;
-    border: 1px solid #9dabc5;
+    border: solid 1px #4f596d;
   }
 
   .ImageFieldTypeHeader {
@@ -30,27 +29,10 @@
   }
 }
 
-// .ImageItem {
-//   display: flex;
-//   flex-direction: column;
-//   background-color: @zesty-tab-blue;
-//   max-width: 300px;
-//   margin: 0.5rem;
-//   .ImageName {
-//     display: flex;
-//     padding-left: 0.2rem;
-//     background-color: @zesty-field-blue;
-//     align-items: center;
-//     justify-content: space-between;
-//   }
-// }
-
 .file {
   background: #252d38;
   border-radius: 3px 3px 3px 0;
-  // display: inline-block;
   height: 200px;
-  // margin: 6px;
   margin-right: 6px;
   margin-top: 6px;
   overflow: hidden;
