@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import debounce from "lodash.debounce";
 import { Textarea } from "../Textarea";
 import styles from "./TextareaFieldType.less";
 
@@ -16,10 +15,6 @@ export class TextareaFieldType extends Component {
       );
     }
 
-    if (this.props.onChange) {
-      this.notifyStore = debounce(this.props.onChange, 1000);
-    }
-
     this.state = {
       value: props.value || ""
     };
@@ -28,11 +23,11 @@ export class TextareaFieldType extends Component {
     const value = evt.target.value;
     const name = evt.target.name;
 
-    if (this.notifyStore) {
-      this.notifyStore(name, value, this.props.datatype);
-    }
-
-    this.setState({ value });
+    this.setState({ value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(name, value, this.props.datatype);
+      }
+    });
   };
   render() {
     return (
