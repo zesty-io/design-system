@@ -20,7 +20,7 @@ export class CollapsibleWrapper extends Component {
           }
           onClick={() => this.setState({ collapsed: !collapsed })}
         />
-        {children}
+        <div className={styles.Container}>{children}</div>
       </div>
     );
   }
