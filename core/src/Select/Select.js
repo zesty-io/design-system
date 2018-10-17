@@ -38,12 +38,12 @@ export class Select extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("click", this.onClose);
+    // document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.onClose);
+    // document.removeEventListener("click", this.onClose);
     document.removeEventListener("keyup", this.onEsc);
   }
 
