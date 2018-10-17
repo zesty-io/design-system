@@ -15,7 +15,8 @@
     "Url",
     "Tag",
     "SearchableList",
-    "WithLoader"
+    "WithLoader",
+    "CollapsibleWrapper"
   ],
   "molecules": [
     "CollapsibleCard",

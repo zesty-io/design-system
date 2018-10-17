@@ -39,7 +39,6 @@ export class Search extends Component {
           {...this.props}
           type="search"
           className={styles.Input}
-          value={this.state.term}
           onChange={this.handleSearch}
         />
         <InputIcon>

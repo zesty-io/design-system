@@ -36,3 +36,5 @@ export { ImageFieldType } from "./ImageFieldType";
 export { InternalLinkFieldType } from "./InternalLinkFieldType";
 
 export { ConfirmDialog } from "./ConfirmDialog";
+
+export { CollapsibleWrapper } from "./CollapsibleWrapper";
