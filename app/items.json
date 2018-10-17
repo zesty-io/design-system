@@ -15,8 +15,7 @@
     "Url",
     "Tag",
     "SearchableList",
-    "WithLoader",
-    "Drawer"
+    "WithLoader"
   ],
   "molecules": [
     "CollapsibleCard",
@@ -24,6 +23,7 @@
     "ColorFieldType",
     "CurrencyFieldType",
     "TextFieldType",
+    "Drawer",
     "TextAreaFieldType",
     "SortFieldType",
     "NumberFieldType",

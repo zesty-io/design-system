@@ -14,11 +14,11 @@ export class Drawer extends Component {
           collapsed ? styles.collapsed : ""
         }`}
       >
-        <i
-          className={
-            (collapsed ? "fa fa-bars " : "fa fa-times ") + styles.close
-          }
-          onClick={() => this.setState({ collapsed: !collapsed })}
+        <Handle
+          collapsed={collapsed}
+          faOpen={this.props.faOpen}
+          faClosed={this.props.faClosed}
+          callback={() => this.setState({ collapsed: !collapsed })}
         />
         <div className={styles.Container}>{children}</div>
       </div>
@@ -26,6 +26,20 @@ export class Drawer extends Component {
   }
 }
 
+export class Handle extends Component {
+  render() {
+    return (
+      <i
+        className={
+          (this.props.collapsed
+            ? this.props.faClosed || "fa fa-bars "
+            : this.props.faOpen || "fa fa-times ") + styles.close
+        }
+        onClick={this.props.callback}
+      />
+    );
+  }
+}
 // <Drawer> className={leftside}
 //   <Closer>
 //     <i />
