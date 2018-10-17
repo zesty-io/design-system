@@ -39,4 +39,4 @@ export { EditorFieldTypeGuide } from './EditorFieldTypeGuide'
 
 export { ConfirmDialogGuide } from './ConfirmDialogGuide'
 
-export { CollapsibleWrapperGuide } from './CollapsibleWrapperGuide'
+export { DrawerGuide } from './DrawerGuide'

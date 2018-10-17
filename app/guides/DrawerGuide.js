@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { CollapsibleWrapper } from '@zesty-io/core/dist/CollapsibleWrapper'
+import { Drawer } from '@zesty-io/core/dist/Drawer'
 import {
   Card,
   CardHeader,
@@ -9,12 +9,12 @@ import {
   CardFooter
 } from '@zesty-io/core/dist/Card'
 
-export class CollapsibleWrapperGuide extends Component {
+export class DrawerGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>description</p>
-        <CollapsibleWrapper>
+        <Drawer>
           <Card>
             <CardHeader>This is the card Header</CardHeader>
             <CardContent>this is the card content</CardContent>
@@ -25,7 +25,7 @@ export class CollapsibleWrapperGuide extends Component {
             <CardContent>this is the card content</CardContent>
             <CardFooter>this is the card footer</CardFooter>
           </Card>
-        </CollapsibleWrapper>
+        </Drawer>
         <CodeCard header="Usage" height={250} open>
           // usage guide here
         </CodeCard>

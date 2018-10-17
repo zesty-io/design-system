@@ -37,4 +37,4 @@ export { InternalLinkFieldType } from "./InternalLinkFieldType";
 
 export { ConfirmDialog } from "./ConfirmDialog";
 
-export { CollapsibleWrapper } from "./CollapsibleWrapper";
+export { Drawer } from "./Drawer";

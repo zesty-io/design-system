@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import styles from "./CollapsibleWrapper.less";
+import styles from "./Drawer.less";
 
-export class CollapsibleWrapper extends Component {
+export class Drawer extends Component {
   state = {
     collapsed: false
   };
