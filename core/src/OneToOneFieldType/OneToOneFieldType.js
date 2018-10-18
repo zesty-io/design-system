@@ -17,6 +17,7 @@ export class OneToOneFieldType extends Component {
           <label>{this.props.label}</label>
         </div>
         <Select
+          name={this.props.name}
           onClick={this.onClick}
           onSelect={this.onSelect}
           selection={this.props.selection}
@@ -46,13 +47,9 @@ export class OneToOneFieldType extends Component {
     }
   };
 
-  onSelect = evt => {
+  onSelect = (name, value) => {
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.currentTarget.dataset.value,
-        this.props.datatype
-      );
+      this.props.onChange(name, value, this.props.datatype);
     }
   };
 }

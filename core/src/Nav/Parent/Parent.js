@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { Node } from "../Node";
 
 import styles from "./Parent.less";
-
 export class Parent extends Component {
   state = {
     active: false
@@ -20,7 +19,6 @@ export class Parent extends Component {
           {...item}
           selected={item.selected}
           active={active}
-          closed={item.closed}
           collapsed={Array.isArray(context) && context.includes(item.path)}
           depth={recursionDepth}
           handleOpen={handleOpen}
@@ -47,7 +45,6 @@ export class Parent extends Component {
         selected={item.selected}
         depth={recursionDepth}
         active={active}
-        closed={item.closed}
         handleOpen={handleOpen}
         key={item.path}
       />
@@ -64,7 +61,9 @@ export class Parent extends Component {
         }}
         className={styles.Parent}
       >
-        <ul>{this.renderMenuItem(this.props)}</ul>
+        <ul className={this.props.closed ? styles.closed : ""}>
+          {this.renderMenuItem(this.props)}
+        </ul>
       </article>
     );
   }

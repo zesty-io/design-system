@@ -1,6 +1,6 @@
 import React, { Component, PureComponent } from "react";
 import cx from "classnames";
-import { Card, CardHeader, CardContent } from "../Card";
+import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 import { Button } from "../Button";
 import styles from "./ImageFieldType.less";
 
@@ -42,13 +42,6 @@ export class ImageFieldType extends Component {
       <React.Fragment>
         <label>{this.props.label}</label>
         <Card className={styles.ImageFieldType}>
-          <CardHeader className={styles.ImageFieldTypeHeader}>
-            <Actions
-              addImage={this.addImage}
-              imageCount={this.props.images.length}
-              limit={this.props.limit}
-            />
-          </CardHeader>
           <CardContent className={styles.ImageFieldTypeContent}>
             {/*
               <h3>Drop images here to upload them to your media</h3>
@@ -69,6 +62,13 @@ export class ImageFieldType extends Component {
               <h1 className={styles.NoImages}>No media has been selected</h1>
             )}
           </CardContent>
+          <CardFooter className={styles.ImageFieldTypeFooter}>
+            <Actions
+              addImage={this.addImage}
+              imageCount={this.props.images.length}
+              limit={this.props.limit}
+            />
+          </CardFooter>
         </Card>
       </React.Fragment>
     );

@@ -7,7 +7,7 @@ export class Node extends PureComponent {
     const {
       active,
       selected,
-      closed,
+      // closed,
       collapsed,
       depth,
       path,
@@ -21,12 +21,12 @@ export class Node extends PureComponent {
     // style is a node is selected
     const isSelected = (selected.includes(path) && styles.selected) || "";
     // check if a parent node is collapsed
-    const isClosed = closed && styles.closed;
+    // const isClosed = closed && styles.closed;
     return (
       <li
         className={`${styles.item} ${isActive} ${
           styles[`depth${depth}`]
-        } ${isSelected} ${isClosed}`}
+        } ${isSelected}`}
         key={path}
       >
         <a href={path}>

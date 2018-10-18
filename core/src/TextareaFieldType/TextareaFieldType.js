@@ -19,6 +19,16 @@ export class TextareaFieldType extends Component {
       value: props.value || ""
     };
   }
+  onChange = evt => {
+    const value = evt.target.value;
+    const name = evt.target.name;
+
+    this.setState({ value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(name, value, this.props.datatype);
+      }
+    });
+  };
   render() {
     return (
       <article
@@ -37,7 +47,6 @@ export class TextareaFieldType extends Component {
           )}
         </div>
         <Textarea
-          // {...this.props}
           name={this.props.name}
           value={this.state.value}
           onChange={this.onChange}
@@ -45,14 +54,4 @@ export class TextareaFieldType extends Component {
       </article>
     );
   }
-  onChange = evt => {
-    console.log("TextareaFieldType:onChange", evt.target);
-    const value = evt.target.value;
-    const name = evt.target.name;
-    this.setState({ value }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-    });
-  };
 }
