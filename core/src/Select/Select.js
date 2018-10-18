@@ -21,6 +21,11 @@ export class Select extends Component {
 
   constructor(props) {
     super(props);
+
+    if (!this.props.name) {
+      throw new Error("Select components require a `name` property");
+    }
+
     this.state = {
       dropdownOpen: false,
       selection: props.selection ? props.selection : props.default,
@@ -93,14 +98,14 @@ export class Select extends Component {
         </span>
         <ul className={cx("selections", styles.selections)}>
           {this.props.children &&
-          React.Children.toArray(this.props.children).length >
-            this.props.searchLength ? (
-            <Search
-              className="filter"
-              placeholder="Enter a term to filter this list"
-              onKeyUp={this.handleFilterKeyUp}
-            />
-          ) : null}
+            React.Children.toArray(this.props.children).length >
+              this.props.searchLength && (
+              <Search
+                className="filter"
+                placeholder="Enter a term to filter this list"
+                onKeyUp={this.handleFilterKeyUp}
+              />
+            )}
           <div className={cx("options", styles.options)}>
             {/* Default Option*/}
             <Option
@@ -192,17 +197,22 @@ export class Select extends Component {
   };
 
   setSelection = evt => {
+    const value = evt.currentTarget.dataset.value;
     const child = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == evt.currentTarget.dataset.value;
+      return child.props.value == value;
     });
-    const selection = child ? child.props : this.props.default;
 
-    this.setState({ selection });
-
-    // Top level Select event listener
-    if (this.props.onSelect) {
-      this.props.onSelect(evt);
-    }
+    this.setState(
+      {
+        selection: child ? child.props : this.props.default
+      },
+      () => {
+        // Top level Select event listener
+        if (this.props.onSelect) {
+          this.props.onSelect(this.props.name, value);
+        }
+      }
+    );
   };
 
   handleFilterKeyUp = evt => {

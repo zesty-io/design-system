@@ -60,26 +60,22 @@ export class OneToManyFieldType extends Component {
   onRemove = tagZUID => {
     // remove the tag ZUID from teh tags array
     // add it back into the options array
-    const tags = this.state.tags.filter(tag => tag.value !== tagZUID);
-    this.setState({ tags });
+    this.setState({
+      tags: this.state.tags.filter(tag => tag.value !== tagZUID)
+    });
   };
 
-  onSelect = evt => {
+  onSelect = (name, value) => {
     // we need to alter the options array
     // and then add the tag in the state
     // how will this behave with loading?
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.currentTarget.dataset.value,
-        this.props.datatype
-      );
+      this.props.onChange(name, value, this.props.datatype);
     }
-    const tags = [
-      ...this.state.tags,
-      JSON.parse(evt.currentTarget.dataset.value)
-    ];
-    this.setState({ tags });
+
+    this.setState({
+      tags: [...this.state.tags, JSON.parse(value)]
+    });
   };
 
   render() {
