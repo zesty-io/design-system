@@ -17,6 +17,7 @@ export class OneToOneFieldType extends Component {
           <label>{this.props.label}</label>
         </div>
         <Select
+          name={this.props.name}
           onClick={this.onClick}
           onSelect={this.onSelect}
           selection={this.props.selection}
