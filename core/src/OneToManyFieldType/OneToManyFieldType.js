@@ -89,6 +89,7 @@ export class OneToManyFieldType extends Component {
         <section className={styles.OneToMany}>
           <Select
             className={styles.Select}
+            name={this.props.name}
             onClick={this.onClick}
             onSelect={this.onSelect}
             selection={selection}
