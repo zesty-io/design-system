@@ -27,9 +27,9 @@ export class EditorFieldType extends Component {
     });
   };
 
-  selectEditor = evt => {
+  selectEditor = (name, value) => {
     this.setState({
-      editor: evt.currentTarget.dataset.value
+      editor: value
     });
   };
 
