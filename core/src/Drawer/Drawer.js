@@ -16,7 +16,7 @@ export class Drawer extends Component {
       >
         {Children.map(children, child =>
           cloneElement(child, {
-            ...collapsed,
+            collapsed,
             callback: () => this.setState({ collapsed: !collapsed })
           })
         )}

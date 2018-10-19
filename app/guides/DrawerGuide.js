@@ -29,9 +29,27 @@ export class DrawerGuide extends Component {
             </Card>
           </DrawerContent>
         </Drawer>
-        <CodeCard header="Usage" height={250} open>
-          // usage guide here
-        </CodeCard>
+
+        <CodeCard
+          header="Usage"
+          height={250}
+          open
+          children={`<Drawer>
+  <DrawerHandle />
+  <DrawerContent>
+    <Card>
+      <CardHeader>This is the card Header</CardHeader>
+      <CardContent>this is the card content</CardContent>
+      <CardFooter>this is the card footer</CardFooter>
+    </Card>
+    <Card>
+      <CardHeader>This is the card Header</CardHeader>
+      <CardContent>this is the card content</CardContent>
+      <CardFooter>this is the card footer</CardFooter>
+    </Card>
+  </DrawerContent>
+</Drawer>`}
+        />
 
         <CodeCard header="Code" height={250}>
           // component code here
