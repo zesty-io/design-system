@@ -21,6 +21,7 @@ export class OneToOneFieldType extends Component {
           onSelect={this.onSelect}
           selection={this.props.selection}
           default={this.props.default}
+          name={this.props.name}
         >
           {this.state.loading && <Loader />}
           {this.props.options.map((opt, i) => {

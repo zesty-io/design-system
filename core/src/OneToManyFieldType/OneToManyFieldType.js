@@ -93,6 +93,7 @@ export class OneToManyFieldType extends Component {
             onSelect={this.onSelect}
             selection={selection}
             default={this.props.default}
+            name={this.props.name}
           >
             {loading && <Loader />}
             {options

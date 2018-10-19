@@ -23,6 +23,7 @@ export class DropDownFieldType extends Component {
           onSelect={this.selectOption}
           selection={this.props.selection}
           default={this.props.default}
+          name={this.props.name}
         >
           {this.props.options.map((opt, i) => {
             return <Option key={i} {...opt} />;

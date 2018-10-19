@@ -23,6 +23,7 @@ export class DropDownFieldTypeGuide extends Component {
             },
             { value: 'a value that can be used in some way', text: 'good day' }
           ]}
+          name="required"
         />
         <br />
         <CollapsibleCard header="Usage" open>
