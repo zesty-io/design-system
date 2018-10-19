@@ -45,6 +45,7 @@ export class CurrencyFieldType extends Component {
               value: this.state.currency.code,
               text: this.state.currency.symbol
             }}
+            name={this.props.name}
           >
             {Object.keys(currencies).map((code, i) => {
               const currency = currencies[code];
