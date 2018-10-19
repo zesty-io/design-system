@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, cloneElement, Children } from "react";
 import styles from "./Drawer.less";
 
 export class Drawer extends Component {
@@ -14,35 +14,31 @@ export class Drawer extends Component {
           collapsed ? styles.collapsed : ""
         }`}
       >
-        <Handle
-          collapsed={collapsed}
-          faOpen={this.props.faOpen}
-          faClosed={this.props.faClosed}
-          callback={() => this.setState({ collapsed: !collapsed })}
-        />
-        <div className={styles.Container}>{children}</div>
+        {Children.map(children, child =>
+          cloneElement(child, {
+            ...collapsed,
+            callback: () => this.setState({ collapsed: !collapsed })
+          })
+        )}
       </div>
     );
   }
 }
 
-export class Handle extends Component {
-  render() {
-    return (
-      <i
-        className={
-          (this.props.collapsed
-            ? this.props.faClosed || "fa fa-bars "
-            : this.props.faOpen || "fa fa-times ") + styles.close
-        }
-        onClick={this.props.callback}
-      />
-    );
-  }
+export function DrawerHandle(props) {
+  return (
+    <i
+      className={
+        (props.collapsed
+          ? props.faClosed || "fa fa-bars "
+          : props.faOpen || "fa fa-times ") + styles.close
+      }
+      onClick={props.callback}
+    />
+  );
 }
-// <Drawer> className={leftside}
-//   <Closer>
-//     <i />
-//   </Closer>
-//   Now mu ``y custom buz
-// </Drawer>
+
+export function DrawerContent(props) {
+  const { children } = props;
+  return <div className={styles.Container}>{children}</div>;
+}

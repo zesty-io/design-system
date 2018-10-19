@@ -1,1 +1,1 @@
-export { Drawer } from "./Drawer";
+export { Drawer, DrawerContent, DrawerHandle } from "./Drawer";
