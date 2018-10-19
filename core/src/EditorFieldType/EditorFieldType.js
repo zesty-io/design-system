@@ -70,6 +70,7 @@ export class EditorFieldType extends Component {
           <span>{this.props.label}</span>
           <span>0/65,000</span>
           <Select
+            name="editorType"
             className={styles.EditorSelection}
             onSelect={this.selectEditor}
             default={{
