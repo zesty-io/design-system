@@ -40,3 +40,5 @@ export { EditorFieldTypeGuide } from './EditorFieldTypeGuide'
 export { ConfirmDialogGuide } from './ConfirmDialogGuide'
 
 export { DrawerGuide } from './DrawerGuide'
+
+export { ToggleButtonGuide } from './ToggleButtonGuide'

@@ -38,3 +38,5 @@ export { InternalLinkFieldType } from "./InternalLinkFieldType";
 export { ConfirmDialog } from "./ConfirmDialog";
 
 export { Drawer } from "./Drawer";
+
+export { ToggleButton } from "./ToggleButton";

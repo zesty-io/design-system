@@ -15,7 +15,8 @@
     "Url",
     "Tag",
     "SearchableList",
-    "WithLoader"
+    "WithLoader",
+    "ToggleButton"
   ],
   "molecules": [
     "CollapsibleCard",
