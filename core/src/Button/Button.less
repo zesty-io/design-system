@@ -1,10 +1,10 @@
-@btnDefault: #5b667d;
-@btnDefaultText: #efefef;
-@btnSave: #75bf25;
+@btnDefault: #404759;
+@btnDefaultText: #ffffff;
+@btnSave: #63a41e;
 @btnCancel: #a7afbf;
-@btnWarn: #e53c05;
-@btnAlt: #f17829;
-@btnDisabled: #5b667d;
+@btnWarn: #9a2803;
+@btnAlt: #d26a25;
+@btnDisabled: rgba(26, 32, 44, 0.12);
 
 .Button {
   align-items: center;
@@ -35,15 +35,14 @@
   flex-direction: row;
   justify-content: flex-start;
 
-  transition: all 0.4s;
+  transition: all 0.2s;
 
   border: 0;
   text-transform: uppercase;
 
-  &:active,
   &:hover,
   &:focus {
-    box-shadow: 0 2px 2px 0 rgba(26, 32, 44, 0.24),
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
       0 0 2px 0 rgba(26, 32, 44, 0.12);
     outline: none;
   }
@@ -72,12 +71,14 @@
   }
 
   &:disabled {
-    background: lighten(@btnDisabled, 40%);
-    color: @btnDisabled;
-    text-shadow: 1px 1px 1px #fff;
+    background: rgba(26, 32, 44, 0.12);
+    color: #1a202c;
     cursor: not-allowed;
+    opacity: 0.4;
   }
-
+  &:active {
+    box-shadow: none;
+  }
   .icon {
     margin-right: 12px;
     color: @btnDefaultText;

@@ -32,11 +32,15 @@ export class ButtonGuide extends Component {
               <br />
               <Button kind="save">Save Button</Button>
               <br />
+              <Button kind="secondary">Secondary Button</Button>
+              <br />
               <Button kind="cancel">Cancel Button</Button>
               <br />
               <Button kind="warn">Warn Button</Button>
               <br />
               <Button kind="alt">Alt Button</Button>
+              <br />
+              <Button disabled={true}>Disabled Button</Button>
               <br />
             </CardContent>
           </Card>
