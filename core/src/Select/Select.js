@@ -81,20 +81,7 @@ export class Select extends Component {
             <span className={styles.content}>{this.state.selection.text}</span>
           )}
 
-          <i
-            className={cx(
-              "fa fa-chevron-left",
-              styles.chevron,
-              styles["icon-chevron-left"]
-            )}
-          />
-          <i
-            className={cx(
-              "fa fa-chevron-down",
-              styles.chevron,
-              styles["icon-chevron-down"]
-            )}
-          />
+          <i className={cx("fa fa-caret-down", styles.chevron)} />
         </span>
         <ul className={cx("selections", styles.selections)}>
           {this.props.children &&

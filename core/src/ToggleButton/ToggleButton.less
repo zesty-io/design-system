@@ -1,5 +1,6 @@
 .ToggleButton {
   display: flex;
+  padding: 8px;
   cursor: pointer;
   .on {
     padding: 8px 16px;
@@ -15,6 +16,9 @@
     background-color: #f2f7fc;
     box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
       inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
+    p {
+      opacity: 0.6;
+    }
   }
   .off {
     padding: 8px 16px;
@@ -30,10 +34,24 @@
     background-color: #f2f7fc;
     box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
       inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
+    p {
+      opacity: 0.6;
+    }
   }
   .Selected {
     background-color: #336edb;
     color: #fff;
     border-radius: 4px;
+    box-shadow: none;
+    p {
+      opacity: 1;
+    }
+    &.on {
+      margin-left: -3px;
+    }
+    &.off {
+      margin-right: -3px;
+      z-index: 1;
+    }
   }
 }

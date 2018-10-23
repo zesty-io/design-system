@@ -14,7 +14,7 @@ export class ToggleButton extends Component {
           }`}
           onClick={() => this.setState({ selected: false })}
         >
-          {this.props.offValue || "Off"}
+          <p>{this.props.offValue || "Off"}</p>
         </section>
         <section
           className={`${styles.on} ${
@@ -22,7 +22,7 @@ export class ToggleButton extends Component {
           }`}
           onClick={() => this.setState({ selected: true })}
         >
-          {this.props.onValue || "On"}
+          <p>{this.props.onValue || "On"}</p>
         </section>
       </article>
     );
