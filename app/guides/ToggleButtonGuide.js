@@ -9,7 +9,8 @@ export class ToggleButtonGuide extends Component {
       <React.Fragment>
         <p>description</p>
         <ToggleButton />
-
+        <ToggleButton onValue="TESTING" offValue="213512346" />
+        <ToggleButton default={true} />
         <CodeCard header="Usage" height={250} open>
           // usage guide here
         </CodeCard>
