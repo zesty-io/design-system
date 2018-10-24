@@ -6,23 +6,24 @@ export class ToggleButton extends Component {
     selected: this.props.default || false
   };
   render() {
+    const { disabled, offValue, onValue } = this.props;
     return (
       <article className={styles.ToggleButton}>
         <section
           className={`${styles.off} ${
             this.state.selected === false ? styles.Selected : null
-          }`}
-          onClick={() => this.setState({ selected: false })}
+          } ${disabled ? styles.disabled : null}`}
+          onClick={() => !disabled && this.setState({ selected: false })}
         >
-          <p>{this.props.offValue || "Off"}</p>
+          <p>{offValue || "Off"}</p>
         </section>
         <section
           className={`${styles.on} ${
             this.state.selected === true ? styles.Selected : null
-          }`}
-          onClick={() => this.setState({ selected: true })}
+          } ${disabled ? styles.disabled : null}`}
+          onClick={() => !disabled && this.setState({ selected: true })}
         >
-          <p>{this.props.onValue || "On"}</p>
+          <p>{onValue || "On"}</p>
         </section>
       </article>
     );

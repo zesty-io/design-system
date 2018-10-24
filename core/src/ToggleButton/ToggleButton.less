@@ -19,6 +19,12 @@
     p {
       opacity: 0.6;
     }
+    &.disabled {
+      cursor: not-allowed;
+      p {
+        opacity: 0.4;
+      }
+    }
   }
   .off {
     padding: 8px 16px;
@@ -37,6 +43,12 @@
     p {
       opacity: 0.6;
     }
+    &.disabled {
+      cursor: not-allowed;
+      p {
+        opacity: 0.4;
+      }
+    }
   }
   .Selected {
     background-color: #336edb;
@@ -52,6 +64,12 @@
     &.off {
       margin-right: -3px;
       z-index: 1;
+    }
+    &.disabled {
+      background-color: #9ba1a9;
+      p {
+        opacity: 0.6;
+      }
     }
   }
 }
