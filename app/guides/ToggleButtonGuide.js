@@ -9,15 +9,58 @@ export class ToggleButtonGuide extends Component {
       <React.Fragment>
         <p>description</p>
         <ToggleButton />
-        <ToggleButton onValue="TESTING" offValue="213512346" />
-        <ToggleButton default={true} />
+        <ToggleButton onValue="on Value" offValue="off Value" />
+        <ToggleButton default={true} onChange={console.log} />
         <ToggleButton disabled={true} />
         <CodeCard header="Usage" height={250} open>
-          // usage guide here
+          {`<ToggleButton />
+<ToggleButton onValue="on Value" offValue="off Value" />
+<ToggleButton default={true} onChange={console.log} />
+<ToggleButton disabled={true} />
+<CodeCard header="Usage" height={250} open>`}
         </CodeCard>
 
         <CodeCard header="Code" height={250}>
-          // component code here
+          {`export class ToggleButton extends Component {
+  state = {
+    selected: this.props.default || false
+  }
+  render() {
+    const { disabled, offValue, onValue } = this.props
+    return (
+      <article className={styles.ToggleButton}>
+        <section
+          className={'{styles.off} {
+            this.state.selected === false ? styles.Selected : null
+          } {disabled ? styles.disabled : null}'}
+          onClick={() =>
+            !disabled &&
+            this.setState({ selected: false }, () => {
+              if (this.props.onChange) {
+                this.props.onChange(this.state.selected)
+              }
+            })
+          }>
+          <p>{offValue || 'Off'}</p>
+        </section>
+        <section
+          className={'{styles.on} {
+            this.state.selected === true ? styles.Selected : null
+          } {disabled ? styles.disabled : null}'}
+          onClick={() =>
+            !disabled &&
+            this.setState({ selected: true }, () => {
+              if (this.props.onChange) {
+                this.props.onChange(this.state.selected)
+              }
+            })
+          }>
+          <p>{onValue || 'On'}</p>
+        </section>
+      </article>
+    )
+  }
+}`}
         </CodeCard>
       </React.Fragment>
     )
