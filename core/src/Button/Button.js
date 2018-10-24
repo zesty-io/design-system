@@ -16,7 +16,10 @@ export function Button(props) {
           // assume it's an icon
           if (child.props && i === 0) {
             return React.cloneElement(child, {
-              className: cx(styles.icon, child.props.className)
+              className:
+                React.Children.toArray(props.children).length > 1
+                  ? cx(styles.icon, child.props.className)
+                  : child.props.className
             });
           } else {
             // probably just a text node
