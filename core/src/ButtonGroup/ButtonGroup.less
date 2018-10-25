@@ -1,12 +1,15 @@
 @import "../colors.less";
 
 .ButtonGroup {
-  display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
+  // this keeps the margins as internal gutters only
+  margin: -8px -8px;
   .child {
     // border-radius: 0;
     // border-right-width: 1px;
     flex: 1;
-    margin: 0 8px;
+    margin: 8px 8px;
 
     &:first-child {
       margin-left: 0;
