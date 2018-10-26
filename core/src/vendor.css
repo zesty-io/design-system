@@ -16,7 +16,7 @@
   max-height: 800px;
   overflow-y: scroll;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 20px;
 
   padding: 8px 12px !important;
@@ -62,6 +62,13 @@
   line-height: 28px;
   letter-spacing: 0.8;
 }
+.ProseMirror strong {
+  font-weight: bold;
+}
+.ProseMirror em {
+  font-style: italic;
+}
+
 /* .ProseMirror h5 {
   font-size: 32px;
   line-height: 48px;
