@@ -11,7 +11,7 @@ export function WithLoader(props) {
       className={styles.Loading}
       style={{ height: props.height, width: props.width }}
     >
-      <h3>{props.message}</h3>
+      <h3 className={styles.Display}>{props.message}</h3>
       <Loader />
     </section>
   );
