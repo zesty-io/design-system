@@ -68,6 +68,14 @@
 .ProseMirror em {
   font-style: italic;
 }
+.ProseMirror ul {
+  list-style-position: outside;
+  list-style-type: disc;
+}
+.ProseMirror ol {
+  list-style-position: outside;
+  list-style-type: decimal;
+}
 
 /* .ProseMirror h5 {
   font-size: 32px;
