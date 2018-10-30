@@ -45,6 +45,9 @@ export class Select extends Component {
   componentDidMount() {
     // document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
+    if (this.props.searchLength) {
+      this.setState({ searchLength: this.props.searchLength });
+    }
   }
 
   componentWillUnmount() {
@@ -90,7 +93,7 @@ export class Select extends Component {
               <Search
                 className="filter"
                 placeholder="Enter a term to filter this list"
-                onKeyUp={this.handleFilterKeyUp}
+                onChange={this.handleFilterKeyUp}
               />
             )}
           <div className={cx("options", styles.options)}>
@@ -202,9 +205,9 @@ export class Select extends Component {
     );
   };
 
-  handleFilterKeyUp = evt => {
+  handleFilterKeyUp = (name, term, datatype) => {
     this.setState({
-      filter: evt.trim().toLowerCase()
+      filter: term.trim().toLowerCase()
     });
   };
 
