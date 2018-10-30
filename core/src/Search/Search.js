@@ -15,7 +15,7 @@ export class Search extends Component {
     });
   }
 
-  handleSearch = evt => {
+  onChange = evt => {
     this.setState(
       {
         term: evt.target.value
@@ -31,6 +31,15 @@ export class Search extends Component {
       }
     );
   };
+  onSubmit = () => {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(
+        this.props.name,
+        this.state.term,
+        this.props.datatype
+      );
+    }
+  };
 
   render() {
     return (
@@ -39,9 +48,9 @@ export class Search extends Component {
           {...this.props}
           type="search"
           className={styles.Input}
-          onChange={this.handleSearch}
+          onChange={this.onChange}
         />
-        <InputIcon>
+        <InputIcon onClick={this.onSubmit}>
           <i className="fa fa-search" />
         </InputIcon>
       </div>
