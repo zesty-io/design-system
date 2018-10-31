@@ -21,8 +21,12 @@ export class EditorFieldType extends Component {
 
   onChange = value => {
     this.setState({ value }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(this.props.name, value, this.props.datatype);
+      // Prosemirror triggers on change events when focusing in and out of the editor
+      // so check whether the initial value has changed.
+      if (this.props.value !== this.state.value) {
+        if (this.props.onChange) {
+          this.props.onChange(this.props.name, value, this.props.datatype);
+        }
       }
     });
   };
