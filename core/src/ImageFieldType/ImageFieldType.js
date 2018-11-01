@@ -65,6 +65,7 @@ export class ImageFieldType extends Component {
           </CardContent>
           <CardFooter className={styles.ImageFieldTypeFooter}>
             <Actions
+              {...this.props}
               field={field}
               addImage={this.addImage}
               imageCount={images.length}
@@ -79,19 +80,27 @@ export class ImageFieldType extends Component {
 
 class Actions extends PureComponent {
   render() {
-    const { value, addImage, limit, imageCount, field } = this.props;
+    const { value, addImage, limit, imageCount, label } = this.props;
+    const { datatypeOptions, name } = this.props.field;
     return (
       <Button
         kind={imageCount > limit ? "warn" : ""}
         onClick={() => {
-          riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
+          const optsObject = {
             callback: addImage,
             ids: value,
-            limit: limit,
-            group_id: field.datatypeOptions && field.datatypeOptions.group_id,
-            name: field.name,
-            displayName: field.label
-          });
+            limit,
+            name,
+            displayName: label
+          };
+          if (datatypeOptions && datatypeOptions.group_id) {
+            optsObject.lock = datatypeOptions.group_id;
+          }
+          riot.mount(
+            document.querySelector("#modalMount"),
+            "media-app-modal",
+            optsObject
+          );
         }}
         text={`Select Media (${imageCount}/${limit})`}
       />
