@@ -91,7 +91,7 @@ export class Select extends Component {
             React.Children.toArray(this.props.children).length >
               this.props.searchLength && (
               <Search
-                className="filter"
+                className={styles.Filter}
                 placeholder="Enter a term to filter this list"
                 onChange={this.handleFilterKeyUp}
               />
