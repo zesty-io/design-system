@@ -4,22 +4,23 @@ import PropTypes from "prop-types";
 // import moment from "moment";
 import cx from "classnames";
 
+import Flatpickr from "react-flatpickr";
+
+require("flatpickr/dist/themes/light.css");
 import styles from "./DateFieldType.less";
-// import "react-datepicker/dist/react-datepicker-cssmodules.css";
-// import "react-datepicker/dist/react-datepicker.css";
 
 export class DateFieldType extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      date: props.default || new Date()
+    };
   }
-  onChange = evt => {
+  onChange = date => {
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.target.value,
-        this.props.datatype
-      );
+      this.props.onChange(this.props.name, date, this.props.datatype);
     }
+    this.setState({ date });
 
     /*
     Outside of this component we don't know how this timestamp will be dealt
@@ -33,50 +34,37 @@ export class DateFieldType extends Component {
     //   }
     // });
   };
-  // componentDidMount() {
-  //   document.addEventListener("click", this.handleOpen);
-  // }
-  // componentWillUnmount() {
-  //   document.removeEventListener("click", this.handleOpen);
-  // }
-  // handleOpen = evt => {
-  //   if (evt.target.name === this.props.name) {
-  //     const cal = document.querySelector(`#${this.props.name}`);
-  //     cal.focus();
-  //     this.openPicker(cal);
-  //   }
-  // };
-  // openPicker(inputDateElem) {
-  //   console.log(inputDateElem);
-  //   const ev = document.createEvent("KeyboardEvent");
-  //   ev.initKeyboardEvent("keydown", true, true, document.defaultView, "F4", 0);
-  //   inputDateElem.dispatchEvent(ev);
-  // }
   render() {
+    const { date } = this.state;
     return (
       <label className={styles.DateFieldType}>
         <span className={styles.DateFieldTypeLabel}>{this.props.label}</span>
         <span className={styles.DateFieldTypeInput}>
           <i className={cx(styles.Icon, "fa fa-calendar")} />
-          <input
+          {this.props.datatype === "datetime" ? (
+            <Flatpickr
+              data-enable-time
+              className={cx(styles.DatePicker, this.props.className)}
+              name={this.props.name}
+              value={date}
+              onChange={this.onChange}
+            />
+          ) : (
+            <Flatpickr
+              className={cx(styles.DatePicker, this.props.className)}
+              name={this.props.name}
+              value={date}
+              onChange={this.onChange}
+            />
+          )}
+
+          {/* <input
             className={cx(styles.DatePicker, this.props.className)}
             type={this.props.type || "date"}
             name={this.props.name}
             onChange={this.onChange}
             value={this.props.default || ""}
-          />
-          {/*<DatePicker
-            {...this.props}
-            className={cx(styles.DatePicker, this.props.className)}
-            onChange={this.onChange}
-            selected={this.state.date ? moment(this.state.date) : null}
-            yearDropdownItemNumber={15}
-            dateFormat="LLL"
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-          />*/}
+          /> */}
         </span>
       </label>
     );
