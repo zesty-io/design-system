@@ -15,9 +15,11 @@ export class DateFieldTypeGuide extends Component {
         </a>
         <br />
         <br />
-        <DateFieldType label="Format Date" dateFormat="YYYY/MM/DD" />
-        <DateFieldType label="Format to LL" dateFormat="LL" />
-        <DateFieldType label="Title Field" />
+        <DateFieldType
+          label="Format Date"
+          name="thisdatepicker"
+          dateFormat="YYYY/MM/DD"
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed

@@ -41,10 +41,11 @@ export class SelectGuide extends Component {
       </React.Fragment>
     )
   }
-  handleSelect = evt => {
+  handleSelect = (name, value, dataType) => {
+    console.log(name, value)
     this.setState({
-      value: evt.target.dataset.value,
-      text: evt.target.dataset.text
+      value: value,
+      text: value
     })
   }
 }

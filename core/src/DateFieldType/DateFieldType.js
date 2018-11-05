@@ -11,13 +11,8 @@ import styles from "./DateFieldType.less";
 export class DateFieldType extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   date: props.value
-    // };
   }
   onChange = evt => {
-    console.log("DateFieldType", evt.target.value);
-
     if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
@@ -38,6 +33,25 @@ export class DateFieldType extends Component {
     //   }
     // });
   };
+  // componentDidMount() {
+  //   document.addEventListener("click", this.handleOpen);
+  // }
+  // componentWillUnmount() {
+  //   document.removeEventListener("click", this.handleOpen);
+  // }
+  // handleOpen = evt => {
+  //   if (evt.target.name === this.props.name) {
+  //     const cal = document.querySelector(`#${this.props.name}`);
+  //     cal.focus();
+  //     this.openPicker(cal);
+  //   }
+  // };
+  // openPicker(inputDateElem) {
+  //   console.log(inputDateElem);
+  //   const ev = document.createEvent("KeyboardEvent");
+  //   ev.initKeyboardEvent("keydown", true, true, document.defaultView, "F4", 0);
+  //   inputDateElem.dispatchEvent(ev);
+  // }
   render() {
     return (
       <label className={styles.DateFieldType}>
@@ -47,8 +61,9 @@ export class DateFieldType extends Component {
           <input
             className={cx(styles.DatePicker, this.props.className)}
             type={this.props.type || "date"}
+            name={this.props.name}
             onChange={this.onChange}
-            value={this.props.value || ""}
+            value={this.props.default || ""}
           />
           {/*<DatePicker
             {...this.props}
