@@ -55,6 +55,97 @@ export class Select extends Component {
     document.removeEventListener("keyup", this.onEsc);
   }
 
+  handleFilterKeyUp = (name, term, datatype) => {
+    this.setState({
+      filter: term.trim().toLowerCase()
+    });
+  };
+
+  onEsc = evt => {
+    if (evt.which == 27) {
+      this.setState({
+        dropdownOpen: false
+      });
+    }
+  };
+
+  onClose = evt => {
+    const parent = evt.target.closest(".Select");
+
+    // Close this select if the click occured
+    // outside a ZestySelect or this instance
+    if (!parent || parent !== this.selector) {
+      this.setState({
+        dropdownOpen: false
+      });
+    }
+  };
+
+  toggleDropdown = evt => {
+    if (evt.target.type === "search") {
+      return false;
+    }
+
+    if (this.props.onClick) {
+      this.props.onClick(evt);
+    }
+
+    const body = document.querySelector("body");
+    const content = document.querySelector("body");
+
+    if (body && content) {
+      const contentHeight = content.scrollHeight;
+      const selectorPosition = this.selector.getBoundingClientRect();
+      const filter = this.selector.querySelector(".Filter");
+      const selections = this.selector.querySelector(".selections");
+      const initialSelectionsHeight = selections.offsetHeight;
+      const scrollOffset = body.scrollTop;
+
+      if (initialSelectionsHeight < contentHeight) {
+        if (initialSelectionsHeight + selectorPosition.y > contentHeight) {
+          // If we can adjust the dropdown height to fit in the
+          // available content space, subtracting the footer 50px height
+          let newHeight = Math.floor(contentHeight - selectorPosition.y) - 50;
+          if (newHeight > 200 && newHeight < 600) {
+            // The options list controls the overflow scrolling
+            // so we have to adjust it's height
+            selections.querySelector(".options").style.height =
+              newHeight + "px";
+          } else {
+            selections.style.top = "-" + initialSelectionsHeight + "px";
+          }
+        }
+      }
+
+      if (filter) {
+        filter.querySelector("input").focus();
+      }
+    }
+
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  };
+
+  setSelection = evt => {
+    const value = evt.currentTarget.dataset.value;
+    const child = React.Children.toArray(this.props.children).find(child => {
+      return child.props.value == value;
+    });
+
+    this.setState(
+      {
+        selection: child ? child.props : this.props.default
+      },
+      () => {
+        // Top level Select event listener
+        if (this.props.onSelect) {
+          this.props.onSelect(this.props.name, value);
+        }
+      }
+    );
+  };
+
   render() {
     return (
       <div
@@ -139,97 +230,6 @@ export class Select extends Component {
       </div>
     );
   }
-
-  toggleDropdown = evt => {
-    if (evt.target.closest(".filter")) {
-      return false;
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick(evt);
-    }
-
-    const body = document.querySelector("body");
-    const content = document.querySelector("body");
-
-    if (body && content) {
-      const contentHeight = content.scrollHeight;
-      const selectorPosition = this.selector.getBoundingClientRect();
-      const filter = this.selector.querySelector(".filter");
-      const selections = this.selector.querySelector(".selections");
-      const initialSelectionsHeight = selections.offsetHeight;
-      const scrollOffset = body.scrollTop;
-
-      if (initialSelectionsHeight < contentHeight) {
-        if (initialSelectionsHeight + selectorPosition.y > contentHeight) {
-          // If we can adjust the dropdown height to fit in the
-          // available content space, subtracting the footer 50px height
-          let newHeight = Math.floor(contentHeight - selectorPosition.y) - 50;
-          if (newHeight > 200 && newHeight < 600) {
-            // The options list controls the overflow scrolling
-            // so we have to adjust it's height
-            selections.querySelector(".options").style.height =
-              newHeight + "px";
-          } else {
-            selections.style.top = "-" + initialSelectionsHeight + "px";
-          }
-        }
-      }
-
-      if (filter) {
-        filter.querySelector("input").focus();
-      }
-    }
-
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  };
-
-  setSelection = evt => {
-    const value = evt.currentTarget.dataset.value;
-    const child = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == value;
-    });
-
-    this.setState(
-      {
-        selection: child ? child.props : this.props.default
-      },
-      () => {
-        // Top level Select event listener
-        if (this.props.onSelect) {
-          this.props.onSelect(this.props.name, value);
-        }
-      }
-    );
-  };
-
-  handleFilterKeyUp = (name, term, datatype) => {
-    this.setState({
-      filter: term.trim().toLowerCase()
-    });
-  };
-
-  onEsc = evt => {
-    if (evt.which == 27) {
-      this.setState({
-        dropdownOpen: false
-      });
-    }
-  };
-
-  onClose = evt => {
-    const parent = evt.target.closest(".Select");
-
-    // Close this select if the click occured
-    // outside a ZestySelect or this instance
-    if (!parent || parent !== this.selector) {
-      this.setState({
-        dropdownOpen: false
-      });
-    }
-  };
 }
 
 export function Option({ value, html, text, onClick, className }) {
