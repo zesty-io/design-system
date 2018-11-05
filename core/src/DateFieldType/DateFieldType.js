@@ -17,8 +17,13 @@ export class DateFieldType extends Component {
     };
   }
   onChange = date => {
+    const dateISO = new Date(date);
     if (this.props.onChange) {
-      this.props.onChange(this.props.name, date, this.props.datatype);
+      this.props.onChange(
+        this.props.name,
+        dateISO.toISOString(),
+        this.props.datatype
+      );
     }
     this.setState({ date });
 
