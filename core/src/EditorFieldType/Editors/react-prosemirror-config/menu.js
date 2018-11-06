@@ -146,6 +146,34 @@ export default {
       enable: setBlockType(schema.nodes.heading, { level: 2 }),
       run: setBlockType(schema.nodes.heading, { level: 2 })
     },
+    h3: {
+      title: "Change to heading level 3",
+      content: "H3",
+      active: blockActive(schema.nodes.heading, { level: 3 }),
+      enable: setBlockType(schema.nodes.heading, { level: 3 }),
+      run: setBlockType(schema.nodes.heading, { level: 3 })
+    },
+    h4: {
+      title: "Change to heading level 4",
+      content: "H4",
+      active: blockActive(schema.nodes.heading, { level: 4 }),
+      enable: setBlockType(schema.nodes.heading, { level: 4 }),
+      run: setBlockType(schema.nodes.heading, { level: 4 })
+    },
+    h5: {
+      title: "Change to heading level 5",
+      content: "H5",
+      active: blockActive(schema.nodes.heading, { level: 5 }),
+      enable: setBlockType(schema.nodes.heading, { level: 5 }),
+      run: setBlockType(schema.nodes.heading, { level: 5 })
+    },
+    h6: {
+      title: "Change to heading level 6",
+      content: "H6",
+      active: blockActive(schema.nodes.heading, { level: 6 }),
+      enable: setBlockType(schema.nodes.heading, { level: 6 }),
+      run: setBlockType(schema.nodes.heading, { level: 6 })
+    },
     blockquote: {
       title: "Wrap in block quote",
       content: icons.blockquote,
