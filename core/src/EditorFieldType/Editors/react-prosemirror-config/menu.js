@@ -1,13 +1,6 @@
-import {
-  joinUp,
-  lift,
-  setBlockType,
-  toggleMark,
-  wrapIn
-} from "prosemirror-commands";
+import { setBlockType, toggleMark, wrapIn } from "prosemirror-commands";
 import { redo, undo } from "prosemirror-history";
 import { wrapInList } from "prosemirror-schema-list";
-// import { addColumnAfter, addColumnBefore } from 'prosemirror-tables'
 
 import schema from "./schema";
 import icons from "./icons";
@@ -195,18 +188,19 @@ export default {
       enable: wrapInList(schema.nodes.ordered_list),
       run: wrapInList(schema.nodes.ordered_list)
     },
-    lift: {
-      title: "Lift out of enclosing block",
-      content: icons.lift,
-      enable: lift,
-      run: lift
-    },
-    join_up: {
-      title: "Join with above block",
-      content: icons.join_up,
-      enable: joinUp,
-      run: joinUp
+
+    indent: {
+      title: "Indent",
+      content: icons.indent,
+      active: markActive(schema.marks.indent),
+      run: toggleMark(schema.marks.indent)
     }
+    // outdent: {
+    //   title: "Dedent",
+    //   content: icons.outdent,
+    //   active: markActive(schema.marks.dedent),
+    //   run: toggleMark(schema.marks.dedent)
+    // }
   },
   insert: {
     image: {

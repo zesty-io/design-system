@@ -36,10 +36,37 @@ const underline = {
   ]
 };
 
+const indent = {
+  parseDOM: [
+    { tag: "span" },
+    {
+      style: "padding-left: 30px"
+    }
+  ],
+  toDOM: () => [
+    "span",
+    {
+      style: "padding-left:30px"
+    }
+  ]
+};
+
+// const dedent = {
+//   parseDOM: [{ tag: "p" }, { style: "padding-left:0px" }],
+//   toDOM: () => [
+//     "span",
+//     {
+//       style: "padding-left:0px"
+//     }
+//   ]
+// };
+
 export default {
   ...marks,
   subscript,
   superscript,
   strikethrough,
-  underline
+  underline,
+  indent
+  // dedent
 };
