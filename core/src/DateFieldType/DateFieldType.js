@@ -80,7 +80,7 @@ export class DateFieldType extends Component {
           {this.props.datatype === "datetime" ? (
             <Flatpickr
               data-enable-time
-              data-min-date={this.props.future ? now.toString() : null}
+              data-min-date={this.props.future ? now.toISOString() : null}
               className={cx(styles.DatePicker, this.props.className)}
               name={this.props.name}
               value={date}
@@ -89,7 +89,7 @@ export class DateFieldType extends Component {
           ) : (
             <Flatpickr
               className={cx(styles.DatePicker, this.props.className)}
-              data-min-date={this.props.future ? now.toString() : null}
+              data-min-date={this.props.future ? now.toISOString() : null}
               name={this.props.name}
               value={date}
               onChange={this.onChange}
