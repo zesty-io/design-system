@@ -71,6 +71,7 @@ export class DateFieldType extends Component {
   };
   render() {
     const { date } = this.state;
+    const now = new Date();
     return (
       <label className={styles.DateFieldType}>
         <span className={styles.DateFieldTypeLabel}>{this.props.label}</span>
@@ -79,6 +80,7 @@ export class DateFieldType extends Component {
           {this.props.datatype === "datetime" ? (
             <Flatpickr
               data-enable-time
+              data-min-date={this.props.future ? now.toString() : null}
               className={cx(styles.DatePicker, this.props.className)}
               name={this.props.name}
               value={date}
@@ -87,6 +89,7 @@ export class DateFieldType extends Component {
           ) : (
             <Flatpickr
               className={cx(styles.DatePicker, this.props.className)}
+              data-min-date={this.props.future ? now.toString() : null}
               name={this.props.name}
               value={date}
               onChange={this.onChange}
