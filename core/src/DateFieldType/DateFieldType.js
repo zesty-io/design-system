@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-// import DatePicker from "react-datepicker";
 import PropTypes from "prop-types";
-// import moment from "moment";
 import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
+import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
-require("flatpickr/dist/themes/light.css");
+require("flatpickr/dist/themes/airbnb.css");
+
 import styles from "./DateFieldType.less";
 
 export class DateFieldType extends Component {
@@ -85,6 +86,17 @@ export class DateFieldType extends Component {
               name={this.props.name}
               value={date}
               onChange={this.onChange}
+              options={{
+                plugins: [
+                  new confirmDatePlugin({
+                    confirmIcon: "<i class='fa fa-check'></i>",
+                    confirmText: "CONFIRM ",
+                    showAlways: false,
+                    theme: "light"
+                  })
+                  // new rangePlugin()
+                ]
+              }}
             />
           ) : (
             <Flatpickr
