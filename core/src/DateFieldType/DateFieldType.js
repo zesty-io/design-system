@@ -11,68 +11,13 @@ require("flatpickr/dist/themes/airbnb.css");
 import styles from "./DateFieldType.less";
 
 export class DateFieldType extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: props.default || new Date()
-    };
-  }
   onChange = date => {
-    const rfcDate = new Date(date);
-    function rfc3339(d) {
-      function pad(n) {
-        return n < 10 ? "0" + n : n;
-      }
-
-      function timezoneOffset(offset) {
-        var sign;
-        if (offset === 0) {
-          return "Z";
-        }
-        sign = offset > 0 ? "-" : "+";
-        offset = Math.abs(offset);
-        return sign + pad(Math.floor(offset / 60)) + ":" + pad(offset % 60);
-      }
-
-      return (
-        d.getFullYear() +
-        "-" +
-        pad(d.getMonth() + 1) +
-        "-" +
-        pad(d.getDate()) +
-        "T" +
-        pad(d.getHours()) +
-        ":" +
-        pad(d.getMinutes()) +
-        ":" +
-        pad(d.getSeconds()) +
-        timezoneOffset(d.getTimezoneOffset())
-      );
-    }
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        rfc3339(rfcDate),
-        this.props.datatype
-      );
+      this.props.onChange(this.props.name, date[0], this.props.datatype);
     }
-    this.setState({ date });
-
-    /*
-    Outside of this component we don't know how this timestamp will be dealt
-    with so instead of emmiting a moment object we resolve a string and push
-    the moment instaniation to the `DatePicker` component
-    */
-    // const dateStr = m.clone().format();
-    // this.setState({ date: dateStr }, () => {
-    //   if (this.props.onChange) {
-    //     this.props.onChange(this.props.name, dateStr, this.props.datatype);
-    //   }
-    // });
   };
+
   render() {
-    const { date } = this.state;
-    const now = new Date();
     return (
       <label className={styles.DateFieldType}>
         <span className={styles.DateFieldTypeLabel}>{this.props.label}</span>
@@ -81,12 +26,13 @@ export class DateFieldType extends Component {
           {this.props.datatype === "datetime" ? (
             <Flatpickr
               data-enable-time
-              data-min-date={this.props.future ? now.toISOString() : null}
               className={cx(styles.DatePicker, this.props.className)}
               name={this.props.name}
-              value={date}
+              value={this.props.value}
               onChange={this.onChange}
               options={{
+                altFormat: "F j, Y at h:i K",
+                altInput: true,
                 plugins: [
                   new confirmDatePlugin({
                     confirmIcon: "<i class='fa fa-check'></i>",
@@ -101,20 +47,11 @@ export class DateFieldType extends Component {
           ) : (
             <Flatpickr
               className={cx(styles.DatePicker, this.props.className)}
-              data-min-date={this.props.future ? now.toISOString() : null}
               name={this.props.name}
-              value={date}
+              value={this.props.value}
               onChange={this.onChange}
             />
           )}
-
-          {/* <input
-            className={cx(styles.DatePicker, this.props.className)}
-            type={this.props.type || "date"}
-            name={this.props.name}
-            onChange={this.onChange}
-            value={this.props.default || ""}
-          /> */}
         </span>
       </label>
     );
