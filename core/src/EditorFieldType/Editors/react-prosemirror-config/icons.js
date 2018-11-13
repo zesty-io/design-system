@@ -21,7 +21,11 @@ import {
   faRedo,
   faOutdent,
   faIndent,
-  faAngleUp
+  faAngleUp,
+  faAlignLeft,
+  faAlignRight,
+  faAlignCenter,
+  faAlignJustify
 } from "@fortawesome/fontawesome-free-solid";
 
 export default {
@@ -48,5 +52,10 @@ export default {
   redo: <FontAwesomeIcon icon={faRedo} />,
   outdent: <FontAwesomeIcon icon={faOutdent} />,
   indent: <FontAwesomeIcon icon={faIndent} />,
-  join_up: <FontAwesomeIcon icon={faAngleUp} />
+  join_up: <FontAwesomeIcon icon={faAngleUp} />,
+
+  align_left: <FontAwesomeIcon icon={faAlignLeft} />,
+  align_right: <FontAwesomeIcon icon={faAlignRight} />,
+  align_center: <FontAwesomeIcon icon={faAlignCenter} />,
+  align_justify: <FontAwesomeIcon icon={faAlignJustify} />
 };

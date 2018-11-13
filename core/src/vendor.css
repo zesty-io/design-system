@@ -34,8 +34,15 @@
   max-width: 100%;
 }
 .ProseMirror p {
-  margin: 1rem 0;
+  margin: 16px 0;
   padding: 0;
+}
+
+.ProseMirror pre {
+  margin: 16px 0;
+}
+.ProseMirror code {
+  font-family: monospace;
 }
 .ProseMirror h1,
 .ProseMirror h2,
