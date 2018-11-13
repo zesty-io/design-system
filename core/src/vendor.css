@@ -43,32 +43,44 @@
 .ProseMirror h4,
 .ProseMirror h5,
 .ProseMirror h6 {
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
   padding: 0;
 
   font-family: Verdana, Arial;
-  /* font-size: 32px; */
-  font-weight: regular;
+  font-size: 32px;
+  font-weight: 500;
   line-height: 48px;
-  letter-spacing: 0.32;
-  color: rgba(0, 0, 0 1);
+  letter-spacing: 0.32px;
+  color: #1a202c;
 }
 .ProseMirror h2 {
   font-size: 28px;
   line-height: 42px;
 }
 .ProseMirror h3 {
-  font-weight: bold;
   font-size: 24px;
   line-height: 36px;
-  letter-spacing: 0.16;
+  letter-spacing: 0.16px;
 }
 .ProseMirror h4 {
   font-weight: bold;
   font-size: 20px;
   line-height: 28px;
-  letter-spacing: 0.8;
+  letter-spacing: 0.08px;
 }
+.ProseMirror h5 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+.ProseMirror h6 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08px;
+}
+
 .ProseMirror strong {
   font-weight: bold;
 }
