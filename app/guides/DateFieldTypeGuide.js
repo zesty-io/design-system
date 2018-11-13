@@ -25,6 +25,7 @@ export class DateFieldTypeGuide extends Component {
         <DateFieldType
           label="Format Date"
           name="datepicker"
+          default={new Date().toString()}
           onChange={console.log}
           datatype={'date'}
         />
