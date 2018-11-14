@@ -61,12 +61,6 @@ export default {
       active: markActive(schema.marks.strong),
       run: toggleMark(schema.marks.strong)
     },
-    code: {
-      title: "Toggle code",
-      content: icons.code,
-      active: markActive(schema.marks.code),
-      run: toggleMark(schema.marks.code)
-    },
     subscript: {
       title: "Toggle subscript",
       content: icons.subscript,
@@ -110,24 +104,36 @@ export default {
       }
     }
   },
+  alignment: {
+    left: {
+      title: "Left align text",
+      content: icons.align_left,
+      active: markActive(schema.marks.alignLeft),
+      run: toggleMark(schema.marks.alignLeft)
+    },
+    center: {
+      title: "Center align text",
+      content: icons.align_center,
+      active: markActive(schema.marks.alignCenter),
+      run: toggleMark(schema.marks.alignCenter)
+    },
+    justify: {
+      title: "Justify align text",
+      content: icons.align_justify,
+      active: markActive(schema.marks.alignJustify),
+      run: toggleMark(schema.marks.alignJustify)
+    },
+    right: {
+      title: "Right align text",
+      content: icons.align_right,
+      active: markActive(schema.marks.alignRight),
+      run: toggleMark(schema.marks.alignRight)
+    }
+  },
   blocks: {
-    plain: {
-      title: "Change to paragraph",
-      content: icons.paragraph,
-      active: blockActive(schema.nodes.paragraph),
-      enable: setBlockType(schema.nodes.paragraph),
-      run: setBlockType(schema.nodes.paragraph)
-    },
-    code_block: {
-      title: "Change to code block",
-      content: icons.code_block,
-      active: blockActive(schema.nodes.code_block),
-      enable: setBlockType(schema.nodes.code_block),
-      run: setBlockType(schema.nodes.code_block)
-    },
     h1: {
       title: "Change to heading level 1",
-      content: icons.heading,
+      content: "H1",
       active: blockActive(schema.nodes.heading, { level: 1 }),
       enable: setBlockType(schema.nodes.heading, { level: 1 }),
       run: setBlockType(schema.nodes.heading, { level: 1 })
@@ -167,6 +173,20 @@ export default {
       enable: setBlockType(schema.nodes.heading, { level: 6 }),
       run: setBlockType(schema.nodes.heading, { level: 6 })
     },
+    plain: {
+      title: "Change to paragraph",
+      content: icons.paragraph,
+      active: blockActive(schema.nodes.paragraph),
+      enable: setBlockType(schema.nodes.paragraph),
+      run: setBlockType(schema.nodes.paragraph)
+    },
+    code_block: {
+      title: "Change to code block",
+      content: icons.code_block,
+      active: blockActive(schema.nodes.code_block),
+      enable: setBlockType(schema.nodes.code_block),
+      run: setBlockType(schema.nodes.code_block)
+    },
     blockquote: {
       title: "Wrap in block quote",
       content: icons.blockquote,
@@ -188,7 +208,6 @@ export default {
       enable: wrapInList(schema.nodes.ordered_list),
       run: wrapInList(schema.nodes.ordered_list)
     },
-
     indent: {
       title: "Indent",
       content: icons.indent,
@@ -202,28 +221,8 @@ export default {
     //   run: toggleMark(schema.marks.dedent)
     // }
   },
+
   insert: {
-    image: {
-      title: "Insert image from media library",
-      content: icons.image,
-      enable: canInsert(schema.nodes.image),
-      run: (state, dispatch) => {
-        riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
-          limit: 10,
-          callback: images => {
-            images.forEach(image => {
-              dispatch(
-                state.tr.replaceSelectionWith(
-                  schema.nodes.image.createAndFill({
-                    src: image.url
-                  })
-                )
-              );
-            });
-          }
-        });
-      }
-    },
     footnote: {
       title: "Insert footnote",
       content: icons.footnote,
@@ -268,6 +267,27 @@ export default {
         // tr.setSelection(Selection.near(tr.doc.resolve(from)))
         // dispatch(tr.scrollIntoView())
         // view.focus()
+      }
+    },
+    image: {
+      title: "Insert image from media library",
+      content: icons.image,
+      enable: canInsert(schema.nodes.image),
+      run: (state, dispatch) => {
+        riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
+          limit: 10,
+          callback: images => {
+            images.forEach(image => {
+              dispatch(
+                state.tr.replaceSelectionWith(
+                  schema.nodes.image.createAndFill({
+                    src: image.url
+                  })
+                )
+              );
+            });
+          }
+        });
       }
     }
   },

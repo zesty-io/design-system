@@ -56,17 +56,17 @@ const promptForURL = () => {
 
 export default {
   marks: {
-    strong: {
-      title: "Bold",
-      content: icons.strong,
-      active: markActive(schema.marks.strong),
-      run: toggleMark(schema.marks.strong)
-    },
     em: {
       title: "Italic",
       content: icons.em,
       active: markActive(schema.marks.em),
       run: toggleMark(schema.marks.em)
+    },
+    strong: {
+      title: "Bold",
+      content: icons.strong,
+      active: markActive(schema.marks.strong),
+      run: toggleMark(schema.marks.strong)
     },
     underline: {
       title: "Underline",
@@ -114,13 +114,6 @@ export default {
     // }
   },
   blocks: {
-    plain: {
-      title: "Change to paragraph",
-      content: icons.paragraph,
-      active: blockActive(schema.nodes.paragraph),
-      enable: setBlockType(schema.nodes.paragraph),
-      run: setBlockType(schema.nodes.paragraph)
-    },
     // code_block: {
     //   title: "Change to code block",
     //   content: icons.code_block,
@@ -130,7 +123,7 @@ export default {
     // },
     h1: {
       title: "Change to heading level 1",
-      content: icons.heading,
+      content: "H1",
       active: blockActive(schema.nodes.heading, { level: 1 }),
       enable: setBlockType(schema.nodes.heading, { level: 1 }),
       run: setBlockType(schema.nodes.heading, { level: 1 })
@@ -141,6 +134,48 @@ export default {
       active: blockActive(schema.nodes.heading, { level: 2 }),
       enable: setBlockType(schema.nodes.heading, { level: 2 }),
       run: setBlockType(schema.nodes.heading, { level: 2 })
+    },
+    h3: {
+      title: "Change to heading level 3",
+      content: "H3",
+      active: blockActive(schema.nodes.heading, { level: 3 }),
+      enable: setBlockType(schema.nodes.heading, { level: 3 }),
+      run: setBlockType(schema.nodes.heading, { level: 3 })
+    },
+    h4: {
+      title: "Change to heading level 4",
+      content: "H4",
+      active: blockActive(schema.nodes.heading, { level: 4 }),
+      enable: setBlockType(schema.nodes.heading, { level: 4 }),
+      run: setBlockType(schema.nodes.heading, { level: 4 })
+    },
+    h5: {
+      title: "Change to heading level 5",
+      content: "H5",
+      active: blockActive(schema.nodes.heading, { level: 5 }),
+      enable: setBlockType(schema.nodes.heading, { level: 5 }),
+      run: setBlockType(schema.nodes.heading, { level: 5 })
+    },
+    h6: {
+      title: "Change to heading level 6",
+      content: "H6",
+      active: blockActive(schema.nodes.heading, { level: 6 }),
+      enable: setBlockType(schema.nodes.heading, { level: 6 }),
+      run: setBlockType(schema.nodes.heading, { level: 6 })
+    },
+    plain: {
+      title: "Change to paragraph",
+      content: icons.paragraph,
+      active: blockActive(schema.nodes.paragraph),
+      enable: setBlockType(schema.nodes.paragraph),
+      run: setBlockType(schema.nodes.paragraph)
+    },
+    code_block: {
+      title: "Change to code block",
+      content: icons.code_block,
+      active: blockActive(schema.nodes.code_block),
+      enable: setBlockType(schema.nodes.code_block),
+      run: setBlockType(schema.nodes.code_block)
     },
     blockquote: {
       title: "Wrap in block quote",
@@ -162,6 +197,12 @@ export default {
       active: blockActive(schema.nodes.ordered_list),
       enable: wrapInList(schema.nodes.ordered_list),
       run: wrapInList(schema.nodes.ordered_list)
+    },
+    indent: {
+      title: "Indent",
+      content: icons.indent,
+      active: markActive(schema.marks.indent),
+      run: toggleMark(schema.marks.indent)
     }
   },
   insert: {

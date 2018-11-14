@@ -51,6 +51,46 @@ const indent = {
   ]
 };
 
+const alignLeft = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:left" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:left"
+    }
+  ]
+};
+
+const alignRight = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:right" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:right"
+    }
+  ]
+};
+
+const alignCenter = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:center" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:center"
+    }
+  ]
+};
+
+const alignJustify = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:justify" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:justify"
+    }
+  ]
+};
+
 // const dedent = {
 //   parseDOM: [{ tag: "p" }, { style: "padding-left:0px" }],
 //   toDOM: () => [
@@ -67,6 +107,10 @@ export default {
   superscript,
   strikethrough,
   underline,
-  indent
+  indent,
+  alignLeft,
+  alignRight,
+  alignCenter,
+  alignJustify
   // dedent
 };
