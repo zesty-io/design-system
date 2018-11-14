@@ -12,8 +12,9 @@ export class SearchableListGuide extends Component {
       Math.random()
         .toString(opt)
         .substring(7)
-    const ZUIDs = new Array(500).fill('').map(i => randomGen())
-    const values = new Array(500).fill('').map(i => randomGen(36))
+    const linstLength = 1500
+    const ZUIDs = new Array(linstLength).fill('').map(i => randomGen())
+    const values = new Array(linstLength).fill('').map(i => randomGen(36))
     const spoofedData = ZUIDs.reduce((acc, el, i) => {
       acc[el] = { html: values[i], value: el }
       return acc
@@ -24,7 +25,7 @@ export class SearchableListGuide extends Component {
     console.log(name, value, datatype)
   }
   handleSearch = term => {
-    console.log(term)
+    // this needs to be a debounced fetch call
     if (term.length >= 3) {
       const returnedData = Object.keys(this.state.spoofedData)
         .filter(ZUID => {
@@ -66,7 +67,3 @@ export class SearchableListGuide extends Component {
     )
   }
 }
-
-// return searched data after three characters are returned
-
-// onselect needs to return only a zuid

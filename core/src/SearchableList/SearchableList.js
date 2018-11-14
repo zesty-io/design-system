@@ -64,10 +64,11 @@ export class SearchableList extends Component {
     }
     // const hasMatch = this.hasMatch();
     // if (hasMatch) {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-      // hasMatch
-    });
+    this.props.children.length &&
+      this.setState({
+        dropdownOpen: !this.state.dropdownOpen
+        // hasMatch
+      });
     // } else {
     // }
   };
@@ -85,7 +86,7 @@ export class SearchableList extends Component {
     // Top level Select event listener
     const { name, datatype } = this.props;
     const value = evt.target.dataset.value;
-    console.log(value);
+    const text = evt.target.innerText;
     if (this.props.onSelect) {
       this.props.onSelect(name, value, datatype);
     }
@@ -95,7 +96,7 @@ export class SearchableList extends Component {
     });
 
     this.setState({
-      searchTerm: value
+      searchTerm: text
     });
   };
 
