@@ -2,29 +2,35 @@ import React from "react";
 import styles from "./Html.less";
 import { html } from "js-beautify";
 
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import { Controlled as CodeMirror } from "react-codemirror2";
 require("codemirror/mode/htmlmixed/htmlmixed");
 
 export class HtmlEditor extends React.Component {
-  onChange = (editor, data, value) => {
-    if (this.props.onChange) {
-      this.props.onChange(value);
-    }
+  state = {
+    html: html(this.props.value, {
+      indent_size: 2
+    })
   };
 
   render() {
     return (
       <CodeMirror
         className={styles.Html}
-        value={html(this.props.value, {
-          indent_size: 2
-        })}
+        value={this.state.html}
         options={{
+          autoCursor: false,
           mode: "htmlmixed",
           // theme: "material",
           lineNumbers: true
         }}
-        onChange={this.onChange}
+        onBeforeChange={(editor, data, value) => {
+          this.setState({ html: value });
+        }}
+        onChange={(editor, data, value) => {
+          if (this.props.onChange) {
+            this.props.onChange(value);
+          }
+        }}
       />
     );
   }
