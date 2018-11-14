@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Search } from "../Search";
 import styles from "./SearchableList.less";
 import cx from "classnames";
@@ -62,25 +62,11 @@ export class SearchableList extends Component {
         filter.querySelector("input").focus();
       }
     }
-    // const hasMatch = this.hasMatch();
-    // if (hasMatch) {
     this.props.children.length &&
       this.setState({
         dropdownOpen: !this.state.dropdownOpen
-        // hasMatch
       });
-    // } else {
-    // }
   };
-
-  // hasMatch = () => {
-  //   const { filter } = this.state;
-  //   return Boolean(
-  //     React.Children.toArray(this.props.children).filter(child => {
-  //       return child.props.text.toLowerCase().indexOf(this.state.filter) !== -1;
-  //     }).length
-  //   );
-  // };
 
   setSelection = evt => {
     // Top level Select event listener
@@ -143,33 +129,38 @@ export class SearchableList extends Component {
       onClick: this.toggleDropdown
     };
     return (
-      <div {...opts} ref={div => (this.selector = div)}>
-        <input
-          type="text"
-          name="term"
-          autoComplete="off"
-          value={this.state.searchTerm}
-          className={styles.searchField}
-          placeholder={this.props.placeholder}
-          onFocus={this.props.onFocus}
-          onChange={this.handleFilterKeyUp}
-        />
-        <ul className={cx("selections", styles.selections)}>
-          <div className={cx("options", styles.options)}>
-            {React.Children.toArray(this.props.children).map(child => {
-              return React.cloneElement(child, {
-                onClick: evt => {
-                  // Individual option event listener
-                  if (child.props.onClick) {
-                    child.props.onClick(evt);
+      <Fragment>
+        <section className={styles.SeachableListLabel}>
+          <label>{this.props.label}</label>
+        </section>
+        <div {...opts} ref={div => (this.selector = div)}>
+          <input
+            type="text"
+            name="term"
+            autoComplete="off"
+            value={this.state.searchTerm}
+            className={styles.searchField}
+            placeholder={this.props.placeholder}
+            onFocus={this.props.onFocus}
+            onChange={this.handleFilterKeyUp}
+          />
+          <ul className={cx("selections", styles.selections)}>
+            <div className={cx("options", styles.options)}>
+              {React.Children.toArray(this.props.children).map(child => {
+                return React.cloneElement(child, {
+                  onClick: evt => {
+                    // Individual option event listener
+                    if (child.props.onClick) {
+                      child.props.onClick(evt);
+                    }
+                    this.setSelection(evt);
                   }
-                  this.setSelection(evt);
-                }
-              });
-            })}
-          </div>
-        </ul>
-      </div>
+                });
+              })}
+            </div>
+          </ul>
+        </div>
+      </Fragment>
     );
   }
 }

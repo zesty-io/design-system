@@ -14,12 +14,12 @@
     "Textarea",
     "Url",
     "Tag",
-    "SearchableList",
     "WithLoader",
     "ToggleButton"
   ],
   "molecules": [
     "CollapsibleCard",
+    "SearchableList",
     "Search",
     "ColorFieldType",
     "CurrencyFieldType",
