@@ -21,6 +21,43 @@ const listNodes = {
   }
 };
 
+// :: NodeSpec An inline image (`<img>`) node. Supports `src`,
+// `alt`, and `href` attributes. The latter two default to the empty
+// string.
+const images = {
+  image: {
+    inline: true,
+    attrs: {
+      src: {},
+      alt: { default: null },
+      title: { default: null },
+      align: { default: null },
+      width: { default: null },
+      height: { default: null }
+    },
+    group: "inline",
+    draggable: true,
+    parseDOM: [
+      {
+        tag: "img[src]",
+        getAttrs(dom) {
+          return {
+            src: dom.getAttribute("src"),
+            title: dom.getAttribute("title"),
+            alt: dom.getAttribute("alt"),
+            align: dom.getAttribute("align"),
+            width: dom.getAttribute("width"),
+            height: dom.getAttribute("height")
+          };
+        }
+      }
+    ],
+    toDOM(node) {
+      return ["img", node.attrs];
+    }
+  }
+};
+
 export default {
   ...nodes,
   ...listNodes,
@@ -28,5 +65,6 @@ export default {
     tableGroup: "block",
     cellContent: "block+"
   }),
-  ...footnoteNodes
+  ...footnoteNodes,
+  ...images // Custom image schema
 };
