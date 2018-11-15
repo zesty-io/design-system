@@ -1,3 +1,4 @@
+import { Slice, Fragment } from "prosemirror-model";
 import { setBlockType, toggleMark, wrapIn } from "prosemirror-commands";
 import { redo, undo } from "prosemirror-history";
 import { wrapInList } from "prosemirror-schema-list";
@@ -277,15 +278,17 @@ export default {
         riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
           limit: 10,
           callback: images => {
-            images.forEach(image => {
-              dispatch(
-                state.tr.replaceSelectionWith(
-                  schema.nodes.image.createAndFill({
-                    src: image.url
-                  })
-                )
-              );
-            });
+            const imageNodes = images.map(image =>
+              schema.nodes.image.createAndFill({
+                src: image.url
+              })
+            );
+
+            dispatch(
+              state.tr.replaceSelection(
+                new Slice(Fragment.from(imageNodes), 0, 0)
+              )
+            );
           }
         });
       }
