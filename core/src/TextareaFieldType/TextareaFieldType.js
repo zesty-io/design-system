@@ -50,6 +50,7 @@ export class TextareaFieldType extends Component {
           name={this.props.name}
           value={this.state.value}
           onChange={this.onChange}
+          placeholder={this.props.placeholder}
         />
       </article>
     );
