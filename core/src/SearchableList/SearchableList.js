@@ -22,6 +22,14 @@ export class SearchableList extends Component {
   componentDidMount() {
     document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
+    if (this.props.value) {
+      this.setState({ searchTerm: this.props.value });
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.value && this.props.value !== this.state.searchTerm) {
+      this.setState({ searchTerm: this.props.value });
+    }
   }
   componentWillUnmount() {
     document.removeEventListener("click", this.onClose);

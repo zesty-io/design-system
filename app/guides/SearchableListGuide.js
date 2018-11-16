@@ -12,9 +12,9 @@ export class SearchableListGuide extends Component {
       Math.random()
         .toString(opt)
         .substring(7)
-    const linstLength = 1500
-    const ZUIDs = new Array(linstLength).fill('').map(i => randomGen())
-    const values = new Array(linstLength).fill('').map(i => randomGen(36))
+    const listLength = 1500
+    const ZUIDs = new Array(listLength).fill('').map(i => randomGen())
+    const values = new Array(listLength).fill('').map(i => randomGen(36))
     const spoofedData = ZUIDs.reduce((acc, el, i) => {
       acc[el] = { html: values[i], value: el }
       return acc
@@ -76,9 +76,9 @@ export class SearchableListGuide extends Component {
       Math.random()
         .toString(opt)
         .substring(7)
-    const linstLength = 1500
-    const ZUIDs = new Array(linstLength).fill('').map(i => randomGen())
-    const values = new Array(linstLength).fill('').map(i => randomGen(36))
+    const listLength = 1500
+    const ZUIDs = new Array(listLength).fill('').map(i => randomGen())
+    const values = new Array(listLength).fill('').map(i => randomGen(36))
     const spoofedData = ZUIDs.reduce((acc, el, i) => {
       acc[el] = { html: values[i], value: el }
       return acc
