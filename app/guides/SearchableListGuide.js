@@ -5,7 +5,7 @@ import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class SearchableListGuide extends Component {
-  state = { returnedData: [] }
+  state = { returnedData: [], loading: false }
   componentDidMount() {
     // spoof data
     const randomGen = opt =>
@@ -28,15 +28,18 @@ export class SearchableListGuide extends Component {
   handleSearch = term => {
     // this is emulating the return from a fetch call
     if (term.length >= 3) {
-      const returnedData = Object.keys(this.state.spoofedData)
-        .filter(ZUID => {
-          return (
-            this.state.spoofedData[ZUID].html.includes(term) ||
-            this.state.spoofedData[ZUID].value.includes(term)
-          )
-        })
-        .map(matchedZUID => this.state.spoofedData[matchedZUID])
-      this.setState({ returnedData })
+      this.setState({ loading: true })
+      setTimeout(() => {
+        const returnedData = Object.keys(this.state.spoofedData)
+          .filter(ZUID => {
+            return (
+              this.state.spoofedData[ZUID].html.includes(term) ||
+              this.state.spoofedData[ZUID].value.includes(term)
+            )
+          })
+          .map(matchedZUID => this.state.spoofedData[matchedZUID])
+        this.setState({ returnedData, loading: false })
+      }, 1000)
     }
   }
   render() {
@@ -51,6 +54,7 @@ export class SearchableListGuide extends Component {
         <br />
         <SearchableList
           label="Label Field"
+          loading={this.state.loading}
           name="searchableList"
           datatype="dataSearchableList"
           onSelect={this.handleSelect}

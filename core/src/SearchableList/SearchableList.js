@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Search } from "../Search";
+import { Loader } from "../Loader";
 import styles from "./SearchableList.less";
 import cx from "classnames";
 
@@ -146,17 +147,21 @@ export class SearchableList extends Component {
           />
           <ul className={cx("selections", styles.selections)}>
             <div className={cx("options", styles.options)}>
-              {React.Children.toArray(this.props.children).map(child => {
-                return React.cloneElement(child, {
-                  onClick: evt => {
-                    // Individual option event listener
-                    if (child.props.onClick) {
-                      child.props.onClick(evt);
+              {this.props.loading ? (
+                <Loader />
+              ) : (
+                React.Children.toArray(this.props.children).map(child => {
+                  return React.cloneElement(child, {
+                    onClick: evt => {
+                      // Individual option event listener
+                      if (child.props.onClick) {
+                        child.props.onClick(evt);
+                      }
+                      this.setSelection(evt);
                     }
-                    this.setSelection(evt);
-                  }
-                });
-              })}
+                  });
+                })
+              )}
             </div>
           </ul>
         </div>
