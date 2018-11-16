@@ -2,7 +2,7 @@
 
 .selector {
   cursor: pointer;
-  flex: 1;
+  display: flex;
   position: relative;
   line-height: 2rem;
 
@@ -21,85 +21,67 @@
     }
   }
   .searchField {
-    background: #eaecf1;
-    border: 1px solid #6f819a;
-    border-bottom: 3px solid #6f819a;
-    border-radius: 3px;
-    color: rgb(91, 102, 125);
+    //so the input field assumes the whole flexbox
     flex: 1;
-    font-size: 1.3rem;
-    padding: 0 0 0 0.5em;
-    line-height: 2rem;
-    &:hover,
-    &:active,
-    &:focus {
-      background: @white;
-      outline: none;
-    }
-    &:placeholder-shown {
-      color: lighten(@zesty-light-grey, 10%);
-      font-weight: 100;
-    }
   }
 
   .selection {
-    align-items: center;
-    background-color: #eaecf1;
+    // align-items: center;
+    border: none;
     color: #5b667d;
-    border: solid 1px #9dabc5;
     display: flex;
+    flex: 1;
     overflow: hidden;
     padding: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: 4px;
 
     &:active,
     &:hover,
     &:focus {
-      background-color: #fff;
-    }
-
-    .chevron {
-      background-color: #5b667d;
-      color: #e3ebf9;
-      line-height: inherit;
-      border-right: 1px solid #9dabc5;
-      font-size: 14px;
-      flex-basis: 32px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-    }
-    .icon-chevron-down {
-      display: none;
+      .content {
+        border: solid 1px #4f596d;
+      }
     }
 
     .content {
+      align-items: center;
+      border-radius: 3px 0 0 3px;
+      background-color: @white;
+      border: solid 1px rgba(0, 0, 0, 0.12);
+      color: #1a202c;
+      display: block;
       flex: 1;
-      padding: 0 1rem;
       overflow: hidden;
+      padding: 8px 12px;
       text-overflow: ellipsis;
-      strong {
-        font-weight: 900;
-        font-size: 1.2rem;
-        margin-right: 1.2rem;
-      }
+
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0px;
     }
   }
 
   .selections {
+    border-radius: 4px;
+    border: solid 1px #4f596d;
+    background-color: #ffffff;
     display: none;
-    box-shadow: 0px 4px 10px #616c80;
-    background: #b5becc;
-    border-top: 1px solid #9dabc5;
-    border-radius: 0 4px 4px 4px;
-    margin: -1px 0 0 1px;
-    min-width: 250px;
+    min-width: 100%;
     min-height: 2.6rem;
     position: absolute;
-    // right: 0;
+    right: 0;
+    top: 40px;
     z-index: 20;
+
+    .Filter {
+      margin: 4px;
+      input {
+        flex: 1;
+      }
+    }
 
     .options {
       max-height: 600px;
@@ -118,12 +100,21 @@
       border-top: 2px solid #c7d4ea;
     }
 
+    // .DefaultOpt {
+    //   background: #b5becc;
+    //   color: #585f6c;
+    // }
+
     li {
-      color: #5d6476;
+      color: #1a202c;
       cursor: pointer;
-      border-bottom: 1px solid #a2aab6;
-      line-height: 20px;
-      padding: 0.5rem;
+      padding: 8px 16px;
+
+      font-family: Verdana, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0px;
     }
     li:active,
     li:hover,
@@ -131,23 +122,23 @@
     li:active strong,
     li:hover strong,
     li:focus strong {
-      background-color: #6c7994;
-      color: #fff;
+      color: #1a202c;
+      background-color: #f2f7fc;
     }
 
-    li.unselected {
-      color: #6b7994;
-      text-shadow: 1px 1px 0px #c9cdd6;
-    }
+    // li.unselected {
+    //   color: #6b7994;
+    //   text-shadow: 1px 1px 0px #c9cdd6;
+    // }
 
-    li strong {
-      color: #363d4d;
-      display: block;
-      font-weight: 900;
-    }
-    li a .name {
-      flex: 1;
-    }
+    // li strong {
+    //   color: #363d4d;
+    //   display: block;
+    //   font-weight: 900;
+    // }
+    // li a .name {
+    //   flex: 1;
+    // }
   }
 }
 .SeachableListLabel {

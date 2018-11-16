@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Search } from "../Search";
+import { Input } from "../Input";
+import { Loader } from "../Loader";
 import styles from "./SearchableList.less";
 import cx from "classnames";
 
@@ -20,6 +22,14 @@ export class SearchableList extends Component {
   componentDidMount() {
     document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
+    if (this.props.value) {
+      this.setState({ searchTerm: this.props.value });
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.value && this.props.value !== this.state.searchTerm) {
+      this.setState({ searchTerm: this.props.value });
+    }
   }
   componentWillUnmount() {
     document.removeEventListener("click", this.onClose);
@@ -72,7 +82,7 @@ export class SearchableList extends Component {
     // Top level Select event listener
     const { name, datatype } = this.props;
     const value = evt.target.dataset.value;
-    const text = evt.target.innerText;
+    const searchTerm = evt.target.innerText;
     if (this.props.onSelect) {
       this.props.onSelect(name, value, datatype);
     }
@@ -82,8 +92,9 @@ export class SearchableList extends Component {
     });
 
     this.setState({
-      searchTerm: text
+      searchTerm
     });
+    this.props.onSearch(searchTerm);
   };
 
   handleFilterKeyUp = evt => {
@@ -134,29 +145,33 @@ export class SearchableList extends Component {
           <label>{this.props.label}</label>
         </section>
         <div {...opts} ref={div => (this.selector = div)}>
-          <input
+          <Input
             type="text"
             name="term"
             autoComplete="off"
-            value={this.state.searchTerm}
             className={styles.searchField}
+            value={this.state.searchTerm}
             placeholder={this.props.placeholder}
             onFocus={this.props.onFocus}
             onChange={this.handleFilterKeyUp}
           />
           <ul className={cx("selections", styles.selections)}>
             <div className={cx("options", styles.options)}>
-              {React.Children.toArray(this.props.children).map(child => {
-                return React.cloneElement(child, {
-                  onClick: evt => {
-                    // Individual option event listener
-                    if (child.props.onClick) {
-                      child.props.onClick(evt);
+              {this.props.loading ? (
+                <Loader />
+              ) : (
+                React.Children.toArray(this.props.children).map(child => {
+                  return React.cloneElement(child, {
+                    onClick: evt => {
+                      // Individual option event listener
+                      if (child.props.onClick) {
+                        child.props.onClick(evt);
+                      }
+                      this.setSelection(evt);
                     }
-                    this.setSelection(evt);
-                  }
-                });
-              })}
+                  });
+                })
+              )}
             </div>
           </ul>
         </div>
