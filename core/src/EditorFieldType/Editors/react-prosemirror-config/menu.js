@@ -269,7 +269,9 @@ export default {
         // dispatch(tr.scrollIntoView())
         // view.focus()
       }
-    },
+    }
+  },
+  media: {
     image: {
       title: "Insert image from media library",
       content: icons.image,
@@ -292,6 +294,18 @@ export default {
           }
         });
       }
+    },
+    left: {
+      title: "Float left",
+      content: icons.float_left,
+      active: markActive(schema.marks.floatLeft),
+      run: toggleMark(schema.marks.floatLeft)
+    },
+    right: {
+      title: "Float right",
+      content: icons.float_right,
+      active: markActive(schema.marks.floatRight),
+      run: toggleMark(schema.marks.floatRight)
     }
   },
   history: {
