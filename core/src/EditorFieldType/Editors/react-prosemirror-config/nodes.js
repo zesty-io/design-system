@@ -36,7 +36,8 @@ const images = {
       height: { default: null }
     },
     group: "inline",
-    draggable: true,
+    // draggable: true,
+    marks: "floatLeft floatRight",
     parseDOM: [
       {
         tag: "img[src]",

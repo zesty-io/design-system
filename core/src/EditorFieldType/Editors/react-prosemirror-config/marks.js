@@ -91,6 +91,26 @@ const alignJustify = {
   ]
 };
 
+const floatLeft = {
+  parseDOM: [{ tag: "span" }, { style: "float:left" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;float:left"
+    }
+  ]
+};
+
+const floatRight = {
+  parseDOM: [{ tag: "span" }, { style: "float:right" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;float:right"
+    }
+  ]
+};
+
 // const dedent = {
 //   parseDOM: [{ tag: "p" }, { style: "padding-left:0px" }],
 //   toDOM: () => [
@@ -111,6 +131,8 @@ export default {
   alignLeft,
   alignRight,
   alignCenter,
-  alignJustify
+  alignJustify,
+  floatLeft,
+  floatRight
   // dedent
 };
