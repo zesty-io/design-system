@@ -82,7 +82,7 @@ export class SearchableList extends Component {
     // Top level Select event listener
     const { name, datatype } = this.props;
     const value = evt.target.dataset.value;
-    const text = evt.target.innerText;
+    const searchTerm = evt.target.innerText;
     if (this.props.onSelect) {
       this.props.onSelect(name, value, datatype);
     }
@@ -92,8 +92,9 @@ export class SearchableList extends Component {
     });
 
     this.setState({
-      searchTerm: text
+      searchTerm
     });
+    this.props.onSearch(searchTerm);
   };
 
   handleFilterKeyUp = evt => {
