@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Search } from "../Search";
+import { Input } from "../Input";
 import { Loader } from "../Loader";
 import styles from "./SearchableList.less";
 import cx from "classnames";
@@ -135,12 +136,12 @@ export class SearchableList extends Component {
           <label>{this.props.label}</label>
         </section>
         <div {...opts} ref={div => (this.selector = div)}>
-          <input
+          <Input
             type="text"
             name="term"
             autoComplete="off"
-            value={this.state.searchTerm}
             className={styles.searchField}
+            value={this.state.searchTerm}
             placeholder={this.props.placeholder}
             onFocus={this.props.onFocus}
             onChange={this.handleFilterKeyUp}
