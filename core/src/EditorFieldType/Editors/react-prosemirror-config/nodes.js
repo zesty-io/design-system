@@ -25,21 +25,22 @@ const listNodes = {
 // `alt`, and `href` attributes. The latter two default to the empty
 // string.
 const images = {
-  image: {
+  resizableImage: {
     inline: true,
     attrs: {
       src: {},
       alt: { default: null },
       title: { default: null },
       align: { default: null },
-      width: { default: null },
+      width: { default: "10em" },
       height: { default: null }
     },
     group: "inline",
-    // draggable: true,
+    draggable: true,
     marks: "floatLeft floatRight",
     parseDOM: [
       {
+        priority: 51, // must be higher than the default image spec
         tag: "img[src]",
         getAttrs(dom) {
           return {
@@ -54,7 +55,8 @@ const images = {
       }
     ],
     toDOM(node) {
-      return ["img", node.attrs];
+      const attrs = { style: `width: ${node.attrs.width}` };
+      return ["span", { ...node.attrs, ...attrs }];
     }
   }
 };

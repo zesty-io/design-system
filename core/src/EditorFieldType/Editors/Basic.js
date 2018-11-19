@@ -1,5 +1,5 @@
 import React from "react";
-import { HtmlEditor, MenuBar } from "@aeaton/react-prosemirror";
+import { HtmlEditor, MenuBar } from "./react-prosemirror";
 import { options, menu } from "./react-prosemirror-config";
 
 import styles from "./Basic.less";
