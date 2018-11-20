@@ -1,19 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
+import cx from "classnames";
 
 import styles from "./Tag.less";
-
-export class Tag extends Component {
-  render() {
-    return (
-      <span className={styles.Tag}>
-        <i className="fa fa-times-circle" onClick={this.removeTag} />
-        <a href={this.props.ZUID}>{this.props.name}</a>
-      </span>
-    );
-  }
-  removeTag = () => {
-    if (this.props.onRemove) {
-      this.props.onRemove(this.props.ZUID);
-    }
-  };
+export function Tag(props) {
+  return (
+    <span className={styles.Tag}>
+      {props.link ? (
+        <a href={props.link}>{props.children}</a>
+      ) : (
+        <span>{props.children}</span>
+      )}
+      <i
+        className={cx("fa fa-times-circle", styles.Remove)}
+        onClick={evt => {
+          if (props.onRemove) {
+            props.onRemove(evt, props.value);
+          }
+        }}
+      />
+    </span>
+  );
 }

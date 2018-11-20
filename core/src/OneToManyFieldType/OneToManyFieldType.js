@@ -9,57 +9,55 @@ import { Select, Option } from "../Select";
 export class OneToManyFieldType extends Component {
   constructor(props) {
     super(props);
+
+    const tagZUIDs = this.props.value.split(",");
+
     this.state = {
-      loaded: false,
+      loaded: false, // Used to ensure we only load data once
       loading: false,
-      tags: []
+      tags: this.props.options.filter(option => tagZUIDs.includes(option.value))
     };
   }
 
   componentDidMount() {
+    console.log("OneToManyFieldType:componentDidMount", this.props.value);
+
     // if values are provided
     // load data and display proper tags
     if (this.props.value) {
-      const tagsToBeAdded = this.props.value.split(":")[0].split(",");
-      this.props
-        .onOpen()
-        .then(() => {
-          this.setState({
-            loading: false
-          });
-        })
-        .then(() => {
-          const tags = this.props.options.filter(option =>
-            tagsToBeAdded.includes(option.value)
-          );
-          this.setState({ tags });
-        });
-
       this.setState({
-        loaded: true, // Only load data once
+        loaded: true,
         loading: true
+      });
+
+      this.props.onOpen().then(() => {
+        const tagZUIDs = this.props.value.split(",");
+        this.setState({
+          loading: false,
+          tags: this.props.options.filter(option =>
+            tagZUIDs.includes(option.value)
+          )
+        });
       });
     }
   }
 
   onClick = () => {
     if (!this.state.loaded && this.props.onOpen) {
+      this.setState({
+        loaded: true,
+        loading: true
+      });
       this.props.onOpen().then(() => {
         this.setState({
           loading: false
         });
       });
-
-      this.setState({
-        loaded: true, // Only load data once
-        loading: true
-      });
     }
   };
 
-  onRemove = tagZUID => {
-    // remove the tag ZUID from teh tags array
-    // add it back into the options array
+  onRemove = (evt, tagZUID) => {
+    // Exclude the removed tag from our tags array
     this.setState({
       tags: this.state.tags.filter(tag => tag.value !== tagZUID)
     });
@@ -74,17 +72,19 @@ export class OneToManyFieldType extends Component {
     }
 
     this.setState({
-      tags: [...this.state.tags, JSON.parse(value)]
+      tags: [
+        ...this.state.tags,
+        this.props.options.find(option => option.value === value)
+      ]
     });
   };
 
   render() {
-    const { tags, loading } = this.state;
-    const { label, selection, options } = this.props;
+    const tagZUIDs = this.state.tags.map(tag => tag.value).join(",");
     return (
       <Fragment>
         <div>
-          <label>{label}</label>
+          <label>{this.props.label}</label>
         </div>
         <section className={styles.OneToMany}>
           <Select
@@ -92,34 +92,21 @@ export class OneToManyFieldType extends Component {
             name={this.props.name}
             onClick={this.onClick}
             onSelect={this.onSelect}
-            selection={selection}
-            default={this.props.default}
-            name={this.props.name}
           >
-            {loading && <Loader />}
-            {options
-              .filter(
-                option =>
-                  !tags
-                    .reduce((acc, item) => {
-                      acc.push(item.value);
-                      return acc;
-                    }, [])
-                    .includes(option.value)
-              )
+            {this.state.loading && <Loader />}
+            {this.props.options
+              .filter(opt => !tagZUIDs.includes(opt.value))
               .map((opt, i) => {
-                return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
+                return <Option key={i} value={opt.value} text={opt.text} />;
               })}
           </Select>
+
           <article className={styles.Tags}>
-            {tags.length ? (
-              tags.map((tag, i) => (
-                <Tag
-                  key={i}
-                  name={tag.text}
-                  ZUID={tag.value}
-                  onRemove={this.onRemove}
-                />
+            {this.state.tags.length ? (
+              this.state.tags.map((item, i) => (
+                <Tag key={i} onRemove={this.onRemove} value={item.value}>
+                  {item.text}
+                </Tag>
               ))
             ) : (
               <p>Select tags to associate them with your item.</p>
