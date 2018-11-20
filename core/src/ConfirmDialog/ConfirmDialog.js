@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import cx from "classnames";
+import { Card, CardHeader, CardFooter, CardContent } from "../Card";
 import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 
@@ -9,9 +10,11 @@ export const ConfirmDialog = props => {
   return (
     (props.isOpen && (
       <section className={styles.confirmWrapper}>
-        <section className={cx(styles.Confirm, styles[props.kind])}>
-          <h1>{props.prompt}</h1>
-          <footer>
+        <Card className={cx(styles.Confirm, styles[props.kind])}>
+          <CardContent>
+            <h3>{props.prompt}</h3>
+          </CardContent>
+          <CardFooter>
             {props.children ? (
               // custom buttonGroup renders
               <ButtonGroup
@@ -52,8 +55,8 @@ export const ConfirmDialog = props => {
                 />
               </ButtonGroup>
             )}
-          </footer>
-        </section>
+          </CardFooter>
+        </Card>
       </section>
     )) ||
     null
