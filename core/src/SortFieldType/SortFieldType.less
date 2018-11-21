@@ -11,38 +11,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 130px;
+    width: 140px;
 
-    .IncrementL {
-      background-color: @nav-border-color;
-      color: @zesty-light-blue;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-      padding: 0 1rem;
-      line-height: 40px;
-      &:hover {
-        background-color: darken(@nav-border-color, 55%);
-      }
+    .Increment {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .IncrementR {
-      background-color: @nav-border-color;
-      color: @zesty-light-blue;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-      padding: 0 1rem;
-      line-height: 40px;
-      user-select: none;
-      &:hover {
-        background-color: darken(@nav-border-color, 55%);
-      }
+    .Right {
+      border-radius: 0px 3px 3px 0px;
     }
-    .SortNumber {
-      background: @nav-border-color;
-      color: @zesty-light-blue;
-      text-align: center;
-      border-radius: 0 0 0 0;
-      border: none;
-      width: 5rem;
+    .Left {
+      border-radius: 3px 0 0 3px;
+    }
+
+    input {
+      width: 50px;
+      border-radius: 0px;
     }
   }
 }

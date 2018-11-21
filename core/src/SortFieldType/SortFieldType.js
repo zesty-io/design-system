@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import cx from "classnames";
 
 import { Input } from "../Input";
+import { Button } from "../Button";
 
 import styles from "./SortFieldType.less";
 export class SortFieldType extends Component {
   state = {
-    sortValue: Number(this.props.value) || 0,
-    required: this.props.required
+    sortValue: Number(this.props.value) || 0
   };
   handleClick = (evt, increment) => {
     evt.stopPropagation();
@@ -23,6 +24,19 @@ export class SortFieldType extends Component {
       sortValue: value
     });
   };
+  handleChange = evt => {
+    evt.stopPropagation();
+
+    const value = evt.target.value;
+
+    if (this.props.onChange) {
+      this.props.onChange(this.props.name, value, this.props.datatype);
+    }
+
+    this.setState({
+      sortValue: value
+    });
+  };
   render() {
     return (
       <article className={styles.SortFieldType}>
@@ -30,23 +44,24 @@ export class SortFieldType extends Component {
           <label>{this.props.label}</label>
         </section>
         <section className={styles.Sort}>
-          <span
-            className={styles.IncrementL}
+          <Button
+            className={cx(styles.Increment, styles.Left)}
             onClick={evt => this.handleClick(evt, true)}
           >
             <i className="fa fa-plus" />
-          </span>
+          </Button>
           <Input
             className={styles.SortNumber}
             type="number"
             value={this.state.sortValue}
+            onChange={this.handleChange}
           />
-          <span
-            className={styles.IncrementR}
+          <Button
+            className={cx(styles.Increment, styles.Right)}
             onClick={evt => this.handleClick(evt)}
           >
             <i className="fa fa-minus" />
-          </span>
+          </Button>
         </section>
       </article>
     );
