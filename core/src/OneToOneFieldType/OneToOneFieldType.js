@@ -39,10 +39,11 @@ export class OneToOneFieldType extends Component {
         </div>
         <Select
           name={this.props.name}
-          value={this.props.value}
+          value={this.props.value || "0"}
           onClick={this.onClick}
           onSelect={this.onSelect}
         >
+          <Option value="0" text="— None —" />
           {this.state.loading && <Loader />}
           {this.props.children
             ? this.props.children

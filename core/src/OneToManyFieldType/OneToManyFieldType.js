@@ -61,16 +61,18 @@ export class OneToManyFieldType extends Component {
   };
 
   onSelect = (name, value) => {
-    if (this.props.onChange) {
-      this.props.onChange(name, value, this.props.datatype);
-    }
+    if (name && value !== "0") {
+      if (this.props.onChange) {
+        this.props.onChange(name, value, this.props.datatype);
+      }
 
-    this.setState({
-      tags: [
-        ...this.state.tags,
-        this.props.options.find(option => option.value === value)
-      ]
-    });
+      this.setState({
+        tags: [
+          ...this.state.tags,
+          this.props.options.find(option => option.value === value)
+        ]
+      });
+    }
   };
 
   render() {
