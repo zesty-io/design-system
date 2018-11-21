@@ -8,7 +8,9 @@ export class SortFieldType extends Component {
     sortValue: Number(this.props.value) || 0,
     required: this.props.required
   };
-  handleClick = increment => {
+  handleClick = (evt, increment) => {
+    evt.stopPropagation();
+
     let value = increment
       ? Number(this.state.sortValue) + 1
       : Number(this.state.sortValue) - 1;
@@ -30,7 +32,7 @@ export class SortFieldType extends Component {
         <section className={styles.Sort}>
           <span
             className={styles.IncrementL}
-            onClick={() => this.handleClick(true)}
+            onClick={evt => this.handleClick(evt, true)}
           >
             <i className="fa fa-plus" />
           </span>
@@ -41,7 +43,7 @@ export class SortFieldType extends Component {
           />
           <span
             className={styles.IncrementR}
-            onClick={() => this.handleClick()}
+            onClick={evt => this.handleClick(evt)}
           >
             <i className="fa fa-minus" />
           </span>

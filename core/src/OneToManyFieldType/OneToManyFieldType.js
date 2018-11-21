@@ -56,7 +56,7 @@ export class OneToManyFieldType extends Component {
     }
   };
 
-  onRemove = (evt, tagZUID) => {
+  onRemove = tagZUID => {
     // Exclude the removed tag from our tags array
     this.setState({
       tags: this.state.tags.filter(tag => tag.value !== tagZUID)
