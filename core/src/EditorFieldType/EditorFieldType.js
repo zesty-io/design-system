@@ -13,9 +13,16 @@ import styles from "./EditorFieldType.less";
 export class EditorFieldType extends Component {
   constructor(props) {
     super(props);
+
+    // Handle legacy wysiwyg_advanced field type
+    let editor = this.props.type || "wysiwyg_basic";
+    if (editor === "wysiwyg_advanced") {
+      editor = "wysiwyg_basic";
+    }
+
     this.state = {
-      editor: this.props.type || "wysiwyg_basic",
-      value: this.props.value || ""
+      value: this.props.value || "",
+      editor
     };
   }
 
