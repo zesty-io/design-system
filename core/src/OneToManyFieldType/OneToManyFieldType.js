@@ -9,7 +9,7 @@ export class OneToManyFieldType extends Component {
   constructor(props) {
     super(props);
 
-    const tagZUIDs = this.props.value.split(",");
+    const tagZUIDs = this.props.value ? this.props.value.split(",") : [];
 
     this.state = {
       loaded: false, // Used to ensure we only load data once
@@ -28,7 +28,7 @@ export class OneToManyFieldType extends Component {
       });
 
       this.props.onOpen().then(() => {
-        const tagZUIDs = this.props.value.split(",");
+        const tagZUIDs = this.props.value ? this.props.value.split(",") : [];
         this.setState({
           loading: false,
           tags: this.props.options.filter(option =>
