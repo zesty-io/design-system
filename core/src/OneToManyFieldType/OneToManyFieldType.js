@@ -2,17 +2,19 @@ import React, { Component, Fragment } from "react";
 
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
-import styles from "./OneToManyFieldType.less";
-
 import { Select, Option } from "../Select";
 
+import styles from "./OneToManyFieldType.less";
 export class OneToManyFieldType extends Component {
   constructor(props) {
     super(props);
+
+    const tagZUIDs = this.props.value ? this.props.value.split(",") : [];
+
     this.state = {
-      loaded: false,
+      loaded: false, // Used to ensure we only load data once
       loading: false,
-      tags: []
+      tags: this.props.options.filter(option => tagZUIDs.includes(option.value))
     };
   }
 
@@ -20,71 +22,64 @@ export class OneToManyFieldType extends Component {
     // if values are provided
     // load data and display proper tags
     if (this.props.value) {
-      const tagsToBeAdded = this.props.value.split(":")[0].split(",");
-      this.props
-        .onOpen()
-        .then(() => {
-          this.setState({
-            loading: false
-          });
-        })
-        .then(() => {
-          const tags = this.props.options.filter(option =>
-            tagsToBeAdded.includes(option.value)
-          );
-          this.setState({ tags });
-        });
-
       this.setState({
-        loaded: true, // Only load data once
+        loaded: true,
         loading: true
+      });
+
+      this.props.onOpen().then(() => {
+        const tagZUIDs = this.props.value ? this.props.value.split(",") : [];
+        this.setState({
+          loading: false,
+          tags: this.props.options.filter(option =>
+            tagZUIDs.includes(option.value)
+          )
+        });
       });
     }
   }
 
   onClick = () => {
     if (!this.state.loaded && this.props.onOpen) {
+      this.setState({
+        loaded: true,
+        loading: true
+      });
       this.props.onOpen().then(() => {
         this.setState({
           loading: false
         });
       });
-
-      this.setState({
-        loaded: true, // Only load data once
-        loading: true
-      });
     }
   };
 
   onRemove = tagZUID => {
-    // remove the tag ZUID from teh tags array
-    // add it back into the options array
+    // Exclude the removed tag from our tags array
     this.setState({
       tags: this.state.tags.filter(tag => tag.value !== tagZUID)
     });
   };
 
   onSelect = (name, value) => {
-    // we need to alter the options array
-    // and then add the tag in the state
-    // how will this behave with loading?
-    if (this.props.onChange) {
-      this.props.onChange(name, value, this.props.datatype);
-    }
+    if (name && value !== "0") {
+      if (this.props.onChange) {
+        this.props.onChange(name, value, this.props.datatype);
+      }
 
-    this.setState({
-      tags: [...this.state.tags, JSON.parse(value)]
-    });
+      this.setState({
+        tags: [
+          ...this.state.tags,
+          this.props.options.find(option => option.value === value)
+        ]
+      });
+    }
   };
 
   render() {
-    const { tags, loading } = this.state;
-    const { label, selection, options } = this.props;
     return (
       <Fragment>
         <div>
-          <label>{label}</label>
+          <label>{this.props.label}</label>
         </div>
         <section className={styles.OneToMany}>
           <Select
@@ -92,34 +87,21 @@ export class OneToManyFieldType extends Component {
             name={this.props.name}
             onClick={this.onClick}
             onSelect={this.onSelect}
-            selection={selection}
-            default={this.props.default}
-            name={this.props.name}
+            value="0" // By providing a 0 value we pre-select our "empty" option
           >
-            {loading && <Loader />}
-            {options
-              .filter(
-                option =>
-                  !tags
-                    .reduce((acc, item) => {
-                      acc.push(item.value);
-                      return acc;
-                    }, [])
-                    .includes(option.value)
-              )
-              .map((opt, i) => {
-                return <Option key={i} {...opt} value={JSON.stringify(opt)} />;
-              })}
+            <Option value="0" text="— Select Option —" />
+            {this.state.loading && <Loader />}
+            {this.props.options.map((opt, i) => {
+              return <Option key={i} value={opt.value} text={opt.text} />;
+            })}
           </Select>
+
           <article className={styles.Tags}>
-            {tags.length ? (
-              tags.map((tag, i) => (
-                <Tag
-                  key={i}
-                  name={tag.text}
-                  ZUID={tag.value}
-                  onRemove={this.onRemove}
-                />
+            {this.state.tags.length ? (
+              this.state.tags.map((item, i) => (
+                <Tag key={i} onRemove={this.onRemove} value={item.value}>
+                  {item.text}
+                </Tag>
               ))
             ) : (
               <p>Select tags to associate them with your item.</p>

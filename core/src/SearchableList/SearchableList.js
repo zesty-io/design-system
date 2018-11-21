@@ -9,7 +9,6 @@ export class SearchableList extends Component {
   state = {
     dropdownOpen: false,
     searchTerm: ""
-    // hasMatch: false
   };
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selection) {
@@ -22,14 +21,6 @@ export class SearchableList extends Component {
   componentDidMount() {
     document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
-    if (this.props.value) {
-      this.setState({ searchTerm: this.props.value });
-    }
-  }
-  componentDidUpdate() {
-    if (this.props.value && this.props.value !== this.state.searchTerm) {
-      this.setState({ searchTerm: this.props.value });
-    }
   }
   componentWillUnmount() {
     document.removeEventListener("click", this.onClose);
@@ -54,7 +45,7 @@ export class SearchableList extends Component {
 
       if (initialSelectionsHeight < contentHeight) {
         if (initialSelectionsHeight + selectorPosition.y > contentHeight) {
-          // If we can adjust the dropdown height to fit in the
+          // If we can adjust the drop down height to fit in the
           // available content space, subtracting the footer 50px height
           let newHeight = Math.floor(contentHeight - selectorPosition.y) - 50;
           if (newHeight > 200 && newHeight < 600) {
@@ -86,15 +77,9 @@ export class SearchableList extends Component {
     if (this.props.onSelect) {
       this.props.onSelect(name, value, datatype);
     }
-
-    const selected = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == value;
-    });
-
     this.setState({
       searchTerm
     });
-    this.props.onSearch(searchTerm);
   };
 
   handleFilterKeyUp = evt => {
@@ -105,7 +90,6 @@ export class SearchableList extends Component {
     }
     const searchTerm = evt.target.value;
     this.setState({
-      filter: evt.target.value.trim().toLowerCase(),
       searchTerm
     });
     return this.props.onSearch(searchTerm);
@@ -121,9 +105,8 @@ export class SearchableList extends Component {
 
   onClose = evt => {
     const parent = evt.target.closest(".selector");
-
-    // Close this select if the click occured
-    // outside a ZestySelect or this instance
+    // Close this select if the click occurred
+    // outside a Select or this instance
     if (!parent || parent !== this.selector) {
       this.setState({ dropdownOpen: false });
     }
@@ -147,31 +130,27 @@ export class SearchableList extends Component {
         <div {...opts} ref={div => (this.selector = div)}>
           <Input
             type="text"
-            name="term"
+            name="searchTerm"
             autoComplete="off"
             className={styles.searchField}
-            value={this.state.searchTerm}
             placeholder={this.props.placeholder}
+            value={this.state.searchTerm}
             onFocus={this.props.onFocus}
             onChange={this.handleFilterKeyUp}
           />
           <ul className={cx("selections", styles.selections)}>
             <div className={cx("options", styles.options)}>
-              {this.props.loading ? (
-                <Loader />
-              ) : (
-                React.Children.toArray(this.props.children).map(child => {
-                  return React.cloneElement(child, {
-                    onClick: evt => {
-                      // Individual option event listener
-                      if (child.props.onClick) {
-                        child.props.onClick(evt);
-                      }
-                      this.setSelection(evt);
+              {React.Children.toArray(this.props.children).map(child => {
+                return React.cloneElement(child, {
+                  onClick: evt => {
+                    // Individual option event listener
+                    if (child.props.onClick) {
+                      child.props.onClick(evt);
                     }
-                  });
-                })
-              )}
+                    this.setSelection(evt);
+                  }
+                });
+              })}
             </div>
           </ul>
         </div>
