@@ -2,10 +2,9 @@ import React, { Component, Fragment } from "react";
 
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
-import styles from "./OneToManyFieldType.less";
-
 import { Select, Option } from "../Select";
 
+import styles from "./OneToManyFieldType.less";
 export class OneToManyFieldType extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +19,6 @@ export class OneToManyFieldType extends Component {
   }
 
   componentDidMount() {
-    console.log("OneToManyFieldType:componentDidMount", this.props.value);
-
     // if values are provided
     // load data and display proper tags
     if (this.props.value) {
@@ -64,9 +61,6 @@ export class OneToManyFieldType extends Component {
   };
 
   onSelect = (name, value) => {
-    // we need to alter the options array
-    // and then add the tag in the state
-    // how will this behave with loading?
     if (this.props.onChange) {
       this.props.onChange(name, value, this.props.datatype);
     }
@@ -80,7 +74,6 @@ export class OneToManyFieldType extends Component {
   };
 
   render() {
-    const tagZUIDs = this.state.tags.map(tag => tag.value).join(",");
     return (
       <Fragment>
         <div>
@@ -92,13 +85,13 @@ export class OneToManyFieldType extends Component {
             name={this.props.name}
             onClick={this.onClick}
             onSelect={this.onSelect}
+            value="0" // By providing a 0 value we pre-select our "empty" option
           >
+            <Option value="0" text="— Select Option —" />
             {this.state.loading && <Loader />}
-            {this.props.options
-              .filter(opt => !tagZUIDs.includes(opt.value))
-              .map((opt, i) => {
-                return <Option key={i} value={opt.value} text={opt.text} />;
-              })}
+            {this.props.options.map((opt, i) => {
+              return <Option key={i} value={opt.value} text={opt.text} />;
+            })}
           </Select>
 
           <article className={styles.Tags}>

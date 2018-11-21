@@ -8,38 +8,24 @@ export class Select extends Component {
     options: [
       {
         text: "This field is misconfigured",
-        value: ""
+        value: null
       }
     ],
-    default: {
-      className: styles.DefaultOpt,
-      text: "— None —",
-      value: ""
-    },
     searchLength: 50
   };
 
   constructor(props) {
     super(props);
 
-    if (!this.props.name) {
+    if (!props.name) {
       throw new Error("Select components require a `name` property");
     }
 
     this.state = {
       dropdownOpen: false,
-      selection: props.selection ? props.selection : props.default,
+      value: props.value,
       filter: ""
     };
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.selection) {
-      if (nextProps.selection.value !== prevState.selection.value) {
-        return { ...prevState, selection: nextProps.selection };
-      }
-    }
-    return null;
   }
 
   componentDidMount() {
@@ -127,26 +113,24 @@ export class Select extends Component {
     });
   };
 
+  // Top level Select event listener
   setSelection = evt => {
     const value = evt.currentTarget.dataset.value;
-    const child = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == value;
-    });
 
-    this.setState(
-      {
-        selection: child ? child.props : this.props.default
-      },
-      () => {
-        // Top level Select event listener
-        if (this.props.onSelect) {
-          this.props.onSelect(this.props.name, value);
-        }
-      }
-    );
+    if (this.props.onSelect) {
+      this.props.onSelect(this.props.name, value);
+    }
+
+    this.setState({ value });
   };
 
   render() {
+    // On each render determine the currently selected option
+    const childrenArr = React.Children.toArray(this.props.children);
+    const selection = childrenArr.find(
+      child => child.props.value == this.state.value
+    );
+
     return (
       <div
         className={cx(
@@ -158,46 +142,32 @@ export class Select extends Component {
         onClick={this.toggleDropdown}
         ref={div => (this.selector = div)}
       >
-        {/*<input
-          type="hidden"
-          name={this.props.name}
-          value={this.state.selection.value}
-        />*/}
         <span className={styles.selection}>
-          {this.state.selection.html ? (
+          {selection && selection.props.html ? (
             <span
               className={styles.content}
               dangerouslySetInnerHTML={{
-                __html: this.state.selection.html
+                __html: selection && selection.props.html
               }}
             />
           ) : (
-            <span className={styles.content}>{this.state.selection.text}</span>
+            <span className={styles.content}>
+              {selection && selection.props.text}
+            </span>
           )}
 
           <i className={cx("fa fa-caret-down", styles.chevron)} />
         </span>
         <ul className={cx("selections", styles.selections)}>
-          {this.props.children &&
-            React.Children.toArray(this.props.children).length >
-              this.props.searchLength && (
-              <Search
-                className={styles.Filter}
-                placeholder="Enter a term to filter this list"
-                onChange={this.handleFilterKeyUp}
-              />
-            )}
-          <div className={cx("options", styles.options)}>
-            {/* Default Option*/}
-            <Option
-              className={cx(styles.DefaultOpt, this.props.default.className)}
-              text={this.props.default.text}
-              value={this.props.default.value}
-              // {...this.props.default}
-              onClick={this.setSelection}
+          {childrenArr.length > this.props.searchLength && (
+            <Search
+              className={styles.Filter}
+              placeholder="Enter a term to filter this list"
+              onChange={this.handleFilterKeyUp}
             />
-
-            {React.Children.toArray(this.props.children)
+          )}
+          <div className={cx("options", styles.options)}>
+            {childrenArr
               .filter(child => {
                 if (this.state.filter) {
                   return (

@@ -18,13 +18,14 @@ export class DropDownFieldType extends Component {
         <Select
           name={this.props.name}
           onSelect={this.onSelect}
-          selection={this.props.selection}
-          default={this.props.default}
           name={this.props.name}
+          value={this.props.value}
         >
-          {this.props.options.map((opt, i) => {
-            return <Option key={i} {...opt} />;
-          })}
+          {this.props.children
+            ? this.props.children
+            : this.props.options.map((opt, i) => {
+                return <Option key={i} {...opt} />;
+              })}
         </Select>
       </label>
     );

@@ -80,10 +80,7 @@ export class EditorFieldType extends Component {
             name="editorType"
             className={styles.EditorSelection}
             onSelect={this.selectEditor}
-            default={{
-              value: "wysiwyg_basic",
-              text: "WYSIWYG"
-            }}
+            value={this.state.editor}
           >
             <Option value="wysiwyg_basic" text="WYSIWYG" />
             <Option value="markdown" text="Markdown" />
