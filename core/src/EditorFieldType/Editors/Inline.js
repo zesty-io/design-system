@@ -14,7 +14,7 @@ export function InlineEditor({ value, onChange }) {
       onChange={onChange}
       render={({ editor, view }) => (
         <section className={styles.InlineEditor}>
-          <Floater>
+          <Floater view={view}>
             <MenuBar menu={inline} view={view} />
           </Floater>
           {editor}
