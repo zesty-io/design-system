@@ -19,40 +19,40 @@ export class TextareaFieldType extends Component {
       value: props.value || ""
     };
   }
-  render() {
-    return (
-      <article
-        className={`${styles.TextareaFieldType} ${
-          this.props.maxLength && this.state.value.length > this.props.maxLength
-            ? styles.Error
-            : ""
-        }`}
-      >
-        <div className={styles.TextareaFieldTypeLabel}>
-          <label>{this.props.label}</label>
-          {this.props.maxLength && (
-            <span>
-              {this.state.value.length}/{this.props.maxLength}
-            </span>
-          )}
-        </div>
-        <Textarea
-          // {...this.props}
-          name={this.props.name}
-          value={this.state.value}
-          onChange={this.onChange}
-        />
-      </article>
-    );
-  }
   onChange = evt => {
-    console.log("TextareaFieldType:onChange", evt.target);
     const value = evt.target.value;
     const name = evt.target.name;
+
     this.setState({ value }, () => {
       if (this.props.onChange) {
         this.props.onChange(name, value, this.props.datatype);
       }
     });
   };
+  render() {
+    return (
+      <article
+        className={`${styles.TextareaFieldType} ${
+          this.props.charCount && this.state.value.length > this.props.charCount
+            ? styles.Error
+            : ""
+        }`}
+      >
+        <div className={styles.TextareaFieldTypeLabel}>
+          <label>{this.props.label}</label>
+          {this.props.charCount && (
+            <span>
+              {this.state.value.length}/{this.props.charCount}
+            </span>
+          )}
+        </div>
+        <Textarea
+          name={this.props.name}
+          value={this.state.value}
+          onChange={this.onChange}
+          placeholder={this.props.placeholder}
+        />
+      </article>
+    );
+  }
 }

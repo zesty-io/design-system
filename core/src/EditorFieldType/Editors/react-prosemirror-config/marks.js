@@ -36,10 +36,103 @@ const underline = {
   ]
 };
 
+const indent = {
+  parseDOM: [
+    { tag: "span" },
+    {
+      style: "padding-left: 30px"
+    }
+  ],
+  toDOM: () => [
+    "span",
+    {
+      style: "padding-left:30px"
+    }
+  ]
+};
+
+const alignLeft = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:left" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:left"
+    }
+  ]
+};
+
+const alignRight = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:right" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:right"
+    }
+  ]
+};
+
+const alignCenter = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:center" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:center"
+    }
+  ]
+};
+
+const alignJustify = {
+  parseDOM: [{ tag: "span" }, { style: "text-align:justify" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;text-align:justify"
+    }
+  ]
+};
+
+const floatLeft = {
+  parseDOM: [{ tag: "span" }, { style: "float:left" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;float:left"
+    }
+  ]
+};
+
+const floatRight = {
+  parseDOM: [{ tag: "span" }, { style: "float:right" }],
+  toDOM: () => [
+    "span",
+    {
+      style: "display:block;float:right"
+    }
+  ]
+};
+
+// const dedent = {
+//   parseDOM: [{ tag: "p" }, { style: "padding-left:0px" }],
+//   toDOM: () => [
+//     "span",
+//     {
+//       style: "padding-left:0px"
+//     }
+//   ]
+// };
+
 export default {
   ...marks,
   subscript,
   superscript,
   strikethrough,
-  underline
+  underline,
+  indent,
+  alignLeft,
+  alignRight,
+  alignCenter,
+  alignJustify,
+  floatLeft,
+  floatRight
+  // dedent
 };

@@ -14,22 +14,22 @@ export class ButtonGroupGuide extends Component {
         <p>A wrapper to group buttons</p>
         <p>Button Group does not accept attributes</p>
         <ButtonGroup>
-          <Button type="" text="Button1" />
-          <Button type="" text="Button2" />
-          <Button type="" text="Button3" />
+          <Button kind="" text="Button1" />
+          <Button kind="" text="Button2" />
+          <Button kind="" text="Button3" />
         </ButtonGroup>
         <br />
         <ButtonGroup>
-          <Button type="cancel" text="Cancel" />
-          <Button type="save" text="Save" />
+          <Button kind="cancel" text="Cancel" />
+          <Button kind="save" text="Save" />
         </ButtonGroup>
         <br />
         <ButtonGroup>
-          <Button type="" text="Button1" />
-          <Button type="warn" text="Button2" />
-          <Button type="" text="Button3" />
-          <Button type="alt" text="Button4" />
-          <Button type="" text="Button5" />
+          <Button kind="" text="Button1" />
+          <Button kind="warn" text="Button2" />
+          <Button kind="" text="Button3" />
+          <Button kind="alt" text="Button4" />
+          <Button kind="" text="Button5" />
         </ButtonGroup>
 
         <CodeCard

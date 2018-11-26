@@ -24,7 +24,9 @@ export class SelectGuide extends Component {
         <br />
         <Select
           selection={{ value: this.state.value, text: this.state.text }}
-          onSelect={this.handleSelect}>
+          onSelect={this.handleSelect}
+          name="required"
+          searchLength={2}>
           <Option key="1" value="1" text="Selection 1" />
           <Option key="2" value="2" text="Selection 2" />
           <Option key="3" value="3" text="Selection 3" />
@@ -39,10 +41,11 @@ export class SelectGuide extends Component {
       </React.Fragment>
     )
   }
-  handleSelect = evt => {
+  handleSelect = (name, value, dataType) => {
+    console.log(name, value)
     this.setState({
-      value: evt.target.dataset.value,
-      text: evt.target.dataset.text
+      value: value,
+      text: value
     })
   }
 }

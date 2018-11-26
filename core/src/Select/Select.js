@@ -8,46 +8,129 @@ export class Select extends Component {
     options: [
       {
         text: "This field is misconfigured",
-        value: ""
+        value: null
       }
     ],
-    default: {
-      className: styles.DefaultOpt,
-      text: "— None —",
-      value: ""
-    },
     searchLength: 50
   };
 
   constructor(props) {
     super(props);
+
+    if (!props.name) {
+      throw new Error("Select components require a `name` property");
+    }
+
     this.state = {
       dropdownOpen: false,
-      selection: props.selection ? props.selection : props.default,
+      value: props.value,
       filter: ""
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.selection) {
-      if (nextProps.selection.value !== prevState.selection.value) {
-        return { ...prevState, selection: nextProps.selection };
-      }
-    }
-    return null;
-  }
-
   componentDidMount() {
-    document.addEventListener("click", this.onClose);
+    // document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
+    if (this.props.searchLength) {
+      this.setState({ searchLength: this.props.searchLength });
+    }
   }
 
   componentWillUnmount() {
-    document.removeEventListener("click", this.onClose);
+    // document.removeEventListener("click", this.onClose);
     document.removeEventListener("keyup", this.onEsc);
   }
 
+  handleFilterKeyUp = (name, term, datatype) => {
+    this.setState({
+      filter: term.trim().toLowerCase()
+    });
+  };
+
+  onEsc = evt => {
+    if (evt.which == 27) {
+      this.setState({
+        dropdownOpen: false
+      });
+    }
+  };
+
+  onClose = evt => {
+    const parent = evt.target.closest(".Select");
+
+    // Close this select if the click occured
+    // outside a ZestySelect or this instance
+    if (!parent || parent !== this.selector) {
+      this.setState({
+        dropdownOpen: false
+      });
+    }
+  };
+
+  toggleDropdown = evt => {
+    if (evt.target.type === "search") {
+      return false;
+    }
+
+    if (this.props.onClick) {
+      this.props.onClick(evt);
+    }
+
+    const body = document.querySelector("body");
+    const content = document.querySelector("body");
+
+    if (body && content) {
+      const contentHeight = content.scrollHeight;
+      const selectorPosition = this.selector.getBoundingClientRect();
+      const filter = this.selector.querySelector(".Filter");
+      const selections = this.selector.querySelector(".selections");
+      const initialSelectionsHeight = selections.offsetHeight;
+      const scrollOffset = body.scrollTop;
+
+      if (initialSelectionsHeight < contentHeight) {
+        if (initialSelectionsHeight + selectorPosition.y > contentHeight) {
+          // If we can adjust the dropdown height to fit in the
+          // available content space, subtracting the footer 50px height
+          let newHeight = Math.floor(contentHeight - selectorPosition.y) - 50;
+          if (newHeight > 200 && newHeight < 600) {
+            // The options list controls the overflow scrolling
+            // so we have to adjust it's height
+            selections.querySelector(".options").style.height =
+              newHeight + "px";
+          } else {
+            selections.style.top = "-" + initialSelectionsHeight + "px";
+          }
+        }
+      }
+
+      if (filter) {
+        filter.querySelector("input").focus();
+      }
+    }
+
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  };
+
+  // Top level Select event listener
+  setSelection = evt => {
+    const value = evt.currentTarget.dataset.value;
+
+    if (this.props.onSelect) {
+      this.props.onSelect(this.props.name, value);
+    }
+
+    this.setState({ value });
+  };
+
   render() {
+    // On each render determine the currently selected option
+    const childrenArr = React.Children.toArray(this.props.children);
+    const selection = childrenArr.find(
+      child => child.props.value == this.state.value
+    );
+
     return (
       <div
         className={cx(
@@ -59,58 +142,32 @@ export class Select extends Component {
         onClick={this.toggleDropdown}
         ref={div => (this.selector = div)}
       >
-        {/*<input
-          type="hidden"
-          name={this.props.name}
-          value={this.state.selection.value}
-        />*/}
         <span className={styles.selection}>
-          <i
-            className={cx(
-              "fa fa-chevron-right",
-              styles.chevron,
-              styles["icon-chevron-right"]
-            )}
-          />
-          <i
-            className={cx(
-              "fa fa-chevron-down",
-              styles.chevron,
-              styles["icon-chevron-down"]
-            )}
-          />
-          {this.state.selection.html ? (
+          {selection && selection.props.html ? (
             <span
               className={styles.content}
               dangerouslySetInnerHTML={{
-                __html: this.state.selection.html
+                __html: selection && selection.props.html
               }}
             />
           ) : (
-            <span className={styles.content}>{this.state.selection.text}</span>
+            <span className={styles.content}>
+              {selection && selection.props.text}
+            </span>
           )}
+
+          <i className={cx("fa fa-caret-down", styles.chevron)} />
         </span>
         <ul className={cx("selections", styles.selections)}>
-          {this.props.children &&
-          React.Children.toArray(this.props.children).length >
-            this.props.searchLength ? (
+          {childrenArr.length > this.props.searchLength && (
             <Search
-              className="filter"
+              className={styles.Filter}
               placeholder="Enter a term to filter this list"
-              onKeyUp={this.handleFilterKeyUp}
+              onChange={this.handleFilterKeyUp}
             />
-          ) : null}
+          )}
           <div className={cx("options", styles.options)}>
-            {/* Default Option*/}
-            <Option
-              className={cx(styles.DefaultOpt, this.props.default.className)}
-              text={this.props.default.text}
-              value={this.props.default.value}
-              // {...this.props.default}
-              onClick={this.setSelection}
-            />
-
-            {React.Children.toArray(this.props.children)
+            {childrenArr
               .filter(child => {
                 if (this.state.filter) {
                   return (
@@ -143,92 +200,6 @@ export class Select extends Component {
       </div>
     );
   }
-
-  toggleDropdown = evt => {
-    if (evt.target.closest(".filter")) {
-      return false;
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick(evt);
-    }
-
-    const body = document.querySelector("body");
-    const content = document.querySelector("body");
-
-    if (body && content) {
-      const contentHeight = content.scrollHeight;
-      const selectorPosition = this.selector.getBoundingClientRect();
-      const filter = this.selector.querySelector(".filter");
-      const selections = this.selector.querySelector(".selections");
-      const initialSelectionsHeight = selections.offsetHeight;
-      const scrollOffset = body.scrollTop;
-
-      if (initialSelectionsHeight < contentHeight) {
-        if (initialSelectionsHeight + selectorPosition.y > contentHeight) {
-          // If we can adjust the dropdown height to fit in the
-          // available content space, subtracting the footer 50px height
-          let newHeight = Math.floor(contentHeight - selectorPosition.y) - 50;
-          if (newHeight > 200 && newHeight < 600) {
-            // The options list controls the overflow scrolling
-            // so we have to adjust it's height
-            selections.querySelector(".options").style.height =
-              newHeight + "px";
-          } else {
-            selections.style.top = "-" + initialSelectionsHeight + "px";
-          }
-        }
-      }
-
-      if (filter) {
-        filter.querySelector("input").focus();
-      }
-    }
-
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  };
-
-  setSelection = evt => {
-    const child = React.Children.toArray(this.props.children).find(child => {
-      return child.props.value == evt.currentTarget.dataset.value;
-    });
-    const selection = child ? child.props : this.props.default;
-
-    this.setState({ selection });
-
-    // Top level Select event listener
-    if (this.props.onSelect) {
-      this.props.onSelect(evt);
-    }
-  };
-
-  handleFilterKeyUp = evt => {
-    this.setState({
-      filter: evt.trim().toLowerCase()
-    });
-  };
-
-  onEsc = evt => {
-    if (evt.which == 27) {
-      this.setState({
-        dropdownOpen: false
-      });
-    }
-  };
-
-  onClose = evt => {
-    const parent = evt.target.closest(".Select");
-
-    // Close this select if the click occured
-    // outside a ZestySelect or this instance
-    if (!parent || parent !== this.selector) {
-      this.setState({
-        dropdownOpen: false
-      });
-    }
-  };
 }
 
 export function Option({ value, html, text, onClick, className }) {

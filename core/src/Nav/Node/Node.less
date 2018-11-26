@@ -3,19 +3,21 @@
 .item {
   display: flex;
   align-items: baseline;
-  max-height: 80px;
-  transition: max-height 0.2s ease;
+  border-radius: 0 0 0 3px;
+  // max-height: 80px;
+  // transition: max-height 0.2s ease;
   user-select: none;
+
   i {
     color: @zesty-gray;
-    margin-right: 0.5rem;
+    margin-right: 8px;
   }
 
   a {
-    padding: 0.5rem;
     text-decoration: none;
     color: @zesty-light-blue;
     flex: 1;
+    padding: 8px 16px;
   }
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
@@ -30,16 +32,19 @@
 }
 
 .depth4 {
-  background-color: darken(@nav-border-color, 2%);
+  opacity: 0.2;
+  background-color: #1a202c;
 }
 .depth3 {
-  background-color: darken(@nav-border-color, 4%);
+  opacity: 0.4;
+  background-color: #1a202c;
 }
 .depth2 {
-  background-color: darken(@nav-border-color, 9%);
+  opacity: 0.6;
+  background-color: #1a202c;
 }
 .depth1 {
-  background-color: darken(@nav-border-color, 12%);
+  background-color: #1a202c;
 }
 
 .hover {
@@ -47,14 +52,14 @@
 }
 
 .selected {
-  i {
-    &:first-child {
-      color: @zesty-orange;
+  background-color: #c3cddf;
+  opacity: 1;
+  a {
+    color: #000;
+    i {
+      &:first-child {
+        color: @zesty-orange;
+      }
     }
   }
-}
-
-.closed {
-  visibility: hidden;
-  max-height: 0;
 }

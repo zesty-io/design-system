@@ -1,71 +1,58 @@
 import React, { Component } from "react";
-
-import { Button } from "../Button";
-
-import styles from "./Search.less";
 import cx from "classnames";
 
+import { Input } from "../Input";
+import { InputIcon } from "../InputIcon";
+
+import styles from "./Search.less";
 export class Search extends Component {
   state = {
-    searchTerm: ""
+    term: String()
   };
   componentDidMount() {
-    // lets the user override the initial value in the search box
-    if (this.props.override) {
-      this.setState({ searchTerm: this.props.override });
-    }
+    this.setState({
+      term: this.props.value
+    });
   }
-  handleSubmit = evt => {
-    evt.preventDefault();
-    if (this.props.onSubmit) {
-      this.props.onSubmit(this.state.searchTerm);
-    }
-  };
-  handleKeyUp = evt => {
-    // return the target value of the input
+
+  onChange = evt => {
     this.setState(
       {
-        searchTerm: evt.target.value
+        term: evt.target.value
       },
-      () =>
-        this.props.onKeyUp(
-          this.props.name,
-          this.state.searchTerm,
-          this.props.datatype
-        )
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(
+            this.props.name,
+            this.state.term,
+            this.props.datatype
+          );
+        }
+      }
     );
   };
+  onSubmit = () => {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(
+        this.props.name,
+        this.state.term,
+        this.props.datatype
+      );
+    }
+  };
+
   render() {
     return (
-      <div className={cx(styles.search, this.props.className)}>
-        {this.props.noButton ? null : (
-          <Button className={styles.searchBtn} onClick={this.handleSubmit}>
-            <i
-              className={cx(styles.searchIcon, "fa fa-search")}
-              aria-hidden="true"
-            />
-          </Button>
-        )}
-        <input
-          type="text"
-          name="term"
-          autoComplete="off"
-          value={this.state.searchTerm}
-          className={styles.searchField}
-          placeholder={this.props.placeholder}
-          onFocus={this.props.onFocus}
-          onChange={this.handleKeyUp}
+      <div className={cx(styles.Search, this.props.className)}>
+        <Input
+          {...this.props}
+          type="search"
+          className={styles.Input}
+          onChange={this.onChange}
         />
-        {this.state.searchTerm && (
-          <i
-            className={`${styles.clearBtn} fa fa-times`}
-            onClick={() =>
-              this.handleKeyUp({
-                target: { value: "" }
-              })
-            }
-          />
-        )}
+        <InputIcon onClick={this.onSubmit}>
+          <i className="fa fa-search" />
+        </InputIcon>
       </div>
     );
   }

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import cx from "classnames";
-import debounce from "lodash/debounce";
 
+// Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
 import { BasicEditor } from "./Editors/Basic.js";
-// import { AdvancedEditor } from "./Editors/Advanced.js";
 import { InlineEditor } from "./Editors/Inline.js";
 import { MarkdownEditor } from "./Editors/Markdown.js";
 import { HtmlEditor } from "./Editors/Html.js";
@@ -14,53 +13,45 @@ import styles from "./EditorFieldType.less";
 export class EditorFieldType extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      editor: this.props.type || "basic",
-      value: this.props.value
-    };
 
-    // this.onChange = debounce(
-    //   evt => {
-    //     console.log("Editor:onChange", evt);
-    //     const value = evt.target.value;
-    //
-    //     if (this.props.onChange) {
-    //       this.props.onChange(this.props.name, value, this.props.datatype);
-    //     }
-    //     this.setState({ value });
-    //   },
-    //   1000,
-    //   { maxWait: 5000 }
-    // );
+    // Handle legacy wysiwyg_advanced field type
+    let editor = this.props.type || "wysiwyg_basic";
+    if (editor === "wysiwyg_advanced") {
+      editor = "wysiwyg_basic";
+    }
+
+    this.state = {
+      value: this.props.value || "",
+      editor
+    };
   }
 
   onChange = value => {
-    // console.log("Editor:onChange", value);
-    if (this.props.onChange) {
-      this.props.onChange(this.props.name, value, this.props.datatype);
-    }
-    this.setState({ value });
+    this.setState({ value }, () => {
+      // Prosemirror triggers on change events when focusing in and out of the editor
+      // so check whether the initial value has changed.
+      if (this.props.value !== this.state.value) {
+        if (this.props.onChange) {
+          this.props.onChange(this.props.name, value, this.props.datatype);
+        }
+      }
+    });
   };
 
-  selectEditor = evt => {
+  selectEditor = (name, value) => {
     this.setState({
-      editor: evt.currentTarget.dataset.value
+      editor: value
     });
   };
 
   renderEditor = () => {
-    // console.log("Editor: ", this.state.editor);
     switch (this.state.editor) {
-      case "basic":
+      case "wysiwyg_basic":
+      case "wysiwyg_advanced":
         return (
           <BasicEditor value={this.state.value} onChange={this.onChange} />
         );
         break;
-      // case "advanced":
-      //   return (
-      //     <AdvancedEditor value={this.state.value} onChange={this.onChange} />
-      //   );
-      //   break;
       case "markdown":
         return (
           <MarkdownEditor value={this.state.value} onChange={this.onChange} />
@@ -88,16 +79,17 @@ export class EditorFieldType extends Component {
       <div className={cx(styles.EditorFieldType, this.props.className)}>
         <label className={styles.EditorFieldTypeLabel}>
           <span>{this.props.label}</span>
-          <span>0/65,000</span>
+          <span>
+            {this.state.value.length}
+            /65,000
+          </span>
           <Select
+            name="editorType"
             className={styles.EditorSelection}
             onSelect={this.selectEditor}
-            default={{
-              value: "basic",
-              text: "WYSIWYG"
-            }}
+            value={this.state.editor}
           >
-            <Option value="basic" text="WYSIWYG" />
+            <Option value="wysiwyg_basic" text="WYSIWYG" />
             <Option value="markdown" text="Markdown" />
             <Option value="article_writer" text="Inline" />
             <Option value="html" text="HTML" />

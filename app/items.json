@@ -14,15 +14,17 @@
     "Textarea",
     "Url",
     "Tag",
-    "SearchableList",
-    "WithLoader"
+    "WithLoader",
+    "ToggleButton"
   ],
   "molecules": [
     "CollapsibleCard",
+    "SearchableList",
     "Search",
     "ColorFieldType",
     "CurrencyFieldType",
     "TextFieldType",
+    "Drawer",
     "TextAreaFieldType",
     "SortFieldType",
     "NumberFieldType",
@@ -32,14 +34,12 @@
     "DateTimeFieldType",
     "DropDownFieldType",
     "ImageFieldType",
-    "WYSIWYGFieldType",
-    "DraftFieldType",
-    "QuillFieldType",
     "OneToOneFieldType",
     "OneToManyFieldType",
-    "MarkdownFieldType",
     "InternalLinkFieldType",
-    "EditorFieldType"
+    "EditorFieldType",
+    "UUIDFieldType",
+    "ConfirmDialog"
   ],
   "organisms": []
 }

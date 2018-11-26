@@ -6,6 +6,7 @@ import copy from "rollup-plugin-copy-glob";
 import postcss from "rollup-plugin-postcss";
 import modules from "postcss-modules";
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
+import { plugin as analyze } from "rollup-plugin-analyzer";
 
 try {
   fs.mkdirSync("dist/");
@@ -55,6 +56,7 @@ export default {
     "moment"
   ],
   plugins: [
+    analyze({ limit: 5 }),
     postcss({
       extract: "dist/bundle.css"
     }),

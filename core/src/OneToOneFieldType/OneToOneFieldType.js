@@ -10,27 +10,6 @@ export class OneToOneFieldType extends Component {
     };
   }
 
-  render() {
-    return (
-      <article>
-        <div>
-          <label>{this.props.label}</label>
-        </div>
-        <Select
-          onClick={this.onClick}
-          onSelect={this.onSelect}
-          selection={this.props.selection}
-          default={this.props.default}
-        >
-          {this.state.loading && <Loader />}
-          {this.props.options.map((opt, i) => {
-            return <Option key={i} {...opt} />;
-          })}
-        </Select>
-      </article>
-    );
-  }
-
   onClick = () => {
     if (!this.state.loaded && this.props.onOpen) {
       this.props.onOpen().then(() => {
@@ -46,13 +25,33 @@ export class OneToOneFieldType extends Component {
     }
   };
 
-  onSelect = evt => {
+  onSelect = (name, value) => {
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.currentTarget.dataset.value,
-        this.props.datatype
-      );
+      this.props.onChange(name, value, this.props.datatype);
     }
   };
+
+  render() {
+    return (
+      <article>
+        <div>
+          <label>{this.props.label}</label>
+        </div>
+        <Select
+          name={this.props.name}
+          value={this.props.value || "0"}
+          onClick={this.onClick}
+          onSelect={this.onSelect}
+        >
+          <Option value="0" text="— None —" />
+          {this.state.loading && <Loader />}
+          {this.props.children
+            ? this.props.children
+            : this.props.options.map((opt, i) => {
+                return <Option key={i} {...opt} />;
+              })}
+        </Select>
+      </article>
+    );
+  }
 }

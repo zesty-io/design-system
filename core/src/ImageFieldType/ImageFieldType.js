@@ -1,6 +1,6 @@
 import React, { Component, PureComponent } from "react";
 import cx from "classnames";
-import { Card, CardHeader, CardContent } from "../Card";
+import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 import { Button } from "../Button";
 import styles from "./ImageFieldType.less";
 
@@ -38,25 +38,20 @@ export class ImageFieldType extends Component {
   };
 
   render() {
+    const { label, images, field, limit } = this.props;
     return (
       <React.Fragment>
-        <label>{this.props.label}</label>
+        <label>{label}</label>
         <Card className={styles.ImageFieldType}>
-          <CardHeader className={styles.ImageFieldTypeHeader}>
-            <Actions
-              addImage={this.addImage}
-              imageCount={this.props.images.length}
-              limit={this.props.limit}
-            />
-          </CardHeader>
           <CardContent className={styles.ImageFieldTypeContent}>
             {/*
               <h3>Drop images here to upload them to your media</h3>
               <input type="file" className={styles.DropZone} />
             */}
-            {this.props.images.map(ZUID => {
+            {images.map((ZUID, i) => {
               return (
                 <Image
+                  key={i}
                   imageZUID={ZUID}
                   width="200"
                   height="200"
@@ -64,10 +59,19 @@ export class ImageFieldType extends Component {
                 />
               );
             })}
-            {!this.props.images.length && (
+            {!images.length && (
               <h1 className={styles.NoImages}>No media has been selected</h1>
             )}
           </CardContent>
+          <CardFooter className={styles.ImageFieldTypeFooter}>
+            <Actions
+              {...this.props}
+              field={field}
+              addImage={this.addImage}
+              imageCount={images.length}
+              limit={limit}
+            />
+          </CardFooter>
         </Card>
       </React.Fragment>
     );
@@ -76,15 +80,29 @@ export class ImageFieldType extends Component {
 
 class Actions extends PureComponent {
   render() {
+    const { value, addImage, limit, imageCount, label } = this.props;
+    const { datatypeOptions, name } = this.props.field;
     return (
       <Button
-        kind={this.props.imageCount > this.props.limit ? "warn" : ""}
+        kind={imageCount > limit ? "warn" : ""}
         onClick={() => {
-          riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
-            callback: this.props.addImage
-          });
+          const optsObject = {
+            callback: addImage,
+            ids: value,
+            limit,
+            name,
+            displayName: label
+          };
+          if (datatypeOptions && datatypeOptions.group_id) {
+            optsObject.lock = datatypeOptions.group_id;
+          }
+          riot.mount(
+            document.querySelector("#modalMount"),
+            "media-app-modal",
+            optsObject
+          );
         }}
-        text={`Select Media (${this.props.imageCount}/${this.props.limit})`}
+        text={`Select Media (${imageCount}/${limit})`}
       />
     );
   }
@@ -92,17 +110,18 @@ class Actions extends PureComponent {
 
 class Image extends Component {
   render() {
+    const { removeImage, imageZUID, width, height } = this.props;
     return (
       <figure className={styles.file}>
         <img
           className={styles.image}
-          src={`${CONFIG.service.media_resolver}/resolve/${
-            this.props.imageZUID
-          }/getimage/?w=${this.props.width}&h=${this.props.height}&type=fit`}
+          src={`${
+            CONFIG.service.media_resolver
+          }/resolve/${imageZUID}/getimage/?w=${width}&h=${height}&type=fit`}
         />
         <Button
           className={styles.remove}
-          onClick={() => this.props.removeImage(this.props.imageZUID)}
+          onClick={() => removeImage(imageZUID)}
         >
           <i className={cx(styles.icon, "fa fa-times")} />
         </Button>

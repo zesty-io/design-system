@@ -15,9 +15,20 @@ export class DateFieldTypeGuide extends Component {
         </a>
         <br />
         <br />
-        <DateFieldType label="Format Date" dateFormat="YYYY/MM/DD" />
-        <DateFieldType label="Format to LL" dateFormat="LL" />
-        <DateFieldType label="Title Field" />
+        <DateFieldType
+          label="Format Date"
+          name="dateTimePicker"
+          future
+          onChange={console.log}
+          datatype={'datetime'}
+        />
+        <DateFieldType
+          label="Format Date"
+          name="datepicker"
+          default={new Date().toString()}
+          onChange={console.log}
+          datatype={'date'}
+        />
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed

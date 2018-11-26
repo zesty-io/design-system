@@ -3,13 +3,9 @@ import { Select, Option } from "../Select";
 import styles from "./DropDownFieldType.less";
 
 export class DropDownFieldType extends Component {
-  selectOption = evt => {
+  onSelect = (name, value) => {
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.currentTarget.dataset.value,
-        this.props.datatype
-      );
+      this.props.onChange(name, value, this.props.datatype);
     }
   };
 
@@ -20,13 +16,17 @@ export class DropDownFieldType extends Component {
           {this.props.label}
         </span>
         <Select
-          onSelect={this.selectOption}
-          selection={this.props.selection}
-          default={this.props.default}
+          name={this.props.name}
+          onSelect={this.onSelect}
+          name={this.props.name}
+          value={this.props.value || "0"}
         >
-          {this.props.options.map((opt, i) => {
-            return <Option key={i} {...opt} />;
-          })}
+          <Option value="0" text="— None —" />
+          {this.props.children
+            ? this.props.children
+            : this.props.options.map((opt, i) => {
+                return <Option key={i} {...opt} />;
+              })}
         </Select>
       </label>
     );

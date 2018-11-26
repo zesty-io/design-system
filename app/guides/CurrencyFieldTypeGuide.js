@@ -30,6 +30,7 @@ export class CurrencyFieldTypeGuide extends Component {
                 code="CAD"
                 value="10.00"
                 onChange={value => console.log(value)}
+                name="required"
               />
             </CardContent>
           </Card>

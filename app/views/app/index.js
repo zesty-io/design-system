@@ -6,7 +6,9 @@ import * as Guides from '../../guides'
 
 import { Nav } from '../../../core/src/Nav'
 
+import '@zesty-io/core/dist/vendor.css'
 import styles from './app.less'
+
 export default class App extends Component {
   render() {
     return (

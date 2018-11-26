@@ -75,6 +75,7 @@ export class OneToManyFieldTypeGuide extends Component {
               text: 'good day'
             }
           ]}
+          name="required"
         />
         <br />
         <CollapsibleCard header="Usage" open>

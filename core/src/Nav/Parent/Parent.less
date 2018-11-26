@@ -30,6 +30,17 @@
   ul {
     letter-spacing: 1px;
     list-style: none;
-    margin-left: 0.7rem;
+    margin-left: 8px;
+
+    article:last-child {
+      margin-bottom: 8px;
+    }
+    ul article:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .closed {
+    visibility: hidden;
+    max-height: 0;
   }
 }

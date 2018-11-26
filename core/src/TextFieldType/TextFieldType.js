@@ -16,6 +16,15 @@ export class TextFieldType extends Component {
       value: props.value || ""
     };
   }
+  onChange = evt => {
+    const value = evt.target.value;
+    const name = evt.target.name;
+    this.setState({ value }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(name, value, this.props.datatype);
+      }
+    });
+  };
   render() {
     return (
       <label
@@ -40,15 +49,4 @@ export class TextFieldType extends Component {
       </label>
     );
   }
-  onChange = evt => {
-    const value = evt.target.value;
-    const name = evt.target.name;
-    this.setState({ value }, () => {
-      // If provided an onChange handler
-      // we need to ensure we broadcast the change
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-    });
-  };
 }
