@@ -53,10 +53,6 @@ const images = {
       }
     ],
     toDOM(node) {
-      // console.log("resizableImage:toDOM", node);
-      // const attrs = { style: `width: ${node.attrs.width}` };
-      // return ["span", { ...node.attrs, ...attrs }];
-
       // Markup returned from an onChange event. i.e. the markup we store to the API
       return ["img", node.attrs];
     }
