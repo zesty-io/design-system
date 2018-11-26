@@ -19,6 +19,7 @@ export class UUIDFieldTypeGuide extends Component {
         <br />
         <UUIDFieldType
           name="uuidField"
+          label="UUID field type"
           value={this.state.value}
           onChange={this.onChange}
         />

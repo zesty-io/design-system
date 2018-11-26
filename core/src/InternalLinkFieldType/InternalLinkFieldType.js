@@ -12,6 +12,16 @@ export class InternalLinkFieldType extends Component {
     options: {},
     loading: true
   };
+
+  componentDidMount() {
+    const { value } = this.props;
+    if (value && value !== "0") {
+      request(`${this.props.queryURL}?q=${value}`).then(data => {
+        this.setState({ placeholder: data.data[0].web.metaTitle });
+      });
+    }
+  }
+
   handleSearch = debounce(term => {
     if (term.length >= 3) {
       this.setState({ loading: true });
@@ -26,8 +36,9 @@ export class InternalLinkFieldType extends Component {
       });
     }
   }, 500);
+
   render() {
-    const placeholder = this.props.placeholder || "";
+    const { placeholder } = this.state;
     return (
       <article>
         <div>
