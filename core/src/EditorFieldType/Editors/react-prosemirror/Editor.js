@@ -10,51 +10,78 @@ import "./Editor.less";
 **/
 class ImageResizeView {
   constructor(node, view, getPos) {
-    console.log("ImageResizeView", node, view, getPos);
+    // console.log("ImageResizeView", node, view, getPos);
 
-    const outer = document.createElement("span");
-    outer.style.position = "relative";
-    outer.style.width = node.attrs.width;
-    //outer.style.border = "1px solid blue"
-    outer.style.display = "inline-block";
-    //outer.style.paddingRight = "0.25em"
-    outer.style.lineHeight = "0"; // necessary so the bottom right arrow is aligned nicely
+    this.node = node;
+    this.outerView = view;
+    this.getPos = getPos;
+
+    const figure = document.createElement("figure");
+    figure.style.position = "relative";
+    figure.style.width = node.attrs.width;
+    figure.style.height = node.attrs.height;
+    //figure.style.border = "1px solid blue"
+    figure.style.display = "inline-block";
+    //figure.style.paddingRight = "0.25em"
+    figure.style.lineHeight = "0"; // necessary so the bottom right arrow is aligned nicely
 
     const img = document.createElement("img");
     img.setAttribute("src", node.attrs.src);
+    img.setAttribute("width", node.attrs.width);
+    img.setAttribute("height", node.attrs.height);
+
+    // Lets the image expand when dragging the handle
     img.style.width = "100%";
+    img.style.height = "100%";
     //img.style.border = "1px solid red"
 
+    figure.appendChild(img);
+
+    this.dom = figure;
+    this.img = img;
+    this.handle = this.addHandle();
+  }
+
+  selectNode() {
+    this.img.classList.add("ProseMirror-selectednode");
+    // this.handle.style.display = "";
+  }
+
+  deselectNode() {
+    this.img.classList.remove("ProseMirror-selectednode");
+    // this.handle.style.display = "none";
+  }
+
+  addHandle() {
     const handle = document.createElement("span");
     handle.style.position = "absolute";
     handle.style.bottom = "0px";
     handle.style.right = "0px";
     handle.style.width = "10px";
     handle.style.height = "10px";
-    handle.style.border = "3px solid black";
+    handle.style.border = "3px solid orange";
     handle.style.borderTop = "none";
     handle.style.borderLeft = "none";
-    handle.style.display = "none";
+    // handle.style.display = "none";
     handle.style.cursor = "nwse-resize";
 
-    handle.onmousedown = function(e) {
+    handle.onmousedown = e => {
       e.preventDefault();
 
       const startX = e.pageX;
       const startY = e.pageY;
-
-      const fontSize = parseFloat(getComputedStyle(outer).fontSize);
-
-      const startWidth = parseFloat(node.attrs.width.match(/(.+)em/)[1]);
+      const startWidth = this.dom.offsetWidth;
+      const startHeight = this.dom.offsetHeight;
 
       const onMouseMove = e => {
         const currentX = e.pageX;
         const currentY = e.pageY;
 
-        const diffInPx = currentX - startX;
-        const diffInEm = diffInPx / fontSize;
+        const endWidth = startWidth + (currentX - startX);
+        const endHeight = startHeight + (currentY - startY);
 
-        outer.style.width = `${startWidth + diffInEm}em`;
+        this.dom.style.width = `${endWidth}px`;
+        this.dom.style.height = `${endHeight}px`;
       };
 
       const onMouseUp = e => {
@@ -63,38 +90,35 @@ class ImageResizeView {
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
 
-        const transaction = view.state.tr
-          .setNodeMarkup(getPos(), null, {
-            src: node.attrs.src,
-            width: outer.style.width
-          })
-          .setSelection(view.state.selection);
+        console.log("ZUID", this.node.attrs["data-zuid"]);
 
-        view.dispatch(transaction);
+        let url = this.node.attrs.src;
+        if (this.node.attrs["data-zuid"]) {
+          // TODO make API call to cut new image
+          url = `${CONFIG.service.media_resolver}/resolve/${
+            this.node.attrs["data-zuid"]
+          }/getimage/?w=${this.dom.style.width}&h=${this.dom.style.height}`;
+        }
+
+        const transaction = this.outerView.state.tr
+          .setNodeMarkup(this.getPos(), null, {
+            // src: this.node.attrs.src,
+            src: url,
+            width: this.dom.style.width,
+            height: this.dom.style.height
+          })
+          .setSelection(this.outerView.state.selection);
+
+        this.outerView.dispatch(transaction);
       };
 
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     };
 
-    outer.appendChild(handle);
-    outer.appendChild(img);
+    this.dom.appendChild(handle);
 
-    this.dom = outer;
-    this.img = img;
-    this.handle = handle;
-  }
-
-  selectNode() {
-    this.img.classList.add("ProseMirror-selectednode");
-
-    this.handle.style.display = "";
-  }
-
-  deselectNode() {
-    this.img.classList.remove("ProseMirror-selectednode");
-
-    this.handle.style.display = "none";
+    return handle;
   }
 }
 

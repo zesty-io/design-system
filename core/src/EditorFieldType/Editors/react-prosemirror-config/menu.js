@@ -280,11 +280,14 @@ export default {
         riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
           limit: 10,
           callback: images => {
-            const imageNodes = images.map(image =>
-              schema.nodes.image.createAndFill({
-                src: image.url
-              })
-            );
+            const imageNodes = images.map(image => {
+              console.log(image);
+              return schema.nodes.resizableImage.createAndFill({
+                src: image.url,
+                title: image.title,
+                "data-zuid": image.id
+              });
+            });
 
             dispatch(
               state.tr.replaceSelection(
