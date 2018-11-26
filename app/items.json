@@ -38,6 +38,7 @@
     "OneToManyFieldType",
     "InternalLinkFieldType",
     "EditorFieldType",
+    "UUIDFieldType",
     "ConfirmDialog"
   ],
   "organisms": []

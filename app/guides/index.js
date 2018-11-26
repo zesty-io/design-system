@@ -42,3 +42,4 @@ export { ConfirmDialogGuide } from './ConfirmDialogGuide'
 export { DrawerGuide } from './DrawerGuide'
 
 export { ToggleButtonGuide } from './ToggleButtonGuide'
+export { UUIDFieldTypeGuide } from './UUIDFieldTypeGuide'

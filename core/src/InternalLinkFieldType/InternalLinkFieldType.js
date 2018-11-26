@@ -40,10 +40,10 @@ export class InternalLinkFieldType extends Component {
     }
   };
   onChange = evt => {
-    if (this.props.callback) {
+    if (this.props.onChange) {
       this.props.onChange(
         this.props.name,
-        JSON.parse(evt.currentTarget.dataset.value).value,
+        JSON.parse(evt.currentTarget.dataset.value),
         this.props.datatype
       );
     }
@@ -66,7 +66,7 @@ export class InternalLinkFieldType extends Component {
             ""
           }
           onChange={this.onChange}
-          onSearch={this.props.handleSearch}
+          onSearch={this.props.onSearch}
         >
           {this.state.options.map((opt, i) => {
             return (
