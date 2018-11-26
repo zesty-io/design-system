@@ -1,58 +1,33 @@
 import React, { Component } from "react";
 
 import { SearchableList, Option } from "../SearchableList";
+import { Loader } from "../Loader";
 
 export class InternalLinkFieldType extends Component {
-  static defaultProps = {
-    options: [
-      {
-        text: "there were no options passed to <Select>",
-        value: "no options passed to select"
-      }
-    ],
-    searchLength: 50
-  };
   state = {
-    selectedOption: this.props.options[0],
-    options: this.props.options
+    selectedOption: {
+      text: "enter a search term",
+      value: ""
+    },
+    options: {},
+    loading: true
   };
-  handleSearch = term => {
+  handleSearch = debounce(term => {
     if (term.length >= 3) {
       this.setState({ loading: true });
-      return request(
-        `${CONFIG.service.instance_api}/search/items?q=${term}`
-      ).then(res => {
+      return request(`${this.props.queryURL}?q=${term}`).then(res => {
         const consolidatedData = res.data.reduce((acc, el) => {
-          // consolidate all versions, eliminate self parenting
-          // eliminate items that are not routed (no path)
-          if (
-            !acc[el.meta.ZUID] &&
-            el.meta.ZUID !== this.props.ZUID &&
-            el.web.path &&
-            !el.web.path.includes(this.props.web.pathPart)
-          ) {
+          if (!acc[el.meta.ZUID]) {
             acc[el.meta.ZUID] = el;
           }
           return acc;
         }, {});
-        this.setState({ parents: consolidatedData, loading: false });
+        this.setState({ options: consolidatedData, loading: false });
       });
     }
-  };
-  onChange = evt => {
-    if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        JSON.parse(evt.currentTarget.dataset.value),
-        this.props.datatype
-      );
-    }
-    this.setState({
-      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
-    });
-  };
+  }, 500);
   render() {
-    const { selectedOption } = this.state;
+    const placeholder = this.props.placeholder || "";
     return (
       <article>
         <div>
@@ -60,21 +35,41 @@ export class InternalLinkFieldType extends Component {
         </div>
         <SearchableList
           name={this.props.name}
-          placeholder={
-            this.state.selectedOption.text ||
-            this.state.selectedOption.html ||
-            ""
-          }
-          onChange={this.onChange}
-          onSearch={this.props.onSearch}
+          placeholder={placeholder}
+          onSelect={this.props.onChange}
+          onSearch={this.handleSearch}
         >
-          {this.state.options.map((opt, i) => {
-            return (
-              <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
-            );
-          })}
+          {this.state.loading ? (
+            <Option key="searchableListLoading" text={<Loader />} value="" />
+          ) : (
+            Object.keys(this.state.options).map(optZUID => {
+              return (
+                <Option
+                  key={optZUID}
+                  text={this.state.options[optZUID].web.metaTitle}
+                  value={optZUID}
+                />
+              );
+            })
+          )}
         </SearchableList>
       </article>
     );
   }
+}
+
+function debounce(func, wait, immediate) {
+  let timeout;
+  return function() {
+    let context = this,
+      args = arguments;
+    let later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    let callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }
