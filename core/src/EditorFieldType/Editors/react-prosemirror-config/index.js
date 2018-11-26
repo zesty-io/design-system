@@ -9,4 +9,4 @@ export const options = {
 };
 
 export { default as menu } from "./menu";
-export { default as inlineMenu } from "./inline-menu";
+export { default as inline } from "./inline-menu";
