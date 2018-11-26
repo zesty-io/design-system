@@ -10,7 +10,7 @@ export class InternalLinkFieldTypeGuide extends Component {
         <p>
           Internal link is a dropdown listing related items to display a link
         </p>
-        <InternalLinkFieldType />
+        <InternalLinkFieldType name="internalLinkFieldType" />
 
         <CodeCard header="Usage" height={50} open>
           {`<InternalLinkFieldType />`}

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 
-import { Select, Option } from "../Select";
+import { SearchableList, Option } from "../SearchableList";
 
 export class InternalLinkFieldType extends Component {
-  state = {
-    selectedOption: this.props.options[0],
-    options: this.props.options
-  };
   static defaultProps = {
     options: [
       {
@@ -16,9 +12,40 @@ export class InternalLinkFieldType extends Component {
     ],
     searchLength: 50
   };
-  selectOption = evt => {
+  state = {
+    selectedOption: this.props.options[0],
+    options: this.props.options
+  };
+  handleSearch = term => {
+    if (term.length >= 3) {
+      this.setState({ loading: true });
+      return request(
+        `${CONFIG.service.instance_api}/search/items?q=${term}`
+      ).then(res => {
+        const consolidatedData = res.data.reduce((acc, el) => {
+          // consolidate all versions, eliminate self parenting
+          // eliminate items that are not routed (no path)
+          if (
+            !acc[el.meta.ZUID] &&
+            el.meta.ZUID !== this.props.ZUID &&
+            el.web.path &&
+            !el.web.path.includes(this.props.web.pathPart)
+          ) {
+            acc[el.meta.ZUID] = el;
+          }
+          return acc;
+        }, {});
+        this.setState({ parents: consolidatedData, loading: false });
+      });
+    }
+  };
+  onChange = evt => {
     if (this.props.callback) {
-      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
+      this.props.onChange(
+        this.props.name,
+        JSON.parse(evt.currentTarget.dataset.value).value,
+        this.props.datatype
+      );
     }
     this.setState({
       selectedOption: JSON.parse(evt.currentTarget.dataset.value)
@@ -31,19 +58,22 @@ export class InternalLinkFieldType extends Component {
         <div>
           <label>{this.props.label}</label>
         </div>
-        <Select
-          onSelect={this.selectOption}
-          selection={{
-            value: JSON.stringify(selectedOption),
-            text: selectedOption.text
-          }}
+        <SearchableList
+          name={this.props.name}
+          placeholder={
+            this.state.selectedOption.text ||
+            this.state.selectedOption.html ||
+            ""
+          }
+          onChange={this.onChange}
+          onSearch={this.props.handleSearch}
         >
           {this.state.options.map((opt, i) => {
             return (
               <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
             );
           })}
-        </Select>
+        </SearchableList>
       </article>
     );
   }
