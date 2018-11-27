@@ -39,6 +39,22 @@ export class OneToManyFieldType extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    // if items array has changed, check for new relationships
+    if (
+      Object.keys(this.props.items).length !==
+      Object.keys(prevProps.items).length
+    ) {
+      const tagZUIDs = this.props.value ? this.props.value.split(",") : [];
+      this.setState({
+        loading: false,
+        tags: this.props.options.filter(option =>
+          tagZUIDs.includes(option.value)
+        )
+      });
+    }
+  }
+
   onClick = () => {
     if (!this.state.loaded && this.props.onOpen) {
       this.setState({
