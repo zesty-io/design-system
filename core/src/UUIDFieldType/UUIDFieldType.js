@@ -7,7 +7,7 @@ import uuidv4 from "uuid/v4";
 export class UUIDFieldType extends PureComponent {
   componentWillMount() {
     // I may add a check to ensure the itemZUID is 'new'
-    if (this.props.value === "") {
+    if (this.props.value === "" || !this.props.value) {
       // there is no UUID and it needs to be generated
       this.props.onChange(this.props.name, uuidv4(), this.props.datatype);
     }
