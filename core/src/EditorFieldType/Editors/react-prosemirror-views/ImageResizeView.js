@@ -80,12 +80,12 @@ export class ImageResizeView {
         document.removeEventListener("mouseup", onMouseUp);
 
         let url = this.node.attrs.src;
-        // if (this.node.attrs["data-zuid"]) {
-        //   // TODO make API call to cut new image
-        //   url = `${CONFIG.service.media_resolver}/resolve/${
-        //     this.node.attrs["data-zuid"]
-        //   }/getimage/?w=${this.dom.style.width}&h=${this.dom.style.height}`;
-        // }
+        if (this.node.attrs["data-zuid"]) {
+          // TODO make API call to cut new image
+          url = `${CONFIG.service.media_resolver}/resolve/${
+            this.node.attrs["data-zuid"]
+          }/getimage/?w=${this.dom.style.width}&h=${this.dom.style.height}`;
+        }
 
         const transaction = this.outerView.state.tr
           .setNodeMarkup(this.getPos(), null, {
