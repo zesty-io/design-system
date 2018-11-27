@@ -3,49 +3,34 @@ import { Input } from "../Input";
 import styles from "./TextFieldType.less";
 
 export class TextFieldType extends Component {
-  constructor(props) {
-    super(props);
-
-    if (!props.name) {
+  componentDidMount() {
+    if (!this.props.name) {
       throw new Error(
         'Missing required attribute "name". See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes'
       );
     }
-
-    this.state = {
-      value: props.value || ""
-    };
   }
   onChange = evt => {
     const value = evt.target.value;
     const name = evt.target.name;
-    this.setState({ value }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-    });
+    this.props.onChange &&
+      this.props.onChange(name, value, this.props.datatype);
   };
   render() {
+    const { value, label, maxLength } = this.props;
     return (
       <label
         className={`${styles.TextFieldType} ${
-          this.state.value.length > (this.props.maxLength || 150)
-            ? styles.Error
-            : ""
+          value && value.length > (maxLength || 150) ? styles.Error : ""
         }`}
       >
         <div className={styles.TextFieldTypeLabel}>
-          <span>{this.props.label}</span>
+          <span>{label}</span>
           <span>
-            {this.state.value.length}/{this.props.maxLength || 150}
+            {value && value.length}/{maxLength || 150}
           </span>
         </div>
-        <Input
-          {...this.props}
-          type="text"
-          onChange={this.onChange}
-          value={this.state.value}
-        />
+        <Input {...this.props} type="text" onChange={this.onChange} />
       </label>
     );
   }
