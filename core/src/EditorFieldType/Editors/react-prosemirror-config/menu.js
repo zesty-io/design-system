@@ -281,8 +281,10 @@ export default {
           limit: 10,
           callback: images => {
             const imageNodes = images.map(image =>
-              schema.nodes.image.createAndFill({
-                src: image.url
+              schema.nodes.resizableImage.createAndFill({
+                src: image.url,
+                title: image.title,
+                "data-zuid": image.id
               })
             );
 
@@ -307,6 +309,34 @@ export default {
       active: markActive(schema.marks.floatRight),
       run: toggleMark(schema.marks.floatRight)
     }
+    // resize: {
+    //   title: "Resize image",
+    //   content: icons.image,
+    //   active: markActive(schema.nodes.image),
+    //   enable: canInsert(schema.nodes.image),
+    //   run(state, dispatch) {
+    //     console.log("media:image:resize", state);
+    //
+    //     const height =
+    //       window && window.prompt("Enter image height", "https://");
+    //
+    //     const width = window && window.prompt("Enter image width", "https://");
+    //
+    //     console.log(height, width);
+    //
+    //     //
+    //     // if (markActive(schema.marks.link)(state)) {
+    //     //   toggleMark(schema.marks.link)(state, dispatch);
+    //     //   return true;
+    //     // }
+    //     //
+    //     // const href = promptForURL();
+    //     // if (!href) return false;
+    //     //
+    //     // toggleMark(schema.marks.link, { href })(state, dispatch);
+    //     // // view.focus()
+    //   }
+    // }
   },
   history: {
     undo: {

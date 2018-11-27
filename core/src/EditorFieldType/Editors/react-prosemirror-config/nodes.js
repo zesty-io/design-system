@@ -21,11 +21,8 @@ const listNodes = {
   }
 };
 
-// :: NodeSpec An inline image (`<img>`) node. Supports `src`,
-// `alt`, and `href` attributes. The latter two default to the empty
-// string.
 const images = {
-  image: {
+  resizableImage: {
     inline: true,
     attrs: {
       src: {},
@@ -33,13 +30,15 @@ const images = {
       title: { default: null },
       align: { default: null },
       width: { default: null },
-      height: { default: null }
+      height: { default: null },
+      "data-zuid": { default: null }
     },
     group: "inline",
-    // draggable: true,
+    draggable: true,
     marks: "floatLeft floatRight",
     parseDOM: [
       {
+        priority: 51, // must be higher than the default image spec
         tag: "img[src]",
         getAttrs(dom) {
           return {
@@ -54,6 +53,7 @@ const images = {
       }
     ],
     toDOM(node) {
+      // Markup returned from an onChange event. i.e. the markup we store to the API
       return ["img", node.attrs];
     }
   }
