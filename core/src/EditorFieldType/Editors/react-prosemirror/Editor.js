@@ -4,8 +4,6 @@ import { EditorView } from "prosemirror-view";
 import "prosemirror-view/style/prosemirror.css";
 // import './Editor.css'
 
-import { ImageResizeView } from "../react-prosemirror-views/ImageResizeView";
-
 class Editor extends React.Component {
   constructor(props) {
     super(props);
@@ -28,11 +26,7 @@ class Editor extends React.Component {
         this.forceUpdate();
       },
       attributes: this.props.attributes,
-      nodeViews: {
-        resizableImage(node, view, getPos) {
-          return new ImageResizeView(node, view, getPos);
-        }
-      }
+      nodeViews: this.props.nodeViews
     });
   }
 
