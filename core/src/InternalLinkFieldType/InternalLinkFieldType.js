@@ -1,50 +1,86 @@
 import React, { Component } from "react";
 
-import { Select, Option } from "../Select";
+import { SearchableList, Option } from "../SearchableList";
+import { Loader } from "../Loader";
 
 export class InternalLinkFieldType extends Component {
   state = {
-    selectedOption: this.props.options[0],
-    options: this.props.options
+    selectedOption: {
+      text: "enter a search term",
+      value: ""
+    },
+    options: {},
+    loading: true
   };
-  static defaultProps = {
-    options: [
-      {
-        text: "there were no options passed to <Select>",
-        value: "no options passed to select"
-      }
-    ],
-    searchLength: 50
-  };
-  selectOption = evt => {
-    if (this.props.callback) {
-      this.props.callback(JSON.parse(evt.currentTarget.dataset.value).value);
+
+  componentDidMount() {
+    const { value } = this.props;
+    if (value && value !== "0") {
+      request(`${this.props.queryURL}?q=${value}`).then(data => {
+        this.setState({ placeholder: data.data[0].web.metaTitle });
+      });
     }
-    this.setState({
-      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
-    });
-  };
+  }
+
+  handleSearch = debounce(term => {
+    if (term.length >= 3) {
+      this.setState({ loading: true });
+      return request(`${this.props.queryURL}?q=${term}`).then(res => {
+        const consolidatedData = res.data.reduce((acc, el) => {
+          if (!acc[el.meta.ZUID]) {
+            acc[el.meta.ZUID] = el;
+          }
+          return acc;
+        }, {});
+        this.setState({ options: consolidatedData, loading: false });
+      });
+    }
+  }, 500);
+
   render() {
-    const { selectedOption } = this.state;
+    const { placeholder } = this.state;
     return (
       <article>
         <div>
           <label>{this.props.label}</label>
         </div>
-        <Select
-          onSelect={this.selectOption}
-          selection={{
-            value: JSON.stringify(selectedOption),
-            text: selectedOption.text
-          }}
+        <SearchableList
+          name={this.props.name}
+          placeholder={placeholder}
+          onSelect={this.props.onChange}
+          onSearch={this.handleSearch}
         >
-          {this.state.options.map((opt, i) => {
-            return (
-              <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
-            );
-          })}
-        </Select>
+          {this.state.loading ? (
+            <Option key="searchableListLoading" text={<Loader />} value="" />
+          ) : (
+            Object.keys(this.state.options).map(optZUID => {
+              return (
+                <Option
+                  key={optZUID}
+                  text={this.state.options[optZUID].web.metaTitle}
+                  value={optZUID}
+                />
+              );
+            })
+          )}
+        </SearchableList>
       </article>
     );
   }
+}
+
+function debounce(func, wait, immediate) {
+  let timeout;
+  return function() {
+    let context = this,
+      args = arguments;
+    let later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    let callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }
