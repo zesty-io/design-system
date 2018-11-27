@@ -21,13 +21,13 @@ export class TextFieldType extends Component {
     return (
       <label
         className={`${styles.TextFieldType} ${
-          value && value.length > (maxLength || 150) ? styles.Error : ""
+          (value && value.length) > (maxLength || 150) ? styles.Error : ""
         }`}
       >
         <div className={styles.TextFieldTypeLabel}>
           <span>{label}</span>
           <span>
-            {value && value.length}/{maxLength || 150}
+            {(value && value.length) || "0"}/{maxLength || 150}
           </span>
         </div>
         <Input {...this.props} type="text" onChange={this.onChange} />

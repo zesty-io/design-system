@@ -6,53 +6,35 @@ import styles from "./TextareaFieldType.less";
  * Controlled component
  */
 export class TextareaFieldType extends Component {
-  constructor(props) {
-    super(props);
-
-    if (!props.name) {
+  componentDidMount() {
+    if (!this.props.name) {
       throw new Error(
         'Missing required attribute "name". See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes'
       );
     }
-
-    this.state = {
-      value: props.value || ""
-    };
   }
   onChange = evt => {
     const value = evt.target.value;
     const name = evt.target.name;
-
-    this.setState({ value }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-    });
+    this.props.onChange &&
+      this.props.onChange(name, value, this.props.datatype);
   };
   render() {
+    const { value, label, maxLength } = this.props;
     return (
-      <article
+      <label
         className={`${styles.TextareaFieldType} ${
-          this.props.charCount && this.state.value.length > this.props.charCount
-            ? styles.Error
-            : ""
+          (value && value.length) > (maxLength || 150) ? styles.Error : ""
         }`}
       >
         <div className={styles.TextareaFieldTypeLabel}>
-          <label>{this.props.label}</label>
-          {this.props.charCount && (
-            <span>
-              {this.state.value.length}/{this.props.charCount}
-            </span>
-          )}
+          <span>{label}</span>
+          <span>
+            {(value && value.length) || "0"}/{maxLength || 150}
+          </span>
         </div>
-        <Textarea
-          name={this.props.name}
-          value={this.state.value}
-          onChange={this.onChange}
-          placeholder={this.props.placeholder}
-        />
-      </article>
+        <Textarea {...this.props} type="textarea" onChange={this.onChange} />
+      </label>
     );
   }
 }
