@@ -1,9 +1,12 @@
 import React from "react";
-import { HtmlEditor, MenuBar } from "@aeaton/react-prosemirror";
+import { MenuBar } from "@aeaton/react-prosemirror";
 // import { options } from "@aeaton/react-prosemirror-config-default";
 
+import { HtmlEditor } from "./react-prosemirror";
 import { options, menu } from "./react-prosemirror-config";
 // import menu from "./react-prosemirror-config";
+
+import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
 
 import styles from "./Basic.less";
 export function BasicEditor({ value, onChange }) {
@@ -19,6 +22,11 @@ export function BasicEditor({ value, onChange }) {
             {editor}
           </div>
         )}
+        nodeViews={{
+          resizableImage(node, view, getPos) {
+            return new ImageResizeView(node, view, getPos);
+          }
+        }}
       />
     </div>
   );
