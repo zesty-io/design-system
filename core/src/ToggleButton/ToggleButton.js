@@ -3,21 +3,29 @@ import styles from "./ToggleButton.less";
 
 export class ToggleButton extends Component {
   state = {
-    selected: this.props.default || false
+    selected: this.props.value || 0
   };
   render() {
-    const { disabled, offValue, onValue } = this.props;
+    const {
+      disabled,
+      offValue,
+      onValue,
+      datatype,
+      name,
+      onChange
+    } = this.props;
+    const { selected } = this.state;
     return (
       <article className={styles.ToggleButton}>
         <section
           className={`${styles.off} ${
-            this.state.selected === false ? styles.Selected : null
+            selected === 0 ? styles.Selected : null
           } ${disabled ? styles.disabled : null}`}
           onClick={() =>
             !disabled &&
-            this.setState({ selected: false }, () => {
-              if (this.props.onChange) {
-                this.props.onChange(this.state.selected);
+            this.setState({ selected: 0 }, () => {
+              if (onChange) {
+                onChange(name, 0, datatype);
               }
             })
           }
@@ -25,14 +33,14 @@ export class ToggleButton extends Component {
           <p>{offValue || "Off"}</p>
         </section>
         <section
-          className={`${styles.on} ${
-            this.state.selected === true ? styles.Selected : null
-          } ${disabled ? styles.disabled : null}`}
+          className={`${styles.on} ${selected === 1 ? styles.Selected : null} ${
+            disabled ? styles.disabled : null
+          }`}
           onClick={() =>
             !disabled &&
-            this.setState({ selected: true }, () => {
-              if (this.props.onChange) {
-                this.props.onChange(this.state.selected);
+            this.setState({ selected: 1 }, () => {
+              if (onChange) {
+                onChange(name, 1, datatype);
               }
             })
           }
