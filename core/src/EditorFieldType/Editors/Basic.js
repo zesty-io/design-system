@@ -1,8 +1,9 @@
 import React from "react";
-import { MenuBar } from "@aeaton/react-prosemirror";
+// import { MenuBar } from "@aeaton/react-prosemirror";
 // import { options } from "@aeaton/react-prosemirror-config-default";
 
-import { HtmlEditor } from "./react-prosemirror";
+import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
+import { MenuBar } from "./react-prosemirror/MenuBar";
 import { options, menu } from "./react-prosemirror-config";
 // import menu from "./react-prosemirror-config";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { MenuBar, Floater } from "@aeaton/react-prosemirror";
 // import { options } from "@aeaton/react-prosemirror-config-default";
 
-import { HtmlEditor } from "./react-prosemirror";
+import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 import { options, inline } from "./react-prosemirror-config";
 // import menu from "./react-prosemirror-menus/inline";
 

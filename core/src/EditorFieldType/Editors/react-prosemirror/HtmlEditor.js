@@ -26,7 +26,7 @@ const serializer = schema => {
   };
 };
 
-class HtmlEditor extends React.Component {
+export class HtmlEditor extends React.Component {
   componentWillMount() {
     const { value, onChange, options } = this.props;
     const { schema } = options;
@@ -60,5 +60,3 @@ class HtmlEditor extends React.Component {
     );
   }
 }
-
-export default HtmlEditor;

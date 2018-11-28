@@ -5,6 +5,7 @@ import { wrapInList } from "prosemirror-schema-list";
 
 import schema from "./schema";
 import icons from "./icons";
+import characters from "./characters";
 
 const markActive = type => state => {
   const { from, $from, to, empty } = state.selection;
@@ -131,49 +132,25 @@ export default {
       run: toggleMark(schema.marks.alignRight)
     }
   },
+
+  headings_dropdown: {
+    title: "Change Heading",
+    content: "Heading",
+    // classname: "dropdown-menu-list",
+    children: ["1", "2", "3", "4", "5", "6"].reduce((acc, level) => {
+      acc[level] = {
+        title: `Heading ${level}`,
+        content: `Level ${level}`,
+        active: blockActive(schema.nodes.heading, { level: level }),
+        enable: setBlockType(schema.nodes.heading, { level: level }),
+        run: setBlockType(schema.nodes.heading, { level: level })
+      };
+
+      return acc;
+    }, {})
+  },
+
   blocks: {
-    h1: {
-      title: "Change to heading level 1",
-      content: "H1",
-      active: blockActive(schema.nodes.heading, { level: 1 }),
-      enable: setBlockType(schema.nodes.heading, { level: 1 }),
-      run: setBlockType(schema.nodes.heading, { level: 1 })
-    },
-    h2: {
-      title: "Change to heading level 2",
-      content: "H2",
-      active: blockActive(schema.nodes.heading, { level: 2 }),
-      enable: setBlockType(schema.nodes.heading, { level: 2 }),
-      run: setBlockType(schema.nodes.heading, { level: 2 })
-    },
-    h3: {
-      title: "Change to heading level 3",
-      content: "H3",
-      active: blockActive(schema.nodes.heading, { level: 3 }),
-      enable: setBlockType(schema.nodes.heading, { level: 3 }),
-      run: setBlockType(schema.nodes.heading, { level: 3 })
-    },
-    h4: {
-      title: "Change to heading level 4",
-      content: "H4",
-      active: blockActive(schema.nodes.heading, { level: 4 }),
-      enable: setBlockType(schema.nodes.heading, { level: 4 }),
-      run: setBlockType(schema.nodes.heading, { level: 4 })
-    },
-    h5: {
-      title: "Change to heading level 5",
-      content: "H5",
-      active: blockActive(schema.nodes.heading, { level: 5 }),
-      enable: setBlockType(schema.nodes.heading, { level: 5 }),
-      run: setBlockType(schema.nodes.heading, { level: 5 })
-    },
-    h6: {
-      title: "Change to heading level 6",
-      content: "H6",
-      active: blockActive(schema.nodes.heading, { level: 6 }),
-      enable: setBlockType(schema.nodes.heading, { level: 6 }),
-      run: setBlockType(schema.nodes.heading, { level: 6 })
-    },
     plain: {
       title: "Change to paragraph",
       content: icons.paragraph,
@@ -270,6 +247,22 @@ export default {
         // view.focus()
       }
     }
+  },
+  special_character_dropdown: {
+    title: "Insert special character",
+    content: "Special Character",
+    children: characters.reduce((acc, char) => {
+      acc[char] = {
+        title: `Insert Character: ${char}`,
+        content: char,
+        enable: canInsert(schema.nodes.text),
+        run: (state, dispatch) => {
+          dispatch(state.tr.replaceSelectionWith(schema.text(char)));
+        }
+      };
+
+      return acc;
+    }, {})
   },
   media: {
     image: {
