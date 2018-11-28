@@ -123,7 +123,7 @@ export class SearchableList extends Component {
       onClick: this.toggleDropdown
     };
     return (
-      <Fragment>
+      <span className={styles.SearchableList}>
         <section className={styles.SeachableListLabel}>
           <label>{this.props.label}</label>
         </section>
@@ -133,7 +133,7 @@ export class SearchableList extends Component {
             name="searchTerm"
             autoComplete="off"
             className={styles.searchField}
-            placeholder={this.props.placeholder}
+            placeholder={this.props.placeholder || "Type here to search"}
             value={this.state.searchTerm}
             onFocus={this.props.onFocus}
             onChange={this.handleFilterKeyUp}
@@ -154,7 +154,7 @@ export class SearchableList extends Component {
             </div>
           </ul>
         </div>
-      </Fragment>
+      </span>
     );
   }
 }
