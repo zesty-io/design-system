@@ -1,6 +1,6 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
@@ -16,11 +16,11 @@
     "release": "npm run build && cd dist && npm publish"
   },
   "peerDependencies": {
-    "classnames": "2.2.6",
-    "react": "16.4.1",
-    "react-router-dom": "4.3.1",
-    "react-dom": "16.4.1",
-    "moment": "2.22.2",
+    "classnames": "^2.2.6",
+    "react": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-dom": "^16.4.1",
+    "moment": "^2.22.2",
     "@aeaton/react-prosemirror": "^0.21.1",
     "@aeaton/react-prosemirror-config-default": "^0.11.0",
     "codemirror": "^5.40.2",
