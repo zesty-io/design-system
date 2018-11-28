@@ -133,7 +133,7 @@ export class SearchableList extends Component {
             name="searchTerm"
             autoComplete="off"
             className={styles.searchField}
-            placeholder={this.props.placeholder || "Type here to search"}
+            placeholder={this.props.placeholder || "Search by url path"}
             value={this.state.searchTerm}
             onFocus={this.props.onFocus}
             onChange={this.handleFilterKeyUp}
