@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { Component, PureComponent, Fragment } from "react";
 import cx from "classnames";
 import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 import { Button } from "../Button";
@@ -40,9 +40,13 @@ export class ImageFieldType extends Component {
   render() {
     const { label, images, field, limit } = this.props;
     return (
-      <React.Fragment>
+      <Fragment>
         <label>{label}</label>
-        <Card className={styles.ImageFieldType}>
+        <Card
+          className={`${styles.ImageFieldType} ${
+            images.length > limit ? styles.warn : ""
+          }`}
+        >
           <CardContent className={styles.ImageFieldTypeContent}>
             {/*
               <h3>Drop images here to upload them to your media</h3>
@@ -73,7 +77,7 @@ export class ImageFieldType extends Component {
             />
           </CardFooter>
         </Card>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
@@ -83,27 +87,36 @@ class Actions extends PureComponent {
     const { value, addImage, limit, imageCount, label } = this.props;
     const { datatypeOptions, name } = this.props.field;
     return (
-      <Button
-        kind={imageCount > limit ? "warn" : ""}
-        onClick={() => {
-          const optsObject = {
-            callback: addImage,
-            ids: value,
-            limit,
-            name,
-            displayName: label
-          };
-          if (datatypeOptions && datatypeOptions.group_id) {
-            optsObject.lock = datatypeOptions.group_id;
-          }
-          riot.mount(
-            document.querySelector("#modalMount"),
-            "media-app-modal",
-            optsObject
-          );
-        }}
-        text={`Select Media (${imageCount}/${limit})`}
-      />
+      <Fragment>
+        <Button
+          kind={imageCount > limit ? "warn" : ""}
+          onClick={() => {
+            const optsObject = {
+              callback: addImage,
+              ids: value,
+              limit,
+              name,
+              displayName: label
+            };
+            if (datatypeOptions && datatypeOptions.group_id) {
+              optsObject.lock = datatypeOptions.group_id;
+            }
+            riot.mount(
+              document.querySelector("#modalMount"),
+              "media-app-modal",
+              optsObject
+            );
+          }}
+          text={`Select Media (${imageCount}/${limit})`}
+        />
+        {imageCount > limit ? (
+          <p className={styles.warningText}>
+            You have selected more images than your limit allows
+          </p>
+        ) : (
+          ""
+        )}
+      </Fragment>
     );
   }
 }

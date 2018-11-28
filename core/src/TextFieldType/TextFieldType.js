@@ -31,6 +31,11 @@ export class TextFieldType extends Component {
           </span>
         </div>
         <Input {...this.props} type="text" onChange={this.onChange} />
+        {(value && value.length) > (maxLength || 150) ? (
+          <span className={styles.ErrorDescription}>
+            Your input is over the specified limit
+          </span>
+        ) : null}
       </label>
     );
   }
