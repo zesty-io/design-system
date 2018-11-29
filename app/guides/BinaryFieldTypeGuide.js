@@ -17,11 +17,15 @@ export class BinaryFieldTypeGuide extends Component {
         <br />
 
         <h3>Custom Label, On and Off Values</h3>
-        <BinaryFieldType label="Custom Label" on="On Value" off="Off Value" />
+        <BinaryFieldType
+          label="Custom Label"
+          onValue="On Value"
+          offValue="Off Value"
+        />
         <br />
 
         <h3>Pre-Checked</h3>
-        <BinaryFieldType checked />
+        <BinaryFieldType default />
         <br />
 
         <h3>Disabled</h3>
@@ -30,8 +34,8 @@ export class BinaryFieldTypeGuide extends Component {
 
         <h3>Callback</h3>
         <BinaryFieldType
-          callback={val => {
-            alert(`Changed value: ${val}`)
+          onChange={(name, value) => {
+            console.log(`Changed value: ${value}`)
           }}
         />
         <br />
