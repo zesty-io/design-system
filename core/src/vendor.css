@@ -29,6 +29,8 @@
   padding: 8px 12px !important;
   border: 4px solid #eaecf1;
   flex: 1;
+
+  word-break: break-word;
 }
 .ProseMirror img {
   max-width: 100%;
