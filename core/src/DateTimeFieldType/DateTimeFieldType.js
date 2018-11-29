@@ -32,24 +32,12 @@ export class DateTimeFieldType extends Component {
       <label className={styles.DateFieldType}>
         <span className={styles.DateFieldTypeLabel}>{this.props.label}</span>
         <span className={styles.DateFieldTypeInput}>
-          <i className={cx(styles.Icon, "fa fa-calendar")} />
           <input
             className={cx(styles.DatePicker, this.props.className)}
             type={this.props.type || "datetime-local"}
             onChange={this.onChange}
           />
-          {/*<DatePicker
-            {...this.props}
-            className={cx(styles.DatePicker, this.props.className)}
-            onChange={this.onChange}
-            selected={this.state.date ? moment(this.state.date) : null}
-            yearDropdownItemNumber={15}
-            dateFormat="LLL"
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-          />*/}
+          <i className={cx(styles.Icon, "fa fa-calendar")} />
         </span>
       </label>
     );

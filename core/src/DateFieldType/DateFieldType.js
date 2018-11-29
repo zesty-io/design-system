@@ -22,7 +22,6 @@ export class DateFieldType extends Component {
       <label className={styles.DateFieldType}>
         <span className={styles.DateFieldTypeLabel}>{this.props.label}</span>
         <span className={styles.DateFieldTypeInput}>
-          <i className={cx(styles.Icon, "fa fa-calendar")} />
           {this.props.datatype === "datetime" ? (
             <Flatpickr
               data-enable-time
@@ -52,6 +51,7 @@ export class DateFieldType extends Component {
               onChange={this.onChange}
             />
           )}
+          <i className={cx(styles.Icon, "fa fa-calendar")} />
         </span>
       </label>
     );
