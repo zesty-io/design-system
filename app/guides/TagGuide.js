@@ -13,11 +13,11 @@ export class TagGuide extends Component {
         <br />
         <br />
         <div style={{ display: 'flex' }}>
-          <Tag name="tag" ZUID="/tag/zuidHere" />
-          <Tag name="Another Tag" ZUID="/tag/zuidHere" />
-          <Tag name="html" ZUID="/tag/zuidHere" />
+          <Tag children="tag" ZUID="/tag/zuidHere" />
+          <Tag children="Another Tag" ZUID="/tag/zuidHere" />
+          <Tag children="html" ZUID="/tag/zuidHere" />
           <Tag
-            name="JS"
+            children="JS"
             ZUID="/tag/zuidHere"
             onRemove={ZUID => console.log(ZUID)}
           />
@@ -28,28 +28,33 @@ export class TagGuide extends Component {
           <GithubEmbed
             height="150px"
             code={`
-<Tag name="tag" ZUID="zuidHere" />
-<Tag name="Another Tag" ZUID="zuidHere" />
-<Tag name="html" ZUID="zuidHere" />
-<Tag name="JS" ZUID="/tag/zuidHere" onRemove={ZUID => console.log(ZUID)} />`}
+<Tag children="tag" ZUID="zuidHere" />
+<Tag children="Another Tag" ZUID="zuidHere" />
+<Tag children="html" ZUID="zuidHere" />
+<Tag children="JS" ZUID="/tag/zuidHere" onRemove={ZUID => console.log(ZUID)} />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
           <GithubEmbed
-            code={`export class Tag extends Component {
-  render() {
-    return (
-      <span className={styles.Tag}>
-        <i className="fa fa-times" onClick={this.removeTag} />
-        <a href={this.props.ZUID}>{this.props.name}</a>
-      </span>
-    )
-  }
-  removeTag = () => {
-    if (this.props.onRemove) {
-      this.props.onRemove(this.props.ZUID)
-    }
-  }
+            code={`export function Tag(props) {
+  return (
+    <span className={styles.Tag}>
+      {props.link ? (
+        <a href={props.link}>{props.children}</a>
+      ) : (
+        <span>{props.children}</span>
+      )}
+      <i
+        className={cx("fa fa-times-circle", styles.Remove)}
+        onClick={evt => {
+          evt.stopPropagation();
+          if (props.onRemove) {
+            props.onRemove(props.value);
+          }
+        }}
+      />
+    </span>
+  );
 }`}
           />
         </CollapsibleCard>
