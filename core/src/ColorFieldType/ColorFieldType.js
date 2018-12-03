@@ -10,6 +10,18 @@ export class ColorFieldType extends Component {
       value: props.value || "#ffffff"
     };
   }
+  onChange = evt => {
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.name,
+        evt.target.value,
+        this.props.datatype
+      );
+    }
+    this.setState({
+      value: evt.target.value
+    });
+  };
   render() {
     return (
       <label className={styles.ColorFieldType}>
@@ -26,16 +38,4 @@ export class ColorFieldType extends Component {
       </label>
     );
   }
-  onChange = evt => {
-    if (this.props.onChange) {
-      this.props.onChange(
-        this.props.name,
-        evt.target.value,
-        this.props.datatype
-      );
-    }
-    this.setState({
-      value: evt.target.value
-    });
-  };
 }
