@@ -16,7 +16,7 @@ export class TextareaFieldTypeGuide extends Component {
         <br />
         <TextareaFieldType
           name="example1"
-          value="testing default"
+          placeholder="placeholder text"
           onChange={console.log}
           label="Title Field"
           charCount="350"
@@ -24,7 +24,8 @@ export class TextareaFieldTypeGuide extends Component {
         <br />
         <TextareaFieldType
           name="example2"
-          value="testing default"
+          placeholder="placeholder text"
+          required={true}
           onChange={console.log}
           label="No CharCount prop"
         />

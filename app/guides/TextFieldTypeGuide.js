@@ -43,7 +43,7 @@ export class TextFieldTypeGuide extends Component {
         <TextFieldType
           label="Title Field"
           name="example1"
-          value="default text"
+          placeholder="placeholder text"
           onChange={console.log}
         />
 
@@ -51,6 +51,7 @@ export class TextFieldTypeGuide extends Component {
           label="Custom Length"
           name="example2"
           maxLength="400"
+          required={true}
           onChange={console.log}
         />
 
