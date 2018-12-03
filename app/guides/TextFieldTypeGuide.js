@@ -5,6 +5,7 @@ import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class TextFieldTypeGuide extends Component {
+  state = {}
   render() {
     return (
       <React.Fragment>
@@ -44,7 +45,8 @@ export class TextFieldTypeGuide extends Component {
           label="Title Field"
           name="example1"
           placeholder="placeholder text"
-          onChange={console.log}
+          value={this.state.example1}
+          onChange={(name, value) => this.setState({ [name]: value })}
         />
 
         <TextFieldType
@@ -52,7 +54,8 @@ export class TextFieldTypeGuide extends Component {
           name="example2"
           maxLength="400"
           required={true}
-          onChange={console.log}
+          value={this.state.example2}
+          onChange={(name, value) => this.setState({ [name]: value })}
         />
 
         <br />
