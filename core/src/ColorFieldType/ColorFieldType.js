@@ -15,12 +15,13 @@ export class ColorFieldType extends Component {
       <label className={styles.ColorFieldType}>
         <span className={styles.ColorFieldTypeLabel}>{this.props.label}</span>
         <div className={styles.ColorFieldTypeInput}>
-          <i className={cx(styles.Icon, "fa fa-paint-brush")} />
-          <input
+          <Input
             type="color"
             onChange={this.onChange}
             value={this.state.value}
+            className={styles.ColorInput}
           />
+          <i className={cx(styles.Icon, "fa fa-paint-brush")} />
         </div>
       </label>
     );
