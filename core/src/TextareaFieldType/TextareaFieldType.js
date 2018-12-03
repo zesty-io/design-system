@@ -20,7 +20,7 @@ export class TextareaFieldType extends Component {
       this.props.onChange(name, value, this.props.datatype);
   };
   render() {
-    const { value, label, maxLength } = this.props;
+    const { value, label, maxLength, required } = this.props;
     return (
       <label
         className={`${styles.TextareaFieldType} ${
@@ -28,7 +28,10 @@ export class TextareaFieldType extends Component {
         }`}
       >
         <div className={styles.TextareaFieldTypeLabel}>
-          <span>{label}</span>
+          <span>
+            {label}
+            {required && <span style={{ color: "#9a2803" }}>*</span>}
+          </span>
           <span>
             {(value && value.length) || "0"}/{maxLength || 150}
           </span>
