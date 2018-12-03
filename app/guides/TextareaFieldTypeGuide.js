@@ -5,6 +5,7 @@ import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
 export class TextareaFieldTypeGuide extends Component {
+  state = {}
   render() {
     return (
       <React.Fragment>
@@ -17,7 +18,8 @@ export class TextareaFieldTypeGuide extends Component {
         <TextareaFieldType
           name="example1"
           placeholder="placeholder text"
-          onChange={console.log}
+          value={this.state.example1}
+          onChange={(name, value) => this.setState({ [name]: value })}
           label="Title Field"
           charCount="350"
         />
@@ -26,7 +28,8 @@ export class TextareaFieldTypeGuide extends Component {
           name="example2"
           placeholder="placeholder text"
           required={true}
-          onChange={console.log}
+          value={this.state.example2}
+          onChange={(name, value) => this.setState({ [name]: value })}
           label="No CharCount prop"
         />
         <br />
@@ -34,11 +37,22 @@ export class TextareaFieldTypeGuide extends Component {
           <GithubEmbed
             height="150px"
             code={`<TextareaFieldType
-  default="testing default"
-  onChange={console.log}
-  label="Title Field"
-  charCount="350"
-/>`}
+            name="example1"
+            placeholder="placeholder text"
+            value={this.state.example1}
+            onChange={(name, value) => this.setState({ [name]: value })}
+            label="Title Field"
+            charCount="350"
+          />
+          <br />
+          <TextareaFieldType
+            name="example2"
+            placeholder="placeholder text"
+            required={true}
+            value={this.state.example2}
+            onChange={(name, value) => this.setState({ [name]: value })}
+            label="No CharCount prop"
+          />`}
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
