@@ -20,6 +20,19 @@
       z-index: 11;
     }
     .tipText {
+      &::before {
+        // making the tail for the bubble
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        background: @zesty-dark-blue;
+        bottom: -4px;
+        left: 6px;
+        z-index: 10;
+        transform: rotate(45deg);
+        content: " ";
+        border-radius: 3px 0 0 0;
+      }
       display: block;
       position: absolute;
       background: @zesty-dark-blue;
@@ -27,10 +40,11 @@
       padding: 10px 10px 10px 30px;
       width: 25rem;
       line-height: 20px;
-      top: -12px;
+      bottom: 26px;
       border-radius: 4px;
       left: -7px;
       z-index: 10;
+      overflow-wrap: break-word;
     }
   }
 }
