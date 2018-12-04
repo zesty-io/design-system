@@ -69,26 +69,44 @@ export class OneToManyFieldType extends Component {
     }
   };
 
-  onRemove = tagZUID => {
+  onRemove = (name, tagZUID) => {
     // Exclude the removed tag from our tags array
-    this.setState({
-      tags: this.state.tags.filter(tag => tag.value !== tagZUID)
-    });
+    this.setState(
+      {
+        tags: this.state.tags.filter(tag => tag.value !== tagZUID)
+      },
+      () => {
+        // send a csv string to update store
+        if (this.props.onChange) {
+          this.props.onChange(
+            this.props.name,
+            this.state.tags.map(tag => tag.value).join(","),
+            this.props.datatype
+          );
+        }
+      }
+    );
   };
 
   onSelect = (name, value) => {
-    if (name && value !== "0") {
-      if (this.props.onChange) {
-        this.props.onChange(name, value, this.props.datatype);
-      }
-
-      this.setState({
+    this.setState(
+      {
         tags: [
           ...this.state.tags,
           this.props.options.find(option => option.value === value)
         ]
-      });
-    }
+      },
+      () => {
+        // send a csv string to update store
+        if (this.props.onChange) {
+          this.props.onChange(
+            this.props.name,
+            this.state.tags.map(tag => tag.value).join(","),
+            this.props.datatype
+          );
+        }
+      }
+    );
   };
 
   render() {

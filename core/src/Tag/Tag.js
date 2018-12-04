@@ -15,7 +15,7 @@ export function Tag(props) {
         onClick={evt => {
           evt.stopPropagation();
           if (props.onRemove) {
-            props.onRemove(props.value);
+            props.onRemove(props.name, props.value);
           }
         }}
       />
