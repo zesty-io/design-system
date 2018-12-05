@@ -11,10 +11,44 @@ export class CurrencyFieldType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || "0",
-      currency: currencies[props.code || "USD"]
+      value: "0.00",
+      currency: currencies["USD"]
     };
   }
+
+  componentDidMount() {
+    if (this.props.code) {
+      this.setState({ currency: currencies[this.props.code] });
+    }
+    if (this.props.value) {
+      this.setState({ value: this.props.value });
+    }
+  }
+
+  onChange = evt => {
+    const value = evt.target.value;
+    if (!Number(value)) {
+      console.log("Invalid value, not a number", value);
+      // TODO broadcast error
+    }
+
+    if (this.props.onChange) {
+      this.props.onChange(this.props.name, value, this.props.datatype);
+    }
+
+    this.setState({
+      value: value
+    });
+  };
+
+  selectCurrency = (name, value) => {
+    const currency = currencies[value];
+
+    if (currency) {
+      this.setState({ currency });
+    }
+  };
+
   render() {
     return (
       <label className={styles.CurrencyFieldType}>
@@ -41,10 +75,7 @@ export class CurrencyFieldType extends Component {
           <Select
             className={styles.SelectCurrency}
             onSelect={this.selectCurrency}
-            selection={{
-              value: this.state.currency.code,
-              text: this.state.currency.symbol
-            }}
+            value={this.state.currency.code}
             name={this.props.name}
           >
             {Object.keys(currencies).map((code, i) => {
@@ -53,7 +84,13 @@ export class CurrencyFieldType extends Component {
                 <Option
                   key={i}
                   value={currency.code}
-                  text={`${currency.symbol}`}
+                  // this ugly html allows us to display the currency symbol
+                  // and in the dropdown you can still see the currency name
+                  html={`<p style="display:flex;justify-content:space-between;align-items: center;">
+                  <span>${
+                    currency.symbol
+                  }</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                  <span>${currency.name}<span></p>`}
                 />
               );
             })}
@@ -61,7 +98,7 @@ export class CurrencyFieldType extends Component {
 
           <Input
             className={styles.CurrencyInput}
-            type="text"
+            type="number"
             onChange={this.onChange}
             value={this.state.value}
           />
@@ -69,30 +106,4 @@ export class CurrencyFieldType extends Component {
       </label>
     );
   }
-
-  onChange = evt => {
-    const value = evt.target.value;
-
-    if (!Number(value)) {
-      console.log("Invalid value, not a number");
-      // TODO broadcast error
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange(this.props.name, value, this.props.datatype);
-    }
-
-    this.setState({
-      value: value
-    });
-  };
-
-  selectCurrency = evt => {
-    const code = evt.currentTarget.dataset.value;
-    const currency = currencies[code];
-
-    if (currency) {
-      this.setState({ currency });
-    }
-  };
 }
