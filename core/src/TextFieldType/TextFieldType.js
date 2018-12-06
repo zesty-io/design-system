@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Input } from "../Input";
-import styles from "./TextFieldType.less";
+import cx from "classnames";
 
+import { Input } from "../Input";
+
+import styles from "./TextFieldType.less";
 export class TextFieldType extends Component {
   componentDidMount() {
     if (!this.props.name) {
@@ -13,32 +15,45 @@ export class TextFieldType extends Component {
   onChange = evt => {
     const value = evt.target.value;
     const name = evt.target.name;
-    this.props.onChange &&
+    if (this.props.onChange) {
       this.props.onChange(name, value, this.props.datatype);
+    }
   };
   render() {
-    const { value, label, maxLength, required } = this.props;
+    const valueLength =
+      this.props.value && this.props.value.length ? this.props.value.length : 0;
+    const maxLength = this.props.maxLength ? this.props.maxLength : 150;
+
     return (
       <label
-        className={`${styles.TextFieldType} ${
-          (value && value.length) > (maxLength || 150) ? styles.Error : ""
-        }`}
+        className={cx(
+          styles.TextFieldType,
+          this.props.className,
+          valueLength > maxLength ? styles.Error : ""
+        )}
       >
         <div className={styles.TextFieldTypeLabel}>
           <span>
-            {label}
-            {required && <span style={{ color: "#9a2803" }}>*</span>}
+            {this.props.label}
+            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </span>
           <span>
-            {(value && value.length) || "0"}/{maxLength || 150}
+            {valueLength}/{maxLength}
           </span>
         </div>
-        <Input {...this.props} type="text" onChange={this.onChange} />
-        {(value && value.length) > (maxLength || 150) ? (
+        <Input
+          // {...this.props}
+          type="text"
+          name={this.props.name}
+          value={this.props.value}
+          required={this.props.required}
+          onChange={this.onChange}
+        />
+        {valueLength > maxLength && (
           <span className={styles.ErrorDescription}>
             Your input is over the specified limit
           </span>
-        ) : null}
+        )}
       </label>
     );
   }
