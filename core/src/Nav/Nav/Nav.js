@@ -33,7 +33,10 @@ export class Nav extends Component {
   render() {
     const { className, content, selected } = this.props;
     return (
-      <nav className={cx(styles.Nav, className)}>
+      <nav
+        id={this.props.id || "Navigation"}
+        className={cx(styles.Nav, className)}
+      >
         {content.map(item => (
           <Parent
             {...item}
