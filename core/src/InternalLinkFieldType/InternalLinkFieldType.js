@@ -6,7 +6,7 @@ import { Option } from "../Select";
 export class InternalLinkFieldType extends Component {
   render() {
     return (
-      <article>
+      <article className={this.props.className}>
         <div>
           <label>{this.props.label}</label>
         </div>
