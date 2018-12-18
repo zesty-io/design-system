@@ -12,4 +12,4 @@ gulp.task("vendor-css", function() {
     .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("default", ["vendor-css"]);
+gulp.task("default", gulp.series("vendor-css"));
