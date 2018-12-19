@@ -8,6 +8,11 @@
   // transition: max-height 0.2s ease;
   user-select: none;
 
+  &:hover {
+    background-color: lighten(@nav-border-color, 6%);
+    // background-color: @zesty-light-gray;
+  }
+
   i {
     color: @zesty-gray;
     margin-right: 8px;
@@ -18,16 +23,6 @@
     color: @zesty-light-blue;
     flex: 1;
     padding: 8px 16px;
-  }
-  &:hover {
-    background-color: lighten(@nav-border-color, 6%);
-  }
-}
-
-.active {
-  transition: color 0.2s ease;
-  i {
-    color: @zesty-light-gray;
   }
 }
 

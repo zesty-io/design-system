@@ -5,9 +5,15 @@
   display: flex;
   flex-direction: column;
   user-select: none;
+
+  &:hover {
+    background-color: lighten(@nav-border-color, 3%);
+  }
+
   .titleIcon {
     margin: 0 0.4rem;
   }
+
   .title {
     display: flex;
     color: @zesty-white;
@@ -24,9 +30,7 @@
       margin-right: 0.5rem;
     }
   }
-  .active {
-    background-color: lighten(@nav-border-color, 3%);
-  }
+
   ul {
     letter-spacing: 1px;
     list-style: none;

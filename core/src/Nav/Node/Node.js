@@ -1,11 +1,10 @@
 import React, { PureComponent } from "react";
+import cx from "classnames";
 
 import styles from "./Node.less";
-
 export class Node extends PureComponent {
   render() {
     const {
-      active,
       selected,
       // closed,
       collapsed,
@@ -16,17 +15,15 @@ export class Node extends PureComponent {
       children,
       handleOpen
     } = this.props;
-    // style if a node is active
-    const isActive = (active && styles.active) || "";
+
     // style is a node is selected
     const isSelected = (selected.includes(path) && styles.selected) || "";
+
     // check if a parent node is collapsed
     // const isClosed = closed && styles.closed;
     return (
       <li
-        className={`${styles.item} ${isActive} ${
-          styles[`depth${depth}`]
-        } ${isSelected}`}
+        className={cx(styles.item, styles[`depth${depth}`], isSelected)}
         key={path}
       >
         <a href={path}>
