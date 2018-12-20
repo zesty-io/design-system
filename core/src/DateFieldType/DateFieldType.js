@@ -30,7 +30,7 @@ export class DateFieldType extends Component {
               value={this.props.value}
               onChange={this.onChange}
               options={{
-                altFormat: "F j, Y at h:i K",
+                altFormat: "F j Y, at h:i K",
                 altInput: true,
                 plugins: [
                   new confirmDatePlugin({
