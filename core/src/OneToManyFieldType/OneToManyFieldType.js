@@ -89,24 +89,28 @@ export class OneToManyFieldType extends Component {
   };
 
   onSelect = (name, value) => {
-    this.setState(
-      {
-        tags: [
-          ...this.state.tags,
-          this.props.options.find(option => option.value === value)
-        ]
-      },
-      () => {
-        // send a csv string to update store
-        if (this.props.onChange) {
-          this.props.onChange(
-            this.props.name,
-            this.state.tags.map(tag => tag.value).join(","),
-            this.props.datatype
-          );
+    const option = this.props.options.find(option => option.value === value);
+    if (option && option !== "0") {
+      this.setState(
+        {
+          tags: [...this.state.tags, option]
+        },
+        () => {
+          // send a csv string to update store
+          if (this.props.onChange) {
+            this.props.onChange(
+              this.props.name,
+              this.state.tags.map(tag => tag.value).join(","),
+              this.props.datatype
+            );
+          }
         }
-      }
-    );
+      );
+    } else {
+      console.error(
+        `OneToManyFieldType:onSelect - Unknown option selected (${value})`
+      );
+    }
   };
 
   render() {
