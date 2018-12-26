@@ -4,8 +4,6 @@ import { MenuBar, Floater } from "@aeaton/react-prosemirror";
 
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 import { options, inline } from "./react-prosemirror-config";
-// import menu from "./react-prosemirror-menus/inline";
-
 import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
 
 import styles from "./Inline.less";

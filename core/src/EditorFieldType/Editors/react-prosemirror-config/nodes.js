@@ -3,6 +3,19 @@ import { orderedList, bulletList, listItem } from "prosemirror-schema-list";
 import { tableNodes } from "prosemirror-tables";
 import { footnoteNodes } from "@aeaton/prosemirror-footnotes";
 
+// Takes a NodeList
+function getElementAttrs(attrs) {
+  let newAttrs = {};
+
+  if (attrs.length) {
+    for (var i = 0; i < attrs.length; i++) {
+      newAttrs[attrs[i].name] = attrs[i].value;
+    }
+  }
+
+  return newAttrs;
+}
+
 const listNodes = {
   ordered_list: {
     ...orderedList,
@@ -59,6 +72,52 @@ const images = {
   }
 };
 
+const script = {
+  group: "inline", // Allow this node to be child of paragraph
+  inline: true,
+  attrs: {
+    src: { default: null },
+    type: { default: "text/javascript" },
+    async: { default: null }
+  },
+  toDOM(node) {
+    return ["script", node.attrs];
+  },
+  parseDOM: [
+    {
+      tag: "script",
+      getAttrs(dom) {
+        return getElementAttrs(dom.attributes);
+      }
+    }
+  ]
+};
+const iframe = {
+  group: "inline", // Allow this node to be child of paragraph
+  inline: true,
+  attrs: {
+    src: { default: null },
+    id: { default: null },
+    class: { default: null },
+    style: { default: null },
+    height: { default: null },
+    scrolling: { default: null },
+    frameborder: { default: null },
+    "data-instgrm-payload-id": { default: null }
+  },
+  toDOM(node) {
+    return ["iframe", node.attrs];
+  },
+  parseDOM: [
+    {
+      tag: "iframe",
+      getAttrs(dom) {
+        return getElementAttrs(dom.attributes);
+      }
+    }
+  ]
+};
+
 export default {
   ...nodes,
   ...listNodes,
@@ -67,5 +126,7 @@ export default {
     cellContent: "block+"
   }),
   ...footnoteNodes,
-  ...images // Custom image schema
+  ...images, // Custom image schema
+  script,
+  iframe
 };

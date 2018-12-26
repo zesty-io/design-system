@@ -5,8 +5,6 @@ import React from "react";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 import { MenuBar } from "./react-prosemirror/MenuBar";
 import { options, menu } from "./react-prosemirror-config";
-// import menu from "./react-prosemirror-config";
-
 import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
 
 import styles from "./Basic.less";
