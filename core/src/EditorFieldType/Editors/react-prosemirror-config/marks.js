@@ -15,11 +15,11 @@ const superscript = {
 const strikethrough = {
   parseDOM: [
     { tag: "strike" },
-    { style: "text-decoration:line-through" },
-    { style: "text-decoration-line:line-through" }
+    { style: "text-decoration=line-through" },
+    { style: "text-decoration-line=line-through" }
   ],
   toDOM: () => [
-    "span",
+    "del",
     {
       style: "text-decoration-line:line-through"
     }
@@ -27,7 +27,7 @@ const strikethrough = {
 };
 
 const underline = {
-  parseDOM: [{ tag: "u" }, { style: "text-decoration:underline" }],
+  parseDOM: [{ tag: "u" }, { style: "text-decoration=underline" }],
   toDOM: () => [
     "span",
     {
@@ -38,9 +38,8 @@ const underline = {
 
 const indent = {
   parseDOM: [
-    { tag: "span" },
     {
-      style: "padding-left: 30px"
+      style: "padding-left=30px"
     }
   ],
   toDOM: () => [
@@ -52,7 +51,7 @@ const indent = {
 };
 
 const alignLeft = {
-  parseDOM: [{ tag: "span" }, { style: "text-align:left" }],
+  parseDOM: [{ style: "text-align=left" }],
   toDOM: () => [
     "span",
     {
@@ -62,7 +61,7 @@ const alignLeft = {
 };
 
 const alignRight = {
-  parseDOM: [{ tag: "span" }, { style: "text-align:right" }],
+  parseDOM: [{ style: "text-align=right" }],
   toDOM: () => [
     "span",
     {
@@ -72,7 +71,7 @@ const alignRight = {
 };
 
 const alignCenter = {
-  parseDOM: [{ tag: "span" }, { style: "text-align:center" }],
+  parseDOM: [{ style: "text-align=center" }],
   toDOM: () => [
     "span",
     {
@@ -82,7 +81,7 @@ const alignCenter = {
 };
 
 const alignJustify = {
-  parseDOM: [{ tag: "span" }, { style: "text-align:justify" }],
+  parseDOM: [{ style: "text-align=justify" }],
   toDOM: () => [
     "span",
     {
@@ -92,7 +91,7 @@ const alignJustify = {
 };
 
 const floatLeft = {
-  parseDOM: [{ tag: "span" }, { style: "float:left" }],
+  parseDOM: [{ style: "float=left" }],
   toDOM: () => [
     "span",
     {
@@ -102,7 +101,7 @@ const floatLeft = {
 };
 
 const floatRight = {
-  parseDOM: [{ tag: "span" }, { style: "float:right" }],
+  parseDOM: [{ style: "float=right" }],
   toDOM: () => [
     "span",
     {
@@ -110,16 +109,6 @@ const floatRight = {
     }
   ]
 };
-
-// const dedent = {
-//   parseDOM: [{ tag: "p" }, { style: "padding-left:0px" }],
-//   toDOM: () => [
-//     "span",
-//     {
-//       style: "padding-left:0px"
-//     }
-//   ]
-// };
 
 export default {
   ...marks,
@@ -134,5 +123,4 @@ export default {
   alignJustify,
   floatLeft,
   floatRight
-  // dedent
 };
