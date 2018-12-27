@@ -74,6 +74,7 @@
     "react-flatpickr": "^3.6.4",
     "showdown": "^1.9.0",
     "turndown": "^5.0.1",
+    "turndown-plugin-gfm": "^1.0.2",
     "uuid": "^3.3.2"
   }
 }
