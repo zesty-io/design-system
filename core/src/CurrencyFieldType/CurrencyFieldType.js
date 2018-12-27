@@ -28,7 +28,7 @@ export class CurrencyFieldType extends Component {
   onChange = evt => {
     const value = evt.target.value;
     if (!Number(value)) {
-      console.log("Invalid value, not a number", value);
+      console.error("CurrencyFieldType: Invalid value, not a number", value);
       // TODO broadcast error
     }
 
