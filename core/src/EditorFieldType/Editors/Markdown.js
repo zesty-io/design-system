@@ -1,19 +1,26 @@
 import React from "react";
 import showdown from "showdown";
 import turndown from "turndown";
+import { gfm } from "turndown-plugin-gfm";
 
 import styles from "./Markdown.less";
 export class MarkdownEditor extends React.Component {
   componentWillMount() {
-    this.toMarkdown = new turndown();
     this.toHtml = new showdown.Converter();
+    this.toMarkdown = new turndown({
+      headingStyle: "atx"
+    });
+    this.toMarkdown.use(gfm);
+
+    // Handle legacy API data that is in the markdown format
+    // convert it to html and trigger an update cycle
+    if (!this.props.editorChanged && this.props.initialType === "markdown") {
+      this.props.onChange(this.toHtml.makeHtml(this.props.value));
+    }
   }
 
   onChange = evt => {
-    const value = evt.target.value;
-    if (this.props.onChange) {
-      this.props.onChange(this.toHtml.makeHtml(value));
-    }
+    this.props.onChange(this.toHtml.makeHtml(evt.target.value));
   };
 
   render() {

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import cx from "classnames";
 
-// Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
-import { BasicEditor } from "./Editors/Basic.js";
+import { BasicEditor } from "./Editors/Basic.js"; // Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
 import { InlineEditor } from "./Editors/Inline.js";
 import { MarkdownEditor } from "./Editors/Markdown.js";
 import { HtmlEditor } from "./Editors/Html.js";
@@ -22,7 +21,8 @@ export class EditorFieldType extends Component {
 
     this.state = {
       value: this.props.value || "",
-      editor
+      editor,
+      editorChanged: false // We have to track whether the editor has been changed so we can properly render legacy markdown content
     };
   }
 
@@ -40,7 +40,8 @@ export class EditorFieldType extends Component {
 
   selectEditor = (name, value) => {
     this.setState({
-      editor: value
+      editor: value,
+      editorChanged: true
     });
   };
 
@@ -54,7 +55,12 @@ export class EditorFieldType extends Component {
         break;
       case "markdown":
         return (
-          <MarkdownEditor value={this.state.value} onChange={this.onChange} />
+          <MarkdownEditor
+            value={this.state.value}
+            initialType={this.props.type}
+            editorChanged={this.state.editorChanged}
+            onChange={this.onChange}
+          />
         );
         break;
       case "article_writer":
