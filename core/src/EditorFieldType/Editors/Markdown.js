@@ -1,26 +1,41 @@
 import React from "react";
 import showdown from "showdown";
-import turndown from "turndown";
-import { gfm } from "turndown-plugin-gfm";
+// import turndown from "turndown";
+// import { gfm } from "turndown-plugin-gfm";
 
 import styles from "./Markdown.less";
 export class MarkdownEditor extends React.Component {
-  componentWillMount() {
-    this.toHtml = new showdown.Converter();
-    this.toMarkdown = new turndown({
-      headingStyle: "atx"
-    });
-    this.toMarkdown.use(gfm);
+  constructor(props) {
+    super(props);
 
-    // Handle legacy API data that is in the markdown format
-    // convert it to html and trigger an update cycle
+    this.converter = new showdown.Converter({
+      noHeaderId: true,
+      tables: true,
+      strikethrough: true
+      // backslashEscapesHTMLTags: true
+    });
+
+    // this.converter.setFlavor("original");
+
+    // Data can either be (legacy) markdown or (current) html from the API
+    let html = this.props.value;
+
+    // It is most likely (legacy) markdown
     if (!this.props.editorChanged && this.props.initialType === "markdown") {
-      this.props.onChange(this.toHtml.makeHtml(this.props.value));
+      html = this.converter.makeHtml(html);
+
+      // This will update the global store
+      this.props.onChange(html);
     }
+
+    this.state = {
+      // Convert back to markdown for this component
+      markdown: this.converter.makeMd(html)
+    };
   }
 
   onChange = evt => {
-    this.props.onChange(this.toHtml.makeHtml(evt.target.value));
+    this.props.onChange(this.converter.makeHtml(evt.target.value));
   };
 
   render() {
@@ -29,7 +44,7 @@ export class MarkdownEditor extends React.Component {
         className={styles.Markdown}
         onChange={this.onChange}
         placeholder={this.props.placeholder}
-        defaultValue={this.toMarkdown.turndown(this.props.value)}
+        defaultValue={this.state.markdown}
       />
     );
   }
