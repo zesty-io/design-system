@@ -6,7 +6,7 @@ import Flatpickr from "react-flatpickr";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
-require("flatpickr/dist/themes/airbnb.css");
+require("../flatpickr.css");
 
 import styles from "./DateFieldType.less";
 

@@ -86,6 +86,10 @@ export default {
       {
         files: "src/**/*.less",
         dest: "dist/"
+      },
+      {
+        files: "src/flatpickr.css",
+        dest: "dist/"
       }
     ]),
     sizeSnapshot()
