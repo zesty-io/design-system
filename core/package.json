@@ -23,10 +23,12 @@
     "moment": "^2.22.2",
     "@aeaton/react-prosemirror": "^0.21.1",
     "@aeaton/react-prosemirror-config-default": "^0.11.0",
-    "codemirror": "^5.40.2",
+    "codemirror": "^5.42.0",
     "react-codemirror2": "^5.1.0",
     "showdown": "^1.9.0",
-    "turndown": "^5.0.1"
+    "uuid": "^3.3.2",
+    "flatpickr": "^4.5.2",
+    "react-flatpickr": "^3.6.4"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -65,16 +67,7 @@
     "rollup-plugin-size-snapshot": "0.7.0"
   },
   "dependencies": {
-    "@aeaton/react-prosemirror": "^0.21.1",
-    "@aeaton/react-prosemirror-config-default": "^0.11.0",
-    "codemirror": "^5.42.0",
-    "flatpickr": "^4.5.2",
     "js-beautify": "^1.8.8",
-    "react-codemirror2": "^5.1.0",
-    "react-flatpickr": "^3.6.4",
-    "showdown": "^1.9.0",
-    "turndown": "^5.0.1",
-    "turndown-plugin-gfm": "^1.0.2",
-    "uuid": "^3.3.2"
+    "codemirror": "^5.42.0"
   }
 }
