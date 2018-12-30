@@ -7,7 +7,7 @@ import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
   @see https://github.com/prosemirror/prosemirror-tables/
 **/
 export const table = {
-  content: "(table_row | colgroup | caption)+",
+  content: "(colgroup | caption | table_body)+",
   tableRole: "table",
   isolating: true,
   group: "block",
@@ -25,11 +25,30 @@ export const table = {
   }
 };
 
+export const table_body = {
+  content: "table_row+",
+  tableRole: "table_body",
+  // isolating: true,
+  group: "block",
+  attrs: { ...GLOBAL_ATTRS },
+  parseDOM: [
+    {
+      tag: "tbody",
+      getAttrs(dom) {
+        return getElementAttrs(dom.attributes);
+      }
+    }
+  ],
+  toDOM(node) {
+    return ["tbody", node.attrs, 0];
+  }
+};
+
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
  */
 export const caption = {
-  content: "inline",
+  content: "inline*",
   parseDOM: [
     {
       tag: "caption",
@@ -121,7 +140,7 @@ export const table_header = {
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
  */
 export const colgroup = {
-  content: "col",
+  content: "col+",
   attrs: {
     ...GLOBAL_ATTRS,
     span: { default: null }
@@ -145,7 +164,8 @@ export const colgroup = {
 export const col = {
   attrs: {
     ...GLOBAL_ATTRS,
-    span: { default: null }
+    span: { default: null },
+    width: { default: null }
   },
   parseDOM: [
     {
@@ -156,12 +176,13 @@ export const col = {
     }
   ],
   toDOM(node) {
-    return ["col", { ...node.attrs }, 0];
+    return ["col", { ...node.attrs }];
   }
 };
 
 export default {
   table,
+  table_body,
   table_row,
   table_cell,
   table_header,
