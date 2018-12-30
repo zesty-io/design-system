@@ -4,6 +4,7 @@ import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
   Override `prosemirror-tables` node definitions to provide custom
   attributes. Requires providing the `tableRole` property for
   the plugins to work.
+  @see https://github.com/prosemirror/prosemirror-tables/
 **/
 export const table = {
   content: "(table_row | colgroup | caption)+",
