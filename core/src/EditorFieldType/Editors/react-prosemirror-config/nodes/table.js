@@ -27,7 +27,7 @@ const attrs = attributes();
   @see https://github.com/prosemirror/prosemirror-tables/
 **/
 
-console.log("default attrs", attrs);
+// console.log("default attrs", attrs);
 
 export const table = {
   content: "(colgroup | caption | table_body)+",
