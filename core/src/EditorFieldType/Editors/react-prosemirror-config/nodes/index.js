@@ -10,54 +10,59 @@ import { code_block } from "./code.js";
 import { hr } from "./hr.js";
 import { br } from "./br.js";
 
-export const GLOBAL_ATTRS = {
-  accesskey: { default: null },
-  autocapitalize: { default: null },
-  class: { default: null },
+// NOTE: for some reason I'm not able to export a const variable
+// so I'm using a function to provide these default attributes
+// maybe something to do with our webpack/babel process???
+export function attributes() {
+  return {
+    accesskey: { default: null },
+    autocapitalize: { default: null },
+    class: { default: null },
 
-  // We exclude `contenteditable`. This may cause problems with prosemirror?
-  contextmenu: { default: null },
+    // We exclude `contenteditable`. This may cause problems with prosemirror?
+    contextmenu: { default: null },
 
-  // `data-*` have to be added on a per case basis
-  dir: { default: null },
-  draggable: { default: null },
-  dropzone: { default: null },
-  hidden: { default: null },
-  id: { default: null },
-  inputmode: { default: null },
+    // `data-*` have to be added on a per case basis
+    dir: { default: null },
+    draggable: { default: null },
+    dropzone: { default: null },
+    hidden: { default: null },
+    id: { default: null },
+    inputmode: { default: null },
 
-  // Experimental microdata
-  // @see https://html.spec.whatwg.org/multipage/microdata.html#microdata
-  itemid: { default: null },
-  itemprop: { default: null },
-  itemref: { default: null },
-  itemscope: { default: null },
-  itemtype: { default: null },
+    // Experimental microdata
+    // @see https://html.spec.whatwg.org/multipage/microdata.html#microdata
+    itemid: { default: null },
+    itemprop: { default: null },
+    itemref: { default: null },
+    itemscope: { default: null },
+    itemtype: { default: null },
 
-  lang: { default: null },
-  spellcheck: { default: null },
-  style: { default: null },
-  tabindex: { default: null },
-  title: { default: null },
-  translated: { default: null }
-};
+    lang: { default: null },
+    spellcheck: { default: null },
+    style: { default: null },
+    tabindex: { default: null },
+    title: { default: null },
+    translated: { default: null }
+  };
+}
 
 /**
  * getElementAttrs
  * attrs [NodeList]
  */
-export function getElementAttrs(attrs) {
-  let newAttrs = {};
+export function getElementAttrs(dom) {
+  let attrs = {};
 
-  if (attrs.length) {
-    for (var i = 0; i < attrs.length; i++) {
-      if (attrs[i].value) {
-        newAttrs[attrs[i].name] = attrs[i].value;
+  if (dom.attributes.length) {
+    for (var i = 0; i < dom.attributes.length; i++) {
+      if (dom.attributes[i].value) {
+        attrs[dom.attributes[i].name] = dom.attributes[i].value;
       }
     }
   }
 
-  return newAttrs;
+  return attrs;
 }
 
 export default {

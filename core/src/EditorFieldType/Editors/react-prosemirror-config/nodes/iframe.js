@@ -1,9 +1,9 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs, attributes } from "./index.js";
 export const iframe = {
   group: "inline", // Allow this node to be child of paragraph
   inline: true,
   attrs: {
-    ...GLOBAL_ATTRS,
+    ...attributes(),
     src: { default: null },
     height: { default: null },
     scrolling: { default: null },
@@ -17,7 +17,7 @@ export const iframe = {
     {
       tag: "iframe",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ]

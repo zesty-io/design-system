@@ -1,16 +1,16 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs, attributes } from "./index.js";
 
 // :: NodeSpec A plain paragraph textblock. Represented in the DOM
 // as a `<p>` element.
 export const paragraph = {
   content: "inline*",
   group: "block",
-  attrs: { ...GLOBAL_ATTRS },
+  attrs: { ...attributes(), style: { default: null } },
   parseDOM: [
     {
       tag: "p",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],

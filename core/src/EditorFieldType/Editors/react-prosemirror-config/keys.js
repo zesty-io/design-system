@@ -7,7 +7,7 @@ import {
   liftListItem,
   sinkListItem
 } from "prosemirror-schema-list";
-import { goToNextCell } from "prosemirror-tables";
+// import { goToNextCell } from "prosemirror-tables";
 import {
   baseKeymap,
   toggleMark,
@@ -65,9 +65,9 @@ const keys = {
   "Shift-Ctrl-4": setBlockType(schema.nodes.heading, { level: 4 }),
   "Shift-Ctrl-5": setBlockType(schema.nodes.heading, { level: 5 }),
   "Shift-Ctrl-6": setBlockType(schema.nodes.heading, { level: 6 }),
-  "Mod-_": insertRule,
-  Tab: goToNextCell(1),
-  "Shift-Tab": goToNextCell(-1)
+  "Mod-_": insertRule
+  // Tab: goToNextCell(1),
+  // "Shift-Tab": goToNextCell(-1)
 };
 
 Object.keys(baseKeymap).forEach(key => {

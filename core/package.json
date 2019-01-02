@@ -67,7 +67,7 @@
     "rollup-plugin-size-snapshot": "0.7.0"
   },
   "dependencies": {
-    "js-beautify": "^1.8.8",
-    "codemirror": "^5.42.0"
+    "codemirror": "^5.42.0",
+    "js-beautify": "^1.8.8"
   }
 }

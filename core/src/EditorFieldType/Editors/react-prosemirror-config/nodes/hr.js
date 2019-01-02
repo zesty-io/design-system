@@ -1,14 +1,14 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs, attributes } from "./index.js";
 
 // :: NodeSpec A horizontal rule (`<hr>`).
 export const hr = {
   group: "block",
-  attrs: GLOBAL_ATTRS,
+  attrs: attributes(),
   parseDOM: [
     {
       tag: "hr",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
