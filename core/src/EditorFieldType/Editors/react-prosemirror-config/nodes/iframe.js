@@ -4,12 +4,17 @@ export const iframe = {
   inline: true,
   attrs: {
     ...attributes(),
-    src: { default: null },
     height: { default: null },
     width: { default: null },
     scrolling: { default: null },
     frameborder: { default: null },
+    allow: { default: null },
     allowfullscreen: { default: null },
+    name: { default: null },
+    referrerpolicy: { default: null },
+    sandbox: { default: null },
+    src: { default: null },
+    srcdoc: { default: null },
     "data-instgrm-payload-id": { default: null }
   },
   toDOM(node) {
