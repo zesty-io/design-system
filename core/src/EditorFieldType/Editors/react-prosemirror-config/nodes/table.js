@@ -1,4 +1,24 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+// import { tableNodes } from "prosemirror-tables";
+import { getElementAttrs, attributes } from "./index.js";
+const attrs = attributes();
+
+// const nodes = tableNodes({
+//   tableGroup: "block",
+//   cellContent: "block+"
+// });
+//
+// nodes["table"].attrs = { ...attrs, width: { default: null } };
+// nodes["table_cell"].attrs = nodes["table_header"].attrs = {
+//   ...attrs,
+//   colspan: { default: 1 },
+//   rowspan: { default: 1 },
+//   colwidth: { default: null },
+//   headers: { default: null }
+// };
+//
+// console.log("tableNodes", nodes);
+//
+// export default nodes;
 
 /**
   Override `prosemirror-tables` node definitions to provide custom
@@ -6,22 +26,46 @@ import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
   the plugins to work.
   @see https://github.com/prosemirror/prosemirror-tables/
 **/
+
+// console.log("default attrs", attrs);
+
 export const table = {
-  content: "(table_row | colgroup | caption)+",
+  content: "(colgroup | caption | table_body)+",
+  // content: "table_row+",
   tableRole: "table",
   isolating: true,
   group: "block",
-  attrs: { ...GLOBAL_ATTRS },
+  attrs: { ...attrs, width: { default: null } },
   parseDOM: [
     {
       tag: "table",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
   toDOM(node) {
+    // return ["table", ["tbody", 0]];
     return ["table", node.attrs, 0];
+  }
+};
+
+export const table_body = {
+  content: "table_row+",
+  tableRole: "table_body",
+  // isolating: true,
+  group: "block",
+  attrs: attrs,
+  parseDOM: [
+    {
+      tag: "tbody",
+      getAttrs(dom) {
+        return getElementAttrs(dom);
+      }
+    }
+  ],
+  toDOM(node) {
+    return ["tbody", node.attrs, 0];
   }
 };
 
@@ -29,12 +73,13 @@ export const table = {
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
  */
 export const caption = {
-  content: "inline",
+  content: "inline*",
+  attrs: attrs,
   parseDOM: [
     {
       tag: "caption",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
@@ -49,12 +94,12 @@ export const caption = {
 export const table_row = {
   content: "(table_cell | table_header)*",
   tableRole: "row",
-  attrs: { ...GLOBAL_ATTRS },
+  attrs: attrs,
   parseDOM: [
     {
       tag: "tr",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
@@ -70,9 +115,10 @@ export const table_cell = {
   content: "block+",
   tableRole: "cell",
   attrs: {
-    ...GLOBAL_ATTRS,
-    colspan: { default: null },
-    rowspan: { default: null },
+    ...attrs,
+    colspan: { default: 1 },
+    rowspan: { default: 1 },
+    // colwidth: { default: null },
     headers: { default: null }
   },
   isolating: true,
@@ -80,7 +126,7 @@ export const table_cell = {
     {
       tag: "td",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
@@ -96,10 +142,11 @@ export const table_header = {
   content: "block+",
   tableRole: "header_cell",
   attrs: {
-    ...GLOBAL_ATTRS,
+    ...attrs,
     abbr: { default: null },
-    colspan: { default: null },
-    rowspan: { default: null },
+    colspan: { default: 1 },
+    rowspan: { default: 1 },
+    // colwidth: { default: null },
     scope: { default: null }
   },
   isolating: true,
@@ -107,7 +154,7 @@ export const table_header = {
     {
       tag: "th",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
@@ -121,16 +168,13 @@ export const table_header = {
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
  */
 export const colgroup = {
-  content: "col",
-  attrs: {
-    ...GLOBAL_ATTRS,
-    span: { default: null }
-  },
+  content: "col+",
+  attrs: { ...attrs, span: { default: null } },
   parseDOM: [
     {
       tag: "colgroup",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
@@ -144,24 +188,26 @@ export const colgroup = {
  */
 export const col = {
   attrs: {
-    ...GLOBAL_ATTRS,
-    span: { default: null }
+    ...attrs,
+    span: { default: null },
+    width: { default: null }
   },
   parseDOM: [
     {
       tag: "col",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],
   toDOM(node) {
-    return ["col", { ...node.attrs }, 0];
+    return ["col", { ...node.attrs }];
   }
 };
 
 export default {
   table,
+  table_body,
   table_row,
   table_cell,
   table_header,

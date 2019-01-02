@@ -1,4 +1,4 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs } from "./index.js";
 export const script = {
   group: "inline", // Allow this node to be child of paragraph
   inline: true,
@@ -14,7 +14,7 @@ export const script = {
     {
       tag: "script",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ]

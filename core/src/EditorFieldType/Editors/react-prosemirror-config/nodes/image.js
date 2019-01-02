@@ -1,8 +1,8 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs, attributes } from "./index.js";
 export const image = {
   inline: true,
   attrs: {
-    ...GLOBAL_ATTRS,
+    ...attributes(),
     src: {},
     alt: { default: null },
     align: { default: null },
@@ -18,7 +18,7 @@ export const image = {
       priority: 51, // must be higher than the default image spec
       tag: "img[src]",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],

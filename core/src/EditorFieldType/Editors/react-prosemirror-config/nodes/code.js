@@ -1,4 +1,4 @@
-import { getElementAttrs, GLOBAL_ATTRS } from "./index.js";
+import { getElementAttrs, attributes } from "./index.js";
 
 // :: NodeSpec A code listing. Disallows marks or non-text inline
 // nodes by default. Represented as a `<pre>` element with a
@@ -9,13 +9,13 @@ export const code_block = {
   group: "block",
   code: true,
   defining: true,
-  attrs: GLOBAL_ATTRS,
+  attrs: attributes(),
   parseDOM: [
     {
       tag: "pre",
       preserveWhitespace: "full",
       getAttrs(dom) {
-        return getElementAttrs(dom.attributes);
+        return getElementAttrs(dom);
       }
     }
   ],

@@ -1,6 +1,6 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
@@ -67,7 +67,7 @@
     "rollup-plugin-size-snapshot": "0.7.0"
   },
   "dependencies": {
-    "js-beautify": "^1.8.8",
-    "codemirror": "^5.42.0"
+    "codemirror": "^5.42.0",
+    "js-beautify": "^1.8.8"
   }
 }
