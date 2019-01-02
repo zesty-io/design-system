@@ -6,8 +6,10 @@ export const iframe = {
     ...attributes(),
     src: { default: null },
     height: { default: null },
+    width: { default: null },
     scrolling: { default: null },
     frameborder: { default: null },
+    allowfullscreen: { default: null },
     "data-instgrm-payload-id": { default: null }
   },
   toDOM(node) {
