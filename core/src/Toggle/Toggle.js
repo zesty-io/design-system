@@ -2,7 +2,6 @@ import React from "react";
 
 import styles from "./Toggle.less";
 export function Toggle({ checked, onClick }) {
-  console.log("checked", checked);
   return (
     <label
       className={styles.switch}
