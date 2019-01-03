@@ -14,8 +14,9 @@ export function Tag(props) {
         className={cx("fa fa-times-circle", styles.Remove)}
         onClick={evt => {
           evt.stopPropagation();
+          evt.preventDefault();
           if (props.onRemove) {
-            props.onRemove(props.name, props.value);
+            return props.onRemove(props.name, props.value);
           }
         }}
       />

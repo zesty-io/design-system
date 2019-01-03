@@ -7,7 +7,8 @@ export function Toggle(props) {
       className={styles.switch}
       onClick={evt => {
         evt.stopPropagation();
-        props.onChange();
+        evt.preventDefault();
+        return props.onClick();
       }}
     >
       <input type="checkbox" checked={props.checked ? "checked" : null} />
