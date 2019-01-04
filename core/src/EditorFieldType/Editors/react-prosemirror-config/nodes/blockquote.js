@@ -2,7 +2,7 @@ import { getElementAttrs, attributes } from "./index.js";
 
 // :: NodeSpec A blockquote (`<blockquote>`) wrapping one or more blocks.
 export const blockquote = {
-  content: "block+",
+  content: "text*",
   group: "block",
   defining: true,
   attrs: attributes(),
@@ -15,6 +15,6 @@ export const blockquote = {
     }
   ],
   toDOM(node) {
-    return ["blockquote", node.attrs, 0];
+    return ["blockquote", node.attrs, ["p", 0]];
   }
 };
