@@ -7,9 +7,6 @@ export const script = {
     type: { default: "text/javascript" },
     async: { default: null }
   },
-  toDOM(node) {
-    return ["script", node.attrs];
-  },
   parseDOM: [
     {
       tag: "script",
@@ -17,5 +14,8 @@ export const script = {
         return getElementAttrs(dom);
       }
     }
-  ]
+  ],
+  toDOM(node) {
+    return ["script", node.attrs];
+  }
 };

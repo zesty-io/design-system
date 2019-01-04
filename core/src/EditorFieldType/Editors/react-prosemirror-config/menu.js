@@ -166,11 +166,11 @@ export default {
       run: setBlockType(schema.nodes.code_block)
     },
     blockquote: {
-      title: "Wrap in block quote",
+      title: "Change to block quote",
       content: icons.blockquote,
       active: blockActive(schema.nodes.blockquote),
-      enable: wrapIn(schema.nodes.blockquote),
-      run: wrapIn(schema.nodes.blockquote)
+      enable: setBlockType(schema.nodes.blockquote),
+      run: setBlockType(schema.nodes.blockquote)
     },
     bullet_list: {
       title: "Wrap in bullet list",
@@ -201,21 +201,21 @@ export default {
   },
 
   insert: {
-    footnote: {
-      title: "Insert footnote",
-      content: icons.footnote,
-      enable: canInsert(schema.nodes.footnote),
-      run: (state, dispatch) => {
-        const footnote = schema.nodes.footnote.create();
-        dispatch(state.tr.replaceSelectionWith(footnote));
-      }
-    },
+    // footnote: {
+    //   title: "Insert footnote",
+    //   content: icons.footnote,
+    //   enable: canInsert(schema.nodes.footnote),
+    //   run: (state, dispatch) => {
+    //     const footnote = schema.nodes.footnote.create();
+    //     dispatch(state.tr.replaceSelectionWith(footnote));
+    //   }
+    // },
     hr: {
       title: "Insert horizontal rule",
       content: "HR",
-      enable: canInsert(schema.nodes.horizontal_rule),
+      enable: canInsert(schema.nodes.hr),
       run: (state, dispatch) => {
-        const hr = schema.nodes.horizontal_rule.create();
+        const hr = schema.nodes.hr.create();
         dispatch(state.tr.replaceSelectionWith(hr));
       }
     },
@@ -247,6 +247,20 @@ export default {
         // view.focus()
       }
     }
+    // table: {
+    // addColumnBefore: {
+    //   title: 'Insert column before',
+    //   content: icons.after,
+    //   active: addColumnBefore, // TOOD: active -> select
+    //   run: addColumnBefore
+    // },
+    // addColumnAfter: {
+    //   title: 'Insert column before',
+    //   content: icons.before,
+    //   active: addColumnAfter, // TOOD: active -> select
+    //   run: addColumnAfter
+    // }
+    // }
   },
   special_character_dropdown: {
     title: "Insert special character",
@@ -302,34 +316,6 @@ export default {
       active: markActive(schema.marks.floatRight),
       run: toggleMark(schema.marks.floatRight)
     }
-    // resize: {
-    //   title: "Resize image",
-    //   content: icons.image,
-    //   active: markActive(schema.nodes.image),
-    //   enable: canInsert(schema.nodes.image),
-    //   run(state, dispatch) {
-    //     console.log("media:image:resize", state);
-    //
-    //     const height =
-    //       window && window.prompt("Enter image height", "https://");
-    //
-    //     const width = window && window.prompt("Enter image width", "https://");
-    //
-    //     console.log(height, width);
-    //
-    //     //
-    //     // if (markActive(schema.marks.link)(state)) {
-    //     //   toggleMark(schema.marks.link)(state, dispatch);
-    //     //   return true;
-    //     // }
-    //     //
-    //     // const href = promptForURL();
-    //     // if (!href) return false;
-    //     //
-    //     // toggleMark(schema.marks.link, { href })(state, dispatch);
-    //     // // view.focus()
-    //   }
-    // }
   },
   history: {
     undo: {
@@ -345,18 +331,4 @@ export default {
       run: redo
     }
   }
-  // table: {
-  // addColumnBefore: {
-  //   title: 'Insert column before',
-  //   content: icons.after,
-  //   active: addColumnBefore, // TOOD: active -> select
-  //   run: addColumnBefore
-  // },
-  // addColumnAfter: {
-  //   title: 'Insert column before',
-  //   content: icons.before,
-  //   active: addColumnAfter, // TOOD: active -> select
-  //   run: addColumnAfter
-  // }
-  // }
 };
