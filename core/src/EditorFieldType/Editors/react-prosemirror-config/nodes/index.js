@@ -7,6 +7,7 @@ import { paragraph } from "./paragraph.js";
 import { script } from "./script.js";
 import { blockquote } from "./blockquote.js";
 import { code_block } from "./code.js";
+import { div } from "./div.js";
 import { hr } from "./hr.js";
 import { br } from "./br.js";
 
@@ -65,6 +66,8 @@ export function getElementAttrs(dom) {
   return attrs;
 }
 
+// NOTE: Order matters!!!
+// @see https://prosemirror.net/docs/guide/#schema.content_expressions
 export default {
   // :: NodeSpec The top level document node.
   doc: {
@@ -77,11 +80,12 @@ export default {
   },
 
   // override ProseMirror basic schema
+  image,
   paragraph,
   blockquote,
-  image,
   heading,
   code_block,
+  div,
   hr,
   br,
 
