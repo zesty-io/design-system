@@ -22,7 +22,7 @@ export function InlineEditor({ value, onChange }) {
         </section>
       )}
       nodeViews={{
-        resizableImage(node, view, getPos) {
+        image(node, view, getPos) {
           return new ImageResizeView(node, view, getPos);
         }
       }}

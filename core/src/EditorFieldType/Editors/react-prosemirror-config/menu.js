@@ -274,7 +274,7 @@ export default {
           limit: 10,
           callback: images => {
             const imageNodes = images.map(image =>
-              schema.nodes.resizableImage.createAndFill({
+              schema.nodes.image.createAndFill({
                 src: image.url,
                 title: image.title,
                 "data-zuid": image.id
