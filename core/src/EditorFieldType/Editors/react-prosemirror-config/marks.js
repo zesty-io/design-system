@@ -1,4 +1,59 @@
-import { marks } from "prosemirror-schema-basic";
+import { attributes, getElementAttrs } from "./nodes";
+
+const link = {
+  attrs: {
+    ...attributes(),
+    href: {}
+  },
+  inclusive: false,
+  parseDOM: [
+    {
+      tag: "a[href]",
+      getAttrs(dom) {
+        return getElementAttrs(dom);
+      }
+    }
+  ],
+  toDOM(node) {
+    return ["a", node.attrs, 0];
+  }
+};
+
+// :: MarkSpec An emphasis mark. Rendered as an `<em>` element.
+// Has parse rules that also match `<i>` and `font-style: italic`.
+const em = {
+  parseDOM: [{ tag: "i" }, { tag: "em" }, { style: "font-style=italic" }],
+  toDOM() {
+    return ["em", 0];
+  }
+};
+
+// :: MarkSpec A strong mark. Rendered as `<strong>`, parse rules
+// also match `<b>` and `font-weight: bold`.
+const strong = {
+  parseDOM: [
+    { tag: "strong" },
+    // This works around a Google Docs misbehavior where
+    // pasted content will be inexplicably wrapped in `<b>`
+    // tags with a font-weight normal.
+    { tag: "b", getAttrs: node => node.style.fontWeight != "normal" && null },
+    {
+      style: "font-weight",
+      getAttrs: value => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null
+    }
+  ],
+  toDOM() {
+    return ["strong", 0];
+  }
+};
+
+// :: MarkSpec Code font mark. Represented as a `<code>` element.
+const code = {
+  parseDOM: [{ tag: "code" }],
+  toDOM() {
+    return ["code", 0];
+  }
+};
 
 const subscript = {
   excludes: "superscript",
@@ -111,7 +166,10 @@ const floatRight = {
 };
 
 export default {
-  ...marks,
+  link,
+  em,
+  strong,
+  code,
   subscript,
   superscript,
   strikethrough,
