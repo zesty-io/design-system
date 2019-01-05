@@ -14,6 +14,7 @@ export class DropDownFieldType extends Component {
       <label className={styles.DropDownFieldType}>
         <span className={styles.DropDownFieldTypeLabel}>
           {this.props.label}
+          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
         </span>
         <Select
           name={this.props.name}

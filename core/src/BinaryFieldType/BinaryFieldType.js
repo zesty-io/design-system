@@ -12,7 +12,10 @@ export class BinaryFieldType extends Component {
     return (
       <article className={styles.BinaryFieldType}>
         <div className={styles.BinaryFieldTypeLabel}>
-          <label>{this.props.label}</label>
+          <label>
+            {this.props.label}
+            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+          </label>
         </div>
         <label className={styles.switch}>
           <ToggleButton {...this.props} onChange={this.onChange} />

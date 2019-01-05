@@ -60,6 +60,7 @@ export class CurrencyFieldType extends Component {
               }"`}
             />
             {this.props.label}
+            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </span>
           <span>
             {Number(this.state.value).toLocaleString(

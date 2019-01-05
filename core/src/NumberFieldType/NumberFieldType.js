@@ -26,7 +26,10 @@ export class NumberFieldType extends Component {
   render() {
     return (
       <label className={styles.NumberFieldType}>
-        <span className={styles.NumberFieldTypeLabel}>{this.props.label}</span>
+        <span className={styles.NumberFieldTypeLabel}>
+          {this.props.label}
+          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+        </span>
         <Input
           type="number"
           required={this.props.required}

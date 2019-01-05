@@ -25,7 +25,10 @@ export class ColorFieldType extends Component {
   render() {
     return (
       <label className={styles.ColorFieldType}>
-        <span className={styles.ColorFieldTypeLabel}>{this.props.label}</span>
+        <span className={styles.ColorFieldTypeLabel}>
+          {this.props.label}
+          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+        </span>
         <div className={styles.ColorFieldTypeInput}>
           <Input
             required={this.props.required}

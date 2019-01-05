@@ -8,7 +8,10 @@ export class InternalLinkFieldType extends Component {
     return (
       <article className={this.props.className}>
         <div>
-          <label>{this.props.label}</label>
+          <label>
+            {this.props.label}
+            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+          </label>
         </div>
 
         <SearchableList

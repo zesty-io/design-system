@@ -84,7 +84,10 @@ export class EditorFieldType extends Component {
     return (
       <div className={cx(styles.EditorFieldType, this.props.className)}>
         <label className={styles.EditorFieldTypeLabel}>
-          <span>{this.props.label}</span>
+          <span>
+            {this.props.label}
+            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+          </span>
           <span>
             {this.state.value.length}
             /65,000
