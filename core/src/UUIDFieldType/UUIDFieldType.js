@@ -43,6 +43,7 @@ export class UUIDFieldType extends PureComponent {
           <Input
             type="text"
             readOnly={true}
+            required={this.props.required}
             defaultValue={this.props.value || ""}
           />
         </div>

@@ -19,7 +19,13 @@ export class NumberFieldTypeGuide extends Component {
         <br />
         <NumberFieldType
           label="No CharCount"
-          default="4"
+          value="4"
+          callback={value => console.log(value)}
+        />
+        <NumberFieldType
+          label="No CharCount"
+          required={true}
+          value="4"
           callback={value => console.log(value)}
         />
         <br />

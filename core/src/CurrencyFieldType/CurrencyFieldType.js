@@ -97,6 +97,7 @@ export class CurrencyFieldType extends Component {
           </Select>
 
           <Input
+            required={this.props.required}
             className={styles.CurrencyInput}
             type="number"
             onChange={this.onChange}

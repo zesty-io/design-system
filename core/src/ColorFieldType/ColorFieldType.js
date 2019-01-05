@@ -28,6 +28,7 @@ export class ColorFieldType extends Component {
         <span className={styles.ColorFieldTypeLabel}>{this.props.label}</span>
         <div className={styles.ColorFieldTypeInput}>
           <Input
+            required={this.props.required}
             type="color"
             onChange={this.onChange}
             value={this.state.value}

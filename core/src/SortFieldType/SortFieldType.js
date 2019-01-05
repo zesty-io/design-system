@@ -55,6 +55,7 @@ export class SortFieldType extends Component {
             type="number"
             value={this.state.sortValue}
             onChange={this.handleChange}
+            required={this.props.required}
           />
           <Button
             className={cx(styles.Increment, styles.Right)}

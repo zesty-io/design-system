@@ -32,7 +32,12 @@ export class UrlFieldType extends PureComponent {
             </span>
           )}
         </div>
-        <Input type="url" onChange={this.onChange} value={this.props.value} />
+        <Input
+          type="url"
+          required={this.props.required}
+          onChange={this.onChange}
+          value={this.props.value}
+        />
       </article>
     );
   }

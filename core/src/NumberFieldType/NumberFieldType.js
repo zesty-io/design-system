@@ -29,6 +29,7 @@ export class NumberFieldType extends Component {
         <span className={styles.NumberFieldTypeLabel}>{this.props.label}</span>
         <Input
           type="number"
+          required={this.props.required}
           onChange={this.onChange}
           value={this.state.number}
         />
