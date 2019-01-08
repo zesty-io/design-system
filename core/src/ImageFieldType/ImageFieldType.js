@@ -41,7 +41,7 @@ export class ImageFieldType extends Component {
     const { label, images, field, limit } = this.props;
     return (
       <Fragment>
-        <label>
+        <label className={styles.ImageFieldTypeLabel}>
           {label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
         </label>

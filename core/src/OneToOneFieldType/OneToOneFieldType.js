@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Select, Option } from "../Select";
 
+import styles from "./OneToOneFieldType.less";
+
 export class OneToOneFieldType extends Component {
   constructor(props) {
     super(props);
@@ -33,9 +35,9 @@ export class OneToOneFieldType extends Component {
 
   render() {
     return (
-      <article>
+      <article className={this.props.className}>
         <div>
-          <label>
+          <label className={styles.OneToOneFieldTypeLabel}>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </label>
