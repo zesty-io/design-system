@@ -3,7 +3,8 @@ import { attributes, getElementAttrs } from "./nodes";
 const link = {
   attrs: {
     ...attributes(),
-    href: {}
+    href: {},
+    target: { default: null }
   },
   inclusive: false,
   parseDOM: [
