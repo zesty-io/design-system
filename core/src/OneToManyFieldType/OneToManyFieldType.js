@@ -140,7 +140,12 @@ export class OneToManyFieldType extends Component {
           <article className={styles.Tags}>
             {this.state.tags.length ? (
               this.state.tags.map((item, i) => (
-                <Tag key={i} onRemove={this.onRemove} value={item.value}>
+                <Tag
+                  key={i}
+                  link={`#!/content/${item.value}`}
+                  onRemove={this.onRemove}
+                  value={item.value}
+                >
                   {item.text}
                 </Tag>
               ))
