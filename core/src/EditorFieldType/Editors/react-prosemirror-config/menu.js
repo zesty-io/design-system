@@ -49,6 +49,17 @@ const promptForURL = () => {
   return url;
 };
 
+const promptForTarget = () => {
+  let target =
+    window &&
+    window.confirm("Should this url open in a new window when clicked?");
+  if (target) {
+    return "_blank";
+  } else {
+    return "_self";
+  }
+};
+
 export default {
   marks: {
     em: {
@@ -98,10 +109,14 @@ export default {
           return true;
         }
 
+        // TODO show modal and collect href & target
+
         const href = promptForURL();
         if (!href) return false;
 
-        toggleMark(schema.marks.link, { href })(state, dispatch);
+        const target = promptForTarget();
+
+        toggleMark(schema.marks.link, { href, target })(state, dispatch);
         // view.focus()
       }
     }
