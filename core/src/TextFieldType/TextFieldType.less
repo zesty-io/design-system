@@ -1,3 +1,5 @@
+@import "../typography.less";
+
 .TextFieldType {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,7 @@
   .TextFieldTypeLabel {
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: @labelTextSize;
     line-height: 24px;
     color: #1a202c;
   }

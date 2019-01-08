@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { SearchableList } from "../SearchableList";
 import { Option } from "../Select";
 
+import styles from "./InternalLinkFieldType.less";
+
 export class InternalLinkFieldType extends Component {
   render() {
     return (

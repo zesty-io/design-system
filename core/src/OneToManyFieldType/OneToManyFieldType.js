@@ -117,7 +117,7 @@ export class OneToManyFieldType extends Component {
     return (
       <Fragment>
         <div>
-          <label>
+          <label className={styles.OneToManyFieldTypeLabel}>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </label>
