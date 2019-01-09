@@ -142,7 +142,10 @@ export class OneToManyFieldType extends Component {
               this.state.tags.map((item, i) => (
                 <Tag
                   key={i}
-                  link={`#!/content/${item.value}`}
+                  link={
+                    this.props.relatedModelZUID &&
+                    `#!/content/${this.props.relatedModelZUID}/${item.value}`
+                  }
                   onRemove={this.onRemove}
                   value={item.value}
                 >
