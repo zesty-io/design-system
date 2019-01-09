@@ -29,8 +29,7 @@ export class EditorFieldType extends Component {
 
     this.state = {
       value: this.props.value || "",
-      editor,
-      editorChanged: false // We have to track whether the editor has been changed so we can properly render legacy markdown content
+      editor
     };
   }
 
@@ -40,16 +39,33 @@ export class EditorFieldType extends Component {
       // so check whether the initial value has changed.
       if (this.props.value !== this.state.value) {
         if (this.props.onChange) {
-          this.props.onChange(this.props.name, value, this.props.datatype);
+          // Convert the content on the way out of the component
+          // When sendings changes to redux store convert to the initial field types value
+          // This ensures if it's a markdown field that is being viewed as an html editor it is
+          // still saved as markdown content
+          let content = value;
+          if (this.props.type === "markdown") {
+            if (this.state.editor !== "markdown") {
+              content = this.converter.makeMd(content);
+            }
+          } else {
+            if (this.state.editor === "markdown") {
+              content = this.converter.makeHtml(content);
+            }
+          }
+
+          this.props.onChange(this.props.name, content, this.props.datatype);
         }
       }
     });
   };
 
-  selectEditor = (name, value) => {
+  selectEditor = (name, editor) => {
+    // Convert the content on the way into the component
+    // When selecting an editor we convert the content
+    // to the appropriate type of value (Markdown | HTML)
     let content = this.state.value;
-
-    if (value === "markdown") {
+    if (editor === "markdown") {
       content = this.converter.makeMd(content);
     } else {
       content = this.converter.makeHtml(content);
@@ -57,8 +73,7 @@ export class EditorFieldType extends Component {
 
     this.setState({
       value: content,
-      editor: value,
-      editorChanged: true
+      editor: editor
     });
   };
 
@@ -72,12 +87,7 @@ export class EditorFieldType extends Component {
         break;
       case "markdown":
         return (
-          <MarkdownEditor
-            value={this.state.value}
-            initialType={this.props.type}
-            editorChanged={this.state.editorChanged}
-            onChange={this.onChange}
-          />
+          <MarkdownEditor value={this.state.value} onChange={this.onChange} />
         );
         break;
       case "article_writer":
