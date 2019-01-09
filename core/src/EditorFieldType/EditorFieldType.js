@@ -54,6 +54,12 @@ export class EditorFieldType extends Component {
             }
           }
 
+          // Prosemirror leaves a lingering p tag which is
+          // problematic for consumers who check for empty values
+          if (content === "<p></p>") {
+            content = "";
+          }
+
           this.props.onChange(this.props.name, content, this.props.datatype);
         }
       }
