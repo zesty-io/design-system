@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cx from "classnames";
+import showdown from "showdown";
 
 import { BasicEditor } from "./Editors/Basic.js"; // Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
 import { InlineEditor } from "./Editors/Inline.js";
@@ -18,6 +19,13 @@ export class EditorFieldType extends Component {
     if (editor === "wysiwyg_advanced") {
       editor = "wysiwyg_basic";
     }
+
+    this.converter = new showdown.Converter({
+      noHeaderId: true,
+      tables: true,
+      strikethrough: true
+      // backslashEscapesHTMLTags: true
+    });
 
     this.state = {
       value: this.props.value || "",
@@ -39,7 +47,16 @@ export class EditorFieldType extends Component {
   };
 
   selectEditor = (name, value) => {
+    let content = this.state.value;
+
+    if (value === "markdown") {
+      content = this.converter.makeMd(content);
+    } else {
+      content = this.converter.makeHtml(content);
+    }
+
     this.setState({
+      value: content,
       editor: value,
       editorChanged: true
     });
