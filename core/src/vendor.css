@@ -1,7 +1,7 @@
 @import "../node_modules/codemirror/lib/codemirror.css";
 @import "../node_modules/codemirror/theme/material.css";
 
-.CodeMirror {
+.react-codemirror2 .CodeMirror {
   min-height: 700px;
   top: 0;
 
@@ -11,7 +11,7 @@
   line-height: 24px !important;
   letter-spacing: 0px !important;
 }
-.CodeMirror-scroll {
+.react-codemirror2 .CodeMirror-scroll {
   margin-right: 0;
 }
 
