@@ -1,75 +1,48 @@
 .ToggleButton {
   display: flex;
   cursor: pointer;
-  .on {
+  border: none;
+  padding: 0;
+
+  .default {
     padding: 8px 16px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
+      inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
     font-size: 14px;
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
     line-height: 24px;
     letter-spacing: 0.1px;
-    color: #fff;
-    background-color: #336edb;
-    box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
-      inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
-    p {
-      opacity: 0.6;
-    }
-    &.disabled {
-      cursor: not-allowed;
-      p {
-        opacity: 0.4;
-      }
-    }
-  }
-  .off {
-    padding: 8px 16px;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 24px;
-    letter-spacing: 0.1px;
-    color: #fff;
-    background-color: #336edb;
-    box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
-      inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
-    p {
-      opacity: 0.6;
-    }
-    &.disabled {
-      cursor: not-allowed;
-      p {
-        opacity: 0.4;
-      }
-    }
-  }
-  .Selected {
+
     background-color: #f2f7fc;
-    color: #1a202c;
+    border-radius: 4px;
+    color: #8490a6;
+  }
+
+  .Selected {
+    background-color: #336edb;
+    color: #fff;
     border-radius: 4px;
     box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
       inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
-    p {
-      opacity: 1;
-    }
+
     &.on {
+      border-radius: 0 4px 4px 0;
       margin-left: -3px;
     }
     &.off {
+      border-radius: 4px 0 0 4px;
       margin-right: -3px;
       z-index: 1;
     }
-    &.disabled {
+  }
+
+  .disabled {
+    .Selected {
       background-color: #9ba1a9;
-      p {
-        opacity: 0.6;
-      }
     }
   }
 }

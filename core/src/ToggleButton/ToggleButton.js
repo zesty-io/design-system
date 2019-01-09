@@ -1,53 +1,48 @@
-import React, { Component } from "react";
-import styles from "./ToggleButton.less";
+import React, { PureComponent } from "react";
+import cx from "classnames";
 
-export class ToggleButton extends Component {
-  state = {
-    selected: this.props.value || 0
+import styles from "./ToggleButton.less";
+export class ToggleButton extends PureComponent {
+  onClick = evt => {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    this.props.onChange(
+      this.props.name,
+      this.props.value == 1 ? 0 : 1,
+      this.props.datatype
+    );
   };
+
+  /**
+    @props this.props.value 0:No 1:Yes
+  **/
   render() {
-    const {
-      disabled,
-      offValue,
-      onValue,
-      datatype,
-      name,
-      onChange
-    } = this.props;
-    const { selected } = this.state;
     return (
-      <article className={styles.ToggleButton}>
-        <section
-          className={`${styles.off} ${
-            selected === 0 ? styles.Selected : null
-          } ${disabled ? styles.disabled : null}`}
-          onClick={() =>
-            !disabled &&
-            this.setState({ selected: 0 }, () => {
-              if (onChange) {
-                onChange(name, 0, datatype);
-              }
-            })
-          }
+      <button
+        className={styles.ToggleButton}
+        onClick={this.onClick}
+        disabled={this.props.disabled}
+      >
+        <span
+          className={cx(
+            styles.default,
+            styles.off,
+            this.props.value == 0 ? styles.Selected : ""
+          )}
         >
-          <p>{offValue || "Off"}</p>
-        </section>
-        <section
-          className={`${styles.on} ${selected === 1 ? styles.Selected : null} ${
-            disabled ? styles.disabled : null
-          }`}
-          onClick={() =>
-            !disabled &&
-            this.setState({ selected: 1 }, () => {
-              if (onChange) {
-                onChange(name, 1, datatype);
-              }
-            })
-          }
+          {this.props.offValue || "Off"}
+        </span>
+        <span
+          className={cx(
+            styles.default,
+            styles.on,
+            this.props.value == 1 ? styles.Selected : ""
+          )}
         >
-          <p>{onValue || "On"}</p>
-        </section>
-      </article>
+          {this.props.onValue || "On"}
+        </span>
+      </button>
     );
   }
 }
