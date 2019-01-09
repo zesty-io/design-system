@@ -34,36 +34,37 @@ export class EditorFieldType extends Component {
   }
 
   onChange = value => {
-    this.setState({ value }, () => {
-      // Prosemirror triggers on change events when focusing in and out of the editor
-      // so check whether the initial value has changed.
-      if (this.props.value !== this.state.value) {
-        if (this.props.onChange) {
-          // Convert the content on the way out of the component
-          // When sendings changes to redux store convert to the initial field types value
-          // This ensures if it's a markdown field that is being viewed as an html editor it is
-          // still saved as markdown content
-          let content = value;
-          if (this.props.type === "markdown") {
-            if (this.state.editor !== "markdown") {
-              content = this.converter.makeMd(content);
-            }
-          } else {
-            if (this.state.editor === "markdown") {
-              content = this.converter.makeHtml(content);
-            }
-          }
+    // Prosemirror leaves a lingering p tag which is
+    // problematic for consumers who check for empty values
+    if (value === "<p></p>") {
+      value = "";
+    }
 
-          // Prosemirror leaves a lingering p tag which is
-          // problematic for consumers who check for empty values
-          if (content === "<p></p>") {
-            content = "";
-          }
+    // Set internal state before we alter value
+    this.setState({ value });
 
-          this.props.onChange(this.props.name, content, this.props.datatype);
+    // Prosemirror triggers on change events when focusing in and out
+    // of the editor so check whether the value has changed.
+    if (this.props.value !== value) {
+      if (this.props.onChange) {
+        // Convert the content on the way out of the component
+        // When sendings changes to redux store convert to the initial field types value
+        // This ensures if it's a markdown field that is being viewed as an html editor it is
+        // still saved as markdown content
+        let content = value;
+        if (this.props.type === "markdown") {
+          if (this.state.editor !== "markdown") {
+            content = this.converter.makeMd(content);
+          }
+        } else {
+          if (this.state.editor === "markdown") {
+            content = this.converter.makeHtml(content);
+          }
         }
+
+        this.props.onChange(this.props.name, content, this.props.datatype);
       }
-    });
+    }
   };
 
   selectEditor = (name, editor) => {
