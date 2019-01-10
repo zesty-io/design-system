@@ -18,6 +18,7 @@ export class NumberFieldTypeGuide extends Component {
         />
         <br />
         <NumberFieldType
+          required
           label="No CharCount"
           value="4"
           callback={value => console.log(value)}

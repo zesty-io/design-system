@@ -19,6 +19,7 @@ export class DateFieldTypeGuide extends Component {
           label="Format Date"
           name="dateTimePicker"
           future
+          required
           onChange={console.log}
           datatype={'datetime'}
         />

@@ -15,7 +15,7 @@ export class DateTimeFieldTypeGuide extends Component {
         </a>
         <br />
         <br />
-        <DateTimeFieldType label="Title Field" />
+        <DateTimeFieldType required label="Title Field" />
         <DateTimeFieldType label="Title Field" timeFormat="HH:mm:ss" />
         <br />
         <br />
