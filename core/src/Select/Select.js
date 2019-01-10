@@ -36,6 +36,12 @@ export class Select extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.value !== prevProps.value) {
+      this.setState({ value: this.props.value });
+    }
+  }
+
   componentWillUnmount() {
     // document.removeEventListener("click", this.onClose);
     document.removeEventListener("keyup", this.onEsc);
