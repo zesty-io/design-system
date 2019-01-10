@@ -24,16 +24,14 @@ export class Select extends Component {
     this.state = {
       dropdownOpen: false,
       value: props.value,
-      filter: ""
+      filter: "",
+      searchLength: this.props.searchLength
     };
   }
 
   componentDidMount() {
     // document.addEventListener("click", this.onClose);
     document.addEventListener("keyup", this.onEsc);
-    if (this.props.searchLength) {
-      this.setState({ searchLength: this.props.searchLength });
-    }
   }
 
   componentDidUpdate(prevProps) {
