@@ -5,7 +5,9 @@ import React from "react";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 import { MenuBar } from "./react-prosemirror/MenuBar";
 import { options, menu } from "./react-prosemirror-config";
+
 import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
+import { IframeResizeView } from "./react-prosemirror-views/IframeResizeView";
 
 import styles from "./Basic.less";
 export function BasicEditor({ value, onChange }) {
@@ -24,6 +26,9 @@ export function BasicEditor({ value, onChange }) {
         nodeViews={{
           image(node, view, getPos) {
             return new ImageResizeView(node, view, getPos);
+          },
+          iframe(node, view, getPos) {
+            return new IframeResizeView(node, view, getPos);
           }
         }}
       />

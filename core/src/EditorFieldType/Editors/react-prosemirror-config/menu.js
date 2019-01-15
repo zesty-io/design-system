@@ -165,6 +165,31 @@ export default {
     }, {})
   },
 
+  embed_dropdown: {
+    title: "Embed Content",
+    content: "Embed",
+    classname: "dropdown-menu-list",
+    children: ["Instagram", "Youtube"].reduce((acc, service) => {
+      acc[service] = {
+        title: `${service}`,
+        content: `${service}`,
+        enable: canInsert(schema.nodes.iframe),
+        run: (state, dispatch) => {
+          const id = window && window.prompt("Enter unique embed  ID");
+          if (id) {
+            dispatch(
+              state.tr.replaceSelectionWith(
+                schema.nodes.iframe.create({ id, "data-service": service })
+              )
+            );
+          }
+        }
+      };
+
+      return acc;
+    }, {})
+  },
+
   blocks: {
     plain: {
       title: "Change to paragraph",
@@ -280,6 +305,7 @@ export default {
   special_character_dropdown: {
     title: "Insert special character",
     content: "Special Character",
+    classname: "dropdown-menu-row",
     children: characters.reduce((acc, char) => {
       acc[char] = {
         title: `Insert Character: ${char}`,

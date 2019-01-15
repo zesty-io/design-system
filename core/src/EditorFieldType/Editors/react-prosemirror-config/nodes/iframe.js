@@ -7,7 +7,7 @@ export const iframe = {
     height: { default: null },
     width: { default: null },
     scrolling: { default: null },
-    frameborder: { default: null },
+    frameborder: { default: "0" },
     allow: { default: null },
     allowfullscreen: { default: null },
     name: { default: null },
@@ -15,10 +15,12 @@ export const iframe = {
     sandbox: { default: null },
     src: { default: null },
     srcdoc: { default: null },
+
+    // Used to track embed service
+    "data-service": { default: null },
+
+    // Custom service attributes
     "data-instgrm-payload-id": { default: null }
-  },
-  toDOM(node) {
-    return ["iframe", node.attrs];
   },
   parseDOM: [
     {
@@ -27,5 +29,43 @@ export const iframe = {
         return getElementAttrs(dom);
       }
     }
-  ]
+  ],
+  toDOM(node) {
+    switch (node.attrs["data-service"]) {
+      case "Instagram":
+        return [
+          "iframe",
+          {
+            ...node.attrs,
+            src:
+              node.attrs.src ||
+              `https://instagram.com/p/${node.attrs.id}/embed/captioned`,
+            height: node.attrs.height || "600px",
+            width: node.attrs.width || "500px"
+          }
+        ];
+        break;
+      case "Youtube":
+        return [
+          "iframe",
+          {
+            ...node.attrs,
+            src:
+              node.attrs.src ||
+              `https://www.youtube.com/embed/${
+                node.attrs.id
+              }?modestbranding=1&rel=0`,
+            allow:
+              node.attrs.allow ||
+              "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+            allowfullscreen: node.attrs.allowfullscreen || true,
+            height: node.attrs.height || "315px",
+            width: node.attrs.width || "560px"
+          }
+        ];
+        break;
+      default:
+        return ["iframe", node.attrs];
+    }
+  }
 };
