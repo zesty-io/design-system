@@ -12,20 +12,20 @@ export class ImageResizeView {
     figure.style.position = "relative";
     figure.style.width = node.attrs.width;
     figure.style.height = node.attrs.height;
-    //figure.style.border = "1px solid blue"
     figure.style.display = "inline-block";
-    //figure.style.paddingRight = "0.25em"
     figure.style.lineHeight = "0"; // necessary so the bottom right arrow is aligned nicely
 
     const img = document.createElement("img");
-    img.setAttribute("src", node.attrs.src);
-    img.setAttribute("width", node.attrs.width);
-    img.setAttribute("height", node.attrs.height);
+
+    Object.keys(node.attrs).forEach(attr => {
+      if (node.attrs[attr]) {
+        img.setAttribute(attr, node.attrs[attr]);
+      }
+    });
 
     // Lets the image expand when dragging the handle
     img.style.width = "100%";
     img.style.height = "100%";
-    //img.style.border = "1px solid red"
 
     figure.appendChild(img);
 
@@ -89,6 +89,7 @@ export class ImageResizeView {
 
         const transaction = this.outerView.state.tr
           .setNodeMarkup(this.getPos(), null, {
+            ...this.node.attrs,
             src: url,
             width: this.dom.style.width,
             height: this.dom.style.height
