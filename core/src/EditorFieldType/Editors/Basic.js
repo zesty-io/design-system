@@ -8,6 +8,7 @@ import { options, menu } from "./react-prosemirror-config";
 
 import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
 import { IframeResizeView } from "./react-prosemirror-views/IframeResizeView";
+import { VideoResizeView } from "./react-prosemirror-views/VideoResizeView";
 
 import styles from "./Basic.less";
 export function BasicEditor({ value, onChange }) {
@@ -29,6 +30,9 @@ export function BasicEditor({ value, onChange }) {
           },
           iframe(node, view, getPos) {
             return new IframeResizeView(node, view, getPos);
+          },
+          video(node, view, getPos) {
+            return new VideoResizeView(node, view, getPos);
           }
         }}
       />

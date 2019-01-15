@@ -4,7 +4,10 @@ import { MenuBar, Floater } from "@aeaton/react-prosemirror";
 
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 import { options, inline } from "./react-prosemirror-config";
+
 import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
+import { IframeResizeView } from "./react-prosemirror-views/IframeResizeView";
+import { VideoResizeView } from "./react-prosemirror-views/VideoResizeView";
 
 import styles from "./Inline.less";
 export function InlineEditor({ value, onChange }) {
@@ -24,6 +27,12 @@ export function InlineEditor({ value, onChange }) {
       nodeViews={{
         image(node, view, getPos) {
           return new ImageResizeView(node, view, getPos);
+        },
+        iframe(node, view, getPos) {
+          return new IframeResizeView(node, view, getPos);
+        },
+        video(node, view, getPos) {
+          return new VideoResizeView(node, view, getPos);
         }
       }}
     />
