@@ -5,7 +5,7 @@ import { getElementAttrs, attributes } from "./index.js";
 export const paragraph = {
   content: "inline*",
   group: "block",
-  attrs: { ...attributes(), style: { default: null } },
+  attrs: attributes(),
   parseDOM: [
     {
       tag: "p",
