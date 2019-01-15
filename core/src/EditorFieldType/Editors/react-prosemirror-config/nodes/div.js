@@ -1,7 +1,7 @@
 import { getElementAttrs, attributes } from "./index.js";
 
 export const div = {
-  content: "block*",
+  content: "block+",
   group: "block",
   attrs: attributes(),
   parseDOM: [
