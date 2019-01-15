@@ -3,6 +3,7 @@ import * as listNodes from "./lists.js";
 import { heading } from "./heading.js";
 import { iframe } from "./iframe.js";
 import { image } from "./image.js";
+import { video, source } from "./video.js";
 import { paragraph } from "./paragraph.js";
 import { script } from "./script.js";
 import { blockquote } from "./blockquote.js";
@@ -74,18 +75,22 @@ export default {
     content: "block+"
   },
 
-  // :: NodeSpec The text node.
+  // Block
+  paragraph,
+  heading,
+  blockquote,
+  div,
+  code_block,
+  video,
+
+  // inline
   text: {
     group: "inline"
   },
-
-  // override ProseMirror basic schema
   image,
-  paragraph,
-  blockquote,
-  heading,
-  code_block,
-  div,
+  script,
+  iframe,
+  source,
   hr,
   br,
 
@@ -93,9 +98,5 @@ export default {
   ...tableNodes,
 
   // override ProseMirror list schema
-  ...listNodes,
-
-  // additional html nodes
-  script,
-  iframe
+  ...listNodes
 };
