@@ -39,6 +39,9 @@ export class ImageFieldType extends Component {
 
   render() {
     const { label, images, field, limit } = this.props;
+
+    console.log("Images", images);
+
     return (
       <Fragment>
         <label className={styles.ImageFieldTypeLabel}>
@@ -129,12 +132,17 @@ class Image extends Component {
     const { removeImage, imageZUID, width, height } = this.props;
     return (
       <figure className={styles.file}>
-        <img
-          className={styles.image}
-          src={`${
-            CONFIG.service.media_resolver
-          }/resolve/${imageZUID}/getimage/?w=${width}&h=${height}&type=fit`}
-        />
+        {imageZUID.substr(0, 4) === "http" ? (
+          <img className={styles.image} src={imageZUID} />
+        ) : (
+          <img
+            className={styles.image}
+            src={`${
+              CONFIG.service.media_resolver
+            }/resolve/${imageZUID}/getimage/?w=${width}&h=${height}&type=fit`}
+          />
+        )}
+
         <Button
           className={styles.remove}
           onClick={() => removeImage(imageZUID)}
