@@ -39,9 +39,6 @@ export class ImageFieldType extends Component {
 
   render() {
     const { label, images, field, limit } = this.props;
-
-    console.log("Images", images);
-
     return (
       <Fragment>
         <label className={styles.ImageFieldTypeLabel}>
