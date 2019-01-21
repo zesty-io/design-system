@@ -46,6 +46,7 @@ export class TextFieldType extends Component {
           type="text"
           name={this.props.name}
           value={this.props.value}
+          placeholder={this.props.placeholder}
           required={this.props.required}
           onChange={this.onChange}
         />
