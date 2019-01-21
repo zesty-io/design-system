@@ -3,7 +3,8 @@ import { setBlockType, toggleMark, wrapIn } from "prosemirror-commands";
 import { redo, undo } from "prosemirror-history";
 import { wrapInList } from "prosemirror-schema-list";
 
-import schema from "./schema";
+import { schema } from "../react-prosemirror-schema";
+
 import icons from "./icons";
 import characters from "./characters";
 

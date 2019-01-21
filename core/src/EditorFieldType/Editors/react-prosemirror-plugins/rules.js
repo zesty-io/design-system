@@ -7,7 +7,7 @@ import {
   ellipsis
 } from "prosemirror-inputrules";
 
-import schema from "./schema";
+import { schema } from "../react-prosemirror-schema";
 
 export default inputRules({
   rules: [

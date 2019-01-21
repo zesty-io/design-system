@@ -21,8 +21,8 @@ import {
   selectParentNode
 } from "prosemirror-commands";
 
-import schema from "./schema";
-import menu from "./menu";
+import { schema } from "../react-prosemirror-schema";
+import { menu } from "../react-prosemirror-menu";
 
 const insertBreak = (state, dispatch) => {
   const br = schema.nodes.hard_break.create();

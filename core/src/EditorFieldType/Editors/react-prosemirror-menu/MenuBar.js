@@ -22,10 +22,6 @@ const Button = ({ state, dispatch }) => (item, key) => (
   </button>
 );
 
-// const Dropdown = (item, key) => {
-//   //todo
-// };
-
 export const MenuBar = ({ menu, children, view }) => (
   <div className={classes.bar}>
     {children && <span className={classes.group}>{children}</span>}

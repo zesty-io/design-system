@@ -9,7 +9,7 @@ import {
 import { wrapInList } from "prosemirror-schema-list";
 // import { addColumnAfter, addColumnBefore } from 'prosemirror-tables'
 
-import schema from "./schema";
+import { schema } from "../react-prosemirror-schema";
 import icons from "./icons";
 
 const markActive = type => state => {

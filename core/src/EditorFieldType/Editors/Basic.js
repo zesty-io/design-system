@@ -1,25 +1,33 @@
 import React from "react";
+
+import { HtmlEditor } from "@aeaton/react-prosemirror";
 // import { MenuBar } from "@aeaton/react-prosemirror";
-// import { options } from "@aeaton/react-prosemirror-config-default";
+import { MenuBar } from "./react-prosemirror-menu/MenuBar";
 
-import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
-import { MenuBar } from "./react-prosemirror/MenuBar";
-import { options, menu } from "./react-prosemirror-config";
+import { schema } from "./react-prosemirror-schema";
+import { plugins } from "./react-prosemirror-plugins";
+import { menu } from "./react-prosemirror-menu";
 
-import { ImageResizeView } from "./react-prosemirror-views/ImageResizeView";
-import { IframeResizeView } from "./react-prosemirror-views/IframeResizeView";
-import { VideoResizeView } from "./react-prosemirror-views/VideoResizeView";
+import { ImageResizeView } from "./prosemirror-views/ImageResizeView";
+import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
+import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
+
+import { Modal } from "../../Modal";
 
 import styles from "./Basic.less";
 export function BasicEditor({ value, onChange }) {
   return (
     <div className={styles.BasicEditor}>
       <HtmlEditor
-        options={options}
+        options={{ plugins, schema }}
         value={value}
         onChange={onChange}
         render={({ editor, view }) => (
           <div>
+            {/*<Modal onClose={() => {}} onOpen={() => {}}>
+              TEST
+            </Modal>*/}
+
             <MenuBar menu={menu} view={view} />
             {editor}
           </div>
