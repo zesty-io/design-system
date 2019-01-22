@@ -1,6 +1,8 @@
 import React from "react";
 import cx from "classnames";
 
+import { Button } from "../Button";
+
 import styles from "./Modal.less";
 export class Modal extends React.Component {
   constructor(props) {
@@ -29,10 +31,9 @@ export class Modal extends React.Component {
         )}
       >
         <article className={cx(styles.Modal, this.props.className)}>
-          <i
-            className={cx(styles.Close, "fa fa-window-close")}
-            onClick={this.props.onClose}
-          />
+          <Button className={styles.Close} onClick={this.props.onClose}>
+            <i className="fa fa-times" aria-hidden="true" />
+          </Button>
           {this.props.children}
         </article>
       </section>

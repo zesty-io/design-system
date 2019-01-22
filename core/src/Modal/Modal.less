@@ -1,11 +1,11 @@
 @import "../colors.less";
 
 .ModalWrap {
-  top: 0;
-  left: 0;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.2);
   align-items: center;
+  background-color: rgba(26, 32, 44, 0.6);
+  display: flex;
+  left: 0;
+  top: 0;
   justify-content: center;
   z-index: 100;
 }
@@ -21,76 +21,31 @@
 }
 
 .Modal {
-  // background-color: #ffffff;
-  // border-radius: 4px;
-  border: solid 1px rgba(26, 32, 44, 0.12);
-  margin: 16px;
-
-  background-color: #c7d4ea;
-  border-radius: 3px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -25%;
+  min-width: 522px;
+  min-height: 192px;
+  padding: 32px;
   position: relative;
-  overflow: hidden;
-  min-width: 30rem;
-  min-height: 20rem;
-  padding: 8px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
 
   .Close {
+    padding: 8px 10px;
     position: absolute;
-    font-size: 16px;
     top: 0;
     right: 0;
-    cursor: pointer;
   }
 }
 .ModalHeader {
-  border-bottom: 1px solid #dee6ff;
-  padding: 8px 20px;
 }
 
 .ModalContent {
   flex: 1;
-  padding: 8px 20px;
+  padding: 16px 0;
 }
 
 .ModalFooter {
-  border-top: 1px solid #dee6ff;
-  padding: 8px 20px;
 }
-
-//
-// .ModalContainer {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   height: 100vh;
-//   width: 100vw;
-//   display: flex;
-//   background-color: rgba(0, 0, 0, 0.2);
-//   align-items: center;
-//   justify-content: center;
-//   z-index: 100;
-// }
-// .ModalLocal {
-//   position: absolute;
-//   height: 100%;
-//   width: 100%;
-// }
-// .Modal {
-//   background: #c7d4ea;
-//   border-radius: 3px;
-//   position: relative;
-//   overflow: hidden;
-//   min-width: 30rem;
-//   min-height: 20rem;
-//   padding: 8px;
-//   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
-//
-//   i {
-//     position: absolute;
-//     font-size: 1.8rem;
-//     top: 0;
-//     right: 0;
-//     cursor: pointer;
-//   }
-// }
