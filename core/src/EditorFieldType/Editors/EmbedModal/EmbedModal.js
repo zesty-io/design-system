@@ -1,7 +1,9 @@
 import React from "react";
+
 import { Modal, ModalHeader, ModalContent, ModalFooter } from "../../../Modal";
-import { Button } from "../../../Button";
 import { TextFieldType } from "../../../TextFieldType";
+import { Button } from "../../../Button";
+import { Url } from "../../../Url";
 
 import styles from "./EmbedModal.less";
 export class EmbedModal extends React.Component {
@@ -18,8 +20,12 @@ export class EmbedModal extends React.Component {
         <ModalContent>
           {this.props.service === "Twitframe" && (
             <h1>
-              Twitframe embeds requrie the full URL to the tweet you would like
-              to embed.
+              <i className="fa fa-exclamation-triangle" aria-hidden="true" />
+              &nbsp;
+              <Url href="https://twitframe.com/" target="_blank">
+                Twitframe
+              </Url>{" "}
+              embeds require the full URL for the tweet you would like to embed.
             </h1>
           )}
           <TextFieldType

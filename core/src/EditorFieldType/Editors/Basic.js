@@ -1,7 +1,7 @@
 import React from "react";
 
-import { HtmlEditor } from "@aeaton/react-prosemirror";
-// import {HtmlEditor} from "./react-prosemirror/HtmlEditor";
+// import { HtmlEditor } from "@aeaton/react-prosemirror";
+import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
 // import { MenuBar } from "@aeaton/react-prosemirror";
 import { MenuBar } from "./react-prosemirror/MenuBar";
 

@@ -2,7 +2,7 @@ import React from "react";
 import debounce from "lodash/debounce";
 import { DOMParser, DOMSerializer } from "prosemirror-model";
 
-import Editor from "@aeaton/react-prosemirror";
+import Editor from "./Editor";
 
 const parser = schema => {
   const parser = DOMParser.fromSchema(schema);
