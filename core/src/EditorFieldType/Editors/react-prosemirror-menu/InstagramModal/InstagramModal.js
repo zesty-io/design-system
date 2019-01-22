@@ -8,50 +8,40 @@ import {
 import { Button } from "../../../../Button";
 import { TextFieldType } from "../../../../TextFieldType";
 
-import styles from "./LinkModal.less";
-export class LinkModal extends React.Component {
+import styles from "./InstagramModal.less";
+export class InstagramModal extends React.Component {
   state = {
-    target: true,
-    href: ""
+    id: ""
   };
 
   render() {
     return (
       <Modal
         type="local"
-        className={styles.LinkModal}
+        className={styles.InstagramModal}
         onClose={this.props.onClose}
       >
         <ModalHeader>
           <i className="fa fa-link" aria-hidden="true" />
-          &nbsp;Insert Link
+          &nbsp;Embed Instagram Post
         </ModalHeader>
         <ModalContent>
           <TextFieldType
-            label="What url should this link to?"
-            name="linkUrl"
-            placeholder="https://"
+            label="Enter unique Instagram post ID"
+            name="embedInstagram"
+            placeholder="Post ID"
             required="true"
             autofocus="true"
-            onChange={(name, href) => this.setState({ href })}
+            onChange={(name, id) => this.setState({ id })}
           />
-          <label>
-            Open in a new window?{" "}
-            <Input
-              name="linkTarget"
-              type="checkbox"
-              checked={this.state.target ? true : false}
-              onChange={() => this.setState({ target: !this.state.target })}
-            />
-          </label>
         </ModalContent>
         <ModalFooter>
           <Button
-            disabled={this.state.href.length === 0}
+            disabled={this.state.id.length === 0}
             onClick={() => this.props.onClose(this.state)}
           >
             <i className="fa fa-plus" aria-hidden="true" />
-            Add Link
+            Insert Embed
           </Button>
         </ModalFooter>
       </Modal>

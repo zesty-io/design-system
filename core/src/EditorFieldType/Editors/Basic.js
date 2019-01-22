@@ -3,11 +3,14 @@ import React from "react";
 import { HtmlEditor } from "@aeaton/react-prosemirror";
 // import { MenuBar } from "@aeaton/react-prosemirror";
 
+// import {HtmlEditor} from "./react-prosemirror/HtmlEditor";
 import { MenuBar } from "./react-prosemirror/MenuBar";
+
 // import { Modal } from "./react-prosemirror/Modal";
 // import { Modal } from "../../Modal";
 
 import { LinkModal } from "./react-prosemirror-menu/LinkModal";
+import { InstagramModal } from "./react-prosemirror-menu/InstagramModal";
 
 import { schema } from "./react-prosemirror-schema";
 import { plugins } from "./react-prosemirror-plugins";
@@ -22,32 +25,49 @@ export class BasicEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLinkModal: false,
-      showInstagramModal: false,
       menu: generateMenu({
-        onLinkModal: this.onLinkModal,
-        onInstagramModal: this.onInstagramModal
-      })
+        onModalOpen: this.onModalOpen,
+        onModalClose: this.onModalClose
+      }),
+      modals: {
+        link: {
+          show: false
+        },
+        instagram: {
+          show: false
+        }
+      }
     };
   }
 
-  onLinkModal = (action, values) => {
-    if (action === "open") {
-      this.setState({
-        showLinkModal: true,
-        modalCloseCallback: values
-      });
-    } else {
-      this.setState({
-        showLinkModal: false
-      });
-
-      if (typeof this.state.modalCloseCallback !== "function") {
-        throw new Error("BasicEditor: Missing modal close callback");
+  onModalOpen = (type, callback) => {
+    this.setState({
+      modals: {
+        ...this.state.modals,
+        [type]: {
+          show: true,
+          callback
+        }
       }
+    });
+  };
 
-      this.state.modalCloseCallback(values);
+  onModalClose = (type, values) => {
+    this.setState({
+      modals: {
+        ...this.state.modals,
+        [type]: {
+          ...this.state.modals[type],
+          show: false
+        }
+      }
+    });
+
+    if (typeof this.state.modals[type].callback !== "function") {
+      throw new Error("BasicEditor: Missing modal close callback");
     }
+
+    this.state.modals[type].callback(values);
   };
 
   render() {
@@ -59,13 +79,15 @@ export class BasicEditor extends React.Component {
           onChange={this.props.onChange}
           render={({ editor, view }) => (
             <div>
-              {this.state.showLinkModal && (
-                <LinkModal onClose={values => this.onModal("close", values)} />
+              {this.state.modals.link.show && (
+                <LinkModal
+                  onClose={values => this.onModalClose("link", values)}
+                />
               )}
 
-              {this.state.showInstagramModal && (
+              {this.state.modals.instagram.show && (
                 <InstagramModal
-                  onClose={values => this.onModal("close", values)}
+                  onClose={values => this.onModalClose("instagram", values)}
                 />
               )}
 

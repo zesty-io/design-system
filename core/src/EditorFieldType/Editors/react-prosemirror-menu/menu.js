@@ -107,8 +107,11 @@ export function generateMenu(props) {
         active: markActive(schema.marks.link),
         enable: state => !state.selection.empty,
         run(state, dispatch) {
-          props.onModal("open", ({ href, target }) => {
+          console.log("link:run", state);
+
+          props.onModalOpen("link", ({ href, target }) => {
             toggleMark(schema.marks.link, { href, target })(state, dispatch);
+            // view.focus();
           });
 
           // const { href, target } = props.onModal("close");
@@ -190,14 +193,24 @@ export function generateMenu(props) {
           content: `${service}`,
           enable: canInsert(schema.nodes.iframe),
           run: (state, dispatch) => {
-            const id = window && window.prompt("Enter unique embed  ID");
-            if (id) {
-              dispatch(
-                state.tr.replaceSelectionWith(
-                  schema.nodes.iframe.create({ id, "data-service": service })
-                )
-              );
-            }
+            props.onModalOpen(service.toLowerCase(), ({ id }) => {
+              if (id) {
+                dispatch(
+                  state.tr.replaceSelectionWith(
+                    schema.nodes.iframe.create({ id, "data-service": service })
+                  )
+                );
+              }
+            });
+
+            // const id = window && window.prompt("Enter unique embed  ID");
+            // if (id) {
+            //   dispatch(
+            //     state.tr.replaceSelectionWith(
+            //       schema.nodes.iframe.create({ id, "data-service": service })
+            //     )
+            //   );
+            // }
           }
         };
 
