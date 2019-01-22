@@ -2,7 +2,7 @@ import React from "react";
 
 import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { Floater } from "@aeaton/react-prosemirror";
-import { MenuBar } from "./react-prosemirror-menu/MenuBar";
+import { MenuBar } from "./react-prosemirror/MenuBar";
 
 import { schema } from "./react-prosemirror-schema";
 import { plugins } from "./react-prosemirror-plugins";

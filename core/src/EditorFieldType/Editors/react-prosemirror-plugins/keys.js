@@ -22,7 +22,9 @@ import {
 } from "prosemirror-commands";
 
 import { schema } from "../react-prosemirror-schema";
-import { menu } from "../react-prosemirror-menu";
+import { generateMenu } from "../react-prosemirror-menu";
+
+const menu = generateMenu();
 
 const insertBreak = (state, dispatch) => {
   const br = schema.nodes.hard_break.create();
