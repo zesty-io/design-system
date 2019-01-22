@@ -1,16 +1,12 @@
 import React from "react";
 
 import { HtmlEditor } from "@aeaton/react-prosemirror";
-// import { MenuBar } from "@aeaton/react-prosemirror";
-
 // import {HtmlEditor} from "./react-prosemirror/HtmlEditor";
+// import { MenuBar } from "@aeaton/react-prosemirror";
 import { MenuBar } from "./react-prosemirror/MenuBar";
 
-// import { Modal } from "./react-prosemirror/Modal";
-// import { Modal } from "../../Modal";
-
-import { LinkModal } from "./react-prosemirror-menu/LinkModal";
-import { InstagramModal } from "./react-prosemirror-menu/InstagramModal";
+import { LinkModal } from "./LinkModal";
+import { EmbedModal } from "./EmbedModal";
 
 import { schema } from "./react-prosemirror-schema";
 import { plugins } from "./react-prosemirror-plugins";
@@ -33,20 +29,21 @@ export class BasicEditor extends React.Component {
         link: {
           show: false
         },
-        instagram: {
+        embed: {
           show: false
         }
       }
     };
   }
 
-  onModalOpen = (type, callback) => {
+  onModalOpen = (type, callback, options) => {
     this.setState({
       modals: {
         ...this.state.modals,
         [type]: {
           show: true,
-          callback
+          callback,
+          options
         }
       }
     });
@@ -67,7 +64,7 @@ export class BasicEditor extends React.Component {
       throw new Error("BasicEditor: Missing modal close callback");
     }
 
-    this.state.modals[type].callback(values);
+    this.state.modals[type].callback(values, this.state.modals[type].options);
   };
 
   render() {
@@ -81,13 +78,15 @@ export class BasicEditor extends React.Component {
             <div>
               {this.state.modals.link.show && (
                 <LinkModal
+                  {...this.state.modals.link.options}
                   onClose={values => this.onModalClose("link", values)}
                 />
               )}
 
-              {this.state.modals.instagram.show && (
-                <InstagramModal
-                  onClose={values => this.onModalClose("instagram", values)}
+              {this.state.modals.embed.show && (
+                <EmbedModal
+                  {...this.state.modals.embed.options}
+                  onClose={values => this.onModalClose("embed", values)}
                 />
               )}
 

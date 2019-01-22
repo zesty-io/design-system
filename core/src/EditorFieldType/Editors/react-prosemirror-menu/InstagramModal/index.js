@@ -1,1 +1,0 @@
-export { InstagramModal } from "./InstagramModal";

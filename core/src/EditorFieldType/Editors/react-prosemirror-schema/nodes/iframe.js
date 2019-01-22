@@ -64,6 +64,19 @@ export const iframe = {
           }
         ];
         break;
+      case "Twitframe":
+        return [
+          "iframe",
+          {
+            ...node.attrs,
+            src:
+              node.attrs.src ||
+              `https://twitframe.com/show?url=${encodeURI(node.attrs.id)}`,
+            height: node.attrs.height || "315px",
+            width: node.attrs.width || "560px"
+          }
+        ];
+        break;
       default:
         return ["iframe", node.attrs];
     }

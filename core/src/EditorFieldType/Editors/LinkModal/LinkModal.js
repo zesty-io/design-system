@@ -1,20 +1,14 @@
 import React from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalContent,
-  ModalFooter
-} from "../../../../Modal";
-import { Button } from "../../../../Button";
-import { TextFieldType } from "../../../../TextFieldType";
+import { Modal, ModalHeader, ModalContent, ModalFooter } from "../../../Modal";
+import { Button } from "../../../Button";
+import { TextFieldType } from "../../../TextFieldType";
 
 import styles from "./LinkModal.less";
-export class LinkModal extends React.Component {
+export class LinkModal extends React.PureComponent {
   state = {
     target: true,
     href: ""
   };
-
   render() {
     return (
       <Modal
@@ -22,10 +16,6 @@ export class LinkModal extends React.Component {
         className={styles.LinkModal}
         onClose={this.props.onClose}
       >
-        <ModalHeader>
-          <i className="fa fa-link" aria-hidden="true" />
-          &nbsp;Insert Link
-        </ModalHeader>
         <ModalContent>
           <TextFieldType
             label="What url should this link to?"
@@ -36,7 +26,7 @@ export class LinkModal extends React.Component {
             onChange={(name, href) => this.setState({ href })}
           />
           <label>
-            Open in a new window?{" "}
+            Open link in a new browser window?{" "}
             <Input
               name="linkTarget"
               type="checkbox"
@@ -47,11 +37,12 @@ export class LinkModal extends React.Component {
         </ModalContent>
         <ModalFooter>
           <Button
+            kind="save"
             disabled={this.state.href.length === 0}
             onClick={() => this.props.onClose(this.state)}
           >
             <i className="fa fa-plus" aria-hidden="true" />
-            Add Link
+            Insert Link
           </Button>
         </ModalFooter>
       </Modal>

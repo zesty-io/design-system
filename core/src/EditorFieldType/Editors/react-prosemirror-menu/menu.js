@@ -40,29 +40,7 @@ const canInsert = type => state => {
   return false;
 };
 
-const promptForURL = () => {
-  let url = window && window.prompt("Enter the URL", "https://");
-
-  if (url && !/^https?:\/\//i.test(url)) {
-    url = "http://" + url;
-  }
-
-  return url;
-};
-
-const promptForTarget = () => {
-  let target =
-    window &&
-    window.confirm("Should this url open in a new window when clicked?");
-  if (target) {
-    return "_blank";
-  } else {
-    return "_self";
-  }
-};
-
 export function generateMenu(props) {
-  console.log("generateMenu", props);
   return {
     marks: {
       em: {
@@ -107,35 +85,12 @@ export function generateMenu(props) {
         active: markActive(schema.marks.link),
         enable: state => !state.selection.empty,
         run(state, dispatch) {
-          console.log("link:run", state);
-
           props.onModalOpen("link", ({ href, target }) => {
-            toggleMark(schema.marks.link, { href, target })(state, dispatch);
+            if (href) {
+              toggleMark(schema.marks.link, { href, target })(state, dispatch);
+            }
             // view.focus();
           });
-
-          // const { href, target } = props.onModal("close");
-
-          // const cb = props.onModalOpen("link", );
-          // // wait until porps.onModalClose()
-          // const values = cb();
-          // // return (<Modal></Modal>)
-
-          // if (markActive(schema.marks.link)(state)) {
-          //   toggleMark(schema.marks.link)(state, dispatch);
-          //   return true;
-          // }
-          //
-          // // TODO show modal and collect href & target
-          //
-          // const href = promptForURL();
-          // if (!href) return false;
-          //
-          // const target = promptForTarget();
-          //
-
-          // toggleMark(schema.marks.link, { href, target })(state, dispatch);
-          // view.focus()
         }
       }
     },
@@ -187,30 +142,28 @@ export function generateMenu(props) {
       title: "Embed Content",
       content: "Embed",
       classname: "dropdown-menu-list",
-      children: ["Instagram", "Youtube"].reduce((acc, service) => {
+      children: ["Instagram", "YouTube", "Twitframe"].reduce((acc, service) => {
         acc[service] = {
           title: `${service}`,
           content: `${service}`,
           enable: canInsert(schema.nodes.iframe),
           run: (state, dispatch) => {
-            props.onModalOpen(service.toLowerCase(), ({ id }) => {
-              if (id) {
-                dispatch(
-                  state.tr.replaceSelectionWith(
-                    schema.nodes.iframe.create({ id, "data-service": service })
-                  )
-                );
-              }
-            });
-
-            // const id = window && window.prompt("Enter unique embed  ID");
-            // if (id) {
-            //   dispatch(
-            //     state.tr.replaceSelectionWith(
-            //       schema.nodes.iframe.create({ id, "data-service": service })
-            //     )
-            //   );
-            // }
+            props.onModalOpen(
+              "embed",
+              ({ id }) => {
+                if (id) {
+                  dispatch(
+                    state.tr.replaceSelectionWith(
+                      schema.nodes.iframe.create({
+                        id,
+                        "data-service": service
+                      })
+                    )
+                  );
+                }
+              },
+              { service }
+            );
           }
         };
 
