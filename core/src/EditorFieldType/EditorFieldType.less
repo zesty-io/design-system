@@ -4,11 +4,12 @@
   .EditorFieldTypeLabel {
     display: flex;
     margin-bottom: 3px;
-    align-items: flex-end;
+    justify-content: space-between;
     font-size: @labelTextSize;
 
-    & span:first-child {
-      flex: 1;
+    .RightAlign {
+      display: flex;
+      align-items: flex-end;
     }
 
     .EditorSelection {

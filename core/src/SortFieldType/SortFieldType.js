@@ -5,6 +5,7 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 
 import styles from "./SortFieldType.less";
+import { Label } from "../Label";
 export class SortFieldType extends Component {
   state = {
     sortValue: Number(this.props.value) || 0
@@ -40,12 +41,7 @@ export class SortFieldType extends Component {
   render() {
     return (
       <article className={styles.SortFieldType}>
-        <section className={styles.SortFieldTypeLabel}>
-          <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </section>
+        <Label {...this.props} />
         <section className={styles.Sort}>
           <Button
             className={cx(styles.Increment, styles.Left)}

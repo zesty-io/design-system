@@ -3,6 +3,7 @@ import cx from "classnames";
 import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 import { Button } from "../Button";
 import styles from "./ImageFieldType.less";
+import { Label } from "../Label";
 
 export class ImageFieldType extends Component {
   static defaultProps = {
@@ -41,10 +42,7 @@ export class ImageFieldType extends Component {
     const { label, images, field, limit } = this.props;
     return (
       <Fragment>
-        <label className={styles.ImageFieldTypeLabel}>
-          {label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </label>
+        <Label {...this.props} />
         <Card
           className={`${styles.ImageFieldType} ${
             images.length > limit ? styles.warn : ""

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Textarea } from "../Textarea";
 import styles from "./TextareaFieldType.less";
+import { Label } from "../Label";
 
 /**
  * Controlled component
@@ -28,10 +29,7 @@ export class TextareaFieldType extends Component {
         }`}
       >
         <div className={styles.TextareaFieldTypeLabel}>
-          <span>
-            {label}
-            {required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
+          <Label {...this.props} />
           <span>
             {(value && value.length) || "0"}/{maxLength || 150}
           </span>

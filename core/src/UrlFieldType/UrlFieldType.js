@@ -3,6 +3,7 @@ import cx from "classnames";
 
 import { Input } from "../Input";
 import styles from "./UrlFieldType.less";
+import { Label } from "../Label";
 export class UrlFieldType extends PureComponent {
   onChange = evt => {
     if (this.props.onChange) {
@@ -25,10 +26,7 @@ export class UrlFieldType extends PureComponent {
         )}
       >
         <div className={styles.UrlFieldTypeLabel}>
-          <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
+          <Label {...this.props} />
           {this.props.maxLength && (
             <span>
               {this.props.value.length}/{this.props.maxLength}

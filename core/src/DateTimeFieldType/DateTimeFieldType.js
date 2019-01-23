@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cx from "classnames";
 
+import { Label } from "../Label";
 import styles from "./DateTimeFieldType.less";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
@@ -30,10 +31,7 @@ export class DateTimeFieldType extends Component {
   render() {
     return (
       <label className={styles.DateFieldType}>
-        <span className={styles.DateFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        <Label {...this.props} />
         <span className={styles.DateFieldTypeInput}>
           <input
             className={cx(styles.DatePicker, this.props.className)}

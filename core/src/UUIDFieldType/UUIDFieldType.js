@@ -3,6 +3,7 @@ import cx from "classnames";
 import { Input } from "../Input";
 import styles from "./UUIDFieldType.less";
 import uuidv4 from "uuid/v4";
+import { Label } from "../Label";
 
 export class UUIDFieldType extends PureComponent {
   componentDidMount() {
@@ -15,12 +16,7 @@ export class UUIDFieldType extends PureComponent {
   render() {
     return (
       <label className={styles.UUIDFieldType}>
-        <div className={styles.UUIDFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-        </div>
+        <Label {...this.props} />
         <div className={styles.DateFieldTypeInput}>
           <i
             className={cx(styles.Icon, "fa fa-clipboard")}

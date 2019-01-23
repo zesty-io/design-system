@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { SearchableList } from "../SearchableList";
 import { Option } from "../Select";
+import { Label } from "../Label";
 
 import styles from "./InternalLinkFieldType.less";
 
@@ -9,13 +10,7 @@ export class InternalLinkFieldType extends Component {
   render() {
     return (
       <article className={this.props.className}>
-        <div>
-          <label className={styles.InternalLinkFieldTypeLabel}>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </div>
-
+        <Label {...this.props} />
         <SearchableList
           name={this.props.name}
           placeholder={this.props.placeholder}

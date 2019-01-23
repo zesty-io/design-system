@@ -4,6 +4,7 @@ import cx from "classnames";
 import { Input } from "../Input";
 
 import styles from "./TextFieldType.less";
+import { Label } from "../Label";
 export class TextFieldType extends Component {
   componentDidMount() {
     if (!this.props.name) {
@@ -33,10 +34,7 @@ export class TextFieldType extends Component {
         )}
       >
         <div className={styles.TextFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
+          <Label {...this.props} />
           <span>
             {valueLength}/{maxLength}
           </span>

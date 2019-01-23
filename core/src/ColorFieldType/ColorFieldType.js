@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cx from "classnames";
 import { Input } from "../Input";
 import styles from "./ColorFieldType.less";
+import { Label } from "../Label";
 
 export class ColorFieldType extends Component {
   constructor(props) {
@@ -25,10 +26,7 @@ export class ColorFieldType extends Component {
   render() {
     return (
       <label className={styles.ColorFieldType}>
-        <span className={styles.ColorFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        <Label {...this.props} />
         <div className={styles.ColorFieldTypeInput}>
           <Input
             required={this.props.required}

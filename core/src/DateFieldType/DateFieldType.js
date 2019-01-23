@@ -9,6 +9,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 require("../flatpickr.css");
 
 import styles from "./DateFieldType.less";
+import { Label } from "../Label";
 
 export class DateFieldType extends Component {
   onChange = date => {
@@ -20,10 +21,7 @@ export class DateFieldType extends Component {
   render() {
     return (
       <label className={styles.DateFieldType}>
-        <span className={styles.DateFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        <Label {...this.props} />
         <span className={styles.DateFieldTypeInput}>
           {this.props.datatype === "datetime" ? (
             <Flatpickr

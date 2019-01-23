@@ -6,6 +6,7 @@ import { Select, Option } from "../Select";
 import { currencies } from "./currencies";
 
 import styles from "./CurrencyFieldType.less";
+import { Label } from "../Label";
 
 export class CurrencyFieldType extends Component {
   constructor(props) {
@@ -59,8 +60,7 @@ export class CurrencyFieldType extends Component {
                 window.navigator.language
               }"`}
             />
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+            <Label {...this.props} />
           </span>
           <span>
             {Number(this.state.value).toLocaleString(

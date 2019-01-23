@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Select, Option } from "../Select";
 import styles from "./DropDownFieldType.less";
+import { Label } from "../Label";
 
 export class DropDownFieldType extends Component {
   onSelect = (name, value) => {
@@ -12,10 +13,7 @@ export class DropDownFieldType extends Component {
   render() {
     return (
       <label className={styles.DropDownFieldType}>
-        <span className={styles.DropDownFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        <Label {...this.props} />
         <Select
           name={this.props.name}
           onSelect={this.onSelect}

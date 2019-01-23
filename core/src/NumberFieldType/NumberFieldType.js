@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input } from "../Input";
 import styles from "./NumberFieldType.less";
+import { Label } from "../Label";
 
 export class NumberFieldType extends Component {
   constructor(props) {
@@ -26,10 +27,7 @@ export class NumberFieldType extends Component {
   render() {
     return (
       <label className={styles.NumberFieldType}>
-        <span className={styles.NumberFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        <Label {...this.props} />
         <Input
           type="number"
           required={this.props.required}

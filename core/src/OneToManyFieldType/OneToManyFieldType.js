@@ -5,6 +5,7 @@ import { Loader } from "../Loader";
 import { Select, Option } from "../Select";
 
 import styles from "./OneToManyFieldType.less";
+import { Label } from "../Label";
 export class OneToManyFieldType extends Component {
   constructor(props) {
     super(props);
@@ -116,12 +117,7 @@ export class OneToManyFieldType extends Component {
   render() {
     return (
       <Fragment>
-        <div>
-          <label className={styles.OneToManyFieldTypeLabel}>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </div>
+        <Label {...this.props} />
         <section className={styles.OneToMany}>
           <Select
             className={styles.Select}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./BinaryFieldType.less";
 
 import { ToggleButton } from "../ToggleButton";
+import { Label } from "../Label";
 export class BinaryFieldType extends Component {
   onChange = (name, value) => {
     if (this.props.onChange) {
@@ -12,10 +13,7 @@ export class BinaryFieldType extends Component {
     return (
       <article className={styles.BinaryFieldType}>
         <div className={styles.BinaryFieldTypeLabel}>
-          <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
+          <Label {...this.props} />
         </div>
         <div className={styles.switch}>
           <ToggleButton {...this.props} onChange={this.onChange} />

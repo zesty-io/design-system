@@ -10,6 +10,7 @@ import { HtmlEditor } from "./Editors/Html.js";
 import { Select, Option } from "../Select";
 
 import styles from "./EditorFieldType.less";
+import { Label } from "../Label/Label.js";
 export class EditorFieldType extends Component {
   constructor(props) {
     super(props);
@@ -118,25 +119,24 @@ export class EditorFieldType extends Component {
     return (
       <div className={cx(styles.EditorFieldType, this.props.className)}>
         <label className={styles.EditorFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-          <span>
-            {this.state.value.length}
-            /65,000
-          </span>
-          <Select
-            name="editorType"
-            className={styles.EditorSelection}
-            onSelect={this.selectEditor}
-            value={this.state.editor}
-          >
-            <Option value="wysiwyg_basic" text="WYSIWYG" />
-            <Option value="markdown" text="Markdown" />
-            <Option value="article_writer" text="Inline" />
-            <Option value="html" text="HTML" />
-          </Select>
+          <Label className={styles.Label} {...this.props} />
+          <div className={styles.RightAlign}>
+            <span>
+              {this.state.value.length}
+              /65,000
+            </span>
+            <Select
+              name="editorType"
+              className={styles.EditorSelection}
+              onSelect={this.selectEditor}
+              value={this.state.editor}
+            >
+              <Option value="wysiwyg_basic" text="WYSIWYG" />
+              <Option value="markdown" text="Markdown" />
+              <Option value="article_writer" text="Inline" />
+              <Option value="html" text="HTML" />
+            </Select>
+          </div>
         </label>
         <div className={styles.EditorFieldTypePM}>{this.renderEditor()}</div>
       </div>
