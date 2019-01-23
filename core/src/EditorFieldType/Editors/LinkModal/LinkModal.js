@@ -5,9 +5,22 @@ import { TextFieldType } from "../../../TextFieldType";
 
 import styles from "./LinkModal.less";
 export class LinkModal extends React.PureComponent {
+  url = React.createRef();
   state = {
     target: true,
     href: ""
+  };
+  componentDidMount() {
+    this.url.current.querySelector("input").focus();
+    document.addEventListener("keyup", this.onEnter);
+  }
+  componentDidUnmount() {
+    document.removeEventListener("keyup", this.onEnter);
+  }
+  onEnter = evt => {
+    if (evt.which == 13) {
+      this.props.onClose(this.state);
+    }
   };
   render() {
     return (
@@ -18,6 +31,7 @@ export class LinkModal extends React.PureComponent {
       >
         <ModalContent>
           <TextFieldType
+            innerRef={this.url}
             label="What url should this link to?"
             name="linkUrl"
             placeholder="https://"
