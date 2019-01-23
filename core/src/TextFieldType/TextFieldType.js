@@ -26,6 +26,7 @@ export class TextFieldType extends Component {
 
     return (
       <label
+        ref={this.props.innerRef}
         className={cx(
           styles.TextFieldType,
           this.props.className,
