@@ -44,6 +44,7 @@ export class TextFieldTypeGuide extends Component {
         <TextFieldType
           label="Title Field"
           name="example1"
+          datatype="text"
           placeholder="placeholder text"
           value={this.state.example1}
           onChange={(name, value) => this.setState({ [name]: value })}
@@ -62,7 +63,7 @@ export class TextFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code="<TextFieldType label=&quot;Title Field&quot; maxLength=&quot;150&quot; />"
+            code='<TextFieldType label="Title Field" maxLength="150" />'
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>

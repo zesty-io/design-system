@@ -15,6 +15,8 @@ export class ColorFieldTypeGuide extends Component {
           required
           label="Title Field"
           callback={value => console.log(value)}
+          name="name"
+          datatype="color"
         />
         <br />
         <ColorFieldType label="Default to Orange Field" value="#ff9920" />
