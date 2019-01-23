@@ -84,12 +84,18 @@ export function generateMenu(props) {
         content: icons.link,
         active: markActive(schema.marks.link),
         enable: state => !state.selection.empty,
-        run(state, dispatch) {
+        run(state, dispatch, view) {
+          // Remove existing links
+          if (markActive(schema.marks.link)(state)) {
+            toggleMark(schema.marks.link)(state, dispatch);
+            return true;
+          }
+
           props.onModalOpen("link", ({ href, target }) => {
             if (href) {
               toggleMark(schema.marks.link, { href, target })(state, dispatch);
             }
-            // view.focus();
+            view.focus();
           });
         }
       }
