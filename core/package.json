@@ -1,6 +1,6 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.2.10",
+  "version": "0.3.2",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
@@ -50,11 +50,10 @@
     "less": "3.9.0",
     "postcss-modules": "1.4.1",
     "prettier": "1.15.3",
-    "pretty-quick": "1.8.0",
+    "pretty-quick": "1.10.0",
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-test-renderer": "16.7.0",
-    "rimraf": "2.6.2",
     "rollup": "0.68.2",
     "rollup-plugin-analyzer": "2.1.0",
     "rollup-plugin-babel": "3.0.7",
@@ -68,6 +67,7 @@
   },
   "dependencies": {
     "codemirror": "^5.42.0",
-    "js-beautify": "^1.8.8"
+    "js-beautify": "^1.8.8",
+    "w3c-keyname": "^2.1.0"
   }
 }

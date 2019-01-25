@@ -29,20 +29,18 @@ export class Select extends Component {
     };
   }
 
-  componentDidMount() {
-    // document.addEventListener("click", this.onClose);
-    document.addEventListener("keyup", this.onEsc);
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.value !== prevProps.value) {
       this.setState({ value: this.props.value });
     }
   }
 
+  componentDidMount() {
+    window.addEventListener("keyup", this.onEsc);
+  }
+
   componentWillUnmount() {
-    // document.removeEventListener("click", this.onClose);
-    document.removeEventListener("keyup", this.onEsc);
+    window.removeEventListener("keyup", this.onEsc);
   }
 
   handleFilterKeyUp = (name, term, datatype) => {
@@ -52,7 +50,7 @@ export class Select extends Component {
   };
 
   onEsc = evt => {
-    if (evt.which == 27) {
+    if (evt.key === "Escape" || evt.keyCode == 27) {
       this.setState({
         dropdownOpen: false
       });
@@ -112,8 +110,18 @@ export class Select extends Component {
       }
     }
 
+    const nextDropdownState = !this.state.dropdownOpen;
+
+    // PERF: Only attach global click listener when this select
+    // instance dropdown is open.
+    if (nextDropdownState) {
+      window.addEventListener("click", this.onClose);
+    } else {
+      window.removeEventListener("click", this.onClose);
+    }
+
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: nextDropdownState
     });
   };
 

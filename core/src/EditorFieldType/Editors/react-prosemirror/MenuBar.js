@@ -3,28 +3,24 @@ import map from "lodash/map";
 import classnames from "classnames";
 import classes from "./MenuBar.module.less";
 
-const Button = ({ state, dispatch }) => (item, key) => (
+const Button = view => (item, key) => (
   <button
     key={key}
     type={"button"}
     className={classnames({
       [classes.button]: true,
-      [classes.active]: item.active && item.active(state)
+      [classes.active]: item.active && item.active(view.state)
     })}
     title={item.title}
-    disabled={item.enable && !item.enable(state)}
+    disabled={item.enable && !item.enable(view.state)}
     onMouseDown={e => {
       e.preventDefault();
-      item.run(state, dispatch);
+      item.run(view.state, view.dispatch, view);
     }}
   >
     {item.content}
   </button>
 );
-
-// const Dropdown = (item, key) => {
-//   //todo
-// };
 
 export const MenuBar = ({ menu, children, view }) => (
   <div className={classes.bar}>
