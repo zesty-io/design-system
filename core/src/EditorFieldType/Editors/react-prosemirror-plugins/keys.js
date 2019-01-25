@@ -1,4 +1,6 @@
-import { keymap } from "prosemirror-keymap";
+// import { keymap } from "prosemirror-keymap";
+import { keymap } from "./keymap";
+
 import { undoInputRule } from "prosemirror-inputrules";
 import { undo, redo } from "prosemirror-history";
 import {
