@@ -26,6 +26,7 @@ export class TextFieldType extends Component {
 
     return (
       <label
+        ref={this.props.innerRef}
         className={cx(
           styles.TextFieldType,
           this.props.className,
@@ -46,7 +47,9 @@ export class TextFieldType extends Component {
           type="text"
           name={this.props.name}
           value={this.props.value}
+          placeholder={this.props.placeholder}
           required={this.props.required}
+          autofocus={this.props.autofocus}
           onChange={this.onChange}
         />
         {valueLength > maxLength && (

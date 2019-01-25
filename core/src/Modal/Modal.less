@@ -1,30 +1,48 @@
-.ModalContainer {
-  position: fixed;
-  top: 0;
+@import "../colors.less";
+
+.ModalWrap {
+  background-color: rgba(26, 32, 44, 0.6);
   left: 0;
+  top: 0;
+  z-index: 100;
+}
+.ModalGlobal {
+  position: fixed;
   height: 100vh;
   width: 100vw;
+}
+.ModalLocal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.Modal {
+  background-color: #ffffff;
+  border-radius: 4px;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.6);
-  align-items: center;
-  justify-content: center;
-  // z-index: 91; // to combat header in editor section indexed at 90
-  .Modal {
-    background: #c7d4ea;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    min-width: 30rem;
-    min-height: 20rem;
-    z-index: 93;
-    padding: 1rem;
-    box-shadow: 10px 10px 80px 0px rgba(0, 0, 0, 0.2);
-    i {
-      position: absolute;
-      font-size: 1.8rem;
-      top: 0;
-      right: 0;
-      cursor: pointer;
-    }
+  flex-direction: column;
+  max-width: 50%;
+  margin: 5% auto 0;
+  min-width: 462px;
+  padding: 32px;
+  position: relative;
+  // box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+
+  .Close {
+    padding: 8px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
+}
+.ModalHeader {
+}
+
+.ModalContent {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.ModalFooter {
 }

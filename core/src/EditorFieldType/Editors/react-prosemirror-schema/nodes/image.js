@@ -15,7 +15,7 @@ export const image = {
   marks: "floatLeft floatRight",
   parseDOM: [
     {
-      priority: 51, // must be higher than the default image spec
+      // priority: 51, // must be higher than the default image spec
       tag: "img[src]",
       getAttrs(dom) {
         return getElementAttrs(dom);

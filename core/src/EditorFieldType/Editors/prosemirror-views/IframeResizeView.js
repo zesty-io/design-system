@@ -23,15 +23,15 @@ export class IframeResizeView {
     iframe.style.width = "100%";
     iframe.style.height = "100%";
 
-    const paragraph = document.createElement("p");
-    paragraph.style.position = "relative";
-    paragraph.style.width = attrs.width;
-    paragraph.style.height = attrs.height;
-    paragraph.style.display = "inline-block";
-    paragraph.style.lineHeight = "0"; // necessary so the bottom right arrow is aligned nicely
-    paragraph.appendChild(iframe);
+    const figure = document.createElement("figure");
+    figure.style.position = "relative";
+    figure.style.width = attrs.width;
+    figure.style.height = attrs.height;
+    figure.style.display = "inline-block";
+    figure.style.lineHeight = "0"; // necessary so the bottom right arrow is aligned nicely
+    figure.appendChild(iframe);
 
-    this.dom = paragraph;
+    this.dom = figure;
     this.iframe = iframe;
     this.handle = this.addHandle();
   }

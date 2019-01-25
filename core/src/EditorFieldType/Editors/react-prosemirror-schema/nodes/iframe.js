@@ -45,7 +45,7 @@ export const iframe = {
           }
         ];
         break;
-      case "Youtube":
+      case "YouTube":
         return [
           "iframe",
           {
@@ -59,6 +59,19 @@ export const iframe = {
               node.attrs.allow ||
               "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
             allowfullscreen: node.attrs.allowfullscreen || true,
+            height: node.attrs.height || "315px",
+            width: node.attrs.width || "560px"
+          }
+        ];
+        break;
+      case "Twitframe":
+        return [
+          "iframe",
+          {
+            ...node.attrs,
+            src:
+              node.attrs.src ||
+              `https://twitframe.com/show?url=${encodeURI(node.attrs.id)}`,
             height: node.attrs.height || "315px",
             width: node.attrs.width || "560px"
           }

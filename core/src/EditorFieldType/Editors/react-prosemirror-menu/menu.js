@@ -3,7 +3,8 @@ import { setBlockType, toggleMark, wrapIn } from "prosemirror-commands";
 import { redo, undo } from "prosemirror-history";
 import { wrapInList } from "prosemirror-schema-list";
 
-import schema from "./schema";
+import { schema } from "../react-prosemirror-schema";
+
 import icons from "./icons";
 import characters from "./characters";
 
@@ -39,28 +40,7 @@ const canInsert = type => state => {
   return false;
 };
 
-const promptForURL = () => {
-  let url = window && window.prompt("Enter the URL", "https://");
-
-  if (url && !/^https?:\/\//i.test(url)) {
-    url = "http://" + url;
-  }
-
-  return url;
-};
-
-const promptForTarget = () => {
-  let target =
-    window &&
-    window.confirm("Should this url open in a new window when clicked?");
-  if (target) {
-    return "_blank";
-  } else {
-    return "_self";
-  }
-};
-
-export default {
+export const menu = {
   marks: {
     em: {
       title: "Toggle emphasis",
@@ -103,21 +83,14 @@ export default {
       content: icons.link,
       active: markActive(schema.marks.link),
       enable: state => !state.selection.empty,
-      run(state, dispatch) {
+      run(state, dispatch, view) {
+        // Remove existing links
         if (markActive(schema.marks.link)(state)) {
           toggleMark(schema.marks.link)(state, dispatch);
           return true;
         }
 
-        // TODO show modal and collect href & target
-
-        const href = promptForURL();
-        if (!href) return false;
-
-        const target = promptForTarget();
-
-        toggleMark(schema.marks.link, { href, target })(state, dispatch);
-        // view.focus()
+        zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showLinkModal");
       }
     }
   },
@@ -169,20 +142,15 @@ export default {
     title: "Embed Content",
     content: "Embed",
     classname: "dropdown-menu-list",
-    children: ["Instagram", "Youtube"].reduce((acc, service) => {
+    children: ["Instagram", "YouTube", "Twitframe"].reduce((acc, service) => {
       acc[service] = {
         title: `${service}`,
         content: `${service}`,
         enable: canInsert(schema.nodes.iframe),
         run: (state, dispatch) => {
-          const id = window && window.prompt("Enter unique embed  ID");
-          if (id) {
-            dispatch(
-              state.tr.replaceSelectionWith(
-                schema.nodes.iframe.create({ id, "data-service": service })
-              )
-            );
-          }
+          zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showEmbedModal", {
+            service
+          });
         }
       };
 
