@@ -29,19 +29,17 @@ export class Select extends Component {
     };
   }
 
-  componentDidMount() {
-    // window.addEventListener("click", this.onClose);
-    window.addEventListener("keyup", this.onEsc);
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.value !== prevProps.value) {
       this.setState({ value: this.props.value });
     }
   }
 
+  componentDidMount() {
+    window.addEventListener("keyup", this.onEsc);
+  }
+
   componentWillUnmount() {
-    // window.removeEventListener("click", this.onClose);
     window.removeEventListener("keyup", this.onEsc);
   }
 
@@ -112,8 +110,18 @@ export class Select extends Component {
       }
     }
 
+    const nextDropdownState = !this.state.dropdownOpen;
+
+    // PERF: Only attach global click listener when this select
+    // instance dropdown is open.
+    if (nextDropdownState) {
+      window.addEventListener("click", this.onClose);
+    } else {
+      window.removeEventListener("click", this.onClose);
+    }
+
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: nextDropdownState
     });
   };
 
