@@ -31,7 +31,17 @@ export class DateTimeFieldType extends Component {
   render() {
     return (
       <label className={styles.DateFieldType}>
-        <Label {...this.props} />
+        <Label required={this.props.required}>
+          {this.props.label}{" "}
+          {this.props.name && this.props.datatype && (
+            <span style={{ color: "#c3cddf" }}>
+              <span style={{ paddingLeft: "4px" }}>[{this.props.name}]</span>
+              <span style={{ paddingLeft: "4px", padingRight: "4px" }}>
+                {this.props.datatype}
+              </span>
+            </span>
+          )}
+        </Label>
         <span className={styles.DateFieldTypeInput}>
           <input
             className={cx(styles.DatePicker, this.props.className)}

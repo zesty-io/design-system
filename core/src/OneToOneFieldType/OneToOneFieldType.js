@@ -37,7 +37,17 @@ export class OneToOneFieldType extends Component {
   render() {
     return (
       <article className={this.props.className}>
-        <Label {...this.props} />
+        <Label required={this.props.required}>
+          {this.props.label}{" "}
+          {this.props.name && this.props.datatype && (
+            <span style={{ color: "#c3cddf" }}>
+              <span style={{ paddingLeft: "4px" }}>[{this.props.name}]</span>
+              <span style={{ paddingLeft: "4px", padingRight: "4px" }}>
+                {this.props.datatype}
+              </span>
+            </span>
+          )}
+        </Label>
         <Select
           name={this.props.name}
           value={this.props.value || "0"}

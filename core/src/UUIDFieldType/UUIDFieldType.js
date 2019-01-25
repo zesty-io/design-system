@@ -16,7 +16,17 @@ export class UUIDFieldType extends PureComponent {
   render() {
     return (
       <label className={styles.UUIDFieldType}>
-        <Label {...this.props} />
+        <Label required={this.props.required}>
+          {this.props.label}{" "}
+          {this.props.name && this.props.datatype && (
+            <span style={{ color: "#c3cddf" }}>
+              <span style={{ paddingLeft: "4px" }}>[{this.props.name}]</span>
+              <span style={{ paddingLeft: "4px", padingRight: "4px" }}>
+                {this.props.datatype}
+              </span>
+            </span>
+          )}
+        </Label>
         <div className={styles.DateFieldTypeInput}>
           <i
             className={cx(styles.Icon, "fa fa-clipboard")}

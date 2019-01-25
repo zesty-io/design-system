@@ -26,7 +26,17 @@ export class UrlFieldType extends PureComponent {
         )}
       >
         <div className={styles.UrlFieldTypeLabel}>
-          <Label {...this.props} />
+          <Label required={this.props.required}>
+            {this.props.label}{" "}
+            {this.props.name && this.props.datatype && (
+              <span style={{ color: "#c3cddf" }}>
+                <span style={{ paddingLeft: "4px" }}>[{this.props.name}]</span>
+                <span style={{ paddingLeft: "4px", padingRight: "4px" }}>
+                  {this.props.datatype}
+                </span>
+              </span>
+            )}
+          </Label>
           {this.props.maxLength && (
             <span>
               {this.props.value.length}/{this.props.maxLength}

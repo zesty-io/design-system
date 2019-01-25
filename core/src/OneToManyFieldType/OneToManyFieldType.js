@@ -117,7 +117,17 @@ export class OneToManyFieldType extends Component {
   render() {
     return (
       <Fragment>
-        <Label {...this.props} />
+        <Label required={this.props.required}>
+          {this.props.label}{" "}
+          {this.props.name && this.props.datatype && (
+            <span style={{ color: "#c3cddf" }}>
+              <span style={{ paddingLeft: "4px" }}>[{this.props.name}]</span>
+              <span style={{ paddingLeft: "4px", padingRight: "4px" }}>
+                {this.props.datatype}
+              </span>
+            </span>
+          )}
+        </Label>
         <section className={styles.OneToMany}>
           <Select
             className={styles.Select}
