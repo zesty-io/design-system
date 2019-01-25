@@ -30,8 +30,8 @@ export class Select extends Component {
   }
 
   componentDidMount() {
-    // document.addEventListener("click", this.onClose);
-    document.addEventListener("keyup", this.onEsc);
+    // window.addEventListener("click", this.onClose);
+    window.addEventListener("keyup", this.onEsc);
   }
 
   componentDidUpdate(prevProps) {
@@ -41,8 +41,8 @@ export class Select extends Component {
   }
 
   componentWillUnmount() {
-    // document.removeEventListener("click", this.onClose);
-    document.removeEventListener("keyup", this.onEsc);
+    // window.removeEventListener("click", this.onClose);
+    window.removeEventListener("keyup", this.onEsc);
   }
 
   handleFilterKeyUp = (name, term, datatype) => {
@@ -52,7 +52,7 @@ export class Select extends Component {
   };
 
   onEsc = evt => {
-    if (evt.which == 27) {
+    if (evt.key === "Escape" || evt.keyCode == 27) {
       this.setState({
         dropdownOpen: false
       });

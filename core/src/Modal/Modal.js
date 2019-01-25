@@ -12,13 +12,13 @@ export class Modal extends React.Component {
     }
   }
   componentDidMount() {
-    document.addEventListener("keyup", this.onEsc);
+    window.addEventListener("keypress", this.onEsc);
   }
   componentWillUnmount() {
-    document.removeEventListener("keyup", this.onEsc);
+    window.removeEventListener("keypress", this.onEsc);
   }
   onEsc = evt => {
-    if (evt.which == 27) {
+    if (evt.key === "Escape" || evt.keyCode == 27) {
       this.props.onClose();
     }
   };
