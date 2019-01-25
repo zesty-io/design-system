@@ -10,7 +10,7 @@ import { EmbedModal } from "./EmbedModal";
 
 import { schema } from "./react-prosemirror-schema";
 import { plugins } from "./react-prosemirror-plugins";
-import { generateMenu } from "./react-prosemirror-menu";
+import { menu } from "./react-prosemirror-menu";
 
 import { ImageResizeView } from "./prosemirror-views/ImageResizeView";
 import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
@@ -21,51 +21,25 @@ export class BasicEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: generateMenu({
-        onModalOpen: this.onModalOpen,
-        onModalClose: this.onModalClose
-      }),
-      modals: {
-        link: {
-          show: false
-        },
-        embed: {
-          show: false
-        }
-      }
+      showLinkModal: false,
+      showEmbedModal: false
     };
   }
+  componentDidMount() {
+    zesty.on("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
+    zesty.on("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
+  }
+  componentDidUnmount() {
+    zesty.off("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
+    zesty.off("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
+  }
 
-  onModalOpen = (type, callback, options) => {
+  onModalOpen = (name, options) =>
     this.setState({
-      modals: {
-        ...this.state.modals,
-        [type]: {
-          show: true,
-          callback,
-          options
-        }
-      }
+      [name]: true,
+      [`${name}Options`]: options
     });
-  };
-
-  onModalClose = (type, values) => {
-    this.setState({
-      modals: {
-        ...this.state.modals,
-        [type]: {
-          ...this.state.modals[type],
-          show: false
-        }
-      }
-    });
-
-    if (typeof this.state.modals[type].callback !== "function") {
-      throw new Error("BasicEditor: Missing modal close callback");
-    }
-
-    this.state.modals[type].callback(values, this.state.modals[type].options);
-  };
+  onModalClose = name => this.setState({ [name]: false });
 
   render() {
     return (
@@ -76,21 +50,14 @@ export class BasicEditor extends React.Component {
           onChange={this.props.onChange}
           render={({ editor, view }) => (
             <div>
-              {this.state.modals.link.show && (
-                <LinkModal
-                  {...this.state.modals.link.options}
-                  onClose={values => this.onModalClose("link", values)}
-                />
-              )}
-
-              {this.state.modals.embed.show && (
+              {this.state.showLinkModal && <LinkModal view={view} />}
+              {this.state.showEmbedModal && (
                 <EmbedModal
-                  {...this.state.modals.embed.options}
-                  onClose={values => this.onModalClose("embed", values)}
+                  options={this.state.showEmbedModalOptions}
+                  view={view}
                 />
               )}
-
-              <MenuBar menu={this.state.menu} view={view} />
+              <MenuBar menu={menu} view={view} />
               {editor}
             </div>
           )}

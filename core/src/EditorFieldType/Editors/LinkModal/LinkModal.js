@@ -1,33 +1,58 @@
 import React from "react";
+import { toggleMark } from "prosemirror-commands";
+
 import { Modal, ModalHeader, ModalContent, ModalFooter } from "../../../Modal";
 import { Button } from "../../../Button";
 import { TextFieldType } from "../../../TextFieldType";
 
+import { schema } from "../react-prosemirror-schema";
+
 import styles from "./LinkModal.less";
 export class LinkModal extends React.PureComponent {
   url = React.createRef();
+
   state = {
     target: true,
     href: ""
   };
+
   componentDidMount() {
     this.url.current.querySelector("input").focus();
-    document.addEventListener("keyup", this.onEnter);
+    window.addEventListener("keypress", this.onEnter);
   }
-  componentDidUnmount() {
-    document.removeEventListener("keyup", this.onEnter);
+
+  componentWillUnmount() {
+    window.removeEventListener("keypress", this.onEnter);
   }
+
   onEnter = evt => {
-    if (evt.which == 13) {
-      this.props.onClose(this.state);
+    if (evt.key === "Enter" || evt.keyCode == 13) {
+      this.onSave();
     }
   };
+
+  onSave = () => {
+    // Trigger empty setState in order to wait for the state to settle
+    // before triggering mark and exit
+    this.setState({}, () => {
+      if (this.state.href) {
+        toggleMark(schema.marks.link, this.state)(
+          this.props.view.state,
+          this.props.view.dispatch
+        );
+      }
+      zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showLinkModal");
+    });
+  };
+
   render() {
     return (
       <Modal
         type="local"
         className={styles.LinkModal}
-        onClose={this.props.onClose}
+        onClose={() => {
+          zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showLinkModal");
+        }}
       >
         <ModalContent>
           <TextFieldType
@@ -53,7 +78,7 @@ export class LinkModal extends React.PureComponent {
           <Button
             kind="save"
             disabled={this.state.href.length === 0}
-            onClick={() => this.props.onClose(this.state)}
+            onClick={this.onSave}
           >
             <i className="fa fa-plus" aria-hidden="true" />
             Insert Link

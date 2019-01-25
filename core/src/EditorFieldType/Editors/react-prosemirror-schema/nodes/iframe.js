@@ -45,7 +45,7 @@ export const iframe = {
           }
         ];
         break;
-      case "Youtube":
+      case "YouTube":
         return [
           "iframe",
           {
