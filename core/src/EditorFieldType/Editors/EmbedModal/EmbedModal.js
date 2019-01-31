@@ -52,6 +52,7 @@ export class EmbedModal extends React.Component {
     }
 
     zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showEmbedModal");
+    this.props.view.focus();
   };
 
   render() {

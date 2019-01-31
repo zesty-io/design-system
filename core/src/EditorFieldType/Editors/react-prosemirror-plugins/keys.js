@@ -1,5 +1,4 @@
-// import { keymap } from "prosemirror-keymap";
-import { keymap } from "./keymap";
+import { keymap } from "prosemirror-keymap";
 
 import { undoInputRule } from "prosemirror-inputrules";
 import { undo, redo } from "prosemirror-history";
@@ -24,6 +23,7 @@ import {
 } from "prosemirror-commands";
 
 import { schema } from "../react-prosemirror-schema";
+import { markActive } from "../react-prosemirror-menu/menu";
 
 const insertBreak = (state, dispatch) => {
   const br = schema.nodes.hard_break.create();
@@ -49,8 +49,13 @@ const keys = {
   "Mod-b": toggleMark(schema.marks.strong),
   "Mod-i": toggleMark(schema.marks.em),
   "Mod-u": toggleMark(schema.marks.underline),
-  "Mod-k": evt => {
-    zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showLinkModal");
+  "Mod-k": (state, dispatch, view) => {
+    if (markActive(schema.marks.link)(state)) {
+      toggleMark(schema.marks.link)(state, dispatch);
+    } else {
+      zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showLinkModal", { view });
+    }
+    return true;
   },
   "Mod-`": toggleMark(schema.marks.code),
   "Shift-Ctrl-8": wrapInList(schema.nodes.bullet_list),

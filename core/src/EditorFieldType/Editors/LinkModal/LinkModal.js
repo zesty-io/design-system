@@ -42,6 +42,7 @@ export class LinkModal extends React.PureComponent {
         );
       }
       zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showLinkModal");
+      this.props.view.focus();
     });
   };
 

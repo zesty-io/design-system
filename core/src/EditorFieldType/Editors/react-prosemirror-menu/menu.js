@@ -8,7 +8,7 @@ import { schema } from "../react-prosemirror-schema";
 import icons from "./icons";
 import characters from "./characters";
 
-const markActive = type => state => {
+export const markActive = type => state => {
   const { from, $from, to, empty } = state.selection;
 
   return empty
@@ -87,10 +87,10 @@ export const menu = {
         // Remove existing links
         if (markActive(schema.marks.link)(state)) {
           toggleMark(schema.marks.link)(state, dispatch);
-          return true;
+        } else {
+          zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showLinkModal", { view });
         }
-
-        zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showLinkModal");
+        return true;
       }
     }
   },
@@ -147,9 +147,10 @@ export const menu = {
         title: `${service}`,
         content: `${service}`,
         enable: canInsert(schema.nodes.iframe),
-        run: (state, dispatch) => {
+        run: (state, dispatch, view) => {
           zesty.trigger("PROSEMIRROR_DIALOG_OPEN", "showEmbedModal", {
-            service
+            service,
+            view
           });
         }
       };
