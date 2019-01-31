@@ -123,8 +123,7 @@ export class EditorFieldType extends Component {
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </span>
           <span>
-            {this.state.value.length}
-            /65,000
+            {this.state.value.length || "0"}/{this.props.maxLength}
           </span>
           <Select
             name="editorType"
