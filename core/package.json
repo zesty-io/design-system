@@ -67,7 +67,6 @@
   },
   "dependencies": {
     "codemirror": "^5.42.0",
-    "js-beautify": "^1.8.8",
-    "w3c-keyname": "^2.1.0"
+    "js-beautify": "^1.8.8"
   }
 }

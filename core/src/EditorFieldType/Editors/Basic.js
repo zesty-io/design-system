@@ -20,6 +20,9 @@ import styles from "./Basic.less";
 export class BasicEditor extends React.Component {
   constructor(props) {
     super(props);
+
+    this.ref = React.createRef();
+
     this.state = {
       showLinkModal: false,
       showEmbedModal: false
@@ -34,11 +37,21 @@ export class BasicEditor extends React.Component {
     zesty.off("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
   }
 
-  onModalOpen = (name, options) =>
-    this.setState({
-      [name]: true,
-      [`${name}Options`]: options
-    });
+  onModalOpen = (name, options) => {
+    // Handle case of rendering multiple editors in a single view.
+    // Ensure this components editor isntance is the one which triggered a ProseMirror event
+    if (
+      this.ref.current &&
+      this.ref.current.querySelector &&
+      this.ref.current.querySelector(".ProseMirror") == options.view.dom
+    ) {
+      this.setState({
+        [name]: true,
+        [`${name}Options`]: options
+      });
+    }
+  };
+
   onModalClose = name => this.setState({ [name]: false });
 
   render() {
@@ -58,7 +71,7 @@ export class BasicEditor extends React.Component {
                 />
               )}
               <MenuBar menu={menu} view={view} />
-              {editor}
+              <div ref={this.ref}>{editor}</div>
             </div>
           )}
           nodeViews={{
