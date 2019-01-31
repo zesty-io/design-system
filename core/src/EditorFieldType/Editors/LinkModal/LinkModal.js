@@ -12,7 +12,7 @@ export class LinkModal extends React.PureComponent {
   url = React.createRef();
 
   state = {
-    target: true,
+    target: "_blank",
     href: ""
   };
 
@@ -70,8 +70,12 @@ export class LinkModal extends React.PureComponent {
             <Input
               name="linkTarget"
               type="checkbox"
-              checked={this.state.target ? true : false}
-              onChange={() => this.setState({ target: !this.state.target })}
+              checked={this.state.target === "_blank" ? true : false}
+              onChange={() =>
+                this.setState({
+                  target: this.state.target === "_blank" ? "_self" : "_blank"
+                })
+              }
             />
           </label>
         </ModalContent>
