@@ -222,11 +222,11 @@ export class Select extends Component {
           )}
 
           <div className={cx("options", styles.options)}>
-            {childrenFiltered.length ? (
-              childrenFiltered
-            ) : (
-              <Option value="0" text="No options found" />
-            )}
+            {childrenFiltered.length
+              ? childrenFiltered
+              : !this.props.loading && (
+                  <Option value="0" text="No options found" />
+                )}
           </div>
         </ul>
       </div>
