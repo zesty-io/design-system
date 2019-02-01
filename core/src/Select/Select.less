@@ -81,17 +81,37 @@
     border: solid 1px #4f596d;
     background-color: #ffffff;
     display: none;
-    min-width: 100%;
+    min-width: calc(100% - 2px);
     min-height: 2.6rem;
     position: absolute;
     top: 40px;
     z-index: 20;
 
     .Filter {
-      margin: 4px;
+      margin: 0;
       input {
+        border-radius: 3px 0 0 0;
         flex: 1;
       }
+      button {
+        border-radius: 0 3px 0 0;
+        padding: 0;
+        flex-basis: 32px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        i {
+          font-size: inherit;
+        }
+      }
+    }
+
+    .Loader {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      margin: 4px;
     }
 
     .options {
