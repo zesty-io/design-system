@@ -12,6 +12,6 @@ export const bullet_list = {
 };
 export const list_item = {
   ...listItem,
-  content: "paragraph block*",
+  content: "inline*",
   group: "block"
 };
