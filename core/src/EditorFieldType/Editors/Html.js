@@ -24,11 +24,11 @@ export class HtmlEditor extends React.Component {
           lineNumbers: true
         }}
         onBeforeChange={(editor, data, value) => {
-          this.setState({ html: value });
+          this.setState({ html: value.trim() });
         }}
         onChange={(editor, data, value) => {
           if (this.props.onChange) {
-            this.props.onChange(value);
+            this.props.onChange(value.trim());
           }
         }}
       />
