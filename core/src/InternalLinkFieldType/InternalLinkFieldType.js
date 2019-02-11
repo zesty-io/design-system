@@ -39,7 +39,7 @@ export class InternalLinkFieldType extends Component {
           onSelect={this.props.onChange}
           onFilter={this.onSearch}
           // always render search input
-          searchPlaceholder="Do not see the item you are looking for? Enter a term to search the API."
+          searchPlaceholder="Do not see the item you are looking for? Enter a term to search your API."
           searchLength="0"
           loading={this.state.loading}
         >
