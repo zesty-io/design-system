@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Search } from "../Search";
-import styles from "./Select.less";
 import cx from "classnames";
 
+import { Search } from "../Search";
+import { Loader } from "../Loader";
+
+import styles from "./Select.less";
 export class Select extends Component {
   static defaultProps = {
     options: [
@@ -44,6 +46,10 @@ export class Select extends Component {
   }
 
   handleFilterKeyUp = (name, term, datatype) => {
+    if (this.props.onFilter) {
+      this.props.onFilter(name, term, datatype);
+    }
+
     this.setState({
       filter: term.trim().toLowerCase()
     });
@@ -137,8 +143,34 @@ export class Select extends Component {
   };
 
   render() {
-    // On each render determine the currently selected option
     const childrenArr = React.Children.toArray(this.props.children);
+    const childrenFiltered = childrenArr
+      .filter(child => {
+        if (this.state.filter) {
+          return (
+            (child.props.html &&
+              child.props.html.toLowerCase().indexOf(this.state.filter) !==
+                -1) ||
+            (child.props.text &&
+              child.props.text.toLowerCase().indexOf(this.state.filter) !== -1)
+          );
+        } else {
+          return true;
+        }
+      })
+      .map(child => {
+        return React.cloneElement(child, {
+          onClick: evt => {
+            // Individual option event listener
+            if (child.props.onClick) {
+              child.props.onClick(evt);
+            }
+            this.setSelection(evt);
+          }
+        });
+      });
+
+    // On each render determine the currently selected option
     const selection = childrenArr.find(
       child => child.props.value == this.state.value
     );
@@ -174,39 +206,27 @@ export class Select extends Component {
           {childrenArr.length > this.props.searchLength && (
             <Search
               className={styles.Filter}
-              placeholder="Enter a term to filter this list"
               onChange={this.handleFilterKeyUp}
+              placeholder={
+                this.props.searchPlaceholder ||
+                "Enter a term to filter this list"
+              }
             />
           )}
+
+          {this.props.loading && (
+            <span className={styles.Loader}>
+              <Loader />
+              &nbsp;Searching for matching items
+            </span>
+          )}
+
           <div className={cx("options", styles.options)}>
-            {childrenArr
-              .filter(child => {
-                if (this.state.filter) {
-                  return (
-                    (child.props.html &&
-                      child.props.html
-                        .toLowerCase()
-                        .indexOf(this.state.filter) !== -1) ||
-                    (child.props.text &&
-                      child.props.text
-                        .toLowerCase()
-                        .indexOf(this.state.filter) !== -1)
-                  );
-                } else {
-                  return true;
-                }
-              })
-              .map(child => {
-                return React.cloneElement(child, {
-                  onClick: evt => {
-                    // Individual option event listener
-                    if (child.props.onClick) {
-                      child.props.onClick(evt);
-                    }
-                    this.setSelection(evt);
-                  }
-                });
-              })}
+            {childrenFiltered.length
+              ? childrenFiltered
+              : !this.props.loading && (
+                  <Option value="0" text="No options found" />
+                )}
           </div>
         </ul>
       </div>

@@ -32,11 +32,8 @@ export { ColorFieldType } from "./ColorFieldType";
 export { CollapsibleCard } from "./CollapsibleCard";
 export { BinaryFieldType } from "./BinaryFieldType";
 export { ImageFieldType } from "./ImageFieldType";
-
 export { InternalLinkFieldType } from "./InternalLinkFieldType";
 
 export { ConfirmDialog } from "./ConfirmDialog";
-
 export { Drawer } from "./Drawer";
-
 export { ToggleButton } from "./ToggleButton";
