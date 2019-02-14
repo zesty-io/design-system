@@ -19,7 +19,7 @@ export class DateFieldType extends Component {
 
   render() {
     return (
-      <label className={styles.DateFieldType}>
+      <label className={cx(styles.DateFieldType, this.props.className)}>
         <span className={styles.DateFieldTypeLabel}>
           {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}

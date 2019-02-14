@@ -39,7 +39,7 @@ export class SortFieldType extends Component {
   };
   render() {
     return (
-      <article className={styles.SortFieldType}>
+      <article className={cx(styles.SortFieldType, this.props.className)}>
         <section className={styles.SortFieldTypeLabel}>
           <label>
             {this.props.label}
