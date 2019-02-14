@@ -43,3 +43,4 @@ export { DrawerGuide } from './DrawerGuide'
 
 export { ToggleButtonGuide } from './ToggleButtonGuide'
 export { UUIDFieldTypeGuide } from './UUIDFieldTypeGuide'
+export { FieldTypesGuide } from './FieldTypesGuide'

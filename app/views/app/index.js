@@ -26,6 +26,18 @@ export default class App extends Component {
                 </header>
                 <section className={styles.AppWrap}>
                   <nav className={styles.AppMenu}>
+                    <div className={styles.Title}>CONCEPTS</div>
+                    <Nav
+                      selected={'/' + props.location.pathname.split('/')[1]}
+                      content={this.props.concepts.map(el => {
+                        return {
+                          name: el,
+                          path:
+                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
+                          icon: 'lightbulb-o'
+                        }
+                      })}
+                    />
                     <div className={styles.Title}>ATOMS</div>
                     <Nav
                       selected={'/' + props.location.pathname.split('/')[1]}

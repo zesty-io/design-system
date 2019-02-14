@@ -5,9 +5,10 @@ import items from './items.json'
 
 ReactDOM.render(
   <App
+    concepts={items.concepts.sort()}
     atoms={items.atoms.sort()}
     molecules={items.molecules.sort()}
-    organisms={[]}
+    organisms={items.organisms.sort()}
   />,
   document.getElementById('root')
 )
