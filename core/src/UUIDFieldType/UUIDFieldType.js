@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
 import cx from "classnames";
-import { Input } from "../Input";
-import styles from "./UUIDFieldType.less";
 import uuidv4 from "uuid/v4";
 
+import { Input } from "../Input";
+
+import styles from "./UUIDFieldType.less";
 export class UUIDFieldType extends PureComponent {
   componentDidMount() {
     // I may add a check to ensure the itemZUID is 'new'
@@ -14,7 +15,7 @@ export class UUIDFieldType extends PureComponent {
   }
   render() {
     return (
-      <label className={styles.UUIDFieldType}>
+      <label className={cx(styles.UUIDFieldType, this.props.className)}>
         <div className={styles.UUIDFieldTypeLabel}>
           <span>
             {this.props.label}

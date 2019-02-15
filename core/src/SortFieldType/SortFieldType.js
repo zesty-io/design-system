@@ -39,8 +39,8 @@ export class SortFieldType extends Component {
   };
   render() {
     return (
-      <article className={styles.SortFieldType}>
-        <section>
+      <article className={cx(styles.SortFieldType, this.props.className)}>
+        <section className={styles.SortFieldTypeLabel}>
           <label>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}

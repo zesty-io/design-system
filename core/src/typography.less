@@ -1,1 +1,86 @@
+@import "colors.less";
+
 @labelTextSize: 16px;
+@defaultFont: Montserrat;
+
+// font sizes
+@captionFontSize: 12px;
+@buttonFontSize: 14px;
+@bodyFontSize: 16px;
+@subheadlineFontSize: 20px;
+@titleFontSize: 24px;
+@headlineFontSize: 28px;
+@displayFontSize: 32px;
+
+// weights
+@fontLightWeight: 300;
+@fontNormalWeight: 500;
+@buttonWeight: 600;
+
+.display {
+  font-family: @defaultFont;
+  font-size: @displayFontSize;
+  font-weight: @fontLightWeight;
+  line-height: 48px;
+  letter-spacing: 0.32;
+  &.reversed {
+    color: @zesty-white;
+  }
+}
+
+.headline {
+  font-family: @defaultFont;
+  font-size: 28px;
+  font-weight: @fontLightWeight;
+  line-height: 42px;
+  letter-spacing: 0.32;
+  &.reversed {
+    color: @zesty-white;
+  }
+}
+
+.title {
+  font-family: @defaultFont;
+  font-size: @titleFontSize;
+  font-weight: normal;
+  line-height: 36px;
+  letter-spacing: 0.16;
+  &.reversed {
+    color: @zesty-white;
+  }
+}
+
+.subheadline {
+  font-family: @defaultFont;
+  font-size: @subheadlineFontSize;
+  font-weight: @fontNormalWeight;
+  line-height: 28px;
+  letter-spacing: 0.08;
+}
+
+.bodyText {
+  font-family: @defaultFont;
+  font-size: @bodyFontSize;
+  font-weight: @fontNormalWeight;
+  line-height: 24px;
+  letter-spacing: 0;
+  &.reversed {
+    color: @zesty-white;
+  }
+}
+
+.buttonText {
+  font-family: @defaultFont;
+  font-size: @buttonFontSize;
+  font-weight: @buttonWeight;
+  line-height: 20px;
+  letter-spacing: 0.12;
+}
+
+.caption {
+  font-family: @defaultFont;
+  font-size: @captionFontSize;
+  font-weight: @fontNormalWeight;
+  line-height: 16px;
+  letter-spacing: 0;
+}

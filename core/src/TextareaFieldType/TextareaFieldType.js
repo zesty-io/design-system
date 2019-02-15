@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import cx from "classnames";
+
 import { Textarea } from "../Textarea";
-import styles from "./TextareaFieldType.less";
 
 /**
  * Controlled component
  */
+import styles from "./TextareaFieldType.less";
 export class TextareaFieldType extends Component {
   componentDidMount() {
     if (!this.props.name) {
@@ -23,9 +25,11 @@ export class TextareaFieldType extends Component {
     const { value, label, maxLength, required } = this.props;
     return (
       <label
-        className={`${styles.TextareaFieldType} ${
+        className={cx(
+          styles.TextareaFieldType,
+          this.props.className,
           (value && value.length) > (maxLength || 150) ? styles.Error : ""
-        }`}
+        )}
       >
         <div className={styles.TextareaFieldTypeLabel}>
           <span>

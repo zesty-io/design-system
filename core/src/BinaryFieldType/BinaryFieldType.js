@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import styles from "./BinaryFieldType.less";
+import cx from "classnames";
 
 import { ToggleButton } from "../ToggleButton";
+
+import styles from "./BinaryFieldType.less";
 export class BinaryFieldType extends Component {
   onChange = (name, value) => {
     if (this.props.onChange) {
@@ -10,7 +12,7 @@ export class BinaryFieldType extends Component {
   };
   render() {
     return (
-      <article className={styles.BinaryFieldType}>
+      <article className={cx(styles.BinaryFieldType, this.props.className)}>
         <div className={styles.BinaryFieldTypeLabel}>
           <label>
             {this.props.label}

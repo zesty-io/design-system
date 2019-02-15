@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import cx from "classnames";
 
 import { Input } from "../Input";
+
 import styles from "./UrlFieldType.less";
 export class UrlFieldType extends PureComponent {
   onChange = evt => {
@@ -19,6 +20,7 @@ export class UrlFieldType extends PureComponent {
       <article
         className={cx(
           styles.UrlFieldType,
+          this.props.className,
           this.props.maxLength && this.props.value.length > this.props.maxLength
             ? styles.Error
             : null
