@@ -28,6 +28,7 @@ export default class App extends Component {
                   <nav className={styles.AppMenu}>
                     <div className={styles.Title}>CONCEPTS</div>
                     <Nav
+                      id="concepts"
                       selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.concepts.map(el => {
                         return {
@@ -40,6 +41,7 @@ export default class App extends Component {
                     />
                     <div className={styles.Title}>ATOMS</div>
                     <Nav
+                      id="atoms"
                       selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.atoms.map(el => {
                         return {
@@ -52,6 +54,7 @@ export default class App extends Component {
                     />
                     <div className={styles.Title}>MOLECULES</div>
                     <Nav
+                      id="molecules"
                       selected={'/' + props.location.pathname.split('/')[1]}
                       content={this.props.molecules.map(el => {
                         return {
