@@ -7,6 +7,8 @@
     "precommit": "./node_modules/.bin/pretty-quick --staged",
     "prepare": "npm link @zesty-io/core",
     "postinstall": "npm link @zesty-io/core",
+    "test:dev": "cypress open",
+    "test": "cypress run --browser chrome",
     "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development"
   },
   "author": "Zesty.io<developers@zesty.io>",
