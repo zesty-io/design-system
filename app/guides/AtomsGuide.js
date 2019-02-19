@@ -37,7 +37,7 @@ export class AtomsGuide extends Component {
             <CardHeader>
               <h2>Standards:</h2>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ padding: '1rem' }}>
               Atoms in Zesty Design system follow a single purpose pattern, this
               means if the component is interactive, it is only responsible for
               one action (handling only one callback). If more interactions are
@@ -69,7 +69,7 @@ export class AtomsGuide extends Component {
             <CardHeader>
               <h2>Exporting:</h2>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ padding: '1rem' }}>
               Atoms in Zesty Design system can have multiple exports if they are
               designed to work together. For this reason we use named exports as
               seen below.

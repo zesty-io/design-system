@@ -18,7 +18,7 @@ export class FieldTypesGuide extends Component {
             <CardHeader>
               <h2>Not just a molecule:</h2>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ padding: '1rem' }}>
               All FieldTypes are molecules, but not all molecules are
               FieldTypes. The FieldType is designed to return very specific data
               and be used in conjunction with other field types to create
@@ -54,7 +54,7 @@ export class FieldTypesGuide extends Component {
             <CardHeader>
               <h2>Function Signature:</h2>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ padding: '1rem' }}>
               Field Types return the following function signature
               <div style={{ padding: '1rem' }}>
                 <code>callback(name, value, dataype)</code>
