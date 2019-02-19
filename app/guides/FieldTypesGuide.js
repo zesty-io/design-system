@@ -16,12 +16,33 @@ export class FieldTypesGuide extends Component {
           style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
           <Card style={{ maxWidth: '30rem', padding: '1rem', margin: '1rem' }}>
             <CardHeader>
+              <h2>Not just a molecule:</h2>
+            </CardHeader>
+            <CardContent>
+              All FieldTypes are molecules, but not all molecules are
+              FieldTypes. The FieldType is designed to return very specific data
+              and be used in conjunction with other field types to create
+              forms/editing interfaces. These are used mainly in our content
+              managing application, however the components are flexible enough
+              to be used anywhere.
+            </CardContent>
+            <CardFooter>
+              <a href="https://github.com/zesty-io/design-system">
+                Zesty.io Design System
+              </a>
+            </CardFooter>
+          </Card>
+          <Card style={{ maxWidth: '30rem', padding: '1rem', margin: '1rem' }}>
+            <CardHeader>
               <h2>Developing:</h2>
             </CardHeader>
             <CardContent style={{ padding: '1rem' }}>
               To create a FieldType, you are creating a molecule. in the base
-              directory of this project you can run 'node
-              ./util/addComponent.js' and make sure after naming your component
+              directory of this project you can run{' '}
+              <code>'node ./util/addComponent.js'</code> and make sure after
+              naming your component you input a type of <code>'molecule'</code>.
+              Also note that this utility cannot yet handle multi part
+              components (ex: Card, CardHeader, CardContent etc).
             </CardContent>
             <CardFooter>
               <a href="https://github.com/zesty-io/design-system/issues">
