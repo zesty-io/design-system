@@ -79,7 +79,7 @@ export { ${componentName}Guide } from './${componentName}Guide'`
         // add route reminder
         console.log(
           chalk.bgMagenta(
-            "Until you run a build in core your component will not load into the library"
+            "Until you run 'npm run build' in core your component will not load into the library"
           )
         );
         console.log(chalk.green("Go make something useful!"));
