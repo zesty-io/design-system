@@ -5,8 +5,8 @@ context('Actions', () => {
 
   it('renders the app', () => {
     cy.get('#concepts')
-      .find('> span')
-      .find('atoms')
+      .find(':nth-child(2) > ul')
       .click()
+    cy.get('h2').should('contain', 'Zesty Colors')
   })
 })
