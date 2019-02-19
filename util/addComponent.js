@@ -1,8 +1,9 @@
-const chalk = require("chalk");
 const readline = require("readline");
 const path = require("path");
 const fs = require("fs");
 const template = require("./template");
+
+const colors = require("./colors");
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,7 +14,8 @@ rl.question(
   `What is the name of your component? (this should use PascalCase) `,
   componentName => {
     console.log(
-      chalk.green(`Creating files for your component: ${componentName}`)
+      colors.FgGreen,
+      `Creating files for your component: ${componentName}`
     );
 
     // write the component into core
@@ -46,7 +48,8 @@ export { ${componentName} } from './${componentName}'`
       template.guide(componentName)
     );
     console.log(
-      chalk.green(`Completed writing component shell for ${componentName}Guide`)
+      colors.FgGreen,
+      `Completed writing component shell for ${componentName}Guide`
     );
 
     // add to the guide index
@@ -61,11 +64,10 @@ export { ${componentName}Guide } from './${componentName}Guide'`
       `Will this component be an atom, molecule, or organism? `,
       type => {
         if (type !== "molecule" && type !== "atom" && type !== "organism") {
-          console.log("That is not a valid item type");
+          console.log(colors.BgYellow, "That is not a valid item type");
           console.log(
-            chalk.red(
-              "You will have to manually add it to the items array in app/items.json"
-            )
+            colors.FgRed,
+            "You will have to manually add it to the items array in app/items.json"
           );
           return rl.close();
         }
@@ -74,15 +76,15 @@ export { ${componentName}Guide } from './${componentName}Guide'`
         itemsJson[`${type}s`].push(componentName);
         fs.writeFileSync("../app/items.json", JSON.stringify(itemsJson));
         console.log(
-          chalk.green(`${componentName} has been added to the navigation`)
+          colors.FgGreen,
+          `${componentName} has been added to the navigation`
         );
         // add route reminder
         console.log(
-          chalk.bgMagenta(
-            "Until you run 'npm run build' in core your component will not load into the library"
-          )
+          colors.BgMagenta,
+          "Until you run 'npm run build' in core your component will not load into the library"
         );
-        console.log(chalk.green("Go make something useful!"));
+        console.log(colors.FgGreen, "Go make something useful!");
         rl.close();
       }
     );
