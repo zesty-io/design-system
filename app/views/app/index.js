@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { HashRouter, Route, Switch, Link } from 'react-router-dom'
 
 import { Contribute } from './Contribute'
 import * as Guides from '../../guides'
@@ -12,7 +12,7 @@ import styles from './app.less'
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Route
           path="/"
           render={props => {
@@ -29,12 +29,12 @@ export default class App extends Component {
                     <div className={styles.Title}>CONCEPTS</div>
                     <Nav
                       id="concepts"
-                      selected={'/' + props.location.pathname.split('/')[1]}
+                      selected={'/#' + props.location.pathname.split('/')[1]}
                       content={this.props.concepts.map(el => {
                         return {
                           name: el,
                           path:
-                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
+                            '/#' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'lightbulb-o'
                         }
                       })}
@@ -42,12 +42,12 @@ export default class App extends Component {
                     <div className={styles.Title}>ATOMS</div>
                     <Nav
                       id="atoms"
-                      selected={'/' + props.location.pathname.split('/')[1]}
+                      selected={'/#' + props.location.pathname.split('/')[1]}
                       content={this.props.atoms.map(el => {
                         return {
                           name: el,
                           path:
-                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
+                            '/#' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cube'
                         }
                       })}
@@ -55,24 +55,24 @@ export default class App extends Component {
                     <div className={styles.Title}>MOLECULES</div>
                     <Nav
                       id="molecules"
-                      selected={'/' + props.location.pathname.split('/')[1]}
+                      selected={'/#' + props.location.pathname.split('/')[1]}
                       content={this.props.molecules.map(el => {
                         return {
                           name: el,
                           path:
-                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
+                            '/#' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cogs'
                         }
                       })}
                     />
                     <div className={styles.Title}>ORGANISMS</div>
                     <Nav
-                      selected={'/' + props.location.pathname.split('/')[1]}
+                      selected={'/#' + props.location.pathname.split('/')[1]}
                       content={this.props.organisms.map(el => {
                         return {
                           name: el,
                           path:
-                            '/' + el.toLowerCase().replace(' ', '-') + 'guide',
+                            '/#' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'fa-snowflake-o'
                         }
                       })}
@@ -96,7 +96,7 @@ export default class App extends Component {
             )
           }}
         />
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
