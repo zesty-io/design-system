@@ -1,6 +1,6 @@
 # ⚠️ Work In Progress
 
-**This design system is a work in progress and is constantly changing interfaces. We do no recommend implementing these components are following the patterns until it hits `1.0.0`**
+**This design system is a work in progress and is constantly changing interfaces and patterns. We do not recommend until it hits `1.0.0`**
 
 ---
 
