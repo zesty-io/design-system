@@ -81,7 +81,7 @@ export class EmbedModal extends React.Component {
             name="embed"
             placeholder="e.g. puXYPrrsrA"
             required="true"
-            autofocus="true"
+            autoFocus="true"
             onChange={(name, id) => this.setState({ id })}
           />
         </ModalContent>

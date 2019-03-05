@@ -62,7 +62,7 @@ export class LinkModal extends React.PureComponent {
             name="linkUrl"
             placeholder="https://"
             required="true"
-            autofocus="true"
+            autoFocus="true"
             onChange={(name, href) => this.setState({ href })}
           />
           <label>
