@@ -32,7 +32,7 @@ export class BasicEditor extends React.Component {
     zesty.on("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
     zesty.on("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
   }
-  componentDidUnmount() {
+  componentWillUnmount() {
     zesty.off("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
     zesty.off("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
   }
