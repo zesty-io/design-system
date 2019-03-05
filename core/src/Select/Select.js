@@ -172,7 +172,7 @@ export class Select extends Component {
 
     // On each render determine the currently selected option
     const selection = childrenArr.find(
-      child => child.props.value == this.state.value
+      child => child.props && child.props.value == this.state.value
     );
 
     return (
