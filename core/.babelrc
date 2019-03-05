@@ -1,19 +1,26 @@
-/*  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-stage-3"] */
+/*  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-stage-2"] */
 {
   "presets": [
     [
-      "env",
+      "@babel/env",
       {
         "modules": false
       }
     ],
-    "react",
-    "stage-2"
+    "@babel/react"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": [
+    "@babel/transform-runtime",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    "@babel/plugin-proposal-class-properties"
+  ],
   "env": {
     "test": {
-      "presets": [["env"], "react", "stage-2"]
+      "presets": [["@babel/env"], "@babel/react"]
     }
   }
 }

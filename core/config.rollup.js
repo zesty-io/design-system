@@ -1,18 +1,10 @@
-import fs from "fs";
 import cjs from "rollup-plugin-commonjs";
 import babel from "rollup-plugin-babel";
 import replace from "rollup-plugin-replace";
 import copy from "rollup-plugin-copy-glob";
 import postcss from "rollup-plugin-postcss";
-import modules from "postcss-modules";
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 import { plugin as analyze } from "rollup-plugin-analyzer";
-
-try {
-  fs.mkdirSync("dist/");
-} catch (err) {
-  console.log(err);
-}
 
 export default {
   input: "src/index.js",
