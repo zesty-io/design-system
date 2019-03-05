@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 require("../flatpickr.css");
 
 import styles from "./DateFieldType.less";
-
 export class DateFieldType extends Component {
   onChange = date => {
     if (this.props.onChange) {
@@ -42,7 +39,6 @@ export class DateFieldType extends Component {
                     showAlways: false,
                     theme: "light"
                   })
-                  // new rangePlugin()
                 ]
               }}
             />
