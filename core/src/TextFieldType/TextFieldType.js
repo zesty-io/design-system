@@ -50,6 +50,7 @@ export class TextFieldType extends Component {
           required={this.props.required}
           autoFocus={this.props.autofocus}
           onChange={this.onChange}
+          disabled={this.props.disabled}
         />
         {valueLength > maxLength && (
           <span className={styles.ErrorDescription}>
