@@ -1,42 +1,35 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import cx from "classnames";
 
 import styles from "./Node.less";
-export class Node extends PureComponent {
+export class Node extends React.PureComponent {
   render() {
-    const {
-      selected,
-      // closed,
-      collapsed,
-      depth,
-      path,
-      icon,
-      name,
-      children,
-      handleOpen
-    } = this.props;
-
-    // style is a node is selected
-    const isSelected = (selected.includes(path) && styles.selected) || "";
-
-    // check if a parent node is collapsed
-    // const isClosed = closed && styles.closed;
     return (
       <li
-        className={cx(styles.item, styles[`depth${depth}`], isSelected)}
-        key={path}
+        className={cx(
+          styles.item,
+          styles[`depth${this.props.depth}`],
+          this.props.selected === this.props.path ? styles.selected : ""
+        )}
       >
-        <a href={path}>
-          <i className={`fa fa-${icon}`} />
-          <span>{name}</span>
+        <a href={this.props.path}>
+          <i className={`fa fa-${this.props.icon}`} />
+          <span>{this.props.label}</span>
         </a>
-        {children &&
-          Boolean(children.length) && (
-            <i
-              className={collapsed ? "fa fa-caret-left" : "fa fa-caret-down"}
-              onClick={() => handleOpen(path)}
-            />
-          )}
+
+        <i
+          className={cx("fa fa-eye-slash", styles.hide)}
+          onClick={() => this.props.handleHide(this.props.path)}
+        />
+
+        {this.props.children && Boolean(this.props.children.length) && (
+          <i
+            className={
+              this.props.closed ? "fa fa-caret-left" : "fa fa-caret-down"
+            }
+            onClick={() => this.props.handleOpen(this.props.path)}
+          />
+        )}
       </li>
     );
   }

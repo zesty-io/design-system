@@ -1,55 +1,52 @@
-import React, { PureComponent, Fragment } from "react";
+import React from "react";
 import { Node } from "../Node";
 
 import styles from "./Parent.less";
-export class Parent extends PureComponent {
+export class Parent extends React.PureComponent {
   renderMenuItem = item => {
-    const { context, handleOpen } = this.props;
-
     // track recursion depth and pass it as a prop to the node component
     const recursionDepth = item.depth + 1 || 1;
 
     return item.children ? (
       // if the item has children
       // render the item and then it's children
-      <Fragment key={item.path}>
+      <React.Fragment key={item.path}>
         <Node
           {...item}
-          selected={item.selected}
-          collapsed={Array.isArray(context) && context.includes(item.path)}
           depth={recursionDepth}
-          handleOpen={handleOpen}
+          selected={item.selected}
+          handleOpen={this.props.handleOpen}
+          handleHide={this.props.handleHide}
         />
         {item.children.map(child => (
           <Parent
             {...child}
+            // If the current node is closed then
+            // tell child nodes to not display
+            isClosed={item.closed}
             key={child.path}
             depth={recursionDepth}
             selected={item.selected}
-            closed={
-              (Array.isArray(context) && context.includes(item.path)) ||
-              item.closed
-            }
-            handleOpen={handleOpen}
-            context={context}
+            handleOpen={this.props.handleOpen}
+            handleHide={this.props.handleHide}
           />
         ))}
-      </Fragment>
+      </React.Fragment>
     ) : (
       <Node
         {...item}
-        selected={item.selected}
-        depth={recursionDepth}
-        // active={active}
-        handleOpen={handleOpen}
         key={item.path}
+        depth={recursionDepth}
+        selected={item.selected}
+        handleOpen={this.props.handleOpen}
+        handleHide={this.props.handleHide}
       />
     );
   };
   render() {
     return (
       <article className={styles.Parent}>
-        <ul className={this.props.closed ? styles.closed : ""}>
+        <ul className={this.props.isClosed ? styles.closed : ""}>
           {this.renderMenuItem(this.props)}
         </ul>
       </article>

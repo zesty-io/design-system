@@ -1,49 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import cx from "classnames";
 
 import { Parent } from "../Parent";
 
 import styles from "./Nav.less";
-
-export class Nav extends Component {
-  state = {
-    closed: []
-  };
-  componentDidMount() {
-    if (localStorage.getItem(this.uniqueName())) {
-      this.setState({
-        closed: JSON.parse(localStorage.getItem(this.uniqueName()))
-      });
-    }
-  }
-  uniqueName() {
-    return this.props.name ? `zesty-io:nav:${this.props.name}` : "zesty-io:nav";
-  }
-  handleOpen = path => {
-    // add or remove path from closed state array
-    const closedItems = [...this.state.closed];
-    const replaceClosed = closedItems.includes(path)
-      ? closedItems.filter(e => e !== path)
-      : [...closedItems, path];
-
-    return this.setState({ closed: replaceClosed }, () => {
-      localStorage.setItem(this.uniqueName(), JSON.stringify(replaceClosed));
-    });
-  };
+export class Nav extends React.PureComponent {
   render() {
-    const { className, content, selected } = this.props;
     return (
       <nav
         id={this.props.id || "Navigation"}
-        className={cx(styles.Nav, className)}
+        className={cx(styles.Nav, this.props.className)}
       >
-        {content.map(item => (
+        {this.props.tree.map(item => (
           <Parent
             {...item}
             key={item.path}
-            selected={selected}
-            context={this.state.closed}
-            handleOpen={this.handleOpen}
+            selected={this.props.selected}
+            handleOpen={this.props.handleOpen}
+            handleHide={this.props.handleHide}
           />
         ))}
       </nav>
