@@ -1,13 +1,19 @@
 .Card {
   .CardHeader {
-    // display: flex;
-    // flex-direction: column;
-    align-items: baseline;
-    i {
-      cursor: pointer;
-      margin-right: 0.5rem;
-      align-self: flex-end;
-      font-size: 1.3rem;
+    .HeaderWrap {
+      display: flex;
+      align-items: baseline;
+
+      i {
+        cursor: pointer;
+        margin-right: 0.5rem;
+        // align-self: flex-end;
+        // font-size: 1.3rem;
+      }
+
+      .ProvidedContent {
+        flex: 1;
+      }
     }
   }
 }

@@ -1,50 +1,49 @@
-import React, { Component } from "react";
-
-import styles from "./CollapsibleCard.less";
+import React from "react";
 import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 
-export class CollapsibleCard extends Component {
-  static defaultProps = {
-    isCollapsed: true,
-    header: "Header Required",
-    footer: ""
-  };
+import styles from "./CollapsibleCard.less";
+export class CollapsibleCard extends React.Component {
   state = {
     isCollapsed: true
   };
 
   componentDidMount() {
     if (this.props.open) {
-      this.setState({ isCollapsed: false });
+      this.setState({
+        isCollapsed: false
+      });
     }
   }
 
-  render() {
-    const { isCollapsed } = this.state;
-    const { header, footer } = this.props;
-    return (
-      <Card className={styles.Card}>
-        <CardHeader className={styles.CardHeader}>
-          <h2 onClick={this.onCollapse}>
-            <i
-              className={isCollapsed ? "fa fa-caret-right" : "fa fa-caret-down"}
-            />
-            {header}
-          </h2>
-        </CardHeader>
-        {/* render or dont render, later I want to do animation with css on close */}
-        {isCollapsed ? null : (
-          <React.Fragment>
-            <CardContent>{this.props.children}</CardContent>
-            <CardFooter>{footer}</CardFooter>
-          </React.Fragment>
-        )}
-      </Card>
-    );
-  }
   onCollapse = () => {
     this.setState({
       isCollapsed: !this.state.isCollapsed
     });
   };
+
+  render() {
+    return (
+      <Card className={styles.Card}>
+        <CardHeader className={styles.CardHeader}>
+          <div className={styles.HeaderWrap} onClick={this.onCollapse}>
+            <i
+              className={
+                this.state.isCollapsed
+                  ? "fa fa-caret-right"
+                  : "fa fa-caret-down"
+              }
+            />
+            <div className={styles.ProvidedContent}>{this.props.header}</div>
+          </div>
+        </CardHeader>
+        {/* render or dont render, later I want to do animation with css on close */}
+        {!this.state.isCollapsed && (
+          <React.Fragment>
+            <CardContent>{this.props.children}</CardContent>
+            <CardFooter>{this.props.footer}</CardFooter>
+          </React.Fragment>
+        )}
+      </Card>
+    );
+  }
 }
