@@ -20,9 +20,9 @@ export class DropDownFieldType extends Component {
         </span>
         <Select
           name={this.props.name}
-          onSelect={this.onSelect}
-          name={this.props.name}
+          loading={this.props.loading}
           value={this.props.value || "0"}
+          onSelect={this.onSelect}
         >
           <Option value="0" text="— None —" />
           {this.props.children
