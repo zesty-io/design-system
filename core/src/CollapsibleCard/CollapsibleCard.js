@@ -1,4 +1,6 @@
 import React from "react";
+import cx from "classnames";
+
 import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 
 import styles from "./CollapsibleCard.less";
@@ -27,11 +29,12 @@ export class CollapsibleCard extends React.Component {
         <CardHeader className={styles.CardHeader}>
           <div className={styles.HeaderWrap} onClick={this.onCollapse}>
             <i
-              className={
+              className={cx(
+                styles.Caret,
                 this.state.isCollapsed
                   ? "fa fa-caret-right"
                   : "fa fa-caret-down"
-              }
+              )}
             />
             <div className={styles.ProvidedContent}>{this.props.header}</div>
           </div>
