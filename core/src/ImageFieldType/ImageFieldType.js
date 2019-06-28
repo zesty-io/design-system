@@ -38,16 +38,15 @@ export class ImageFieldType extends Component {
   };
 
   render() {
-    const { label, images, field, limit } = this.props;
     return (
       <Fragment>
         <label className={styles.ImageFieldTypeLabel}>
-          {label}
+          {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
         </label>
         <Card
           className={`${styles.ImageFieldType} ${
-            images.length > limit ? styles.warn : ""
+            this.props.images.length > this.props.limit ? styles.warn : ""
           }`}
         >
           <CardContent className={styles.ImageFieldTypeContent}>
@@ -55,7 +54,7 @@ export class ImageFieldType extends Component {
               <h3>Drop images here to upload them to your media</h3>
               <input type="file" className={styles.DropZone} />
             */}
-            {images.map((ZUID, i) => {
+            {this.props.images.map((ZUID, i) => {
               return (
                 <Image
                   key={i}
@@ -66,18 +65,38 @@ export class ImageFieldType extends Component {
                 />
               );
             })}
-            {!images.length && (
+            {!this.props.images.length && (
               <h1 className={styles.NoImages}>No media has been selected</h1>
             )}
           </CardContent>
           <CardFooter className={styles.ImageFieldTypeFooter}>
-            <Actions
-              {...this.props}
-              field={field}
-              addImage={this.addImage}
-              imageCount={images.length}
-              limit={limit}
-            />
+            <Fragment>
+              <Button
+                kind={this.props.images.length > this.props.limit ? "warn" : ""}
+                onClick={() => {
+                  console.log("Action", this.props);
+
+                  riot.mount(
+                    document.querySelector("#modalMount"),
+                    "media-app-modal",
+                    {
+                      callback: this.addImage,
+                      ids: this.props.value,
+                      name: this.props.name,
+                      displayName: this.props.label,
+                      limit: this.props.limit,
+                      lock: this.props.locked
+                    }
+                  );
+                }}
+                text={`Select Media (${this.props.images.length}/${this.props.limit})`}
+              />
+              {this.props.images.length > this.props.limit && (
+                <p className={styles.warningText}>
+                  You have selected more images than your limit allows
+                </p>
+              )}
+            </Fragment>
           </CardFooter>
         </Card>
       </Fragment>
@@ -85,68 +104,24 @@ export class ImageFieldType extends Component {
   }
 }
 
-class Actions extends PureComponent {
-  render() {
-    const { value, addImage, limit, imageCount, label } = this.props;
-    const { datatypeOptions, name } = this.props.field;
-    return (
-      <Fragment>
-        <Button
-          kind={imageCount > limit ? "warn" : ""}
-          onClick={() => {
-            const optsObject = {
-              callback: addImage,
-              ids: value,
-              limit,
-              name,
-              displayName: label
-            };
-            if (datatypeOptions && datatypeOptions.group_id) {
-              optsObject.lock = datatypeOptions.group_id;
-            }
-            riot.mount(
-              document.querySelector("#modalMount"),
-              "media-app-modal",
-              optsObject
-            );
-          }}
-          text={`Select Media (${imageCount}/${limit})`}
+function Image(props) {
+  return (
+    <figure className={styles.file}>
+      {props.imageZUID.substr(0, 4) === "http" ? (
+        <img className={styles.image} src={props.imageZUID} />
+      ) : (
+        <img
+          className={styles.image}
+          src={`${CONFIG.service.media_resolver}/resolve/${props.imageZUID}/getimage/?w=${props.width}&h=${props.height}&type=fit`}
         />
-        {imageCount > limit ? (
-          <p className={styles.warningText}>
-            You have selected more images than your limit allows
-          </p>
-        ) : (
-          ""
-        )}
-      </Fragment>
-    );
-  }
-}
+      )}
 
-class Image extends Component {
-  render() {
-    const { removeImage, imageZUID, width, height } = this.props;
-    return (
-      <figure className={styles.file}>
-        {imageZUID.substr(0, 4) === "http" ? (
-          <img className={styles.image} src={imageZUID} />
-        ) : (
-          <img
-            className={styles.image}
-            src={`${
-              CONFIG.service.media_resolver
-            }/resolve/${imageZUID}/getimage/?w=${width}&h=${height}&type=fit`}
-          />
-        )}
-
-        <Button
-          className={styles.remove}
-          onClick={() => removeImage(imageZUID)}
-        >
-          <i className={cx(styles.icon, "fa fa-times")} />
-        </Button>
-      </figure>
-    );
-  }
+      <Button
+        className={styles.remove}
+        onClick={() => props.removeImage(props.imageZUID)}
+      >
+        <i className={cx(styles.icon, "fa fa-times")} />
+      </Button>
+    </figure>
+  );
 }
