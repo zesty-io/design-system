@@ -1,10 +1,13 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.3.10",
+  "version": "0.4.0",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
-  "main": "dist/",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "browser": "dist/umd.bundle.js",
   "scripts": {
     "test": "npx jest ./src/**/*test.js --config config.jest.js",
