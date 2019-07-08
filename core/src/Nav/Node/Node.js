@@ -2,35 +2,31 @@ import React from "react";
 import cx from "classnames";
 
 import styles from "./Node.less";
-export class Node extends React.PureComponent {
-  render() {
-    return (
-      <li
-        className={cx(
-          styles.item,
-          styles[`depth${this.props.depth}`],
-          this.props.selected === this.props.path ? styles.selected : ""
-        )}
-      >
-        <a href={this.props.path}>
-          <i className={`fa fa-${this.props.icon}`} />
-          <span>{this.props.label}</span>
-        </a>
+export function Node(props) {
+  return (
+    <li
+      className={cx(
+        styles.item,
+        styles[`depth${props.depth}`],
+        props.selected.includes(props.path) ? styles.selected : null
+      )}
+    >
+      <a href={props.path}>
+        <i className={`fa fa-${props.icon}`} />
+        <span>{props.label}</span>
+      </a>
 
+      <i
+        className={cx("fa fa-eye-slash", styles.hide)}
+        onClick={() => props.handleHide(props.path)}
+      />
+
+      {Array.isArray(props.children) && Boolean(props.children.length) && (
         <i
-          className={cx("fa fa-eye-slash", styles.hide)}
-          onClick={() => this.props.handleHide(this.props.path)}
+          className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
+          onClick={() => props.handleOpen(props.path)}
         />
-
-        {this.props.children && Boolean(this.props.children.length) && (
-          <i
-            className={
-              this.props.closed ? "fa fa-caret-left" : "fa fa-caret-down"
-            }
-            onClick={() => this.props.handleOpen(this.props.path)}
-          />
-        )}
-      </li>
-    );
-  }
+      )}
+    </li>
+  );
 }
