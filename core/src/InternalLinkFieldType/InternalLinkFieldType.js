@@ -30,6 +30,7 @@ export class InternalLinkFieldType extends Component {
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </label>
+          <p className={styles.Description}>{this.props.description}</p>
         </div>
 
         <Select

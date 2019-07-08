@@ -17,10 +17,13 @@ export class DateFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.DateFieldType, this.props.className)}>
-        <span className={styles.DateFieldTypeLabel}>
+        <p className={styles.DateFieldTypeLabel}>
           {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <span className={styles.DateFieldTypeInput}>
           {this.props.datatype === "datetime" ? (
             <Flatpickr

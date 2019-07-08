@@ -28,10 +28,13 @@ export class NumberFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.NumberFieldType, this.props.className)}>
-        <span className={styles.NumberFieldTypeLabel}>
+        <p className={styles.NumberFieldTypeLabel}>
           {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <Input
           type="number"
           required={this.props.required}

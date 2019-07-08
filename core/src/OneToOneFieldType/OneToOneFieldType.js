@@ -36,12 +36,15 @@ export class OneToOneFieldType extends Component {
   render() {
     return (
       <article className={this.props.className}>
-        <div>
+        <p>
           <label className={styles.OneToOneFieldTypeLabel}>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </label>
-        </div>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <Select
           name={this.props.name}
           value={this.props.value || "0"}

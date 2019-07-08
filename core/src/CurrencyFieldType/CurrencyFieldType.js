@@ -55,9 +55,7 @@ export class CurrencyFieldType extends Component {
         <div className={styles.CurrencyFieldTypeLabel}>
           <span>
             <Infotip
-              title={`View this value in different currencies based upon your locale "${
-                window.navigator.language
-              }"`}
+              title={`View this value in different currencies based upon your locale "${window.navigator.language}"`}
             />
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
@@ -72,6 +70,9 @@ export class CurrencyFieldType extends Component {
             )}
           </span>
         </div>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <div className={styles.CurrencyFields}>
           <Select
             className={styles.SelectCurrency}
@@ -88,9 +89,7 @@ export class CurrencyFieldType extends Component {
                   // this ugly html allows us to display the currency symbol
                   // and in the dropdown you can still see the currency name
                   html={`<p style="display:flex;justify-content:space-between;align-items: center;">
-                  <span>${
-                    currency.symbol
-                  }</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                  <span>${currency.symbol}</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                   <span>${currency.name}<span></p>`}
                 />
               );

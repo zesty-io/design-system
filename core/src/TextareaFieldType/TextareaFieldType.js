@@ -31,7 +31,7 @@ export class TextareaFieldType extends Component {
           (value && value.length) > (maxLength || 150) ? styles.Error : ""
         )}
       >
-        <div className={styles.TextareaFieldTypeLabel}>
+        <p className={styles.TextareaFieldTypeLabel}>
           <span>
             {label}
             {required && <span style={{ color: "#9a2803" }}>*</span>}
@@ -39,7 +39,10 @@ export class TextareaFieldType extends Component {
           <span>
             {(value && value.length) || "0"}/{maxLength || 150}
           </span>
-        </div>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <Textarea {...this.props} type="textarea" onChange={this.onChange} />
       </label>
     );

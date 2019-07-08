@@ -13,12 +13,13 @@ export class BinaryFieldType extends Component {
   render() {
     return (
       <article className={cx(styles.BinaryFieldType, this.props.className)}>
-        <div className={styles.BinaryFieldTypeLabel}>
+        <p className={styles.BinaryFieldTypeLabel}>
           <label>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
           </label>
-        </div>
+        </p>
+        <p className={styles.Description}>{this.props.description}</p>
         <div className={styles.switch}>
           <ToggleButton {...this.props} onChange={this.onChange} />
           <span className={styles.slider} />

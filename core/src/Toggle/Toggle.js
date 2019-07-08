@@ -11,7 +11,7 @@ export function Toggle({ checked, onClick }) {
         return onClick();
       }}
     >
-      <input type="checkbox" checked={checked === 1} />
+      <input type="checkbox" defaultChecked={checked === 1} />
       <span className={styles.slider} />
     </label>
   );

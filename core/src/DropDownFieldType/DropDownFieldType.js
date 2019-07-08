@@ -14,10 +14,13 @@ export class DropDownFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.DropDownFieldType, this.props.className)}>
-        <span className={styles.DropDownFieldTypeLabel}>
+        <p className={styles.DropDownFieldTypeLabel}>
           {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </span>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <Select
           name={this.props.name}
           loading={this.props.loading}

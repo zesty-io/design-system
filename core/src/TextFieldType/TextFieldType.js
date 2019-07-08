@@ -33,7 +33,7 @@ export class TextFieldType extends Component {
           valueLength > maxLength ? styles.Error : ""
         )}
       >
-        <div className={styles.TextFieldTypeLabel}>
+        <p className={styles.TextFieldTypeLabel}>
           <span>
             {this.props.label}
             {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
@@ -41,7 +41,10 @@ export class TextFieldType extends Component {
           <span>
             {valueLength}/{maxLength}
           </span>
-        </div>
+        </p>
+
+        <p className={styles.Description}>{this.props.description}</p>
+
         <Input
           type="text"
           name={this.props.name}

@@ -44,6 +44,7 @@ export class ImageFieldType extends Component {
           {this.props.label}
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
         </label>
+        <p className={styles.Description}>{this.props.description}</p>
         <Card
           className={`${styles.ImageFieldType} ${
             this.props.images.length > this.props.limit ? styles.warn : ""

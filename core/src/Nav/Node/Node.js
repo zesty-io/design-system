@@ -12,12 +12,12 @@ export function Node(props) {
       )}
     >
       <a href={props.path}>
-        <i className={`fa fa-${props.icon}`} />
+        <i className={`fas fa-${props.icon}`} />
         <span>{props.label}</span>
       </a>
 
       <i
-        className={cx("fa fa-eye-slash", styles.hide)}
+        className={cx("fas fa-eye-slash", styles.hide)}
         onClick={() => props.handleHide(props.path)}
       />
 

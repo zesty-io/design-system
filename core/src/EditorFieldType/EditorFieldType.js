@@ -137,6 +137,7 @@ export class EditorFieldType extends Component {
             <Option value="html" text="HTML" />
           </Select>
         </label>
+        <p className={styles.Description}>{this.props.description}</p>
         <div className={styles.EditorFieldTypePM}>{this.renderEditor()}</div>
       </div>
     );
