@@ -29,9 +29,9 @@ export default class App extends Component {
                     <div className={styles.Title}>ATOMS</div>
                     <Nav
                       selected={'/' + props.location.pathname.split('/')[1]}
-                      content={this.props.atoms.map(el => {
+                      tree={this.props.atoms.map(el => {
                         return {
-                          name: el,
+                          label: el,
                           path:
                             '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cube'
@@ -41,9 +41,9 @@ export default class App extends Component {
                     <div className={styles.Title}>MOLECULES</div>
                     <Nav
                       selected={'/' + props.location.pathname.split('/')[1]}
-                      content={this.props.molecules.map(el => {
+                      tree={this.props.molecules.map(el => {
                         return {
-                          name: el,
+                          label: el,
                           path:
                             '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'cogs'
@@ -53,9 +53,9 @@ export default class App extends Component {
                     <div className={styles.Title}>ORGANISMS</div>
                     <Nav
                       selected={'/' + props.location.pathname.split('/')[1]}
-                      content={this.props.organisms.map(el => {
+                      tree={this.props.organisms.map(el => {
                         return {
-                          name: el,
+                          label: el,
                           path:
                             '/' + el.toLowerCase().replace(' ', '-') + 'guide',
                           icon: 'fa-snowflake-o'
