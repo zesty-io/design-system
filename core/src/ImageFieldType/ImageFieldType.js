@@ -1,6 +1,6 @@
-import React, { Component, PureComponent, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import cx from "classnames";
-import { Card, CardHeader, CardContent, CardFooter } from "../Card";
+import { Card, CardContent } from "../Card";
 import { Button } from "../Button";
 import styles from "./ImageFieldType.less";
 
@@ -38,6 +38,9 @@ export class ImageFieldType extends Component {
   };
 
   render() {
+    const maxImages = this.props.limit || 1;
+    const imageCount = this.props.images.length;
+
     return (
       <Fragment>
         <label className={styles.ImageFieldTypeLabel}>
@@ -45,9 +48,17 @@ export class ImageFieldType extends Component {
           {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
         </label>
         <p className={styles.Description}>{this.props.description}</p>
+
+        {imageCount > maxImages && (
+          <p className={styles.WarningMsg}>
+            This field is limited to {maxImages}{" "}
+            {maxImages > 1 ? "images" : "image"}
+          </p>
+        )}
+
         <Card
           className={`${styles.ImageFieldType} ${
-            this.props.images.length > this.props.limit ? styles.warn : ""
+            imageCount > maxImages ? styles.warn : ""
           }`}
         >
           <CardContent className={styles.ImageFieldTypeContent}>
@@ -66,39 +77,11 @@ export class ImageFieldType extends Component {
                 />
               );
             })}
-            {!this.props.images.length && (
-              <h1 className={styles.NoImages}>No media has been selected</h1>
-            )}
-          </CardContent>
-          <CardFooter className={styles.ImageFieldTypeFooter}>
-            <Fragment>
-              <Button
-                kind={this.props.images.length > this.props.limit ? "warn" : ""}
-                onClick={() => {
-                  console.log("Action", this.props);
 
-                  riot.mount(
-                    document.querySelector("#modalMount"),
-                    "media-app-modal",
-                    {
-                      callback: this.addImage,
-                      ids: this.props.value,
-                      name: this.props.name,
-                      displayName: this.props.label,
-                      limit: this.props.limit,
-                      lock: this.props.locked
-                    }
-                  );
-                }}
-                text={`Select Media (${this.props.images.length}/${this.props.limit})`}
-              />
-              {this.props.images.length > this.props.limit && (
-                <p className={styles.warningText}>
-                  You have selected more images than your limit allows
-                </p>
-              )}
-            </Fragment>
-          </CardFooter>
+            {new Array(Math.max(0, maxImages - imageCount)).fill(0).map(el => (
+              <ImageSkeleton {...this.props} addImage={this.addImage} />
+            ))}
+          </CardContent>
         </Card>
       </Fragment>
     );
@@ -107,7 +90,7 @@ export class ImageFieldType extends Component {
 
 function Image(props) {
   return (
-    <figure className={styles.file}>
+    <figure className={styles.File}>
       {props.imageZUID.substr(0, 4) === "http" ? (
         <img className={styles.image} src={props.imageZUID} />
       ) : (
@@ -121,7 +104,30 @@ function Image(props) {
         className={styles.remove}
         onClick={() => props.removeImage(props.imageZUID)}
       >
-        <i className={cx(styles.icon, "fa fa-times")} />
+        <i className={cx(styles.icon, "fas fa-times")} />
+      </Button>
+    </figure>
+  );
+}
+
+function ImageSkeleton(props) {
+  return (
+    <figure className={cx(styles.File, styles.FileSkeleton)}>
+      <Button
+        onClick={() => {
+          console.log("Action", props);
+
+          riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
+            callback: props.addImage,
+            ids: props.value,
+            name: props.name,
+            displayName: props.label,
+            limit: props.limit,
+            lock: props.locked
+          });
+        }}
+      >
+        <i className={cx(styles.icon, "fas fa-plus")} />
       </Button>
     </figure>
   );
