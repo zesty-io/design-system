@@ -45,7 +45,10 @@ export class InternalLinkFieldType extends Component {
           loading={this.state.loading}
         >
           {/* You should always be able to unlink an internal link */}
-          <Option value="0" text="— None —" />
+          <Option
+            value={this.props.defaultOptValue || "0"}
+            text={this.props.defaultOptText || "— None —"}
+          />
 
           {this.props.options.map((option, i) => {
             return <Option key={i} {...option} />;

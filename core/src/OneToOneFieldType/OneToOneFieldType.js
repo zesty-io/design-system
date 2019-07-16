@@ -51,7 +51,10 @@ export class OneToOneFieldType extends Component {
           onClick={this.onClick}
           onSelect={this.onSelect}
         >
-          <Option value="0" text="— None —" />
+          <Option
+            value={this.props.defaultOptValue || "0"}
+            text={this.props.defaultOptText || "— None —"}
+          />
           {this.state.loading && <Loader />}
           {this.props.children
             ? this.props.children
