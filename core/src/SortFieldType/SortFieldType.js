@@ -42,15 +42,14 @@ export class SortFieldType extends Component {
   render() {
     return (
       <article className={cx(styles.SortFieldType, this.props.className)}>
-        <section className={styles.SortFieldTypeLabel}>
-          <label>
-            <FieldLabel
-              label={this.props.label}
-              required={this.props.required}
-              fieldType="sort"
-            />
-          </label>
-        </section>
+        <label>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            fieldType="sort"
+          />
+        </label>
+
         <section className={styles.Sort}>
           <Button
             className={cx(styles.Increment, styles.Left)}
