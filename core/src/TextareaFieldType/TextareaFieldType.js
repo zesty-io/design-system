@@ -36,13 +36,15 @@ export class TextareaFieldType extends Component {
         <FieldLabel
           label={label}
           required={required}
+          fieldType="textarea"
           maxLength={maxLength || 150}
           valueLength={(value && value.length) || "0"}
         />
 
         <Textarea {...this.props} type="textarea" onChange={this.onChange} />
-
-        <FieldDescription description={this.props.description} />
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }
