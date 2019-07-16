@@ -27,7 +27,10 @@ export class DropDownFieldType extends Component {
           value={this.props.value || "0"}
           onSelect={this.onSelect}
         >
-          <Option value="0" text="— None —" />
+          <Option
+            value={this.props.defaultOptValue || "0"}
+            text={this.props.defaultOptText || "— None —"}
+          />
           {this.props.children
             ? this.props.children
             : this.props.options.map((opt, i) => {
