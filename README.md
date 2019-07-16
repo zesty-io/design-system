@@ -16,15 +16,12 @@ Link the core to the global node_modules and build the package
 
 ```
 cd core
-npm link
-npm run build
+npm start
 ```
 
 ## Running Locally
 
 ```
 cd app
-npm i
-npm link @zesty-io/core
 npm start
 ```

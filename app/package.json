@@ -5,8 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "precommit": "./node_modules/.bin/pretty-quick --staged",
-    "prepare": "npm link @zesty-io/core",
-    "postinstall": "npm link @zesty-io/core",
+    "prestart": "npm i && npm link @zesty-io/core",
     "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development"
   },
   "author": "Zesty.io<developers@zesty.io>",
