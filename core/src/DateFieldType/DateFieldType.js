@@ -3,6 +3,8 @@ import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import { FieldDescription } from "../FieldDescription";
+import { FieldLabel } from "../FieldLabel";
 
 require("../flatpickr.css");
 
@@ -17,12 +19,11 @@ export class DateFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.DateFieldType, this.props.className)}>
-        <p className={styles.DateFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          fieldType="date"
+        />
 
         <span className={styles.DateFieldTypeInput}>
           {this.props.datatype === "datetime" ? (
@@ -55,6 +56,10 @@ export class DateFieldType extends Component {
           )}
           <i className={cx(styles.Icon, "fa fa-calendar")} />
         </span>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

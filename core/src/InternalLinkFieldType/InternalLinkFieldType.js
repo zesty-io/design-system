@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import debounce from "lodash.debounce";
 
 import { Select, Option } from "../Select";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./InternalLinkFieldType.less";
 export class InternalLinkFieldType extends Component {
@@ -25,13 +27,13 @@ export class InternalLinkFieldType extends Component {
   render() {
     return (
       <article className={this.props.className}>
-        <div>
-          <label className={styles.InternalLinkFieldTypeLabel}>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-          <p className={styles.Description}>{this.props.description}</p>
-        </div>
+        <label htmlFor={this.props.name}>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            fieldType="internal link"
+          />
+        </label>
 
         <Select
           name={this.props.name}
@@ -54,6 +56,10 @@ export class InternalLinkFieldType extends Component {
             return <Option key={i} {...option} />;
           })}
         </Select>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </article>
     );
   }

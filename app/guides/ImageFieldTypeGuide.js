@@ -26,6 +26,7 @@ export class ImageFieldTypeGuide extends Component {
           callback={this.handleImages}
           label="Title Field"
           limit="5"
+          description="Images description to load here and test"
         />
         <br />
         <CollapsibleCard header="Usage" open>

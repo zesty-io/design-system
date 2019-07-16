@@ -16,7 +16,12 @@ export class DateTimeFieldTypeGuide extends Component {
         <br />
         <br />
         <DateTimeFieldType required label="Title Field" />
-        <DateTimeFieldType label="Title Field" timeFormat="HH:mm:ss" />
+        <br />
+        <DateTimeFieldType
+          label="Title Field"
+          timeFormat="HH:mm:ss"
+          description="This is my description"
+        />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>

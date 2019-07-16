@@ -8,6 +8,8 @@ import { MarkdownEditor } from "./Editors/Markdown.js";
 import { HtmlEditor } from "./Editors/Html.js";
 
 import { Select, Option } from "../Select";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./EditorFieldType.less";
 export class EditorFieldType extends Component {
@@ -118,13 +120,11 @@ export class EditorFieldType extends Component {
     return (
       <div className={cx(styles.EditorFieldType, this.props.className)}>
         <label className={styles.EditorFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-          <span>
-            {this.state.value.length || "0"}/{this.props.maxLength}
-          </span>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            fieldType="rich text"
+          />
           <Select
             name="editorType"
             className={styles.EditorSelection}
@@ -137,8 +137,12 @@ export class EditorFieldType extends Component {
             <Option value="html" text="HTML" />
           </Select>
         </label>
-        <p className={styles.Description}>{this.props.description}</p>
+
         <div className={styles.EditorFieldTypePM}>{this.renderEditor()}</div>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </div>
     );
   }
