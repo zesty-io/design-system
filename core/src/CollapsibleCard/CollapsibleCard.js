@@ -25,7 +25,7 @@ export class CollapsibleCard extends React.Component {
 
   render() {
     return (
-      <Card className={styles.Card}>
+      <Card className={cx(styles.Card, this.props.className)}>
         <CardHeader className={styles.CardHeader}>
           <div className={styles.HeaderWrap} onClick={this.onCollapse}>
             <i
