@@ -1,0 +1,29 @@
+@import "../colors.less";
+@import "../typography.less";
+
+.TextFieldTypeLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-size: @FieldLabelSize;
+  line-height: @labelLineHeight;
+  letter-spacing: 0.5;
+  color: @zesty-dark-blue;
+  padding-bottom: 3px;
+  .TextFieldRequired {
+    color: @zesty-red;
+    padding-left: 3px;
+  }
+  .ValidationLimitHelper {
+    font-size: @helperTextFontSize;
+    font-family: @secondaryFont;
+    color: @zesty-light-gray;
+  }
+  .TextFieldType {
+    color: @zesty-light-blue;
+    padding-left: 10px;
+    font-size: 9px;
+    top: -2px;
+    position: relative;
+  }
+}
