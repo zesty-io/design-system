@@ -23,11 +23,13 @@ export class NumberFieldTypeGuide extends Component {
           value="4"
           callback={value => console.log(value)}
         />
+        <br />
         <NumberFieldType
           label="No CharCount"
           required={true}
           value="4"
           callback={value => console.log(value)}
+          description="hello world im a description"
         />
         <br />
         <CollapsibleCard header="Usage" open>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import { Input } from "../Input";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./NumberFieldType.less";
 export class NumberFieldType extends Component {
@@ -28,12 +30,11 @@ export class NumberFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.NumberFieldType, this.props.className)}>
-        <p className={styles.NumberFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          fieldType="number"
+        />
 
         <Input
           type="number"
@@ -41,6 +42,10 @@ export class NumberFieldType extends Component {
           onChange={this.onChange}
           value={this.state.number}
         />
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

@@ -47,6 +47,7 @@ export class SortFieldType extends Component {
             <FieldLabel
               label={this.props.label}
               required={this.props.required}
+              fieldType="sort"
             />
           </label>
         </section>

@@ -27,6 +27,7 @@ export class UUIDFieldType extends PureComponent {
           <i
             className={cx(styles.Icon, "fa fa-clipboard")}
             aria-hidden="true"
+            title="Click to Copy"
             onClick={e => {
               const input = document.createElement("input");
               document.body.appendChild(input);

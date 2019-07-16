@@ -3,6 +3,8 @@ import React, { Component, Fragment } from "react";
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
 import { Select, Option } from "../Select";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./OneToManyFieldType.less";
 export class OneToManyFieldType extends Component {
@@ -116,14 +118,13 @@ export class OneToManyFieldType extends Component {
   render() {
     return (
       <Fragment>
-        <p>
-          <label className={styles.OneToManyFieldTypeLabel}>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <label htmlFor={this.props.name}>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            fieldType="one to many relationship"
+          />
+        </label>
 
         <section className={styles.OneToMany}>
           <Select
@@ -160,6 +161,9 @@ export class OneToManyFieldType extends Component {
             )}
           </article>
         </section>
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </Fragment>
     );
   }
