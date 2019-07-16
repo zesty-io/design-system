@@ -43,8 +43,6 @@ export class TextFieldType extends Component {
           </span>
         </p>
 
-        <p className={styles.Description}>{this.props.description}</p>
-
         <Input
           type="text"
           name={this.props.name}
@@ -61,6 +59,7 @@ export class TextFieldType extends Component {
             Your input is over the specified limit
           </span>
         )}
+        <p className={styles.Description}>{this.props.description}</p>
       </label>
     );
   }

@@ -56,13 +56,15 @@ export class TextFieldTypeGuide extends Component {
           required={true}
           value={this.state.example2}
           onChange={(name, value) => this.setState({ [name]: value })}
+          description="This is My Description"
+          placeholder="My Placeholder Text"
         />
 
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code="<TextFieldType label=&quot;Title Field&quot; maxLength=&quot;150&quot; />"
+            code='<TextFieldType label="Title Field" maxLength="150" />'
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
