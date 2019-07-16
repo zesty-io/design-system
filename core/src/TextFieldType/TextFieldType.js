@@ -38,7 +38,7 @@ export class TextFieldType extends Component {
         <FieldLabel
           label={this.props.label}
           required={this.props.required}
-          fieldType="text"
+          tag={this.props.tag}
           maxLength={maxLength}
           valueLength={valueLength}
           tooltip={this.props.tooltip}

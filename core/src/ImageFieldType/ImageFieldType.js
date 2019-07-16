@@ -49,7 +49,7 @@ export class ImageFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="image"
+            tag={this.props.tag}
             maxLength={maxImages}
             valueLength={imageCount}
             tooltip={this.props.tooltip}

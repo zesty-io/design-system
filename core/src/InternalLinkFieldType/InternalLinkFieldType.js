@@ -31,7 +31,7 @@ export class InternalLinkFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="internal link"
+            tag={this.props.tag}
             tooltip={this.props.tooltip}
           />
         </label>

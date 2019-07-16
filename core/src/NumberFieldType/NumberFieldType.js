@@ -33,7 +33,7 @@ export class NumberFieldType extends Component {
         <FieldLabel
           label={this.props.label}
           required={this.props.required}
-          fieldType="number"
+          tag={this.props.tag}
           tooltip={this.props.tooltip}
         />
 

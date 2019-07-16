@@ -19,7 +19,7 @@ export class BinaryFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="color"
+            tag={this.props.tag}
             tooltip={this.props.tooltip}
           />
         </label>

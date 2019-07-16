@@ -23,7 +23,7 @@ export class DateFieldType extends Component {
           label={this.props.label}
           required={this.props.required}
           tooltip={this.props.tooltip}
-          fieldType="date"
+          tag={this.props.tag}
         />
 
         <span className={styles.DateFieldTypeInput}>

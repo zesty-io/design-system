@@ -123,7 +123,7 @@ export class EditorFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="rich text"
+            tag={this.props.tag}
             tooltip={this.props.tooltip}
           />
           <Select

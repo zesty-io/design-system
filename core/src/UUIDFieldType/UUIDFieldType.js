@@ -21,7 +21,7 @@ export class UUIDFieldType extends PureComponent {
         <FieldLabel
           label={this.props.label}
           required={this.props.required}
-          fieldType="uuid"
+          tag={this.props.tag}
           tooltip={this.props.tooltip}
         />
         <div className={styles.DateFieldTypeInput}>

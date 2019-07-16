@@ -36,7 +36,7 @@ export class TextareaFieldType extends Component {
         <FieldLabel
           label={label}
           required={required}
-          fieldType="textarea"
+          tag={this.props.tag}
           maxLength={maxLength || 150}
           valueLength={(value && value.length) || "0"}
           tooltip={this.props.tooltip}

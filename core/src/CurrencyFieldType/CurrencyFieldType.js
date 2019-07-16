@@ -57,7 +57,7 @@ export class CurrencyFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="currency"
+            tag={this.props.tag}
             tooltip={`View this value in different currencies based upon your locale "${window.navigator.language}"`}
           />
           <span>

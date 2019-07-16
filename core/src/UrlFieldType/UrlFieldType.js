@@ -31,7 +31,7 @@ export class UrlFieldType extends PureComponent {
         <FieldLabel
           label={this.props.label}
           required={this.props.required}
-          fieldType="url"
+          tag={this.props.tag}
           maxLength={this.props.maxLength}
           valueLength={(this.props.value && this.props.value.length) || "0"}
           tooltip={this.props.tooltip}

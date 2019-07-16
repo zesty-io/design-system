@@ -16,6 +16,7 @@ export class DropDownFieldTypeGuide extends Component {
           tooltip="Hello World of Tooltips"
           callback={value => console.log(value)}
           description="Description Text down below"
+          tag="parsley_name"
           options={[
             { value: 'a value that can be used in some way', text: 'hi' },
             { value: 'a value that can be used in some way', text: 'hello' },
@@ -34,8 +35,9 @@ export class DropDownFieldTypeGuide extends Component {
             code={`
 <DropDownFieldType
   label="Label Field"
-  description="optional"
-  tooltip="text tooltip"
+  description="Description Text down below"
+  tag="parsley_name"
+  tooltip="Hello World of Tooltips"
   options={[
     { value: 'a value that can be used in some way', text: 'hi' },
     { value: 'a value that can be used in some way', text: 'hello' },

@@ -42,7 +42,7 @@ export class OneToOneFieldType extends Component {
           <FieldLabel
             label={this.props.label}
             required={this.props.required}
-            fieldType="one to one relationship"
+            tag={this.props.tag}
             tooltip={this.props.tooltip}
           />
         </label>

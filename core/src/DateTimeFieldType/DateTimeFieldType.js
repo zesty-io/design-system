@@ -35,7 +35,7 @@ export class DateTimeFieldType extends Component {
         <FieldLabel
           label={this.props.label}
           required={this.props.required}
-          fieldType="datetime"
+          tag={this.props.tag}
           tooltip={this.props.tooltip}
         />
 
