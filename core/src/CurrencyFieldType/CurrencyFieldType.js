@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import { Input } from "../Input";
-import { Infotip } from "../Infotip";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 import { Select, Option } from "../Select";
 import { currencies } from "./currencies";
 
@@ -53,13 +54,12 @@ export class CurrencyFieldType extends Component {
     return (
       <label className={styles.CurrencyFieldType}>
         <div className={styles.CurrencyFieldTypeLabel}>
-          <span>
-            <Infotip
-              title={`View this value in different currencies based upon your locale "${window.navigator.language}"`}
-            />
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            fieldType="currency"
+            tooltip={`View this value in different currencies based upon your locale "${window.navigator.language}"`}
+          />
           <span>
             {Number(this.state.value).toLocaleString(
               window.navigator.language,
@@ -104,6 +104,10 @@ export class CurrencyFieldType extends Component {
             value={this.state.value}
           />
         </div>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }
