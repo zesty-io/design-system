@@ -39,27 +39,28 @@ export class TextFieldTypeGuide extends Component {
         <h3>charCount</h3>
         <p>Custom character count to display</p>
         <br />
-
         <h2>Examples</h2>
-        <TextFieldType
-          label="Title Field"
-          name="example1"
-          placeholder="placeholder text"
-          value={this.state.example1}
-          onChange={(name, value) => this.setState({ [name]: value })}
-        />
-
-        <TextFieldType
-          label="Custom Length"
-          name="example2"
-          maxLength="400"
-          required={true}
-          value={this.state.example2}
-          onChange={(name, value) => this.setState({ [name]: value })}
-          description="This is My Description"
-          placeholder="My Placeholder Text"
-        />
-
+        <div style={{ padding: '10px 0px' }}>
+          <TextFieldType
+            label="Title Field"
+            name="example1"
+            placeholder="placeholder text"
+            value={this.state.example1}
+            onChange={(name, value) => this.setState({ [name]: value })}
+          />
+        </div>
+        <div style={{ padding: '10px 0px' }}>
+          <TextFieldType
+            label="Custom Length"
+            name="example2"
+            maxLength="400"
+            required={true}
+            value={this.state.example2}
+            onChange={(name, value) => this.setState({ [name]: value })}
+            description="This is My Description"
+            placeholder="My Placeholder Text"
+          />
+        </div>
         <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed

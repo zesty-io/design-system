@@ -3,6 +3,8 @@ import cx from "classnames";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./SortFieldType.less";
 export class SortFieldType extends Component {
@@ -42,8 +44,10 @@ export class SortFieldType extends Component {
       <article className={cx(styles.SortFieldType, this.props.className)}>
         <section className={styles.SortFieldTypeLabel}>
           <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+            <FieldLabel
+              label={this.props.label}
+              required={this.props.required}
+            />
           </label>
         </section>
         <section className={styles.Sort}>
@@ -67,6 +71,9 @@ export class SortFieldType extends Component {
             <i className="fa fa-minus" />
           </Button>
         </section>
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </article>
     );
   }

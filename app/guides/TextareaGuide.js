@@ -37,6 +37,7 @@ export class TextareaGuide extends Component {
               <Textarea
                 name="example2"
                 value="This textarea is required"
+                description="This is my description text"
                 required
               />
 

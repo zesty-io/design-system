@@ -18,6 +18,7 @@ export class SortFieldTypeGuide extends Component {
           label="Default to 10"
           default={10}
           callback={console.log}
+          description="This is the description text"
         />
         <br />
         <CollapsibleCard header="Usage" open>
