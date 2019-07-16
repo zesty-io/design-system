@@ -34,6 +34,7 @@ export class UrlFieldType extends PureComponent {
           fieldType="url"
           maxLength={this.props.maxLength}
           valueLength={(this.props.value && this.props.value.length) || "0"}
+          tooltip={this.props.tooltip}
         />
         <Input
           type="url"

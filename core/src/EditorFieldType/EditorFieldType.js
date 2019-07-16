@@ -124,6 +124,7 @@ export class EditorFieldType extends Component {
             label={this.props.label}
             required={this.props.required}
             fieldType="rich text"
+            tooltip={this.props.tooltip}
           />
           <Select
             name="editorType"

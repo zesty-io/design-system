@@ -41,6 +41,7 @@ export class TextFieldType extends Component {
           fieldType="text"
           maxLength={maxLength}
           valueLength={valueLength}
+          tooltip={this.props.tooltip}
         />
         <Input
           type="text"

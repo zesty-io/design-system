@@ -123,6 +123,7 @@ export class OneToManyFieldType extends Component {
             label={this.props.label}
             required={this.props.required}
             fieldType="one to many relationship"
+            tooltip={this.props.tooltip}
           />
         </label>
 

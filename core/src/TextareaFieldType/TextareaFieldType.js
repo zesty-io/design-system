@@ -39,6 +39,7 @@ export class TextareaFieldType extends Component {
           fieldType="textarea"
           maxLength={maxLength || 150}
           valueLength={(value && value.length) || "0"}
+          tooltip={this.props.tooltip}
         />
 
         <Textarea {...this.props} type="textarea" onChange={this.onChange} />

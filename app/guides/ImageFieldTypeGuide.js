@@ -27,6 +27,7 @@ export class ImageFieldTypeGuide extends Component {
           label="Title Field"
           limit="5"
           description="Images description to load here and test"
+          tooltip="Hello World"
         />
         <br />
         <CollapsibleCard header="Usage" open>

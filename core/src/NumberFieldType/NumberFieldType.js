@@ -34,6 +34,7 @@ export class NumberFieldType extends Component {
           label={this.props.label}
           required={this.props.required}
           fieldType="number"
+          tooltip={this.props.tooltip}
         />
 
         <Input

@@ -20,6 +20,7 @@ export class DropDownFieldType extends Component {
           label={this.props.label}
           required={this.props.required}
           fieldType="dropdown"
+          tooltip={this.props.tooltip}
         />
 
         <Select

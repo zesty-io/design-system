@@ -47,6 +47,7 @@ export class SortFieldType extends Component {
             label={this.props.label}
             required={this.props.required}
             fieldType="sort"
+            tooltip={this.props.tooltip}
           />
         </label>
 

@@ -36,6 +36,7 @@ export class DateTimeFieldType extends Component {
           label={this.props.label}
           required={this.props.required}
           fieldType="datetime"
+          tooltip={this.props.tooltip}
         />
 
         <span className={styles.DateFieldTypeInput}>
