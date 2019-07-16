@@ -78,9 +78,15 @@ export class ImageFieldType extends Component {
               );
             })}
 
-            {new Array(Math.max(0, maxImages - imageCount)).fill(0).map(el => (
-              <ImageSkeleton {...this.props} addImage={this.addImage} />
-            ))}
+            {new Array(Math.max(0, maxImages - imageCount))
+              .fill(0)
+              .map((el, i) => (
+                <ImageSkeleton
+                  key={i}
+                  {...this.props}
+                  addImage={this.addImage}
+                />
+              ))}
           </CardContent>
         </Card>
       </Fragment>
