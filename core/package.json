@@ -13,7 +13,8 @@
     "build:es2015": "cross-env NODE_ENV=production npx babel ./src --out-dir ./dist --ignore *.test.js",
     "build:bundle": "cross-env NODE_ENV=production npx rollup -c config.rollup.js",
     "clean": "npx rimraf dist",
-    "release": "npm run clean && npm run build && cd dist && npm publish"
+    "release": "npm run clean && npm run build && cd dist && npm publish",
+    "start": "npm link && npm run build"
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
