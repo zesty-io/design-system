@@ -65,9 +65,7 @@ export class OneToOneFieldType extends Component {
               })}
         </Select>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </article>
     );
   }

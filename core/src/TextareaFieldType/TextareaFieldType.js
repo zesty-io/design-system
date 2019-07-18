@@ -43,9 +43,7 @@ export class TextareaFieldType extends Component {
         />
 
         <Textarea {...this.props} type="textarea" onChange={this.onChange} />
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

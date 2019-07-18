@@ -46,9 +46,7 @@ export class ColorFieldType extends Component {
           <i className={cx(styles.Icon, "fa fa-paint-brush")} />
         </div>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

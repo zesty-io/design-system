@@ -42,9 +42,7 @@ export class UrlFieldType extends PureComponent {
           onChange={this.onChange}
           value={this.props.value}
         />
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </article>
     );
   }

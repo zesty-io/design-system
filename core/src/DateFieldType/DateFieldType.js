@@ -58,9 +58,7 @@ export class DateFieldType extends Component {
           <i className={cx(styles.Icon, "fa fa-calendar")} />
         </span>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

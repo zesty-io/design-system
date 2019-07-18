@@ -3,5 +3,7 @@ import styles from "./FieldDescription.less";
 import cx from "classnames";
 
 export function FieldDescription(props) {
-  return <p className={styles.Description}>{props.description}</p>;
+  return props.description ? (
+    <p className={styles.Description}>{props.description}</p>
+  ) : null;
 }

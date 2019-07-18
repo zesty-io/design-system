@@ -72,9 +72,7 @@ export class SortFieldType extends Component {
             <i className="fa fa-minus" />
           </Button>
         </section>
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </article>
     );
   }

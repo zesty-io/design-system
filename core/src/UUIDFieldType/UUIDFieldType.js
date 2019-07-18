@@ -54,9 +54,7 @@ export class UUIDFieldType extends PureComponent {
             defaultValue={this.props.value || ""}
           />
         </div>
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

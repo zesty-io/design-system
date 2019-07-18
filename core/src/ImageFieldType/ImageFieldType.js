@@ -97,9 +97,7 @@ export class ImageFieldType extends Component {
           </CardContent>
         </Card>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </Fragment>
     );
   }

@@ -162,9 +162,7 @@ export class OneToManyFieldType extends Component {
             )}
           </article>
         </section>
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </Fragment>
     );
   }

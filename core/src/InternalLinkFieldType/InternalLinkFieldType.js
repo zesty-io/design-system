@@ -58,9 +58,7 @@ export class InternalLinkFieldType extends Component {
           })}
         </Select>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </article>
     );
   }

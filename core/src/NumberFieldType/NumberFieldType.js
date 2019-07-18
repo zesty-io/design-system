@@ -44,9 +44,7 @@ export class NumberFieldType extends Component {
           value={this.state.number}
         />
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

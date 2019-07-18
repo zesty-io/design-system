@@ -105,9 +105,7 @@ export class CurrencyFieldType extends Component {
           />
         </div>
 
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

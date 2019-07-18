@@ -27,9 +27,7 @@ export class BinaryFieldType extends Component {
           <ToggleButton {...this.props} onChange={this.onChange} />
           <span className={styles.slider} />
         </div>
-        {this.props.description && (
-          <FieldDescription description={this.props.description} />
-        )}
+        <FieldDescription description={this.props.description} />
       </article>
     );
   }
