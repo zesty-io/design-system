@@ -1,9 +1,12 @@
-@btnDefault: #404759;
-@btnDefaultText: #ffffff;
-@btnSave: #63a41e;
-@btnCancel: #a7afbf;
-@btnWarn: #9a2803;
-@btnAlt: #d26a25;
+@import "../typography.less";
+@import "../colors.less";
+
+@btnDefault: @zesty-gray;
+@btnDefaultText: @white;
+@btnSave: @zesty-green;
+@btnCancel: @zesty-light-gray;
+@btnWarn: @zesty-red;
+@btnAlt: @zesty-orange;
 @btnDisabled: rgba(26, 32, 44, 0.12);
 
 .Button {
@@ -16,8 +19,8 @@
   color: #ffffff;
   cursor: pointer;
   display: flex;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: @button-font-size;
+  font-weight: @button-weight;
   font-style: normal;
   font-stretch: normal;
   line-height: 24px;
