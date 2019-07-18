@@ -3,6 +3,8 @@ import cx from "classnames";
 import uuidv4 from "uuid/v4";
 
 import { Input } from "../Input";
+import { FieldDescription } from "../FieldDescription";
+import { FieldLabel } from "../FieldLabel";
 
 import styles from "./UUIDFieldType.less";
 export class UUIDFieldType extends PureComponent {
@@ -16,19 +18,17 @@ export class UUIDFieldType extends PureComponent {
   render() {
     return (
       <label className={cx(styles.UUIDFieldType, this.props.className)}>
-        <p className={styles.UUIDFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
-
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          tag={this.props.tag}
+          tooltip={this.props.tooltip}
+        />
         <div className={styles.DateFieldTypeInput}>
           <i
             className={cx(styles.Icon, "fa fa-clipboard")}
             aria-hidden="true"
+            title="Click to Copy"
             onClick={e => {
               const input = document.createElement("input");
               document.body.appendChild(input);
@@ -54,6 +54,9 @@ export class UUIDFieldType extends PureComponent {
             defaultValue={this.props.value || ""}
           />
         </div>
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

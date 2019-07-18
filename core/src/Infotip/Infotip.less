@@ -1,9 +1,10 @@
 @import "../colors.less";
+@import "../typography.less";
 
 .tip {
   cursor: help;
   position: relative;
-  font-size: 16px;
+  font-size: 14px;
 
   .tipIcon {
     color: @zesty-tab-blue;
@@ -36,8 +37,9 @@
       display: block;
       position: absolute;
       background: @zesty-dark-blue;
-      color: @zesty-field-blue;
-      padding: 10px 10px 10px 30px;
+      color: @white;
+      font-family: @secondary-font;
+      padding: 15px 23px;
       width: 25rem;
       line-height: 20px;
       bottom: 26px;
@@ -45,6 +47,7 @@
       left: -7px;
       z-index: 10;
       overflow-wrap: break-word;
+      box-shadow: 0px 0px 15px rgba(10px, -10px, 0, 0.2);
     }
   }
 }

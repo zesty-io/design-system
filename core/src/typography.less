@@ -1,26 +1,52 @@
 @import "colors.less";
 
-@labelTextSize: 16px;
-@defaultFont: Montserrat;
+// fonts
+@default-font: "Montserrat", Arial, Sans-Serif;
+@secondary-font: Verdana, Arial, Monaco, Sans-Serif;
+@input-font: Arial, Sans-Serif;
 
 // font sizes
-@captionFontSize: 12px;
-@buttonFontSize: 14px;
-@bodyFontSize: 16px;
-@subheadlineFontSize: 20px;
-@titleFontSize: 24px;
-@headlineFontSize: 28px;
-@displayFontSize: 32px;
+@caption-font-size: 12px;
+@button-font-size: 14px;
+@body-font-size: 14px;
+@button-font-size: 12px;
+@input-font-size: 14px;
+@sub-headline-font-size: 20px;
+@title-font-size: 24px;
+@headline-font-size: 28px;
+@display-font-size: 32px;
+@field-label-size: 14px;
+@helper-text-font-size: 10px;
+
+// lineheights
+@label-line-height: 20px;
 
 // weights
-@fontLightWeight: 300;
-@fontNormalWeight: 500;
-@buttonWeight: 600;
+@font-light-weight: 300;
+@font-normal-weight: 500;
+@font-bold-weight: 500;
+@button-weight: @font-bold-weight;
+
+// legacy variables (was camelcase)
+@labelTextSize: @field-label-size;
+@defaultFont: @default-font;
+@displayFontSize: @display-font-size;
+@helperTextFontSize: @helper-text-font-size;
+@captionFontSize: @caption-font-size;
+@buttonFontSize: @button-font-size;
+@bodyFontSize: @body-font-size;
+@inputFontSize: @input-font-size;
+@subheadline-font-size: @sub-headline-font-size;
+@titleFontSize: @title-font-size;
+@headlineFontSize: @headline-font-size;
+@fontLightWeight: @font-light-weight;
+@fontNormalWeight: @font-normal-weight;
+@buttonWeight: @button-weight;
 
 .display {
-  font-family: @defaultFont;
-  font-size: @displayFontSize;
-  font-weight: @fontLightWeight;
+  font-family: @default-font;
+  font-size: @display-font-size;
+  font-weight: @font-light-weight;
   line-height: 48px;
   letter-spacing: 0.32;
   &.reversed {
@@ -29,9 +55,9 @@
 }
 
 .headline {
-  font-family: @defaultFont;
+  font-family: @default-font;
   font-size: 28px;
-  font-weight: @fontLightWeight;
+  font-weight: @font-light-weight;
   line-height: 42px;
   letter-spacing: 0.32;
   &.reversed {
@@ -40,8 +66,8 @@
 }
 
 .title {
-  font-family: @defaultFont;
-  font-size: @titleFontSize;
+  font-family: @default-font;
+  font-size: @title-font-size;
   font-weight: normal;
   line-height: 36px;
   letter-spacing: 0.16;
@@ -51,17 +77,17 @@
 }
 
 .subheadline {
-  font-family: @defaultFont;
-  font-size: @subheadlineFontSize;
-  font-weight: @fontNormalWeight;
+  font-family: @default-font;
+  font-size: @sub-headline-font-size;
+  font-weight: @font-normal-weight;
   line-height: 28px;
   letter-spacing: 0.08;
 }
 
 .bodyText {
-  font-family: @defaultFont;
-  font-size: @bodyFontSize;
-  font-weight: @fontNormalWeight;
+  font-family: @default-font;
+  font-size: @body-font-size;
+  font-weight: @font-normal-weight;
   line-height: 24px;
   letter-spacing: 0;
   &.reversed {
@@ -70,17 +96,17 @@
 }
 
 .buttonText {
-  font-family: @defaultFont;
-  font-size: @buttonFontSize;
-  font-weight: @buttonWeight;
+  font-family: @default-font;
+  font-size: @button-font-size;
+  font-weight: @button-weight;
   line-height: 20px;
   letter-spacing: 0.12;
 }
 
 .caption {
-  font-family: @defaultFont;
-  font-size: @captionFontSize;
-  font-weight: @fontNormalWeight;
+  font-family: @default-font;
+  font-size: @caption-font-size;
+  font-weight: @font-normal-weight;
   line-height: 16px;
   letter-spacing: 0;
 }

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import styles from "./DateTimeFieldType.less";
+import { FieldDescription } from "../FieldDescription";
+import { FieldLabel } from "../FieldLabel";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 export class DateTimeFieldType extends Component {
@@ -30,12 +32,12 @@ export class DateTimeFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.DateFieldType, this.props.className)}>
-        <p className={styles.DateFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          tag={this.props.tag}
+          tooltip={this.props.tooltip}
+        />
 
         <span className={styles.DateFieldTypeInput}>
           <input
@@ -45,6 +47,10 @@ export class DateTimeFieldType extends Component {
           />
           <i className={cx(styles.Icon, "fa fa-calendar")} />
         </span>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

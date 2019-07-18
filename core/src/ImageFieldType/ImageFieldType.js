@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import cx from "classnames";
 import { Card, CardContent } from "../Card";
 import { Button } from "../Button";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 import styles from "./ImageFieldType.less";
 
 export class ImageFieldType extends Component {
@@ -43,11 +45,16 @@ export class ImageFieldType extends Component {
 
     return (
       <Fragment>
-        <label className={styles.ImageFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
+        <label htmlFor={this.props.name}>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            tag={this.props.tag}
+            maxLength={maxImages}
+            valueLength={imageCount}
+            tooltip={this.props.tooltip}
+          />
         </label>
-        <p className={styles.Description}>{this.props.description}</p>
 
         {imageCount > maxImages && (
           <p className={styles.WarningMsg}>
@@ -89,6 +96,10 @@ export class ImageFieldType extends Component {
               ))}
           </CardContent>
         </Card>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </Fragment>
     );
   }

@@ -4,18 +4,14 @@
 .SortFieldType {
   display: flex;
   flex-direction: column;
-  .SortFieldTypeLabel {
-    display: flex;
-    margin-bottom: 3px;
-    font-size: @labelTextSize;
-  }
+
   .Sort {
     display: flex;
     align-items: center;
 
     .Increment {
       width: 40px;
-      height: 40px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -28,8 +24,11 @@
     }
 
     input {
-      width: 50px;
+      width: 60px;
       border-radius: 0px;
+      text-align: center;
+      border-left: none;
+      border-right: none;
     }
   }
 }

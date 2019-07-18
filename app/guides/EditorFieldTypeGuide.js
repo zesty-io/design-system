@@ -13,6 +13,8 @@ export class EditorFieldTypeGuide extends Component {
           name="wysiwyg_basic"
           onChange={console.log}
           value=""
+          tooltip="Don't be a tooltip"
+          description="Write your description here..."
         />
       </React.Fragment>
     )

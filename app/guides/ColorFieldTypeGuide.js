@@ -13,11 +13,16 @@ export class ColorFieldTypeGuide extends Component {
         <br />
         <ColorFieldType
           required
+          tooltip="Dont be a tooltip!"
           label="Title Field"
           callback={value => console.log(value)}
         />
         <br />
-        <ColorFieldType label="Default to Orange Field" value="#ff9920" />
+        <ColorFieldType
+          label="Default to Orange Field"
+          value="#ff9920"
+          description="Pick a pretty color... test description"
+        />
         <br />
         <br />
         <CollapsibleCard header="Usage" open>

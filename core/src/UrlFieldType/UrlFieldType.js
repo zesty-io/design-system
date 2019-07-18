@@ -2,6 +2,8 @@ import React, { PureComponent } from "react";
 import cx from "classnames";
 
 import { Input } from "../Input";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./UrlFieldType.less";
 export class UrlFieldType extends PureComponent {
@@ -26,26 +28,23 @@ export class UrlFieldType extends PureComponent {
             : null
         )}
       >
-        <p className={styles.UrlFieldTypeLabel}>
-          <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-          {this.props.maxLength && (
-            <span>
-              {this.props.value.length}/{this.props.maxLength}
-            </span>
-          )}
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
-
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          tag={this.props.tag}
+          maxLength={this.props.maxLength}
+          valueLength={(this.props.value && this.props.value.length) || "0"}
+          tooltip={this.props.tooltip}
+        />
         <Input
           type="url"
           required={this.props.required}
           onChange={this.onChange}
           value={this.props.value}
         />
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </article>
     );
   }

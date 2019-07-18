@@ -1,22 +1,14 @@
 @import "../typography.less";
+@import "../colors.less";
 
 .TextFieldType {
   display: flex;
   flex-direction: column;
-
-  .TextFieldTypeLabel {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    font-size: @labelTextSize;
-    line-height: 24px;
-    color: #1a202c;
-  }
 }
 
 .TextFieldType.Error {
   input {
-    border: solid 1px #9a2803;
+    border: solid 1px @zesty-red;
   }
 }
 .ErrorDescription {
@@ -24,5 +16,5 @@
   font-size: 12px;
   line-height: 1.33;
   letter-spacing: normal;
-  color: #9a2803;
+  color: @zesty-red;
 }

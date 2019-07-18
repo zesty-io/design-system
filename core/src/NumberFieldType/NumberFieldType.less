@@ -4,12 +4,6 @@
   display: flex;
   flex-direction: column;
   max-width: 300px;
-  .NumberFieldTypeLabel {
-    display: flex;
-    // justify-content: space-between;
-    margin-bottom: 3px;
-    font-size: @labelTextSize;
-  }
   input {
     display: block;
   }
@@ -17,6 +11,6 @@
 
 .NumberFieldType.Error {
   input {
-    border: solid 1px #9a2803;
+    border: solid 1px @zesty-red;
   }
 }

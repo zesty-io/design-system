@@ -12,20 +12,16 @@ export class BinaryFieldTypeGuide extends Component {
         <h2>Props: label, on, off, checked, disabled, callback</h2>
         <br />
 
-        <h3>Default Usage</h3>
-        <BinaryFieldType />
-        <br />
-
-        <h3>Custom Label, On and Off Values</h3>
         <BinaryFieldType
           label="Custom Label"
+          tooltip="Don't be a tooltip?"
+          description="Description text down here..."
           onValue="On Value"
           offValue="Off Value"
         />
         <br />
 
-        <h3>Pre-Checked</h3>
-        <BinaryFieldType default />
+        <BinaryFieldType label="Pre-Checked" default />
         <br />
 
         <h3>Disabled</h3>

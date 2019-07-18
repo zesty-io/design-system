@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import { Input } from "../Input";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./TextFieldType.less";
 export class TextFieldType extends Component {
@@ -33,18 +35,14 @@ export class TextFieldType extends Component {
           valueLength > maxLength ? styles.Error : ""
         )}
       >
-        <p className={styles.TextFieldTypeLabel}>
-          <span>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-          <span>
-            {valueLength}/{maxLength}
-          </span>
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
-
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          tag={this.props.tag}
+          maxLength={maxLength}
+          valueLength={valueLength}
+          tooltip={this.props.tooltip}
+        />
         <Input
           type="text"
           name={this.props.name}
@@ -61,6 +59,7 @@ export class TextFieldType extends Component {
             Your input is over the specified limit
           </span>
         )}
+        <FieldDescription description={this.props.description} />
       </label>
     );
   }

@@ -4,7 +4,7 @@ import cx from "classnames";
 
 export function Infotip(props) {
   return (
-    <div className={styles.tip}>
+    <span className={styles.tip}>
       <i
         className={cx(styles.tipIcon, "fa fa-question-circle")}
         aria-hidden="true"
@@ -13,6 +13,6 @@ export function Infotip(props) {
         {props.children}
         {props.title}
       </p>
-    </div>
+    </span>
   );
 }

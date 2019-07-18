@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import { Textarea } from "../Textarea";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 /**
  * Controlled component
@@ -31,19 +33,19 @@ export class TextareaFieldType extends Component {
           (value && value.length) > (maxLength || 150) ? styles.Error : ""
         )}
       >
-        <p className={styles.TextareaFieldTypeLabel}>
-          <span>
-            {label}
-            {required && <span style={{ color: "#9a2803" }}>*</span>}
-          </span>
-          <span>
-            {(value && value.length) || "0"}/{maxLength || 150}
-          </span>
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <FieldLabel
+          label={label}
+          required={required}
+          tag={this.props.tag}
+          maxLength={maxLength || 150}
+          valueLength={(value && value.length) || "0"}
+          tooltip={this.props.tooltip}
+        />
 
         <Textarea {...this.props} type="textarea" onChange={this.onChange} />
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

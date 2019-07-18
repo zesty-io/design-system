@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import { ToggleButton } from "../ToggleButton";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./BinaryFieldType.less";
 export class BinaryFieldType extends Component {
@@ -13,17 +15,21 @@ export class BinaryFieldType extends Component {
   render() {
     return (
       <article className={cx(styles.BinaryFieldType, this.props.className)}>
-        <p className={styles.BinaryFieldTypeLabel}>
-          <label>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </p>
-        <p className={styles.Description}>{this.props.description}</p>
+        <label className={styles.BinaryFieldTypeLabel}>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            tag={this.props.tag}
+            tooltip={this.props.tooltip}
+          />
+        </label>
         <div className={styles.switch}>
           <ToggleButton {...this.props} onChange={this.onChange} />
           <span className={styles.slider} />
         </div>
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </article>
     );
   }

@@ -31,6 +31,8 @@ export class TextareaFieldTypeGuide extends Component {
           value={this.state.example2}
           onChange={(name, value) => this.setState({ [name]: value })}
           label="No CharCount prop"
+          description="This is my description text"
+          tooltip="tooltip is rocking out"
         />
         <br />
         <CollapsibleCard header="Usage" open>

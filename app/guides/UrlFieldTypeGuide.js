@@ -22,6 +22,7 @@ export class UrlFieldTypeGuide extends Component {
           default="https://www.defaultURL.com"
           callback={console.log}
           label="No Charcount"
+          description="This is my description text"
         />
         <br />
         <CollapsibleCard header="Usage" open>

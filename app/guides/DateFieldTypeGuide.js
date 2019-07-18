@@ -22,7 +22,10 @@ export class DateFieldTypeGuide extends Component {
           required
           onChange={console.log}
           datatype={'datetime'}
+          description="this one has a description!"
         />
+        <br />
+        <br />
         <DateFieldType
           label="Format Date"
           name="datepicker"

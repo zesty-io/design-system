@@ -24,6 +24,14 @@ export class UUIDFieldTypeGuide extends Component {
           onChange={this.onChange}
         />
         <br />
+        <UUIDFieldType
+          name="uuidField"
+          label="UUID field type"
+          value={this.state.value}
+          onChange={this.onChange}
+          description="This is a test description"
+        />
+        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"

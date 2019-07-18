@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import cx from "classnames";
 
 import { Select, Option } from "../Select";
+import { FieldDescription } from "../FieldDescription";
+import { FieldLabel } from "../FieldLabel";
 
 import styles from "./DropDownFieldType.less";
 export class DropDownFieldType extends Component {
@@ -14,12 +16,12 @@ export class DropDownFieldType extends Component {
   render() {
     return (
       <label className={cx(styles.DropDownFieldType, this.props.className)}>
-        <p className={styles.DropDownFieldTypeLabel}>
-          {this.props.label}
-          {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <FieldLabel
+          label={this.props.label}
+          required={this.props.required}
+          tag={this.props.tag}
+          tooltip={this.props.tooltip}
+        />
 
         <Select
           name={this.props.name}
@@ -37,6 +39,10 @@ export class DropDownFieldType extends Component {
                 return <Option key={i} {...opt} />;
               })}
         </Select>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </label>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Select, Option } from "../Select";
+import { FieldLabel } from "../FieldLabel";
+import { FieldDescription } from "../FieldDescription";
 
 import styles from "./OneToOneFieldType.less";
 
@@ -36,14 +38,14 @@ export class OneToOneFieldType extends Component {
   render() {
     return (
       <article className={this.props.className}>
-        <p>
-          <label className={styles.OneToOneFieldTypeLabel}>
-            {this.props.label}
-            {this.props.required && <span style={{ color: "#9a2803" }}>*</span>}
-          </label>
-        </p>
-
-        <p className={styles.Description}>{this.props.description}</p>
+        <label htmlFor={this.props.name}>
+          <FieldLabel
+            label={this.props.label}
+            required={this.props.required}
+            tag={this.props.tag}
+            tooltip={this.props.tooltip}
+          />
+        </label>
 
         <Select
           name={this.props.name}
@@ -62,6 +64,10 @@ export class OneToOneFieldType extends Component {
                 return <Option key={i} {...opt} />;
               })}
         </Select>
+
+        {this.props.description && (
+          <FieldDescription description={this.props.description} />
+        )}
       </article>
     );
   }
