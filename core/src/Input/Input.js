@@ -7,12 +7,13 @@ export function Input(props) {
     <React.Fragment>
       <input
         {...props}
-        onChange={props.onChange ? props.onChange : () => {}}
         className={cx(
           styles.Input,
           props.className,
           props.error ? styles.error : null
         )}
+        onChange={props.onChange ? props.onChange : () => {}}
+        value={this.props.value === null ? "" : this.props.value}
       />
       <span className={styles.ErrorMsg}>{props.error}</span>
     </React.Fragment>
