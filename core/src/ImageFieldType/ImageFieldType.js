@@ -130,8 +130,6 @@ function ImageSkeleton(props) {
     <figure className={cx(styles.File, styles.FileSkeleton)}>
       <Button
         onClick={() => {
-          console.log("Action", props);
-
           riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
             callback: props.addImage,
             ids: props.value,

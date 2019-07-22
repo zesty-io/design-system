@@ -7,7 +7,7 @@ export function Textarea(props) {
     <textarea
       {...props}
       className={cx(styles.Textarea, props.className)}
-      value={this.props.value === null ? "" : this.props.value}
+      value={props.value === null ? "" : props.value}
     />
   );
 }

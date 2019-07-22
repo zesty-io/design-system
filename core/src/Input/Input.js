@@ -13,7 +13,7 @@ export function Input(props) {
           props.error ? styles.error : null
         )}
         onChange={props.onChange ? props.onChange : () => {}}
-        value={this.props.value === null ? "" : this.props.value}
+        value={props.value === null ? "" : props.value}
       />
       <span className={styles.ErrorMsg}>{props.error}</span>
     </React.Fragment>
