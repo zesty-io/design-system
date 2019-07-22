@@ -9,10 +9,10 @@ export function Infotip(props) {
         className={cx(styles.tipIcon, "fa fa-question-circle")}
         aria-hidden="true"
       />
-      <p className={styles.tipText}>
+      <small className={styles.tipText}>
         {props.children}
         {props.title}
-      </p>
+      </small>
     </span>
   );
 }
