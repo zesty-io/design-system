@@ -9,6 +9,7 @@ export class Search extends Component {
   state = {
     term: String()
   };
+
   componentDidMount() {
     this.setState({
       term: this.props.value
@@ -31,6 +32,7 @@ export class Search extends Component {
       }
     );
   };
+
   onSubmit = () => {
     if (this.props.onSubmit) {
       this.props.onSubmit(
@@ -38,6 +40,12 @@ export class Search extends Component {
         this.state.term,
         this.props.datatype
       );
+    }
+  };
+
+  onKeyUp = () => {
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp(this.props.name, this.state.term, this.props.datatype);
     }
   };
 
