@@ -8,7 +8,8 @@ import styles from "./ToggleButton.less";
 export function ToggleButton(props) {
   return (
     <button
-      className={styles.ToggleButton}
+      className={cx(styles.ToggleButton, props.className)}
+      title={props.title}
       onClick={evt => {
         evt.stopPropagation();
         evt.preventDefault();
