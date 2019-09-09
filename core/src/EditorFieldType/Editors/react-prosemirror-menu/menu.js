@@ -247,7 +247,9 @@ export const menu = {
           rows.push(schema.nodes.table_row.createAndFill(null, cells));
         }
 
-        const table = schema.nodes.table.createAndFill(null, rows);
+        const body = schema.nodes.table_body.createAndFill(null, rows);
+        const table = schema.nodes.table.createAndFill(null, body);
+
         dispatch(state.tr.replaceSelectionWith(table));
 
         // const tr = state.tr.replaceSelectionWith(table)
