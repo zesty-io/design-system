@@ -30,6 +30,8 @@ export class DateTimeFieldType extends Component {
     }
   };
   render() {
+    console.log("DateTimeFieldType:render");
+
     return (
       <label className={cx(styles.DateFieldType, this.props.className)}>
         <FieldLabel

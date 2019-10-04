@@ -1,0 +1,46 @@
+.FieldTypeUUID {
+  display: flex;
+  flex-direction: column;
+
+  .DateFieldTypeInput {
+    display: flex;
+    .Icon {
+      background-color: #5b667d;
+      border: 1px solid #5b667d;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      color: #e3ebf9;
+      line-height: inherit;
+
+      font-size: 14px;
+      flex-basis: 32px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: center;
+      transition: all 0.2s ease;
+      align-items: center;
+      display: flex;
+      &:hover,
+      &:focus {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
+          0 0 2px 0 rgba(26, 32, 44, 0.12);
+        outline: none;
+      }
+      &:active {
+        background-color: #a7afbf;
+      }
+    }
+    input {
+      flex: 1;
+    }
+  }
+}
+
+.FieldTypeUUID.Error {
+  span {
+    color: #9a2803;
+  }
+  input {
+    background: red;
+  }
+}

@@ -1,0 +1,43 @@
+@import "../typography.less";
+
+.FieldTypeColor {
+  max-width: 300px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  .FieldTypeColorLabel {
+    display: flex;
+    // justify-content: space-between;
+    margin-bottom: 3px;
+    font-size: @field-label-size;
+  }
+  .FieldTypeColorInput {
+    display: flex;
+    .Icon {
+      background-color: #5b667d;
+      border: 1px solid #5b667d;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      color: #e3ebf9;
+      line-height: inherit;
+
+      font-size: 14px;
+      flex-basis: 32px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    .ColorInput {
+      height: 40px;
+      width: 300px;
+      padding: 0 5px;
+      border-radius: 3px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

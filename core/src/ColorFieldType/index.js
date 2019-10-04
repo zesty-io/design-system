@@ -1,1 +1,0 @@
-export { ColorFieldType } from "./ColorFieldType";
