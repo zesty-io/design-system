@@ -1,6 +1,6 @@
 {
   "name": "@zesty-io/core",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
@@ -15,10 +15,6 @@
     "clean": "npx rimraf dist",
     "release": "npm run clean && npm run build && cd dist && npm publish",
     "start": "npm i && npm run build && cd dist/ && npm link"
-  },
-  "dependencies": {
-    "codemirror": "^5.49.0",
-    "js-beautify": "^1.10.2"
   },
   "dependencies": {
     "codemirror": "^5.48.0",
@@ -57,7 +53,7 @@
     "cross-env": "6.0.3",
     "gulp": "4.0.2",
     "gulp-concat-css": "3.1.0",
-    "husky": "3.0.8",
+    "husky": "^3.0.8",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "less": "3.10.3",

@@ -8,7 +8,7 @@ import { FieldLabel } from "../FieldLabel";
 
 import styles from "./FieldTypeUUID.less";
 
-export const FieldTypeUUID = React.memo(props => {
+export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
   // console.log("FieldTypeUUID:render");
 
   useEffect(() => {

@@ -8,7 +8,9 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeOneToMany.less";
 
-export const FieldTypeOneToMany = React.memo(props => {
+export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
+  props
+) {
   // console.log("FieldTypeOneToMany:render");
 
   const [loaded, setLoaded] = useState(false); // Used to ensure we only load data once

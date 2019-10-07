@@ -6,7 +6,7 @@ import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
 
 import styles from "./FieldTypeDropDown.less";
-export const FieldTypeDropDown = React.memo(props => {
+export const FieldTypeDropDown = React.memo(function FieldTypeDropDown(props) {
   // console.log("FieldTypeDropDown:render");
 
   return (
