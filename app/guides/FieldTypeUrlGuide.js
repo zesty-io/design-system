@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 
-import { UrlFieldType } from '@zesty-io/core/dist/UrlFieldType'
+import { FieldTypeUrl } from '@zesty-io/core/dist/FieldTypeUrl'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
-export class UrlFieldTypeGuide extends Component {
+export class FieldTypeUrlGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>URL field type, validates external urls (checks for http/https)</p>
         <p>Props: label, charCount</p>
         <br />
-        <UrlFieldType
+        <FieldTypeUrl
           default="https://www.defaultURL.com"
           callback={console.log}
           label="Title Field"
           charCount="150"
         />
         <br />
-        <UrlFieldType
+        <FieldTypeUrl
           default="https://www.defaultURL.com"
           callback={console.log}
           label="No Charcount"
@@ -28,7 +28,7 @@ export class UrlFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
-            code={`<UrlFieldType 
+            code={`<FieldTypeUrl 
   default="https://www.defaultURL.com" 
   callback={console.log} 
   label="Title Field" 
@@ -37,7 +37,7 @@ export class UrlFieldTypeGuide extends Component {
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/136c45ad86690eb1c1475d8ba4a8a7f2/raw/33e61caee36d6ceb85755913c4c87ce89ac73799/UrlFieldType.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/136c45ad86690eb1c1475d8ba4a8a7f2/raw/33e61caee36d6ceb85755913c4c87ce89ac73799/FieldTypeUrl.js" />
         </CollapsibleCard>
       </React.Fragment>
     )

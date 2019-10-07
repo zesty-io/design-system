@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { InternalLinkFieldType } from '@zesty-io/core/dist/InternalLinkFieldType'
+import { FieldTypeInternalLink } from '@zesty-io/core/dist/FieldTypeInternalLink'
 
-export class InternalLinkFieldTypeGuide extends Component {
+export class FieldTypeInternalLinkGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>
           Internal link is a dropdown listing related items to display a link
         </p>
-        <InternalLinkFieldType
+        <FieldTypeInternalLink
           onChange={console.log}
           onSearch={console.log}
-          name="internalLinkFieldType"
+          name="FieldTypeInternalLink"
         />
 
         <CodeCard header="Usage" height={50} open>
-          {`<InternalLinkFieldType />`}
+          {`<FieldTypeInternalLink />`}
         </CodeCard>
 
         <CodeCard header="Code" height={350}>
-          {`export class InternalLinkFieldType extends Component {
+          {`export class FieldTypeInternalLink extends Component {
   state = {
     selectedOption: this.props.options[0],
     options: this.props.options

@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
 
-import { NumberFieldType } from '@zesty-io/core/dist/NumberFieldType'
+import { FieldTypeNumber } from '@zesty-io/core/dist/FieldTypeNumber'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
-export class NumberFieldTypeGuide extends Component {
+export class FieldTypeNumberGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>Number field for manager app that allows custom character limit</p>
         <p>Props: label, charCount</p>
         <br />
-        <NumberFieldType
+        <FieldTypeNumber
           label="Title Field"
           charCount="350"
           default="4"
           callback={value => console.log(value)}
         />
         <br />
-        <NumberFieldType
+        <FieldTypeNumber
           required
           label="No CharCount"
           value="4"
           callback={value => console.log(value)}
         />
         <br />
-        <NumberFieldType
+        <FieldTypeNumber
           label="No CharCount"
           required={true}
           value="4"
@@ -36,7 +36,7 @@ export class NumberFieldTypeGuide extends Component {
           <GithubEmbed
             height="150px"
             code={`
-<NumberFieldType
+<FieldTypeNumber
   label="Title Field"
   charCount="350"
   default="4"
@@ -45,7 +45,7 @@ export class NumberFieldTypeGuide extends Component {
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/b5a452420c1ddd26c0e9d29670ec2bf0/raw/8d0eb596d1185eecb4898f68da5d8f3b8f6ccbb3/NumberFieldType.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/b5a452420c1ddd26c0e9d29670ec2bf0/raw/8d0eb596d1185eecb4898f68da5d8f3b8f6ccbb3/FieldTypeNumber.js" />
         </CollapsibleCard>
       </React.Fragment>
     )

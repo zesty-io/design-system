@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 
-import { DropDownFieldType } from '@zesty-io/core/dist/DropDownFieldType'
+import { FieldTypeOneToOne } from '@zesty-io/core/dist/FieldTypeOneToOne'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
-export class DropDownFieldTypeGuide extends Component {
+export class FieldTypeOneToOneGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>Dropdown Field Type</p>
         <p>Props: options(array of objects), label</p>
         <br />
-        <DropDownFieldType
+        <FieldTypeOneToOne
           label="Label Field"
-          tooltip="Hello World of Tooltips"
           callback={value => console.log(value)}
-          description="Description Text down below"
-          tag="parsley_name"
+          description="Test description"
           options={[
             { value: 'a value that can be used in some way', text: 'hi' },
             { value: 'a value that can be used in some way', text: 'hello' },
@@ -33,11 +31,8 @@ export class DropDownFieldTypeGuide extends Component {
           <GithubEmbed
             height="300px"
             code={`
-<DropDownFieldType
+<FieldTypeOneToOne
   label="Label Field"
-  description="Description Text down below"
-  tag="parsley_name"
-  tooltip="Hello World of Tooltips"
   options={[
     { value: 'a value that can be used in some way', text: 'hi' },
     { value: 'a value that can be used in some way', text: 'hello' },
@@ -51,7 +46,42 @@ export class DropDownFieldTypeGuide extends Component {
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/58a6f8bbb0f89f77bef63a745b1e9570/raw/8a023d7a27f3a58fd75132437cc002c4ba054f90/DropDownFieldType.js" />
+          <GithubEmbed
+            code={`export class FieldTypeOneToOne extends Component {
+  state = {
+    selectedOption: this.props.options[0],
+    options: this.props.options
+  }
+  render() {
+    const { selectedOption } = this.state
+    return (
+      <article>
+        <div>
+          <label>{this.props.label}</label>
+        </div>
+        <Select
+          onSelect={this.selectOption}
+          selection={{
+            value: JSON.stringify(selectedOption),
+            text: selectedOption.text
+          }}>
+          {this.state.options.map((opt, i) => {
+            return (
+              <Option key={i} value={JSON.stringify(opt)} text={opt.text} />
+            )
+          })}
+        </Select>
+      </article>
+    )
+  }
+
+  selectOption = evt => {
+    this.setState({
+      selectedOption: JSON.parse(evt.currentTarget.dataset.value)
+    })
+  }
+}`}
+          />
         </CollapsibleCard>
       </React.Fragment>
     )

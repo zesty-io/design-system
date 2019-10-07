@@ -3,18 +3,18 @@ import React, { Component } from 'react'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
-import { SortFieldType } from '@zesty-io/core/dist/SortFieldType'
+import { FieldTypeSort } from '@zesty-io/core/dist/FieldTypeSort'
 
-export class SortFieldTypeGuide extends Component {
+export class FieldTypeSortGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>Sort Field Type for manager app</p>
         <p>Props: label, default</p>
         <br />
-        <SortFieldType label="Label" callback={console.log} />
+        <FieldTypeSort label="Label" callback={console.log} />
         <br />
-        <SortFieldType
+        <FieldTypeSort
           label="Default to 10"
           default={10}
           callback={console.log}
@@ -25,9 +25,9 @@ export class SortFieldTypeGuide extends Component {
           <GithubEmbed
             height="150px"
             code={`
-<SortFieldType label="Label" callback={console.log} />
+<FieldTypeSort label="Label" callback={console.log} />
 <br />
-<SortFieldType
+<FieldTypeSort
   label="Default to 10"
   default={10}
   callback={console.log}
@@ -36,7 +36,7 @@ export class SortFieldTypeGuide extends Component {
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
           <GithubEmbed
-            code={`export class SortFieldType extends Component {
+            code={`export class FieldTypeSort extends Component {
   state = {
     sortValue: Number(this.props.default) || 0,
     required: this.props.required
@@ -64,8 +64,8 @@ export class SortFieldTypeGuide extends Component {
   render() {
     const { sortValue } = this.state
     return (
-      <article className={styles.SortFieldType}>
-        <section className={styles.SortFieldTypeLabel}>
+      <article className={styles.FieldTypeSort}>
+        <section className={styles.FieldTypeSortLabel}>
           <label>{this.props.label}</label>
         </section>
         <section className={styles.Sort}>

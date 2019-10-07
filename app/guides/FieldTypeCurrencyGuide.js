@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { CurrencyFieldType } from '@zesty-io/core/dist/CurrencyFieldType'
+import { FieldTypeCurrency } from '@zesty-io/core/dist/FieldTypeCurrency'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import {
@@ -10,7 +10,7 @@ import {
   CardFooter
 } from '@zesty-io/core/dist/Card'
 
-export class CurrencyFieldTypeGuide extends Component {
+export class FieldTypeCurrencyGuide extends Component {
   render() {
     return (
       <div id="Guide">
@@ -25,7 +25,7 @@ export class CurrencyFieldTypeGuide extends Component {
               <h2>How it looks</h2>
             </CardHeader>
             <CardContent>
-              <CurrencyFieldType
+              <FieldTypeCurrency
                 label="Custom Label"
                 code="CAD"
                 value="10.00"
@@ -77,7 +77,7 @@ export class CurrencyFieldTypeGuide extends Component {
 //   <p>Currency Field Type</p>
 //   <p>Props: label, default</p>
 //   <br />
-//   <CurrencyFieldType
+//   <FieldTypeCurrency
 //     label="Title Field"
 //     callback={value => console.log(value)}
 //     default="CAD"
@@ -87,10 +87,10 @@ export class CurrencyFieldTypeGuide extends Component {
 //   <CollapsibleCard header="Usage" open>
 //     <GithubEmbed
 //       height="50px"
-//       code="<CurrencyFieldType label=&quot;Title Field&quot; callback={value => console.log(value)} default=&quot;CAD&quot; />"
+//       code="<FieldTypeCurrency label=&quot;Title Field&quot; callback={value => console.log(value)} default=&quot;CAD&quot; />"
 //     />
 //   </CollapsibleCard>
 //   <CollapsibleCard header="Code" collapsed>
-//     <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/f3f51ba99632d7f583f0a615e3a59500/raw/5812e40da4556ad254bd2ce17857121a769dd08a/CurrencyFieldType.js" />
+//     <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/f3f51ba99632d7f583f0a615e3a59500/raw/5812e40da4556ad254bd2ce17857121a769dd08a/FieldTypeCurrency.js" />
 //   </CollapsibleCard>
 // </React.Fragment>

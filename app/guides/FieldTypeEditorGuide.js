@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 
-import { EditorFieldType } from '@zesty-io/core/dist/EditorFieldType'
+import { FieldTypeEditor } from '@zesty-io/core/dist/FieldTypeEditor'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
-export class EditorFieldTypeGuide extends Component {
+export class FieldTypeEditorGuide extends Component {
   render() {
     return (
       <React.Fragment>
-        <EditorFieldType
+        <FieldTypeEditor
           label="Prose Mirror Custom Editor"
           name="wysiwyg_basic"
           onChange={console.log}

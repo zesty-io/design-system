@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import { UUIDFieldType } from '@zesty-io/core/dist/UUIDFieldType'
+import { FieldTypeUUID } from '@zesty-io/core/dist/FieldTypeUUID'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
-export class UUIDFieldTypeGuide extends Component {
+export class FieldTypeUUIDGuide extends Component {
   state = {
     value: ''
   }
@@ -17,14 +17,14 @@ export class UUIDFieldTypeGuide extends Component {
         <p>URL field type, validates external urls (checks for http/https)</p>
         <p>Props: label, charCount</p>
         <br />
-        <UUIDFieldType
+        <FieldTypeUUID
           name="uuidField"
           label="UUID field type"
           value={this.state.value}
           onChange={this.onChange}
         />
         <br />
-        <UUIDFieldType
+        <FieldTypeUUID
           name="uuidField"
           label="UUID field type"
           value={this.state.value}
@@ -35,7 +35,7 @@ export class UUIDFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
-            code={`<UrlFieldType 
+            code={`<FieldTypeUrl 
   default="https://www.defaultURL.com" 
   callback={console.log} 
   label="Title Field" 
@@ -44,7 +44,7 @@ export class UUIDFieldTypeGuide extends Component {
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/136c45ad86690eb1c1475d8ba4a8a7f2/raw/33e61caee36d6ceb85755913c4c87ce89ac73799/UrlFieldType.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/136c45ad86690eb1c1475d8ba4a8a7f2/raw/33e61caee36d6ceb85755913c4c87ce89ac73799/FieldTypeUrl.js" />
         </CollapsibleCard>
       </React.Fragment>
     )

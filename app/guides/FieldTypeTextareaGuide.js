@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import { TextareaFieldType } from '@zesty-io/core/dist/TextareaFieldType'
+import { FieldTypeTextarea } from '@zesty-io/core/dist/FieldTypeTextarea'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
-export class TextareaFieldTypeGuide extends Component {
+export class FieldTypeTextareaGuide extends Component {
   state = {}
   render() {
     return (
@@ -15,7 +15,7 @@ export class TextareaFieldTypeGuide extends Component {
         <p>label, charCount, onChange</p>
 
         <br />
-        <TextareaFieldType
+        <FieldTypeTextarea
           name="example1"
           placeholder="placeholder text"
           value={this.state.example1}
@@ -24,7 +24,7 @@ export class TextareaFieldTypeGuide extends Component {
           charCount="350"
         />
         <br />
-        <TextareaFieldType
+        <FieldTypeTextarea
           name="example2"
           placeholder="placeholder text"
           required={true}
@@ -38,7 +38,7 @@ export class TextareaFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
-            code={`<TextareaFieldType
+            code={`<FieldTypeTextarea
             name="example1"
             placeholder="placeholder text"
             value={this.state.example1}
@@ -47,7 +47,7 @@ export class TextareaFieldTypeGuide extends Component {
             charCount="350"
           />
           <br />
-          <TextareaFieldType
+          <FieldTypeTextarea
             name="example2"
             placeholder="placeholder text"
             required={true}
@@ -58,7 +58,7 @@ export class TextareaFieldTypeGuide extends Component {
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/b2ef988a3cf77f2b75b2acca064c075e/raw/ae4b0498d44dd2cab0e893b308aaa62d27db67fb/TextareaFieldType.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/b2ef988a3cf77f2b75b2acca064c075e/raw/ae4b0498d44dd2cab0e893b308aaa62d27db67fb/FieldTypeTextarea.js" />
         </CollapsibleCard>
       </React.Fragment>
     )

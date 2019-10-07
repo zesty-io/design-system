@@ -12,13 +12,6 @@ export const FieldTypeColor = React.memo(props => {
 
   const [color, setColor] = useState(props.value || "#ffffff");
 
-  // const onChange = debounce(evt => {
-  //   if (props.onChange) {
-  //     props.onChange(props.name, evt.target.value, props.datatype);
-  //   }
-  //   setColor(evt.target.value);
-  // }, 250);
-
   return (
     <label className={cx(styles.FieldTypeColor, props.className)}>
       <FieldLabel

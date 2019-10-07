@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 
-import { OneToManyFieldType } from '@zesty-io/core/dist/OneToManyFieldType'
+import { FieldTypeOneToMany } from '@zesty-io/core/dist/FieldTypeOneToMany'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
-export class OneToManyFieldTypeGuide extends Component {
+export class FieldTypeOneToManyGuide extends Component {
   render() {
     return (
       <React.Fragment>
         <p>One to Many Field Type</p>
         <p>Props: options(array of objects), label</p>
         <br />
-        <OneToManyFieldType
+        <FieldTypeOneToMany
           label="label"
           options={[
             {

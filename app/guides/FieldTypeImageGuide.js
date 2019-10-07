@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import { ImageFieldType } from '@zesty-io/core/dist/ImageFieldType'
+import { FieldTypeImage } from '@zesty-io/core/dist/FieldTypeImage'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
-export class ImageFieldTypeGuide extends Component {
+export class FieldTypeImageGuide extends Component {
   state = {
     images: [
       'https://8xbq19z1.media.zestyio.com/Mozilla_logo.svg',
@@ -21,7 +21,7 @@ export class ImageFieldTypeGuide extends Component {
         <p>Text field for manager app that allows custom character limit</p>
         <p>Props: label, charCount</p>
         <br />
-        <ImageFieldType
+        <FieldTypeImage
           images={this.state.images}
           callback={this.handleImages}
           label="Title Field"
@@ -33,7 +33,7 @@ export class ImageFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code={`<ImageFieldType
+            code={`<FieldTypeImage
   default={[
     {
       id: '123',
@@ -56,7 +56,7 @@ export class ImageFieldTypeGuide extends Component {
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
           <GithubEmbed
-            code={`<ImageFieldType
+            code={`<FieldTypeImage
   default={[
     {
       id: '123',

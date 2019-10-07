@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
 
-import { BinaryFieldType } from '@zesty-io/core/dist/BinaryFieldType'
+import { FieldTypeBinary } from '@zesty-io/core/dist/FieldTypeBinary'
 
-export class BinaryFieldTypeGuide extends Component {
+export class FieldTypeBinaryGuide extends Component {
   render() {
     return (
       <React.Fragment>
@@ -12,7 +12,7 @@ export class BinaryFieldTypeGuide extends Component {
         <h2>Props: label, on, off, checked, disabled, callback</h2>
         <br />
 
-        <BinaryFieldType
+        <FieldTypeBinary
           label="Custom Label"
           tooltip="Don't be a tooltip?"
           description="Description text down here..."
@@ -21,15 +21,15 @@ export class BinaryFieldTypeGuide extends Component {
         />
         <br />
 
-        <BinaryFieldType label="Pre-Checked" default />
+        <FieldTypeBinary label="Pre-Checked" default />
         <br />
 
         <h3>Disabled</h3>
-        <BinaryFieldType disabled />
+        <FieldTypeBinary disabled />
         <br />
 
         <h3>Callback</h3>
-        <BinaryFieldType
+        <FieldTypeBinary
           onChange={(name, value) => {
             console.log(`Changed value: ${value}`)
           }}
@@ -37,7 +37,7 @@ export class BinaryFieldTypeGuide extends Component {
         <br />
 
         <CodeCard header="Usage" height="125" open>
-          {`<BinaryFieldType
+          {`<FieldTypeBinary
   label="Custom Label"
   on="On Value"
   off="Off Value"
@@ -53,7 +53,7 @@ export class BinaryFieldTypeGuide extends Component {
 
 //
 //         <CodeCard header="Code" height="440">
-//           {`export class BinaryFieldType extends Component {
+//           {`export class FieldTypeBinary extends Component {
 //   state = {
 //     checked: this.props.default === 1,
 //     trueLabel: 'Yes',
@@ -85,8 +85,8 @@ export class BinaryFieldTypeGuide extends Component {
 //     const { falseLabel, trueLabel, checked } = this.state
 //     const { label, disabled } = this.props
 //     return (
-//       <article className={styles.BinaryFieldType}>
-//         <div className={styles.BinaryFieldTypeLabel}>
+//       <article className={styles.FieldTypeBinary}>
+//         <div className={styles.FieldTypeBinaryLabel}>
 //           <label>{label}</label>
 //         </div>
 //         <label className={styles.switch}>

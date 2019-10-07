@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-import { TextFieldType } from '@zesty-io/core/dist/TextFieldType'
+import { FieldTypeText } from '@zesty-io/core/dist/FieldTypeText'
 import GithubEmbed from '../components/githubembed'
 import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
 
-export class TextFieldTypeGuide extends Component {
+export class FieldTypeTextGuide extends Component {
   state = {}
   render() {
     return (
       <React.Fragment>
-        <h1>TextFieldType</h1>
+        <h1>FieldTypeText</h1>
         <p>
           Text field for manager app. Uses a text input and passes through all
           provided properties. This means all{' '}
@@ -41,7 +41,7 @@ export class TextFieldTypeGuide extends Component {
         <br />
         <h2>Examples</h2>
         <div style={{ padding: '10px 0px' }}>
-          <TextFieldType
+          <FieldTypeText
             label="Title Field"
             name="example1"
             placeholder="placeholder text"
@@ -50,7 +50,7 @@ export class TextFieldTypeGuide extends Component {
           />
         </div>
         <div style={{ padding: '10px 0px' }}>
-          <TextFieldType
+          <FieldTypeText
             label="Custom Length"
             name="example2"
             maxLength="400"
@@ -65,11 +65,11 @@ export class TextFieldTypeGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code='<TextFieldType label="Title Field" maxLength="150" />'
+            code='<FieldTypeText label="Title Field" maxLength="150" />'
           />
         </CollapsibleCard>
         <CollapsibleCard header="Code" collapsed>
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/e8aef5e2bb966e3bd87a616630cc39b2/raw/edbf2bc3d1ae9ccaba8d4c90e6b369e44780b422/TextFieldType.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/e8aef5e2bb966e3bd87a616630cc39b2/raw/edbf2bc3d1ae9ccaba8d4c90e6b369e44780b422/FieldTypeText.js" />
         </CollapsibleCard>
       </React.Fragment>
     )
