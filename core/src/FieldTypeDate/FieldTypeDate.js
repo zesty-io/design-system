@@ -8,7 +8,7 @@ import { FieldLabel } from "../FieldLabel";
 
 import styles from "./FieldTypeDate.less";
 export const FieldTypeDate = React.memo(props => {
-  console.log("FieldTypeDate:render");
+  // console.log("FieldTypeDate:render");
 
   const onChange = date => {
     if (props.onChange) {

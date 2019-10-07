@@ -40,7 +40,7 @@ export class FieldTypeImage extends React.PureComponent {
   };
 
   render() {
-    console.log("FieldTypeImage:render");
+    // console.log("FieldTypeImage:render");
 
     const maxImages = this.props.limit || 1;
     const imageCount = this.props.images.length;

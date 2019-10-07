@@ -9,7 +9,7 @@ import { FieldLabel } from "../FieldLabel";
 import styles from "./FieldTypeUUID.less";
 
 export const FieldTypeUUID = React.memo(props => {
-  console.log("FieldTypeUUID:render");
+  // console.log("FieldTypeUUID:render");
 
   useEffect(() => {
     // NOTE may want to add a check to ensure the itemZUID is 'new'

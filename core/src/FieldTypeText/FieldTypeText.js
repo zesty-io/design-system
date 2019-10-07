@@ -7,7 +7,7 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeText.less";
 export const FieldTypeText = React.memo(props => {
-  console.log("FieldTypeText:render");
+  // console.log("FieldTypeText:render");
 
   if (!props.name) {
     throw new Error(
