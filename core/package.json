@@ -14,7 +14,7 @@
     "build:bundle": "cross-env NODE_ENV=production npx rollup -c config.rollup.js",
     "clean": "npx rimraf dist",
     "release": "npm run clean && npm run build && cd dist && npm publish",
-    "start": "npm link && npm run build"
+    "start": "npm i && npm run build && cd dist/ && npm link"
   },
   "dependencies": {
     "codemirror": "^5.48.0",

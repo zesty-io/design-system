@@ -6,8 +6,6 @@ import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
 import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
 
-require("../flatpickr.css");
-
 import styles from "./FieldTypeDate.less";
 export const FieldTypeDate = React.memo(props => {
   console.log("FieldTypeDate:render");
