@@ -20,6 +20,10 @@
     "codemirror": "^5.49.0",
     "js-beautify": "^1.10.2"
   },
+  "dependencies": {
+    "codemirror": "^5.48.0",
+    "js-beautify": "^1.10.0"
+  },
   "peerDependencies": {
     "classnames": "^2.2.6",
     "react": "^16.10.2",
