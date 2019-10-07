@@ -6,7 +6,7 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeBinary.less";
-export const FieldTypeBinary = React.memo(props => {
+export const FieldTypeBinary = React.memo(function FieldTypeBinary(props) {
   // console.log("FieldTypeBinary:render");
 
   return (

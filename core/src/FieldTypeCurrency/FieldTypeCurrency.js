@@ -7,7 +7,7 @@ import { Select, Option } from "../Select";
 import { currencies } from "./currencies";
 
 import styles from "./FieldTypeCurrency.less";
-export const FieldTypeCurrency = React.memo(props => {
+export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
   // console.log("FieldTypeCurrency:render");
 
   const [monetaryValue, setMonetaryValue] = useState(props.value || "0.00");

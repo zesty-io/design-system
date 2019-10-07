@@ -19,7 +19,7 @@ const converter = new showdown.Converter({
 });
 
 import styles from "./FieldTypeEditor.less";
-export const FieldTypeEditor = React.memo(props => {
+export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
   // console.log("FieldTypeEditor:render");
 
   const [content, setContent] = useState(props.value || "");

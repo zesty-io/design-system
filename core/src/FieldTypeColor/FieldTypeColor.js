@@ -7,7 +7,7 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeColor.less";
-export const FieldTypeColor = React.memo(props => {
+export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
   // console.log("Render:FieldTypeColor");
 
   const [color, setColor] = useState(props.value || "#ffffff");

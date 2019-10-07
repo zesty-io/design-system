@@ -7,7 +7,9 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeInternalLink.less";
 
-export const FieldTypeInternalLink = React.memo(props => {
+export const FieldTypeInternalLink = React.memo(function FieldTypeInternalLink(
+  props
+) {
   // console.log("FieldTypeInternalLink:render");
 
   const [loading, setLoading] = useState(false);
