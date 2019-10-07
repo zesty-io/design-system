@@ -28,8 +28,8 @@ export { FieldTypeInternalLinkGuide } from './FieldTypeInternalLinkGuide'
 export { FieldTypeEditorGuide } from './FieldTypeEditorGuide'
 export { FieldTypeUUIDGuide } from './FieldTypeUUIDGuide'
 
-export { DateFieldTypeGuide } from './DateFieldTypeGuide'
-export { DateTimeFieldTypeGuide } from './DateTimeFieldTypeGuide'
+// export { DateFieldTypeGuide } from './DateFieldTypeGuide'
+// export { DateTimeFieldTypeGuide } from './DateTimeFieldTypeGuide'
 
 export { CollapsibleCardGuide } from './CollapsibleCardGuide'
 export { SearchableListGuide } from './SearchableListGuide'
