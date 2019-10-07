@@ -10,7 +10,7 @@ import { FieldDescription } from "../FieldDescription";
  */
 import styles from "./FieldTypeTextarea.less";
 export const FieldTypeTextarea = React.memo(props => {
-  console.log("FieldTypeTextarea:render");
+  // console.log("FieldTypeTextarea:render");
 
   if (!props.name) {
     throw new Error(

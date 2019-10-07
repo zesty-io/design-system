@@ -6,7 +6,7 @@ import { FieldDescription } from "../FieldDescription";
 
 // import styles from "./FieldTypeOneToOne.less";
 export const FieldTypeOneToOne = React.memo(props => {
-  console.log("FieldTypeOneToOne:render");
+  // console.log("FieldTypeOneToOne:render");
 
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);

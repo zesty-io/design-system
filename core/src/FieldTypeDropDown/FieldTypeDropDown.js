@@ -7,7 +7,7 @@ import { FieldLabel } from "../FieldLabel";
 
 import styles from "./FieldTypeDropDown.less";
 export const FieldTypeDropDown = React.memo(props => {
-  console.log("FieldTypeDropDown:render");
+  // console.log("FieldTypeDropDown:render");
 
   return (
     <label className={cx(styles.FieldTypeDropDown, props.className)}>

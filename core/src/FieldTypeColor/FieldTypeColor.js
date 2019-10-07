@@ -8,7 +8,7 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeColor.less";
 export const FieldTypeColor = React.memo(props => {
-  console.log("Render:FieldTypeColor");
+  // console.log("Render:FieldTypeColor");
 
   const [color, setColor] = useState(props.value || "#ffffff");
 

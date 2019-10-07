@@ -7,7 +7,7 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeNumber.less";
 export const FieldTypeNumber = React.memo(props => {
-  console.log("FieldTypeNumber:render");
+  // console.log("FieldTypeNumber:render");
 
   const [number, setNumber] = useState(props.value || "");
 

@@ -8,7 +8,7 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeSort.less";
 export const FieldTypeSort = React.memo(props => {
-  console.log("FieldTypeSort:render");
+  // console.log("FieldTypeSort:render");
 
   const [sort, setSort] = useState(Number(props.value) || 0);
 

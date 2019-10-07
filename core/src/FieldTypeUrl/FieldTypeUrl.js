@@ -7,7 +7,7 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeUrl.less";
 export const FieldTypeUrl = React.memo(props => {
-  console.log("FieldTypeUrl:render");
+  // console.log("FieldTypeUrl:render");
 
   return (
     <article
