@@ -1,0 +1,16 @@
+@import "../typography.less";
+
+.FieldTypeNumber {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  input {
+    display: block;
+  }
+}
+
+.FieldTypeNumber.Error {
+  input {
+    border: solid 1px @zesty-red;
+  }
+}

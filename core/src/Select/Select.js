@@ -57,9 +57,11 @@ export class Select extends Component {
 
   onEsc = evt => {
     if (evt.key === "Escape" || evt.keyCode == 27) {
-      this.setState({
-        dropdownOpen: false
-      });
+      if (this.state.dropdownOpen) {
+        this.setState({
+          dropdownOpen: false
+        });
+      }
     }
   };
 

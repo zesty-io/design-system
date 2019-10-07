@@ -1,0 +1,28 @@
+@import "../colors.less";
+@import "../typography.less";
+
+.FieldTypeTextarea {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 4px 0;
+
+  .FieldTypeTextareaLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-size: @field-label-size;
+    line-height: 24px;
+    color: @zesty-dark-blue;
+  }
+  textarea {
+    display: block;
+    height: 150px;
+    resize: vertical;
+  }
+}
+
+.FieldTypeTextarea.Error {
+  input {
+    border: solid 1px @zesty-red;
+  }
+}

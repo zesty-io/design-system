@@ -58,10 +58,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-stage-3'
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              // "@babel/plugin-proposal-object-rest-spread",
+              // "@babel/plugin-syntax-dynamic-import",
+              // "@babel/plugin-syntax-import-meta",
+              ['@babel/plugin-proposal-class-properties', { loose: false }]
+              // "@babel/plugin-proposal-json-strings"
             ]
           }
         }
