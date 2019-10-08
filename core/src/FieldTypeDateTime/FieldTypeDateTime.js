@@ -1,25 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import cx from "classnames";
 
 import styles from "./DateTimeFieldType.less";
 import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
-export class DateTimeFieldType extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     date: moment()
-  //   }
-  // }
-  // componentDidMount() {
-  //   if (this.props.value) {
-  //     this.setState({
-  //       date: moment(this.props.value)
-  //     })
-  //   }
-  // }
+export class FieldTypeDateTime extends React.PureComponent {
   onChange = evt => {
     if (this.props.onChange) {
       this.props.onChange(
