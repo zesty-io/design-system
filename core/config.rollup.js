@@ -36,7 +36,6 @@ export default {
     "@babel/runtime/helpers/slicedToArray",
     "@babel/runtime/helpers/defineProperty",
     "babel-runtime/core-js/object/keys",
-    // "babel-runtime/core-js/object/get-prototype-of",
     "classnames"
   ],
   plugins: [
