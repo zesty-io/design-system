@@ -3,8 +3,10 @@ import babel from "rollup-plugin-babel";
 import replace from "rollup-plugin-replace";
 import copy from "rollup-plugin-copy-glob";
 import postcss from "rollup-plugin-postcss";
+import { terser } from "rollup-plugin-terser";
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 import { plugin as analyze } from "rollup-plugin-analyzer";
+import visualizer from "rollup-plugin-visualizer";
 
 export default {
   input: "src/index.js",
@@ -39,6 +41,7 @@ export default {
     "classnames"
   ],
   plugins: [
+    visualizer(),
     analyze({ limit: 5 }),
     postcss({
       extract: "dist/bundle.css"
@@ -65,6 +68,7 @@ export default {
         process.env.NODE_ENV || "production"
       )
     }),
+    terser(),
     copy([
       {
         files: "src/**/*.less",
