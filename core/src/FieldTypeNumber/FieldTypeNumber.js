@@ -7,9 +7,11 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeNumber.less";
 export const FieldTypeNumber = React.memo(function FieldTypeNumber(props) {
-  // console.log("FieldTypeNumber:render");
+  if (!Number(props.value) && Number(props.value) !== 0) {
+    throw new Error("Provided value is not a number.");
+  }
 
-  const [number, setNumber] = useState(props.value || "");
+  const [number, setNumber] = useState(props.value);
 
   return (
     <label className={cx(styles.FieldTypeNumber, props.className)}>
