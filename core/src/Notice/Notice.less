@@ -1,0 +1,19 @@
+@import "../colors.less";
+
+.Notice {
+  padding: 8px;
+  display: flex;
+  align-items: baseline;
+
+  .Icon {
+    margin: 0 8px 0 0;
+  }
+
+  &.Warn {
+    background-color: @zesty-highlight;
+
+    p {
+      flex: 1;
+    }
+  }
+}

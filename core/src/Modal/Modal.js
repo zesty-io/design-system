@@ -1,66 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 
 import { Button } from "../Button";
 
 import styles from "./Modal.less";
-export class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    if (!props.onClose) {
-      throw new Error("Modal component is missing required `onClose` property");
-    }
-  }
-  componentDidMount() {
-    window.addEventListener("keypress", this.onEsc);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("keypress", this.onEsc);
-  }
-  onEsc = evt => {
-    if (evt.key === "Escape" || evt.keyCode == 27) {
-      this.props.onClose();
+export const Modal = React.memo(function Modal(props) {
+  const [open, setOpen] = useState(Boolean(props.open));
+
+  const styleLocal = props.type === "local" ? styles.Local : null;
+  const styleOpen = open ? styles.Open : null;
+
+  const onClose = evt => {
+    setOpen(false);
+    if (props.onClose) {
+      props.onClose(evt);
     }
   };
-  render() {
-    return (
-      <section
-        className={cx(
-          styles.ModalWrap,
-          this.props.type === "local" ? styles.ModalLocal : styles.ModalGlobal
-        )}
-      >
-        <article className={cx(styles.Modal, this.props.className)}>
-          <Button className={styles.Close} onClick={this.props.onClose}>
-            <i className="fa fa-times" aria-hidden="true" />
-          </Button>
-          {this.props.children}
-        </article>
-      </section>
-    );
-  }
-}
 
-export function ModalHeader(props) {
+  const onEsc = evt => {
+    if (evt.key === "Escape" || evt.keyCode == 27) {
+      onClose(evt);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keyup", onEsc);
+    return () => {
+      window.removeEventListener("keyup", onEsc);
+    };
+  }, []);
+
+  // Allow consumer to update internal open state
+  useEffect(() => setOpen(Boolean(props.open)), [props.open]);
+
+  return (
+    <div className={cx(styles.ModalAligner, styleLocal, styleOpen)}>
+      <article className={cx(styles.Modal, styleLocal, props.className)}>
+        <Button className={styles.Close} onClick={onClose}>
+          <i className="fa fa-times" aria-hidden="true" />
+        </Button>
+        {props.children}
+      </article>
+    </div>
+  );
+});
+
+export const ModalHeader = React.memo(function ModalHeader(props) {
   return (
     <header className={cx(styles.ModalHeader, props.className)}>
       {props.children}
     </header>
   );
-}
+});
 
-export function ModalContent(props) {
+export const ModalContent = React.memo(function ModalContent(props) {
   return (
     <main {...props} className={cx(styles.ModalContent, props.className)}>
       {props.children}
     </main>
   );
-}
+});
 
-export function ModalFooter(props) {
+export const ModalFooter = React.memo(function ModalFooter(props) {
   return (
     <footer className={cx(styles.ModalFooter, props.className)}>
       {props.children}
     </footer>
   );
-}
+});

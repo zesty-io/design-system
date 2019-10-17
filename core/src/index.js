@@ -15,6 +15,7 @@ export { Toggle } from "./Toggle";
 export { Textarea } from "./Textarea";
 export { Url } from "./Url";
 export { WithLoader } from "./WithLoader";
+export { Notice } from "./Notice";
 
 // Molecules
 export { Nav } from "./Nav";
@@ -40,3 +41,4 @@ export { CollapsibleCard } from "./CollapsibleCard";
 export { ConfirmDialog } from "./ConfirmDialog";
 export { Drawer } from "./Drawer";
 export { ToggleButton } from "./ToggleButton";
+export { Modal } from "./Modal";
