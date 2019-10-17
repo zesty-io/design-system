@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Input.less";
 import cx from "classnames";
 
+import styles from "./Input.less";
 export function Input(props) {
   return (
     <React.Fragment>

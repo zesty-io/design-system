@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Button.less";
 import cx from "classnames";
 
+import styles from "./Button.less";
 export function Button(props) {
   return (
     <button
