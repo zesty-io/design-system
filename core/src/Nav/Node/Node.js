@@ -12,7 +12,7 @@ export function Node(props) {
       )}
     >
       <a href={props.path}>
-        <i className={`fas fa-${props.icon}`} />
+        <i className={props.icon} />
         <span>{props.label}</span>
       </a>
 
