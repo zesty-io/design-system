@@ -1,7 +1,7 @@
 import React from "react";
 import { toggleMark } from "prosemirror-commands";
 
-import { Modal, ModalHeader, ModalContent, ModalFooter } from "../../../Modal";
+import { Modal, ModalContent, ModalFooter } from "../../../Modal";
 import { Button } from "../../../Button";
 import { FieldTypeText } from "../../../FieldTypeText";
 
@@ -49,8 +49,8 @@ export class LinkModal extends React.PureComponent {
   render() {
     return (
       <Modal
-        type="local"
         className={styles.LinkModal}
+        open={this.props.open}
         onClose={() => {
           zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showLinkModal");
         }}
@@ -61,8 +61,8 @@ export class LinkModal extends React.PureComponent {
             label="What url should this link to?"
             name="linkUrl"
             placeholder="https://"
-            required="true"
-            autoFocus="true"
+            required={true}
+            autoFocus={true}
             onChange={(name, href) => this.setState({ href })}
           />
           <label>

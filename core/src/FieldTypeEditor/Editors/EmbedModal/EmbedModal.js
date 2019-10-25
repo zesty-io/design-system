@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal, ModalHeader, ModalContent, ModalFooter } from "../../../Modal";
+import { Modal, ModalContent, ModalFooter } from "../../../Modal";
 import { FieldTypeText } from "../../../FieldTypeText";
 import { Button } from "../../../Button";
 import { Url } from "../../../Url";
@@ -58,8 +58,8 @@ export class EmbedModal extends React.Component {
   render() {
     return (
       <Modal
-        type="local"
         className={styles.EmbedModal}
+        open={this.props.open}
         onClose={() => {
           zesty.trigger("PROSEMIRROR_DIALOG_CLOSE", "showEmbedModal");
         }}
@@ -80,8 +80,8 @@ export class EmbedModal extends React.Component {
             label={`Enter unique ${this.props.options.service} ID`}
             name="embed"
             placeholder="e.g. puXYPrrsrA"
-            required="true"
-            autoFocus="true"
+            required={true}
+            autoFocus={true}
             onChange={(name, id) => this.setState({ id })}
           />
         </ModalContent>

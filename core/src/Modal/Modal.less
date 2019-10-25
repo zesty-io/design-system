@@ -2,7 +2,7 @@
 
 .ModalAligner {
   background-color: rgba(26, 32, 44, 0.6);
-  position: fixed;
+  position: absolute;
   height: 100%;
   width: 100%;
   left: 0;
@@ -19,6 +19,9 @@
   &.Local {
     position: relative;
     height: 0; // modal is position absolute so it's height is determined by content
+  }
+  &.Global {
+    position: fixed;
   }
 }
 .Modal {
@@ -45,4 +48,7 @@
     right: 0;
     border-radius: 0px 0px 0px 4px;
   }
+}
+.ModalFooter {
+  margin-top: 16px;
 }

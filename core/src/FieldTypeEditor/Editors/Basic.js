@@ -25,7 +25,8 @@ export class BasicEditor extends React.Component {
 
     this.state = {
       showLinkModal: false,
-      showEmbedModal: false
+      showEmbedModal: false,
+      showEmbedModalOptions: {}
     };
   }
   componentDidMount() {
@@ -63,13 +64,13 @@ export class BasicEditor extends React.Component {
           onChange={this.props.onChange}
           render={({ editor, view }) => (
             <div>
-              {this.state.showLinkModal && <LinkModal view={view} />}
-              {this.state.showEmbedModal && (
-                <EmbedModal
-                  options={this.state.showEmbedModalOptions}
-                  view={view}
-                />
-              )}
+              <LinkModal view={view} open={this.state.showLinkModal} />
+              <EmbedModal
+                options={this.state.showEmbedModalOptions}
+                view={view}
+                open={this.state.showEmbedModal}
+              />
+
               <MenuBar menu={menu} view={view} />
               <div ref={this.ref}>{editor}</div>
             </div>
