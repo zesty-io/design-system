@@ -6,7 +6,6 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeInternalLink.less";
-
 export const FieldTypeInternalLink = React.memo(function FieldTypeInternalLink(
   props
 ) {

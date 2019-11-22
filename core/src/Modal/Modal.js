@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import cx from "classnames";
 
 import { Button } from "../Button";
@@ -33,9 +33,24 @@ export const Modal = React.memo(function Modal(props) {
   // Allow consumer to update internal open state
   useEffect(() => setOpen(Boolean(props.open)), [props.open]);
 
+  const modalRef = useRef(null);
+  useLayoutEffect(() => {
+    if (modalRef.current) {
+      const modalPosition = modalRef.current.getBoundingClientRect();
+      if (modalPosition.left < 0) {
+        // Modals total width(including padding) + negative left offset - left & right padding - additional 8px for spacing
+        let width = modalPosition.width + modalPosition.left - 64 - 8;
+        modalRef.current.style.minWidth = `${width}px`;
+      }
+    }
+  }, [open]);
+
   return (
     <div className={cx(styles.ModalAligner, styleLocal, styleOpen)}>
-      <article className={cx(styles.Modal, styleLocal, props.className)}>
+      <article
+        ref={modalRef}
+        className={cx(styles.Modal, styleLocal, props.className)}
+      >
         <Button className={styles.Close} onClick={onClose}>
           <i className="fa fa-times" aria-hidden="true" />
         </Button>

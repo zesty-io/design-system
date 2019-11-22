@@ -120,8 +120,7 @@ export class Select extends Component {
 
     const nextDropdownState = !this.state.dropdownOpen;
 
-    // PERF: Only attach global click listener when this select
-    // instance dropdown is open.
+    // PERF: Only attach global click listener when this select instance dropdown is open.
     if (nextDropdownState) {
       window.addEventListener("click", this.onClose);
     } else {
