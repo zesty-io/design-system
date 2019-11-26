@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import cx from "classnames";
 
-import { Select, Option } from "../Select";
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeTinyMCE.less";
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
-  console.log("FieldTypeTinyMCE:render");
+  // console.log("FieldTypeTinyMCE:render", props);
 
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
@@ -22,23 +21,31 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
       </label>
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
+          apiKey="aa98mombuib42aeoxsf9k0spoehkdor9ybohg4vcllrgqcm4"
+          id={props.name}
           initialValue={props.value}
           init={{
-            height: 500,
             menubar: false,
             plugins: [
-              "advlist autolink lists link image charmap print preview anchor",
-              "searchreplace visualblocks code fullscreen",
-              "insertdatetime media table paste code help wordcount"
+              "advlist anchor autolink charmap code codesample fullscreen hr lists link",
+              "image print preview searchreplace table visualblocks fullscreen",
+              "insertdatetime media table paste help wordcount"
+              // "autoresize",
+              // "formatpainter pageembed" //premium plugins
             ],
             toolbar:
-              "undo redo | formatselect | bold italic backcolor | \
-             alignleft aligncenter alignright alignjustify | \
-             bullist numlist outdent indent | removeformat | help"
+              "bold italic link backcolor | \
+             alignleft aligncenter alignright alignjustify | formatselect | \
+             bullist numlist outdent indent | table charmap insertdatetime | \
+             image | code codesample | removeformat | fullscreen help | undo redo",
+            // menubar: "view",
+            contextmenu: "link image imagetools table spellchecker",
+            // height: 250,
+            min_height: 250,
+            max_height: 1500,
+            contextmenu: "link image imagetools table spellchecker"
           }}
           onChange={(evt, editor) => {
-            // console.log("onchange", evt.target);
-
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
         />
