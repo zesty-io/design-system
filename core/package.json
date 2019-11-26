@@ -32,7 +32,8 @@
     "showdown": "^1.9.0",
     "uuid": "^3.3.2",
     "flatpickr": "^4.5.2",
-    "react-flatpickr": "^3.6.4"
+    "react-flatpickr": "^3.6.4",
+    "@tinymce/tinymce-react": "^3.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
