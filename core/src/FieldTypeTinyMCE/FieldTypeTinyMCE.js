@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import cx from "classnames";
 
@@ -24,29 +24,51 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           apiKey="aa98mombuib42aeoxsf9k0spoehkdor9ybohg4vcllrgqcm4"
           id={props.name}
           initialValue={props.value}
+          onChange={(evt, editor) => {
+            props.onChange(props.name, evt.target.getContent(), props.datatype);
+          }}
           init={{
             menubar: false,
             plugins: [
               "advlist anchor autolink charmap code codesample fullscreen hr lists link",
-              "image print preview searchreplace table visualblocks fullscreen",
-              "insertdatetime media table paste help wordcount"
-              // "autoresize",
+              "preview searchreplace table visualblocks fullscreen",
+              "insertdatetime table paste help wordcount",
+              "autoresize"
               // "formatpainter pageembed" //premium plugins
             ],
             toolbar:
               "bold italic link backcolor | \
              alignleft aligncenter alignright alignjustify | formatselect | \
-             bullist numlist outdent indent | table charmap insertdatetime | \
-             image | code codesample | removeformat | fullscreen help | undo redo",
-            // menubar: "view",
-            contextmenu: "link image imagetools table spellchecker",
+             bullist numlist outdent indent | zestyMediaApp table charmap insertdatetime | \
+            code codesample | removeformat | fullscreen help | undo redo",
+            contextmenu: "link table spellchecker",
             // height: 250,
             min_height: 250,
-            max_height: 1500,
-            contextmenu: "link image imagetools table spellchecker"
-          }}
-          onChange={(evt, editor) => {
-            props.onChange(props.name, evt.target.getContent(), props.datatype);
+            max_height: 2000,
+            setup: function(editor) {
+              editor.ui.registry.addButton("zestyMediaApp", {
+                icon: "image",
+                tooltip: "Select media from your uploaded assets",
+                onAction: function(_) {
+                  riot.mount(
+                    document.querySelector("#modalMount"),
+                    "media-app-modal",
+                    {
+                      limit: 10,
+                      callback: images => {
+                        editor.insertContent(
+                          images
+                            .map(image => {
+                              return `<img src="${image.url}" alt="${image.title}" />`;
+                            })
+                            .join(" ")
+                        );
+                      }
+                    }
+                  );
+                }
+              });
+            }
           }}
         />
       </div>
