@@ -1,7 +1,7 @@
 import React from 'react'
 
 import GithubEmbed from '../githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 import styles from './CodeCard.less'
 

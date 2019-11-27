@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { FieldTypeOneToMany } from '@zesty-io/core/dist/FieldTypeOneToMany'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { FieldTypeOneToMany } from '@zesty-io/core/FieldTypeOneToMany'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class FieldTypeOneToManyGuide extends Component {

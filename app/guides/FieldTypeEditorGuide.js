@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { FieldTypeEditor } from '@zesty-io/core/dist/FieldTypeEditor'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { FieldTypeEditor } from '@zesty-io/core/FieldTypeEditor'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class FieldTypeEditorGuide extends Component {

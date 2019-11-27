@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Tag } from '@zesty-io/core/dist/Tag'
+import { Tag } from '@zesty-io/core/Tag'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class TagGuide extends Component {
   render() {

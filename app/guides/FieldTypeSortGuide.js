@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
-import { FieldTypeSort } from '@zesty-io/core/dist/FieldTypeSort'
+import { FieldTypeSort } from '@zesty-io/core/FieldTypeSort'
 
 export class FieldTypeSortGuide extends Component {
   render() {

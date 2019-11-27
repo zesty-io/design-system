@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import { Button } from '@zesty-io/core/dist/Button'
-import { ButtonGroup } from '@zesty-io/core/dist/ButtonGroup'
+import { Button } from '@zesty-io/core/Button'
+import { ButtonGroup } from '@zesty-io/core/ButtonGroup'
 
 import { CodeCard } from '../components/CodeCard'
-// import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+// import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 // import GithubEmbed from '../components/githubembed'
 
 export class ButtonGroupGuide extends Component {

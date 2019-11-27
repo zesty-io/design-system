@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Input } from '@zesty-io/core/dist/Input'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { Input } from '@zesty-io/core/Input'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class InputGuide extends Component {
@@ -41,11 +41,11 @@ export class InputGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code="<Input
-              name=&quot;name&quot;
-              autocomplete=&quot;off&quot;
-              placeholder=&quot;Name (autocomplete disabled)&quot;
-            />"
+            code='<Input
+              name="name"
+              autocomplete="off"
+              placeholder="Name (autocomplete disabled)"
+            />'
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Usage and Code">

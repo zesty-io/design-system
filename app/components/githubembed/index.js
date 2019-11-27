@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
-import brace from 'brace'
 import AceEditor from 'react-ace'
 
-import 'brace/mode/javascript'
-import 'brace/theme/idle_fingers'
+// import 'brace/mode/javascript'
+// import 'brace/theme/idle_fingers'
+
+import 'ace-builds/src-noconflict/mode-javascript'
+import 'ace-builds/src-noconflict/theme-monokai'
 
 export default class GithubEmbed extends PureComponent {
   state = {
@@ -26,7 +28,7 @@ export default class GithubEmbed extends PureComponent {
       <div style={{ backgroundColor: '#323232', padding: '1rem 0' }}>
         <AceEditor
           mode="javascript"
-          theme="idle_fingers"
+          theme="monokai"
           height={this.props.height || '600px'}
           width="800px"
           fontSize="14px"

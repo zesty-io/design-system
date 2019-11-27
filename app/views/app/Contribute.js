@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from '@zesty-io/core/dist/Card'
+import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 
 export class Contribute extends Component {
   render() {

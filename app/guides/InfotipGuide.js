@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Infotip } from '@zesty-io/core/dist/Infotip'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { Infotip } from '@zesty-io/core/Infotip'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class InfotipGuide extends Component {
@@ -16,7 +16,7 @@ export class InfotipGuide extends Component {
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="50px"
-            code="<Infotip title=&quot;This is the Infotip title&quot; />"
+            code='<Infotip title="This is the Infotip title" />'
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

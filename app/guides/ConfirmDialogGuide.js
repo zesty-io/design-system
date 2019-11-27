@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 
-import { Button } from '@zesty-io/core/dist/Button'
-import { ButtonGroup } from '@zesty-io/core/dist/ButtonGroup'
+import { Button } from '@zesty-io/core/Button'
+import { ButtonGroup } from '@zesty-io/core/ButtonGroup'
 import { CodeCard } from '../components/CodeCard'
-import { ConfirmDialog } from '@zesty-io/core/dist/ConfirmDialog'
+import { ConfirmDialog } from '@zesty-io/core/ConfirmDialog'
 
 export class ConfirmDialogGuide extends Component {
   state = {

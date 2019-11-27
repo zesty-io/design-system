@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Divider } from '@zesty-io/core/dist/Divider'
+import { Divider } from '@zesty-io/core/Divider'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class DividerGuide extends Component {
   render() {

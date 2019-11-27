@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { SearchableList } from '@zesty-io/core/dist/SearchableList'
-import { Option } from '@zesty-io/core/dist/Select'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { SearchableList } from '@zesty-io/core/SearchableList'
+import { Option } from '@zesty-io/core/Select'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class SearchableListGuide extends Component {

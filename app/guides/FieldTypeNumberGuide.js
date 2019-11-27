@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { FieldTypeNumber } from '@zesty-io/core/dist/FieldTypeNumber'
+import { FieldTypeNumber } from '@zesty-io/core/FieldTypeNumber'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 export class FieldTypeNumberGuide extends Component {
   render() {
     return (

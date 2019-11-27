@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 
-import { FieldTypeCurrency } from '@zesty-io/core/dist/FieldTypeCurrency'
+import { FieldTypeCurrency } from '@zesty-io/core/FieldTypeCurrency'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from '@zesty-io/core/dist/Card'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
+import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 
 export class FieldTypeCurrencyGuide extends Component {
   render() {

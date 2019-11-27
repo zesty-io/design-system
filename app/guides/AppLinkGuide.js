@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { AppLink } from '@zesty-io/core/dist/AppLink'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from '@zesty-io/core/dist/Card'
+import { AppLink } from '@zesty-io/core/AppLink'
+import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 
 export class AppLinkGuide extends Component {
   render() {

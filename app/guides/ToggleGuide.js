@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Toggle } from '@zesty-io/core/dist/Toggle'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { Toggle } from '@zesty-io/core/Toggle'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class ToggleGuide extends Component {

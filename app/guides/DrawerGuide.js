@@ -1,13 +1,8 @@
 import React, { Component, Fragment } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { Drawer, DrawerHandle, DrawerContent } from '@zesty-io/core/dist/Drawer'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from '@zesty-io/core/dist/Card'
+import { Drawer, DrawerHandle, DrawerContent } from '@zesty-io/core/Drawer'
+import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 
 export class DrawerGuide extends Component {
   render() {

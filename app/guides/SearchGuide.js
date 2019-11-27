@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { Search } from '@zesty-io/core/dist/Search'
+import { Search } from '@zesty-io/core/Search'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class SearchGuide extends Component {
   render() {

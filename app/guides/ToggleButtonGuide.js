@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { ToggleButton } from '@zesty-io/core/dist/ToggleButton'
+import { ToggleButton } from '@zesty-io/core/ToggleButton'
 
 export class ToggleButtonGuide extends Component {
   render() {

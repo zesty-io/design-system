@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { FieldTypeImage } from '@zesty-io/core/dist/FieldTypeImage'
+import { FieldTypeImage } from '@zesty-io/core/FieldTypeImage'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class FieldTypeImageGuide extends Component {
   state = {

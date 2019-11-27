@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
 
-import { FieldTypeBinary } from '@zesty-io/core/dist/FieldTypeBinary'
+import { FieldTypeBinary } from '@zesty-io/core/FieldTypeBinary'
 
 export class FieldTypeBinaryGuide extends Component {
   render() {

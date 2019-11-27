@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { FieldTypeText } from '@zesty-io/core/dist/FieldTypeText'
+import { FieldTypeText } from '@zesty-io/core/FieldTypeText'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class FieldTypeTextGuide extends Component {
   state = {}

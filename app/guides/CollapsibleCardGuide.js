@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class CollapsibleCardGuide extends Component {

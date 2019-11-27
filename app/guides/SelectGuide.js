@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Select, Option } from '@zesty-io/core/dist/Select'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { Select, Option } from '@zesty-io/core/Select'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
 export class SelectGuide extends Component {

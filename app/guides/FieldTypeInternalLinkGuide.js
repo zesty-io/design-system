@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { CodeCard } from '../components/CodeCard'
-import { FieldTypeInternalLink } from '@zesty-io/core/dist/FieldTypeInternalLink'
+import { FieldTypeInternalLink } from '@zesty-io/core/FieldTypeInternalLink'
 
 export class FieldTypeInternalLinkGuide extends Component {
   render() {

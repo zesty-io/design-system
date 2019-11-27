@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 
-import { Textarea } from '@zesty-io/core/dist/Textarea'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { Textarea } from '@zesty-io/core/Textarea'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter
-} from '@zesty-io/core/dist/Card'
+import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 
 export class TextareaGuide extends Component {
   render() {

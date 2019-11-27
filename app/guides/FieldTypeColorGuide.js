@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { FieldTypeColor } from '@zesty-io/core/dist/FieldTypeColor'
+import { FieldTypeColor } from '@zesty-io/core/FieldTypeColor'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class FieldTypeColorGuide extends Component {
   render() {

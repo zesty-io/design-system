@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { FieldTypeUUID } from '@zesty-io/core/dist/FieldTypeUUID'
+import { FieldTypeUUID } from '@zesty-io/core/FieldTypeUUID'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class FieldTypeUUIDGuide extends Component {
   state = {

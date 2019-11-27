@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import { DateFieldType } from '@zesty-io/core/dist/DateFieldType'
+import { DateFieldType } from '@zesty-io/core/DateFieldType'
 import GithubEmbed from '../components/githubembed'
-import { CollapsibleCard } from '@zesty-io/core/dist/CollapsibleCard'
+import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 
 export class DateFieldTypeGuide extends Component {
   render() {
