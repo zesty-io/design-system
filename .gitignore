@@ -10,8 +10,9 @@
 
 # Distributions & Deps
 node_modules/
-app/dist/
-core/dist
+dist/
+dist
 __snapshots__
 
 core/.size-snapshot.json
+core/stats.html

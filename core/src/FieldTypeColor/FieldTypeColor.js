@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import cx from "classnames";
-import debounce from "lodash.debounce";
 
 import { Input } from "../Input";
 import { FieldLabel } from "../FieldLabel";

@@ -4,7 +4,7 @@
   "description": "## Setup",
   "main": "index.js",
   "scripts": {
-    "start": "cd app;npm start"
+    "start": "cd demo;npm start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/zesty-io/design-system/issues"
   },
-  "homepage": "https://github.com/zesty-io/design-system#readme"
+  "homepage": "https://github.com/zesty-io/design-system#readme",
+  "dependencies": {
+    "less": "^3.10.3"
+  }
 }
