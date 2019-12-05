@@ -1,3 +1,4 @@
+/* TinyMCE skin required for its use */
 @import "../node_modules/tinymce/skins/ui/oxide/content.css";
 @import "../node_modules/tinymce/skins/ui/oxide/content.inline.css";
 @import "../node_modules/tinymce/skins/ui/oxide/skin.css";

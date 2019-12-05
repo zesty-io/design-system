@@ -26,6 +26,7 @@ import "tinymce/plugins/paste";
 import "tinymce/plugins/preview";
 import "tinymce/plugins/searchreplace";
 import "tinymce/plugins/spellchecker";
+import "tinymce/plugins/media";
 import "tinymce/plugins/table";
 import "tinymce/plugins/visualblocks";
 import "tinymce/plugins/wordcount";
@@ -35,8 +36,6 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeTinyMCE.less";
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
-  // console.log("FieldTypeTinyMCE:render", props);
-
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
       <label className={styles.FieldTypeTinyMCELabel}>
@@ -55,11 +54,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
           init={{
-            branding: false,
-            menubar: false,
             plugins: [
               "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
-              "link lists preview searchreplace spellchecker table visualblocks wordcount"
+              "link lists media preview searchreplace spellchecker table visualblocks wordcount"
             ],
 
             // NOTE: premium plugins are being loaded from a self hosted location
@@ -76,15 +73,22 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             toolbar:
               "bold italic link backcolor | \
              alignleft aligncenter alignright alignjustify | formatselect | \
-             bullist numlist outdent indent | zestyMediaApp table charmap insertdatetime codesample | \
+             bullist numlist outdent indent | zestyMediaApp media table charmap insertdatetime codesample | \
             code | pastetext removeformat | fullscreen help | undo redo",
             contextmenu: "link table spellchecker",
 
+            // plugin settings
             powerpaste_word_import: "prompt",
+            media_live_embeds: true,
 
-            // height: 250,
+            // editor settings
             min_height: 250,
             max_height: 2000,
+            branding: false,
+            menubar: false,
+            extended_valid_elements: "script[src|async|defer|type|charset]",
+
+            // custom toolbar buttons
             setup: function(editor) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
