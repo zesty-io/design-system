@@ -1,3 +1,7 @@
+@import "../node_modules/tinymce/skins/ui/oxide/content.css";
+@import "../node_modules/tinymce/skins/ui/oxide/content.inline.css";
+@import "../node_modules/tinymce/skins/ui/oxide/skin.css";
+
 @import "../node_modules/codemirror/lib/codemirror.css";
 @import "../node_modules/codemirror/theme/material.css";
 
@@ -112,8 +116,6 @@
   font-size: 32px;
   line-height: 48px;
 } */
-
-
 
 .flatpickr-calendar {
   background: transparent;
