@@ -2,6 +2,34 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import cx from "classnames";
 
+// Import TinyMCE
+import "tinymce/tinymce";
+
+// A theme is also required
+import "tinymce/themes/silver";
+
+// Any plugins you want to use has to be imported
+import "tinymce/plugins/advlist";
+import "tinymce/plugins/anchor";
+import "tinymce/plugins/autolink";
+import "tinymce/plugins/autoresize";
+import "tinymce/plugins/charmap";
+import "tinymce/plugins/code";
+import "tinymce/plugins/codesample";
+import "tinymce/plugins/fullscreen";
+import "tinymce/plugins/help";
+import "tinymce/plugins/hr";
+import "tinymce/plugins/insertdatetime";
+import "tinymce/plugins/link";
+import "tinymce/plugins/lists";
+import "tinymce/plugins/paste";
+import "tinymce/plugins/preview";
+import "tinymce/plugins/searchreplace";
+import "tinymce/plugins/spellchecker";
+import "tinymce/plugins/table";
+import "tinymce/plugins/visualblocks";
+import "tinymce/plugins/wordcount";
+
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
@@ -21,27 +49,39 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
       </label>
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
-          apiKey="aa98mombuib42aeoxsf9k0spoehkdor9ybohg4vcllrgqcm4"
           id={props.name}
           initialValue={props.value}
           onChange={(evt, editor) => {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
           init={{
+            branding: false,
             menubar: false,
             plugins: [
-              "advlist anchor autolink charmap code codesample fullscreen hr lists link",
-              "preview searchreplace table visualblocks fullscreen",
-              "insertdatetime table paste help wordcount",
-              "autoresize"
-              // "formatpainter pageembed" //premium plugins
+              "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
+              "link lists preview searchreplace spellchecker table visualblocks wordcount"
             ],
+
+            // NOTE: premium plugins are being loaded from a self hosted location
+            // specific to our application. Making this component not usable outside of our context.
+            external_plugins: {
+              advcode: "/ui/js/third_party/tinymce/plugins/advcode/plugin.js",
+              powerpaste:
+                "/ui/js/third_party/tinymce/plugins/powerpaste/plugin.js",
+              formatpainter:
+                "/ui/js/third_party/tinymce/plugins/formatpainter/plugin.js",
+              pageembed:
+                "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js"
+            },
             toolbar:
               "bold italic link backcolor | \
              alignleft aligncenter alignright alignjustify | formatselect | \
-             bullist numlist outdent indent | zestyMediaApp table charmap insertdatetime | \
-            code codesample | removeformat | fullscreen help | undo redo",
+             bullist numlist outdent indent | zestyMediaApp table charmap insertdatetime codesample | \
+            code | pastetext removeformat | fullscreen help | undo redo",
             contextmenu: "link table spellchecker",
+
+            powerpaste_word_import: "prompt",
+
             // height: 250,
             min_height: 250,
             max_height: 2000,
