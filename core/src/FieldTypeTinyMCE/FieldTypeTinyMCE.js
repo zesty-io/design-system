@@ -99,6 +99,8 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             menubar: false,
             extended_valid_elements: "script[src|async|defer|type|charset]",
 
+            content_css: "/ui/js/third_party/tinymce/content.css",
+
             // custom toolbar buttons
             setup: function(editor) {
               editor.shortcuts.add("ctrl+s", "Save item", props.onSave);
