@@ -26,6 +26,7 @@ import "tinymce/plugins/paste";
 import "tinymce/plugins/preview";
 import "tinymce/plugins/searchreplace";
 import "tinymce/plugins/spellchecker";
+import "tinymce/plugins/media";
 import "tinymce/plugins/table";
 import "tinymce/plugins/visualblocks";
 import "tinymce/plugins/wordcount";
@@ -35,8 +36,6 @@ import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeTinyMCE.less";
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
-  // console.log("FieldTypeTinyMCE:render", props);
-
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
       <label className={styles.FieldTypeTinyMCELabel}>
@@ -55,11 +54,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
           init={{
-            branding: false,
-            menubar: false,
             plugins: [
               "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
-              "link lists preview searchreplace spellchecker table visualblocks wordcount"
+              "link lists media preview searchreplace spellchecker table visualblocks wordcount"
             ],
 
             // NOTE: premium plugins are being loaded from a self hosted location
@@ -72,19 +69,28 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                 "/ui/js/third_party/tinymce/plugins/formatpainter/plugin.js",
               pageembed:
                 "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js"
+              // mediaembed:
+              //   "/ui/js/third_party/tinymce/plugins/mediaembed/plugin.js"
             },
             toolbar:
-              "bold italic link backcolor | \
+              "italic bold subscript superscript underline strikethrough link backcolor | \
              alignleft aligncenter alignright alignjustify | formatselect | \
-             bullist numlist outdent indent | zestyMediaApp table charmap insertdatetime codesample | \
-            code | pastetext removeformat | fullscreen help | undo redo",
+             codesample blockquote bullist numlist outdent indent | table zestyMediaApp media embed charmap insertdatetime | \
+             pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "link table spellchecker",
 
+            // plugin settings
             powerpaste_word_import: "prompt",
+            media_live_embeds: true,
 
-            // height: 250,
+            // editor settings
             min_height: 250,
             max_height: 2000,
+            branding: false,
+            menubar: false,
+            extended_valid_elements: "script[src|async|defer|type|charset]",
+
+            // custom toolbar buttons
             setup: function(editor) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
@@ -106,6 +112,72 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                       }
                     }
                   );
+                }
+              });
+
+              editor.ui.registry.addButton("embed", {
+                text: "embed",
+                onAction: function() {
+                  editor.windowManager.open({
+                    title: "Embed Social Media",
+                    body: {
+                      type: "panel",
+                      items: [
+                        {
+                          type: "selectbox",
+                          name: "service",
+                          label: "Service",
+                          items: [
+                            { text: "Instagram", value: "instagram" },
+                            { text: "YouTube", value: "youtube" },
+                            { text: "Twitframe", value: "twitframe" }
+                          ]
+                        },
+                        {
+                          type: "input",
+                          name: "id",
+                          label: "Unique Post ID"
+                        }
+                      ]
+                    },
+                    buttons: [
+                      {
+                        type: "cancel",
+                        text: "Close"
+                      },
+                      {
+                        type: "submit",
+                        text: "Save",
+                        primary: true
+                      }
+                    ],
+                    onSubmit: function(api) {
+                      const data = api.getData();
+
+                      console.log("dialog", data);
+
+                      let iframe = "";
+                      switch (data.service) {
+                        case "instagram":
+                          iframe = `<iframe src="https://instagram.com/p/${data.id}/embed/captioned" height="600px" width="500px"></iframe>`;
+                          break;
+                        case "youtube":
+                          iframe = `<iframe src="https://www.youtube.com/embed/${data.id}?modestbranding=1&rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="315px" width="560px"></iframe>`;
+                          break;
+                        case "twitframe":
+                          iframe = `<iframe src="https://twitframe.com/show?url=${encodeURI(
+                            data.id
+                          )}" height="315px" width="560px"></iframe>`;
+                          break;
+                        default:
+                          iframe = `<iframe src="" height="315px" width="560px"></iframe>`;
+                      }
+
+                      // Insert content when the window form is submitted
+                      editor.insertContent(iframe);
+                      api.close();
+                    }
+                  });
                 }
               });
             }
