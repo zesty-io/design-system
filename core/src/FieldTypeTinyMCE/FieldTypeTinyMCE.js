@@ -53,6 +53,15 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           onChange={(evt, editor) => {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
+          onKeyDown={(evt, editor) => {
+            // TinyMCE onChange is inconsistent as it is only invoked when an "undoable" event occurs.
+            // so we are use the onKeyDown as well. We check to make sure the content has changed, this
+            // way we avoid updating on events like keyboard navigation
+            const nextContent = editor.getContent();
+            if (nextContent !== props.value) {
+              props.onChange(props.name, editor.getContent(), props.datatype);
+            }
+          }}
           init={{
             plugins: [
               "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
