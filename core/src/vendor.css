@@ -6,6 +6,14 @@
 @import "../node_modules/codemirror/lib/codemirror.css";
 @import "../node_modules/codemirror/theme/material.css";
 
+
+.tox-tinymce {
+  border: solid 1px rgba(26,32,44,0.12);
+}
+.tox-tinymce .tox-editor-header {
+  border-bottom: solid 1px rgba(26,32,44,0.12);
+}
+
 .react-codemirror2 .CodeMirror {
   min-height: 700px;
   top: 0;
