@@ -92,6 +92,8 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
 
             // custom toolbar buttons
             setup: function(editor) {
+              editor.shortcuts.add("ctrl+s", "Save item", props.onSave);
+
               editor.ui.registry.addIcon(
                 "return",
                 `<?xml version="1.0" encoding="iso-8859-1"?>
