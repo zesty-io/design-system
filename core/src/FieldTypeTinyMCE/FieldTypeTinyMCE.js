@@ -14,7 +14,7 @@ import "tinymce/plugins/anchor";
 import "tinymce/plugins/autolink";
 import "tinymce/plugins/autoresize";
 import "tinymce/plugins/charmap";
-import "tinymce/plugins/code";
+import "tinymce/plugins/code"; //advcode requires this core plugin
 import "tinymce/plugins/codesample";
 import "tinymce/plugins/fullscreen";
 import "tinymce/plugins/help";
@@ -30,6 +30,8 @@ import "tinymce/plugins/media";
 import "tinymce/plugins/table";
 import "tinymce/plugins/visualblocks";
 import "tinymce/plugins/wordcount";
+// import "tinymce/plugins/image";
+// import "tinymce/plugins/imagetools";
 
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
@@ -50,7 +52,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
         <Editor
           id={props.name}
           initialValue={props.value}
-          onChange={(evt, editor) => {
+          onChange={evt => {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
           onKeyDown={(evt, editor) => {
@@ -64,7 +66,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           }}
           init={{
             plugins: [
-              "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
+              "advlist advcode anchor autolink charmap codesample fullscreen help hr insertdatetime",
               "link lists media preview searchreplace spellchecker table visualblocks wordcount"
             ],
 
@@ -84,27 +86,78 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             toolbar:
               "italic bold subscript superscript underline strikethrough link backcolor | \
              alignleft aligncenter alignright alignjustify clearfloat | formatselect | \
-             codesample blockquote bullist numlist outdent indent | table zestyMediaApp media embed charmap insertdatetime | \
+             codesample blockquote bullist numlist outdent indent | \
+             table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
-            contextmenu: "link table spellchecker",
+            contextmenu: "copy paste | link",
 
             // plugin settings
             powerpaste_word_import: "prompt",
-            media_live_embeds: true,
+            // media_live_embeds: true,
+            image_advtab: true,
+
+            // file_picker_callback: (callback, value, meta) => {
+            //   console.log(callback, value, meta);
+            // },
+
+            // imagetools_proxy: "path/to/proxy",
+            // imagetools_toolbar: "imageoptions",
+            // imagetools_fetch_image: function(img) {
+            //   console.log("IMAGE", img);
+            //   return new tinymce.util.Promise(function(resolve) {
+            //     // Fetch the image and return a blob containing the image content
+            //     fetch(img.src, {
+            //       mode: "no-cors",
+            //       cache: "no-cache"
+            //     })
+            //       .then(res => res.blob())
+            //       .then(blob => resolve(blob));
+            //   });
+            // },
 
             // editor settings
-            min_height: 250,
-            max_height: 2000,
             branding: false,
             menubar: false,
-            extended_valid_elements: "script[src|async|defer|type|charset]",
+            object_resizing: true,
 
+            // Allows for embeds with script tags
+            // extended_valid_elements: "script[src|async|defer|type|charset]",
+            valid_elements: "*[*]",
+
+            // Autoresizer does not work with the resize handle.
+            // Therefore we opt for the resize handle over auto resizing
+            resize: true,
+            min_height: 800,
+            // max_height: 2000,
+
+            // theme: "silver",
+            // theme_url: "/ui/js/third_party/tinymce/themes/silver/theme.min.js",
+            skin: "oxide",
+            skin_url: "/ui/js/third_party/tinymce/skins/ui/oxide",
+
+            // If a content_css file is not provided tinymce will attempt
+            // loading the default which is not available
             content_css: "/ui/js/third_party/tinymce/content.css",
 
-            // custom toolbar buttons
+            // Customize editor buttons and actions
             setup: function(editor) {
+              /**
+               * Handle save key command
+               */
               editor.shortcuts.add("ctrl+s", "Save item", props.onSave);
 
+              /**
+               * This does not work as the resizing action provides an element with the data attributes striped
+               * so we lose context on this image ZUID, preventing modify calls to the media service
+               */
+              // Request resized image from media service
+              // editor.on("ObjectResized", function(evt) {
+              //   evt.target.src = `http://svc.zesty.localdev:3007/media-resolver-service/resolve/${evt.target.dataset.id}/getimage/?w=${evt.width}&h=${evt.height}`;
+              // });
+
+              /**
+               * Clear Float Button
+               */
               editor.ui.registry.addIcon(
                 "return",
                 `<?xml version="1.0" encoding="iso-8859-1"?>
@@ -116,7 +169,6 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                   </g>
                 </svg>`
               );
-
               editor.ui.registry.addButton("clearfloat", {
                 icon: "return",
                 tooltip:
@@ -126,6 +178,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                 }
               });
 
+              /**
+               * Zesty Media App Button
+               */
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
@@ -139,7 +194,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                         editor.insertContent(
                           images
                             .map(image => {
-                              return `<img src="${image.url}" alt="${image.title}" />`;
+                              return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
                             })
                             .join(" ")
                         );
@@ -149,6 +204,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                 }
               });
 
+              /**
+               * Custom Embed Button
+               */
               editor.ui.registry.addButton("embed", {
                 text: "embed",
                 onAction: function() {
@@ -187,8 +245,6 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                     ],
                     onSubmit: function(api) {
                       const data = api.getData();
-
-                      console.log("dialog", data);
 
                       let iframe = "";
                       switch (data.service) {
