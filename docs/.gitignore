@@ -1,0 +1,16 @@
+# File Extensions
+*.sublime-*
+*.log
+*.css.json
+.env
+
+# IDE
+.DS_Store
+.vscode
+
+# Distributions & Deps
+node_modules/
+__snapshots__
+
+core/.size-snapshot.json
+core/stats.html

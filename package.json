@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/zesty-io/design-system/issues"
   },
-  "homepage": "https://github.com/zesty-io/design-system#readme",
-  "dependencies": {
-    "less": "^3.10.3"
-  }
+  "homepage": "https://github.com/zesty-io/design-system#readme"
 }
