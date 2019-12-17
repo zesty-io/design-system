@@ -89,7 +89,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              codesample blockquote bullist numlist outdent indent | \
              table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
-            contextmenu: "copy paste | link",
+            contextmenu: "bold italic link | copy paste",
 
             // plugin settings
             powerpaste_word_import: "prompt",
