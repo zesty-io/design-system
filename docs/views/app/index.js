@@ -12,7 +12,7 @@ import styles from './app.less'
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={'/design-system'}>
         <Route
           path="/"
           render={props => {
