@@ -53,6 +53,15 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           onChange={(evt, editor) => {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
+          onKeyDown={(evt, editor) => {
+            // TinyMCE onChange is inconsistent as it is only invoked when an "undoable" event occurs.
+            // so we are use the onKeyDown as well. We check to make sure the content has changed, this
+            // way we avoid updating on events like keyboard navigation
+            const nextContent = editor.getContent();
+            if (nextContent !== props.value) {
+              props.onChange(props.name, editor.getContent(), props.datatype);
+            }
+          }}
           init={{
             plugins: [
               "advlist advcode anchor autolink autoresize charmap codesample fullscreen help hr insertdatetime",
@@ -74,7 +83,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             },
             toolbar:
               "italic bold subscript superscript underline strikethrough link backcolor | \
-             alignleft aligncenter alignright alignjustify | formatselect | \
+             alignleft aligncenter alignright alignjustify clearfloat | formatselect | \
              codesample blockquote bullist numlist outdent indent | table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "link table spellchecker",
@@ -90,8 +99,33 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             menubar: false,
             extended_valid_elements: "script[src|async|defer|type|charset]",
 
+            content_css: "/ui/js/third_party/tinymce/content.css",
+
             // custom toolbar buttons
             setup: function(editor) {
+              editor.shortcuts.add("ctrl+s", "Save item", props.onSave);
+
+              editor.ui.registry.addIcon(
+                "return",
+                `<?xml version="1.0" encoding="iso-8859-1"?>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="22px"
+                   viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+                  <g>
+                    <path d="M12,2.147H7v2h5c1.103,0,2,0.897,2,2s-0.897,2-2,2H3.414l2.293-2.293L4.293,4.44l-4,4c-0.391,0.391-0.391,1.023,0,1.414
+                      l4,4l1.414-1.414l-2.293-2.293H12c2.206,0,4-1.794,4-4S14.206,2.147,12,2.147z"/>
+                  </g>
+                </svg>`
+              );
+
+              editor.ui.registry.addButton("clearfloat", {
+                icon: "return",
+                tooltip:
+                  "Insert new element to clear previously floated elements",
+                onAction: function(_) {
+                  editor.insertContent("<p style='clear:both;'>&nbsp;</p>");
+                }
+              });
+
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
