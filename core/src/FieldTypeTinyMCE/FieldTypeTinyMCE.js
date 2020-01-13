@@ -72,17 +72,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
 
             // NOTE: premium plugins are being loaded from a self hosted location
             // specific to our application. Making this component not usable outside of our context.
-            external_plugins: {
-              advcode: "/ui/js/third_party/tinymce/plugins/advcode/plugin.js",
-              powerpaste:
-                "/ui/js/third_party/tinymce/plugins/powerpaste/plugin.js",
-              formatpainter:
-                "/ui/js/third_party/tinymce/plugins/formatpainter/plugin.js",
-              pageembed:
-                "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js"
-              // mediaembed:
-              //   "/ui/js/third_party/tinymce/plugins/mediaembed/plugin.js"
-            },
+            external_plugins: props.externalPlugins,
             toolbar:
               "italic bold subscript superscript underline strikethrough link backcolor | \
              alignleft aligncenter alignright alignjustify clearfloat | formatselect | \
@@ -132,12 +122,12 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
 
             // theme: "silver",
             // theme_url: "/ui/js/third_party/tinymce/themes/silver/theme.min.js",
-            skin: "oxide",
-            skin_url: "/ui/js/third_party/tinymce/skins/ui/oxide",
+            skin: props.skin,
+            skin_url: props.skinURL,
 
             // If a content_css file is not provided tinymce will attempt
             // loading the default which is not available
-            content_css: "/ui/js/third_party/tinymce/content.css",
+            content_css: props.contentCSS,
 
             // Customize editor buttons and actions
             setup: function(editor) {
