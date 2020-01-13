@@ -113,7 +113,7 @@ function Image(props) {
       ) : (
         <img
           className={styles.image}
-          src={`${CONFIG.service.media_resolver}/resolve/${props.imageZUID}/getimage/?w=${props.width}&h=${props.height}&type=fit`}
+          src={`${CONFIG.SERVICE_MEDIA_RESOLVER}/resolve/${props.imageZUID}/getimage/?w=${props.width}&h=${props.height}&type=fit`}
         />
       )}
 
