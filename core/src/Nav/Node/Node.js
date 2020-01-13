@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import cx from "classnames";
 
 import styles from "./Node.less";
@@ -11,10 +13,10 @@ export function Node(props) {
         props.selected.includes(props.path) ? styles.selected : null
       )}
     >
-      <a href={props.path}>
+      <Link to={props.path}>
         <i className={props.icon} />
         <span>{props.label}</span>
-      </a>
+      </Link>
 
       <i
         className={cx("fas fa-eye-slash", styles.hide)}
