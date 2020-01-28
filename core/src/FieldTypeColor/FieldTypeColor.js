@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaintBrush } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { Input } from "../Input";
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
@@ -33,7 +37,9 @@ export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
             setColor(evt.target.value);
           }}
         />
-        <i className={cx(styles.Icon, "fa fa-paint-brush")} />
+        <Button className={styles.Icon}>
+          <FontAwesomeIcon icon={faPaintBrush} />
+        </Button>
       </div>
 
       <FieldDescription description={props.description} />

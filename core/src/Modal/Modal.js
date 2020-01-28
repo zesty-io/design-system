@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 import { Button } from "../Button";
 
 import styles from "./Modal.less";
@@ -52,7 +55,7 @@ export const Modal = React.memo(function Modal(props) {
         className={cx(styles.Modal, styleLocal, props.className)}
       >
         <Button className={styles.Close} onClick={onClose}>
-          <i className="fa fa-times" aria-hidden="true" />
+          <FontAwesomeIcon icon={faTimes} />
         </Button>
         {props.children}
       </article>

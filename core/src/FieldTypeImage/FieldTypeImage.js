@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
 import cx from "classnames";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import { Card, CardContent } from "../Card";
 import { Button } from "../Button";
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
-import styles from "./FieldTypeImage.less";
 
+import styles from "./FieldTypeImage.less";
 export class FieldTypeImage extends React.PureComponent {
   static defaultProps = {
     images: [], // Array of image ZUIDs
@@ -121,7 +125,7 @@ function Image(props) {
         className={styles.remove}
         onClick={() => props.removeImage(props.imageZUID)}
       >
-        <i className={cx(styles.icon, "fas fa-times")} />
+        <FontAwesomeIcon icon={faTimes} className={styles.icon} />
       </Button>
     </figure>
   );
@@ -142,7 +146,7 @@ function ImageSkeleton(props) {
           });
         }}
       >
-        <i className={cx(styles.icon, "fas fa-plus")} />
+        <FontAwesomeIcon icon={faPlus} className={styles.icon} />
       </Button>
     </figure>
   );

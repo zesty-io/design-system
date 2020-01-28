@@ -1,10 +1,14 @@
 import React from "react";
 import cx from "classnames";
 
-import styles from "./DateTimeFieldType.less";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
 
+import styles from "./DateTimeFieldType.less";
 export class FieldTypeDateTime extends React.PureComponent {
   onChange = evt => {
     if (this.props.onChange) {
@@ -33,7 +37,9 @@ export class FieldTypeDateTime extends React.PureComponent {
             type={this.props.type || "datetime-local"}
             onChange={this.onChange}
           />
-          <i className={cx(styles.Icon, "fa fa-calendar")} />
+          <Button className={styles.Icon}>
+            <FontAwesomeIcon icon={faCalendar} />
+          </Button>
         </span>
 
         <FieldDescription description={this.props.description} />

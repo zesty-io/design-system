@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import { Input } from "../Input";
 import { InputIcon } from "../InputIcon";
 
@@ -59,7 +62,7 @@ export class Search extends Component {
           onChange={this.onChange}
         />
         <InputIcon onClick={this.onSubmit}>
-          <i className="fa fa-search" />
+          <FontAwesomeIcon icon={faSearch} />
         </InputIcon>
       </div>
     );

@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEyeSlash,
+  faCaretLeft,
+  faCaretDown
+} from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./Node.less";
 export function Node(props) {
   return (
@@ -17,14 +24,15 @@ export function Node(props) {
         <span>{props.label}</span>
       </Link>
 
-      <i
-        className={cx("fas fa-eye-slash", styles.hide)}
+      <FontAwesomeIcon
+        icon={faEyeSlash}
+        className={styles.hide}
         onClick={() => props.handleHide(props.path)}
       />
 
       {Array.isArray(props.children) && Boolean(props.children.length) && (
-        <i
-          className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
+        <FontAwesomeIcon
+          icon={props.closed ? faCaretLeft : faCaretDown}
           onClick={() => props.handleOpen(props.path)}
         />
       )}

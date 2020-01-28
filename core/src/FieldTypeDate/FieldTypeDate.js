@@ -3,6 +3,10 @@ import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
 
@@ -54,7 +58,9 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
             onChange={onChange}
           />
         )}
-        <i className={cx(styles.Icon, "fa fa-calendar")} />
+        <Button className={styles.Icon}>
+          <FontAwesomeIcon icon={faCalendar} />
+        </Button>
       </span>
 
       <FieldDescription description={props.description} />

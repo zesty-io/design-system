@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { Search } from "../Search";
 import { Loader } from "../Loader";
 
@@ -200,8 +204,11 @@ export class Select extends Component {
               {selection && selection.props.text}
             </span>
           )}
-
-          <i className={cx("fa fa-caret-down", styles.chevron)} />
+          <Button className={styles.chevron}>
+            <FontAwesomeIcon
+              icon={this.state.dropdownOpen ? faCaretLeft : faCaretDown}
+            />
+          </Button>
         </span>
         <ul className={cx("selections", styles.selections)}>
           {childrenArr.length > this.props.searchLength && (

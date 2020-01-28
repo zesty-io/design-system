@@ -1,5 +1,7 @@
 import React from "react";
-import cx from "classnames";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Tag.less";
 export function Tag(props) {
@@ -10,8 +12,9 @@ export function Tag(props) {
       ) : (
         <span>{props.children}</span>
       )}
-      <i
-        className={cx("fa fa-times-circle", styles.Remove)}
+      <FontAwesomeIcon
+        icon={faTimesCircle}
+        className={styles.Remove}
         onClick={evt => {
           evt.stopPropagation();
           evt.preventDefault();

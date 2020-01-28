@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { FieldLabel } from "../FieldLabel";
@@ -50,7 +53,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
           className={cx(styles.Increment, styles.Left)}
           onClick={evt => handleClick(evt, true)}
         >
-          <i className="fa fa-plus" />
+          <FontAwesomeIcon icon={faPlus} />
         </Button>
         <Input
           className={styles.SortNumber}
@@ -63,7 +66,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
           className={cx(styles.Increment, styles.Right)}
           onClick={evt => handleClick(evt)}
         >
-          <i className="fa fa-minus" />
+          <FontAwesomeIcon icon={faMinus} />
         </Button>
       </section>
       <FieldDescription description={props.description} />
