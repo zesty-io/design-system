@@ -1,7 +1,7 @@
 {
   "name": "@zesty-io/core",
   "description": "This is a collection of React core UI components for the Zesty.io platform.",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "author": "Zesty.io <developers@zesty.io>",
   "license": "UNLICENSED",
   "main": "dist/",
