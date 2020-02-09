@@ -43,7 +43,7 @@ function getDirectory(pathItems, path, index) {
   };
   return directory;
 }
-function buildTree(nodes) {
+export function buildCodeTree(nodes) {
   let tree = [];
   let files = [];
   let dirs = [];
@@ -85,4 +85,3 @@ function buildTree(nodes) {
     .filter(dir => !dirsToRemove.includes(dir.label));
   return results;
 }
-export default buildTree;
