@@ -2,11 +2,11 @@ import React from "react";
 import cx from "classnames";
 
 import { Parent } from "../Parent";
-import buildTree from "./buildTree";
+import buildNavTree from "./buildNavTree";
 
 import styles from "./Nav.less";
 export function Nav(props) {
-  var tree = buildTree(props.tree);
+  var tree = buildNavTree(props.tree);
   return (
     <nav
       id={props.id || "Navigation"}
