@@ -39,6 +39,7 @@ function getDirectory(pathItems, path, index) {
     label: name,
     path: path,
     parent: parent,
+    closed: false,
     children: []
   };
   return directory;
@@ -54,6 +55,11 @@ export function buildCodeTree(nodes) {
     pathItems.map((pathItem, index) => {
       if (pathItems.length != index + 1) {
         let directory = getDirectory(pathItems, pathItem, index);
+        if (pathItem === item.closed) {
+          directory.closed = true;
+        } else {
+          directory.closed = false;
+        }
         const duplicate = dirs.find(dir => dir.label === directory.label);
         if (!duplicate) {
           dirs.push(directory);

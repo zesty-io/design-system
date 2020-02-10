@@ -3,6 +3,15 @@ import cx from "classnames";
 
 import styles from "./Node.less";
 export function Node(props) {
+  handleNav = e => {
+    e.preventDefault();
+    console.log("props.path", props.path);
+    if (props.path.includes("/")) {
+      return (window.location.href = `${props.path}`);
+    } else {
+      props.handleOpen(props.path);
+    }
+  };
   return (
     <li
       className={cx(
@@ -11,7 +20,7 @@ export function Node(props) {
         props.selected.includes(props.path) ? styles.selected : null
       )}
     >
-      <a href={props.path}>
+      <a onClick={this.handleNav}>
         <i className={props.icon} />
         <span>{props.label}</span>
       </a>
