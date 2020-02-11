@@ -6,7 +6,7 @@ import buildNavTree from "./buildNavTree";
 
 import styles from "./Nav.less";
 export function Nav(props) {
-  var tree = buildNavTree(props.tree);
+  var tree = buildNavTree(props.tree, actions);
   return (
     <nav
       id={props.id || "Navigation"}

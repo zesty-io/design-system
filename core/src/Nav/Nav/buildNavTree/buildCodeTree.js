@@ -1,4 +1,4 @@
-function getFile(pathItems, item) {
+function getFile(pathItems, item, actions) {
   let fileName = pathItems[pathItems.length - 1];
   let extensionSplit = fileName.split(".");
   let extension =
@@ -18,7 +18,10 @@ function getFile(pathItems, item) {
     behavior: item.behavior,
     extension: extension,
     parent: parent,
-    path: item.path
+    path: item.path,
+    actions: actions,
+    isLive: item.isLive,
+    status: item.status
   };
   return file;
 }
@@ -44,7 +47,7 @@ function getDirectory(pathItems, path, index) {
   };
   return directory;
 }
-export function buildCodeTree(nodes) {
+export function buildCodeTree(nodes, actions) {
   let tree = [];
   let files = [];
   let dirs = [];
@@ -65,7 +68,7 @@ export function buildCodeTree(nodes) {
           dirs.push(directory);
         }
       } else {
-        let file = getFile(pathItems, item);
+        let file = getFile(pathItems, item, actions);
         files.push(file);
       }
     });
