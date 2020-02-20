@@ -31,7 +31,15 @@ export function Node(props) {
         <span>{props.label}</span>
       </a>
 
-      {props.actions && props.actions(props)}
+      {props.actions &&
+        props.actions.map(action => {
+          return (
+            <i
+              className={cx(styles.Action, action.icon)}
+              onClick={() => action.onClick.apply(props)}
+            />
+          );
+        })}
     </li>
   );
 }
