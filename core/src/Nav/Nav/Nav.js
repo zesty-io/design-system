@@ -2,8 +2,6 @@ import React from "react";
 import cx from "classnames";
 
 import { Parent } from "../Parent";
-import buildNavTree from "./buildNavTree";
-
 import styles from "./Nav.less";
 export function Nav(props) {
   return (
