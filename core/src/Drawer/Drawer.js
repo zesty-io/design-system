@@ -8,16 +8,24 @@ export class Drawer extends Component {
   render() {
     const { direction, children } = this.props;
     const { collapsed } = this.state;
+    const isCollapsed =
+      typeof this.props.collapsed !== "undefined"
+        ? this.props.collapsed
+        : collapsed;
     return (
       <div
         className={`${styles.CollapseRight} ${
-          collapsed ? styles.collapsed : ""
+          isCollapsed ? styles.collapsed : ""
         }`}
       >
         {Children.map(children, child =>
           cloneElement(child, {
-            collapsed,
-            callback: () => this.setState({ collapsed: !collapsed })
+            collapsed: isCollapsed,
+            callback: () => {
+              if (this.props.setCollapsed)
+                this.props.setCollapsed(!this.props.collapsed);
+              this.setState({ collapsed: !collapsed });
+            }
           })
         )}
       </div>
