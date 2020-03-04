@@ -3,6 +3,14 @@ import cx from "classnames";
 
 import styles from "./Node.less";
 export function Node(props) {
+  const handleNav = e => {
+    e.preventDefault();
+    if (props.path.includes("/")) {
+      window.location.href = props.path;
+    } else {
+      props.handleOpen(props.path);
+    }
+  };
   return (
     <li
       className={cx(
@@ -11,22 +19,30 @@ export function Node(props) {
         props.selected.includes(props.path) ? styles.selected : null
       )}
     >
-      <a href={props.path}>
+      {Array.isArray(props.children) && Boolean(props.children.length) && (
+        <i
+          className={props.closed ? "fa fa-caret-right" : "fa fa-caret-down"}
+          onClick={() => props.handleOpen(props.path)}
+        />
+      )}
+
+      <a href={props.path} onClick={handleNav}>
         <i className={props.icon} />
         <span>{props.label}</span>
       </a>
 
-      <i
-        className={cx("fas fa-eye-slash", styles.hide)}
-        onClick={() => props.handleHide(props.path)}
-      />
-
-      {Array.isArray(props.children) && Boolean(props.children.length) && (
-        <i
-          className={props.closed ? "fa fa-caret-left" : "fa fa-caret-down"}
-          onClick={() => props.handleOpen(props.path)}
-        />
-      )}
+      {props.actions &&
+        props.actions.map(action => {
+          const show = action.handleShow(props);
+          return (
+            show && (
+              <i
+                className={cx(styles.Action, action.icon, action.styles)}
+                onClick={() => action.onClick(props)}
+              />
+            )
+          );
+        })}
     </li>
   );
 }
