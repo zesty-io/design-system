@@ -11,6 +11,14 @@ import {
 
 import styles from "./Node.less";
 export function Node(props) {
+  const handleNav = e => {
+    e.preventDefault();
+    if (props.path.includes("/")) {
+      window.location.href = props.path;
+    } else {
+      props.handleOpen(props.path);
+    }
+  };
   return (
     <li
       className={cx(
@@ -20,7 +28,7 @@ export function Node(props) {
       )}
     >
       <Link to={props.path}>
-        <i className={props.icon} />
+        <FontAwesomeIcon icon={props.icon} />
         <span>{props.label}</span>
       </Link>
 
@@ -36,6 +44,19 @@ export function Node(props) {
           onClick={() => props.handleOpen(props.path)}
         />
       )}
+
+      {props.actions &&
+        props.actions.map(action => {
+          const show = action.handleShow(props);
+          return (
+            show && (
+              <i
+                className={cx(styles.Action, action.icon, action.styles)}
+                onClick={() => action.onClick(props)}
+              />
+            )
+          );
+        })}
     </li>
   );
 }

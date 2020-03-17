@@ -2,7 +2,6 @@ import React from "react";
 import cx from "classnames";
 
 import { Parent } from "../Parent";
-
 import styles from "./Nav.less";
 export function Nav(props) {
   return (
