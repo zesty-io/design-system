@@ -21,7 +21,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
     let value = increment ? Number(sort) + 1 : Number(sort) - 1;
 
     if (props.onChange) {
-      props.onChange(props.name, value, props.datatype);
+      props.onChange(value, props.name, props.datatype);
     }
 
     setSort(value);
@@ -31,7 +31,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
     evt.stopPropagation();
 
     if (props.onChange) {
-      props.onChange(props.name, evt.target.value, props.datatype);
+      props.onChange(evt.target.value, props.name, props.datatype);
     }
 
     setSort(evt.target.value);

@@ -46,9 +46,9 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
 
     if (props.onChange) {
       props.onChange(
-        props.name,
         // send a csv string to update store
         filteredItems.join(","),
+        props.name,
         props.datatype
       );
     }
@@ -67,9 +67,9 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
 
       if (props.onChange) {
         props.onChange(
-          props.name,
           // send a csv string to update store
           items.join(","),
+          props.name,
           props.datatype
         );
       }

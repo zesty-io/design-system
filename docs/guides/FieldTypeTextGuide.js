@@ -46,7 +46,7 @@ export class FieldTypeTextGuide extends Component {
             name="example1"
             placeholder="placeholder text"
             value={this.state.example1}
-            onChange={(name, value) => this.setState({ [name]: value })}
+            onChange={(value, name) => this.setState({ [name]: value })}
           />
         </div>
         <div style={{ padding: '10px 0px' }}>
@@ -56,7 +56,7 @@ export class FieldTypeTextGuide extends Component {
             maxLength="400"
             required={true}
             value={this.state.example2}
-            onChange={(name, value) => this.setState({ [name]: value })}
+            onChange={(value, name) => this.setState({ [name]: value })}
             description="This is My Description"
             placeholder="My Placeholder Text"
           />

@@ -13,8 +13,8 @@ export class FieldTypeDateTime extends React.PureComponent {
   onChange = evt => {
     if (this.props.onChange) {
       this.props.onChange(
-        this.props.name,
         evt.target.value,
+        this.props.name,
         this.props.datatype
       );
     }

@@ -63,7 +63,7 @@ export class LinkModal extends React.PureComponent {
             placeholder="https://"
             required={true}
             autoFocus={true}
-            onChange={(name, href) => this.setState({ href })}
+            onChange={href => this.setState({ href })}
           />
           <label>
             Open link in a new browser window?{" "}

@@ -45,7 +45,7 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
         autoFocus={props.autofocus}
         onChange={evt => {
           if (props.onChange) {
-            props.onChange(evt.target.name, evt.target.value, props.datatype);
+            props.onChange(evt.target.value, evt.target.name, props.datatype);
           }
         }}
         disabled={props.disabled}

@@ -13,7 +13,7 @@ export const FieldTypeInternalLink = React.memo(function FieldTypeInternalLink(
 
   const [loading, setLoading] = useState(false);
 
-  const onSearch = debounce((name, term) => {
+  const onSearch = debounce(term => {
     if (term && props.onSearch) {
       setLoading(true);
       props.onSearch(term).then(() => {

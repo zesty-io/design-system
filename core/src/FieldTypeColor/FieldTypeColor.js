@@ -32,7 +32,7 @@ export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
           value={color}
           onChange={evt => {
             if (props.onChange) {
-              props.onChange(props.name, evt.target.value, props.datatype);
+              props.onChange(evt.target.value, props.name, props.datatype);
             }
             setColor(evt.target.value);
           }}

@@ -16,7 +16,7 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
 
   const onChange = date => {
     if (props.onChange) {
-      props.onChange(props.name, date[0], props.datatype);
+      props.onChange(date[0], props.name, props.datatype);
     }
   };
 

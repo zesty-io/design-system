@@ -60,7 +60,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
           }
         }
 
-        props.onChange(props.name, storeContent, props.datatype);
+        props.onChange(storeContent, props.name, props.datatype);
       }
     }
   };

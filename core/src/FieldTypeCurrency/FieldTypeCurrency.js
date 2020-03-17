@@ -75,7 +75,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
               // TODO broadcast error
             }
             if (props.onChange) {
-              props.onChange(props.name, value, props.datatype);
+              props.onChange(value, props.name, props.datatype);
             }
 
             setMonetaryValue(value);

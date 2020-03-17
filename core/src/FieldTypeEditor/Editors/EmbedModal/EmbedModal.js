@@ -82,7 +82,7 @@ export class EmbedModal extends React.Component {
             placeholder="e.g. puXYPrrsrA"
             required={true}
             autoFocus={true}
-            onChange={(name, id) => this.setState({ id })}
+            onChange={id => this.setState({ id })}
           />
         </ModalContent>
         <ModalFooter>

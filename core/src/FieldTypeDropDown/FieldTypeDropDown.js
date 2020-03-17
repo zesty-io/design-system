@@ -22,9 +22,9 @@ export const FieldTypeDropDown = React.memo(function FieldTypeDropDown(props) {
         name={props.name}
         loading={props.loading}
         value={props.value || "0"}
-        onSelect={(name, value) => {
+        onSelect={(value, name) => {
           if (props.onChange) {
-            props.onChange(name, value, props.datatype);
+            props.onChange(value, name, props.datatype);
           }
         }}
       >

@@ -53,7 +53,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           id={props.name}
           initialValue={props.value}
           onChange={evt => {
-            props.onChange(props.name, evt.target.getContent(), props.datatype);
+            props.onChange(evt.target.getContent(), props.name, props.datatype);
           }}
           onKeyDown={(evt, editor) => {
             // TinyMCE onChange is inconsistent as it is only invoked when an "undoable" event occurs.
@@ -61,7 +61,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             // way we avoid updating on events like keyboard navigation
             const nextContent = editor.getContent();
             if (nextContent !== props.value) {
-              props.onChange(props.name, editor.getContent(), props.datatype);
+              props.onChange(editor.getContent(), props.name, props.datatype);
             }
           }}
           init={{

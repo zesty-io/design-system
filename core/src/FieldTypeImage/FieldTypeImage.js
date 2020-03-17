@@ -22,8 +22,8 @@ export class FieldTypeImage extends React.PureComponent {
 
     if (this.props.onChange) {
       this.props.onChange(
-        this.props.name,
         [...this.props.images, ...imageZUIDs].join(","),
+        this.props.name,
         this.props.datatype
       );
     } else {
@@ -34,8 +34,8 @@ export class FieldTypeImage extends React.PureComponent {
   removeImage = ZUID => {
     if (this.props.onChange) {
       this.props.onChange(
-        this.props.name,
         this.props.images.filter(image => image !== ZUID).join(","),
+        this.props.name,
         this.props.datatype
       );
     } else {

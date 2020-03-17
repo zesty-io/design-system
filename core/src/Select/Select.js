@@ -49,9 +49,9 @@ export class Select extends Component {
     window.removeEventListener("keyup", this.onEsc);
   }
 
-  handleFilterKeyUp = (name, term, datatype) => {
+  handleFilterKeyUp = (term, name, datatype) => {
     if (this.props.onFilter) {
-      this.props.onFilter(name, term, datatype);
+      this.props.onFilter(term, name, datatype);
     }
 
     this.setState({

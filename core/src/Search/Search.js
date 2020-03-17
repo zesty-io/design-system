@@ -27,8 +27,8 @@ export class Search extends Component {
       () => {
         if (this.props.onChange) {
           this.props.onChange(
-            this.props.name,
             this.state.term,
+            this.props.name,
             this.props.datatype
           );
         }
