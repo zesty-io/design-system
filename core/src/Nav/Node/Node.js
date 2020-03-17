@@ -11,14 +11,6 @@ import {
 
 import styles from "./Node.less";
 export function Node(props) {
-  const handleNav = e => {
-    e.preventDefault();
-    if (props.path.includes("/")) {
-      window.location.href = props.path;
-    } else {
-      props.handleOpen(props.path);
-    }
-  };
   return (
     <li
       className={cx(
