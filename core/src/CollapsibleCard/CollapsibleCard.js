@@ -40,12 +40,7 @@ export class CollapsibleCard extends React.Component {
           </div>
         </CardHeader>
         {/* render or dont render, later I want to do animation with css on close */}
-        {!this.state.isCollapsed && (
-          <React.Fragment>
-            <CardContent>{this.props.children}</CardContent>
-            <CardFooter>{this.props.footer}</CardFooter>
-          </React.Fragment>
-        )}
+        {!this.state.isCollapsed && this.props.children}
       </Card>
     );
   }
