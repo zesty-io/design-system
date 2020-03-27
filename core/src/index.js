@@ -3,6 +3,7 @@ export { Button } from "./Button";
 export { AppLink } from "./AppLink";
 export { ButtonGroup } from "./ButtonGroup";
 export { Card, CardHeader, CardContent, CardFooter } from "./Card";
+export { Drawer, DrawerContent, DrawerHandle } from "./Drawer";
 export { Divider } from "./Divider";
 export { Infotip } from "./Infotip";
 export { Input } from "./Input";

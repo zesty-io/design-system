@@ -1,28 +1,54 @@
-.CollapseRight {
+@import "../colors.less";
+
+.Drawer {
+  background-color: @zesty-white;
   position: fixed;
-  z-index: 50;
-  height: 100vh;
-  width: 25vw;
   transition: all ease-in-out 0.5s;
+  z-index: 10;
+}
+
+.DrawerContent {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.handle {
+  position: absolute;
+  top: 0;
   right: 0;
-  border-left: 1px solid #5b667d;
-  background-color: white;
-  .close {
-    position: relative;
-    top: 0;
-    left: -1.2rem;
-    font-size: 1.2rem;
-  }
-  .container {
-    display: flex;
-  }
 }
-.collapsed {
+
+.top {
+  height: 25vh;
+  top: -25vh;
+  width: 100vw;
+}
+.topOpen {
+  top: 0;
+}
+.right {
+  height: 100vh;
+  min-width: 500px;
   right: -25vw;
+  width: 25vw;
 }
-.CollapseLeft {
+.rightOpen {
+  right: 0;
 }
-.CollapseTop {
+.bottom {
+  height: 25vh;
+  bottom: -25vh;
+  width: 100vw;
 }
-.CollapseBottom {
+.bottomOpen {
+  bottom: 0;
+}
+.left {
+  height: 100vh;
+  left: -25vw;
+  min-width: 500px;
+  width: 25vw;
+}
+.leftOpen {
+  left: 0;
 }
