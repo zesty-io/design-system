@@ -3,7 +3,6 @@ export { Button } from "./Button";
 export { AppLink } from "./AppLink";
 export { ButtonGroup } from "./ButtonGroup";
 export { Card, CardHeader, CardContent, CardFooter } from "./Card";
-export { Drawer, DrawerContent, DrawerHandle } from "./Drawer";
 export { Divider } from "./Divider";
 export { Infotip } from "./Infotip";
 export { Input } from "./Input";
@@ -41,6 +40,6 @@ export { FieldTypeTinyMCE } from "./FieldTypeTinyMCE";
 
 export { CollapsibleCard } from "./CollapsibleCard";
 export { ConfirmDialog } from "./ConfirmDialog";
-export { Drawer } from "./Drawer";
+export { Drawer, DrawerContent, DrawerHandle } from "./Drawer";
 export { ToggleButton } from "./ToggleButton";
 export { Modal } from "./Modal";
