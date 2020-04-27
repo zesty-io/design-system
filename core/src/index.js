@@ -40,6 +40,6 @@ export { FieldTypeTinyMCE } from "./FieldTypeTinyMCE";
 
 export { CollapsibleCard } from "./CollapsibleCard";
 export { ConfirmDialog } from "./ConfirmDialog";
-export { Drawer } from "./Drawer";
+export { Drawer, DrawerContent, DrawerHandle } from "./Drawer";
 export { ToggleButton } from "./ToggleButton";
 export { Modal } from "./Modal";

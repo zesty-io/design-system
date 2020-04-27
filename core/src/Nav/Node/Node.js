@@ -38,11 +38,12 @@ export function Node(props) {
       )}
 
       {props.actions &&
-        props.actions.map(action => {
+        props.actions.map((action, i) => {
           const show = action.handleShow(props);
           return (
             show && (
               <i
+                key={i}
                 className={cx(styles.Action, action.icon, action.styles)}
                 onClick={() => action.onClick(props)}
               />
