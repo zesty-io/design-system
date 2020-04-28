@@ -4,52 +4,25 @@
   background-color: @zesty-white;
   position: fixed;
   transition: all ease-in-out 0.5s;
-  z-index: 10;
+  z-index: 100;
 }
 
-.DrawerContent {
-  overflow-y: scroll;
-  height: 100%;
-  width: 100%;
-}
-
-.handle {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.top {
-  height: 25vh;
-  top: -25vh;
-  width: 100vw;
-}
-.topOpen {
-  top: 0;
-}
-.right {
-  height: 100vh;
-  min-width: 500px;
-  right: -25vw;
-  width: 25vw;
-}
-.rightOpen {
-  right: 0;
-}
+.top,
 .bottom {
-  height: 25vh;
-  bottom: -25vh;
-  width: 100vw;
+  .DrawerHandle,
+  .DrawerContent {
+    display: flex;
+  }
 }
-.bottomOpen {
+.bottom.open {
   bottom: 0;
 }
-.left {
-  height: 100vh;
-  left: -25vw;
-  min-width: 500px;
-  width: 25vw;
+.top.open {
+  top: 0;
 }
-.leftOpen {
+.left.open {
   left: 0;
+}
+.right.open {
+  right: 0;
 }
