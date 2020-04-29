@@ -4,7 +4,7 @@ import cx from "classnames";
 import { Button } from "../Button";
 
 import styles from "./Drawer.less";
-export function Drawer(props) {
+export const Drawer = React.memo(function Drawer(props) {
   const [open, setOpen] = useState(Boolean(props.open));
   const drawerRef = useRef(null);
 
@@ -38,7 +38,7 @@ export function Drawer(props) {
 
   // When closed we dynamically calculate the position with an offset
   // Allowing for the handle to be visible and re-open the drawer
-  if (!open) {
+  if (!open && drawerRef.current) {
     const closedWidth = `calc(-${css.width} + ${offset})`;
     const closedAutoWidth = `calc(-${drawerRef.current.offsetWidth}px + ${offset})`;
 
@@ -96,7 +96,7 @@ export function Drawer(props) {
       )}
     </div>
   );
-}
+});
 
 export const DrawerHandle = React.memo(function DrawerHandle(props) {
   return (
