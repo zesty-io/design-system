@@ -1,95 +1,72 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import cx from "classnames";
 
 import { Button } from "../Button";
 
 import styles from "./Drawer.less";
 export const Drawer = React.memo(function Drawer(props) {
+  const ref = useRef(null);
   const [open, setOpen] = useState(Boolean(props.open));
-  const drawerRef = useRef(null);
+
+  /**
+   * We need to determine and set the drawer styling imperatively since
+   * child components can have dynamic dimensions based on content
+   *
+   * NOTE: because we use height/width auto to allow for dynamic dimensions
+   * we can not animate the drawer "opening/closing" when changing the height/width value.
+   */
+  if (ref.current) {
+    ref.current.style.overflowY = "scroll";
+
+    if (props.position === "top") {
+      ref.current.style["top"] = 0;
+    }
+    if (props.position === "right") {
+      ref.current.style["right"] = 0;
+    }
+    if (props.position === "bottom") {
+      ref.current.style["bottom"] = 0;
+    }
+    if (props.position === "left") {
+      ref.current.style["left"] = 0;
+    }
+
+    if (props.position === "left" || props.position === "right") {
+      ref.current.style.height = props.height || "100%";
+      ref.current.style.width = props.width || "auto";
+    }
+    if (props.position === "top" || props.position === "bottom") {
+      ref.current.style.height = props.height || "auto";
+      ref.current.style.width = props.width || "100%";
+    }
+
+    if (!open) {
+      ref.current.style.overflowY = "hidden";
+
+      // When closed we just set the dimension to the offset
+      if (props.position === "left" || props.position === "right") {
+        ref.current.style.width = props.offset || "30px";
+      }
+      if (props.position === "top" || props.position === "bottom") {
+        ref.current.style.height = props.offset || "30px";
+      }
+    }
+  }
 
   // Listen to consumer updates
   useEffect(() => {
     setOpen(props.open);
   }, [props.open]);
 
-  let offset = props.offset || "30px";
-  let css = {};
-
-  // Determine initial dimensions
-  switch (props.position) {
-    case "left":
-    case "right":
-      css["height"] = props.height || "100%";
-      css["width"] = props.width || "auto";
-      break;
-
-    case "top":
-    case "bottom":
-      css["height"] = props.height || "auto";
-      css["width"] = props.width || "100%";
-      break;
-
-    default:
-      throw new Error(
-        `Unsupported Drawer component position: ${props.position}`
-      );
-  }
-
-  // When closed we dynamically calculate the position with an offset
-  // Allowing for the handle to be visible and re-open the drawer
-  if (!open && drawerRef.current) {
-    const closedWidth = `calc(-${css.width} + ${offset})`;
-    const closedAutoWidth = `calc(-${drawerRef.current.offsetWidth}px + ${offset})`;
-
-    const closedHeight = `calc(-${css.height} + ${offset})`;
-    const closedAutoHeight = `calc(-${drawerRef.current.offsetHeight}px + ${offset})`;
-
-    switch (props.position) {
-      case "left":
-        if (css.width === "auto") {
-          css["left"] = closedAutoWidth;
-        } else {
-          css["left"] = closedWidth;
-        }
-        break;
-
-      case "right":
-        if (css.width === "auto") {
-          css["right"] = closedAutoWidth;
-        } else {
-          css["right"] = closedWidth;
-        }
-        break;
-
-      case "top":
-        if (css.height === "auto") {
-          css["top"] = closedAutoHeight;
-        } else {
-          css["top"] = closedHeight;
-        }
-        break;
-
-      case "bottom":
-        if (css.height === "auto") {
-          css["bottom"] = closedAutoHeight;
-        } else {
-          css["bottom"] = closedHeight;
-        }
-        break;
-    }
-  }
-
   return (
     <div
-      ref={drawerRef}
+      ref={ref}
       className={cx(
         styles.Drawer,
         styles[props.position],
         open ? styles.open : null,
         props.className
       )}
-      style={css}
     >
       {React.Children.map(props.children, (child) =>
         React.cloneElement(child, { open, setOpen })
