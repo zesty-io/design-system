@@ -16,7 +16,8 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   const [loaded, setLoaded] = useState(false); // Used to ensure we only load data once
   const [loading, setLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState(
-    props.value ? props.value.split(",") : []
+    // split string of zuids and trim any whitespace
+    props.value ? props.value.split(",").map((v) => v.trim) : []
   );
 
   const loadItems = () => {
@@ -40,7 +41,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
    */
   const onRemove = (_, zuid) => {
     // Exclude the removed item from our `selectedItems` array
-    let filteredItems = selectedItems.filter(item => item !== zuid);
+    let filteredItems = selectedItems.filter((item) => item !== zuid);
 
     setSelectedItems(filteredItems);
 
@@ -59,7 +60,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
    * @param {String} value
    */
   const onSelect = (name, value) => {
-    const option = props.options.find(option => option.value === value);
+    const option = props.options.find((option) => option.value === value);
     if (option && option.value !== "0") {
       let items = [...selectedItems, option.value];
 
@@ -113,7 +114,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
         <article className={styles.Tags}>
           {props.options.length && selectedItems.length ? (
             props.options
-              .filter(option => selectedItems.includes(option.value))
+              .filter((option) => selectedItems.includes(option.value))
               .map((item, i) => (
                 <Tag
                   key={i}
