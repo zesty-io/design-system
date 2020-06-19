@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import cx from "classnames";
-import { Card, CardHeader, CardFooter, CardContent } from "../Card";
+import { Card, CardFooter, CardContent } from "../Card";
 import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 
 import styles from "./ConfirmDialog.less";
 
-export const ConfirmDialog = props => {
+export const ConfirmDialog = (props) => {
   return (
     (props.isOpen && (
       <section className={styles.confirmWrapper}>
