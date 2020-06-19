@@ -9,13 +9,13 @@ export function Nav(props) {
       id={props.id || "Navigation"}
       className={cx(styles.Nav, props.className)}
     >
-      {props.tree.map(item => (
+      {props.tree.map((item) => (
         <Parent
           {...item}
           key={item.path}
           selected={props.selected}
-          handleOpen={props.handleOpen}
-          handleHide={props.handleHide}
+          collapseNode={props.collapseNode}
+          actions={props.actions}
         />
       ))}
     </nav>
