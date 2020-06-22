@@ -17,10 +17,10 @@ export function Parent(props) {
               {...props}
               depth={depth}
               selected={props.selected}
-              handleOpen={props.handleOpen}
-              handleHide={props.handleHide}
+              collapseNode={props.collapseNode}
+              actions={props.actions}
             />
-            {props.children.map(child => (
+            {props.children.map((child) => (
               <Parent
                 {...child}
                 // If the current node is closed then
@@ -29,8 +29,8 @@ export function Parent(props) {
                 key={child.path}
                 depth={depth}
                 selected={props.selected}
-                handleOpen={props.handleOpen}
-                handleHide={props.handleHide}
+                collapseNode={props.collapseNode}
+                actions={props.actions}
               />
             ))}
           </React.Fragment>
@@ -39,8 +39,8 @@ export function Parent(props) {
             {...props}
             depth={depth}
             selected={props.selected}
-            handleOpen={props.handleOpen}
-            handleHide={props.handleHide}
+            collapseNode={props.collapseNode}
+            actions={props.actions}
           />
         )}
       </ul>

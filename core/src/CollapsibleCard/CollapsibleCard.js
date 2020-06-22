@@ -6,20 +6,20 @@ import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 import styles from "./CollapsibleCard.less";
 export class CollapsibleCard extends React.Component {
   state = {
-    isCollapsed: true
+    isCollapsed: true,
   };
 
   componentDidMount() {
     if (this.props.open) {
       this.setState({
-        isCollapsed: false
+        isCollapsed: false,
       });
     }
   }
 
   onCollapse = () => {
     this.setState({
-      isCollapsed: !this.state.isCollapsed
+      isCollapsed: !this.state.isCollapsed,
     });
   };
 
@@ -45,3 +45,6 @@ export class CollapsibleCard extends React.Component {
     );
   }
 }
+
+// Re-export content and footer components
+export { CardContent, CardFooter };

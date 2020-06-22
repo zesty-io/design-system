@@ -1,1 +1,1 @@
-export { CollapsibleCard } from './CollapsibleCard'
+export { CollapsibleCard, CardContent, CardFooter } from "./CollapsibleCard";

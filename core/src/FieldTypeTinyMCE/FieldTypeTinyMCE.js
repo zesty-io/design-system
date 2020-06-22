@@ -52,7 +52,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
         <Editor
           id={props.name}
           initialValue={props.value}
-          onChange={evt => {
+          onChange={(evt) => {
             props.onChange(props.name, evt.target.getContent(), props.datatype);
           }}
           onKeyDown={(evt, editor) => {
@@ -67,7 +67,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           init={{
             plugins: [
               "advlist advcode anchor autolink charmap codesample fullscreen help hr insertdatetime",
-              "link lists media preview searchreplace spellchecker table visualblocks wordcount"
+              "link lists media preview searchreplace spellchecker table visualblocks wordcount",
             ],
 
             // NOTE: premium plugins are being loaded from a self hosted location
@@ -79,7 +79,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               formatpainter:
                 "/ui/js/third_party/tinymce/plugins/formatpainter/plugin.js",
               pageembed:
-                "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js"
+                "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js",
               // mediaembed:
               //   "/ui/js/third_party/tinymce/plugins/mediaembed/plugin.js"
             },
@@ -134,13 +134,14 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             // theme_url: "/ui/js/third_party/tinymce/themes/silver/theme.min.js",
             skin: "oxide",
             skin_url: "/ui/js/third_party/tinymce/skins/ui/oxide",
+            icons_url: "/ui/js/third_party/tinymce/icons/default/icons.min.js",
 
             // If a content_css file is not provided tinymce will attempt
             // loading the default which is not available
             content_css: "/ui/js/third_party/tinymce/content.css",
 
             // Customize editor buttons and actions
-            setup: function(editor) {
+            setup: function (editor) {
               /**
                * Handle save key command
                */
@@ -173,9 +174,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                 icon: "return",
                 tooltip:
                   "Insert new element to clear previously floated elements",
-                onAction: function(_) {
+                onAction: function (_) {
                   editor.insertContent("<p style='clear:both;'>&nbsp;</p>");
-                }
+                },
               });
 
               /**
@@ -184,24 +185,24 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
-                onAction: function(_) {
+                onAction: function (_) {
                   riot.mount(
                     document.querySelector("#modalMount"),
                     "media-app-modal",
                     {
                       limit: 10,
-                      callback: images => {
+                      callback: (images) => {
                         editor.insertContent(
                           images
-                            .map(image => {
+                            .map((image) => {
                               return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
                             })
                             .join(" ")
                         );
-                      }
+                      },
                     }
                   );
-                }
+                },
               });
 
               /**
@@ -209,7 +210,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                */
               editor.ui.registry.addButton("embed", {
                 text: "embed",
-                onAction: function() {
+                onAction: function () {
                   editor.windowManager.open({
                     title: "Embed Social Media",
                     body: {
@@ -222,28 +223,28 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                           items: [
                             { text: "Instagram", value: "instagram" },
                             { text: "YouTube", value: "youtube" },
-                            { text: "Twitframe", value: "twitframe" }
-                          ]
+                            { text: "Twitframe", value: "twitframe" },
+                          ],
                         },
                         {
                           type: "input",
                           name: "id",
-                          label: "Unique Post ID"
-                        }
-                      ]
+                          label: "Unique Post ID",
+                        },
+                      ],
                     },
                     buttons: [
                       {
                         type: "cancel",
-                        text: "Close"
+                        text: "Close",
                       },
                       {
                         type: "submit",
                         text: "Save",
-                        primary: true
-                      }
+                        primary: true,
+                      },
                     ],
-                    onSubmit: function(api) {
+                    onSubmit: function (api) {
                       const data = api.getData();
 
                       let iframe = "";
@@ -266,11 +267,11 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                       // Insert content when the window form is submitted
                       editor.insertContent(iframe);
                       api.close();
-                    }
+                    },
                   });
-                }
+                },
               });
-            }
+            },
           }}
         />
       </div>
