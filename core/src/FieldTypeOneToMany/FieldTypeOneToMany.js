@@ -17,7 +17,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   const [loading, setLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState(
     // split string of zuids and trim any whitespace
-    props.value ? props.value.split(",").map((v) => v.trim) : []
+    props.value ? props.value.split(",").map((v) => v.trim()) : []
   );
 
   const loadItems = () => {
