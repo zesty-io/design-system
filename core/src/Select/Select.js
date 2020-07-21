@@ -14,10 +14,10 @@ export class Select extends Component {
     options: [
       {
         text: "This field is misconfigured",
-        value: null
-      }
+        value: null,
+      },
     ],
-    searchLength: 50
+    searchLength: 50,
   };
 
   constructor(props) {
@@ -31,7 +31,7 @@ export class Select extends Component {
       dropdownOpen: false,
       value: props.value,
       filter: "",
-      searchLength: this.props.searchLength
+      searchLength: this.props.searchLength,
     };
   }
 
@@ -55,33 +55,33 @@ export class Select extends Component {
     }
 
     this.setState({
-      filter: term.trim().toLowerCase()
+      filter: term.trim().toLowerCase(),
     });
   };
 
-  onEsc = evt => {
+  onEsc = (evt) => {
     if (evt.key === "Escape" || evt.keyCode == 27) {
       if (this.state.dropdownOpen) {
         this.setState({
-          dropdownOpen: false
+          dropdownOpen: false,
         });
       }
     }
   };
 
-  onClose = evt => {
+  onClose = (evt) => {
     const parent = evt.target.closest(".Select");
 
     // Close this select if the click occured
     // outside a ZestySelect or this instance
     if (!parent || parent !== this.selector) {
       this.setState({
-        dropdownOpen: false
+        dropdownOpen: false,
       });
     }
   };
 
-  toggleDropdown = evt => {
+  toggleDropdown = (evt) => {
     if (evt.target.type === "search") {
       return false;
     }
@@ -132,16 +132,16 @@ export class Select extends Component {
     }
 
     this.setState({
-      dropdownOpen: nextDropdownState
+      dropdownOpen: nextDropdownState,
     });
   };
 
   // Top level Select event listener
-  setSelection = evt => {
+  setSelection = (evt) => {
     const value = evt.currentTarget.dataset.value;
 
     if (this.props.onSelect) {
-      this.props.onSelect(this.props.name, value);
+      this.props.onSelect(value, this.props.name);
     }
 
     this.setState({ value });
@@ -150,7 +150,7 @@ export class Select extends Component {
   render() {
     const childrenArr = React.Children.toArray(this.props.children);
     const childrenFiltered = childrenArr
-      .filter(child => {
+      .filter((child) => {
         if (this.state.filter) {
           return (
             (child.props.html &&
@@ -163,21 +163,21 @@ export class Select extends Component {
           return true;
         }
       })
-      .map(child => {
+      .map((child) => {
         return React.cloneElement(child, {
-          onClick: evt => {
+          onClick: (evt) => {
             // Individual option event listener
             if (child.props.onClick) {
               child.props.onClick(evt);
             }
             this.setSelection(evt);
-          }
+          },
         });
       });
 
     // On each render determine the currently selected option
     const selection = childrenArr.find(
-      child => child.props && child.props.value == this.state.value
+      (child) => child.props && child.props.value == this.state.value
     );
 
     return (
@@ -189,14 +189,14 @@ export class Select extends Component {
           this.props.className
         )}
         onClick={this.toggleDropdown}
-        ref={div => (this.selector = div)}
+        ref={(div) => (this.selector = div)}
       >
         <span className={styles.selection}>
           {selection && selection.props.html ? (
             <span
               className={styles.content}
               dangerouslySetInnerHTML={{
-                __html: selection && selection.props.html
+                __html: selection && selection.props.html,
               }}
             />
           ) : (
