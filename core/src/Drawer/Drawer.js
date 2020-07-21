@@ -1,11 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import cx from "classnames";
 
 import { Button } from "../Button";
 
 import styles from "./Drawer.less";
-export function Drawer(props) {
+export const Drawer = React.memo(function Drawer(props) {
+  const ref = useRef(null);
   const [open, setOpen] = useState(Boolean(props.open));
+
+  /**
+   * We need to determine and set the drawer styling imperatively since
+   * child components can have dynamic dimensions based on content
+   *
+   * NOTE: because we use height/width auto to allow for dynamic dimensions
+   * we can not animate the drawer "opening/closing" when changing the height/width value.
+   */
+  if (ref.current) {
+    ref.current.style.overflowY = "scroll";
+
+    if (props.position === "top") {
+      ref.current.style["top"] = 0;
+    }
+    if (props.position === "right") {
+      ref.current.style["right"] = 0;
+    }
+    if (props.position === "bottom") {
+      ref.current.style["bottom"] = 0;
+    }
+    if (props.position === "left") {
+      ref.current.style["left"] = 0;
+    }
+
+    if (props.position === "left" || props.position === "right") {
+      ref.current.style.height = props.height || "100%";
+      ref.current.style.width = props.width || "auto";
+    }
+    if (props.position === "top" || props.position === "bottom") {
+      ref.current.style.height = props.height || "auto";
+      ref.current.style.width = props.width || "100%";
+    }
+
+    if (!open) {
+      ref.current.style.overflowY = "hidden";
+
+      // When closed we just set the dimension to the offset
+      if (props.position === "left" || props.position === "right") {
+        ref.current.style.width = props.offset || "30px";
+      }
+      if (props.position === "top" || props.position === "bottom") {
+        ref.current.style.height = props.offset || "30px";
+      }
+    }
+  }
 
   // Listen to consumer updates
   useEffect(() => {
@@ -14,39 +60,52 @@ export function Drawer(props) {
 
   return (
     <div
+      ref={ref}
       className={cx(
         styles.Drawer,
         styles[props.position],
-        open ? styles[`${props.position}Open`] : null,
+        open ? styles.open : null,
         props.className
       )}
-      // style={
-      //   props.position && props.peak
-      //     ? {
-      //         [props.position]: props.peak
-      //       }
-      //     : null
-      // }
     >
-      {React.Children.map(props.children, child =>
+      {React.Children.map(props.children, (child) =>
         React.cloneElement(child, { open, setOpen })
       )}
     </div>
   );
-}
+});
 
-export function DrawerHandle(props) {
-  return React.Children.count(props.children) ? (
-    props.children
-  ) : (
-    <Button onClick={() => props.setOpen(!props.open)}>
-      <i
-        className={cx(styles.handle, props.open ? "fa fa-times" : "fa fa-bars")}
-      />
-    </Button>
+export const DrawerHandle = React.memo(function DrawerHandle(props) {
+  return (
+    <menu
+      className={cx(styles.DrawerHandle, props.className)}
+      onClick={() => {
+        if (props.onClick) {
+          props.onClick();
+        }
+        props.setOpen(!props.open);
+      }}
+    >
+      {React.Children.count(props.children) ? (
+        props.children
+      ) : (
+        <Button>
+          <i
+            className={cx(
+              styles.handle,
+              props.open ? "fa fa-times" : "fa fa-bars"
+            )}
+          />
+        </Button>
+      )}
+    </menu>
   );
-}
+});
 
-export function DrawerContent(props) {
-  return <div className={styles.DrawerContent}>{props.children}</div>;
-}
+export const DrawerContent = React.memo(function DrawerContent(props) {
+  return (
+    <div className={cx(styles.DrawerContent, props.className)}>
+      {props.children}
+    </div>
+  );
+});

@@ -9,7 +9,7 @@ import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 
 import styles from "./ConfirmDialog.less";
-export const ConfirmDialog = props => {
+export const ConfirmDialog = (props) => {
   return (
     (props.isOpen && (
       <section className={styles.confirmWrapper}>

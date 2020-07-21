@@ -8,7 +8,8 @@ const actions = [
     {
         icon: '',          // class of font-awesome icon
         onClick: func,     // function to trigger when clicking the icon. All nav item props are passed back to the function.
-        handleShow: func,  // function to show/hide the icon. All nav item props are passed back to the function.
+        available: func,  // Function. determines if action is shown, defaults to true. All nav item props are passed back to the function.
+        showIcon: // Boolean. Specifics whether an action should always be displayed. Default, false, behavior is to show on hover. 
         styles: { }        // styles object passed to the action icon.
     }
 ]

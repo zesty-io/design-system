@@ -4,8 +4,6 @@
   display: flex;
   align-items: baseline;
   border-radius: 0 0 0 3px;
-  // max-height: 80px;
-  // transition: max-height 0.2s ease;
   user-select: none;
 
   &:hover {
@@ -17,32 +15,45 @@
     }
   }
 
-  i {
-    color: @zesty-gray;
-    cursor: pointer;
-    padding: 8px;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: @zesty-white;
-    }
-  }
-
-  a {
+  a,
+  .directory {
     text-decoration: none;
     color: @zesty-light-blue;
     flex: 1;
     padding: 8px 16px;
-
     i {
       padding: 0;
       margin-right: 8px;
     }
   }
+}
 
-  .hide {
-    visibility: hidden;
+.collapse {
+  color: @zesty-gray;
+  cursor: pointer;
+  padding: 12px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: @zesty-white;
+  }
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.actions {
+  padding: 12px;
+}
+.action {
+  color: @zesty-gray;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: @zesty-white;
   }
 }
 

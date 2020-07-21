@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEyeSlash,
   faCaretLeft,
-  faCaretDown
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Node.less";
@@ -19,37 +19,54 @@ export function Node(props) {
         props.selected.includes(props.path) ? styles.selected : null
       )}
     >
-      <Link to={props.path}>
-        <FontAwesomeIcon icon={props.icon} />
-        <span>{props.label}</span>
-      </Link>
+      {props.type === "directory" ? (
+        <span className={styles.directory}>
+          {props.icon && <i className={props.icon} />}
+          <span>{props.label}</span>
+        </span>
+      ) : (
+        <>
+          <Link to={props.path}>
+            <FontAwesomeIcon icon={props.icon} />
+            <span>{props.label}</span>
+          </Link>
 
-      <FontAwesomeIcon
-        icon={faEyeSlash}
-        className={styles.hide}
-        onClick={() => props.handleHide(props.path)}
-      />
-
-      {Array.isArray(props.children) && Boolean(props.children.length) && (
-        <FontAwesomeIcon
-          icon={props.closed ? faCaretLeft : faCaretDown}
-          onClick={() => props.handleOpen(props.path)}
-        />
+          {/* Only linkable nodes can have actions */}
+          <span className={styles.actions}>
+            {props.actions &&
+              props.actions.map((action, i) => {
+                return (
+                  // Run consumer provided function to determine
+                  // whether action is available
+                  (action.available ? action.available(props) : true) && (
+                    <i
+                      key={i}
+                      className={cx(
+                        styles.action,
+                        // Determines whether the action icon is persistently shown
+                        // or shown on hover
+                        action.showIcon ? null : styles.hide,
+                        action.icon,
+                        action.styles
+                      )}
+                      onClick={() => action.onClick(props)}
+                    />
+                  )
+                );
+              })}
+          </span>
+        </>
       )}
 
-      {props.actions &&
-        props.actions.map((action, i) => {
-          const show = action.handleShow(props);
-          return (
-            show && (
-              <i
-                key={i}
-                className={cx(styles.Action, action.icon, action.styles)}
-                onClick={() => action.onClick(props)}
-              />
-            )
-          );
-        })}
+      {props.collapseNode &&
+        Array.isArray(props.children) &&
+        Boolean(props.children.length) && (
+          <FontAwesomeIcon
+            icon={props.closed ? faCaretLeft : faCaretDown}
+            className={styles.collapse}
+            onClick={() => props.collapseNode(props)}
+          />
+        )}
     </li>
   );
 }

@@ -27,7 +27,7 @@ import {
   faAlignCenter,
   faAlignJustify,
   faArrowCircleLeft,
-  faArrowCircleRight
+  faArrowCircleRight,
 } from "@fortawesome/fontawesome-free-solid";
 
 export default {
@@ -62,5 +62,5 @@ export default {
   align_justify: <FontAwesomeIcon icon={faAlignJustify} />,
 
   float_left: <FontAwesomeIcon icon={faArrowCircleLeft} />,
-  float_right: <FontAwesomeIcon icon={faArrowCircleRight} />
+  float_right: <FontAwesomeIcon icon={faArrowCircleRight} />,
 };
