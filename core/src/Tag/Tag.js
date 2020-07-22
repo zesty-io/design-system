@@ -15,11 +15,11 @@ export function Tag(props) {
       <FontAwesomeIcon
         icon={faTimesCircle}
         className={styles.Remove}
-        onClick={evt => {
+        onClick={(evt) => {
           evt.stopPropagation();
           evt.preventDefault();
           if (props.onRemove) {
-            return props.onRemove(props.name, props.value);
+            return props.onRemove(props.value, props.name);
           }
         }}
       />
