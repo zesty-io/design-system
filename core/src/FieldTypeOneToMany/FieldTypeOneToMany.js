@@ -39,7 +39,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
    * Remove selected zuid from array and broadcast change
    * @param {String} zuid
    */
-  const onRemove = (_, zuid) => {
+  const onRemove = (zuid) => {
     // Exclude the removed item from our `selectedItems` array
     let filteredItems = selectedItems.filter((item) => item !== zuid);
 
@@ -59,7 +59,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
    *
    * @param {String} value
    */
-  const onSelect = (name, value) => {
+  const onSelect = (value) => {
     const option = props.options.find((option) => option.value === value);
     if (option && option.value !== "0") {
       let items = [...selectedItems, option.value];
