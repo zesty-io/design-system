@@ -10,7 +10,7 @@ export const FieldTypeDropDown = React.memo(function FieldTypeDropDown(props) {
   // console.log("FieldTypeDropDown:render");
 
   return (
-    <label className={cx(styles.FieldTypeDropDown, props.className)}>
+    <div className={cx(styles.FieldTypeDropDown, props.className)}>
       <FieldLabel
         label={props.label}
         required={props.required}
@@ -42,6 +42,6 @@ export const FieldTypeDropDown = React.memo(function FieldTypeDropDown(props) {
       {props.description && (
         <FieldDescription description={props.description} />
       )}
-    </label>
+    </div>
   );
 });
