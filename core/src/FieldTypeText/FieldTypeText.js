@@ -37,13 +37,13 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
         tooltip={props.tooltip}
       />
       <Input
-        type="text"
+        type={props.type || "text"}
         name={props.name}
         value={props.value}
         placeholder={props.placeholder}
         required={props.required}
         autoFocus={props.autofocus}
-        onChange={evt => {
+        onChange={(evt) => {
           if (props.onChange) {
             props.onChange(evt.target.value, evt.target.name, props.datatype);
           }
