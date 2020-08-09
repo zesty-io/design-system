@@ -7,11 +7,7 @@ import styles from "./Tag.less";
 export function Tag(props) {
   return (
     <span className={styles.Tag}>
-      {props.link ? (
-        <a href={props.link}>{props.children}</a>
-      ) : (
-        <span>{props.children}</span>
-      )}
+      <span>{props.children}</span>
       <FontAwesomeIcon
         icon={faTimesCircle}
         className={styles.Remove}

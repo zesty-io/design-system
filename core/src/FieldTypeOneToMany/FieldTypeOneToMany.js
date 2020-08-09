@@ -82,7 +82,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   };
 
   return (
-    <React.Fragment>
+    <div className={props.className}>
       <label htmlFor={props.name}>
         <FieldLabel
           label={props.label}
@@ -107,7 +107,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
           <Option value="0" text="— Select Option —" />
           {loading && <Loader />}
           {props.options.map((opt, i) => {
-            return <Option key={i} value={opt.value} text={opt.text} />;
+            return <Option key={i} {...opt} />;
           })}
         </Select>
 
@@ -116,15 +116,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
             props.options
               .filter((option) => selectedItems.includes(option.value))
               .map((item, i) => (
-                <Tag
-                  key={i}
-                  link={
-                    props.relatedModelZUID &&
-                    `#!/content/${props.relatedModelZUID}/${item.value}`
-                  }
-                  onRemove={onRemove}
-                  value={item.value}
-                >
+                <Tag key={i} onRemove={onRemove} value={item.value}>
                   {item.text}
                 </Tag>
               ))
@@ -134,6 +126,6 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
         </article>
       </section>
       <FieldDescription description={props.description} />
-    </React.Fragment>
+    </div>
   );
 });
