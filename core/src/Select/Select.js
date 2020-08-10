@@ -153,10 +153,17 @@ export class Select extends Component {
       .filter((child) => {
         if (this.state.filter) {
           return (
+            (child.props.filterValue &&
+              String(child.props.filterValue) &&
+              child.props.filterValue
+                .toLowerCase()
+                .indexOf(this.state.filter) !== -1) ||
             (child.props.html &&
+              String(child.props.html) &&
               child.props.html.toLowerCase().indexOf(this.state.filter) !==
                 -1) ||
             (child.props.text &&
+              String(child.props.text) &&
               child.props.text.toLowerCase().indexOf(this.state.filter) !== -1)
           );
         } else {
@@ -192,17 +199,19 @@ export class Select extends Component {
         ref={(div) => (this.selector = div)}
       >
         <span className={styles.selection}>
-          {selection && selection.props.html ? (
+          {selection && selection.props.html && (
             <span
               className={styles.content}
               dangerouslySetInnerHTML={{
                 __html: selection && selection.props.html,
               }}
             />
-          ) : (
-            <span className={styles.content}>
-              {selection && selection.props.text}
-            </span>
+          )}
+          {selection && selection.props.text && (
+            <span className={styles.content}>{selection.props.text}</span>
+          )}
+          {selection && selection.props.component && (
+            <span className={styles.content}>{selection.props.component}</span>
           )}
           <Button className={styles.chevron}>
             <FontAwesomeIcon
@@ -242,7 +251,7 @@ export class Select extends Component {
   }
 }
 
-export function Option({ value, html, text, onClick, className }) {
+export function Option({ value, html, text, component, onClick, className }) {
   if (html) {
     return (
       <li
@@ -256,6 +265,7 @@ export function Option({ value, html, text, onClick, className }) {
     return (
       <li className={className} data-value={value} onClick={onClick}>
         {text}
+        {component}
       </li>
     );
   }
