@@ -5,7 +5,7 @@ import styles from "./Tag.less";
 export function Tag(props) {
   return (
     <span className={styles.Tag}>
-      <span>{props.children}</span>
+      <span className={styles.Content}>{props.children}</span>
       <i
         className={cx("fa fa-times-circle", styles.Remove)}
         onClick={(evt) => {
