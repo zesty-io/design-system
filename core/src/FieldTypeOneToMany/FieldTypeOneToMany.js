@@ -117,7 +117,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
               .filter((option) => selectedItems.includes(option.value))
               .map((item, i) => (
                 <Tag key={i} onRemove={onRemove} value={item.value}>
-                  {item.text}
+                  {item.component || item.text || item.filterValue}
                 </Tag>
               ))
           ) : (
