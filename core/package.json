@@ -19,9 +19,7 @@
   "dependencies": {
     "codemirror": "^5.54.0",
     "js-beautify": "^1.11.0",
-    "tinymce": "^5.3.2"
-  },
-  "peerDependencies": {
+    "tinymce": "^5.3.2",
     "@aeaton/react-prosemirror": "^0.21.1",
     "@aeaton/react-prosemirror-config-default": "^0.11.0",
     "@fortawesome/fontawesome-svg-core": "1.2.26",
@@ -29,7 +27,6 @@
     "@fortawesome/react-fontawesome": "0.1.8",
     "@tinymce/tinymce-react": "^3.3.2",
     "classnames": "^2.2.6",
-    "codemirror": "^5.54.0",
     "flatpickr": "^4.5.2",
     "lodash.debounce": "^4.0.8",
     "react": "^16.10.2",
@@ -54,7 +51,6 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/runtime": "^7.10.1",
     "babel-jest": "26.1.0",
-    "classnames": "2.2.6",
     "cross-env": "7.0.2",
     "gulp": "4.0.2",
     "gulp-concat-css": "3.1.0",
@@ -64,8 +60,6 @@
     "less": "3.12.2",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
-    "react": "16.10.2",
-    "react-dom": "16.10.2",
     "react-test-renderer": "16.10.2",
     "rollup": "2.22.1",
     "rollup-plugin-analyzer": "3.3.0",
