@@ -2,11 +2,12 @@ import React from "react";
 import cx from "classnames";
 
 import styles from "./Input.less";
-export function Input(props) {
+const Input = React.forwardRef((props, ref) => {
   return (
     <React.Fragment>
       <input
         {...props}
+        ref={ref}
         className={cx(
           styles.Input,
           props.className,
@@ -18,4 +19,6 @@ export function Input(props) {
       <span className={styles.ErrorMsg}>{props.error}</span>
     </React.Fragment>
   );
-}
+});
+
+export { Input };

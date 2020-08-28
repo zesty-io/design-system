@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cx from "classnames";
+import omit from "lodash/omit";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,7 @@ import { Input } from "../Input";
 import { InputIcon } from "../InputIcon";
 
 import styles from "./Search.less";
-export class Search extends Component {
+class Search extends Component {
   state = {
     term: String(),
   };
@@ -56,7 +57,8 @@ export class Search extends Component {
     return (
       <div className={cx(styles.Search, this.props.className)}>
         <Input
-          {...this.props}
+          {...omit(this.props, "innerRef")}
+          ref={this.props.innerRef}
           type="search"
           className={styles.Input}
           onChange={this.onChange}
@@ -68,3 +70,8 @@ export class Search extends Component {
     );
   }
 }
+const SearchRef = React.forwardRef((props, ref) => (
+  <Search innerRef={ref} {...props} />
+));
+
+export { SearchRef as Search };
