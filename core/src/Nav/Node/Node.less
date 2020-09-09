@@ -3,8 +3,8 @@
 .item {
   display: flex;
   align-items: baseline;
-  border-radius: 0 0 0 3px;
   user-select: none;
+  position: relative;
 
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
@@ -14,14 +14,18 @@
       visibility: visible;
     }
   }
-
+  svg {
+    font-size: 1rem;
+  }
   a,
   .directory {
     text-decoration: none;
     color: @zesty-light-blue;
     flex: 1;
-    padding: 8px 16px;
-    i, svg {
+    padding: 20px;
+    min-width: 15rem;
+    i,
+    svg {
       padding: 0;
       margin-right: 8px;
       opacity: 0.6;
@@ -32,7 +36,7 @@
 .collapse {
   color: @zesty-gray;
   cursor: pointer;
-  padding: 12px;
+  padding: 10px;
 
   &:hover,
   &:active,
@@ -46,7 +50,11 @@
 }
 
 .actions {
-  padding: 12px;
+  position: absolute;
+  content: "";
+  right: 5px;
+  bottom: 5px;
+
 }
 .action {
   color: @zesty-gray;
@@ -79,10 +87,15 @@
 }
 
 .selected {
-  background-color: #c3cddf;
+  // background-color: #c3cddf;
+  background-color: darken(@zesty-light-blue, 6%);
   opacity: 1;
   a {
-    color: #000;
+    color: @white;
+    font-weight: 600;
+    svg {
+      opacity: 1;
+    }
     i {
       &:first-child {
         color: @zesty-orange;
