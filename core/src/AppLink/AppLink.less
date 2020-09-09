@@ -1,7 +1,7 @@
 @import "../colors.less";
 
 .AppLink {
-  color: @zesty-blue;
+  color: @zesty-light-blue;
   cursor: pointer;
   background: none;
   border: none;
@@ -13,12 +13,16 @@
   transition-duration: 0.3s;
   transition-property: color, background-color;
 
+  svg {
+    margin-right: 8px;
+  }
   &:hover,
   &:focus {
-    color: darken(@zesty-blue, 20%);
+    color: @zesty-white;
   }
   &:active {
-    color: darken(@zesty-blue, 20%);
+    background-color: darken(@zesty-light-blue, 6%);
+    color: @zesty-white;
     outline: none;
   }
   .icon {
