@@ -2,13 +2,12 @@
 
 .item {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   user-select: none;
-  position: relative;
 
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
-    // background-color: @zesty-light-gray;
+
 
     .hide {
       visibility: visible;
@@ -50,10 +49,7 @@
 }
 
 .actions {
-  position: absolute;
-  content: "";
-  right: 5px;
-  bottom: 5px;
+padding: 12px;
 
 }
 .action {
