@@ -14,11 +14,11 @@ export class FieldTypeImage extends React.PureComponent {
   static defaultProps = {
     images: [], // Array of image ZUIDs
     limit: 1,
-    label: ""
+    label: "",
   };
 
-  addImage = images => {
-    const imageZUIDs = images.map(image => image.id);
+  addImage = (images) => {
+    const imageZUIDs = images.map((image) => image.id);
 
     if (this.props.onChange) {
       this.props.onChange(
@@ -31,10 +31,10 @@ export class FieldTypeImage extends React.PureComponent {
     }
   };
 
-  removeImage = ZUID => {
+  removeImage = (ZUID) => {
     if (this.props.onChange) {
       this.props.onChange(
-        this.props.images.filter(image => image !== ZUID).join(","),
+        this.props.images.filter((image) => image !== ZUID).join(","),
         this.props.name,
         this.props.datatype
       );
@@ -87,6 +87,7 @@ export class FieldTypeImage extends React.PureComponent {
                   width="200"
                   height="200"
                   removeImage={this.removeImage}
+                  resolveImage={this.props.resolveImage}
                 />
               );
             })}
@@ -117,7 +118,7 @@ function Image(props) {
       ) : (
         <img
           className={styles.image}
-          src={`${CONFIG.SERVICE_MEDIA_RESOLVER}/resolve/${props.imageZUID}/getimage/?w=${props.width}&h=${props.height}&type=fit`}
+          src={props.resolveImage(props.imageZUID, props.width, props.height)}
         />
       )}
 
@@ -135,16 +136,16 @@ function ImageSkeleton(props) {
   return (
     <figure className={cx(styles.File, styles.FileSkeleton)}>
       <Button
-        onClick={() => {
-          riot.mount(document.querySelector("#modalMount"), "media-app-modal", {
+        onClick={() =>
+          props.mediaBrowser({
             callback: props.addImage,
             ids: props.value,
             name: props.name,
             displayName: props.label,
             limit: props.limit,
-            lock: props.locked
-          });
-        }}
+            lock: props.locked,
+          })
+        }
       >
         <FontAwesomeIcon icon={faPlus} className={styles.icon} />
       </Button>
