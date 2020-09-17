@@ -2,28 +2,31 @@
 
 .item {
   display: flex;
-  align-items: baseline;
-  border-radius: 0 0 0 3px;
+  align-items: center;
   user-select: none;
 
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
-    // background-color: @zesty-light-gray;
+
 
     .hide {
       visibility: visible;
     }
   }
-
+  svg {
+    font-size: 1rem;
+  }
   a,
   .directory {
     text-decoration: none;
     color: @zesty-light-blue;
     flex: 1;
-    padding: 8px 16px;
-    i {
+    padding: 20px;
+    i,
+    svg {
       padding: 0;
       margin-right: 8px;
+      opacity: 0.6;
     }
   }
 }
@@ -31,7 +34,7 @@
 .collapse {
   color: @zesty-gray;
   cursor: pointer;
-  padding: 12px;
+  padding: 10px;
 
   &:hover,
   &:active,
@@ -45,7 +48,8 @@
 }
 
 .actions {
-  padding: 12px;
+padding: 12px;
+
 }
 .action {
   color: @zesty-gray;
@@ -78,10 +82,15 @@
 }
 
 .selected {
-  background-color: #c3cddf;
+  background-color: darken(@zesty-light-blue, 6%);
   opacity: 1;
   a {
-    color: #000;
+    color: @white;
+    font-weight: 600;
+    text-shadow: 1px 1px #8290a9;
+    svg {
+      opacity: 1;
+    }
     i {
       &:first-child {
         color: @zesty-orange;
