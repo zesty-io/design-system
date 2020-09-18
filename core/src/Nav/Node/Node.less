@@ -8,7 +8,6 @@
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
 
-
     .hide {
       visibility: visible;
     }
@@ -48,8 +47,7 @@
 }
 
 .actions {
-padding: 12px;
-
+  padding: 12px;
 }
 .action {
   color: @zesty-gray;
@@ -97,4 +95,9 @@ padding: 12px;
       }
     }
   }
+}
+
+.selected.depth2 {
+  background-color: darken(@zesty-light-blue, 12%);
+  outline: 1px solid @zesty-tab-blue;
 }
