@@ -81,6 +81,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "bold italic link | copy paste",
 
+            relative_urls: false,
             // plugin settings
             powerpaste_word_import: "prompt",
             // media_live_embeds: true,
