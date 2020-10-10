@@ -16,7 +16,7 @@ export function Node(props) {
       className={cx(
         styles.item,
         styles[`depth${props.depth}`],
-        props.selected === props.path ? styles.selected : null
+        props.selected.includes(props.path) ? styles.selected : null
       )}
     >
       {props.type === "directory" ? (

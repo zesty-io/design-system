@@ -7,7 +7,7 @@
 
   &:hover {
     background-color: lighten(@nav-border-color, 6%);
-
+    border-left: 2px solid lighten(@nav-border-color, 6%);
 
     .hide {
       visibility: visible;
@@ -48,8 +48,7 @@
 }
 
 .actions {
-padding: 12px;
-
+  padding: 12px;
 }
 .action {
   color: @zesty-gray;
@@ -61,40 +60,31 @@ padding: 12px;
   }
 }
 
-.depth4 {
-  opacity: 0.2;
-  background-color: #1a202c;
-}
-.depth3 {
-  opacity: 0.4;
-  background-color: #1a202c;
-}
-.depth2 {
-  opacity: 0.6;
-  background-color: #1a202c;
-}
 .depth1 {
   background-color: #1a202c;
+  border-left: 2px solid #1a202c;
 }
-
-.hover {
-  background-color: lighten(@nav-border-color, 6%);
+.depth2 {
+  background-color: lighten(#1a202c, 5%);
+  border-left: 2px solid lighten(#1a202c, 5%);
+}
+.depth3 {
+  background-color: lighten(#1a202c, 10%);
+  border-left: 2px solid lighten(#1a202c, 10%);
+}
+.depth4 {
+  background-color: lighten(#1a202c, 15%);
+  border-left: 2px solid lighten(#1a202c, 15%);
 }
 
 .selected {
-  background-color: darken(@zesty-light-blue, 6%);
-  opacity: 1;
+  border-left: 2px solid @zesty-orange;
+
   a {
     color: @white;
-    font-weight: 600;
-    text-shadow: 1px 1px #8290a9;
+
     svg {
       opacity: 1;
-    }
-    i {
-      &:first-child {
-        color: @zesty-orange;
-      }
     }
   }
 }
