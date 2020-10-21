@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import cx from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
   // console.log("Render:FieldTypeColor");
 
   const [color, setColor] = useState(props.value || "#ffffff");
-
+  const ref = useRef();
   return (
     <label className={cx(styles.FieldTypeColor, props.className)}>
       <FieldLabel
@@ -26,18 +26,24 @@ export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
 
       <div className={styles.FieldTypeColorInput}>
         <Input
+          ref={ref}
           className={styles.ColorInput}
           type="color"
           required={props.required}
           value={color}
-          onChange={evt => {
+          onChange={(evt) => {
             if (props.onChange) {
               props.onChange(evt.target.value, props.name, props.datatype);
             }
             setColor(evt.target.value);
           }}
         />
-        <Button className={styles.Icon}>
+        <Button
+          onClick={() => {
+            ref.current.click();
+          }}
+          className={styles.Icon}
+        >
           <FontAwesomeIcon icon={faPaintBrush} />
         </Button>
       </div>
