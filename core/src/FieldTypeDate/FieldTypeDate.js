@@ -13,8 +13,11 @@ import { FieldLabel } from "../FieldLabel";
 import styles from "./FieldTypeDate.less";
 export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
   // console.log("FieldTypeDate:render");
-
   const ref = useRef();
+
+  const openCalendar = () => {
+    setTimeout(() => ref.current.flatpickr.open(), 0);
+  };
 
   const onChange = (date) => {
     if (props.onChange) {
@@ -62,12 +65,7 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
             onChange={onChange}
           />
         )}
-        <Button
-          onClick={() => {
-            ref.current.click();
-          }}
-          className={styles.Icon}
-        >
+        <Button onClick={openCalendar} className={styles.Icon}>
           <FontAwesomeIcon icon={faCalendar} />
         </Button>
       </span>
