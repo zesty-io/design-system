@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
@@ -13,8 +13,13 @@ import { FieldLabel } from "../FieldLabel";
 import styles from "./FieldTypeDate.less";
 export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
   // console.log("FieldTypeDate:render");
+  const ref = useRef();
 
-  const onChange = date => {
+  const openCalendar = () => {
+    setTimeout(() => ref.current.flatpickr.open(), 0);
+  };
+
+  const onChange = (date) => {
     if (props.onChange) {
       props.onChange(date[0], props.name, props.datatype);
     }
@@ -32,6 +37,7 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
       <span className={styles.FieldTypeDateInput}>
         {props.datatype === "datetime" ? (
           <Flatpickr
+            ref={ref}
             data-enable-time
             className={cx(styles.DatePicker, props.className)}
             name={props.name}
@@ -45,20 +51,21 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
                   confirmIcon: "<i class='fa fa-check'></i>",
                   confirmText: "CONFIRM ",
                   showAlways: false,
-                  theme: "light"
-                })
-              ]
+                  theme: "light",
+                }),
+              ],
             }}
           />
         ) : (
           <Flatpickr
+            ref={ref}
             className={cx(styles.DatePicker, props.className)}
             name={props.name}
             value={props.value}
             onChange={onChange}
           />
         )}
-        <Button className={styles.Icon}>
+        <Button onClick={openCalendar} className={styles.Icon}>
           <FontAwesomeIcon icon={faCalendar} />
         </Button>
       </span>
