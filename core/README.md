@@ -6,22 +6,22 @@
 
 The purpose of a button is to indicate beign able to take an action. Versus, for example, a link which indicates navigation. These are the available background colors for buttons and their meaning.
 
-Default (#404759)
+- **Default** (#404759)
 The default button color to be used when a button does not fit any of the other described meanings below.
 
-Blue (#336edb)
+- **Blue** (#336edb)
 To be used when you need a specific action to be more dominate than the default button implication. e.g. In a list of tags one should be shown as the primary tag.
 
-Green (#63a41e)
+- **Green** (#63a41e)
 Buttons that are green indicate actions which will persist data to an instance. e.g. Saving a content item, creating a content item, uploading an image.
 
-Red (#9a2803)
+- **Red** (#9a2803)
 Buttons that are red indicate actions which will remove data from an instance. e.g. Deleting a content item.
 
-Grey (#1a202c)
+- **Grey** (#1a202c)
 Buttons that are grey indicate an action which will "cancel" the current operation. e.g. Closing a decision dialog.
 
-Orange (#f17829 = @zesty-orange)
+- **Orange** (#f17829 = @zesty-orange)
 
 ## bundle
 
