@@ -10,16 +10,16 @@ The purpose of a button is to indicate beign able to take an action. Versus, for
 The default button color to be used when a button does not fit any of the other described meanings below.
 
 - **Blue** (#336edb)
-To be used when you need a specific action to be more dominate than the default button implication. e.g. In a list of tags one should be shown as the primary tag.
+To be used when you need a specific action to be more dominate than the default button implication. _e.g. In a list of tags one should be shown as the primary tag._
 
 - **Green** (#63a41e)
-Buttons that are green indicate actions which will persist data to an instance. e.g. Saving a content item, creating a content item, uploading an image.
+Buttons that are green indicate actions which will persist data to an instance. _e.g. Saving a content item, creating a content item, uploading an image._
 
 - **Red** (#9a2803)
-Buttons that are red indicate actions which will remove data from an instance. e.g. Deleting a content item.
+Buttons that are red indicate actions which will remove data from an instance. _e.g. Deleting a content item._
 
 - **Grey** (#1a202c)
-Buttons that are grey indicate an action which will "cancel" the current operation. e.g. Closing a decision dialog.
+Buttons that are grey indicate an action which will "cancel" the current operation. _e.g. Closing a decision dialog._
 
 - **Orange** (#f17829 = @zesty-orange)
 
