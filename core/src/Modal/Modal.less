@@ -13,9 +13,7 @@
   display: none;
 
   &.Open {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
   }
 
   &.Local {
@@ -29,9 +27,14 @@
 .Modal {
   background-color: @zesty-white;
   border-radius: 4px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 5% auto 0;
+  min-width: 462px;
   padding: 32px;
   position: relative;
+  width: fit-content;
 
   &.Local {
     position: absolute;
