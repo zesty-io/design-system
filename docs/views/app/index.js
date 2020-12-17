@@ -6,6 +6,9 @@ import * as Guides from '../../guides'
 
 import { Nav } from '@zesty-io/core/Nav'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCube, faCogs, faSnowflake } from "@fortawesome/free-solid-svg-icons";
+
 import '@zesty-io/core/vendor.css'
 import styles from './app.less'
 export default function App(props) {
