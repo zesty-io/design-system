@@ -34,7 +34,7 @@ export class FieldTypeDateTime extends React.PureComponent {
         <span className={styles.DateFieldTypeInput}>
           <input
             className={cx(styles.DatePicker, this.props.className)}
-            type={this.props.type || "datetime-local"}
+            type={this.props.type }
             onChange={this.onChange}
           />
           <Button className={styles.Icon}>
