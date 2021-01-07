@@ -2,8 +2,9 @@ import React from "react";
 import { toggleMark } from "prosemirror-commands";
 
 import { Modal, ModalContent, ModalFooter } from "../../../Modal";
-import { Button } from "../../../Button";
 import { FieldTypeText } from "../../../FieldTypeText";
+import { Button } from "../../../Button";
+import { Input } from "../../../Input";
 
 import { schema } from "../react-prosemirror-schema";
 
@@ -13,7 +14,7 @@ export class LinkModal extends React.PureComponent {
 
   state = {
     target: "_blank",
-    href: ""
+    href: "",
   };
 
   componentDidMount() {
@@ -25,7 +26,7 @@ export class LinkModal extends React.PureComponent {
     window.removeEventListener("keypress", this.onEnter);
   }
 
-  onEnter = evt => {
+  onEnter = (evt) => {
     if (evt.key === "Enter" || evt.keyCode == 13) {
       this.onSave();
     }
@@ -63,7 +64,7 @@ export class LinkModal extends React.PureComponent {
             placeholder="https://"
             required={true}
             autoFocus={true}
-            onChange={href => this.setState({ href })}
+            onChange={(href) => this.setState({ href })}
           />
           <label>
             Open link in a new browser window?{" "}
@@ -73,7 +74,7 @@ export class LinkModal extends React.PureComponent {
               checked={this.state.target === "_blank" ? true : false}
               onChange={() =>
                 this.setState({
-                  target: this.state.target === "_blank" ? "_self" : "_blank"
+                  target: this.state.target === "_blank" ? "_self" : "_blank",
                 })
               }
             />
