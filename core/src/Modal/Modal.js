@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 import { Button } from "../Button";
 
 import styles from "./Modal.less";
@@ -8,6 +11,7 @@ export const Modal = React.memo(function Modal(props) {
   const [open, setOpen] = useState(Boolean(props.open));
 
   const styleLocal = props.type === "local" ? styles.Local : null;
+  const styleGlobal = props.type === "global" ? styles.Global : null;
   const styleOpen = open ? styles.Open : null;
 
   const onClose = evt => {
@@ -46,13 +50,13 @@ export const Modal = React.memo(function Modal(props) {
   }, [open]);
 
   return (
-    <div className={cx(styles.ModalAligner, styleLocal, styleOpen)}>
+    <div className={cx(styles.ModalAligner, styleLocal, styleGlobal, styleOpen)}>
       <article
         ref={modalRef}
-        className={cx(styles.Modal, styleLocal, props.className)}
+        className={cx(styles.Modal, styleLocal, styleGlobal, props.className)}
       >
         <Button className={styles.Close} onClick={onClose}>
-          <i className="fa fa-times" aria-hidden="true" />
+          <FontAwesomeIcon icon={faTimes} />
         </Button>
         {props.children}
       </article>

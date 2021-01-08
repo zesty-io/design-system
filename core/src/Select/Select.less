@@ -11,12 +11,12 @@
   &.show {
     .selection {
       // border-radius: 4px 4px 0 0;
-      .icon-chevron-down {
-        display: flex;
-      }
-      .icon-chevron-left {
-        display: none;
-      }
+      // .fa-caret-down {
+      //   display: flex;
+      // }
+      // .fa-caret-left {
+      //   display: none;
+      // }
     }
     .selections {
       display: block;
@@ -43,10 +43,8 @@
     }
 
     .chevron {
-      background-color: #404759;
-      border: 1px solid #404759;
+      // border: 1px solid #404759;
       border-radius: 0 3px 3px 0;
-      color: #fff;
       flex-basis: 32px;
       justify-content: center;
       align-items: center;
@@ -117,7 +115,7 @@
 
     .options {
       max-height: 600px;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
 
     .filter button {
@@ -170,5 +168,8 @@
     // li a .name {
     //   flex: 1;
     // }
+  }
+  svg {
+    font-size: 16px;
   }
 }

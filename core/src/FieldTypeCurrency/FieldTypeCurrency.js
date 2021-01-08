@@ -27,7 +27,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
         <span>
           {Number(monetaryValue).toLocaleString(window.navigator.language, {
             style: "currency",
-            currency: currency.code
+            currency: currency.code,
           })}
         </span>
       </div>
@@ -39,7 +39,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
           className={styles.SelectCurrency}
           name={props.name}
           value={currency.code}
-          onSelect={(name, value) => {
+          onSelect={(value) => {
             setCurrency(currencies[value]);
           }}
         >
@@ -64,7 +64,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
           className={styles.CurrencyInput}
           type="number"
           value={monetaryValue}
-          onChange={evt => {
+          onChange={(evt) => {
             const value = evt.target.value;
 
             if (!Number(value)) {
@@ -75,7 +75,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
               // TODO broadcast error
             }
             if (props.onChange) {
-              props.onChange(props.name, value, props.datatype);
+              props.onChange(value, props.name, props.datatype);
             }
 
             setMonetaryValue(value);

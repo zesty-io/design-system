@@ -22,9 +22,9 @@ export const FieldTypeBinary = React.memo(function FieldTypeBinary(props) {
       <div className={styles.switch}>
         <ToggleButton
           {...props}
-          onChange={(name, value) => {
+          onChange={(value, name) => {
             if (props.onChange) {
-              props.onChange(props.name, value, props.datatype);
+              props.onChange(value, name, props.datatype);
             }
           }}
         />

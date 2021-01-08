@@ -1,5 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import cx from "classnames";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEyeSlash,
+  faCaretLeft,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Node.less";
 export function Node(props) {
@@ -18,10 +26,10 @@ export function Node(props) {
         </span>
       ) : (
         <>
-          <a href={props.path}>
-            {props.icon && <i className={props.icon} />}
+          <Link to={props.path}>
+            <FontAwesomeIcon icon={props.icon} />
             <span>{props.label}</span>
-          </a>
+          </Link>
 
           {/* Only linkable nodes can have actions */}
           <span className={styles.actions}>
@@ -53,11 +61,9 @@ export function Node(props) {
       {props.collapseNode &&
         Array.isArray(props.children) &&
         Boolean(props.children.length) && (
-          <i
-            className={cx(
-              styles.collapse,
-              props.closed ? "fa fa-caret-right" : "fa fa-caret-down"
-            )}
+          <FontAwesomeIcon
+            icon={props.closed ? faCaretLeft : faCaretDown}
+            className={styles.collapse}
             onClick={() => props.collapseNode(props)}
           />
         )}

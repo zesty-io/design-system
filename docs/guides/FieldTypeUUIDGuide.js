@@ -8,7 +8,7 @@ export class FieldTypeUUIDGuide extends Component {
   state = {
     value: ''
   }
-  onChange = (name, value, dataType) => {
+  onChange = value => {
     this.setState({ value })
   }
   render() {

@@ -19,7 +19,7 @@ export class FieldTypeTextareaGuide extends Component {
           name="example1"
           placeholder="placeholder text"
           value={this.state.example1}
-          onChange={(name, value) => this.setState({ [name]: value })}
+          onChange={(value, name) => this.setState({ [name]: value })}
           label="Title Field"
           charCount="350"
         />
@@ -29,7 +29,7 @@ export class FieldTypeTextareaGuide extends Component {
           placeholder="placeholder text"
           required={true}
           value={this.state.example2}
-          onChange={(name, value) => this.setState({ [name]: value })}
+          onChange={(value, name) => this.setState({ [name]: value })}
           label="No CharCount prop"
           description="This is my description text"
           tooltip="tooltip is rocking out"
@@ -42,7 +42,7 @@ export class FieldTypeTextareaGuide extends Component {
             name="example1"
             placeholder="placeholder text"
             value={this.state.example1}
-            onChange={(name, value) => this.setState({ [name]: value })}
+            onChange={(value, name) => this.setState({ [name]: value })}
             label="Title Field"
             charCount="350"
           />
@@ -52,7 +52,7 @@ export class FieldTypeTextareaGuide extends Component {
             placeholder="placeholder text"
             required={true}
             value={this.state.example2}
-            onChange={(name, value) => this.setState({ [name]: value })}
+            onChange={(value, name) => this.setState({ [name]: value })}
             label="No CharCount prop"
           />`}
           />

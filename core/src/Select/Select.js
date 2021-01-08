@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import cx from "classnames";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { Search } from "../Search";
 import { Loader } from "../Loader";
 
@@ -45,9 +49,9 @@ export class Select extends Component {
     window.removeEventListener("keyup", this.onEsc);
   }
 
-  handleFilterKeyUp = (name, term, datatype) => {
+  handleFilterKeyUp = (term, name, datatype) => {
     if (this.props.onFilter) {
-      this.props.onFilter(name, term, datatype);
+      this.props.onFilter(term, name, datatype);
     }
 
     this.setState({
@@ -137,7 +141,7 @@ export class Select extends Component {
     const value = evt.currentTarget.dataset.value;
 
     if (this.props.onSelect) {
-      this.props.onSelect(this.props.name, value);
+      this.props.onSelect(value, this.props.name);
     }
 
     this.setState({ value });
@@ -209,7 +213,11 @@ export class Select extends Component {
           {selection && selection.props.component && (
             <span className={styles.content}>{selection.props.component}</span>
           )}
-          <i className={cx("fa fa-caret-down", styles.chevron)} />
+          <Button className={styles.chevron}>
+            <FontAwesomeIcon
+              icon={this.state.dropdownOpen ? faCaretLeft : faCaretDown}
+            />
+          </Button>
         </span>
         <ul className={cx("selections", styles.selections)}>
           {childrenArr.length > this.props.searchLength && (

@@ -32,7 +32,7 @@ export const FieldTypeUrl = React.memo(function FieldTypeUrl(props) {
         required={props.required}
         onChange={evt => {
           if (props.onChange) {
-            props.onChange(props.name, evt.target.value, props.datatype);
+            props.onChange(evt.target.value, props.name, props.datatype);
           }
         }}
         value={props.value}

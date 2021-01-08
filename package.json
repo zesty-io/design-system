@@ -1,10 +1,19 @@
 {
   "name": "design-system",
   "version": "1.0.0",
-  "description": "## Setup",
+  "description": "**This design system is a work in progress and is constantly changing interfaces and patterns. We do not recommend until it hits `1.0.0`**",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1"
+  },
   "scripts": {
-    "start": "cd docs;npm start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

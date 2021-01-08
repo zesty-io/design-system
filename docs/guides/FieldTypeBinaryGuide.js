@@ -30,7 +30,7 @@ export class FieldTypeBinaryGuide extends Component {
 
         <h3>Callback</h3>
         <FieldTypeBinary
-          onChange={(name, value) => {
+          onChange={value => {
             console.log(`Changed value: ${value}`)
           }}
         />

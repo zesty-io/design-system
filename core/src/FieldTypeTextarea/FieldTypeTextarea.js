@@ -42,7 +42,7 @@ export const FieldTypeTextarea = React.memo(function FieldTypeTextarea(props) {
         type="textarea"
         onChange={evt => {
           if (props.onChange) {
-            props.onChange(props.name, evt.target.value, props.datatype);
+            props.onChange(evt.target.value, props.name, props.datatype);
           }
         }}
       />

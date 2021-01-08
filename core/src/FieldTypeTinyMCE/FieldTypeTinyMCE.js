@@ -53,7 +53,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           id={props.name}
           initialValue={props.value}
           onChange={(evt) => {
-            props.onChange(props.name, evt.target.getContent(), props.datatype);
+            props.onChange(evt.target.getContent(), props.name, props.datatype);
           }}
           onKeyDown={(evt, editor) => {
             // TinyMCE onChange is inconsistent as it is only invoked when an "undoable" event occurs.
@@ -61,7 +61,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             // way we avoid updating on events like keyboard navigation
             const nextContent = editor.getContent();
             if (nextContent !== props.value) {
-              props.onChange(props.name, editor.getContent(), props.datatype);
+              props.onChange(editor.getContent(), props.name, props.datatype);
             }
           }}
           init={{
@@ -72,17 +72,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
 
             // NOTE: premium plugins are being loaded from a self hosted location
             // specific to our application. Making this component not usable outside of our context.
-            external_plugins: {
-              advcode: "/ui/js/third_party/tinymce/plugins/advcode/plugin.js",
-              powerpaste:
-                "/ui/js/third_party/tinymce/plugins/powerpaste/plugin.js",
-              formatpainter:
-                "/ui/js/third_party/tinymce/plugins/formatpainter/plugin.js",
-              pageembed:
-                "/ui/js/third_party/tinymce/plugins/pageembed/plugin.js",
-              // mediaembed:
-              //   "/ui/js/third_party/tinymce/plugins/mediaembed/plugin.js"
-            },
+            external_plugins: props.externalPlugins,
             toolbar:
               "italic bold subscript superscript underline strikethrough link backcolor | \
              alignleft aligncenter alignright alignjustify clearfloat | formatselect | \
@@ -91,6 +81,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "bold italic link | copy paste",
 
+            relative_urls: false,
             // plugin settings
             powerpaste_word_import: "prompt",
             // media_live_embeds: true,
@@ -132,13 +123,12 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
 
             // theme: "silver",
             // theme_url: "/ui/js/third_party/tinymce/themes/silver/theme.min.js",
-            skin: "oxide",
-            skin_url: "/ui/js/third_party/tinymce/skins/ui/oxide",
-            icons_url: "/ui/js/third_party/tinymce/icons/default/icons.min.js",
+            skin: props.skin,
+            skin_url: props.skinURL,
 
             // If a content_css file is not provided tinymce will attempt
             // loading the default which is not available
-            content_css: "/ui/js/third_party/tinymce/content.css",
+            content_css: props.contentCSS,
 
             // Customize editor buttons and actions
             setup: function (editor) {
@@ -185,23 +175,19 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
-                onAction: function (_) {
-                  riot.mount(
-                    document.querySelector("#modalMount"),
-                    "media-app-modal",
-                    {
-                      limit: 10,
-                      callback: (images) => {
-                        editor.insertContent(
-                          images
-                            .map((image) => {
-                              return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
-                            })
-                            .join(" ")
-                        );
-                      },
-                    }
-                  );
+                onAction: function () {
+                  props.mediaBrowser({
+                    limit: 10,
+                    callback: (images) => {
+                      editor.insertContent(
+                        images
+                          .map((image) => {
+                            return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
+                          })
+                          .join(" ")
+                      );
+                    },
+                  });
                 },
               });
 

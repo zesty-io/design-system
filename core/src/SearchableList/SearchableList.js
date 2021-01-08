@@ -18,10 +18,9 @@ export class SearchableList extends Component {
     };
   }
 
-  onChange = debounce((name, term, datatype) => {
+  onChange = debounce(term => {
     if (!this.props.onSearch) {
       throw Error("SearchableList component missing onChange property");
-      return;
     }
 
     if (term) {

@@ -5,11 +5,11 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
-  font-size: @field-label-size;
-  line-height: @label-line-height;
-  letter-spacing: 0.3;
+  font-size: @font-size-label;
+  line-height: @line-height-label;
+  letter-spacing: 0.3px;
   color: @zesty-dark-blue;
-  // padding-bottom: 3px;
+  padding-bottom: 8px;
 
   .TextFieldRequired {
     color: @zesty-red;
@@ -17,16 +17,16 @@
   }
 
   .ValidationLimitHelper {
-    font-size: @helper-text-font-size;
-    font-family: @secondary-font;
-    color: @zesty-light-gray;
+    font-size: @font-size-helper-text;
+    font-family: @font-family-secondary;
+    color: @zesty-gray;
   }
 
   .Tag {
     color: @zesty-light-blue;
     margin-left: 10px;
     padding: 1px 3px 1px 4px;
-    font-family: @secondary-font;
+    font-family: @font-family-secondary;
     font-size: 9px;
     top: -1px;
     position: relative;

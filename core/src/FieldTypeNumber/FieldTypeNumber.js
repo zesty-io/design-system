@@ -28,7 +28,7 @@ export const FieldTypeNumber = React.memo(function FieldTypeNumber(props) {
         value={number}
         onChange={evt => {
           if (props.onChange) {
-            props.onChange(props.name, evt.target.value, props.datatype);
+            props.onChange(evt.target.value, props.name, props.datatype);
           }
           setNumber(evt.target.value);
         }}

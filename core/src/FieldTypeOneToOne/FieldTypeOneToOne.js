@@ -23,9 +23,9 @@ export const FieldTypeOneToOne = React.memo(function FieldTypeOneToOne(props) {
     }
   };
 
-  const onSelect = (name, value) => {
+  const onSelect = (value, name) => {
     if (props.onChange) {
-      props.onChange(name, value, props.datatype);
+      props.onChange(value, name, props.datatype);
     }
   };
 

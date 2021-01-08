@@ -14,7 +14,7 @@ export function ToggleButton(props) {
         evt.stopPropagation();
         evt.preventDefault();
 
-        props.onChange(props.name, props.value == 1 ? 0 : 1, props.datatype);
+        props.onChange(props.value == 1 ? 0 : 1, props.name, props.datatype);
       }}
       disabled={props.disabled}
     >

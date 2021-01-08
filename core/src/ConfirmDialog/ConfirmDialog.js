@@ -1,11 +1,14 @@
 import React from "react";
 import cx from "classnames";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+
 import { Card, CardFooter, CardContent } from "../Card";
 import { Button } from "../Button";
 import { ButtonGroup } from "../ButtonGroup";
 
 import styles from "./ConfirmDialog.less";
-
 export const ConfirmDialog = (props) => {
   return (
     (props.isOpen && (
@@ -38,10 +41,7 @@ export const ConfirmDialog = (props) => {
                   }}
                 >
                   {props.kind === "warn" && (
-                    <i
-                      className="fa fa-exclamation-triangle"
-                      aria-hidden="true"
-                    />
+                    <FontAwesomeIcon icon={faExclamationTriangle} />
                   )}
                   {props.confirmText || "Yes"}
                 </Button>

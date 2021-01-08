@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import cx from "classnames";
 
 import Flatpickr from "react-flatpickr";
 import confirmDatePlugin from "flatpickr/dist/plugins/confirmDate/confirmDate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+
+import { Button } from "../Button";
 import { FieldDescription } from "../FieldDescription";
 import { FieldLabel } from "../FieldLabel";
 
 import styles from "./FieldTypeDate.less";
 export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
   // console.log("FieldTypeDate:render");
+  const ref = useRef();
 
-  const onChange = date => {
+  const openCalendar = () => {
+    setTimeout(() => ref.current.flatpickr.open(), 0);
+  };
+
+  const onChange = (date) => {
     if (props.onChange) {
-      props.onChange(props.name, date[0], props.datatype);
+      props.onChange(date[0], props.name, props.datatype);
     }
   };
 
@@ -28,6 +37,7 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
       <span className={styles.FieldTypeDateInput}>
         {props.datatype === "datetime" ? (
           <Flatpickr
+            ref={ref}
             data-enable-time
             className={cx(styles.DatePicker, props.className)}
             name={props.name}
@@ -41,20 +51,23 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
                   confirmIcon: "<i class='fa fa-check'></i>",
                   confirmText: "CONFIRM ",
                   showAlways: false,
-                  theme: "light"
-                })
-              ]
+                  theme: "light",
+                }),
+              ],
             }}
           />
         ) : (
           <Flatpickr
+            ref={ref}
             className={cx(styles.DatePicker, props.className)}
             name={props.name}
             value={props.value}
             onChange={onChange}
           />
         )}
-        <i className={cx(styles.Icon, "fa fa-calendar")} />
+        <Button onClick={openCalendar} className={styles.Icon}>
+          <FontAwesomeIcon icon={faCalendar} />
+        </Button>
       </span>
 
       <FieldDescription description={props.description} />
