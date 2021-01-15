@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import showdown from "showdown";
 
@@ -20,9 +20,12 @@ const converter = new showdown.Converter({
 
 import styles from "./FieldTypeEditor.less";
 export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
-  // console.log("FieldTypeEditor:render");
-
   const [content, setContent] = useState(props.value || "");
+
+  // update on external props change
+  useEffect(() => {
+    setContent(props.value || "");
+  }, [props.value]);
 
   // Handle legacy wysiwyg_advanced field type
   const [editorType, setEditorType] = useState(
