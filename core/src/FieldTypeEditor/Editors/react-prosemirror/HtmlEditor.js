@@ -4,10 +4,10 @@ import { DOMParser, DOMSerializer } from "prosemirror-model";
 
 import Editor from "./Editor";
 
-const parser = schema => {
+export const parser = (schema) => {
   const parser = DOMParser.fromSchema(schema);
 
-  return content => {
+  return (content) => {
     const container = document.createElement("article");
     container.innerHTML = content;
 
@@ -15,10 +15,10 @@ const parser = schema => {
   };
 };
 
-const serializer = schema => {
+export const serializer = (schema) => {
   const serializer = DOMSerializer.fromSchema(schema);
 
-  return doc => {
+  return (doc) => {
     const container = document.createElement("article");
     container.appendChild(serializer.serializeFragment(doc.content));
 
@@ -37,7 +37,7 @@ export class HtmlEditor extends React.Component {
     options.doc = parse(value);
 
     this.onChange = debounce(
-      doc => {
+      (doc) => {
         onChange(serialize(doc));
       },
       1000,
@@ -56,6 +56,7 @@ export class HtmlEditor extends React.Component {
         render={render}
         onChange={this.onChange}
         nodeViews={nodeViews}
+        value={this.props.value}
       />
     );
   }
