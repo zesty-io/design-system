@@ -26,7 +26,7 @@ export class BasicEditor extends React.Component {
     this.state = {
       showLinkModal: false,
       showEmbedModal: false,
-      showEmbedModalOptions: {}
+      showEmbedModalOptions: {},
     };
   }
   componentDidMount() {
@@ -48,12 +48,12 @@ export class BasicEditor extends React.Component {
     ) {
       this.setState({
         [name]: true,
-        [`${name}Options`]: options
+        [`${name}Options`]: options,
       });
     }
   };
 
-  onModalClose = name => this.setState({ [name]: false });
+  onModalClose = (name) => this.setState({ [name]: false });
 
   render() {
     return (
@@ -84,7 +84,7 @@ export class BasicEditor extends React.Component {
             },
             video(node, view, getPos) {
               return new VideoResizeView(node, view, getPos);
-            }
+            },
           }}
         />
       </div>

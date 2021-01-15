@@ -37,7 +37,7 @@ export function InlineEditor({ value, onChange }) {
         },
         video(node, view, getPos) {
           return new VideoResizeView(node, view, getPos);
-        }
+        },
       }}
     />
   );

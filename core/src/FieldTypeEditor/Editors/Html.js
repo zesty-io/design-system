@@ -8,8 +8,8 @@ require("codemirror/mode/htmlmixed/htmlmixed");
 export class HtmlEditor extends React.Component {
   state = {
     html: html(this.props.value, {
-      indent_size: 2
-    })
+      indent_size: 2,
+    }),
   };
 
   render() {
@@ -21,7 +21,7 @@ export class HtmlEditor extends React.Component {
           autoCursor: false,
           mode: "htmlmixed",
           // theme: "material",
-          lineNumbers: true
+          lineNumbers: true,
         }}
         onBeforeChange={(editor, data, value) => {
           this.setState({ html: value.trim() });

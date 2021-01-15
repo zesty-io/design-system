@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Markdown.less";
 export class MarkdownEditor extends React.Component {
-  onChange = evt => {
+  onChange = (evt) => {
     this.props.onChange(evt.target.value);
   };
 
@@ -11,7 +11,7 @@ export class MarkdownEditor extends React.Component {
         className={styles.Markdown}
         onChange={this.onChange}
         placeholder={this.props.placeholder}
-        defaultValue={this.props.value}
+        value={this.props.value}
       />
     );
   }
