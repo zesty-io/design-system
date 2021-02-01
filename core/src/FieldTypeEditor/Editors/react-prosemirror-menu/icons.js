@@ -8,6 +8,7 @@ import {
   faSuperscript,
   faSubscript,
   faUnderline,
+  faStrikethrough,
   faLink,
   faParagraph,
   faHeading,
@@ -18,6 +19,7 @@ import {
   faTable,
   faUndo,
   faRedo,
+  faOutdent,
   faIndent,
   faAngleUp,
   faAlignLeft,
@@ -37,7 +39,7 @@ export default {
   subscript: <FontAwesomeIcon icon={faSubscript} />,
   superscript: <FontAwesomeIcon icon={faSuperscript} />,
   underline: <FontAwesomeIcon icon={faUnderline} />,
-
+  strikethrough: <FontAwesomeIcon icon={faStrikethrough} />,
   link: <FontAwesomeIcon icon={faLink} />,
   paragraph: <FontAwesomeIcon icon={faParagraph} />,
   heading: <FontAwesomeIcon icon={faHeading} />,
@@ -50,7 +52,7 @@ export default {
   footnote: <FontAwesomeIcon icon={faAsterisk} />,
   undo: <FontAwesomeIcon icon={faUndo} />,
   redo: <FontAwesomeIcon icon={faRedo} />,
-
+  outdent: <FontAwesomeIcon icon={faOutdent} />,
   indent: <FontAwesomeIcon icon={faIndent} />,
   join_up: <FontAwesomeIcon icon={faAngleUp} />,
 
