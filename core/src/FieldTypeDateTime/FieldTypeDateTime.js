@@ -10,7 +10,7 @@ import { FieldLabel } from "../FieldLabel";
 
 import styles from "./DateTimeFieldType.less";
 export class FieldTypeDateTime extends React.PureComponent {
-  onChange = evt => {
+  onChange = (evt) => {
     if (this.props.onChange) {
       this.props.onChange(
         evt.target.value,
@@ -34,7 +34,7 @@ export class FieldTypeDateTime extends React.PureComponent {
         <span className={styles.DateFieldTypeInput}>
           <input
             className={cx(styles.DatePicker, this.props.className)}
-            type={this.props.type }
+            type={this.props.type || "datetime-local"}
             onChange={this.onChange}
           />
           <Button className={styles.Icon}>
