@@ -14,7 +14,7 @@ import { FieldDescription } from "../FieldDescription";
 const converter = new showdown.Converter({
   noHeaderId: true,
   tables: true,
-  strikethrough: true
+  strikethrough: true,
   // backslashEscapesHTMLTags: true
 });
 
@@ -31,7 +31,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
       : props.type || "wysiwyg_basic"
   );
 
-  const onChange = value => {
+  const onChange = (value) => {
     // Prosemirror leaves a lingering p tag which is
     // problematic for consumers who check for empty values
     if (value === "<p></p>") {
@@ -65,7 +65,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
     }
   };
 
-  const selectEditor = (name, editor) => {
+  const selectEditor = (editor) => {
     setEditorType(editor);
 
     // Convert the content on the way into the component
@@ -83,16 +83,12 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
       case "wysiwyg_basic":
       case "wysiwyg_advanced":
         return <BasicEditor value={content} onChange={onChange} />;
-        break;
       case "markdown":
         return <MarkdownEditor value={content} onChange={onChange} />;
-        break;
       case "article_writer":
         return <InlineEditor value={content} onChange={onChange} />;
-        break;
       case "html":
         return <HtmlEditor value={content} onChange={onChange} />;
-        break;
       default:
         return (
           <div>

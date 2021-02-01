@@ -175,23 +175,19 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
-                onAction: function (_) {
-                  riot.mount(
-                    document.querySelector("#modalMount"),
-                    "media-app-modal",
-                    {
-                      limit: 10,
-                      callback: (images) => {
-                        editor.insertContent(
-                          images
-                            .map((image) => {
-                              return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
-                            })
-                            .join(" ")
-                        );
-                      },
-                    }
-                  );
+                onAction: function () {
+                  props.mediaBrowser({
+                    limit: 10,
+                    callback: (images) => {
+                      editor.insertContent(
+                        images
+                          .map((image) => {
+                            return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
+                          })
+                          .join(" ")
+                      );
+                    },
+                  });
                 },
               });
 

@@ -2388,6 +2388,7 @@ input:checked + .slider--3oNGy:before {
   min-width: 462px;
   padding: 32px;
   position: relative;
+  width: fit-content;
 }
 .Modal--1qxYb.Local--3QBD6 {
   position: absolute;
