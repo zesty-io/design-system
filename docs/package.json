@@ -42,7 +42,11 @@
     "@babel/cli": "7.8.3",
     "@babel/core": "7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
+<<<<<<< HEAD
     "@babel/preset-env": "7.8.7",
+=======
+    "@babel/preset-env": "7.8.3",
+>>>>>>> master
     "@babel/preset-react": "7.8.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",

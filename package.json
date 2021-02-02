@@ -1,6 +1,6 @@
 {
   "name": "design-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "**This design system is a work in progress and is constantly changing interfaces and patterns. We do not recommend until it hits `1.0.0`**",
   "main": "index.js",
   "directories": {
