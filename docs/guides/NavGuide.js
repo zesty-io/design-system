@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Nav } from '../../core/src/Nav'
+import { Nav } from '@zesty-io/core/Nav'
 import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 
