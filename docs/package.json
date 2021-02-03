@@ -6,7 +6,8 @@
   "scripts": {
     "precommit": "./node_modules/.bin/pretty-quick --staged",
     "prestart": "npm i && npm link @zesty-io/core",
-    "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development"
+    "start": "npx webpack --config ./webpack.config.js --mode development --watch & webpack-dev-server --mode development",
+    "build": "npx webpack --config ./webpack.config.js --mode production "
   },
   "author": "Zesty.io<developers@zesty.io>",
   "license": "All Rights Reserved",
