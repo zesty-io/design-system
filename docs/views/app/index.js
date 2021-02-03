@@ -4,7 +4,10 @@ import { HashRouter, Route, Switch, Link } from 'react-router-dom'
 import { Contribute } from './Contribute'
 import * as Guides from '../../guides'
 
-import { Nav } from '../../../core/src/Nav'
+import { Nav } from '@zesty-io/core/Nav'
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCube, faCogs, faSnowflake } from "@fortawesome/free-solid-svg-icons";
 
 import '@zesty-io/core/vendor.css'
 import styles from './app.less'

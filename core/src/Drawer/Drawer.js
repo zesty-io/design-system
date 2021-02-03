@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 
 import { Button } from "../Button";
 
 import styles from "./Drawer.less";
 export const Drawer = React.memo(function Drawer(props) {
-  const ref = useRef(null);
   const [open, setOpen] = useState(Boolean(props.open));
 
   /**
@@ -15,41 +14,41 @@ export const Drawer = React.memo(function Drawer(props) {
    * NOTE: because we use height/width auto to allow for dynamic dimensions
    * we can not animate the drawer "opening/closing" when changing the height/width value.
    */
-  if (ref.current) {
-    ref.current.style.overflowY = "scroll";
 
-    if (props.position === "top") {
-      ref.current.style["top"] = 0;
-    }
-    if (props.position === "right") {
-      ref.current.style["right"] = 0;
-    }
-    if (props.position === "bottom") {
-      ref.current.style["bottom"] = 0;
-    }
-    if (props.position === "left") {
-      ref.current.style["left"] = 0;
-    }
+  const style = {};
+  style.overflowY = "scroll";
 
+  if (props.position === "top") {
+    style["top"] = 0;
+  }
+  if (props.position === "right") {
+    style["right"] = 0;
+  }
+  if (props.position === "bottom") {
+    style["bottom"] = 0;
+  }
+  if (props.position === "left") {
+    style["left"] = 0;
+  }
+
+  if (props.position === "left" || props.position === "right") {
+    style.height = props.height || "100%";
+    style.width = props.width || "auto";
+  }
+  if (props.position === "top" || props.position === "bottom") {
+    style.height = props.height || "auto";
+    style.width = props.width || "100%";
+  }
+
+  if (!open) {
+    style.overflowY = "hidden";
+
+    // When closed we just set the dimension to the offset
     if (props.position === "left" || props.position === "right") {
-      ref.current.style.height = props.height || "100%";
-      ref.current.style.width = props.width || "auto";
+      style.width = props.offset || "30px";
     }
     if (props.position === "top" || props.position === "bottom") {
-      ref.current.style.height = props.height || "auto";
-      ref.current.style.width = props.width || "100%";
-    }
-
-    if (!open) {
-      ref.current.style.overflowY = "hidden";
-
-      // When closed we just set the dimension to the offset
-      if (props.position === "left" || props.position === "right") {
-        ref.current.style.width = props.offset || "30px";
-      }
-      if (props.position === "top" || props.position === "bottom") {
-        ref.current.style.height = props.offset || "30px";
-      }
+      style.height = props.offset || "30px";
     }
   }
 
@@ -60,7 +59,7 @@ export const Drawer = React.memo(function Drawer(props) {
 
   return (
     <div
-      ref={ref}
+      style={style}
       className={cx(
         styles.Drawer,
         styles[props.position],

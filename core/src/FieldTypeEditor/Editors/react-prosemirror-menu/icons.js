@@ -28,7 +28,7 @@ import {
   faAlignJustify,
   faArrowCircleLeft,
   faArrowCircleRight,
-} from "@fortawesome/fontawesome-free-solid";
+} from "@fortawesome/free-solid-svg-icons";
 
 export default {
   em: <FontAwesomeIcon icon={faItalic} />,
