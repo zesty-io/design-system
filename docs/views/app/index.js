@@ -1,27 +1,28 @@
-import React from 'react'
-import { HashRouter, Route, Switch, Link } from 'react-router-dom'
+import React from "react";
+import { HashRouter, Route, Switch, Link } from "react-router-dom";
 
-import { Contribute } from './Contribute'
-import * as Guides from '../../guides'
+import { Contribute } from "./Contribute";
+import * as Guides from "../../guides";
 
-import { Nav } from '@zesty-io/core/Nav'
+import { Nav } from "@zesty-io/core/Nav";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCube, faCogs, faSnowflake } from "@fortawesome/free-solid-svg-icons";
 
-import '@zesty-io/core/vendor.css'
-import styles from './app.less'
+import "@zesty-io/core/vendor.css";
+import styles from "./app.less";
 export default function App(props) {
-  const selected = `/design-system#/${window.location.pathname.split('/')[1]}`
-  const getPath = el =>
-    `/design-system#/${el.toLowerCase().replace(' ', '-')}guide`
+  //design-system path
+  const selected = `/${window.location.pathname.split("/")[1]}`;
+  //pagename + guide
+  const getPath = el => `/${el.toLowerCase().replace(" ", "-")}guide`;
 
   return (
     <HashRouter basename="/design-system">
       <section className={styles.App}>
         <header className={styles.AppHeader}>
           <Link className={styles.Home} to="/">
-            <i className={`fa fa-home ${styles.link}`} />{' '}
+            <i className={`fa fa-home ${styles.link}`} />{" "}
           </Link>
           <h1>Zesty.io Component Library</h1>
         </header>
@@ -34,8 +35,8 @@ export default function App(props) {
                 return {
                   label: el,
                   path: getPath(el),
-                  icon: 'cube'
-                }
+                  icon: "cube"
+                };
               })}
             />
             <div className={styles.Title}>MOLECULES</div>
@@ -45,8 +46,8 @@ export default function App(props) {
                 return {
                   label: el,
                   path: getPath(el),
-                  icon: 'cogs'
-                }
+                  icon: "cogs"
+                };
               })}
             />
             <div className={styles.Title}>ORGANISMS</div>
@@ -56,8 +57,8 @@ export default function App(props) {
                 return {
                   label: el,
                   path: getPath(el),
-                  icon: 'fa-snowflake-o'
-                }
+                  icon: "fa-snowflake-o"
+                };
               })}
             />
           </nav>
@@ -67,7 +68,7 @@ export default function App(props) {
               {Object.keys(Guides).map(routeItem => (
                 <Route
                   key={routeItem}
-                  path={`/design-system#/${routeItem.toLowerCase()}`}
+                  path={`/${routeItem.toLowerCase()}`}
                   component={Guides[routeItem]}
                 />
               ))}
@@ -77,5 +78,5 @@ export default function App(props) {
         </section>
       </section>
     </HashRouter>
-  )
+  );
 }
