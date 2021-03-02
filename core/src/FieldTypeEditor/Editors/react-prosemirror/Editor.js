@@ -2,7 +2,8 @@ import React from "react";
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import "prosemirror-view/style/prosemirror.css";
-// import './Editor.css'
+
+import { parser } from "./HtmlEditor";
 
 class Editor extends React.Component {
   constructor(props) {
@@ -12,21 +13,21 @@ class Editor extends React.Component {
 
     this.view = new EditorView(null, {
       state: EditorState.create(props.options),
-      dispatchTransaction: transaction => {
+      dispatchTransaction: (transaction) => {
         const { state, transactions } = this.view.state.applyTransaction(
           transaction
         );
 
         this.view.updateState(state);
 
-        if (transactions.some(tr => tr.docChanged)) {
+        if (transactions.some((tr) => tr.docChanged)) {
           this.props.onChange(state.doc);
         }
 
         this.forceUpdate();
       },
       attributes: this.props.attributes,
-      nodeViews: this.props.nodeViews
+      nodeViews: this.props.nodeViews,
     });
   }
 
@@ -44,7 +45,7 @@ class Editor extends React.Component {
     return this.props.render
       ? this.props.render({
           editor,
-          view: this.view
+          view: this.view,
         })
       : editor;
   }
