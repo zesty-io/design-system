@@ -36,9 +36,13 @@ export function Node(props) {
                 ? action.props.available(props)
                 : true;
 
+              // Filter out props which will not translate to the DOM
+              const { showIcon, available, ...filteredProps } = action.props;
+              const child = { ...action, props: filteredProps };
+
               return (
                 isAvailable &&
-                React.cloneElement(action, {
+                React.cloneElement(child, {
                   key: index,
                   className: cx(
                     styles.action,
@@ -46,10 +50,6 @@ export function Node(props) {
                     action.props.className
                   ),
                   onClick: () => action.props.onClick(props),
-
-                  // Remove props which will not translate to the DOM
-                  showIcon: null,
-                  available: null,
                 })
               );
             })}
