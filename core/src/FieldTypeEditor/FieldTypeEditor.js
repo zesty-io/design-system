@@ -82,11 +82,23 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
     switch (editorType) {
       case "wysiwyg_basic":
       case "wysiwyg_advanced":
-        return <BasicEditor value={content} onChange={onChange} />;
+        return (
+          <BasicEditor
+            value={content}
+            onChange={onChange}
+            mediaBrowser={props.mediaBrowser}
+          />
+        );
       case "markdown":
         return <MarkdownEditor value={content} onChange={onChange} />;
       case "article_writer":
-        return <InlineEditor value={content} onChange={onChange} />;
+        return (
+          <InlineEditor
+            value={content}
+            onChange={onChange}
+            mediaBrowser={props.mediaBrowser}
+          />
+        );
       case "html":
         return <HtmlEditor value={content} onChange={onChange} />;
       default:
