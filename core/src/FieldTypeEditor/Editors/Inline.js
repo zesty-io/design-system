@@ -14,7 +14,7 @@ import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
 import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
 
 import styles from "./Inline.less";
-export function InlineEditor({ value, onChange }) {
+export function InlineEditor({ value, onChange, mediaBrowser }) {
   return (
     <HtmlEditor
       options={{ plugins, schema }}
@@ -23,7 +23,7 @@ export function InlineEditor({ value, onChange }) {
       render={({ editor, view }) => (
         <section className={styles.InlineEditor}>
           <Floater view={view}>
-            <MenuBar menu={inline} view={view} />
+            <MenuBar menu={inline({ mediaBrowser })} view={view} />
           </Floater>
           {editor}
         </section>
@@ -37,7 +37,7 @@ export function InlineEditor({ value, onChange }) {
         },
         video(node, view, getPos) {
           return new VideoResizeView(node, view, getPos);
-        }
+        },
       }}
     />
   );
