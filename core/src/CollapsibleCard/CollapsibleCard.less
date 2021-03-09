@@ -1,9 +1,18 @@
+@import "../colors.less";
+
 .Card {
   .CardHeader {
+    padding: 0;
+    &:hover,
+    &:focus {
+      background: lighten(@zesty-light-blue, 8%);
+    }
+
     .HeaderWrap {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       cursor: pointer;
+      padding: 14px 16px;
 
       .Caret {
         margin-right: 0.5rem;

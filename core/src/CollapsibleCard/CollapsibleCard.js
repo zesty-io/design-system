@@ -1,5 +1,7 @@
 import React from "react";
 import cx from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import { Card, CardHeader, CardContent, CardFooter } from "../Card";
 
@@ -28,14 +30,11 @@ export class CollapsibleCard extends React.Component {
       <Card className={cx(styles.Card, this.props.className)}>
         <CardHeader className={styles.CardHeader}>
           <div className={styles.HeaderWrap} onClick={this.onCollapse}>
-            <i
-              className={cx(
-                styles.Caret,
-                this.state.isCollapsed
-                  ? "fa fa-caret-right"
-                  : "fa fa-caret-down"
-              )}
-            />
+            {this.state.isCollapsed ? (
+              <FontAwesomeIcon icon={faCaretRight} className={styles.Caret} />
+            ) : (
+              <FontAwesomeIcon icon={faCaretDown} className={styles.Caret} />
+            )}
             <div className={styles.ProvidedContent}>{this.props.header}</div>
           </div>
         </CardHeader>
