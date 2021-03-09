@@ -4,7 +4,6 @@ import cx from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import { Card, CardContent } from "../Card";
 import { Button } from "../Button";
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
@@ -44,8 +43,6 @@ export class FieldTypeImage extends React.PureComponent {
   };
 
   render() {
-    // console.log("FieldTypeImage:render");
-
     const maxImages = this.props.limit || 1;
     const imageCount = this.props.images.length;
 
@@ -69,12 +66,12 @@ export class FieldTypeImage extends React.PureComponent {
           </p>
         )}
 
-        <Card
+        <div
           className={`${styles.FieldTypeImage} ${
             imageCount > maxImages ? styles.warn : ""
           }`}
         >
-          <CardContent className={styles.FieldTypeImageContent}>
+          <div className={styles.FieldTypeImageContent}>
             {/*
               <h3>Drop images here to upload them to your media</h3>
               <input type="file" className={styles.DropZone} />
@@ -101,8 +98,8 @@ export class FieldTypeImage extends React.PureComponent {
                   addImage={this.addImage}
                 />
               ))}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         <FieldDescription description={this.props.description} />
       </Fragment>
