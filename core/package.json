@@ -32,12 +32,12 @@
     "flatpickr": "^4.5.2",
     "lodash.debounce": "^4.0.8",
     "react": "^16.10.2",
-    "react-codemirror2": "^5.1.0",
+    "react-codemirror2": "^7.0.0",
     "react-dom": "^16.10.2",
     "react-flatpickr": "3.10.6",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
     "showdown": "^1.9.0",
-    "uuid": "^3.3.2"
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
