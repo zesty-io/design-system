@@ -46,6 +46,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
       <div className={styles.FieldTypeTinyMCEPM}>

@@ -22,6 +22,7 @@ export const FieldTypeColor = React.memo(function FieldTypeColor(props) {
         required={props.required}
         tag={props.tag}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
 
       <div className={styles.FieldTypeColorInput}>

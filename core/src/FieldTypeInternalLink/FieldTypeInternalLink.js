@@ -30,6 +30,7 @@ export const FieldTypeInternalLink = React.memo(function FieldTypeInternalLink(
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
 

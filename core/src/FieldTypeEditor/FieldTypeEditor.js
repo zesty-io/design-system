@@ -118,6 +118,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
         <Select
           name="editorType"

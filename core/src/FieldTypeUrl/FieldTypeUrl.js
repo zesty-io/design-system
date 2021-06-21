@@ -26,11 +26,12 @@ export const FieldTypeUrl = React.memo(function FieldTypeUrl(props) {
         maxLength={props.maxLength}
         valueLength={(props.value && props.value.length) || "0"}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
       <Input
         type="url"
         required={props.required}
-        onChange={evt => {
+        onChange={(evt) => {
           if (props.onChange) {
             props.onChange(evt.target.value, props.name, props.datatype);
           }

@@ -56,6 +56,7 @@ export class FieldTypeImage extends React.PureComponent {
             maxLength={maxImages}
             valueLength={imageCount}
             tooltip={this.props.tooltip}
+            subLabel={this.props.subLabel}
           />
         </label>
 

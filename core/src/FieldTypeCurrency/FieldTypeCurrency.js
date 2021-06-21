@@ -23,6 +23,7 @@ export const FieldTypeCurrency = React.memo(function FieldTypeCurrency(props) {
           required={props.required}
           tag={props.tag}
           tooltip={`View this value in different currencies based upon your locale "${window.navigator.language}"`}
+          subLabel={props.subLabel}
         />
         <span>
           {Number(monetaryValue).toLocaleString(window.navigator.language, {

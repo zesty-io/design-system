@@ -35,12 +35,13 @@ export const FieldTypeTextarea = React.memo(function FieldTypeTextarea(props) {
         maxLength={props.maxLength || 150}
         valueLength={(props.value && props.value.length) || "0"}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
 
       <Textarea
         {...props}
         type="textarea"
-        onChange={evt => {
+        onChange={(evt) => {
           if (props.onChange) {
             props.onChange(evt.target.value, props.name, props.datatype);
           }

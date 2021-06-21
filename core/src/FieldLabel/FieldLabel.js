@@ -11,8 +11,12 @@ export function FieldLabel(props) {
           <Infotip className={styles.ToolTip} title={props.tooltip} />
         )}
         {props.label}
-        {props.required && <span className={styles.TextFieldRequired}>*</span>}
-
+        {props.required && (
+          <span className={styles.TextFieldRequired}>*</span>
+        )}{""}
+        {props.subLabel && (
+          <span className={styles.SubLabel}>{props.subLabel}</span>
+        )}
         {props.tag && <span className={styles.Tag}>{props.tag}</span>}
       </span>
       {props.maxLength && (

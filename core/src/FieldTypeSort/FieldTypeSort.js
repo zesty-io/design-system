@@ -47,6 +47,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
 

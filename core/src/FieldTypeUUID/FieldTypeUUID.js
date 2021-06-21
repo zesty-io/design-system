@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import cx from "classnames";
-import uuidv4 from "uuid/v4";
+import { v4 as uuidv4 } from "uuid";
 
 import { Input } from "../Input";
 import { FieldDescription } from "../FieldDescription";
@@ -26,13 +26,14 @@ export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
         required={props.required}
         tag={props.tag}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
       <div className={styles.DateFieldTypeInput}>
         <i
           className={cx(styles.Icon, "fa fa-clipboard")}
           aria-hidden="true"
           title="Click to Copy"
-          onClick={e => {
+          onClick={(e) => {
             const input = document.createElement("input");
             document.body.appendChild(input);
             input.value = props.value;
@@ -44,7 +45,7 @@ export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
               return props.dispatch(
                 notify({
                   type: "error",
-                  message: "Failed to copy the team ID to your clipboard"
+                  message: "Failed to copy the team ID to your clipboard",
                 })
               );
             }

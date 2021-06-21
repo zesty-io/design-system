@@ -35,6 +35,7 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
         maxLength={maxLength}
         valueLength={valueLength}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
       <Input
         {...props}

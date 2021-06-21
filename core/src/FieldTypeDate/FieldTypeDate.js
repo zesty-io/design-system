@@ -32,6 +32,7 @@ export const FieldTypeDate = React.memo(function FieldTypeDate(props) {
         required={props.required}
         tooltip={props.tooltip}
         tag={props.tag}
+        subLabel={props.subLabel}
       />
 
       <span className={styles.FieldTypeDateInput}>

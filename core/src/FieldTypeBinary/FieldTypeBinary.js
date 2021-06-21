@@ -17,6 +17,7 @@ export const FieldTypeBinary = React.memo(function FieldTypeBinary(props) {
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
       <div className={styles.switch}>

@@ -37,6 +37,7 @@ export const FieldTypeOneToOne = React.memo(function FieldTypeOneToOne(props) {
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
 

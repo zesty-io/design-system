@@ -20,13 +20,14 @@ export const FieldTypeNumber = React.memo(function FieldTypeNumber(props) {
         required={props.required}
         tag={props.tag}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
 
       <Input
         type="number"
         required={props.required}
         value={number}
-        onChange={evt => {
+        onChange={(evt) => {
           if (props.onChange) {
             props.onChange(evt.target.value, props.name, props.datatype);
           }

@@ -16,6 +16,7 @@ export const FieldTypeDropDown = React.memo(function FieldTypeDropDown(props) {
         required={props.required}
         tag={props.tag}
         tooltip={props.tooltip}
+        subLabel={props.subLabel}
       />
 
       <Select

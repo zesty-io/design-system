@@ -89,6 +89,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          subLabel={props.subLabel}
         />
       </label>
 

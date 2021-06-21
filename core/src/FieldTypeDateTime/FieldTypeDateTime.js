@@ -29,6 +29,7 @@ export class FieldTypeDateTime extends React.PureComponent {
           required={this.props.required}
           tag={this.props.tag}
           tooltip={this.props.tooltip}
+          subLabel={props.subLabel}
         />
 
         <span className={styles.DateFieldTypeInput}>
