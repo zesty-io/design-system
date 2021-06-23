@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import cx from "classnames";
-import { v4 as uuidv4 } from "uuid";
+import uuidv4 from "uuid/v4";
 
 import { Input } from "../Input";
 import { FieldDescription } from "../FieldDescription";
