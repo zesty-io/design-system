@@ -11,7 +11,7 @@ import styles from "./FieldTypeOneToMany.less";
 export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   props
 ) {
-  // console.log("FieldTypeOneToMany:render");
+
 
   const [loaded, setLoaded] = useState(false); // Used to ensure we only load data once
   const [loading, setLoading] = useState(false);
@@ -62,7 +62,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   const onSelect = (value) => {
     const option = props.options.find((option) => option.value === value);
     if (option && option.value !== "0") {
-      let items = [...selectedItems, option.value];
+      let items = [option.value, ...selectedItems];
 
       setSelectedItems(items);
 
@@ -112,14 +112,17 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
         </Select>
 
         <article className={styles.Tags}>
-          {props.options.length && selectedItems.length ? (
-            props.options
-              .filter((option) => selectedItems.includes(option.value))
-              .map((item, i) => (
+          {selectedItems.length ? (
+            selectedItems.map((ZUID, i) => {
+              const item = props.options.find(
+                (option) => option.value === ZUID
+              );
+              return (
                 <Tag key={i} onRemove={onRemove} value={item.value}>
                   {item.component || item.text || item.filterValue}
                 </Tag>
-              ))
+              );
+            })
           ) : (
             <p>Select tags to associate them with your item.</p>
           )}
