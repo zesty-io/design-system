@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
 import { Select, Option } from "../Select";
@@ -7,12 +10,9 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeOneToMany.less";
-
 export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   props
 ) {
-
-
   const [loaded, setLoaded] = useState(false); // Used to ensure we only load data once
   const [loading, setLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState(
@@ -117,9 +117,15 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
               const item = props.options.find(
                 (option) => option.value === ZUID
               );
-              return (
+
+              return item ? (
                 <Tag key={i} onRemove={onRemove} value={item.value}>
                   {item.component || item.text || item.filterValue}
+                </Tag>
+              ) : (
+                <Tag key={i} onRemove={onRemove} value={ZUID} error={true}>
+                  <FontAwesomeIcon icon={faExclamationTriangle} />
+                  &nbsp;{ZUID} is not an item of the related model
                 </Tag>
               );
             })
