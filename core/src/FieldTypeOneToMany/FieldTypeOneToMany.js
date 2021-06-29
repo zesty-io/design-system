@@ -11,8 +11,6 @@ import styles from "./FieldTypeOneToMany.less";
 export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   props
 ) {
-
-
   const [loaded, setLoaded] = useState(false); // Used to ensure we only load data once
   const [loading, setLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState(
@@ -117,9 +115,14 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
               const item = props.options.find(
                 (option) => option.value === ZUID
               );
-              return (
+
+              return item ? (
                 <Tag key={i} onRemove={onRemove} value={item.value}>
                   {item.component || item.text || item.filterValue}
+                </Tag>
+              ) : (
+                <Tag key={i} onRemove={onRemove} value={ZUID}>
+                  {ZUID}
                 </Tag>
               );
             })
