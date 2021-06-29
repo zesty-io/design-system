@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+
 import { Tag } from "../Tag";
 import { Loader } from "../Loader";
 import { Select, Option } from "../Select";
@@ -7,7 +10,6 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeOneToMany.less";
-
 export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
   props
 ) {
@@ -121,8 +123,9 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
                   {item.component || item.text || item.filterValue}
                 </Tag>
               ) : (
-                <Tag key={i} onRemove={onRemove} value={ZUID}>
-                  {ZUID}
+                <Tag key={i} onRemove={onRemove} value={ZUID} error={true}>
+                  <FontAwesomeIcon icon={faExclamationTriangle} />
+                  &nbsp;{ZUID} is not an item of the related model
                 </Tag>
               );
             })
