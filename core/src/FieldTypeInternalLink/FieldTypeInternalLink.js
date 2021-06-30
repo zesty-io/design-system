@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import debounce from "lodash.debounce";
+import debounce from "lodash/debounce";
 
 import { Select, Option } from "../Select";
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
-import styles from "./FieldTypeInternalLink.less";
 export const FieldTypeInternalLink = React.memo(function FieldTypeInternalLink(
   props
 ) {
-  // console.log("FieldTypeInternalLink:render");
-
   const [loading, setLoading] = useState(false);
 
-  const onSearch = debounce(term => {
+  const onSearch = debounce((term) => {
     if (term && props.onSearch) {
       setLoading(true);
       props.onSearch(term).then(() => {
