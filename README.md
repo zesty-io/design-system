@@ -20,8 +20,18 @@ npm start
 ```
 
 ## Running Locally
+ In Manager-ui
+ ```
+ npm i
+ npm link @zesty-io/core
+
+ ```
+In Design-Systems
 
 ```
-cd app
-npm start
+git pull design-system
+cd /core
+npm start ( After every time you make an edit)
+
 ```
+
