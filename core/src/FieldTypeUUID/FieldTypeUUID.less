@@ -5,8 +5,8 @@
   .DateFieldTypeInput {
     display: flex;
     .Icon {
-      background-color: #5b667d;
-      border: 1px solid #5b667d;
+      background-color: @zesty-grey;
+      border: 1px solid @zesty-grey;
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
       color: #e3ebf9;
@@ -22,12 +22,11 @@
       display: flex;
       &:hover,
       &:focus {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
-          0 0 2px 0 rgba(26, 32, 44, 0.12);
+        box-shadow: @boxShadow;
         outline: none;
       }
       &:active {
-        background-color: #a7afbf;
+        background-color: @zesty-light-grey;
       }
     }
     input {
@@ -38,9 +37,9 @@
 
 .FieldTypeUUID.Error {
   span {
-    color: #9a2803;
+    color: @zesty-red;
   }
   input {
-    background: red;
+    background: @zesty-red;
   }
 }
