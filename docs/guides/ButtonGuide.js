@@ -40,6 +40,10 @@ export class ButtonGuide extends Component {
                 <FontAwesomeIcon icon={faPlus} />
                 Secondary Button
                 </Button>
+                <br />
+              <Button kind="subdued">Subdued</Button>
+              <br />
+              <Button kind="outlined">Outlined</Button>
               <br />
               <Button kind="cancel">Cancel Button</Button>
               <br />
@@ -63,9 +67,21 @@ export class ButtonGuide extends Component {
                 <li>
                   <code>kind</code>: The kind of button to render; save, cancel,
                   warn, alt. When not provided renders a default button.
+                  <ul>
+                    <li>outlined</li>
+                    <li>subdued</li>
+                    <li>warm</li>
+                    <li>alt</li>
+                    <li>cancel</li>
+                    <li>secondary</li>
+                    <li>save</li>
+                  </ul>
                 </li>
                 <li>
                   <code>size="small"</code>: reduced overall size of the button
+                  <ul>
+                    <li>small</li>
+                  </ul>
                 </li>
                 <li>
                   <code>onClick</code>: Function to handle click events. Is
