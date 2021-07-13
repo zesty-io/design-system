@@ -86,7 +86,7 @@ export class ConfirmDialogGuide extends Component {
 
         <CodeCard
           header="Code"
-          height={250}
+          height={450}
           children={`export const ConfirmDialog = props => {
   return (
     (props.isOpen && (

@@ -42,7 +42,7 @@ export class AppLinkGuide extends Component {
           </Card>
         </div>
 
-        <CodeCard header="Usage" height={50} open>
+        <CodeCard header="Usage" height={150} open>
           {`
 <AppLink to='/applink'}>
   <i className="fa fa-pencil-square-o" aria-hidden="true" />&nbsp;Link Text
@@ -50,7 +50,7 @@ export class AppLinkGuide extends Component {
 `}
         </CodeCard>
 
-        <CodeCard header="Code" height={150}>
+        <CodeCard header="Code" height={300} open>
           {`
 export function AppLink(props) {
   return (
@@ -66,7 +66,7 @@ export function AppLink(props) {
 `}
         </CodeCard>
       </div>
-    )
+    );
   }
 }
 

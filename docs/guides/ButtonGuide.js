@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import { Button } from '@zesty-io/core/Button'
-import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
-import GithubEmbed from '../components/githubembed'
+// import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
+// import GithubEmbed from '../components/githubembed'
 import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +30,7 @@ export class ButtonGuide extends Component {
               <Button kind="save">Save Button</Button>
               <br />
               <Button kind="save" size="small">Save Button</Button>
-             
+
               <br />
               <Button kind="secondary">
               <FontAwesomeIcon icon={faPlus} />
