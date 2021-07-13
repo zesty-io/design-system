@@ -7,7 +7,11 @@ export const Button = React.forwardRef(function Button(props, ref) {
     <button
       {...props}
       ref={ref}
-      className={cx(styles.Button, styles[props.kind], props.className)}
+      className={cx(
+          styles.Button, 
+          styles[props.kind],
+          props.size == 'small' ? styles.small : null, 
+          props.className)}
     >
       {props.text}
       {React.Children.map(
