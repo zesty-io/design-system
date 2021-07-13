@@ -31,6 +31,11 @@
   text-transform: uppercase;
   text-align: left;
 
+  &.small {
+    padding: 4px 10px;
+    font-size: .9em;
+  }
+
   &:hover,
   &:focus {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
@@ -65,15 +70,22 @@
     background: rgba(26, 32, 44, 0.12);
     color: #1a202c;
     cursor: not-allowed;
-    opacity: 0.4;
+    opacity: 0.4; 
   }
   &:active {
     box-shadow: none;
   }
+
+  .icon {
+    margin-right: 8px;
+    font-size: 13px;
+    // color: @btnDefaultText;
+  }
+  &.small {
+    .icon {
+      font-size: 1em;
+    } 
+  }
+
 }
 
-.icon {
-  margin-right: 8px;
-  font-size: 13px;
-  // color: @btnDefaultText;
-}

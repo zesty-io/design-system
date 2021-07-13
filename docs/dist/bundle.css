@@ -103,6 +103,10 @@
   text-transform: uppercase;
   text-align: left;
 }
+.Button--KGEoo.small--3mOjz {
+  padding: 4px 10px;
+  font-size: 0.9em;
+}
 .Button--KGEoo:hover,
 .Button--KGEoo:focus {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(26, 32, 44, 0.12);
@@ -135,9 +139,12 @@
 .Button--KGEoo:active {
   box-shadow: none;
 }
-.icon--2GQfl {
+.Button--KGEoo .icon--2GQfl {
   margin-right: 8px;
   font-size: 13px;
+}
+.Button--KGEoo.small--3mOjz .icon--2GQfl {
+  font-size: 1em;
 }
 .Card--2cDZe .CardHeader--24lnG {
   padding: 0;

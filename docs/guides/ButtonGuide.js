@@ -4,6 +4,8 @@ import { Button } from '@zesty-io/core/Button'
 import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
 import GithubEmbed from '../components/githubembed'
 import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export class ButtonGuide extends Component {
   render() {
@@ -27,7 +29,17 @@ export class ButtonGuide extends Component {
               <br />
               <Button kind="save">Save Button</Button>
               <br />
-              <Button kind="secondary">Secondary Button</Button>
+              <Button kind="save" size="small">Save Button</Button>
+             
+              <br />
+              <Button kind="secondary">
+              <FontAwesomeIcon icon={faPlus} />
+                Secondary Button</Button>
+              <br />
+              <Button kind="secondary" size="small">
+                <FontAwesomeIcon icon={faPlus} />
+                Secondary Button
+                </Button>
               <br />
               <Button kind="cancel">Cancel Button</Button>
               <br />
@@ -51,6 +63,9 @@ export class ButtonGuide extends Component {
                 <li>
                   <code>kind</code>: The kind of button to render; save, cancel,
                   warn, alt. When not provided renders a default button.
+                </li>
+                <li>
+                  <code>size="small"</code>: reduced overall size of the button
                 </li>
                 <li>
                   <code>onClick</code>: Function to handle click events. Is
