@@ -11,6 +11,7 @@ export function Node(props) {
     <li
       className={cx(
         styles.item,
+        props.className == 'dark' ? styles.Dark : null,
         styles[`depth${props.depth}`],
         props.selected.includes(props.path) ? styles.selected : null
       )}

@@ -31,6 +31,7 @@ export default function App(props) {
             <div className={styles.Title}>ATOMS</div>
             <Nav
               selected={selected}
+              className="dark"
               tree={props.atoms.map(el => {
                 return {
                   label: el,
@@ -42,6 +43,7 @@ export default function App(props) {
             <div className={styles.Title}>MOLECULES</div>
             <Nav
               selected={selected}
+              className="dark"
               tree={props.molecules.map(el => {
                 return {
                   label: el,
@@ -53,6 +55,7 @@ export default function App(props) {
             <div className={styles.Title}>ORGANISMS</div>
             <Nav
               selected={selected}
+              className="dark"
               tree={props.organisms.map(el => {
                 return {
                   label: el,

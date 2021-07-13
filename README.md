@@ -1,9 +1,3 @@
-# ⚠️ Work In Progress
-
-**This design system is a work in progress and is constantly changing interfaces and patterns. We do not recommend until it hits `1.0.0`**
-
----
-
 # Zesty.io Design System
 
 > A system for building consistent products
@@ -16,12 +10,19 @@ Link the core to the global node_modules and build the package
 
 ```
 cd core
+npm install
+sudo npm start
+```
+
+## Running Docs Locally for Testing
+
+Run core package setup before docs
+
+```
+cd docs
 npm start
 ```
 
-## Running Locally
-
 ```
-cd app
-npm start
+Open Browser to http://localhost:8080/
 ```
