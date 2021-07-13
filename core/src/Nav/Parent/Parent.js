@@ -5,10 +5,9 @@ import styles from "./Parent.less";
 export function Parent(props) {
   // track recursion depth and pass it as a prop to the node component
   const depth = props.depth + 1 || 1;
-  const style = props.className == 'dark' ? 'dark' : 'light';
   
   return (
-    <article className={style == 'dark' ? cx(styles.Parent,styles.Dark) : styles.Parent}>
+    <article className={props.lightMode == 'true' ? styles.Parent : cx(styles.Parent, styles.Dark) }>
       <ul className={props.isClosed ? styles.closed : ""}>
         {Array.isArray(props.children) && props.children.length ? (
           // if the item has children
@@ -16,7 +15,7 @@ export function Parent(props) {
           <React.Fragment>
             <Node
               {...props}
-              className={style}
+              lightMode={props.lightMode}
               depth={depth}
               selected={props.selected}
               collapseNode={props.collapseNode}
@@ -28,7 +27,7 @@ export function Parent(props) {
                 // If the current node is closed then
                 // tell child nodes to not display
                 isClosed={props.closed}
-                className={style}
+                lightMode={props.lightMode}
                 key={child.path}
                 depth={depth}
                 selected={props.selected}
@@ -40,7 +39,7 @@ export function Parent(props) {
         ) : (
           <Node
             {...props}
-            className={style}
+            lightMode={props.lightMode}
             depth={depth}
             selected={props.selected}
             collapseNode={props.collapseNode}

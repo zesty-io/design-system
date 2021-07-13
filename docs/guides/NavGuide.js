@@ -35,12 +35,12 @@ export class NavGuide extends Component {
           selected (a string matching the path of the selected item)
         </p>
         <br />
-        <h1>Dark (className="dark")</h1>
+        <h1>Dark (lightMode="true")</h1>
         <hr/>
         <br/>
         <Nav
           name="NavGuide"
-          className="dark"
+          lightMode="true"
           selected={this.state.selected}
           tree={navExample}/>
         <br />
