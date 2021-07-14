@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { CollapsibleCard } from '@zesty-io/core/CollapsibleCard'
+import { Docs } from '@zesty-io/core/Docs'
 import GithubEmbed from '../components/githubembed'
 import { Card, CardHeader, CardContent, CardFooter } from '@zesty-io/core/Card'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
