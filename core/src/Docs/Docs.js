@@ -1,14 +1,20 @@
 import React from "react";
-import styles from "./Docs.less";
-import cx from "classnames";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "../Button"
 
 export function Docs(props) {
-  let opts = {
-    className: cx(styles.ButtonGroup, props.className)
-  };
+
+  function openDocs() {
+    let url=`https://zesty.org/?q=${props.subject}`
+    window.open(url, '_blank');
+  }
+
   return (
-    <div {...opts}>
-      aszdfsadf
-    </div>
+    <Button title={`Open documentation for ${props.subject}`} size="small" kind="documentation" onClick={openDocs}>
+      <FontAwesomeIcon icon={faBook} />
+        Documentation
+    </Button>
   );
 }

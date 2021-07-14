@@ -68,6 +68,26 @@
 
   }
 
+  &.documentation{
+    border: 1px @zesty-light-gray solid;
+    background: lighten(@zesty-light-gray, 20%);
+    box-shadow: none;
+    transition: 200ms ease all;
+    color: @zesty-gray;
+    padding: 0px 8px;
+    font-size: 0.85em;
+
+    .icon {
+      color: @zesty-light-gray;
+    }
+    &:hover {
+      background: @zesty-light-gray;
+      .icon {
+        color: @zesty-orange;
+      }
+    }
+  }
+
   &.cancel {
     background-color: @zesty-dark-blue;
     opacity: 0.6;

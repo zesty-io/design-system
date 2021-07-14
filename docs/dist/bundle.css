@@ -132,6 +132,24 @@
   color: #5b667d;
   border: 1px #a7afbf solid;
 }
+.Button--KGEoo.documentation--178Np {
+  border: 1px #a7afbf solid;
+  background: #e2e5ea;
+  box-shadow: none;
+  transition: 200ms ease all;
+  color: #5b667d;
+  padding: 0px 8px;
+  font-size: 0.85em;
+}
+.Button--KGEoo.documentation--178Np .icon--2GQfl {
+  color: #a7afbf;
+}
+.Button--KGEoo.documentation--178Np:hover {
+  background: #a7afbf;
+}
+.Button--KGEoo.documentation--178Np:hover .icon--2GQfl {
+  color: #f17829;
+}
 .Button--KGEoo.cancel--1yOuu {
   background-color: #1b202c;
   opacity: 0.6;
@@ -180,9 +198,6 @@
 }
 .Card--2cDZe .CardHeader--24lnG .HeaderWrap--3DQUp .ProvidedContent--2T1MG {
   flex: 1;
-}
-.Docs--2oZax {
-  background: #a7afbf;
 }
 .CodeCard--ehBVD {
   margin: 2rem 0;

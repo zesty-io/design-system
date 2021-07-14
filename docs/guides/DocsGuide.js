@@ -38,7 +38,7 @@ export class DocsGuide extends Component {
             <CardContent>
               <ul>
                 <li>
-                  <code>subject</code>: the subjec of the document to lookup akak content models, parsley etc.
+                  <code>subject</code> the subject of the documentation search to pass to zesty.org e.g. models, parsley etc.
                  
                 </li>
                
