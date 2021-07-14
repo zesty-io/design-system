@@ -11,16 +11,15 @@
 
   .default {
     padding: 6px 12px;
-    font-size: 14px;
+    font-size: @font-size-button;
     font-weight: 600;
-    // line-height: 24px;
     letter-spacing: 0.1px;
     border-radius: 4px;
-    color: #8490a6;
+    color: @zesty-tab-blue;
   }
 
   .Selected {
-    background-color: #336edb;
+    background-color: @zesty-blue;
     color: @white;
     border-radius: 4px;
     box-shadow: @boxShadow;
@@ -36,7 +35,7 @@
 
   .disabled {
     .Selected {
-      background-color: #9ba1a9;
+      background-color: @zesty-light-grey;
     }
   }
 }
