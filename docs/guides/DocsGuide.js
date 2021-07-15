@@ -28,6 +28,7 @@ export class DocsGuide extends Component {
               Docs with a subject prop
               <br/>
               <Docs subject="content models"/>
+              <br/>
               Docs with direct url, url will override subject, but subject will still be used in the 
               <br/>
               <Docs subject="ZUID Specificaion" url="https://zesty-io.github.io/zuid-specification/" />
