@@ -4,29 +4,26 @@
 .DocsLink {
     align-items: center;
     border-radius: 4px;
-    cursor: pointer;
     font-weight: @font-weight-bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 24px;
     letter-spacing: 0.1px;
-    flex-direction: row;
-    justify-content: flex-start;
     text-transform: uppercase;
-    text-align: left;
     border: 1px @zesty-light-gray solid;
     background: lighten(@zesty-light-gray, 20%);
     box-shadow: none;
-    transition: 200ms ease all;
     color: @zesty-gray;
     padding: 0px 8px;
     font-size: 0.85em;
     display: inline-block;
+    transition: ease background-color 200ms;
+    will-change: background-color;
+
     .icon {
         color: @zesty-light-gray;
         margin-right: 8px;
         display: inline-block;
-
     }
     &:hover,
     &:focus {
@@ -34,8 +31,6 @@
             color: @zesty-orange;
         }
         background: @zesty-light-gray;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
-        0 0 2px 0 rgba(26, 32, 44, 0.12);
         outline: none;
     }
 
