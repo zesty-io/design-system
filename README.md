@@ -41,6 +41,6 @@ In Design-Systems
 ```
 git pull design-system
 cd /core
-npm start ( After every time you make an edit)
+npm run build ( After every time you make an edit)
 
 ```
