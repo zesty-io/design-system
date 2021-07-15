@@ -3,13 +3,13 @@
 
 .FieldTypeImage {
   background-color: @white;
-  border: solid 1px rgba(26, 32, 44, 0.12);
+  border: solid 1px @btnDisabled;
   margin: 0;
 
   &:active,
   &:focus,
   &:hover {
-    border: solid 1px #4f596d;
+    border: solid 1px @nav-border-color;
   }
 
   // .FieldTypeImageHeader {
@@ -40,21 +40,21 @@
 }
 
 .warn {
-  border: solid 1px #9a2803;
+  border: solid 1px @zesty-red;
   &:active,
   &:focus,
   &:hover {
-    border: solid 1px #9a2803;
+    border: solid 1px @zesty-red;
   }
 }
 
 .WarningMsg {
-  color: #9a2803;
+  color: @zesty-red;
   font-weight: 900;
 }
 
 .File {
-  background: #252d38;
+  background: @nav-background-color;
   border-radius: 3px 3px 3px 0;
   height: 200px;
   margin-right: 6px;
@@ -105,7 +105,7 @@
   }
 }
 .FileSkeleton {
-  background-color: #c3cddf;
+  background-color: darken(@zesty-background-blue, 3%);
   button {
     width: 40px;
     height: 40px;
