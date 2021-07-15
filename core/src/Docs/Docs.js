@@ -8,6 +8,9 @@ export function Docs(props) {
 
   function openDocs() {
     let url=`https://zesty.org/?q=${props.subject}`
+    if(props.url){
+      url = props.url
+    }
     window.open(url, '_blank');
   }
 

@@ -25,7 +25,12 @@ export class DocsGuide extends Component {
               <h2>How it looks</h2>
             </CardHeader>
             <CardContent>
+              Docs with a subject prop
+              <br/>
               <Docs subject="content models"/>
+              Docs with direct url, url will override subject, but subject will still be used in the 
+              <br/>
+              <Docs subject="ZUID Specificaion" url="https://zesty-io.github.io/zuid-specification/" />
             </CardContent>
           </Card>
         </div>
@@ -39,7 +44,9 @@ export class DocsGuide extends Component {
               <ul>
                 <li>
                   <code>subject</code> the subject of the documentation search to pass to zesty.org e.g. models, parsley etc.
-                 
+                </li>
+                <li>
+                  <code>url</code> creates a link to the url
                 </li>
                
               </ul>
