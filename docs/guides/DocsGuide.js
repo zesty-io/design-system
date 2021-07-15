@@ -58,7 +58,7 @@ export class DocsGuide extends Component {
       <CollapsibleCard header="Usage" open>
         <GithubEmbed
           height="100px"
-          url="https://gist.githubusercontent.com/ardeay/e9044a0080d4f1488fa2f0cc5e05e20b/raw/986bc9cd4eff76de5eed089f865d1b8ef82490de/gistfile1.js"
+          url="https://gist.githubusercontent.com/ardeay/e9044a0080d4f1488fa2f0cc5e05e20b/raw/d6a41be595f30db8f7bfb292da049ea1d0381787/docs.js"
         />
       </CollapsibleCard>
  
