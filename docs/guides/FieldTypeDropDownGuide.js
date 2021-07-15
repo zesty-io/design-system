@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { FieldTypeDropDown } from "@zesty-io/core/FieldTypeDropDown";
 import { CollapsibleCard } from "@zesty-io/core/CollapsibleCard";
-import { GithubEmbed } from "../components/githubembed";
+import  GithubEmbed  from "../components/githubembed";
 
 export class FieldTypeDropDownGuide extends Component {
   render() {
