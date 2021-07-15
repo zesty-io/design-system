@@ -20,9 +20,27 @@ Run core package setup before docs
 
 ```
 cd docs
+npm run prestart
 npm start
 ```
 
 ```
 Open Browser to http://localhost:8080/
+HARD REFRESH
+```
+## Connecting Design-Systems to Manager-ui
+
+ In Manager-ui
+ ```
+ npm i
+ npm link @zesty-io/core
+
+ ```
+In Design-Systems
+
+```
+git pull design-system
+cd /core
+npm run build ( After every time you make an edit)
+
 ```
