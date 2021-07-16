@@ -1,53 +1,58 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import "prosemirror-view/style/prosemirror.css";
-// import './Editor.css'
 
-class Editor extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.editorRef = React.createRef();
-
-    this.view = new EditorView(null, {
-      state: EditorState.create(props.options),
-      dispatchTransaction: transaction => {
-        const { state, transactions } = this.view.state.applyTransaction(
+const Editor = ({
+  autoFocus,
+  options,
+  onChange,
+  attributes,
+  nodeViews,
+  render,
+}) => {
+  const editorRef = useRef();
+  const view = useRef(
+    new EditorView(null, {
+      state: EditorState.create(options),
+      dispatchTransaction: (transaction) => {
+        const { state, transactions } = view.current.state.applyTransaction(
           transaction
         );
 
-        this.view.updateState(state);
+        view.current.updateState(state);
 
-        if (transactions.some(tr => tr.docChanged)) {
-          this.props.onChange(state.doc);
+        if (transactions.some((tr) => tr.docChanged)) {
+          onChange(state.doc);
         }
 
-        this.forceUpdate();
+        //forceUpdate();
       },
-      attributes: this.props.attributes,
-      nodeViews: this.props.nodeViews
-    });
-  }
+      attributes,
+      nodeViews,
+    })
+  );
 
-  componentDidMount() {
-    this.editorRef.current.appendChild(this.view.dom);
+  useEffect(() => {
+    editorRef.current.appendChild(view.current.dom);
 
-    if (this.props.autoFocus) {
-      this.view.focus();
+    if (autoFocus) {
+      view.current.focus();
     }
-  }
+  }, []);
 
-  render() {
-    const editor = <div ref={this.editorRef} />;
+  useEffect(() => {
+    view.current.updateState(EditorState.create(options));
+  }, [options]);
 
-    return this.props.render
-      ? this.props.render({
-          editor,
-          view: this.view
-        })
-      : editor;
-  }
-}
+  const editor = <div ref={editorRef} />;
+
+  return render
+    ? render({
+        editor,
+        view: view.current,
+      })
+    : editor;
+};
 
 export default Editor;

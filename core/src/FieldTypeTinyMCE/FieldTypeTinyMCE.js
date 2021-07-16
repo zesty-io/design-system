@@ -35,8 +35,8 @@ import "tinymce/plugins/wordcount";
 
 import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
-
 import styles from "./FieldTypeTinyMCE.less";
+
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
