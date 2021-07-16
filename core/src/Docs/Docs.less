@@ -9,11 +9,13 @@
     font-stretch: normal;
     line-height: 24px;
     letter-spacing: 0.1px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     border: 1px @zesty-light-gray solid;
-    background: lighten(@zesty-light-gray, 20%);
+    background: lighten(@zesty-light-gray, 30%);
     box-shadow: none;
-    color: @zesty-gray;
+    color: @zesty-gray !important;
+    text-shadow: none !important;
+
     padding: 0px 8px;
     font-size: 0.85em;
     display: inline-block;
@@ -24,13 +26,24 @@
         color: @zesty-light-gray;
         margin-right: 8px;
         display: inline-block;
+        &.share {
+            display: none;
+        }
     }
     &:hover,
     &:focus {
         .icon {
             color: @zesty-orange;
+            &.share {
+                display: inline-block;
+                margin-right: 7px;
+            }
+            &.book {
+                display: none;
+            }
         }
-        background: @zesty-light-gray;
+        color: @zesty-dark-blue !important;
+        background: lighten(@zesty-light-gray, 20%);
         outline: none;
     }
 

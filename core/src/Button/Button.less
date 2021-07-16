@@ -9,14 +9,14 @@
 @btnAlt: @zesty-orange;
 @btnDisabled: rgba(26, 32, 44, 0.12);
 
+
 .Button {
   align-items: center;
-  background-color: #404759;
+  background-color: @nav-background-color;
   border: 0;
   border-radius: 4px;
-  box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
-    inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
-  color: #ffffff;
+  box-shadow: @boxShadow;
+  color: @white;
   cursor: pointer;
   display: flex;
   font-weight: @font-weight-bold;
@@ -27,7 +27,6 @@
   padding: 8px 16px 8px 16px;
   flex-direction: row;
   justify-content: flex-start;
-  // transition: all 0.2s;
   text-transform: uppercase;
   text-align: left;
 
@@ -38,8 +37,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
-      0 0 2px 0 rgba(26, 32, 44, 0.12);
+    box-shadow: @boxShadow;
     outline: none;
   }
 
@@ -84,10 +82,10 @@
   }
 
   &:disabled {
-    background: rgba(26, 32, 44, 0.12);
+    background: @btnDisabled;
     color: @zesty-dark-blue;
     cursor: not-allowed;
-    opacity: 0.4; 
+    opacity: 0.4;
   }
   &:active {
     box-shadow: none;
@@ -96,12 +94,12 @@
   .icon {
     margin-right: 8px;
     font-size: 13px;
-    // color: @btnDefaultText;
+
   }
   &.small {
     .icon {
       font-size: 1em;
-    } 
+    }
   }
 
 }
