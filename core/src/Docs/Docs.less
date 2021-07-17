@@ -1,0 +1,50 @@
+@import "../colors.less";
+@import "../typography.less";
+
+.DocsLink {
+    align-items: center;
+    border-radius: 4px;
+    font-weight: @font-weight-bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    text-transform: capitalize;
+    border: 1px @zesty-light-gray solid;
+    background: lighten(@zesty-light-gray, 30%);
+    box-shadow: none;
+    color: @zesty-gray !important;
+    text-shadow: none !important;
+
+    padding: 0px 8px;
+    font-size: 0.85em;
+    display: inline-block;
+    transition: ease background-color 200ms;
+    will-change: background-color;
+
+    .icon {
+        color: @zesty-light-gray;
+        margin-right: 8px;
+        display: inline-block;
+        &.share {
+            display: none;
+        }
+    }
+    &:hover,
+    &:focus {
+        .icon {
+            color: @zesty-orange;
+            &.share {
+                display: inline-block;
+                margin-right: 7px;
+            }
+            &.book {
+                display: none;
+            }
+        }
+        color: @zesty-dark-blue !important;
+        background: lighten(@zesty-light-gray, 20%);
+        outline: none;
+    }
+
+}

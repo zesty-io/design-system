@@ -1,4 +1,5 @@
 export { ButtonGuide } from './ButtonGuide'
+export { DocsGuide } from './DocsGuide'
 export { AppLinkGuide } from './AppLinkGuide'
 export { ButtonGroupGuide } from './ButtonGroupGuide'
 export { CardGuide } from './CardGuide'
