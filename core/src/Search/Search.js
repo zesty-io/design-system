@@ -60,10 +60,19 @@ class Search extends Component {
           {...omit(this.props, "innerRef")}
           ref={this.props.innerRef}
           type="search"
-          className={styles.Input}
+          className={
+            this.props.roundedSearch ? styles.RoundedSearch : styles.Input
+          }
           onChange={this.onChange}
+          roundedSearch={this.props.roundedSearch || null}
         />
-        <InputIcon onClick={this.onSubmit}>
+        <InputIcon
+          className={
+            this.props.RoundedSearchIcon ? styles.RoundedSearchIcon : styles.Input
+          }
+          roundedSearch={this.props.roundedSearch || null}
+          onClick={this.onSubmit}
+        >
           <FontAwesomeIcon icon={faSearch} />
         </InputIcon>
       </div>
