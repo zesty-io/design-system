@@ -67,9 +67,6 @@ class Search extends Component {
           roundedSearch={this.props.roundedSearch || null}
         />
         <InputIcon
-          className={
-            this.props.RoundedSearchIcon ? styles.RoundedSearchIcon : styles.Input
-          }
           roundedSearch={this.props.roundedSearch || null}
           onClick={this.onSubmit}
         >

@@ -7,7 +7,11 @@ import styles from "./InputIcon.less";
 export function InputIcon(props) {
   return (
     <Button
-      className={cx(styles.InputIcon, props.className)}
+      className={
+        props.roundedSearch
+          ? cx(styles.InputIcon, styles.RoundedSearchIcon, props.className)
+          : cx(styles.InputIcon, props.className)
+      }
       onClick={props.onClick}
     >
       {/*React.cloneElement(props.children, {
