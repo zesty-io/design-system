@@ -9,14 +9,14 @@
 @btnAlt: @zesty-orange;
 @btnDisabled: rgba(26, 32, 44, 0.12);
 
+
 .Button {
   align-items: center;
-  background-color: #404759;
+  background-color: @nav-background-color;
   border: 0;
   border-radius: 4px;
-  box-shadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
-    inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
-  color: #ffffff;
+  box-shadow: @boxShadow;
+  color: @white;
   cursor: pointer;
   display: flex;
   font-weight: @font-weight-bold;
@@ -27,32 +27,52 @@
   padding: 8px 16px 8px 16px;
   flex-direction: row;
   justify-content: flex-start;
-  // transition: all 0.2s;
   text-transform: uppercase;
   text-align: left;
 
+  &.small {
+    padding: 4px 10px;
+    font-size: .9em;
+  }
+
   &:hover,
   &:focus {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
-      0 0 2px 0 rgba(26, 32, 44, 0.12);
+    box-shadow: @boxShadow;
     outline: none;
   }
 
   &.save {
-    background-color: #63a41e;
+    background-color: @zesty-green;
   }
 
   &.secondary {
-    background-color: #336edb;
+    background-color: @zesty-blue;
+  }
+
+  &.subdued {
+    background-color: @zesty-light-gray;
+  }
+
+  &.outlined {
+    background-color: transparent;
+    color: @zesty-light-gray;
+    border: 1px @zesty-light-gray solid;
+    box-shadow:none;
+    &:hover{
+      box-shadow:none;
+      color: @zesty-gray;
+      border: 1px @zesty-light-gray solid;
+    }
+
   }
 
   &.cancel {
-    background-color: #1a202c;
+    background-color: @zesty-dark-blue;
     opacity: 0.6;
   }
 
   &.warn {
-    background-color: #9a2803;
+    background-color: @zesty-red;
   }
 
   &.alt {
@@ -62,18 +82,25 @@
   }
 
   &:disabled {
-    background: rgba(26, 32, 44, 0.12);
-    color: #1a202c;
+    background: @btnDisabled;
+    color: @zesty-dark-blue;
     cursor: not-allowed;
     opacity: 0.4;
   }
   &:active {
     box-shadow: none;
   }
+
+  .icon {
+    margin-right: 8px;
+    font-size: 13px;
+
+  }
+  &.small {
+    .icon {
+      font-size: 1em;
+    }
+  }
+
 }
 
-.icon {
-  margin-right: 8px;
-  font-size: 13px;
-  // color: @btnDefaultText;
-}

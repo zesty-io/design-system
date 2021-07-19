@@ -5,7 +5,10 @@ import cx from "classnames";
 export function Url(props) {
   let opts = {
     ...props,
-    className: cx(styles.link, props.className),
+    className: cx(
+      styles.link,
+      props.className
+      ),
     href: props.href ? props.href : "javascript:void(0)",
     onClick: props.onClick,
     "data-data": props.data
