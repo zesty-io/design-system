@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .Card--2HIi7 {
   background-color: #fff;
   border: 1px solid #c3cddf;
@@ -126,6 +127,16 @@
   color: #a7afbf;
   border: 1px #a7afbf solid;
   box-shadow: none;
+=======
+/* BASICS */
+
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  font-family: monospace;
+  height: 300px;
+  color: black;
+  direction: ltr;
+>>>>>>> master
 }
 .Button--KGEoo.outlined--1-MhN:hover {
   box-shadow: none;
@@ -1587,8 +1598,69 @@ input:checked + .slider--3oNGy:before {
 .FieldTypeNumber--2vhbG input {
   display: block;
 }
+<<<<<<< HEAD
 .FieldTypeNumber--2vhbG.Error--1b_EF input {
   border: solid 1px #e53c05;
+=======
+
+@keyframes fpFadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}.ProseMirror {
+  position: relative;
+}
+
+.ProseMirror {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: break-spaces;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0; /* the above doesn't seem to work in Edge */
+}
+
+.ProseMirror pre {
+  white-space: pre-wrap;
+}
+
+.ProseMirror li {
+  position: relative;
+}
+
+.ProseMirror-hideselection *::selection { background: transparent; }
+.ProseMirror-hideselection *::-moz-selection { background: transparent; }
+.ProseMirror-hideselection { caret-color: transparent; }
+
+.ProseMirror-selectednode {
+  outline: 2px solid #8cf;
+}
+
+/* Make sure li selections wrap around markers */
+
+li.ProseMirror-selectednode {
+  outline: none;
+}
+
+li.ProseMirror-selectednode:after {
+  content: "";
+  position: absolute;
+  left: -32px;
+  right: -2px; top: -2px; bottom: -2px;
+  border: 2px solid #8cf;
+  pointer-events: none;
+}
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+>>>>>>> master
 }
 .display--1pHcW {
   font-family: "Mulish", Arial, Sans-Serif;
@@ -2099,17 +2171,37 @@ input:checked + .slider--3oNGy:before {
   line-height: 16px;
   letter-spacing: 0px;
 }
+<<<<<<< HEAD
 .FieldTypeImage--3tM-p {
   background-color: #fff;
   border: solid 1px rgba(26, 32, 44, 0.12);
   margin: 0;
+=======
+.item--1L7AY {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  border-left: 2px solid transparent;
+  font-family: Verdana, Helvetica, sans-serif;
+>>>>>>> master
 }
 .FieldTypeImage--3tM-p:active,
 .FieldTypeImage--3tM-p:focus,
 .FieldTypeImage--3tM-p:hover {
   border: solid 1px #3c465e;
 }
+<<<<<<< HEAD
 .FieldTypeImage--3tM-p .FieldTypeImageContent--3JBRl {
+=======
+.item--1L7AY a,
+.item--1L7AY .directory--1JTaN {
+  text-decoration: none;
+  color: #1b202c;
+  font-weight: 500;
+  flex: 1;
+  font-size: 0.9em;
+  padding: 7px 10px;
+>>>>>>> master
   display: flex;
   flex-wrap: wrap;
   margin: 16px;
@@ -2544,6 +2636,7 @@ li.ProseMirror-selectednode:after {
   flex-wrap: nowrap;
   width: auto;
 }
+<<<<<<< HEAD
 .dropdown--2aNj6.dropdown-menu-row--2IWUf:hover .dropdown-menu--3rqaJ,
 .dropdown--2aNj6.dropdown-menu-row--2IWUf .dropdown-control--3E1ZO:hover + .dropdown-menu--3rqaJ,
 .dropdown--2aNj6.dropdown-menu-row--2IWUf .dropdown-menu--3rqaJ:hover {
@@ -2588,6 +2681,115 @@ li.ProseMirror-selectednode:after {
 .Modal--1qxYb.Local--3QBD6 {
   position: absolute;
   margin: 0;
+=======
+.display--29Zrs {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 48px;
+  letter-spacing: 0.32px;
+}
+.display--29Zrs.reversed--8aNHw {
+  color: #eff5ff;
+}
+.headline--V4U3K {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 42px;
+  letter-spacing: 0.32px;
+}
+.headline--V4U3K.reversed--8aNHw {
+  color: #eff5ff;
+}
+.title--2M7MN {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 36px;
+  letter-spacing: 0.16px;
+}
+.title--2M7MN.reversed--8aNHw {
+  color: #eff5ff;
+}
+.subheadline--3-QPV {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0.08px;
+}
+.bodyText--3CzeE {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+.bodyText--3CzeE.reversed--8aNHw {
+  color: #eff5ff;
+}
+.buttonText--3UJ26 {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.12px;
+}
+.caption--1QVOW {
+  font-family: "Mulish", Arial, Sans-Serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+.DocsLink--2id1K {
+  align-items: center;
+  border-radius: 4px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  text-transform: capitalize;
+  border: 1px #a7afbf solid;
+  background: #ffffff;
+  box-shadow: none;
+  color: #5b667d !important;
+  text-shadow: none !important;
+  padding: 0px 8px;
+  font-size: 0.85em;
+  display: inline-block;
+  transition: ease background-color 200ms;
+  will-change: background-color;
+}
+.DocsLink--2id1K .icon--1lTdb {
+  color: #a7afbf;
+  margin-right: 8px;
+  display: inline-block;
+}
+.DocsLink--2id1K .icon--1lTdb.share--UL-MU {
+  display: none;
+}
+.DocsLink--2id1K:hover,
+.DocsLink--2id1K:focus {
+  color: #1b202c !important;
+  background: #e2e5ea;
+  outline: none;
+}
+.DocsLink--2id1K:hover .icon--1lTdb,
+.DocsLink--2id1K:focus .icon--1lTdb {
+  color: #f17829;
+}
+.DocsLink--2id1K:hover .icon--1lTdb.share--UL-MU,
+.DocsLink--2id1K:focus .icon--1lTdb.share--UL-MU {
+  display: inline-block;
+  margin-right: 7px;
+}
+.DocsLink--2id1K:hover .icon--1lTdb.book--1Luzp,
+.DocsLink--2id1K:focus .icon--1lTdb.book--1Luzp {
+  display: none;
+>>>>>>> master
 }
 .Modal--1qxYb .Close--2Z0x_ {
   margin: 0;
