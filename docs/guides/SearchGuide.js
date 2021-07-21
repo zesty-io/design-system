@@ -6,27 +6,23 @@ import { CollapsibleCard } from "@zesty-io/core/CollapsibleCard";
 
 export class SearchGuide extends Component {
   render() {
+    const myStyle = {
+          width: 'fit-content'
+    };
     return (
       <React.Fragment>
         <p>A search component that takes onKeyup and onClick props</p>
         <p>Props: onClick, onKeyup, override, noButton</p>
-        <Search
-          placeholder="Search for something"
-          onSubmit={console.log}
-          onKeyUp={console.log}
-        />
-        <br />
-        <p>Rounded Search Bar</p>
-        <p>
-          Props: onClick, onKeyup, override, noButton
-        </p>
-        <Search
-          placeholder="Search for something"
-          onSubmit={console.log}
-          onKeyUp={console.log}
+        <div style={myStyle}>
+          <Search
+            placeholder="Search "
+            onSubmit={console.log}
+            onKeyUp={console.log}
 
-        />
-        <br />
+          />
+          <br />
+        </div>
+
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
@@ -36,7 +32,7 @@ export class SearchGuide extends Component {
     placeholder="Search for something"
     onSubmit={this.onSearch}
     onKeyUp={this.onSearch}
-
+    roundedEdge: "true"
   />`}
           />
         </CollapsibleCard>
