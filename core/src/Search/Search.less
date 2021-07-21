@@ -6,17 +6,18 @@
   flex-direction: row;
   margin: 8px 0 4px 0;
 
+  align-items: center;
+  position: relative;
+
   .Input {
-    border-radius: 28px 0 0 28px;
+    border-radius: 28px;
     border-right: none;
     -webkit-appearance: none;
   }
   .RoundedSearchIcon {
     box-shadow: none;
-    background: @white;
-    border: @selectBorder;
-    border-left: none;
-    border-radius: 0 28px 28px 0;
     color: @zesty-gray;
+    position: absolute;
+    right: 16px;
   }
 }

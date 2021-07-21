@@ -18,13 +18,13 @@ export class SearchGuide extends Component {
         <br />
         <p>Rounded Search Bar</p>
         <p>
-          Props: onClick, onKeyup, override, noButton, roundedEdge: "true"{" "}
+          Props: onClick, onKeyup, override, noButton
         </p>
         <Search
           placeholder="Search for something"
           onSubmit={console.log}
           onKeyUp={console.log}
-          roundedEdge="true"
+
         />
         <br />
         <CollapsibleCard header="Usage" open>
@@ -36,7 +36,7 @@ export class SearchGuide extends Component {
     placeholder="Search for something"
     onSubmit={this.onSearch}
     onKeyUp={this.onSearch}
-    roundedEdge: "true"
+
   />`}
           />
         </CollapsibleCard>

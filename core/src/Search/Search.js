@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { Input } from "../Input";
-import { InputIcon } from "../InputIcon";
+
 
 import styles from "./Search.less";
 class Search extends Component {
@@ -63,9 +63,7 @@ class Search extends Component {
           className={styles.Input}
           onChange={this.onChange}
         />
-        <InputIcon className={styles.RoundedSearchIcon} onClick={this.onSubmit}>
-          <FontAwesomeIcon icon={faSearch} />
-        </InputIcon>
+        <FontAwesomeIcon className={styles.RoundedSearchIcon} icon={faSearch} />
       </div>
     );
   }
