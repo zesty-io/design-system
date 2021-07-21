@@ -1,24 +1,23 @@
 @import "../typography.less";
 @import "../colors.less";
 
-
 .Search {
   display: flex;
   flex-direction: row;
   margin: 8px 0 4px 0;
 
+  align-items: center;
+  position: relative;
+
   .Input {
-    border-radius: 3px 0 0 3px;
+    border-radius: 28px;
+    border-right: none;
     -webkit-appearance: none;
   }
-
-  // .Btn {
-  //   border: 1px solid #404759;
-  //   border-radius: 0 3px 3px 0;
-  //   background-color: #404759;
-  //   .Icon {
-  //     font-size: @svg-icon;
-  //     margin: 0;
-  //   }
-  // }
+  .RoundedSearchIcon {
+    box-shadow: none;
+    color: @zesty-gray;
+    position: absolute;
+    right: 16px;
+  }
 }
