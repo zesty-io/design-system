@@ -5,28 +5,25 @@ import GithubEmbed from "../components/githubembed";
 import { CollapsibleCard } from "@zesty-io/core/CollapsibleCard";
 
 export class SearchGuide extends Component {
+
   render() {
+    const myStyle = {
+      display: "inline-flex",
+
+    };
     return (
       <React.Fragment>
         <p>A search component that takes onKeyup and onClick props</p>
         <p>Props: onClick, onKeyup, override, noButton</p>
-        <Search
-          placeholder="Search for something"
-          onSubmit={console.log}
-          onKeyUp={console.log}
-        />
-        <br />
-        <p>Rounded Search Bar</p>
-        <p>
-          Props: onClick, onKeyup, override, noButton
-        </p>
-        <Search
-          placeholder="Search for something"
-          onSubmit={console.log}
-          onKeyUp={console.log}
+        <div style={myStyle}>
+          <Search
+            placeholder="Search for something"
+            onSubmit={console.log}
+            onKeyUp={console.log}
+          />
+          <br />
+        </div>
 
-        />
-        <br />
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
             height="150px"
@@ -36,14 +33,15 @@ export class SearchGuide extends Component {
     placeholder="Search for something"
     onSubmit={this.onSearch}
     onKeyUp={this.onSearch}
-
+    roundedEdge: "true"
   />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
-          <GithubEmbed url="https://gist.githubusercontent.com/grantglidewell/d7de2d8cef48bf918bee7cfc190d49de/raw/1bc36fecab0b77364c541b4af5fb1467d069e815/Search.js" />
+          <GithubEmbed url="https://gist.githubusercontent.com/d88naimi/5f7d63d29ec41e555d6a53ebf9f4e8ce/raw/95e76ec670c4d368c11c0437c83c55d15f997f4f/Search.js" />
         </CollapsibleCard>
       </React.Fragment>
     );
   }
 }
+
