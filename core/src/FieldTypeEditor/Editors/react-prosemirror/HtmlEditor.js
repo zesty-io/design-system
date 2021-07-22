@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import debounce from "lodash/debounce";
 import { DOMParser, DOMSerializer } from "prosemirror-model";
 
 import Editor from "./Editor";
 
-const parser = schema => {
+const parser = (schema) => {
   const parser = DOMParser.fromSchema(schema);
 
-  return content => {
+  return (content) => {
     const container = document.createElement("article");
     container.innerHTML = content;
 
@@ -15,10 +15,10 @@ const parser = schema => {
   };
 };
 
-const serializer = schema => {
+const serializer = (schema) => {
   const serializer = DOMSerializer.fromSchema(schema);
 
-  return doc => {
+  return (doc) => {
     const container = document.createElement("article");
     container.appendChild(serializer.serializeFragment(doc.content));
 
@@ -26,37 +26,44 @@ const serializer = schema => {
   };
 };
 
-export class HtmlEditor extends React.Component {
-  componentWillMount() {
-    const { value, onChange, options } = this.props;
-    const { schema } = options;
+export function HtmlEditor({
+  autoFocus,
+  attributes,
+  render,
+  nodeViews,
+  value,
+  onChange,
+  options,
+}) {
+  const { schema } = options;
 
+  const { newOptions, serialize } = useMemo(() => {
     const parse = parser(schema);
     const serialize = serializer(schema);
+    const newOptions = { ...options };
+    newOptions.doc = parse(value);
+    return { newOptions, serialize };
+  }, [value, schema]);
 
-    options.doc = parse(value);
-
-    this.onChange = debounce(
-      doc => {
+  const onEditorChange = useCallback(
+    debounce(
+      (doc) => {
         onChange(serialize(doc));
       },
       1000,
       { maxWait: 5000 }
-    );
-  }
+    ),
+    [serialize]
+  );
 
-  render() {
-    const { autoFocus, options, attributes, render, nodeViews } = this.props;
-
-    return (
-      <Editor
-        autoFocus={autoFocus}
-        options={options}
-        attributes={attributes}
-        render={render}
-        onChange={this.onChange}
-        nodeViews={nodeViews}
-      />
-    );
-  }
+  return (
+    <Editor
+      autoFocus={autoFocus}
+      options={newOptions}
+      attributes={attributes}
+      render={render}
+      onChange={onEditorChange}
+      nodeViews={nodeViews}
+    />
+  );
 }

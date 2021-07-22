@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import showdown from "showdown";
 
@@ -30,6 +30,10 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
       ? "wysiwyg_basic"
       : props.type || "wysiwyg_basic"
   );
+
+  useEffect(() => {
+    setContent(props.value);
+  }, [props.value]);
 
   const onChange = (value) => {
     // Prosemirror leaves a lingering p tag which is
