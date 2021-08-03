@@ -13,7 +13,9 @@ export const ConfirmDialog = (props) => {
   return (
     (props.isOpen && (
       <section className={styles.confirmWrapper}>
-        <Card className={cx(styles.Confirm, styles[props.kind])}>
+        <Card
+          className={cx(styles.Confirm, styles[props.kind], props.className)}
+        >
           <CardContent>
             <h3>{props.prompt}</h3>
           </CardContent>
