@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 
 // import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
@@ -13,39 +13,28 @@ import { ImageResizeView } from "./prosemirror-views/ImageResizeView";
 import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
 import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
 
-// import showdown from "showdown";
-
-// const converter = new showdown.Converter({
-//   noHeaderId: true,
-//   tables: true,
-//   strikethrough: true,
-//   // backslashEscapesHTMLTags: true
-// });
 
 import styles from "./Inline.less";
+export function InlineEditor({ value, version, onChange, mediaBrowser }) {
+  console.log('InlineEditor:render');
 
-/**
- * Is responsible for converting incoming value is coverted to html
- * @param {*} param0
- */
-export function InlineEditor({ value, onChange }) {
-  // const [html, setHtml] = useState(value);
-
-  // useEffect(() => {
-  //   if (html !== value) {
-  //     setHtml(value);
-  //   }
-  // }, [value]);
+  // only recreate options, which cause prosemirror update,
+  // when the version changes. Otherwise prosemirror manages
+  // it's own internal document model
+  const options = useMemo(() => {
+    return { plugins, schema }
+  }, [version])
 
   return (
     <HtmlEditor
-      options={{ plugins, schema }}
+      options={options}
       value={value}
+      version={version}
       onChange={onChange}
       render={({ editor, view }) => (
         <section className={styles.InlineEditor}>
           <Floater view={view}>
-            <MenuBar menu={inline} view={view} />
+            <MenuBar menu={inline({ mediaBrowser })} view={view} />
           </Floater>
           {editor}
         </section>
@@ -59,7 +48,7 @@ export function InlineEditor({ value, onChange }) {
         },
         video(node, view, getPos) {
           return new VideoResizeView(node, view, getPos);
-        }
+        },
       }}
     />
   );

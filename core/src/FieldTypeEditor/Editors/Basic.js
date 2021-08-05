@@ -26,7 +26,7 @@ export class BasicEditor extends React.Component {
     this.state = {
       showLinkModal: false,
       showEmbedModal: false,
-      showEmbedModalOptions: {}
+      showEmbedModalOptions: {},
     };
   }
   componentDidMount() {
@@ -48,19 +48,22 @@ export class BasicEditor extends React.Component {
     ) {
       this.setState({
         [name]: true,
-        [`${name}Options`]: options
+        [`${name}Options`]: options,
       });
     }
   };
 
-  onModalClose = name => this.setState({ [name]: false });
+  onModalClose = (name) => this.setState({ [name]: false });
 
   render() {
+    console.log('Basic:render');
+    
     return (
       <div className={styles.BasicEditor}>
         <HtmlEditor
           options={{ plugins, schema }}
           value={this.props.value}
+          version={this.props.version}
           onChange={this.props.onChange}
           render={({ editor, view }) => (
             <div>
@@ -71,7 +74,10 @@ export class BasicEditor extends React.Component {
                 open={this.state.showEmbedModal}
               />
 
-              <MenuBar menu={menu} view={view} />
+              <MenuBar
+                menu={menu({ mediaBrowser: this.props.mediaBrowser })}
+                view={view}
+              />
               <div ref={this.ref}>{editor}</div>
             </div>
           )}
@@ -84,7 +90,7 @@ export class BasicEditor extends React.Component {
             },
             video(node, view, getPos) {
               return new VideoResizeView(node, view, getPos);
-            }
+            },
           }}
         />
       </div>

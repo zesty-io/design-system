@@ -37,6 +37,7 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
         tooltip={props.tooltip}
       />
       <Input
+        {...props}
         type={props.type || "text"}
         name={props.name}
         value={props.value}

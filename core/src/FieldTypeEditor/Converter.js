@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import showdown from "showdown";
 
 import { BasicEditor } from "./Editors/Basic.js"; // Covers both WYSIWYGBasic & WYSIWYGAdvanced field types
@@ -13,67 +13,157 @@ export const convert = new showdown.Converter({
   // backslashEscapesHTMLTags: true
 });
 
-export class Converter extends React.PureComponent {
-  constructor(props) {
-    super(props);
+export const Converter = React.memo(function Converter(props) {
+  console.log('Converter:render');
 
-    this.state = {
-      html: convert.makeHtml(this.props.value),
-      markdown: convert.makeMarkdown(this.props.value),
-    };
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(val) {
+  const onChange = (val) => {
     if (val === "<p></p>") {
       val = "";
     }
 
-    if (this.props.onChange) {
-      if (this.props.editor === "markdown") {
-        // When sendings changes to redux store convert to the initial field types value
-        // This ensures if it's a markdown field that is being viewed as an html editor it is
-        // still saved as markdown content
-        val = convert.makeMarkdown(val);
-        // this.setState({ markdown: val });
-      } else {
-        val = convert.makeHtml(val);
-        // this.setState({ html: val });
-      }
+    if (props.editor === "markdown") {
+      // When sendings changes to redux store convert to the initial field types value
+      // This ensures if it's a markdown field that is being viewed as an html editor it is
+      // still saved as markdown content
+      val = convert.makeMarkdown(val);
+    } else {
+      val = convert.makeHtml(val);
+    }
 
-      this.props.onChange(val, this.props.name, this.props.datatype);
+    if (props.onChange) {
+      props.onChange(val, props.name, props.datatype);
+    } else {
+      throw new Error("Converter: Missing onChange handler")
     }
   }
 
-  render() {
+  const selectEditor = (type) => {
+
     // Convert content on the way INTO the component
-    switch (this.props.editor) {
+    const html = convert.makeHtml(props.value)
+    const markdown = convert.makeMarkdown(props.value)
+
+    switch (type) {
       case "wysiwyg_basic":
       case "wysiwyg_advanced":
-        return <BasicEditor value={this.state.html} onChange={this.onChange} />;
+        console.log('Converter:BasicEditor');
+        return <BasicEditor value={html} version={props.version} onChange={onChange} />;
+
       case "markdown":
         return (
           <MarkdownEditor
-            value={this.state.markdown}
-            onChange={this.onChange}
+            value={markdown}
+            version={props.version}
+            onChange={onChange}
           />
         );
       case "article_writer":
+        console.log('Converter:InlineEditor');
         return (
-          <InlineEditor value={this.state.html} onChange={this.onChange} />
+          <InlineEditor value={html} version={props.version} onChange={onChange} />
         );
+
       case "html":
-        return <HtmlEditor value={this.state.html} onChange={this.onChange} />;
+        console.log('Converter:html');
+        return <HtmlEditor value={html} version={props.version} onChange={onChange} />;
+
       default:
         return (
           <div>
-            <h1>Invalid Editor</h1>
+            <h1>Invalid Editor Mode</h1>
           </div>
         );
     }
   }
+
+  return <Fragment>{selectEditor(props.editor)}</Fragment>
 }
+, (prevProps, nextProps) => {
+  // only render if the version changes
+  // otherwise all state is managed internally as needed
+  // changes are emitted with onChange callback
+  if (prevProps.version !== nextProps.version) {
+    return false
+  }
+
+  return true
+}
+)
+
+
+
+
+// export class Converter extends React.PureComponent {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       html: convert.makeHtml(this.props.value),
+//       markdown: convert.makeMarkdown(this.props.value),
+//     };
+
+//     this.onChange = this.onChange.bind(this);
+//   }
+
+//   onChange(val) {
+//     if (val === "<p></p>") {
+//       val = "";
+//     }
+
+//     if (this.props.onChange) {
+//       if (this.props.editor === "markdown") {
+//         // When sendings changes to redux store convert to the initial field types value
+//         // This ensures if it's a markdown field that is being viewed as an html editor it is
+//         // still saved as markdown content
+//         val = convert.makeMarkdown(val);
+//         // this.setState({ markdown: val });
+//       } else {
+//         val = convert.makeHtml(val);
+//         // this.setState({ html: val });
+//       }
+
+//       this.props.onChange(val, this.props.name, this.props.datatype);
+//     }
+//   }
+
+//   render() {
+//     // Convert content on the way INTO the component
+//     switch (this.props.editor) {
+//       case "wysiwyg_basic":
+//       case "wysiwyg_advanced":
+//         console.log('Converter:BasicEditor');
+
+//         return <BasicEditor value={this.state.html} onChange={this.onChange} />;
+//       case "markdown":
+//         console.log('Converter:MarkdownEditor');
+
+//         return (
+//           <MarkdownEditor
+//             value={this.state.markdown}
+//             onChange={this.onChange}
+//           />
+//         );
+//       case "article_writer":
+//         console.log('Converter:InlineEditor');
+
+//         return (
+//           <InlineEditor value={this.state.html} onChange={this.onChange} />
+//         );
+//       case "html":
+//         console.log('Converter:html');
+
+//         return <HtmlEditor value={this.state.html} onChange={this.onChange} />;
+//       default:
+//         console.log('Converter:invalid');
+
+//         return (
+//           <div>
+//             <h1>Invalid Editor</h1>
+//           </div>
+//         );
+//     }
+//   }
+// }
 
 // /**
 //  * Handles conversion of content into and out of the component

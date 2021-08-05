@@ -9,13 +9,10 @@ import { Converter } from "./Converter";
 import styles from "./FieldTypeEditor.less";
 export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
   // Handle legacy wysiwyg_advanced field type
-  const [editor, setEditor] = useState(
-    props.type === "wysiwyg_advanced"
-      ? "wysiwyg_basic"
-      : props.type || "wysiwyg_basic"
-  );
-
-  console.log("FieldTypeEditor", props);
+  const type = props.type === "wysiwyg_advanced" ? "wysiwyg_basic" : props.type || "wysiwyg_basic"
+  
+  // manage component state as the experience allows switching editor types
+  const [editor, setEditor] = useState(type);
 
   return (
     <div className={cx(styles.FieldTypeEditor, props.className)}>
@@ -43,6 +40,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
         <Converter
           editor={editor}
           value={props.value}
+          version={props.version}
           name={props.name}
           datatype={props.datatype}
           onChange={props.onChange}

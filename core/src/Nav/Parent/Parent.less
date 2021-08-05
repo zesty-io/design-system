@@ -5,8 +5,11 @@
   display: flex;
   flex-direction: column;
   user-select: none;
-
-  &:hover {
+  
+  &:hover{
+    background-color: @zesty-white;
+  }
+  &.Dark:hover {
     background-color: lighten(@nav-border-color, 3%);
   }
 
@@ -16,8 +19,8 @@
 
   .title {
     display: flex;
-    color: @zesty-white;
-    background: darken(@nav-border-color, 14%);
+    
+    color: @zesty-dark-blue;
     align-items: baseline;
     h2 {
       flex: 1;
@@ -26,8 +29,16 @@
       letter-spacing: 1.5px;
     }
     i {
-      color: @zesty-white;
+      color: @zesty-dark-blue;
       margin-right: 0.5rem;
+    }
+  }
+
+  &.Dark .title {
+    color: @zesty-white;
+    background: darken(@nav-border-color, 14%);
+    i {
+      color: @zesty-white;
     }
   }
 

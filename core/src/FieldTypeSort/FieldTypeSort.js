@@ -27,14 +27,16 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
     setSort(value);
   };
 
-  const handleChange = evt => {
+  const handleChange = (evt) => {
     evt.stopPropagation();
 
+    const value = Number(evt.target.value);
+
     if (props.onChange) {
-      props.onChange(evt.target.value, props.name, props.datatype);
+      props.onChange(value, props.name, props.datatype);
     }
 
-    setSort(evt.target.value);
+    setSort(value);
   };
 
   return (
@@ -51,7 +53,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
       <section className={styles.Sort}>
         <Button
           className={cx(styles.Increment, styles.Left)}
-          onClick={evt => handleClick(evt, true)}
+          onClick={(evt) => handleClick(evt, true)}
         >
           <FontAwesomeIcon icon={faPlus} />
         </Button>
@@ -64,7 +66,7 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
         />
         <Button
           className={cx(styles.Increment, styles.Right)}
-          onClick={evt => handleClick(evt)}
+          onClick={(evt) => handleClick(evt)}
         >
           <FontAwesomeIcon icon={faMinus} />
         </Button>

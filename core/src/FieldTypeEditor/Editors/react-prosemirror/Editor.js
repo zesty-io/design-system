@@ -3,9 +3,7 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import "prosemirror-view/style/prosemirror.css";
 
-import { parser } from "./HtmlEditor";
-
-class Editor extends React.Component {
+export default class Editor extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,7 +37,19 @@ class Editor extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps) {
+    // If the prosemirror options have changed
+    // trigger prosemirrors internal document update
+    if (nextProps.options !== this.props.options) {
+      this.view.updateState(EditorState.create(nextProps.options));
+    }
+
+    return false
+  }
+
   render() {
+    console.log('Editor:render');
+    
     const editor = <div ref={this.editorRef} />;
 
     return this.props.render
@@ -50,5 +60,3 @@ class Editor extends React.Component {
       : editor;
   }
 }
-
-export default Editor;

@@ -4,24 +4,20 @@
   display: flex;
   align-items: center;
   user-select: none;
-  border-left: 2px solid @nav-background-color;
-
-  &:hover {
-    background-color: lighten(@nav-border-color, 6%);
-
-    .hide {
-      visibility: visible;
-    }
-  }
+  border-left: 2px solid transparent;
+  font-family: Verdana, Helvetica, sans-serif;
   svg {
-    font-size: 1rem;
+    font-size: .9em;
   }
+  
   a,
   .directory {
     text-decoration: none;
-    color: @zesty-light-blue;
+    color: @zesty-dark-blue;
+    font-weight: 500;
     flex: 1;
-    padding: 8px 16px;
+    font-size: .9em;
+    padding: 7px 10px;
     display: flex;
     i,
     svg {
@@ -29,21 +25,43 @@
       margin-right: 8px;
       opacity: 0.6;
       align-self: center;
+      color: @zesty-light-grey;
+    }
+    
+  }
+
+  &.Dark {
+    border-left: 2px solid @nav-background-color;
+    a,.directory{
+      color: @zesty-light-blue;
+    }
+    svg {
+      color: @zesty-grey;
     }
   }
-}
 
-.collapse {
-  color: @zesty-gray;
-  cursor: pointer;
-  padding: 10px;
+  .collapse {
+    color: @zesty-tab-blue;
+    cursor: pointer;
+    padding: 10px;
 
-  &:hover,
-  &:active,
-  &:focus {
-    color: @zesty-white;
+    &:hover,
+    &:active,
+    &:focus {
+      color: @zesty-dark-blue;
+      font-weight: 600;
+    }
   }
-}
+
+  &.Dark {
+    .collapse {
+      color: @zesty-gray;
+      &:focus {
+        color: @zesty-white;
+      }
+    }
+    
+  }
 
 .hide {
   visibility: hidden;
@@ -53,40 +71,79 @@
   padding: 8px;
 }
 .action {
-  color: @zesty-gray;
-
+  cursor: pointer;
+  color: @zesty-dark-blue;
   &:hover,
   &:active,
   &:focus {
-    color: @zesty-white;
+    color: @zesty-dark-blue;
+    font-weight: 600;
   }
 }
 
-.depth1 {
-  background-color: #1a202c;
-  border-left: 2px solid #1a202c;
-}
-.depth2 {
-  background-color: lighten(#1a202c, 5%);
-  border-left: 2px solid lighten(#1a202c, 5%);
-}
-.depth3 {
-  background-color: lighten(#1a202c, 10%);
-  border-left: 2px solid lighten(#1a202c, 10%);
-}
-.depth4 {
-  background-color: lighten(#1a202c, 15%);
-  border-left: 2px solid lighten(#1a202c, 15%);
-}
-
-.selected {
-  border-left: 2px solid @zesty-orange;
-
-  a {
-    color: @white;
-
-    svg {
-      opacity: 1;
+&.Dark {
+  .action {
+    color: @zesty-gray;
+  
+    &:focus {
+      color: @zesty-white;
     }
   }
 }
+&.Dark {
+  &.depth1 {
+    background-color: #1a202c;
+    border-left: 2px solid #1a202c;
+  }
+  &.depth2 {
+    background-color: lighten(#1a202c, 5%);
+    border-left: 2px solid lighten(#1a202c, 5%);
+  }
+  &.depth3 {
+    background-color: lighten(#1a202c, 10%);
+    border-left: 2px solid lighten(#1a202c, 10%);
+  }
+  &.depth4 {
+    background-color: lighten(#1a202c, 15%);
+    border-left: 2px solid lighten(#1a202c, 15%);
+  }
+}
+
+
+
+ 
+  &:hover {
+    background-color: white; //@zesty-white;
+
+    .hide {
+      visibility: visible;
+    }
+  }
+ 
+  &.Dark:hover{
+    background-color: lighten(@nav-border-color, 6%);
+
+  }
+
+  &.selected {
+    border-left: 2px solid @zesty-orange;
+    background: @zesty-orange;
+    border-radius: 4px 0px 0px 4px !important;
+    a {
+      color: @white;
+      svg {
+        opacity: .6;
+        color: @white;
+      }
+    }
+  }
+  &.Dark.selected {
+    border-left: 2px solid @zesty-orange;
+    background: darken(@zesty-dark-blue,5%);
+    border-radius: 0px 0px 0px 4px !important;
+  }
+
+
+}
+
+

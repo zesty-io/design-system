@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import debounce from "lodash/debounce";
 import { DOMParser, DOMSerializer } from "prosemirror-model";
 
@@ -26,37 +26,30 @@ const serializer = schema => {
   };
 };
 
-export class HtmlEditor extends React.Component {
-  componentWillMount() {
-    const { value, onChange, options } = this.props;
-    const { schema } = options;
+export function HtmlEditor(props) {
+  console.log('HtmlEditor:render');
 
-    const parse = parser(schema);
-    const serialize = serializer(schema);
+  // recreate parse/seralize if options props changes
+  const parse = useCallback(parser(props.options.schema), [props.options])
+  const serialize = useCallback(serializer(props.options.schema), [props.options])
+  const onChange = useCallback(doc => props.onChange(serialize(doc)), [serialize])
 
-    options.doc = parse(value);
+  // recreate memoized options if parse changes
+  const opts = useMemo(() => {
+    const newOpts = { ...props.options }
+    newOpts.doc = parse(props.value)
+    return newOpts
+  }, [parse])
 
-    this.onChange = debounce(
-      doc => {
-        onChange(serialize(doc));
-      },
-      1000,
-      { maxWait: 5000 }
-    );
-  }
-
-  render() {
-    const { autoFocus, options, attributes, render, nodeViews } = this.props;
-
-    return (
-      <Editor
-        autoFocus={autoFocus}
-        options={options}
-        attributes={attributes}
-        render={render}
-        onChange={this.onChange}
-        nodeViews={nodeViews}
-      />
-    );
-  }
+  return (
+    <Editor
+      onChange={onChange}
+      options={opts}
+      autoFocus={props.autoFocus}
+      attributes={props.attributes}
+      render={props.render}
+      version={props.version}
+      nodeViews={props.nodeViews}
+    />
+  );
 }

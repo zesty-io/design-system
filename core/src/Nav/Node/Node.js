@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import cx from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEyeSlash,
-  faCaretLeft,
-  faCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretLeft, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Node.less";
 export function Node(props) {
@@ -15,6 +11,7 @@ export function Node(props) {
     <li
       className={cx(
         styles.item,
+        props.lightMode == 'true' ?  null : styles.Dark,
         styles[`depth${props.depth}`],
         props.selected.includes(props.path) ? styles.selected : null
       )}
@@ -33,27 +30,30 @@ export function Node(props) {
 
           {/* Only linkable nodes can have actions */}
           <span className={styles.actions}>
-            {props.actions &&
-              props.actions.map((action, i) => {
-                return (
-                  // Run consumer provided function to determine
-                  // whether action is available
-                  (action.available ? action.available(props) : true) && (
-                    <i
-                      key={i}
-                      className={cx(
-                        styles.action,
-                        // Determines whether the action icon is persistently shown
-                        // or shown on hover
-                        action.showIcon ? null : styles.hide,
-                        action.icon,
-                        action.styles
-                      )}
-                      onClick={() => action.onClick(props)}
-                    />
-                  )
-                );
-              })}
+            {React.Children.map(props.actions, (action, index) => {
+              // Run consumer provided function to determine
+              // whether action is available
+              const isAvailable = action.props.available
+                ? action.props.available(props)
+                : true;
+
+              // Filter out props which will not translate to the DOM
+              const { showIcon, available, ...filteredProps } = action.props;
+              const child = { ...action, props: filteredProps };
+
+              return (
+                isAvailable &&
+                React.cloneElement(child, {
+                  key: index,
+                  className: cx(
+                    styles.action,
+                    action.props.showIcon ? null : styles.hide,
+                    action.props.className
+                  ),
+                  onClick: () => action.props.onClick(props),
+                })
+              );
+            })}
           </span>
         </>
       )}
