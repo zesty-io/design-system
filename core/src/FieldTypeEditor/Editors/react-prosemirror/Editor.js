@@ -48,8 +48,8 @@ export default class Editor extends React.Component {
   }
 
   render() {
-    console.log('Editor:render');
-    
+    // console.log('Editor:render');
+
     const editor = <div ref={this.editorRef} />;
 
     return this.props.render

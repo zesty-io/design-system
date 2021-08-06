@@ -27,7 +27,6 @@ const serializer = schema => {
 };
 
 export function HtmlEditor(props) {
-  console.log('HtmlEditor:render');
 
   // recreate parse/seralize if options props changes
   const parse = useCallback(parser(props.options.schema), [props.options])
@@ -41,6 +40,7 @@ export function HtmlEditor(props) {
     return newOpts
   }, [parse])
 
+  // console.log('HtmlEditor:render');
   return (
     <Editor
       onChange={onChange}

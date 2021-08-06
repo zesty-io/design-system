@@ -1,37 +1,32 @@
-import React, { useEffect, useState } from "react";
-// import showdown from "showdown";
-
-// const converter = new showdown.Converter({
-//   noHeaderId: true,
-//   tables: true,
-//   strikethrough: true,
-//   // backslashEscapesHTMLTags: true
-// });
-
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Markdown.less";
+
 export function MarkdownEditor(props) {
-  // const [markdown, setMarkdown] = useState(props.value);
+
+  // controlled component
+  const [value, setValue] = useState(props.value)
+  const onInput = useCallback((evt) => {
+    setValue(evt.target.value)
+
+    // emit change to listeners
+    props.onChange(evt.target.value)
+  })
+
+  // update value if the version changes
+  useEffect(() => setValue(props.value), [props.version])
 
   // useEffect(() => {
-  //   if (markdown !== props.value) {
-  //     // console.log("mismatch", markdown, props.value);
-  //     setMarkdown(props.value);
-  //   }
-  // }, [props.value]);
+  //   console.log('MarkdownEditor:mounted');
+  //   return () => console.log("MarkdownEditor:UNMOUNT");
+  // }, [])
+  // console.log('MarkdownEditor:render');
 
   return (
     <textarea
       className={styles.Markdown}
-      onChange={(evt) => {
-        // update internal state to check for change
-        // on external prop in effect. User emmited value from
-        // textarea should already be markdown, no need to convert
-        // setMarkdown(evt.target.value);
-
-        props.onChange(evt.target.value);
-      }}
       placeholder={props.placeholder}
-      value={props.value}
+      value={value}
+      onInput={onInput}
     />
   );
 }

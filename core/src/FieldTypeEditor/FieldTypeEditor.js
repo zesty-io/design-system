@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 
 import { Select, Option } from "../Select";
@@ -8,11 +8,25 @@ import { Converter } from "./Converter";
 
 import styles from "./FieldTypeEditor.less";
 export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
-  // Handle legacy wysiwyg_advanced field type
-  const type = props.type === "wysiwyg_advanced" ? "wysiwyg_basic" : props.type || "wysiwyg_basic"
+  // Handle legacy wysiwyg_advanced field datatype
+  const initialEditorType = props.datatype === "wysiwyg_advanced" ? "wysiwyg_basic" : props.datatype;
   
   // manage component state as the experience allows switching editor types
-  const [editor, setEditor] = useState(type);
+  const [editor, setEditor] = useState(initialEditorType);
+
+  // track content state so we have an uncontrolled component
+  // const [content, setContent] = useState(props.value)
+
+  // update the content if the version changes
+  // useEffect(() => {
+  //   setContent(props.value)
+  // }, [props.version])
+
+  // useEffect(() => {
+  //   console.log('FieldTypeEditor:mounted');
+  //   return () => console.log("FieldTypeEditor:UNmounted");
+  // }, [])
+  // console.log('FieldTypeEditor:render');
 
   return (
     <div className={cx(styles.FieldTypeEditor, props.className)}>
@@ -44,6 +58,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
           name={props.name}
           datatype={props.datatype}
           onChange={props.onChange}
+          mediaBrowser={props.mediaBrowser}
         />
       </div>
 
@@ -52,4 +67,13 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
       )}
     </div>
   );
-});
+}
+//  , (prevProps, nextProps) => {
+
+//     if (prevProps.version !== nextProps.version ) {
+//       return false
+//     }
+
+//     return true
+//   }
+);

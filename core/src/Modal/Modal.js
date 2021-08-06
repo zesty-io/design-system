@@ -8,6 +8,9 @@ import { Button } from "../Button";
 
 import styles from "./Modal.less";
 export const Modal = React.memo(function Modal(props) {
+
+  console.log('Modal', props);
+
   const [open, setOpen] = useState(Boolean(props.open));
 
   const styleLocal = props.type === "local" ? styles.Local : null;

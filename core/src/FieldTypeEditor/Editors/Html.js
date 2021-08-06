@@ -33,6 +33,13 @@ export function HtmlEditor(props) {
   //   }
   // }, [props.value]);
 
+
+  useEffect(() => {
+    console.log('HtmlEditor:mounted');
+    return () => console.log("HtmlEditor:UNMOUNT");
+  }, [])
+  console.log('HtmlEditor:render')
+
   return (
     <CodeMirror
       className={styles.Html}
