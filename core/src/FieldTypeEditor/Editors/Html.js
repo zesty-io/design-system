@@ -25,7 +25,7 @@ function parse(str = "") {
 }
 
 export function HtmlEditor(props) {
-  // const [parsed, setParsed] = useState(parse(props.value));
+  const [parsed, setParsed] = useState(parse(props.value));
 
   // useEffect(() => {
   //   if (parsed !== props.value) {
@@ -33,6 +33,10 @@ export function HtmlEditor(props) {
   //   }
   // }, [props.value]);
 
+  // Update parsed value when version changes
+  useEffect(() => {
+    setParsed(parse(props.value))
+  }, [props.version])
 
   useEffect(() => {
     console.log('HtmlEditor:mounted');
@@ -43,7 +47,7 @@ export function HtmlEditor(props) {
   return (
     <CodeMirror
       className={styles.Html}
-      value={parse(props.value)}
+      value={parsed}
       options={{
         autoCursor: false,
         mode: "htmlmixed",
