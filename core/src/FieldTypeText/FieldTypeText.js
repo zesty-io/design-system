@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import cx from "classnames";
 
 import { Input } from "../Input";
@@ -6,7 +6,7 @@ import { FieldLabel } from "../FieldLabel";
 import { FieldDescription } from "../FieldDescription";
 
 import styles from "./FieldTypeText.less";
-export const FieldTypeText = React.memo(function FieldTypeText(props) {
+export const FieldTypeText = React.memo(  forwardRef(function FieldTypeText(props, ref) {
   // console.log("FieldTypeText:render");
 
   if (!props.name) {
@@ -38,6 +38,7 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
       />
       <Input
         {...props}
+        ref={ref}
         type={props.type || "text"}
         name={props.name}
         value={props.value}
@@ -60,4 +61,4 @@ export const FieldTypeText = React.memo(function FieldTypeText(props) {
       <FieldDescription description={props.description} />
     </label>
   );
-});
+}));
