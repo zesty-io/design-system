@@ -25,11 +25,13 @@ export const Converter = React.memo(function Converter(props) {
       val = "";
     }
 
-    // NOTE: When emitting changes convert to the initial field datatype value
-    // This ensures if it's a markdown field that is being viewed as an html editor it is
-    // still saved as markdown content
-    if (props.datatype === "markdown" && props.editor !== "markdown") {
-      val = convert.makeMarkdown(val);
+    if (props.datatype === "markdown") {
+      // NOTE: If a markdown field but being viewed in a non-markdown editor
+      // convert back to markdown before emitting change. This ensures markdown syntax
+      // is saved to the API
+      if (props.editor !== "markdown") {
+        val = convert.makeMarkdown(val);
+      }
     } else {
       val = convert.makeHtml(val);
     }
