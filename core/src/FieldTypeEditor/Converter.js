@@ -14,9 +14,11 @@ export const convert = new showdown.Converter({
 });
 
 /**
- * FieldTypeEditor handles more than one editing experience
- * so it needs to convert content from one experience to another
- * but also ensure the original datatype formatting is emitted on change
+ * Handle recieving and emitting markdown vs html
+ * A markdown field should *always* emit markdown syntax
+ * Because the fields editor can be swapped ad-hoc this component has 
+ * to handle sending down the expected editor syntax but emitting the correct
+ * syntax for a datatype on change.
  */
 export const Converter = React.memo(function Converter(props) {
   // NOTE: emit formated changes to listeners
