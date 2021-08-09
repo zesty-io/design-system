@@ -82,6 +82,8 @@ export class Select extends Component {
   };
 
   toggleDropdown = (evt) => {
+    evt.preventDefault()
+
     if (evt.target.type === "search") {
       return false;
     }
@@ -161,7 +163,7 @@ export class Select extends Component {
             (child.props.html &&
               String(child.props.html) &&
               child.props.html.toLowerCase().indexOf(this.state.filter) !==
-                -1) ||
+              -1) ||
             (child.props.text &&
               String(child.props.text) &&
               child.props.text.toLowerCase().indexOf(this.state.filter) !== -1)
@@ -243,8 +245,8 @@ export class Select extends Component {
               ? childrenFiltered.length
                 ? childrenFiltered
                 : !this.props.loading && (
-                    <Option value="0" text="No options found" />
-                  )
+                  <Option value="0" text="No options found" />
+                )
               : null}
           </div>
         </ul>
