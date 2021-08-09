@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 // import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
@@ -14,16 +14,25 @@ import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
 import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
 
 import styles from "./Inline.less";
-export function InlineEditor({ value, onChange, mediaBrowser }) {
+export function InlineEditor(props) {
+
+  // NOTE: only recreate options, which cause prosemirror update,
+  // when the version changes. Otherwise prosemirror manages
+  // it's own internal document model
+  const options = useMemo(() => {
+    return { plugins, schema }
+  }, [props.version])
+
   return (
     <HtmlEditor
-      options={{ plugins, schema }}
-      value={value}
-      onChange={onChange}
+      options={options}
+      value={props.value}
+      version={props.version}
+      onChange={props.onChange}
       render={({ editor, view }) => (
         <section className={styles.InlineEditor}>
           <Floater view={view}>
-            <MenuBar menu={inline({ mediaBrowser })} view={view} />
+            <MenuBar menu={inline({ mediaBrowser: props.mediaBrowser })} view={view} />
           </Floater>
           {editor}
         </section>

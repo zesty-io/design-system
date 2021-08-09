@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 
 // import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
@@ -17,80 +17,87 @@ import { IframeResizeView } from "./prosemirror-views/IframeResizeView";
 import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
 
 import styles from "./Basic.less";
-export class BasicEditor extends React.Component {
-  constructor(props) {
-    super(props);
+export function BasicEditor(props) {
+  const ref = useRef()
 
-    this.ref = React.createRef();
+  const [modals, setModals] = useState({
+    showLinkModal: false,
+    showEmbedModal: false,
+    showEmbedModalOptions: {}
+  })
 
-    this.state = {
-      showLinkModal: false,
-      showEmbedModal: false,
-      showEmbedModalOptions: {},
-    };
-  }
-  componentDidMount() {
-    zesty.on("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
-    zesty.on("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
-  }
-  componentWillUnmount() {
-    zesty.off("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
-    zesty.off("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
-  }
+  // only recreate options, which cause prosemirror update,
+  // when the version changes. Otherwise prosemirror manages
+  // it's own internal document model
+  const options = useMemo(() => {
+    return { plugins, schema }
+  }, [props.version])
 
-  onModalOpen = (name, options) => {
-    // Handle case of rendering multiple editors in a single view.
-    // Ensure this components editor isntance is the one which triggered a ProseMirror event
+  const onModalOpen = function onModalOpen(name, options) {
+    // NOTE: We match a queryselctor with the prosemirror dom to handle multiple editors in a single view.
     if (
-      this.ref.current &&
-      this.ref.current.querySelector &&
-      this.ref.current.querySelector(".ProseMirror") == options.view.dom
+      ref.current &&
+      ref.current.querySelector &&
+      ref.current.querySelector(".ProseMirror") == options.view.dom
     ) {
-      this.setState({
+      setModals({
+        ...modals,
         [name]: true,
         [`${name}Options`]: options,
-      });
+      })
     }
   };
 
-  onModalClose = (name) => this.setState({ [name]: false });
+  const onModalClose = (name) => {
+    setModals({
+      ...modals,
+      [name]: false
+    })
+  };
 
-  render() {
-    return (
-      <div className={styles.BasicEditor}>
-        <HtmlEditor
-          options={{ plugins, schema }}
-          value={this.props.value}
-          onChange={this.props.onChange}
-          render={({ editor, view }) => (
-            <div>
-              <LinkModal view={view} open={this.state.showLinkModal} />
-              <EmbedModal
-                options={this.state.showEmbedModalOptions}
-                view={view}
-                open={this.state.showEmbedModal}
-              />
+  useEffect(() => {
+    zesty.on("PROSEMIRROR_DIALOG_OPEN", onModalOpen);
+    zesty.on("PROSEMIRROR_DIALOG_CLOSE", onModalClose);
 
-              <MenuBar
-                menu={menu({ mediaBrowser: this.props.mediaBrowser })}
-                view={view}
-              />
-              <div ref={this.ref}>{editor}</div>
-            </div>
-          )}
-          nodeViews={{
-            image(node, view, getPos) {
-              return new ImageResizeView(node, view, getPos);
-            },
-            iframe(node, view, getPos) {
-              return new IframeResizeView(node, view, getPos);
-            },
-            video(node, view, getPos) {
-              return new VideoResizeView(node, view, getPos);
-            },
-          }}
-        />
-      </div>
-    );
-  }
+    return () => {
+      zesty.off("PROSEMIRROR_DIALOG_OPEN", onModalOpen);
+      zesty.off("PROSEMIRROR_DIALOG_CLOSE", onModalClose);
+    }
+  }, [ref])
+
+  return (<div className={styles.BasicEditor}>
+    <HtmlEditor
+      options={options}
+      value={props.value}
+      version={props.version}
+      modals={modals} // provided to editor so it can make render choice
+      onChange={props.onChange}
+      render={({ editor, view }) => (
+        <div>
+          <LinkModal view={view} open={modals.showLinkModal} />
+          <EmbedModal
+            open={modals.showEmbedModal}
+            options={modals.showEmbedModalOptions}
+            view={view}
+          />
+          <MenuBar
+            menu={menu({ mediaBrowser: props.mediaBrowser })}
+            view={view}
+          />
+          <div ref={ref}>{editor}</div>
+        </div>
+      )}
+      nodeViews={{
+        image(node, view, getPos) {
+          return new ImageResizeView(node, view, getPos);
+        },
+        iframe(node, view, getPos) {
+          return new IframeResizeView(node, view, getPos);
+        },
+        video(node, view, getPos) {
+          return new VideoResizeView(node, view, getPos);
+        },
+      }}
+    />
+  </div>)
 }

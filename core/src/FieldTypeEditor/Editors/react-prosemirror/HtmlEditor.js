@@ -4,10 +4,10 @@ import { DOMParser, DOMSerializer } from "prosemirror-model";
 
 import Editor from "./Editor";
 
-const parser = (schema) => {
+const parser = schema => {
   const parser = DOMParser.fromSchema(schema);
 
-  return (content) => {
+  return content => {
     const container = document.createElement("article");
     container.innerHTML = content;
 
@@ -15,10 +15,10 @@ const parser = (schema) => {
   };
 };
 
-const serializer = (schema) => {
+const serializer = schema => {
   const serializer = DOMSerializer.fromSchema(schema);
 
-  return (doc) => {
+  return doc => {
     const container = document.createElement("article");
     container.appendChild(serializer.serializeFragment(doc.content));
 
@@ -26,44 +26,30 @@ const serializer = (schema) => {
   };
 };
 
-export function HtmlEditor({
-  autoFocus,
-  attributes,
-  render,
-  nodeViews,
-  value,
-  onChange,
-  options,
-}) {
-  const { schema } = options;
+export function HtmlEditor(props) {
 
-  const { newOptions, serialize } = useMemo(() => {
-    const parse = parser(schema);
-    const serialize = serializer(schema);
-    const newOptions = { ...options };
-    newOptions.doc = parse(value);
-    return { newOptions, serialize };
-  }, [value, schema]);
+  // recreate parse/seralize if options props changes
+  const parse = useCallback(parser(props.options.schema), [props.options])
+  const serialize = useCallback(serializer(props.options.schema), [props.options])
+  const onChange = useCallback(doc => props.onChange(serialize(doc)), [serialize])
 
-  const onEditorChange = useCallback(
-    debounce(
-      (doc) => {
-        onChange(serialize(doc));
-      },
-      1000,
-      { maxWait: 5000 }
-    ),
-    [serialize]
-  );
+  // recreate memoized options if parse changes
+  const opts = useMemo(() => {
+    const newOpts = { ...props.options }
+    newOpts.doc = parse(props.value)
+    return newOpts
+  }, [parse])
 
   return (
     <Editor
-      autoFocus={autoFocus}
-      options={newOptions}
-      attributes={attributes}
-      render={render}
-      onChange={onEditorChange}
-      nodeViews={nodeViews}
+      onChange={onChange}
+      options={opts}
+      autoFocus={props.autoFocus}
+      attributes={props.attributes}
+      render={props.render}
+      version={props.version}
+      modals={props.modals}
+      nodeViews={props.nodeViews}
     />
   );
 }

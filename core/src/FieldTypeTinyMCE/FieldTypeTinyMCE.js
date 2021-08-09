@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import cx from "classnames";
 
@@ -38,6 +38,15 @@ import { FieldDescription } from "../FieldDescription";
 import styles from "./FieldTypeTinyMCE.less";
 
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
+
+  // NOTE: controlled component
+  const [initialValue, setInitialValue] = useState(props.value)
+
+  // NOTE: update if version changes
+  useEffect(() => {
+    setInitialValue(props.value)
+  }, [props.version])
+
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
       <label className={styles.FieldTypeTinyMCELabel}>
@@ -51,18 +60,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
           id={props.name}
-          initialValue={props.value}
-          onChange={(evt) => {
-            props.onChange(evt.target.getContent(), props.name, props.datatype);
-          }}
-          onKeyDown={(evt, editor) => {
-            // TinyMCE onChange is inconsistent as it is only invoked when an "undoable" event occurs.
-            // so we are use the onKeyDown as well. We check to make sure the content has changed, this
-            // way we avoid updating on events like keyboard navigation
-            const nextContent = editor.getContent();
-            if (nextContent !== props.value) {
-              props.onChange(editor.getContent(), props.name, props.datatype);
-            }
+          initialValue={initialValue}
+          onEditorChange={(content) => {
+            props.onChange(content, props.name, props.datatype);
           }}
           init={{
             plugins: [
