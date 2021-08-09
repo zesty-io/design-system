@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import debounce from "lodash/debounce";
 import { DOMParser, DOMSerializer } from "prosemirror-model";
 
@@ -40,7 +40,6 @@ export function HtmlEditor(props) {
     return newOpts
   }, [parse])
 
-  // console.log('HtmlEditor:render');
   return (
     <Editor
       onChange={onChange}
@@ -49,6 +48,7 @@ export function HtmlEditor(props) {
       attributes={props.attributes}
       render={props.render}
       version={props.version}
+      modals={props.modals}
       nodeViews={props.nodeViews}
     />
   );

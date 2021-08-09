@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Html.less";
 import { html } from "js-beautify";
-// import showdown from "showdown";
-
 import { Controlled as CodeMirror } from "react-codemirror2";
 require("codemirror/mode/htmlmixed/htmlmixed");
 
-// const converter = new showdown.Converter({
-//   noHeaderId: true,
-//   tables: true,
-//   strikethrough: true,
-//   // backslashEscapesHTMLTags: true
-// });
-
 function parse(str = "") {
-  // ensure string is html
-  // str = converter.makeHtml(str);
-
   const formated = html(str, {
     indent_size: 2,
   });
@@ -27,22 +15,10 @@ function parse(str = "") {
 export function HtmlEditor(props) {
   const [parsed, setParsed] = useState(parse(props.value));
 
-  // useEffect(() => {
-  //   if (parsed !== props.value) {
-  //     setParsed(parse(props.value));
-  //   }
-  // }, [props.value]);
-
-  // Update parsed value when version changes
+  // NOTE: Update parsed value when version changes
   useEffect(() => {
     setParsed(parse(props.value))
   }, [props.version])
-
-  useEffect(() => {
-    console.log('HtmlEditor:mounted');
-    return () => console.log("HtmlEditor:UNMOUNT");
-  }, [])
-  console.log('HtmlEditor:render')
 
   return (
     <CodeMirror

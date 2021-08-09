@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 
 // import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
@@ -26,8 +26,6 @@ export function BasicEditor(props) {
     showEmbedModalOptions: {}
   })
 
-  console.log('BasicEditor', modals);
-
   // only recreate options, which cause prosemirror update,
   // when the version changes. Otherwise prosemirror manages
   // it's own internal document model
@@ -35,11 +33,8 @@ export function BasicEditor(props) {
     return { plugins, schema }
   }, [props.version])
 
-  const onModalOpen = (name, options) => {
-    console.log('onModalOpen', name);
-
-    // Handle case of rendering multiple editors in a single view.
-    // Ensure this components editor isntance is the one which triggered a ProseMirror event
+  const onModalOpen = function onModalOpen(name, options) {
+    // NOTE: We match a queryselctor with the prosemirror dom to handle multiple editors in a single view.
     if (
       ref.current &&
       ref.current.querySelector &&
@@ -70,20 +65,16 @@ export function BasicEditor(props) {
     }
   }, [ref])
 
-  useEffect(() => {
-    console.log('BasicEditor:mounted');
-    return () => console.log('BasicEditor:UNMOUNT');
-  }, [])
-
   return (<div className={styles.BasicEditor}>
     <HtmlEditor
       options={options}
       value={props.value}
       version={props.version}
+      modals={modals} // provided to editor so it can make render choice
       onChange={props.onChange}
       render={({ editor, view }) => (
         <div>
-          <LinkModal view={view} open={modals.showLinks} />
+          <LinkModal view={view} open={modals.showLinkModal} />
           <EmbedModal
             open={modals.showEmbedModal}
             options={modals.showEmbedModalOptions}
@@ -110,90 +101,3 @@ export function BasicEditor(props) {
     />
   </div>)
 }
-
-
-
-// export class BasicEditor extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.ref = React.createRef();
-
-//     this.state = {
-//       showLinkModal: false,
-//       showEmbedModal: false,
-//       showEmbedModalOptions: {},
-//     };
-//   }
-//   componentDidMount() {
-//     console.log('BasicEditor:mounted');
-
-//     zesty.on("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
-//     zesty.on("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
-//   }
-//   componentWillUnmount() {
-//     console.log('BasicEditor:UNMOUNT');
-
-//     zesty.off("PROSEMIRROR_DIALOG_OPEN", this.onModalOpen);
-//     zesty.off("PROSEMIRROR_DIALOG_CLOSE", this.onModalClose);
-//   }
-
-//   onModalOpen = (name, options) => {
-//     // Handle case of rendering multiple editors in a single view.
-//     // Ensure this components editor isntance is the one which triggered a ProseMirror event
-//     if (
-//       this.ref.current &&
-//       this.ref.current.querySelector &&
-//       this.ref.current.querySelector(".ProseMirror") == options.view.dom
-//     ) {
-//       this.setState({
-//         [name]: true,
-//         [`${name}Options`]: options,
-//       });
-//     }
-//   };
-
-//   onModalClose = (name) => this.setState({ [name]: false });
-
-//   render() {
-//     // console.log('Basic:render');
-
-//     return (
-//       <div className={styles.BasicEditor}>
-//         <HtmlEditor
-//           options={{ plugins, schema }}
-//           value={this.props.value}
-//           version={this.props.version}
-//           onChange={this.props.onChange}
-//           render={({ editor, view }) => (
-//             <div>
-//               <LinkModal view={view} open={this.state.showLinkModal} />
-//               <EmbedModal
-//                 options={this.state.showEmbedModalOptions}
-//                 view={view}
-//                 open={this.state.showEmbedModal}
-//               />
-
-//               <MenuBar
-//                 menu={menu({ mediaBrowser: this.props.mediaBrowser })}
-//                 view={view}
-//               />
-//               <div ref={this.ref}>{editor}</div>
-//             </div>
-//           )}
-//           nodeViews={{
-//             image(node, view, getPos) {
-//               return new ImageResizeView(node, view, getPos);
-//             },
-//             iframe(node, view, getPos) {
-//               return new IframeResizeView(node, view, getPos);
-//             },
-//             video(node, view, getPos) {
-//               return new VideoResizeView(node, view, getPos);
-//             },
-//           }}
-//         />
-//       </div>
-//     );
-//   }
-// }

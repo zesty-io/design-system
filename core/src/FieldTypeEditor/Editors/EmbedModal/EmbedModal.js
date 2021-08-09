@@ -33,12 +33,6 @@ export class EmbedModal extends React.Component {
     window.removeEventListener("keypress", this.onEnter);
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   if (condition) {
-      
-  //   }
-  // }
-
   onEnter = evt => {
     if (evt.key === "Enter" || evt.keyCode == 13) {
       this.onSave();
@@ -62,7 +56,6 @@ export class EmbedModal extends React.Component {
   };
 
   render() {
-    console.log('EmbedModal:render');
     return (
       <Modal
         className={styles.EmbedModal}

@@ -13,15 +13,19 @@ export const convert = new showdown.Converter({
   // backslashEscapesHTMLTags: true
 });
 
+/**
+ * FieldTypeEditor handles more than one editing experience
+ * so it needs to convert content from one experience to another
+ * but also ensure the original datatype formatting is emitted on change
+ */
 export const Converter = React.memo(function Converter(props) {
-
-  // broadcast formated changes to listeners
+  // NOTE: emit formated changes to listeners
   const onChange = (val) => {
     if (val === "<p></p>") {
       val = "";
     }
 
-    // When sendings changes to redux store convert to the initial field datatype value
+    // NOTE: When emitting changes convert to the initial field datatype value
     // This ensures if it's a markdown field that is being viewed as an html editor it is
     // still saved as markdown content
     if (props.datatype === "markdown" && props.editor !== "markdown") {
@@ -30,29 +34,19 @@ export const Converter = React.memo(function Converter(props) {
       val = convert.makeHtml(val);
     }
 
-    console.log('onChange', props.datatype, val);
-
     props.onChange(val, props.name, props.datatype);
   }
 
-  let content = props.value
-
-  // Based on selected editor convert content on the way into the component
+  // NOTE: Based on selected editor convert content on the way into the component
   // if markdown datatype but in a different editor mode convert to html
   // works in tandem with formating during onChange function
+  let content = props.value
   if (props.datatype === "markdown" && props.editor !== "markdown") {
     content = convert.makeHtml(props.value)
   }
   if (props.datatype !== "markdown" && props.editor === "markdown") {
     content = convert.makeMarkdown(props.value)
   }
-
-  // useEffect(() => {
-  //   console.log('Converter:mounted');
-  //   return () => console.log("Converter:UNmounted");
-  // }, [])
-
-  // console.log('Converter:render', props.datatype, props.editor);
 
   return <Fragment>
     {props.editor === "wysiwyg_basic" && <BasicEditor value={content} version={props.version} mediaBrowser={props.mediaBrowser} onChange={onChange} />}

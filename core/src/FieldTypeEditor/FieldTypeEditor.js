@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 
 import { Select, Option } from "../Select";
@@ -13,20 +13,6 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
   
   // manage component state as the experience allows switching editor types
   const [editor, setEditor] = useState(initialEditorType);
-
-  // track content state so we have an uncontrolled component
-  // const [content, setContent] = useState(props.value)
-
-  // update the content if the version changes
-  // useEffect(() => {
-  //   setContent(props.value)
-  // }, [props.version])
-
-  // useEffect(() => {
-  //   console.log('FieldTypeEditor:mounted');
-  //   return () => console.log("FieldTypeEditor:UNmounted");
-  // }, [])
-  // console.log('FieldTypeEditor:render');
 
   return (
     <div className={cx(styles.FieldTypeEditor, props.className)}>
@@ -67,13 +53,4 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
       )}
     </div>
   );
-}
-//  , (prevProps, nextProps) => {
-
-//     if (prevProps.version !== nextProps.version ) {
-//       return false
-//     }
-
-//     return true
-//   }
-);
+});

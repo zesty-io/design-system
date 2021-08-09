@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 
 // import { HtmlEditor } from "@aeaton/react-prosemirror";
 import { HtmlEditor } from "./react-prosemirror/HtmlEditor";
@@ -16,18 +16,12 @@ import { VideoResizeView } from "./prosemirror-views/VideoResizeView";
 import styles from "./Inline.less";
 export function InlineEditor(props) {
 
-  // only recreate options, which cause prosemirror update,
+  // NOTE: only recreate options, which cause prosemirror update,
   // when the version changes. Otherwise prosemirror manages
   // it's own internal document model
   const options = useMemo(() => {
     return { plugins, schema }
   }, [props.version])
-
-  // useEffect(() => {
-  //   console.log('InlineEditor:mounted');
-  //   return () => console.log("InlineEditor:UNMOUNT");
-  // }, [])
-  // console.log('InlineEditor:render');
 
   return (
     <HtmlEditor
