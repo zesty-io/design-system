@@ -1,18 +1,32 @@
 @import "../typography.less";
 @import "../colors.less";
 
+@keyframes FadeAnimation {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
 
-.CopyChip{
-    border-radius: 28px;
-    background-color: transparent;
-    border: 1px @zesty-light-grey solid;
-    padding: 4px;
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
-    svg{
-        margin: 0 6px;
-    }
+.CopyChip {
+    position: relative;
+  &:hover {
+    cursor: copy;
+  }
 
-    &:hover{
-        cursor: copy;
-    }
+  button {
+      display: inline-block;
+  }
+
+  .Copied {
+    position: absolute;
+    top: 0px;
+    left: 135px;
+    animation: FadeAnimation 1s ease-in 0.2s forwards;
+  }
 }

@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import cx from 'classnames'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-solid-svg-icons";
 
+import { Button } from "../Button";
+
 import styles from "./CopyChip.less";
 
 export const CopyChip = (props) => {
-  const defaultCopySuccessMessage = "Copied!";
-  const { copySuccessMessage = defaultCopySuccessMessage, value, copyTitle } = props;
+  const defaultCopySuccessMessage = "Copied";
+  const { copySuccessMessage = defaultCopySuccessMessage, value } = props;
 
   const [showCopySuccess, setCopySuccess] = useState(false);
+
 
   function fallbackToCopy(text) {
     if (window.clipboardData && window.clipboardData.setData) {
@@ -50,12 +54,21 @@ export const CopyChip = (props) => {
   };
 
   return showCopySuccess ? (
-    <span className={styles.CopyChip}>{copySuccessMessage}</span>
+    <span id="copy" className={styles.CopyChip} onClick={copyID}>
+      <Button size="small">
+        <FontAwesomeIcon icon={faClipboard} />
+        {props.children}
+      </Button>
+      <span className={cx(styles.Copied)}>
+        {copySuccessMessage}
+      </span>
+    </span>
   ) : (
     <span id="copy" className={styles.CopyChip} onClick={copyID}>
-      {props.children}
-      <FontAwesomeIcon icon={faClipboard} />
-      {copyTitle ? "Copy" : " "}
+      <Button size="small">
+        <FontAwesomeIcon icon={faClipboard} />
+        {props.children}
+      </Button>
     </span>
   );
 };
