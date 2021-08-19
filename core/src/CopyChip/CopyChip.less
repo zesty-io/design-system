@@ -1,17 +1,7 @@
 @import "../typography.less";
 @import "../colors.less";
 
-@keyframes FadeAnimation {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
 
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 .CopyChip {
   position: relative;
@@ -27,10 +17,4 @@
     color: @zesty-green;
   }
 
-  .Copied {
-    position: absolute;
-    top: 0px;
-    left: 140px;
-    animation: FadeAnimation 1s ease-in 0.2s forwards;
-  }
 }

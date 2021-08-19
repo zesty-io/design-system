@@ -9,12 +9,9 @@ import { Button } from "../Button";
 import styles from "./CopyChip.less";
 
 export const CopyChip = (props) => {
-  const defaultCopySuccessMessage = "Copied";
-  const { copySuccessMessage = defaultCopySuccessMessage, value } = props;
+  const [copied, setCopied] = useState(false);
 
-  const [showCopySuccess, setCopySuccess] = useState(false);
-
-  function fallbackToCopy(text) {
+  function fallback(text) {
     if (window.clipboardData && window.clipboardData.setData) {
       // IE specific code path to prevent textarea being shown while dialog is visible.
       return window.clipboardData.setData("Text", text);
@@ -29,10 +26,9 @@ export const CopyChip = (props) => {
         return;
       }
       parentElement.appendChild(textarea);
-      textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
       textarea.select();
       try {
-        setCopySuccess(true);
+        setCopied(true);
         document.execCommand("copy");
       } catch (err) {
         console.err(err);
@@ -43,35 +39,33 @@ export const CopyChip = (props) => {
     }
   }
 
-  const copyID = () => {
-    if (!navigator.clipboard) {
-      fallbackToCopy(value);
-      return;
+  const copyValue = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(props.value);
+      setCopied(true);
     }
-    navigator.clipboard.writeText(value);
-    setCopySuccess(true);
+    fallback(props.value);
+    return;
   };
 
   useEffect(() => {
     let iconTimer = setTimeout(() => {
-      setCopySuccess(false);
+      setCopied(false);
     }, 1000);
 
-       return () => {
-         clearTimeout(iconTimer);
-       };
-
-
-  }, [showCopySuccess]);
+    return () => {
+      clearTimeout(iconTimer);
+    };
+  }, [copied]);
 
   return (
     <span
       id="copy"
       className={cx(styles.CopyChip, props.className)}
-      onClick={copyID}
+      onClick={copyValue}
     >
-      <Button size="small">
-        {showCopySuccess ? (
+      <Button kind="outlined" size="small">
+        {copied ? (
           <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
         ) : (
           <FontAwesomeIcon icon={faClipboard} />
@@ -79,8 +73,8 @@ export const CopyChip = (props) => {
 
         {props.children}
       </Button>
-      {showCopySuccess && (
-        <span className={cx(styles.Copied)}>{copySuccessMessage}</span>
+      {copied && (
+        <span className={cx(styles.Copied)}>{props.copySuccessMessage}</span>
       )}
     </span>
   );
