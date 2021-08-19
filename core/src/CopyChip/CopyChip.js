@@ -21,11 +21,7 @@ export const CopyChip = (props) => {
     ) {
       const textarea = document.createElement("textarea");
       textarea.innerText = text;
-      const parentElement = document.getElementById("copy");
-      if (!parentElement) {
-        return;
-      }
-      parentElement.appendChild(textarea);
+      document.body.appendChild(textarea);
       textarea.select();
       try {
         setCopied(true);
@@ -34,7 +30,7 @@ export const CopyChip = (props) => {
         console.err(err);
         return false;
       } finally {
-        parentElement.removeChild(textarea);
+        document.body.removeChild(textarea);
       }
     }
   }
@@ -60,7 +56,7 @@ export const CopyChip = (props) => {
 
   return (
     <span
-      id="copy"
+
       className={cx(styles.CopyChip, props.className)}
       onClick={copyValue}
     >
