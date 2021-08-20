@@ -9,22 +9,12 @@
   display: flex;
 
   &.show {
-    .selection {
-      // border-radius: 4px 4px 0 0;
-      // .fa-caret-down {
-      //   display: flex;
-      // }
-      // .fa-caret-left {
-      //   display: none;
-      // }
-    }
     .selections {
       display: block;
     }
   }
 
   .selection {
-    // align-items: center;
     border: none;
     color: @zesty-grey;
     display: flex;
@@ -43,12 +33,15 @@
     }
 
     .chevron {
-      // border: 1px solid #404759;
       border-radius: 0 3px 3px 0;
       flex-basis: 32px;
       justify-content: center;
       align-items: center;
       display: flex;
+
+      .chevronIcon {
+        width: 16px;
+      }
     }
     .icon-chevron-down {
       display: none;
@@ -130,10 +123,6 @@
       border-top: 2px solid @zesty-field-blue;
     }
 
-    // .DefaultOpt {
-    //   background: #b5becc;
-    //   color: #585f6c;
-    // }
 
     li {
       color: @zesty-dark-blue;
@@ -155,19 +144,6 @@
       background-color: @appBkgColor;
     }
 
-    // li.unselected {
-    //   color: #6b7994;
-    //   text-shadow: 1px 1px 0px #c9cdd6;
-    // }
-
-    // li strong {
-    //   color: #363d4d;
-    //   display: block;
-    //   font-weight: 900;
-    // }
-    // li a .name {
-    //   flex: 1;
-    // }
   }
   svg {
     font-size: @svg-icon;
