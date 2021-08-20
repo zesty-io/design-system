@@ -6,9 +6,9 @@ import { faClipboard, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "../Button";
 
-import styles from "./CopyChip.less";
+import styles from "./CopyButton.less";
 
-export const CopyChip = (props) => {
+export const CopyButton = (props) => {
   const [copied, setCopied] = useState(false);
 
   function fallback(text) {
@@ -39,9 +39,10 @@ export const CopyChip = (props) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(props.value);
       setCopied(true);
+    } else {
+      fallback(props.value);
+      return;
     }
-    fallback(props.value);
-    return;
   };
 
   useEffect(() => {
@@ -56,22 +57,21 @@ export const CopyChip = (props) => {
 
   return (
     <span
-
-      className={cx(styles.CopyChip, props.className)}
+      className={cx(styles.CopyButton, props.className)}
       onClick={copyValue}
     >
       <Button kind="outlined" size="small">
         {copied ? (
-          <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
+          <FontAwesomeIcon
+            className={cx(styles.Icon, styles.CheckIcon)}
+            icon={faCheck}
+          />
         ) : (
-          <FontAwesomeIcon icon={faClipboard} />
+          <FontAwesomeIcon className={styles.Icon} icon={faClipboard} />
         )}
 
         {props.children}
       </Button>
-      {copied && (
-        <span className={cx(styles.Copied)}>{props.copySuccessMessage}</span>
-      )}
     </span>
   );
 };

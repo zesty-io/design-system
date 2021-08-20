@@ -1,6 +1,6 @@
 // Atoms
 export { Button } from "./Button";
-export { CopyChip } from "./CopyChip";
+export { CopyButton } from "./CopyButton";
 export { AppLink } from "./AppLink";
 export { ButtonGroup } from "./ButtonGroup";
 export { Card, CardHeader, CardContent, CardFooter } from "./Card";

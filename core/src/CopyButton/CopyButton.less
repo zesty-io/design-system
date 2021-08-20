@@ -1,9 +1,7 @@
 @import "../typography.less";
 @import "../colors.less";
 
-
-
-.CopyChip {
+.CopyButton {
   position: relative;
   &:hover {
     cursor: copy;
@@ -11,11 +9,12 @@
 
   button {
     display: inline-block;
-    border-radius: 28px;
   }
 
+  .Icon {
+    width: 16px;
+  }
   .CheckIcon {
     color: @zesty-green;
   }
-
 }

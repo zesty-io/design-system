@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { CopyChip } from "@zesty-io/core/CopyChip";
+import { CopyButton } from "@zesty-io/core/CopyButton";
 import { Input } from "@zesty-io/core/Input";
 
 import GithubEmbed from "../components/githubembed";
@@ -8,7 +8,7 @@ import { CollapsibleCard } from "@zesty-io/core/CollapsibleCard";
 import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
 import { FieldTypeText } from "@zesty-io/core/FieldTypeText";
 
-export class CopyChipGuide extends Component {
+export class CopyButtonGuide extends Component {
   render() {
     return (
       <React.Fragment>
@@ -16,7 +16,6 @@ export class CopyChipGuide extends Component {
           <div id="Description">
             <h1>Copy Chip Component</h1>
             <p>A flexible copy button that can copy text or text fields</p>
-
           </div>
         </div>
 
@@ -26,9 +25,8 @@ export class CopyChipGuide extends Component {
               <h2>How it looks</h2>
             </CardHeader>
             <CardContent>
-              <CopyChip value={"Hello Zesty"}>Hello Zesty</CopyChip>
+              <CopyButton value={"Hello Zesty"}>Hello Zesty</CopyButton>
               <br />
-
             </CardContent>
           </Card>
         </div>
@@ -37,7 +35,7 @@ export class CopyChipGuide extends Component {
           <GithubEmbed
             height="50px"
             code="
-            <CopyChip value={props.example}} />"
+            <CopyButton value={props.example}} />"
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">
