@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 import { CopyButton } from "@zesty-io/core/CopyButton";
-import { Input } from "@zesty-io/core/Input";
 
 import GithubEmbed from "../components/githubembed";
 import { CollapsibleCard } from "@zesty-io/core/CollapsibleCard";
 import { Card, CardHeader, CardContent, CardFooter } from "@zesty-io/core/Card";
-import { FieldTypeText } from "@zesty-io/core/FieldTypeText";
+
 
 export class CopyButtonGuide extends Component {
   render() {
@@ -25,7 +24,7 @@ export class CopyButtonGuide extends Component {
               <h2>How it looks</h2>
             </CardHeader>
             <CardContent>
-              <CopyButton value={"Hello Zesty"}>Hello Zesty</CopyButton>
+              <CopyButton value={"Hello Zesty"}></CopyButton>
               <br />
             </CardContent>
           </Card>
