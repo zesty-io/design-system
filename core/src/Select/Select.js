@@ -217,6 +217,7 @@ export class Select extends Component {
           )}
           <Button className={styles.chevron}>
             <FontAwesomeIcon
+            className={styles.chevronIcon}
               icon={this.state.dropdownOpen ? faCaretLeft : faCaretDown}
             />
           </Button>
