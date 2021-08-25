@@ -9,7 +9,6 @@
 @btnAlt: @zesty-orange;
 @btnDisabled: rgba(26, 32, 44, 0.12);
 
-
 .Button {
   align-items: center;
   background-color: @nav-background-color;
@@ -32,7 +31,7 @@
 
   &.small {
     padding: 4px 10px;
-    font-size: .9em;
+    font-size: 0.9em;
   }
 
   &:hover,
@@ -57,13 +56,25 @@
     background-color: transparent;
     color: @zesty-light-gray;
     border: 1px @zesty-light-gray solid;
-    box-shadow:none;
-    &:hover{
-      box-shadow:none;
+    box-shadow: none;
+    &:hover {
+      box-shadow: none;
       color: @zesty-gray;
       border: 1px @zesty-light-gray solid;
     }
-
+  }
+  &.outlinedSmall {
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid;
+    box-shadow: none;
+    transition: all 0.3s;
+    padding: 0px 4px;
+    &:hover {
+      box-shadow: none;
+      color: @zesty-blue;
+      border: 1px @zesty-blue solid;
+    }
   }
 
   &.cancel {
@@ -94,13 +105,10 @@
   .icon {
     margin-right: 8px;
     font-size: 13px;
-
   }
   &.small {
     .icon {
       font-size: 1em;
     }
   }
-
 }
-

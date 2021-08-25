@@ -55,16 +55,21 @@ export const CopyButton = (props) => {
   }, [copied]);
 
   return (
-      <Button className={cx(styles.CopyButton, props.className)} onClick={copyValue} kind="outlined" size="small">
-        {copied ? (
-          <FontAwesomeIcon
-            className={cx(styles.Icon, styles.CheckIcon)}
-            icon={faCheck}
-          />
-        ) : (
-          <FontAwesomeIcon className={styles.Icon} icon={faClipboard} />
-        )}
-        {props.children ? props.children : props.value}
-      </Button>
+    <Button
+      className={cx(styles.CopyButton, props.className)}
+      onClick={copyValue}
+      kind="outlinedSmall"
+      size="small"
+    >
+      {copied ? (
+        <FontAwesomeIcon
+          className={cx(styles.Icon, styles.CheckIcon)}
+          icon={faCheck}
+        />
+      ) : (
+        <FontAwesomeIcon className={styles.Icon} icon={faClipboard} />
+      )}
+      {props.children ? props.children : props.value}
+    </Button>
   );
 };

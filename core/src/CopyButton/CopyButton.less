@@ -2,13 +2,18 @@
 @import "../colors.less";
 
 .CopyButton {
+  text-transform: inherit;
   display: inline-block;
+
+
   &:hover {
     cursor: copy;
+    opacity: 0.80;
   }
 
   .Icon {
     width: 16px;
+    margin: 0px;
   }
   .CheckIcon {
     color: @zesty-green;
