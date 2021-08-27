@@ -29,69 +29,80 @@
   text-transform: uppercase;
   text-align: left;
 
-  &.small {
-    padding: 4px 10px;
-    font-size: 0.9em;
-  }
-
   &:hover,
   &:focus {
     box-shadow: @boxShadow;
     outline: none;
   }
 
+  // default kinds
   &.save {
     background-color: @zesty-green;
   }
-
   &.secondary {
     background-color: @zesty-blue;
   }
-
   &.subdued {
     background-color: @zesty-light-gray;
   }
-
-  &.outlined {
-    background-color: transparent;
-    color: @zesty-light-gray;
-    border: 1px @zesty-light-gray solid;
-    box-shadow: none;
-    &:hover {
-      box-shadow: none;
-      color: @zesty-gray;
-      border: 1px @zesty-light-gray solid;
-    }
-  }
-  &.compact{
-    color: inherit;
-    background-color: transparent;
-    border: 1px solid;
-    box-shadow: none;
-    transition: all 0.3s;
-    padding: 0px 4px;
-    &:hover {
-      box-shadow: none;
-      color: @zesty-blue;
-      border: 1px @zesty-blue solid;
-    }
-  }
-
   &.cancel {
     background-color: @zesty-dark-blue;
     opacity: 0.6;
   }
-
   &.warn {
     background-color: @zesty-red;
   }
-
   &.alt {
     background-color: @btnAlt;
     border-bottom-color: darken(@btnAlt, 10%);
     border-right-color: darken(@btnAlt, 10%);
   }
 
+  // type
+  &.outlined {
+    background-color: transparent;
+    border: 1px @zesty-light-gray solid;
+    box-shadow: none;
+    color: @zesty-blue;
+    &:hover {
+      box-shadow: none;
+      border: 1px @zesty-light-gray solid;
+    }
+
+    // outline kinds
+    &.save {
+      color: @zesty-green;
+      border-color: @zesty-green;
+    }
+    &.secondary {
+      color: @zesty-blue;
+      border-color: @zesty-blue;
+    }
+    &.subdued {
+      color: @zesty-light-gray;
+      border-color: @zesty-light-gray;
+    }
+    &.cancel {
+      opacity: 0.6;
+      color: @zesty-dark-blue;
+      border-color: @zesty-dark-blue;
+    }
+    &.warn {
+      color: @zesty-red;
+      border-color: @zesty-red;
+    }
+  }
+
+  // size
+  &.small {
+    padding: 4px 10px;
+    font-size: 0.9em;
+  }
+  &.compact{
+    padding: 0px 4px;
+  }
+
+  // states
   &:disabled {
     background: @btnDisabled;
     color: @zesty-dark-blue;
@@ -102,6 +113,7 @@
     box-shadow: none;
   }
 
+  // icon
   .icon {
     margin-right: 8px;
     font-size: 13px;
