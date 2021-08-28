@@ -8,7 +8,7 @@ export const Button = React.forwardRef(function Button(props, ref) {
       {...props}
       ref={ref}
       className={cx(
-        styles.Button,
+        styles.btn,
         styles[props.kind],
         styles[props.type],
         styles[props.size],

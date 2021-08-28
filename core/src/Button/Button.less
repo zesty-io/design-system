@@ -9,61 +9,196 @@
 @btnAlt: @zesty-orange;
 @btnDisabled: rgba(26, 32, 44, 0.12);
 
-.Button {
+// Button kind=""  type=""  size=""
+
+// .Button {
+//   .bgd-tertiary();
+//   align-items: center;
+//   border: 0;
+//   border-radius: 4px;
+//   box-shadow: @boxShadow;
+//   color: @white;
+//   cursor: pointer;
+//   display: flex;
+//   font-weight: @font-weight-bold;
+//   font-style: normal;
+//   font-stretch: normal;
+//   line-height: 24px;
+//   letter-spacing: 0.1px;
+//   padding: 8px 16px 8px 16px;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   text-transform: uppercase;
+//   text-align: left;
+//   transition: all 0.3s ease;
+
+//   svg {
+//     margin-right: 8px;
+//     width: 16px;
+//   }
+
+//   &:hover,
+//   &:focus {
+//     box-shadow: @boxShadowHover;
+//     outline: none;
+//   }
+
+//   // default kinds
+//   &.save {
+//     .bgd-primary();
+//   }
+//   &.secondary {
+//     .bgd-secondary();
+//   }
+//   &.subdued {
+//     background-color: @zesty-light-gray;
+//   }
+//   &.cancel {
+//     background-color: @zesty-dark-blue;
+//     opacity: 0.6;
+//   }
+//   &.warn {
+//     .bgd-destructive();
+//   }
+//   &.alt {
+//     background-color: @btnAlt;
+//     border-bottom-color: darken(@btnAlt, 10%);
+//     border-right-color: darken(@btnAlt, 10%);
+//   }
+
+//   // type
+//   &.outlined {
+//     background-color: transparent;
+//     border: 1px @zesty-light-gray solid;
+//     box-shadow: none;
+//     color: @zesty-blue;
+//     &:hover {
+//       box-shadow: none;
+//       border: 1px @zesty-light-gray solid;
+//     }
+
+//     // outline kinds
+//     &.save {
+//       color: @zesty-green;
+//       border-color: @zesty-green;
+//     }
+//     &.secondary {
+//       color: @zesty-blue;
+//       border-color: @zesty-blue;
+//     }
+//     &.subdued {
+//       color: @zesty-light-gray;
+//       border-color: @zesty-light-gray;
+//     }
+//     &.cancel {
+//       opacity: 0.6;
+//       color: @zesty-dark-blue;
+//       border-color: @zesty-dark-blue;
+//     }
+//     &.warn {
+//       color: @zesty-red;
+//       border-color: @zesty-red;
+//     }
+//   }
+
+//   // size
+//   &.small {
+//     padding: 4px 10px;
+//     font-size: 0.9em;
+//   }
+//   &.compact {
+//     padding: 0px 4px;
+//   }
+
+//   // states
+//   &:disabled {
+//     background: @btnDisabled;
+//     color: @zesty-dark-blue;
+//     cursor: not-allowed;
+//     opacity: 0.4;
+//   }
+//   &:active {
+//     box-shadow: none;
+//   }
+
+//   // icon
+//   .icon {
+//     margin-right: 8px;
+//     font-size: 13px;
+//   }
+//   &.small {
+//     .icon {
+//       font-size: 1em;
+//     }
+//   }
+// }
+
+//David TEST
+.btn {
+  .bgd-primary();
+  box-shadow: @boxShadow;
+  font-weight: @font-weight-bold;
+  color: @white;
   align-items: center;
-  background-color: @nav-background-color;
   border: 0;
   border-radius: 4px;
-  box-shadow: @boxShadow;
-  color: @white;
   cursor: pointer;
   display: flex;
-  font-weight: @font-weight-bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 24px;
   letter-spacing: 0.1px;
-  padding: 8px 16px 8px 16px;
-  flex-direction: row;
+  padding: 8px 16px;
   justify-content: flex-start;
   text-transform: uppercase;
   text-align: left;
+  transition: all 0.3s ease;
+
+  svg {
+    margin-right: 8px;
+    width: 16px !important;
+  }
 
   &:hover,
   &:focus {
-    box-shadow: @boxShadow;
+    box-shadow: @boxShadowHover;
     outline: none;
   }
 
-  // default kinds
-  &.save {
-    background-color: @zesty-green;
-  }
-  &.secondary {
-    background-color: @zesty-blue;
-  }
-  &.subdued {
-    background-color: @zesty-light-gray;
-  }
-  &.cancel {
-    background-color: @zesty-dark-blue;
-    opacity: 0.6;
-  }
-  &.warn {
-    background-color: @zesty-red;
-  }
-  &.alt {
-    background-color: @btnAlt;
-    border-bottom-color: darken(@btnAlt, 10%);
-    border-right-color: darken(@btnAlt, 10%);
+  &.normal {
+    &.save {
+      .bgd-primary();
+    }
+    &.secondary {
+      .bgd-secondary();
+    }
+    &.tertiary {
+      .bgd-tertiary();
+    }
+    &.destructive {
+      .bgd-destructive();
+    }
+    &.subdued {
+      background-color: @zesty-light-gray;
+    }
+    &.cancel {
+      background-color: @zesty-dark-blue;
+      opacity: 0.6;
+    }
+    &.warn {
+      .bgd-destructive();
+    }
+    &.alt {
+      background-color: @btnAlt;
+      border-bottom-color: darken(@btnAlt, 10%);
+      border-right-color: darken(@btnAlt, 10%);
+    }
   }
 
-  // type
   &.outlined {
     background-color: transparent;
-    border: 1px @zesty-light-gray solid;
     box-shadow: none;
-    color: @zesty-blue;
+
     &:hover {
       box-shadow: none;
       border: 1px @zesty-light-gray solid;
@@ -71,12 +206,24 @@
 
     // outline kinds
     &.save {
-      color: @zesty-green;
-      border-color: @zesty-green;
+      color: @c-primary;
+      border-color: @c-primary;
+      border: 1px @c-primary solid;
     }
     &.secondary {
-      color: @zesty-blue;
-      border-color: @zesty-blue;
+      color: @c-secondary;
+      border-color: @c-secondary;
+      border: 1px @c-secondary solid;
+    }
+    &.tertiary {
+      color: @c-tertiary;
+      border-color: @c-tertiary;
+      border: 1px @c-tertiary solid;
+    }
+    &.destructive {
+      color: @c-destructive;
+      border-color: @c-destructive;
+      border: 1px @c-destructive solid;
     }
     &.subdued {
       color: @zesty-light-gray;
@@ -93,12 +240,64 @@
     }
   }
 
+  &.reversed {
+    background-color: @white;
+    &.save {
+      color: @c-primary;
+    }
+    &.secondary {
+      color: @c-secondary;
+    }
+    &.tertiary {
+      color: @c-tertiary;
+    }
+    &.destructive {
+      color: @c-destructive;
+    }
+  }
+
+  //Flat
+  &.flat {
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    &.save {
+      color: @c-primary;
+      &:hover {
+        box-shadow: none;
+        color: darken(@c-primary, 5%);
+      }
+    }
+    &.secondary {
+      color: @c-secondary;
+      &:hover {
+        box-shadow: none;
+        color: darken(@c-secondary, 5%);
+      }
+    }
+    &.tertiary {
+      color: @c-tertiary;
+      &:hover {
+        box-shadow: none;
+        color: darken(@c-tertiary, 5%);
+      }
+    }
+    &.destructive {
+      color: @c-destructive;
+      &:hover {
+        box-shadow: none;
+        color: darken(@c-destructive, 5%);
+      }
+    }
+  }
+
   // size
   &.small {
     padding: 4px 10px;
     font-size: 0.9em;
   }
-  &.compact{
+  &.compact {
     padding: 0px 4px;
   }
 
@@ -113,14 +312,5 @@
     box-shadow: none;
   }
 
-  // icon
-  .icon {
-    margin-right: 8px;
-    font-size: 13px;
-  }
-  &.small {
-    .icon {
-      font-size: 1em;
-    }
-  }
+  //closing button
 }
