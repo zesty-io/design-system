@@ -8,138 +8,12 @@
 @btnWarn: @zesty-red;
 @btnAlt: @zesty-orange;
 
-// Button kind=""  type=""  size=""
-
-// .Button {
-//   .bgd-tertiary();
-//   align-items: center;
-//   border: 0;
-//   border-radius: 4px;
-//   box-shadow: @boxShadow;
-//   color: @white;
-//   cursor: pointer;
-//   display: flex;
-//   font-weight: @font-weight-bold;
-//   font-style: normal;
-//   font-stretch: normal;
-//   line-height: 24px;
-//   letter-spacing: 0.1px;
-//   padding: 8px 16px 8px 16px;
-//   flex-direction: row;
-//   justify-content: flex-start;
-//   text-transform: uppercase;
-//   text-align: left;
-//   transition: all 0.3s ease;
-
-//   svg {
-//     margin-right: 8px;
-//     width: 16px;
-//   }
-
-//   &:hover,
-//   &:focus {
-//     box-shadow: @boxShadowHover;
-//     outline: none;
-//   }
-
-//   // default kinds
-//   &.save {
-//     .bgd-primary();
-//   }
-//   &.secondary {
-//     .bgd-secondary();
-//   }
-//   &.subdued {
-//     background-color: @zesty-light-gray;
-//   }
-//   &.cancel {
-//     background-color: @zesty-dark-blue;
-//     opacity: 0.6;
-//   }
-//   &.warn {
-//     .bgd-destructive();
-//   }
-//   &.alt {
-//     background-color: @btnAlt;
-//     border-bottom-color: darken(@btnAlt, 10%);
-//     border-right-color: darken(@btnAlt, 10%);
-//   }
-
-//   // type
-//   &.outlined {
-//     background-color: transparent;
-//     border: 1px @zesty-light-gray solid;
-//     box-shadow: none;
-//     color: @zesty-blue;
-//     &:hover {
-//       box-shadow: none;
-//       border: 1px @zesty-light-gray solid;
-//     }
-
-//     // outline kinds
-//     &.save {
-//       color: @zesty-green;
-//       border-color: @zesty-green;
-//     }
-//     &.secondary {
-//       color: @zesty-blue;
-//       border-color: @zesty-blue;
-//     }
-//     &.subdued {
-//       color: @zesty-light-gray;
-//       border-color: @zesty-light-gray;
-//     }
-//     &.cancel {
-//       opacity: 0.6;
-//       color: @zesty-dark-blue;
-//       border-color: @zesty-dark-blue;
-//     }
-//     &.warn {
-//       color: @zesty-red;
-//       border-color: @zesty-red;
-//     }
-//   }
-
-//   // size
-//   &.small {
-//     padding: 4px 10px;
-//     font-size: 0.9em;
-//   }
-//   &.compact {
-//     padding: 0px 4px;
-//   }
-
-//   // states
-//   &:disabled {
-//     background: @btnDisabled;
-//     color: @zesty-dark-blue;
-//     cursor: not-allowed;
-//     opacity: 0.4;
-//   }
-//   &:active {
-//     box-shadow: none;
-//   }
-
-//   // icon
-//   .icon {
-//     margin-right: 8px;
-//     font-size: 13px;
-//   }
-//   &.small {
-//     .icon {
-//       font-size: 1em;
-//     }
-//   }
-// }
-
-//David TEST
-
 //KIND: initial, outlined, reversed, flat
 //TYPE: save, primary, secondary, tertiary,  cancel, destructive
 //SIZE: compact, small
 // EXAMPLE: <Button kind="outlined" type="tertiary" size="small">
 
-.btn {
+.Button  {
   .bgd-tertiary();
   box-shadow: @boxShadow;
   font-weight: @font-weight-bold;
@@ -462,5 +336,4 @@
     font-size: 0.9em;
   }
 
-  //closing button
 }
