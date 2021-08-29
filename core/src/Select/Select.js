@@ -215,7 +215,7 @@ export class Select extends Component {
           {selection && selection.props.component && (
             <span className={styles.content}>{selection.props.component}</span>
           )}
-          <Button className={styles.chevron}>
+          <Button type="tertiary" className={styles.chevron}>
             <FontAwesomeIcon
             className={styles.chevronIcon}
               icon={this.state.dropdownOpen ? faCaretLeft : faCaretDown}

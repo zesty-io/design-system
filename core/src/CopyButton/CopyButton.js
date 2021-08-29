@@ -63,12 +63,9 @@ export const CopyButton = (props) => {
       size="compact"
     >
       {copied ? (
-        <FontAwesomeIcon
-          className={cx(styles.Icon, styles.CheckIcon)}
-          icon={faCheck}
-        />
+        <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
       ) : (
-        <FontAwesomeIcon className={styles.Icon} icon={faClipboard} />
+        <FontAwesomeIcon icon={faClipboard} />
       )}
       {props.children ? props.children : props.value}
     </Button>
