@@ -8,12 +8,18 @@
 @btnWarn: @zesty-red;
 @btnAlt: @zesty-orange;
 
-//KIND: initial, outlined, reversed, flat
-//TYPE: save, primary, secondary, tertiary,  cancel, destructive
-//SIZE: compact, small
-// EXAMPLE: <Button kind="outlined" type="tertiary" size="small">
+/*
+Button options following Zeplin's stylesheet
+https://app.zeplin.io/project/5bb69f5bdfef6551f65f76e8/screen/5bbe83aa23bfd05fb6a9bff7
 
-.Button  {
+EXAMPLE: <Button kind="outlined" type="tertiary" size="small">
+
+KIND: defaults, outlined, reversed, flat
+TYPE: save, primary, secondary, tertiary,  cancel, destructive
+SIZE: compact, small
+*/
+
+.Button {
   .bgd-tertiary();
   box-shadow: @boxShadow;
   font-weight: @font-weight-bold;
@@ -335,5 +341,4 @@
     padding: 4px 10px;
     font-size: 0.9em;
   }
-
 }
