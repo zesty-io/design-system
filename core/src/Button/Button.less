@@ -7,7 +7,6 @@
 @btnCancel: @zesty-light-gray;
 @btnWarn: @zesty-red;
 @btnAlt: @zesty-orange;
-@btnDisabled: rgba(26, 32, 44, 0.12);
 
 // Button kind=""  type=""  size=""
 
@@ -134,6 +133,11 @@
 // }
 
 //David TEST
+
+//kind: normal, outlined, reversed, flat
+//type: save, primary, secondary, tertiary, subdued, cancel, destructive
+//size: compact, small
+
 .btn {
   .bgd-primary();
   box-shadow: @boxShadow;
@@ -164,44 +168,79 @@
     box-shadow: @boxShadowHover;
     outline: none;
   }
+  &:active {
+    box-shadow: none;
+  }
 
-  &.normal {
-    &.save {
-      .bgd-primary();
+  &.primary {
+    .bgd-primary();
+    &:disabled {
+      .disabled();
+      color: @white;
+      cursor: not-allowed;
     }
-    &.secondary {
-      .bgd-secondary();
+  }
+  &.save {
+    .bgd-primary();
+    &:disabled {
+      .disabled();
+      color: @white;
+      cursor: not-allowed;
     }
-    &.tertiary {
-      .bgd-tertiary();
+  }
+  &.secondary {
+    .bgd-secondary();
+    &:disabled {
+      .disabled();
+      color: @white;
+      cursor: not-allowed;
+      opacity: 0.4;
     }
-    &.destructive {
-      .bgd-destructive();
+  }
+  &.tertiary {
+    .bgd-tertiary();
+    &:disabled {
+      .disabled();
+      background-color: @btnDisabled;
+      color: @c-disabled;
+      cursor: not-allowed;
     }
-    &.subdued {
-      background-color: @zesty-light-gray;
+  }
+  &.destructive {
+    .bgd-destructive();
+    &:disabled {
+      .disabled();
+      background-color: @btnDisabled;
+      color: @c-disabled;
+      cursor: not-allowed;
+      opacity: 0.4;
     }
-    &.cancel {
-      background-color: @zesty-dark-blue;
-      opacity: 0.6;
-    }
-    &.warn {
-      .bgd-destructive();
-    }
-    &.alt {
-      background-color: @btnAlt;
-      border-bottom-color: darken(@btnAlt, 10%);
-      border-right-color: darken(@btnAlt, 10%);
-    }
+  }
+  &.subdued {
+    background-color: @zesty-light-gray;
+  }
+  &.cancel {
+    background-color: @zesty-dark-blue;
+    opacity: 0.6;
+  }
+  &.warn {
+    .bgd-destructive();
+  }
+  &.alt {
+    background-color: @btnAlt;
+    border-bottom-color: darken(@btnAlt, 10%);
+    border-right-color: darken(@btnAlt, 10%);
   }
 
   &.outlined {
     background-color: transparent;
     box-shadow: none;
+    color: inherit;
+    border: 1px solid;
 
     &:hover {
       box-shadow: none;
-      border: 1px @zesty-light-gray solid;
+      border: 1px solid;
     }
 
     // outline kinds
@@ -209,39 +248,80 @@
       color: @c-primary;
       border-color: @c-primary;
       border: 1px @c-primary solid;
+      &:hover {
+        .bgd-primary();
+        color: @white;
+      }
+    }
+    &.primary {
+      color: @c-primary;
+      border-color: @c-primary;
+      border: 1px @c-primary solid;
+      &:hover {
+        .bgd-primary();
+        color: @white;
+      }
     }
     &.secondary {
       color: @c-secondary;
       border-color: @c-secondary;
       border: 1px @c-secondary solid;
+      &:hover {
+        .bgd-secondary();
+        color: @white;
+      }
     }
     &.tertiary {
-      color: @c-tertiary;
+      .c-disabled();
       border-color: @c-tertiary;
       border: 1px @c-tertiary solid;
+      &:hover {
+        .bgd-tertiary();
+        color: @white;
+        opacity: initial;
+      }
     }
     &.destructive {
       color: @c-destructive;
       border-color: @c-destructive;
       border: 1px @c-destructive solid;
+      &:hover {
+        .bgd-destructive();
+        color: @white;
+      }
     }
     &.subdued {
       color: @zesty-light-gray;
       border-color: @zesty-light-gray;
+      &:hover {
+        background-color: @zesty-light-gray;
+        color: @white;
+      }
     }
     &.cancel {
       opacity: 0.6;
       color: @zesty-dark-blue;
       border-color: @zesty-dark-blue;
+      &:hover {
+        background-color: @zesty-dark-blue;
+        color: @white;
+      }
     }
     &.warn {
       color: @zesty-red;
       border-color: @zesty-red;
+      &:hover {
+        .bgd-destructive();
+        color: @white;
+      }
     }
   }
 
   &.reversed {
     background-color: @white;
+    &.primary {
+      color: @c-primary;
+    }
     &.save {
       color: @c-primary;
     }
@@ -262,6 +342,13 @@
     border: none;
     box-shadow: none;
 
+    &.primary {
+      color: @c-primary;
+      &:hover {
+        box-shadow: none;
+        color: darken(@c-primary, 5%);
+      }
+    }
     &.save {
       color: @c-primary;
       &:hover {
@@ -293,23 +380,13 @@
   }
 
   // size
-  &.small {
-    padding: 4px 10px;
-    font-size: 0.9em;
-  }
   &.compact {
     padding: 0px 4px;
   }
 
-  // states
-  &:disabled {
-    background: @btnDisabled;
-    color: @zesty-dark-blue;
-    cursor: not-allowed;
-    opacity: 0.4;
-  }
-  &:active {
-    box-shadow: none;
+  &.small {
+    padding: 4px 10px;
+    font-size: 0.9em;
   }
 
   //closing button

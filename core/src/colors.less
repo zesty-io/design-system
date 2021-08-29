@@ -32,12 +32,19 @@
 @black: @zesty-black;
 @white: #fff;
 
+@c-disabled: #1a202c;
+
 // Colors
 
 @c-primary: @zesty-green;
 @c-secondary: @zesty-blue;
 @c-tertiary: #404759;
 @c-destructive: @zesty-red;
+
+.c-disabled {
+  color: @c-disabled;
+  opacity: 0.6;
+}
 
 // Backgrounds Colors
 .bgd-primary {
@@ -52,6 +59,13 @@
 .bgd-destructive {
   background-color: @c-destructive;
 }
+.disabled {
+  background-color: @c-disabled;
+  opacity: 0.6;
+}
+
+
+
 
 // Backgrounds
 .bg-primary {
