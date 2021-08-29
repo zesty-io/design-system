@@ -134,9 +134,10 @@
 
 //David TEST
 
-//kind: initial, outlined, reversed, flat
-//type: save, primary, secondary, tertiary, subdued, cancel, destructive
-//size: compact, small
+//KIND: initial, outlined, reversed, flat
+//TYPE: save, primary, secondary, tertiary,  cancel, destructive
+//SIZE: compact, small
+// EXAMPLE: <Button kind="outlined" type="tertiary" size="small">
 
 .btn {
   .bgd-tertiary();
@@ -173,60 +174,70 @@
   &:active {
     box-shadow: none;
   }
+  &:disabled {
+    cursor: not-allowed;
+  }
 
+  // DEFAULT KIND
   &.primary {
     .bgd-primary();
     &:disabled {
-      .disabled();
-      color: @white;
-      cursor: not-allowed;
+      .bgd-disabled();
+      background-color: @btnDisabled;
+      color: @c-disabled;
     }
   }
+  //DEFAULT TYPE
   &.save {
     .bgd-primary();
     &:disabled {
-      .disabled();
+      .bgd-disabled();
       color: @white;
-      cursor: not-allowed;
     }
   }
   &.secondary {
     .bgd-secondary();
     &:disabled {
-      .disabled();
+      .bgd-disabled();
       color: @white;
-      cursor: not-allowed;
+
       opacity: 0.4;
     }
   }
   &.tertiary {
     .bgd-tertiary();
     &:disabled {
-      .disabled();
+      .bgd-disabled();
       background-color: @btnDisabled;
       color: @c-disabled;
-      cursor: not-allowed;
     }
   }
   &.destructive {
     .bgd-destructive();
     &:disabled {
-      .disabled();
-      background-color: @btnDisabled;
-      color: @c-disabled;
-      cursor: not-allowed;
+      .bgd-disabled();
+      color: @white;
+
       opacity: 0.4;
     }
-  }
-  &.subdued {
-    background-color: @zesty-light-gray;
   }
   &.cancel {
     background-color: @zesty-dark-blue;
     opacity: 0.6;
+    &:disabled {
+      .bgd-disabled();
+      background-color: @btnDisabled;
+      color: @c-disabled;
+    }
   }
   &.warn {
     .bgd-destructive();
+    &:disabled {
+      .bgd-disabled();
+      color: @white;
+
+      opacity: 0.4;
+    }
   }
   &.alt {
     background-color: @btnAlt;
@@ -234,6 +245,7 @@
     border-right-color: darken(@btnAlt, 10%);
   }
 
+  // OUTLINE KIND
   &.outlined {
     background-color: transparent;
     box-shadow: none;
@@ -245,7 +257,7 @@
       border: 1px solid;
     }
 
-    // outline kinds
+    // OUTLINED TYPE
     &.save {
       color: @c-primary;
       border-color: @c-primary;
@@ -253,6 +265,11 @@
       &:hover {
         .bgd-primary();
         color: @white;
+      }
+      &:disabled {
+        .bgd-transparent();
+        .c-disabled();
+        border: solid 1px rgba(26, 32, 44, 0.6);
       }
     }
     &.primary {
@@ -262,6 +279,11 @@
       &:hover {
         .bgd-primary();
         color: @white;
+      }
+      &:disabled {
+        .bgd-transparent();
+        .c-disabled();
+        border: solid 1px rgba(26, 32, 44, 0.6);
       }
     }
     &.secondary {
@@ -282,6 +304,12 @@
         color: @white;
         opacity: initial;
       }
+      &:disabled {
+        .bgd-disabled();
+        background-color: @btnDisabled;
+        color: @c-disabled;
+        border: solid 1px @btnDisabled;
+      }
     }
     &.destructive {
       color: @c-destructive;
@@ -291,15 +319,14 @@
         .bgd-destructive();
         color: @white;
       }
-    }
-    &.subdued {
-      color: @zesty-light-gray;
-      border-color: @zesty-light-gray;
-      &:hover {
-        background-color: @zesty-light-gray;
+      &:disabled {
+        .bgd-disabled();
         color: @white;
+        opacity: 0.4;
+        border: 1px @c-disabled solid;
       }
     }
+
     &.cancel {
       opacity: 0.6;
       color: @zesty-dark-blue;
@@ -307,6 +334,12 @@
       &:hover {
         background-color: @zesty-dark-blue;
         color: @white;
+      }
+      &:disabled {
+        .bgd-disabled();
+        background-color: @btnDisabled;
+        color: @c-disabled;
+        border: solid 1px @btnDisabled;
       }
     }
     &.warn {
@@ -316,29 +349,66 @@
         .bgd-destructive();
         color: @white;
       }
+      &:disabled {
+        .bgd-disabled();
+        color: @white;
+        opacity: 0.4;
+        border: 1px @c-disabled solid;
+      }
     }
   }
 
+  //REVERSED KIND
   &.reversed {
     background-color: @white;
+    color: inherit;
     &.primary {
       color: @c-primary;
+      &:disabled {
+        .bgd-disabled();
+        color: @white;
+        border: 1px @c-disabled solid;
+      }
     }
+    // REVERSED TYPE
     &.save {
       color: @c-primary;
+      &:disabled {
+        .bgd-disabled();
+        color: @white;
+        border: 1px @c-disabled solid;
+      }
     }
     &.secondary {
       color: @c-secondary;
+      &:disabled {
+        .bgd-disabled();
+        color: @white;
+        opacity: 0.4;
+        border: 1px @c-disabled solid;
+      }
     }
     &.tertiary {
       color: @c-tertiary;
+      &:disabled {
+        background-color: @white;
+        color: @c-disabled;
+        opacity: 0.4;
+        border: 1px @white solid;
+      }
     }
     &.destructive {
       color: @c-destructive;
+      &:disabled {
+        .bgd-disabled();
+        color: @white;
+        opacity: 0.4;
+        border: 1px @c-disabled solid;
+      }
     }
   }
 
-  //Flat
+  //FLAT KIND
   &.flat {
     background: none;
     border: none;
@@ -351,6 +421,7 @@
         color: darken(@c-primary, 5%);
       }
     }
+    //FLAT TYPE
     &.save {
       color: @c-primary;
       &:hover {
@@ -381,7 +452,7 @@
     }
   }
 
-  // size
+  // BUTTON SIZE
   &.compact {
     padding: 0px 4px;
   }
@@ -390,9 +461,6 @@
     padding: 4px 10px;
     font-size: 0.9em;
   }
-
-
-
 
   //closing button
 }
