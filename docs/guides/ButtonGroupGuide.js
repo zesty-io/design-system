@@ -20,13 +20,13 @@ export class ButtonGroupGuide extends Component {
         </ButtonGroup>
         <br />
         <ButtonGroup>
-          <Button kind="cancel" text="Cancel" />
-          <Button kind="save" text="Save" />
+          <Button type="cancel" text="Cancel" />
+          <Button type="save" text="Save" />
         </ButtonGroup>
         <br />
         <ButtonGroup>
           <Button kind="" text="Button1" />
-          <Button kind="warn" text="Button2" />
+          <Button type="warn" text="Button2" />
           <Button kind="" text="Button3" />
           <Button kind="alt" text="Button4" />
           <Button kind="" text="Button5" />

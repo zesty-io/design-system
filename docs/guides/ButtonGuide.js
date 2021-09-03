@@ -27,10 +27,10 @@ export class ButtonGuide extends Component {
             <CardContent>
               <Button>Default Button</Button>
               <br />
-              <Button kind="save">Save Button</Button>
+              <Button type="save">Save Button</Button>
               <br />
-              <Button kind="save" size="small">Save Button</Button>
-             
+              <Button type="save" size="small">Save Button</Button>
+
               <br />
               <Button kind="secondary">
               <FontAwesomeIcon icon={faPlus} />
@@ -45,9 +45,9 @@ export class ButtonGuide extends Component {
               <br />
               <Button kind="outlined">Outlined</Button>
               <br />
-              <Button kind="cancel">Cancel Button</Button>
+              <Button type="cancel">Cancel Button</Button>
               <br />
-              <Button kind="warn">Warn Button</Button>
+              <Button type="warn">Warn Button</Button>
               <br />
               <Button kind="alt">Alt Button</Button>
               <br />
