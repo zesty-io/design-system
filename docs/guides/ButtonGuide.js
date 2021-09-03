@@ -49,7 +49,7 @@ export class ButtonGuide extends Component {
               <br />
               <Button type="warn">Warn Button</Button>
               <br />
-              <Button kind="alt">Alt Button</Button>
+              <Button type="alt'>Alt Button</Button>
               <br />
               <Button disabled={true}>Disabled Button</Button>
               <br />

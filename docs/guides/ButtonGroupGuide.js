@@ -28,7 +28,7 @@ export class ButtonGroupGuide extends Component {
           <Button kind="" text="Button1" />
           <Button type="warn" text="Button2" />
           <Button kind="" text="Button3" />
-          <Button kind="alt" text="Button4" />
+          <Button type="alt' text="Button4" />
           <Button kind="" text="Button5" />
         </ButtonGroup>
 
