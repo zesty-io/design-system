@@ -12,15 +12,15 @@
 Button options following Zeplin's stylesheet
 https://app.zeplin.io/project/5bb69f5bdfef6551f65f76e8/screen/5bbe83aa23bfd05fb6a9bff7
 
-EXAMPLE: <Button kind="outlined" type="tertiary" size="small">
+EXAMPLE: <Button kind="outlined" type="save" size="small">
 
 KIND: defaults, outlined, reversed, flat
-TYPE: save, primary, secondary, tertiary,  cancel, destructive
+TYPE: save, secondary, tertiary, cancel,
 SIZE: compact, small
 */
 
 .Button {
-  .bgd-tertiary();
+  .bgd-default();
   box-shadow: @boxShadow;
   font-weight: @font-weight-bold;
   color: @white;
@@ -37,7 +37,6 @@ SIZE: compact, small
   justify-content: flex-start;
   text-transform: uppercase;
   text-align: left;
-  transition: all 0.3s ease;
 
   // icon
   .icon {
@@ -56,54 +55,34 @@ SIZE: compact, small
   }
   &:disabled {
     cursor: not-allowed;
+    .disabled();
   }
 
-  // DEFAULT KIND
-  &.primary {
-    .bgd-primary();
-    &:disabled {
-      .bgd-disabled();
-      background-color: @btnDisabled;
-      color: @c-disabled;
-    }
-  }
   //DEFAULT TYPE
   &.save {
     .bgd-primary();
     &:disabled {
-      .bgd-disabled();
-      color: @white;
+      .disabled();
     }
   }
   &.secondary {
     .bgd-secondary();
     &:disabled {
-      .bgd-disabled();
-      color: @white;
-
-      opacity: 0.4;
+      .disabled();
     }
   }
   &.tertiary {
-    .bgd-tertiary();
+    .bgd-default();
     &:disabled {
       .bgd-disabled();
       background-color: @btnDisabled;
       color: @c-disabled;
     }
   }
-  &.destructive {
-    .bgd-destructive();
-    &:disabled {
-      .bgd-disabled();
-      color: @white;
 
-      opacity: 0.4;
-    }
-  }
   &.cancel {
     background-color: @zesty-dark-blue;
-    opacity: 0.6;
+
     &:disabled {
       .bgd-disabled();
       background-color: @btnDisabled;
@@ -111,12 +90,10 @@ SIZE: compact, small
     }
   }
   &.warn {
-    .bgd-destructive();
+    .bgd-warn();
     &:disabled {
       .bgd-disabled();
       color: @white;
-
-      opacity: 0.4;
     }
   }
   &.alt {
@@ -128,13 +105,22 @@ SIZE: compact, small
   // OUTLINE KIND
   &.outlined {
     background-color: transparent;
+    color: @c-default;
+    border: 1px solid @c-default;
     box-shadow: none;
-    color: inherit;
-    border: 1px solid;
 
     &:hover {
       box-shadow: none;
       border: 1px solid;
+      .bgd-default();
+      color: @white;
+    }
+
+    &:disabled {
+      .bgd-disabled();
+      background-color: @btnDisabled;
+      color: @c-disabled;
+      border: solid 1px @btnDisabled;
     }
 
     // OUTLINED TYPE
@@ -148,24 +134,11 @@ SIZE: compact, small
       }
       &:disabled {
         .bgd-transparent();
-        .c-disabled();
+
         border: solid 1px rgba(26, 32, 44, 0.6);
       }
     }
-    &.primary {
-      color: @c-primary;
-      border-color: @c-primary;
-      border: 1px @c-primary solid;
-      &:hover {
-        .bgd-primary();
-        color: @white;
-      }
-      &:disabled {
-        .bgd-transparent();
-        .c-disabled();
-        border: solid 1px rgba(26, 32, 44, 0.6);
-      }
-    }
+
     &.secondary {
       color: @c-secondary;
       border-color: @c-secondary;
@@ -176,39 +149,15 @@ SIZE: compact, small
       }
     }
     &.tertiary {
-      .c-disabled();
-      border-color: @c-tertiary;
-      border: 1px @c-tertiary solid;
+      border-color: @c-default;
+      border: 1px @c-default solid;
       &:hover {
-        .bgd-tertiary();
+        .bgd-default();
         color: @white;
-        opacity: initial;
-      }
-      &:disabled {
-        .bgd-disabled();
-        background-color: @btnDisabled;
-        color: @c-disabled;
-        border: solid 1px @btnDisabled;
-      }
-    }
-    &.destructive {
-      color: @c-destructive;
-      border-color: @c-destructive;
-      border: 1px @c-destructive solid;
-      &:hover {
-        .bgd-destructive();
-        color: @white;
-      }
-      &:disabled {
-        .bgd-disabled();
-        color: @white;
-        opacity: 0.4;
-        border: 1px @c-disabled solid;
       }
     }
 
     &.cancel {
-      opacity: 0.6;
       color: @zesty-dark-blue;
       border-color: @zesty-dark-blue;
       &:hover {
@@ -226,13 +175,13 @@ SIZE: compact, small
       color: @zesty-red;
       border-color: @zesty-red;
       &:hover {
-        .bgd-destructive();
+        .bgd-warn();
         color: @white;
       }
       &:disabled {
         .bgd-disabled();
         color: @white;
-        opacity: 0.4;
+
         border: 1px @c-disabled solid;
       }
     }
@@ -242,14 +191,7 @@ SIZE: compact, small
   &.reversed {
     background-color: @white;
     color: inherit;
-    &.primary {
-      color: @c-primary;
-      &:disabled {
-        .bgd-disabled();
-        color: @white;
-        border: 1px @c-disabled solid;
-      }
-    }
+
     // REVERSED TYPE
     &.save {
       color: @c-primary;
@@ -264,26 +206,17 @@ SIZE: compact, small
       &:disabled {
         .bgd-disabled();
         color: @white;
-        opacity: 0.4;
+
         border: 1px @c-disabled solid;
       }
     }
     &.tertiary {
-      color: @c-tertiary;
+      color: @c-default;
       &:disabled {
         background-color: @white;
         color: @c-disabled;
-        opacity: 0.4;
+
         border: 1px @white solid;
-      }
-    }
-    &.destructive {
-      color: @c-destructive;
-      &:disabled {
-        .bgd-disabled();
-        color: @white;
-        opacity: 0.4;
-        border: 1px @c-disabled solid;
       }
     }
   }
@@ -294,13 +227,6 @@ SIZE: compact, small
     border: none;
     box-shadow: none;
 
-    &.primary {
-      color: @c-primary;
-      &:hover {
-        box-shadow: none;
-        color: darken(@c-primary, 5%);
-      }
-    }
     //FLAT TYPE
     &.save {
       color: @c-primary;
@@ -317,17 +243,10 @@ SIZE: compact, small
       }
     }
     &.tertiary {
-      color: @c-tertiary;
+      color: @c-default;
       &:hover {
         box-shadow: none;
-        color: darken(@c-tertiary, 5%);
-      }
-    }
-    &.destructive {
-      color: @c-destructive;
-      &:hover {
-        box-shadow: none;
-        color: darken(@c-destructive, 5%);
+        color: darken(@c-default, 5%);
       }
     }
   }

@@ -34,15 +34,16 @@
 
 // Colors
 
+@c-default: #404759;
 @c-primary: @zesty-green;
 @c-secondary: @zesty-blue;
-@c-tertiary: #404759;
-@c-destructive: @zesty-red;
+@c-warn: @zesty-red;
 @c-disabled: #1a202c;
 
-.c-disabled {
+.disabled {
+  background-color: @btnDisabled;
   color: @c-disabled;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 // Backgrounds Colors
@@ -52,15 +53,14 @@
 .bgd-secondary {
   background-color: @c-secondary;
 }
-.bgd-tertiary {
-  background-color: @c-tertiary;
+.bgd-default {
+  background-color: @c-default;
 }
-.bgd-destructive {
-  background-color: @c-destructive;
+.bgd-warn {
+  background-color: @c-warn;
 }
 .bgd-disabled {
-  background-color: @c-disabled;
-  opacity: 0.6;
+  background-color: @btnDisabled;
 }
 
 .bgd-transparent {
@@ -75,10 +75,10 @@
   background: @c-secondary;
 }
 .bg-tertiary {
-  background: @c-tertiary;
+  background: @c-default;
 }
 .bg-destructive {
-  background: @c-destructive;
+  background: @c-warn;
 }
 
 // missing variables
