@@ -47,18 +47,20 @@ export const CopyButton = (props) => {
   useEffect(() => {
     let iconTimer = setTimeout(() => {
       setCopied(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(iconTimer);
     };
   }, [copied]);
 
+  const kind = props.outlinedReversed ? "outlinedReversed" : "outlined"
+
   return (
     <Button
       className={cx(styles.CopyButton, props.className)}
       onClick={copyValue}
-      kind={"outlinedReversed" ? "outlinedReversed" : "outlined"}
+      kind = {kind}
       size="compact"
     >
       {copied ? (
