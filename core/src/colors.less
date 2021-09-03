@@ -35,20 +35,20 @@
 // Colors
 
 @c-default: #404759;
-@c-primary: @zesty-green;
 @c-secondary: @zesty-blue;
 @c-warn: @zesty-red;
 @c-disabled: #1a202c;
+@c-cancel: #6f7480;
 
 .disabled {
   background-color: @btnDisabled;
-  color: @c-disabled;
-  opacity: 0.4;
+  color: @zesty-light-grey;
+  border: 1px @btnDisabled solid;
 }
 
 // Backgrounds Colors
 .bgd-primary {
-  background-color: @c-primary;
+  background-color: @zesty-green;
 }
 .bgd-secondary {
   background-color: @c-secondary;
@@ -69,7 +69,7 @@
 
 // Backgrounds
 .bg-primary {
-  background: @c-primary;
+  background: @zesty-green;
 }
 .bg-secondary {
   background: @c-secondary;
@@ -94,7 +94,7 @@
 @zesty-yellow: #fffde2;
 
 // Helpers
-@btnDisabled: rgba(26, 32, 44, 0.12);
+@btnDisabled: #f2f7fc;
 @boxShadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
   inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
 @boxShadowHover: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
