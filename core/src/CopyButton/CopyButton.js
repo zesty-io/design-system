@@ -54,13 +54,13 @@ export const CopyButton = (props) => {
     };
   }, [copied]);
 
-  const kind = props.outlinedReversed ? "outlinedReversed" : "outlined"
+
 
   return (
     <Button
       className={cx(styles.CopyButton, props.className)}
       onClick={copyValue}
-      kind = {kind}
+      kind="outlined"
       size="compact"
     >
       {copied ? (
