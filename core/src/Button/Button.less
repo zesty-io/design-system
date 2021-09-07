@@ -62,6 +62,7 @@ SIZE: compact, small
 
   &.cancel {
     background-color: @c-cancel;
+    color: @zesty-light-grey
   }
   &.warn {
     .bgd-warn();
@@ -95,10 +96,7 @@ SIZE: compact, small
     }
 
     &:disabled {
-      .bgd-disabled();
-      background-color: @btnDisabled;
-      color: @c-disabled;
-      border: solid 1px @btnDisabled;
+      .disabled();
     }
 
     // OUTLINED TYPE
@@ -110,9 +108,7 @@ SIZE: compact, small
         .bgd-primary();
         color: @white;
       }
-      &:disabled {
-        .disabled();
-      }
+
     }
 
     &.secondary {
@@ -132,9 +128,7 @@ SIZE: compact, small
         background-color: @zesty-dark-blue;
         color: @white;
       }
-      &:disabled {
-        .disabled();
-      }
+
     }
     &.warn {
       color: @zesty-red;
@@ -144,7 +138,7 @@ SIZE: compact, small
         color: @white;
       }
       &:disabled {
-        .bgd-disabled();
+        .disabled();
         color: @white;
         border: 1px @c-disabled solid;
       }
