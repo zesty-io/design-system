@@ -58,9 +58,9 @@ export const CopyButton = (props) => {
     <Button
       className={cx(styles.CopyButton, props.className)}
       onClick={copyValue}
-      kind={props.kind ?  props.kind : "outlined"}
+      kind={props.kind }
       type={props.type}
-      size={props.size ? props.size : "compact"}
+      size={props.size }
     >
       {copied ? (
         <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />

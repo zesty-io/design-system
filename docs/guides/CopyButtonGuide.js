@@ -24,7 +24,24 @@ export class CopyButtonGuide extends Component {
               <h2>How it looks</h2>
             </CardHeader>
             <CardContent>
-              <CopyButton value={"Hello Zesty"}></CopyButton>
+              <CopyButton
+                kind="outlined"
+                size="compact"
+                value={"Hello Zesty"}
+              ></CopyButton>
+              <br />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <h2>How it looks Dark View</h2>
+            </CardHeader>
+            <CardContent style={{ backgroundColor: "rgb(50, 50, 50" }}>
+              <CopyButton
+                kind="reversed"
+                size="compact"
+                value={"Dark VIew"}
+              ></CopyButton>
               <br />
             </CardContent>
           </Card>
@@ -32,9 +49,10 @@ export class CopyButtonGuide extends Component {
 
         <CollapsibleCard header="Usage" open>
           <GithubEmbed
-            height="50px"
-            code="
-            <CopyButton value={props.example}} />"
+            height="150px"
+            code={`<CopyButton value={props.example}}/>
+
+<CopyButton kind='reversed' value={props.example}} />`}
           />
         </CollapsibleCard>
         <CollapsibleCard collapsed header="Code">

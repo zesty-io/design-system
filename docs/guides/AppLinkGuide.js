@@ -42,7 +42,7 @@ export class AppLinkGuide extends Component {
           </Card>
         </div>
 
-        <CodeCard header="Usage" height={50} open>
+        <CodeCard header="Usage" height={100} open>
           {`
 <AppLink to='/applink'}>
   <i className="fa fa-pencil-square-o" aria-hidden="true" />&nbsp;Link Text

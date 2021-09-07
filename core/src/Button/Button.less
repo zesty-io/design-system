@@ -52,7 +52,6 @@ SIZE: compact, small
   }
 
 
-
   //DEFAULT TYPE
   &.save {
     .bgd-primary();
@@ -151,29 +150,7 @@ SIZE: compact, small
       }
     }
   }
-    // OUTLINED TYPE REVERSED FOR DARK BACKGROUNDS
 
-  &.outlinedReversed {
-    background-color: transparent;
-    color: @white;
-    border: 1px solid @white;
-    box-shadow: none;
-
-    &:hover {
-      box-shadow: none;
-      border: 1px solid;
-      .bgd-default();
-      color: @white;
-    }
-
-    &:disabled {
-      .bgd-disabled();
-      background-color: @btnDisabled;
-      color: @c-disabled;
-      border: solid 1px @btnDisabled;
-    }
-
-  }
 
   //REVERSED KIND
   &.reversed {
@@ -191,6 +168,22 @@ SIZE: compact, small
     }
     &.secondary {
       color: @c-secondary;
+      &:disabled {
+        .disabled();
+        color: @white;
+        border: 1px @c-disabled solid;
+      }
+    }
+    &.warn {
+      color: @zesty-red;
+      &:disabled {
+        .disabled();
+        color: @white;
+        border: 1px @c-disabled solid;
+      }
+    }
+    &.cancel {
+      color: @zesty-dark-blue;
       &:disabled {
         .disabled();
         color: @white;
@@ -234,6 +227,7 @@ SIZE: compact, small
   // BUTTON SIZE
   &.compact {
     padding: 0px 4px;
+    font-size: 0.9em;
   }
 
   &.small {
