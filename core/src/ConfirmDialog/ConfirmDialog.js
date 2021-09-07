@@ -37,7 +37,7 @@ export const ConfirmDialog = (props) => {
               >
                 <Button
                   id="confirmTrue"
-                  type={props.kind}
+                  type={props.type}
                   onClick={() => {
                     props.callback(true);
                   }}
