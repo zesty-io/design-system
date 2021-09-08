@@ -33,7 +33,7 @@ export class ConfirmDialogGuide extends Component {
           prompt="Custom button group">
           <Button
             id="confirmTrue"
-            kind="save"
+            type="save"
             onClick={() => {
               this.setState({ customIsOpen: false })
             }}>
@@ -41,7 +41,7 @@ export class ConfirmDialogGuide extends Component {
           </Button>
           <Button
             id="confirmFalse"
-            kind="warn"
+            type="warn"
             onClick={() => {
               this.setState({ customIsOpen: false })
             }}
@@ -68,7 +68,7 @@ export class ConfirmDialogGuide extends Component {
   prompt="Custom button group">
   <Button
     id="confirmTrue"
-    kind="save"
+    type="save"
     onClick={() => {
       this.setState({ customIsOpen: false })
     }}>
@@ -109,11 +109,11 @@ export class ConfirmDialogGuide extends Component {
           }'}>
                 <Button
                   id="confirmTrue"
-                  type={props.kind}
+                  type={props.type}
                   onClick={() => {
                     props.callback(true)
                   }}>
-                  {props.kind === 'warn' && (
+                  {props.type === 'warn' && (
                     <i
                       className="fa fa-exclamation-triangle"
                       aria-hidden="true"

@@ -87,7 +87,7 @@ export class EmbedModal extends React.Component {
         </ModalContent>
         <ModalFooter>
           <Button
-            kind="save"
+            type="save"
             disabled={this.state.id.length === 0}
             onClick={this.onSave}
           >
