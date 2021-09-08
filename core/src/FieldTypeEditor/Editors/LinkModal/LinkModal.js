@@ -82,7 +82,7 @@ export class LinkModal extends React.PureComponent {
         </ModalContent>
         <ModalFooter>
           <Button
-            kind="save"
+            type="save"
             disabled={this.state.href.length === 0}
             onClick={this.onSave}
           >

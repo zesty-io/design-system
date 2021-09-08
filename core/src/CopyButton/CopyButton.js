@@ -47,7 +47,7 @@ export const CopyButton = (props) => {
   useEffect(() => {
     let iconTimer = setTimeout(() => {
       setCopied(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(iconTimer);
@@ -55,16 +55,19 @@ export const CopyButton = (props) => {
   }, [copied]);
 
   return (
-      <Button className={cx(styles.CopyButton, props.className)} onClick={copyValue} kind="outlined" size="small">
-        {copied ? (
-          <FontAwesomeIcon
-            className={cx(styles.Icon, styles.CheckIcon)}
-            icon={faCheck}
-          />
-        ) : (
-          <FontAwesomeIcon className={styles.Icon} icon={faClipboard} />
-        )}
-        {props.children ? props.children : props.value}
-      </Button>
+    <Button
+      className={cx(styles.CopyButton, props.className)}
+      onClick={copyValue}
+      kind={props.kind }
+      type={props.type}
+      size={props.size }
+    >
+      {copied ? (
+        <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
+      ) : (
+        <FontAwesomeIcon icon={faClipboard} />
+      )}
+      {props.children ? props.children : props.value}
+    </Button>
   );
 };

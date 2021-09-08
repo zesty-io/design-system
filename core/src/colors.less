@@ -26,11 +26,48 @@
 @zesty-tab-color: darken(@zesty-grey, 7%);
 @zesty-highlight: @zesty-yellow;
 @zesty-black: #000;
-@bright-gray:#EFEFEF;
+@bright-gray: #efefef;
 
 @smoke-grey: #f7f7f7;
 @black: @zesty-black;
 @white: #fff;
+
+// Colors
+
+@c-default: #404759;
+@c-secondary: @zesty-blue;
+@c-warn: @zesty-red;
+@c-disabled: #1a202c;
+@c-cancel: #2A2E3D;
+
+.disabled {
+  background-color: @btnDisabled;
+  color: @zesty-light-grey;
+  border: 1px @btnDisabled solid;
+}
+
+// Backgrounds Colors
+.bgd-primary {
+  background-color: @zesty-green;
+}
+.bgd-secondary {
+  background-color: @c-secondary;
+}
+.bgd-default {
+  background-color: @c-default;
+}
+.bgd-warn {
+  background-color: @c-warn;
+}
+.bgd-disabled {
+  background-color: @btnDisabled;
+}
+
+.bgd-transparent {
+  background-color: transparent;
+}
+
+
 
 // missing variables
 @zesty-white-blue: #fff;
@@ -44,11 +81,12 @@
 @secondaryViewBkgColor: lighten(rgb(199, 212, 234), 3%);
 @zesty-yellow: #fffde2;
 
-
 // Helpers
-@btnDisabled: rgba(26, 32, 44, 0.12);
-@boxShadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
-      0 0 2px 0 rgba(26, 32, 44, 0.12);
+@btnDisabled: #fafafa;
+@boxShadow: inset 0 -2px 2px 0 rgba(26, 32, 44, 0.24),
+  inset 0 0 2px 0 rgba(26, 32, 44, 0.12);
+@boxShadowHover: 0 2px 2px 0 rgba(0, 0, 0, 0.24),
+  0 0 2px 0 rgba(26, 32, 44, 0.12);
 @selectBorder: solid 1px rgba(0, 0, 0, 0.12);
 @modalBackground: rgba(26, 32, 44, 0.6);
 
@@ -63,4 +101,3 @@
 @accent-seo: @accent-default;
 @accent-leads: @accent-default;
 @accent-releases: @accent-default;
-
