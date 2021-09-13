@@ -13,6 +13,9 @@ export const CopyInput = (props) => {
           <CopyButton
             className={cx(styles.CopyButton, props.className)}
             value={props.value}
+            kind={props.kind}
+            type={props.type}
+            size={props.size}
           >
             Copy
           </CopyButton>
