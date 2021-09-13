@@ -1,0 +1,23 @@
+@import "../typography.less";
+@import "../colors.less";
+
+.CopyInput {
+  display: flex;
+  border: @selectBorder;
+  margin-bottom: 16px;
+  border-radius: 0 4px 4px 0;
+
+  .CopyButton {
+    display: inherit;
+    border-radius: 4px 0 0 4px;
+    svg{
+      width: 12px;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding-left: 8px;
+    border: none;
+  }
+}
