@@ -14,7 +14,7 @@ export class CopyButtonGuide extends Component {
         <div id="Guide">
           <div id="Description">
             <h1>Copy Button Component</h1>
-            <p>A flexible copy button that can copy text or text fields</p>
+            <p>A flexible copy button that can copy text </p>
           </div>
         </div>
 

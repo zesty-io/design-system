@@ -7,7 +7,12 @@ import * as Guides from "../../guides";
 import { Nav } from "@zesty-io/core/Nav";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCube, faCogs, faSnowflake } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCube,
+  faCogs,
+  faSnowflake,
+  faHome
+} from "@fortawesome/free-solid-svg-icons";
 
 import "@zesty-io/core/vendor.css";
 import styles from "./app.less";
@@ -22,7 +27,7 @@ export default function App(props) {
       <section className={styles.App}>
         <header className={styles.AppHeader}>
           <Link className={styles.Home} to="/">
-            <i className={`fa fa-home ${styles.link}`} />{" "}
+            <FontAwesomeIcon icon={faHome} />
           </Link>
           <h1>Zesty.io Component Library</h1>
         </header>
