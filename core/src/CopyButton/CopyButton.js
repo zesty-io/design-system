@@ -55,19 +55,29 @@ export const CopyButton = (props) => {
   }, [copied]);
 
   return (
-    <Button
-      className={cx(styles.CopyButton, props.className)}
-      onClick={copyValue}
-      kind={props.kind }
-      type={props.type}
-      size={props.size }
-    >
-      {copied ? (
-        <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
-      ) : (
-        <FontAwesomeIcon icon={faClipboard} />
-      )}
-      {props.children ? props.children : props.value}
-    </Button>
+    <React.Fragment>
+      <label className={props.copyInput ? styles.CopyInput : ""} htmlFor="Copy">
+        <Button
+          className={cx( props.copyInput ? styles.CopyInputButton :  styles.CopyButton, props.className)}
+          onClick={copyValue}
+          kind={props.kind}
+          type={props.type}
+          size={props.size}
+        >
+          {copied ? (
+            <FontAwesomeIcon className={styles.CheckIcon} icon={faCheck} />
+          ) : (
+            <FontAwesomeIcon icon={faClipboard} />
+          )}
+
+          {props.children ? props.children : props.value}
+        </Button>
+        {props.copyInput ? (
+          <input className={styles.Input} type="text" defaultValue={props.value} readOnly />
+        ) : (
+          ""
+        )}
+      </label>
+    </React.Fragment>
   );
 };

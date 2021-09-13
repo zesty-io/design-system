@@ -5,8 +5,27 @@
   text-transform: inherit;
   display: inline-block;
 
-  .CheckIcon {
-    color: @zesty-green;
+}
+.CheckIcon {
+  color: @zesty-green;
+  width: 12px;
+}
+
+.CopyInput {
+  display: flex;
+  border: @selectBorder;
+  margin-bottom: 16px;
+  border-radius: 0 4px 4px 0;
+
+  .CopyInputButton {
+    display: inherit;
+    border-radius: 4px 0 0 4px;
+
   }
 
+  input {
+    width: 100%;
+    padding-left: 8px;
+    border: none;
+  }
 }
