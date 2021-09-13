@@ -43,13 +43,15 @@ SIZE: compact, small
     margin-right: 8px;
     font-size: 13px;
   }
+  svg {
+    width: 12px !important;
+  }
 
   &:hover,
   &:focus {
     box-shadow: @boxShadowHover;
     outline: none;
   }
-
 
   //DEFAULT TYPE
   &.save {
@@ -61,7 +63,7 @@ SIZE: compact, small
 
   &.cancel {
     background-color: @c-cancel;
-    color: @zesty-light-grey
+    color: @zesty-light-grey;
   }
   &.warn {
     .bgd-warn();
@@ -72,11 +74,11 @@ SIZE: compact, small
     border-right-color: darken(@btnAlt, 10%);
   }
 
-   &:disabled {
+  &:disabled {
     cursor: not-allowed;
     .disabled();
   }
-   &:active {
+  &:active {
     box-shadow: none;
   }
 
@@ -107,7 +109,6 @@ SIZE: compact, small
         .bgd-primary();
         color: @white;
       }
-
     }
 
     &.secondary {
@@ -127,7 +128,6 @@ SIZE: compact, small
         background-color: @zesty-dark-blue;
         color: @white;
       }
-
     }
     &.warn {
       color: @zesty-red;
@@ -143,7 +143,6 @@ SIZE: compact, small
       }
     }
   }
-
 
   //REVERSED KIND
   &.reversed {
