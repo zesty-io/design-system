@@ -6,7 +6,6 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {},
   "devDependencies": {
     "husky": "^4.2.3",
     "prettier": "^1.19.1",
