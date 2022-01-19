@@ -13,6 +13,7 @@ export { Search } from "./Search";
 export { Select, Option } from "./Select";
 export { Tag } from "./Tag";
 export { Toggle } from "./Toggle";
+export { ToolTip } from "./ToolTip";
 export { Textarea } from "./Textarea";
 export { Url } from "./Url";
 export { WithLoader } from "./WithLoader";

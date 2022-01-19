@@ -1,0 +1,78 @@
+@import "../colors.less";
+@import "../typography.less";
+
+.TooltipWrapper {
+  display: inline-block;
+  position: relative;
+
+  /* Absolute positioning */
+  .ToolTip {
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px;
+    color: @bright-gray;
+    background: @zesty-dark-blue;
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 1;
+    z-index: 100;
+    white-space: nowrap;
+
+    /* CSS border triangles */
+    &:before {
+      content: " ";
+      left: 50%;
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-width: 6px;
+      margin-left: calc(6px * -1);
+    }
+
+    &.Top {
+      top: calc(30px * -1);
+      &:before {
+        top: 100%;
+        border-top-color: @zesty-dark-blue;
+      }
+    }
+
+    &.Right {
+      left: calc(100% + 30px);
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+
+      &:before {
+        left: calc(6px * -1);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-right-color: @zesty-dark-blue;
+      }
+    }
+
+    &.Bottom {
+      bottom: calc(30px * -1);
+      &::before {
+        bottom: 100%;
+        border-bottom-color: @zesty-dark-blue;
+      }
+    }
+    &.Left {
+      left: auto;
+      right: calc(100% + 30px);
+      top: 50%;
+      transform: translateX(0) translateY(-50%);
+      &:before {
+        left: auto;
+        right: calc(6px * -2);
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-left-color: @zesty-dark-blue;
+      }
+    }
+  }
+}
