@@ -135,7 +135,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               /**
                * Handle save key command
                */
-              editor.shortcuts.add("ctrl+s", "Save item", props.onSave);
+              editor.shortcuts.add("meta+s", "Save item", props.onSave);
 
               /**
                * This does not work as the resizing action provides an element with the data attributes striped
