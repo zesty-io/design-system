@@ -80,6 +80,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "bold italic link | copy paste",
+            toolbar_mode: 'sliding',
 
             relative_urls: false,
             // plugin settings
