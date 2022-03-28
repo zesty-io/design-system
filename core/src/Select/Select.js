@@ -195,7 +195,8 @@ export class Select extends Component {
           "Select",
           styles.selector,
           this.state.dropdownOpen ? styles.show : styles.hidden,
-          this.props.className
+          this.props.className,
+          this.props.error && styles.error,
         )}
         onClick={this.toggleDropdown}
         ref={(div) => (this.selector = div)}

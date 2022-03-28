@@ -20,6 +20,9 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
     props.value ? props.value.split(",").map((v) => v.trim()) : []
   );
 
+  const maxLength = props.maxLength ?? 250;
+  const valueLength = props.value?.length ?? 0;
+
   const loadItems = () => {
     setLoading(true);
     props.onOpen().then(() => {
@@ -89,6 +92,8 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
           required={props.required}
           tag={props.tag}
           tooltip={props.tooltip}
+          maxLength={maxLength}
+          valueLength={valueLength}
         />
       </label>
 
@@ -103,6 +108,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
               loadItems();
             }
           }}
+          error={valueLength > maxLength}
         >
           <Option value="0" text="— Select Option —" />
           {loading && <Loader />}
@@ -134,6 +140,11 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
           )}
         </article>
       </section>
+      {valueLength > maxLength && (
+        <span className={styles.ErrorDescription}>
+          Your input is over the specified limit
+        </span>
+      )}
       <FieldDescription description={props.description} />
     </div>
   );
