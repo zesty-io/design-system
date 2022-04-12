@@ -20,7 +20,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
     props.value ? props.value.split(",").map((v) => v.trim()) : []
   );
 
-  const maxLength = props.maxLength ?? 250;
+  const maxLength = props.maxLength ?? 255;
   const valueLength = props.value?.length ?? 0;
 
   const loadItems = () => {
@@ -142,7 +142,7 @@ export const FieldTypeOneToMany = React.memo(function FieldTypeOneToMany(
       </section>
       {valueLength > maxLength && (
         <span className={styles.ErrorDescription}>
-          Your input is over the specified limit
+          Your input is over the default limit
         </span>
       )}
       <FieldDescription description={props.description} />
