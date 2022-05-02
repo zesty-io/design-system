@@ -240,7 +240,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                           iframe = `<iframe src="https://instagram.com/p/${data.id}/embed/captioned" height="600px" width="500px"></iframe>`;
                           break;
                         case "youtube":
-                          iframe = `<iframe src="https://www.youtube.com/embed/${data.id}?modestbranding=1&rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="315px" width="560px"></iframe>`;
+                          iframe = `<iframe src="https://www.youtube.com/embed/${data.id}?modestbranding=1&rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" height="315px" width="560px"></iframe>`;
                           break;
                         case "twitframe":
                           iframe = `<iframe src="https://twitframe.com/show?url=${encodeURI(
