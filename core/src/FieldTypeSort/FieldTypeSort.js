@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cx from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,10 @@ export const FieldTypeSort = React.memo(function FieldTypeSort(props) {
   // console.log("FieldTypeSort:render");
 
   const [sort, setSort] = useState(Number(props.value) || 0);
+
+  useEffect(() => {
+    setSort(Number(props.value) || 0);
+  }, [props.value])
 
   const handleClick = (evt, increment) => {
     evt.stopPropagation();
