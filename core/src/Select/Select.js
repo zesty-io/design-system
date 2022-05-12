@@ -151,22 +151,14 @@ export class Select extends Component {
 
   render() {
     const childrenArr = React.Children.toArray(this.props.children);
+    // console.log('testing childrenArr', childrenArr);
     const childrenFiltered = childrenArr
       .filter((child) => {
         if (this.state.filter) {
           return (
-            (child.props.filterValue &&
-              String(child.props.filterValue) &&
-              child.props.filterValue
-                .toLowerCase()
-                .indexOf(this.state.filter) !== -1) ||
-            (child.props.html &&
-              String(child.props.html) &&
-              child.props.html.toLowerCase().indexOf(this.state.filter) !==
-              -1) ||
-            (child.props.text &&
-              String(child.props.text) &&
-              child.props.text.toLowerCase().indexOf(this.state.filter) !== -1)
+            (String(child.props?.filterValue)?.toLowerCase()?.indexOf(this.state.filter) !== -1) ||
+            (String(child.props?.html)?.toLowerCase()?.indexOf(this.state.filter) !==-1) ||
+            (String(child.props?.text)?.toLowerCase()?.indexOf(this.state.filter) !== -1)
           );
         } else {
           return true;
