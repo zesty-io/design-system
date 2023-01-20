@@ -1,28 +1,15 @@
 @import "../typography.less";
 @import "../colors.less";
 
-.FieldTypeEditor {
-  .FieldTypeEditorLabel {
+.FieldTypeTinyMCE {
+  .FieldTypeTinyMCELabel {
     display: flex;
-    margin-bottom: 3px;
     align-items: flex-end;
     font-size: @font-size-label;
-
-    & span:first-child {
-      flex: 1;
-    }
-
-    .EditorSelection {
-      margin-left: auto;
-      min-width: 150px;
-      // height: 30px;
-    }
+    justify-content: space-between;
   }
 
-  .FieldTypeEditorPM {
-    background: @appBkgColor;
-    border: 1px solid @appBkgColor;
-    border-radius: 4px;
-    display: flex;
+  & span:first-child {
+    flex: 1;
   }
 }

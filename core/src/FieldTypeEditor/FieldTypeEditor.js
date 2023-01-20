@@ -23,17 +23,20 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
           tag={props.tag}
           tooltip={props.tooltip}
         />
-        <Select
-          name="editor"
-          className={styles.EditorSelection}
-          onSelect={(editor) => setEditor(editor)}
-          value={editor}
-        >
-          <Option value="wysiwyg_basic" text="WYSIWYG" />
-          <Option value="markdown" text="Markdown" />
-          <Option value="article_writer" text="Inline" />
-          <Option value="html" text="HTML" />
-        </Select>
+        <div className={styles.FieldTypeEditorLabel__right}>
+          <Select
+            name="editor"
+            className={styles.EditorSelection}
+            onSelect={(editor) => setEditor(editor)}
+            value={editor}
+          >
+            <Option value="wysiwyg_basic" text="WYSIWYG" />
+            <Option value="markdown" text="Markdown" />
+            <Option value="article_writer" text="Inline" />
+            <Option value="html" text="HTML" />
+          </Select>
+          {props?.endLabel}
+        </div>
       </label>
 
       <div className={styles.FieldTypeEditorPM}>

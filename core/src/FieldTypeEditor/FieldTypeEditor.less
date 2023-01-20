@@ -6,13 +6,18 @@
     margin-bottom: 3px;
     align-items: flex-end;
     font-size: @font-size-label;
+    justify-content: space-between;
+
+    .FieldTypeEditorLabel__right {
+      display: flex;
+      gap: 8px;
+    }
 
     & span:first-child {
       flex: 1;
     }
 
     .EditorSelection {
-      margin-left: auto;
       min-width: 150px;
       // height: 30px;
     }
