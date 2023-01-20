@@ -56,6 +56,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
           tag={props.tag}
           tooltip={props.tooltip}
         />
+        {props?.endLabel}
       </label>
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
