@@ -61,6 +61,8 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
           id={props.name}
+          onFocusIn={props.onFocus}
+          onFocusOut={props.onBlur}
           initialValue={initialValue}
           onEditorChange={(content) => {
             props.onChange(content, props.name, props.datatype);
