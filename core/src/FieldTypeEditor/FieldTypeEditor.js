@@ -39,7 +39,7 @@ export const FieldTypeEditor = React.memo(function FieldTypeEditor(props) {
         </div>
       </label>
 
-      <div className={styles.FieldTypeEditorPM}>
+      <div className={styles.FieldTypeEditorPM} onFocus={props.onFocus} onBlur={props.onBlur}>
         <Converter
           editor={editor}
           value={props.value}
