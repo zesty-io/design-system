@@ -24,7 +24,7 @@ export function Node(props) {
       ) : (
         <>
           <Link to={props.path}>
-            <FontAwesomeIcon icon={props.icon} />
+            {props.icon ? props.icon?.iconName ? <FontAwesomeIcon icon={props.icon} /> : props.icon : null}
             <span>{props.label}</span>
           </Link>
 
