@@ -1,40 +1,45 @@
 @import "../../colors.less";
 
 .item {
+  background-color: #ffffff;
+
   display: flex;
   align-items: center;
   user-select: none;
   border-left: 2px solid transparent;
   font-family: Verdana, Helvetica, sans-serif;
+
   svg {
-    font-size: .9em;
+    font-size: 0.9em;
   }
-  
+
   a,
   .directory {
     text-decoration: none;
-    color: @zesty-dark-blue;
+    color: #475467;
     font-weight: 500;
     flex: 1;
-    font-size: .9em;
+    font-size: 0.9em;
     padding: 7px 10px;
     display: flex;
+
     i,
     svg {
       padding: 0;
       margin-right: 8px;
-      opacity: 0.6;
       align-self: center;
-      color: @zesty-light-grey;
+      color: #10182866;
     }
-    
   }
 
   &.Dark {
     border-left: 2px solid @nav-background-color;
-    a,.directory{
+
+    a,
+    .directory {
       color: @zesty-light-blue;
     }
+
     svg {
       color: @zesty-grey;
     }
@@ -60,90 +65,114 @@
         color: @zesty-white;
       }
     }
-    
   }
 
-.hide {
-  visibility: hidden;
-}
-
-.actions {
-  padding: 8px;
-}
-.action {
-  cursor: pointer;
-  color: @zesty-dark-blue;
-  &:hover,
-  &:active,
-  &:focus {
-    color: @zesty-dark-blue;
-    font-weight: 600;
+  .hide {
+    visibility: hidden;
   }
-}
 
-&.Dark {
-  .action {
-    color: @zesty-gray;
-  
-    &:focus {
-      color: @zesty-white;
+  .actions {
+    padding: 8px;
+
+    svg {
+      color: #10182866;
     }
   }
-}
-&.Dark {
-  &.depth1 {
-    background-color: #1a202c;
-    border-left: 2px solid #1a202c;
-  }
-  &.depth2 {
-    background-color: lighten(#1a202c, 5%);
-    border-left: 2px solid lighten(#1a202c, 5%);
-  }
-  &.depth3 {
-    background-color: lighten(#1a202c, 10%);
-    border-left: 2px solid lighten(#1a202c, 10%);
-  }
-  &.depth4 {
-    background-color: lighten(#1a202c, 15%);
-    border-left: 2px solid lighten(#1a202c, 15%);
-  }
-}
 
+  .action {
+    cursor: pointer;
+    color: @zesty-dark-blue;
 
+    &:hover,
+    &:active,
+    &:focus {
+      color: @zesty-dark-blue;
+      font-weight: 600;
+    }
+  }
 
- 
+  &.Dark {
+    .action {
+      color: @zesty-gray;
+
+      &:focus {
+        color: @zesty-white;
+      }
+    }
+  }
+
+  &.Dark {
+    &.depth1 {
+      background-color: #1a202c;
+      border-left: 2px solid #1a202c;
+    }
+    &.depth2 {
+      background-color: lighten(#1a202c, 5%);
+      border-left: 2px solid lighten(#1a202c, 5%);
+    }
+    &.depth3 {
+      background-color: lighten(#1a202c, 10%);
+      border-left: 2px solid lighten(#1a202c, 10%);
+    }
+    &.depth4 {
+      background-color: lighten(#1a202c, 15%);
+      border-left: 2px solid lighten(#1a202c, 15%);
+    }
+  }
+
   &:hover {
-    background-color: white; //@zesty-white;
+    background-color: #1018280a;
+
+    a {
+      color: #475467;
+
+      svg {
+        color: #10182866;
+      }
+    }
 
     .hide {
       visibility: visible;
     }
   }
- 
-  &.Dark:hover{
+
+  &.Dark:hover {
     background-color: lighten(@nav-border-color, 6%);
 
+    a,
+    .directory {
+      color: @zesty-light-blue;
+    }
+
+    svg {
+      color: @zesty-grey;
+    }
   }
 
   &.selected {
-    border-left: 2px solid @zesty-orange;
-    background: @zesty-orange;
+    background-color: #ff5d0a14;
     border-radius: 4px 0px 0px 4px !important;
+
     a {
-      color: @white;
+      color: #ec4a0a;
+
       svg {
-        opacity: .6;
-        color: @white;
+        color: #ff5d0a;
       }
     }
   }
   &.Dark.selected {
     border-left: 2px solid @zesty-orange;
-    background: darken(@zesty-dark-blue,5%);
+    background: darken(@zesty-dark-blue, 5%);
     border-radius: 0px 0px 0px 4px !important;
+
+    a,
+    .directory {
+      color: @zesty-light-blue;
+    }
+
+    svg {
+      color: @zesty-grey;
+    }
   }
-
-
 }
-
-
