@@ -1,5 +1,7 @@
 # Zesty.io Design System
 
+[Zesty Design System ](https://zesty-io.github.io/design-system/#/)
+
 > A system for building consistent products
 
 **Requires Node.js and NPM. We recommend [installing Node 8 LTS](https://nodejs.org/en/) which will include NPM.**
@@ -28,19 +30,22 @@ npm start
 Open Browser to http://localhost:8080/
 HARD REFRESH
 ```
-## Connecting Design-Systems to Manager-ui
 
- In Manager-ui
- ```
- npm i
- npm link @zesty-io/core
-
- ```
-In Design-Systems
+## Publish Design Systems Docs
 
 ```
-git pull design-system
-cd /core
+cd /docs
 npm run build ( After every time you make an edit)
+git push master
+
+```
+
+## Connecting Design-Systems to Manager-ui
+
+In Manager-ui
+
+```
+npm i
+npm link @zesty-io/core
 
 ```
