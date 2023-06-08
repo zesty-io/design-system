@@ -39,7 +39,7 @@ export const iframe = {
             ...node.attrs,
             src:
               node.attrs.src ||
-              `https://instagram.com/p/${node.attrs.id}/embed/captioned`,
+              `https://www.instagram.com/p/${node.attrs.id}/embed/captioned`,
             height: node.attrs.height || "600px",
             width: node.attrs.width || "500px"
           }
