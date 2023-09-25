@@ -38,39 +38,29 @@ import { FieldDescription } from "../FieldDescription";
 import styles from "./FieldTypeTinyMCE.less";
 
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
-
   // NOTE: controlled component
-  const [initialValue, setInitialValue] = useState(props.value)
+  const [initialValue, setInitialValue] = useState(props.value);
 
   // NOTE: update if version changes
   useEffect(() => {
-    setInitialValue(props.value)
-  }, [props.version])
+    setInitialValue(props.value);
+  }, [props.version]);
 
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
-      <label className={styles.FieldTypeTinyMCELabel}>
-        <FieldLabel
-          label={props.label}
-          required={props.required}
-          tag={props.tag}
-          tooltip={props.tooltip}
-        />
-        {props?.endLabel}
-      </label>
       <div className={styles.FieldTypeTinyMCEPM}>
         <Editor
           id={props.name}
           onFocusIn={props.onFocus}
           onFocusOut={props.onBlur}
           initialValue={initialValue}
-          onEditorChange={(content) => {
+          onEditorChange={content => {
             props.onChange(content, props.name, props.datatype);
           }}
           init={{
             plugins: [
               "advlist advcode anchor autolink charmap codesample fullscreen help hr insertdatetime",
-              "link lists media preview searchreplace spellchecker table visualblocks wordcount",
+              "link lists media preview searchreplace spellchecker table visualblocks wordcount"
             ],
 
             // NOTE: premium plugins are being loaded from a self hosted location
@@ -83,7 +73,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "bold italic link | copy paste",
-            toolbar_mode: 'sliding',
+            toolbar_mode: "sliding",
 
             relative_urls: false,
             // plugin settings
@@ -135,7 +125,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
             content_css: props.contentCSS,
 
             // Customize editor buttons and actions
-            setup: function (editor) {
+            setup: function(editor) {
               /**
                * Handle save key command
                */
@@ -168,9 +158,9 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                 icon: "return",
                 tooltip:
                   "Insert new element to clear previously floated elements",
-                onAction: function (_) {
+                onAction: function(_) {
                   editor.insertContent("<p style='clear:both;'>&nbsp;</p>");
-                },
+                }
               });
 
               /**
@@ -179,20 +169,20 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
               editor.ui.registry.addButton("zestyMediaApp", {
                 icon: "image",
                 tooltip: "Select media from your uploaded assets",
-                onAction: function () {
+                onAction: function() {
                   props.mediaBrowser({
                     limit: 10,
-                    callback: (images) => {
+                    callback: images => {
                       editor.insertContent(
                         images
-                          .map((image) => {
+                          .map(image => {
                             return `<img src="${image.url}" data-id="${image.id}" title="${image.title}" alt="${image.title}" />`;
                           })
                           .join(" ")
                       );
-                    },
+                    }
                   });
-                },
+                }
               });
 
               /**
@@ -200,7 +190,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                */
               editor.ui.registry.addButton("embed", {
                 text: "embed",
-                onAction: function () {
+                onAction: function() {
                   editor.windowManager.open({
                     title: "Embed Social Media",
                     body: {
@@ -213,28 +203,28 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                           items: [
                             { text: "Instagram", value: "instagram" },
                             { text: "YouTube", value: "youtube" },
-                            { text: "Twitframe", value: "twitframe" },
-                          ],
+                            { text: "Twitframe", value: "twitframe" }
+                          ]
                         },
                         {
                           type: "input",
                           name: "id",
-                          label: "Unique Post ID",
-                        },
-                      ],
+                          label: "Unique Post ID"
+                        }
+                      ]
                     },
                     buttons: [
                       {
                         type: "cancel",
-                        text: "Close",
+                        text: "Close"
                       },
                       {
                         type: "submit",
                         text: "Save",
-                        primary: true,
-                      },
+                        primary: true
+                      }
                     ],
-                    onSubmit: function (api) {
+                    onSubmit: function(api) {
                       const data = api.getData();
 
                       let iframe = "";
@@ -257,18 +247,14 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
                       // Insert content when the window form is submitted
                       editor.insertContent(iframe);
                       api.close();
-                    },
+                    }
                   });
-                },
+                }
               });
-            },
+            }
           }}
         />
       </div>
-
-      {props.description && (
-        <FieldDescription description={props.description} />
-      )}
     </div>
   );
 });
