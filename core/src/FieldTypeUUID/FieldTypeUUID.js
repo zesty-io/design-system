@@ -23,19 +23,13 @@ export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
 
   return (
     <label className={cx(styles.FieldTypeUUID, props.className)}>
-      <FieldLabel
-        label={props.label}
-        required={props.required}
-        tag={props.tag}
-        tooltip={props.tooltip}
-      />
       <div className={styles.DateFieldTypeInput}>
         <FontAwesomeIcon
           className={styles.Icon}
           icon={faClipboard}
           aria-hidden="true"
           title="Click to Copy"
-          onClick={(e) => {
+          onClick={e => {
             const input = document.createElement("input");
             document.body.appendChild(input);
             input.value = props.value;
@@ -47,7 +41,7 @@ export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
               return props.dispatch(
                 notify({
                   type: "error",
-                  message: "Failed to copy the team ID to your clipboard",
+                  message: "Failed to copy the team ID to your clipboard"
                 })
               );
             }
@@ -61,7 +55,6 @@ export const FieldTypeUUID = React.memo(function FieldTypeUUID(props) {
           defaultValue={props.value || ""}
         />
       </div>
-      <FieldDescription description={props.description} />
     </label>
   );
 });
