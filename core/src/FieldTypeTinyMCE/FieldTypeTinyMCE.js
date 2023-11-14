@@ -18,14 +18,14 @@ import "tinymce/plugins/code"; //advcode requires this core plugin
 import "tinymce/plugins/codesample";
 import "tinymce/plugins/fullscreen";
 import "tinymce/plugins/help";
-import "tinymce/plugins/hr";
+// import "tinymce/plugins/hr";
 import "tinymce/plugins/insertdatetime";
 import "tinymce/plugins/link";
 import "tinymce/plugins/lists";
-import "tinymce/plugins/paste";
+// import "tinymce/plugins/paste";
 import "tinymce/plugins/preview";
 import "tinymce/plugins/searchreplace";
-import "tinymce/plugins/spellchecker";
+// import "tinymce/plugins/spellchecker";
 import "tinymce/plugins/media";
 import "tinymce/plugins/table";
 import "tinymce/plugins/visualblocks";
@@ -38,14 +38,13 @@ import { FieldDescription } from "../FieldDescription";
 import styles from "./FieldTypeTinyMCE.less";
 
 export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
-
   // NOTE: controlled component
-  const [initialValue, setInitialValue] = useState(props.value)
+  const [initialValue, setInitialValue] = useState(props.value);
 
   // NOTE: update if version changes
   useEffect(() => {
-    setInitialValue(props.value)
-  }, [props.version])
+    setInitialValue(props.value);
+  }, [props.version]);
 
   return (
     <div className={cx(styles.FieldTypeTinyMCE, props.className)}>
@@ -83,7 +82,7 @@ export const FieldTypeTinyMCE = React.memo(function FieldTypeTinyMCE(props) {
              table zestyMediaApp media embed charmap insertdatetime | \
              pastetext removeformat | fullscreen code help | undo redo",
             contextmenu: "bold italic link | copy paste",
-            toolbar_mode: 'sliding',
+            toolbar_mode: "sliding",
 
             relative_urls: false,
             // plugin settings
