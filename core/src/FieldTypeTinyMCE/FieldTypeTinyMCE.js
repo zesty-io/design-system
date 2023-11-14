@@ -1,3 +1,4 @@
+// TODO: Check if this component can be safely removed?
 import React, { useEffect, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import cx from "classnames";
