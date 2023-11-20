@@ -36,7 +36,6 @@ export { FieldTypeCurrency } from "./FieldTypeCurrency";
 export { FieldTypeEditor } from "./FieldTypeEditor";
 export { FieldTypeOneToOne } from "./FieldTypeOneToOne";
 export { FieldTypeOneToMany } from "./FieldTypeOneToMany";
-export { FieldTypeTinyMCE } from "./FieldTypeTinyMCE";
 // export { FieldTypeDateTime } from "./FieldTypeDateTime";
 
 export { CollapsibleCard } from "./CollapsibleCard";
